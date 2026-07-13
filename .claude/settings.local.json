@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "PowerShell(gh --version)",
+      "PowerShell(gh auth status 2>&1)",
+      "PowerShell(Get-ChildItem -File | Sort-Object Length -Descending | Select-Object -First 10 Name, @{N='MB';E={[math]::Round\\($_.Length/1MB,2\\)}})",
+      "Bash(git --version)",
+      "PowerShell(winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements)",
+      "Bash(git ls-remote *)",
+      "PowerShell(git ls-remote https://github.com/Noumaassadullah/Noumaassadullah.git 2>&1)",
+      "PowerShell(git config --global user.name)",
+      "PowerShell(git config --global user.email)",
+      "PowerShell(git config --global credential.helper)",
+      "PowerShell(\\(Get-Command gh\\).Source)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status 2>&1)",
+      "PowerShell(ssh -T git@github.com 2>&1)",
+      "PowerShell(& \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" api user --jq \"{login: .login, name: .name, email: .email}\" 2>&1)",
+      "PowerShell(ssh -o StrictHostKeyChecking=accept-new -o BatchMode=yes -T git@github.com 2>&1)",
+      "PowerShell(git config --global user.name \"Noumaassadullah\")",
+      "PowerShell(git config --global user.email \"assadullahnouman@gmail.com\")",
+      "PowerShell(git init)",
+      "PowerShell(git branch -M main)",
+      "PowerShell(git add -A)"
+    ]
+  }
+}

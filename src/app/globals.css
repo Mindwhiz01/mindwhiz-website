@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* thin, modern scrollbar */
+* {
+  scrollbar-width: thin;
+}
+
+/* crystal shine sweep on nav tab hover */
+@keyframes crystalShine {
+  to {
+    background-position: -200% center;
+  }
+}
+.crystal-label {
+  display: inline-block;
+}
+/* ---- client logo marquee (two opposite-direction rows) ---- */
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marqueeRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+}
+.animate-marquee-left {
+  animation: marqueeLeft 45s linear infinite;
+}
+.animate-marquee-right {
+  animation: marqueeRight 45s linear infinite;
+}
+.animate-agency-marquee {
+  animation: marqueeLeft 34s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+}
+
+/* ---- dark mode (scoped to the page body wrapper, not the header) ---- */
+.theme-dark {
+  background-color: #0b1620;
+  color: #cbd5e1;
+}
+.theme-dark .bg-white {
+  background-color: #15242f !important;
+}
+.theme-dark .bg-\[\#EEEEEE\] {
+  background-color: #0f1c26 !important;
+}
+.theme-dark .text-black {
+  color: #f8fafc !important;
+}
+.theme-dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+.theme-dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+.theme-dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+.theme-dark .border-slate-200 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.theme-dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.theme-dark input,
+.theme-dark textarea,
+.theme-dark select {
+  color: #e2e8f0;
+}
+.theme-dark input::placeholder,
+.theme-dark textarea::placeholder {
+  color: #64748b;
+}
+
+/* subtle, professional hover on the big "We Drive / Talent" headings */
+.crystal-heading {
+  cursor: default;
+  transition: color 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.crystal-heading:hover {
+  color: #9CCC3C;
+  transform: scale(1.02);
+}
+
+.crystal-tab:hover .crystal-label {
+  background-image: linear-gradient(
+    110deg,
+    #6b7280 0%,
+    #ffffff 25%,
+    #d1d5db 50%,
+    #ffffff 75%,
+    #6b7280 100%
+  );
+  background-size: 200% auto;
+  background-position: 200% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: crystalShine 1.4s linear infinite;
+}
+
+/* horizontal auto-scrolling marquee (services carousel) */
+@keyframes marqueeX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* construction hazard chevron tape — repeats a chevron tile and scrolls */
+.hazard-tape {
+  height: 26px;
+  background-image: url("/hazard-tape.svg");
+  background-repeat: repeat-x;
+  background-size: 33px 26px;
+}
+@keyframes hazardLeft {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -33px;
+  }
+}
+@keyframes hazardRight {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 33px;
+  }
+}
+.hazard-left {
+  animation: hazardLeft 1.1s linear infinite;
+}
+.hazard-right {
+  animation: hazardRight 1.1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hazard-left,
+  .hazard-right {
+    animation: none;
+  }
+}
