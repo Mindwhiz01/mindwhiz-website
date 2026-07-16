@@ -142,10 +142,10 @@ export default function Footer() {
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-white/10 py-6 text-xs text-white/40 sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center gap-6">
             <span>© 2026 {company.name}. All rights reserved.</span>
-            <a href="#" className="transition-colors hover:text-white">
+            <a href="/privacy" className="transition-colors hover:text-white">
               Privacy
             </a>
-            <a href="#" className="transition-colors hover:text-white">
+            <a href="/terms" className="transition-colors hover:text-white">
               Terms
             </a>
           </div>
