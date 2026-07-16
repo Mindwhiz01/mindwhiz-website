@@ -10,7 +10,7 @@ import {
   type Variants,
 } from "framer-motion";
 import { Inter, Oswald } from "next/font/google";
-import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
@@ -175,7 +175,9 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10" />
+      {/* stronger dark shadow so the title, copy, and CTA stay prominent */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
+      <div className="absolute inset-0 bg-black/20" />
 
       <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-3">
         <div className="flex flex-wrap gap-2">
@@ -188,23 +190,23 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
             </span>
           ))}
         </div>
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#ed1164] text-white">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#9CCC3C] text-black">
           <ArrowRight className="h-4 w-4 -rotate-45" />
         </span>
       </div>
 
       <div className="absolute inset-x-5 bottom-5">
-        <h3 className="text-2xl font-extrabold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+        <h3 className="text-2xl font-extrabold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]" style={{ fontFamily: "var(--font-display)" }}>
           {card.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-white/80">{card.desc}</p>
-        <button
-          type="button"
-          className="mt-5 inline-flex w-full items-center justify-between rounded-full border border-white/30 px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-300 hover:bg-white hover:text-black"
+        <p className="mt-2 text-sm leading-relaxed text-white/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">{card.desc}</p>
+        <a
+          href="/contact"
+          className="mt-5 inline-flex w-full items-center justify-between rounded-full bg-[#9CCC3C] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black transition-colors duration-300 hover:bg-[#8bbd2f]"
         >
           {card.cta}
           <ArrowRight className="h-4 w-4" />
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -230,15 +232,6 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <a
-            href={page.sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]"
-          >
-            Source page
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
         </Reveal>
 
         <div className="grid gap-5 sm:grid-cols-2">
@@ -296,8 +289,9 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
           <div ref={viewportRef} className="order-2 overflow-hidden lg:order-1">
             <motion.div style={{ x }} className="flex gap-5 will-change-transform">
               {page.capabilities.map((item, index) => (
-                <article
+                <a
                   key={item.title}
+                  href="/contact"
                   style={{ width: cardW }}
                   className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl text-white transition-transform duration-300 hover:-translate-y-1.5"
                 >
@@ -322,7 +316,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/75">{item.desc}</p>
                   </div>
-                </article>
+                </a>
               ))}
             </motion.div>
           </div>
@@ -643,15 +637,6 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <a
-              href={page.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-7 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]"
-            >
-              Source page
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
           </Reveal>
 
           {page.intro.card && (
@@ -712,9 +697,9 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
             aria-hidden
             className="absolute inset-0 h-full w-full object-cover"
           />
-          {/* brand wash + dark shadow so the copy stays prominent over the image */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,47,139,0.5)_0,_rgba(237,17,100,0.48)_48%,_rgba(184,0,82,0.55)_100%)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/45" />
+          {/* dark shadow overlay so the copy stays prominent over the image */}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50" />
           <div className="relative mx-auto px-6 py-24 text-center sm:px-10 lg:px-16">
             <Reveal>
             <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.65)]" style={{ fontFamily: "var(--font-display)" }}>

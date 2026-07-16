@@ -236,11 +236,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "The power of experience",
-      title: "Gain clear visibility and control of your technology assets.",
+      title: "Control every device and asset.",
       body: [
         "MindWhiz delivers IT asset management services that provide clear visibility and control across devices, software, and cloud environments.",
         "Structured lifecycle management supports secure onboarding, controlled access, and compliant asset retirement.",
       ],
+      card: {
+        tags: ["Asset Sprawl", "Access Risk"],
+        image: sharedImages.remote,
+        title: "Untracked Devices",
+        desc: "Unmanaged laptops, licenses, and remote access create blind spots and security gaps across teams.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "5+", label: "Years supporting global businesses" },
@@ -284,11 +291,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Reliable IT infrastructure services",
-      title: "Cloud infrastructure that stays stable, secure, and ready to adapt.",
+      title: "Cloud that stays stable and secure.",
       body: [
         "Your business relies on always-available networks, applications, and digital services. MindWhiz helps organizations maintain a resilient IT foundation.",
         "We work with your teams to design, manage, and optimize cloud environments that support performance, availability, and long-term scalability.",
       ],
+      card: {
+        tags: ["Cloud Sprawl", "Downtime Risk"],
+        image: sharedImages.cloud,
+        title: "Unstable Cloud",
+        desc: "Misconfigured, unmonitored cloud environments raise cost, slow teams, and put uptime at risk.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "System monitoring" },
@@ -333,11 +347,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Server management",
-      title: "Keep servers online, protected, and properly maintained.",
+      title: "Servers online and protected.",
       body: [
         "MindWhiz server management services reduce the security and operational risks that often come with managing servers internally.",
         "Dedicated engineers monitor performance, apply updates, maintain security controls, and help prevent serious server issues before they affect the business.",
       ],
+      card: {
+        tags: ["Aging Servers", "Downtime Risk"],
+        image: sharedImages.server,
+        title: "Fragile Infrastructure",
+        desc: "Unpatched servers and unmonitored networks turn small faults into outages that stall the business.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "Co-managed", label: "Operating model" },
@@ -437,11 +458,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Software delivery and cloud infrastructure",
-      title: "DevOps automation services designed to streamline deployments and improve system reliability.",
+      title: "Automate deployments, ship reliably.",
       body: [
         "MindWhiz works across cloud platforms and environments to support DevOps and automation needs without relying on vendor-specific tools.",
         "By automating critical workflows, MindWhiz reduces operational complexity, increases efficiency, and supports security and compliance across modern infrastructure.",
       ],
+      card: {
+        tags: ["Manual Releases", "Slow Delivery"],
+        image: sharedImages.devops,
+        title: "Deployment Bottlenecks",
+        desc: "Manual, error-prone releases slow delivery and make every deployment a risk instead of routine.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "5+", label: "Years of driving growth" },
@@ -486,11 +514,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Cybersecurity protection 24/7/365",
-      title: "Scalable security coverage for modern cyber threats.",
+      title: "Coverage for modern threats.",
       body: [
         "Through monitoring capabilities and deep cybersecurity expertise, MindWhiz helps organizations stay protected while focusing on their most critical security priorities.",
         "MindWhiz supports continuous assessment, monitoring, and response across complex environments.",
       ],
+      card: {
+        tags: ["Threat Exposure", "Alert Fatigue"],
+        image: sharedImages.cyber,
+        title: "Blind To Threats",
+        desc: "Limited monitoring and noisy alerts let real threats slip through until they become incidents.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7/365", label: "Security monitoring" },
@@ -542,6 +577,13 @@ export const servicePages: ServicePageContent[] = [
         "MindWhiz staff augmentation gives you role-ready engineers, analysts, and operators who plug straight into your workflows, tools, and standards.",
         "You keep full control of direction and priorities while we handle sourcing, vetting, onboarding, and retention, so your roadmap never waits on hiring.",
       ],
+      card: {
+        tags: ["Hiring Delays", "Skill Gaps"],
+        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+        title: "Talent Gaps",
+        desc: "Long hiring cycles and missing skills stall roadmaps while the work piles up.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "2 wks", label: "Typical time from brief to onboarded talent" },

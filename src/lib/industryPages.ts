@@ -40,6 +40,13 @@ export const industryPages: ServicePageContent[] = [
         "We embed vetted engineers, DevOps, and security specialists into IT and software teams so delivery keeps pace with demand.",
         "From cloud migrations to 24/7 monitoring, MindWhiz keeps your infrastructure reliable, compliant, and cost-efficient.",
       ],
+      card: {
+        tags: ["Scaling Pains", "Delivery Risk"],
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80",
+        title: "Stretched IT Teams",
+        desc: "Growing roadmaps outpace in-house capacity, slowing delivery and stretching engineers thin.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "Monitoring and support coverage" },
@@ -86,6 +93,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports e-commerce and retail brands with catalog management, customer service, and back-office operations.",
         "We help you handle peak demand, protect margins, and deliver a consistent experience across every channel.",
       ],
+      card: {
+        tags: ["Order Backlogs", "Support Load"],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=80",
+        title: "Operations Overload",
+        desc: "Order spikes, returns, and support volume overwhelm lean teams and hurt the customer experience.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "Customer support coverage" },
@@ -132,6 +146,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz gives startups and SMBs on-demand access to engineering, operations, and support talent that grows exactly as fast as you do.",
         "Skip long hiring cycles and fixed overhead while still getting senior, dedicated people on your account.",
       ],
+      card: {
+        tags: ["Tight Runway", "Hiring Overhead"],
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80",
+        title: "Scaling Too Slow",
+        desc: "Long hiring cycles and fixed overhead hold back startups that need to move fast on a lean budget.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "2 wks", label: "From brief to onboarded talent" },
@@ -178,6 +199,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz gives construction and engineering firms vetted offshore estimators and support teams that deliver fast, accurate takeoffs.",
         "Win more bids, keep projects on schedule, and scale delivery without carrying the fixed cost of in-house capacity.",
       ],
+      card: {
+        tags: ["Slow Bids", "Estimating Load"],
+        image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80",
+        title: "Missed Bids",
+        desc: "Slow, costly estimating limits how many bids you can quote and win each week.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "2x", label: "More bids quoted per week" },
@@ -224,6 +252,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports real estate and property teams with listing management, transaction coordination, and back-office operations.",
         "Free your agents and managers to focus on clients and deals while we handle the process work behind them.",
       ],
+      card: {
+        tags: ["Admin Overload", "Slow Deals"],
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1800&q=80",
+        title: "Coordination Drag",
+        desc: "Manual admin and back-office work slow deals and pull your team away from clients.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "Operations and support coverage" },
@@ -270,6 +305,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports manufacturers with engineering documentation, IT operations, and back-office teams that reduce downtime.",
         "We help you connect systems, control costs, and scale support as production demand changes.",
       ],
+      card: {
+        tags: ["Line Downtime", "Support Gaps"],
+        image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1800&q=80",
+        title: "Production Stalls",
+        desc: "Support and engineering gaps let small issues stop the line and eat into output.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "IT and operations coverage" },
@@ -316,6 +358,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports finance teams with bookkeeping, AP/AR, payroll, and reporting delivered by vetted accountants.",
         "Get accurate numbers, faster closes, and up to 40% lower back-office cost without sacrificing control.",
       ],
+      card: {
+        tags: ["Slow Closes", "Compliance Risk"],
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+        title: "Bottlenecked Finance",
+        desc: "Manual processes stretch month-end closes and raise the risk of costly errors.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "40%", label: "Lower back-office cost" },
@@ -362,6 +411,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz gives professional services firms vetted analysts and support teams that extend delivery capacity on demand.",
         "Take on more engagements, protect utilization, and keep quality high while we handle the supporting work.",
       ],
+      card: {
+        tags: ["Capacity Limits", "Quality Risk"],
+        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+        title: "Delivery Strain",
+        desc: "Rising demand strains delivery teams and threatens the quality clients expect.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "2 wks", label: "To onboarded support" },
@@ -408,6 +464,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports logistics and supply chain teams with dispatch coordination, tracking, and back-office operations.",
         "We help you reduce delays, control cost, and keep visibility across every shipment and partner.",
       ],
+      card: {
+        tags: ["Visibility Gaps", "Delays"],
+        image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1800&q=80",
+        title: "Supply Bottlenecks",
+        desc: "Fragmented operations and blind spots cause delays that ripple across the supply chain.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "Coordination coverage" },
@@ -454,6 +517,13 @@ export const industryPages: ServicePageContent[] = [
         "MindWhiz supports healthcare and HealthTech organizations with back-office, IT, and support teams that respect compliance.",
         "We help you scale operations and technology while protecting patient data and meeting regulatory standards.",
       ],
+      card: {
+        tags: ["Compliance Risk", "Admin Load"],
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80",
+        title: "Care Operations Strain",
+        desc: "Administrative load and compliance demands pull focus away from patients and outcomes.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "24/7", label: "Support and operations coverage" },
