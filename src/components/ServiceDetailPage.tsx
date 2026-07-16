@@ -702,16 +702,25 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
 
       <ProcessScrollSection page={page} />
 
-      <section className="relative p-4 text-white sm:p-8">
+      <section className="relative p-[30px] text-white">
         <GlassPanel className="relative overflow-hidden rounded-[2.5rem]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#ff2f8b_0,_#ed1164_48%,_#b80052_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(0,0,0,0.08))]" />
+          {/* background photo */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* brand wash + dark shadow so the copy stays prominent over the image */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,47,139,0.5)_0,_rgba(237,17,100,0.48)_48%,_rgba(184,0,82,0.55)_100%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/45" />
           <div className="relative mx-auto px-6 py-24 text-center sm:px-10 lg:px-16">
             <Reveal>
-            <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.65)]" style={{ fontFamily: "var(--font-display)" }}>
               {page.finalCta.title}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/80">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
               {page.finalCta.desc}
             </p>
             <Cta href="/contact" label={page.finalCta.button} className="mt-8" />
