@@ -69,19 +69,27 @@ function ProcessPanel({
         {String(i + 1).padStart(2, "0")}
       </motion.span>
 
+      {/* heading, top-left */}
       <motion.div
         style={{ y: textY }}
-        className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
       >
         <h3
-          className="max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white"
+          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {step.title}
         </h3>
-        <div className="mt-8 flex items-center gap-6">
-          <span className="h-px w-16 shrink-0 bg-white/40" />
-          <p className="max-w-lg text-lg leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
+      </motion.div>
+
+      {/* description, bottom-right */}
+      <motion.div
+        style={{ y: textY }}
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+      >
+        <div className="flex max-w-lg items-start gap-6">
+          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+          <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
         </div>
       </motion.div>
     </motion.div>
@@ -112,44 +120,41 @@ export default function ProcessScroll({
   const barScale = useTransform(scrollYProgress, [0, 1], [1 / total, 1]);
 
   return (
-    <section
-      ref={ref}
-      data-header-dark
-      className="relative bg-black"
-      style={{ height: `${total * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {steps.map((step, i) => (
-          <ProcessPanel
-            key={step.title}
-            step={step}
-            i={i}
-            total={total}
-            progress={scrollYProgress}
-            images={images}
-          />
-        ))}
+    <section data-header-dark className="relative bg-black">
+      {/* heading sits above the images, not overlaid on them */}
+      <div className="mx-auto flex max-w-6xl flex-col px-6 pb-16 pt-24 sm:px-8">
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+          {kicker}
+        </span>
+        <h2
+          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {title}
+        </h2>
+        <Cta href={ctaHref} label={ctaLabel} className="mt-6 w-fit" />
+      </div>
 
-        {/* fixed heading overlay */}
-        <div className="absolute inset-x-0 top-0 z-10 mx-auto flex max-w-6xl flex-col px-6 pt-28 sm:px-8">
-          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-            {kicker}
-          </span>
-          <h2
-            className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {title}
-          </h2>
-          <Cta href={ctaHref} label={ctaLabel} className="pointer-events-auto mt-6 w-fit" />
-        </div>
+      <div ref={ref} className="relative" style={{ height: `${total * 100}vh` }}>
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {steps.map((step, i) => (
+            <ProcessPanel
+              key={step.title}
+              step={step}
+              i={i}
+              total={total}
+              progress={scrollYProgress}
+              images={images}
+            />
+          ))}
 
-        {/* bottom progress bar */}
-        <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-          <motion.div
-            style={{ scaleX: barScale, transformOrigin: "left" }}
-            className="h-full w-full bg-[#ed1164]"
-          />
+          {/* bottom progress bar */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              style={{ scaleX: barScale, transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -32,6 +32,7 @@ import { company } from "@/lib/content";
 import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
+import ProcessScroll from "@/components/ProcessScroll";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -141,10 +142,22 @@ const proof = [
 ];
 
 const process = [
-  "Audit the market, tracking, funnel, and campaign economics.",
-  "Build the channel plan, content calendar, landing pages, and measurement model.",
-  "Launch paid, organic, CRM, and reporting operations with weekly optimization.",
-  "Scale what proves efficient, pause what does not, and keep the team aligned.",
+  {
+    title: "Audit & Discovery",
+    desc: "We audit the market, tracking, funnel, and campaign economics so every decision starts from real data, not guesswork.",
+  },
+  {
+    title: "Strategy & Build",
+    desc: "We build the channel plan, content calendar, landing pages, and measurement model the whole growth engine runs on.",
+  },
+  {
+    title: "Launch & Optimize",
+    desc: "We launch paid, organic, CRM, and reporting operations, then tune them every week against live performance.",
+  },
+  {
+    title: "Scale & Sustain",
+    desc: "We scale what proves efficient, pause what does not, and keep the team aligned on the metrics that matter.",
+  },
 ];
 
 function Reveal({
@@ -872,52 +885,15 @@ export default function ServicePage() {
           <ScrubbedBentoGallery />
         </div>
 
-        <section className="bg-[#eee8e0] text-[#3f3f3d]">
-          <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-            <Reveal>
-              <span className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ed1164]">
-                Operating model
-              </span>
-              <h2
-                className="mt-4 text-[clamp(2.8rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-[#1d1d1f]"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                From audit
-                <br />
-                to
-                <br />
-                <span className="text-[#ed1164]">always-on optimization.</span>
-              </h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-[#3f3f3d]/75">
-                Digital marketing compounds when the team keeps the same rhythm:
-                measure, learn, create, launch, and improve. Our process is built
-                around that rhythm.
-              </p>
-            </Reveal>
-
-            <div className="space-y-4">
-              {process.map((step, index) => (
-                <Reveal key={step} delay={index * 0.06}>
-                  <div className="grid gap-5 rounded-[2rem] border border-white/20 bg-white p-6 text-[#3f3f3d] shadow-sm sm:grid-cols-[4rem_1fr]">
-                    <div
-                      className="text-4xl font-extrabold text-[#ed1164]"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.14em] text-[#3f3f3d]">
-                        <CheckCircle2 className="h-4 w-4 text-[#ed1164]" />
-                        Step {index + 1}
-                      </div>
-                      <p className="mt-3 text-sm leading-7 text-[#3f3f3d]/70">{step}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProcessScroll
+          steps={process}
+          title={
+            <>
+              From audit to <span style={{ color: "#ed1164" }}>always-on</span> optimization.
+            </>
+          }
+          ctaLabel="Start a growth sprint"
+        />
 
         <section className="bg-[#eee8e0] text-[#3f3f3d]">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
