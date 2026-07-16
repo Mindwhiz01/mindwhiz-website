@@ -215,15 +215,37 @@ function MegaPanel({
 export function SiteHeader({ theme }: { theme: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(nav[0].label);
+  const [active, setActive] = useState<string | null>(null);
 
-  // Keep the active tab in sync with the actual page being viewed — nav
-  // items that point to a real route (e.g. "/contact") take priority over
-  // whatever was last clicked, so landing on that page always highlights
-  // the right tab instead of whatever tab happened to be active before.
+  // Keep the active tab in sync with the actual page being viewed. Detail
+  // routes (e.g. "/services/it-helpdesk-24-7", "/industries/real-estate",
+  // "/why-mindwhiz") don't have their own nav item, so map them onto the
+  // parent tab. On the home page nothing is highlighted until a hash tab is
+  // clicked. This runs on every navigation so landing on a page always
+  // highlights the right tab instead of whatever was clicked before.
   useEffect(() => {
+    if (pathname === "/") {
+      setActive(null);
+      return;
+    }
+    if (pathname.startsWith("/services") || ["/hr", "/finance", "/service", "/construction-estimation"].includes(pathname)) {
+      setActive("Services");
+      return;
+    }
+    if (pathname.startsWith("/industries")) {
+      setActive("Industries");
+      return;
+    }
+    if (pathname === "/about" || pathname === "/why-mindwhiz") {
+      setActive("About Us");
+      return;
+    }
+    if (pathname.startsWith("/web-services")) {
+      setActive("Web Services");
+      return;
+    }
     const match = nav.find((n) => !n.href.startsWith("/#") && n.href === pathname);
-    if (match) setActive(match.label);
+    setActive(match ? match.label : null);
   }, [pathname]);
 
   const [regionOpen, setRegionOpen] = useState(false);
