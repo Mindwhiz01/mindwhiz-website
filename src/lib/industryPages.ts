@@ -214,10 +214,10 @@ export const industryPages: ServicePageContent[] = [
       { value: "Accurate", label: "Bid-ready cost estimates" },
     ],
     capabilities: [
-      { title: "Quantity Takeoffs", desc: "Fast, accurate material and labor takeoffs across trades.", image: cap.b },
-      { title: "Cost Estimation", desc: "Bid-ready estimates built around current pricing and scope.", image: cap.a },
-      { title: "Engineering Support", desc: "Drafting, BIM, and documentation that keep projects moving.", image: cap.c },
-      { title: "Back-Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: cap.e },
+      { title: "Quantity Takeoffs", desc: "Fast, accurate material and labor takeoffs across trades.", image: "/industries/construction/quantity-takeoffs.png" },
+      { title: "Cost Estimation", desc: "Bid-ready estimates built around current pricing and scope.", image: "/industries/construction/cost-estimation.png" },
+      { title: "Engineering Support", desc: "Drafting, BIM, and documentation that keep projects moving.", image: "/industries/construction/engineering-support.png" },
+      { title: "Back-Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: "/industries/construction/back-office-operations.png" },
     ],
     benefits: [
       { title: "Win More Work", desc: "Quote more bids, faster, without adding headcount." },
