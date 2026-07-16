@@ -452,19 +452,27 @@ function ProcessPanel({
         {String(i + 1).padStart(2, "0")}
       </motion.span>
 
+      {/* heading, top-left */}
       <motion.div
         style={{ y: textY }}
-        className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
       >
         <h3
-          className="max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white"
+          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {step.title}
         </h3>
-        <div className="mt-8 flex items-center gap-6">
-          <span className="h-px w-16 shrink-0 bg-white/40" />
-          <p className="max-w-lg text-lg leading-relaxed text-white/85 sm:text-xl">
+      </motion.div>
+
+      {/* description, bottom-right */}
+      <motion.div
+        style={{ y: textY }}
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+      >
+        <div className="flex max-w-lg items-start gap-6">
+          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+          <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
             {step.desc}
           </p>
         </div>
