@@ -115,7 +115,8 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* ---- certifications banner ---- */}
+        {/* ---- certifications banner — hidden for now, restore by uncommenting ---- */}
+        {/*
         <div className="mt-14 border-t border-white/10 pt-8">
           <a href="#" className="group flex items-center justify-between gap-4">
             <div className="flex items-start gap-3">
@@ -135,6 +136,7 @@ export default function Footer() {
             <ArrowUpRight className="h-5 w-5 shrink-0 text-white/40 transition-colors group-hover:text-white" />
           </a>
         </div>
+        */}
 
         {/* ---- bottom bar ---- */}
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-white/10 py-6 text-xs text-white/40 sm:flex-row sm:items-center">
@@ -159,7 +161,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ---- floating chat pill ---- */}
+      {/* ---- floating chat pill — hidden for now, restore by uncommenting ---- */}
+      {/*
       <button
         type="button"
         className="absolute bottom-5 left-0 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 py-2 pl-3 pr-4 text-sm font-medium text-white/80 backdrop-blur transition-colors hover:bg-white/10"
@@ -167,6 +170,7 @@ export default function Footer() {
         <MessageCircle className="h-4 w-4" style={{ color: ACCENT }} />
         Chat with us
       </button>
+      */}
     </footer>
   );
 }
