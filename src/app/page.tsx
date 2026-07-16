@@ -1358,11 +1358,14 @@ function CaseCard({
             </div>
             <div className="relative mt-3 flex min-h-[26rem] flex-col overflow-hidden rounded-lg border border-white/20 bg-white/[0.03] p-6">
               <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-[#9CCC3C]/10 blur-3xl" />
-              {/* client logo, big and centred in the box */}
+              {/* client logo — mounted on a white exhibit plate so it stays
+                  fully legible regardless of the logo's own colours */}
               {cs.logo && (
-                <div className="pointer-events-none absolute inset-0 grid place-items-center p-10">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-contain opacity-60" />
+                <div className="pointer-events-none absolute inset-x-0 top-1/2 grid -translate-y-1/2 place-items-center px-8">
+                  <div className="grid aspect-[5/3] w-full max-w-[15rem] place-items-center rounded-2xl bg-white p-7 shadow-xl shadow-black/30 ring-1 ring-white/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={cs.logo} alt="" aria-hidden className="max-h-full max-w-full object-contain" />
+                  </div>
                 </div>
               )}
               <div className="relative flex-1" />
