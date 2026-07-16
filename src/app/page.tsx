@@ -973,7 +973,7 @@ function ClientsSection() {
   return (
     <section
       ref={ref}
-      className="relative z-30 rounded-t-[2.5rem] bg-white shadow-[0_-30px_60px_-30px_rgba(0,0,0,0.15)]"
+      className="relative z-30 rounded-t-[2.5rem] bg-white"
     >
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-6 pb-16 pt-20 sm:px-8">
         {/* centered header */}
