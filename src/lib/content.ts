@@ -24,8 +24,8 @@ export const company = {
 
 export const nav = [
   { label: "Services", href: "/#services" },
-  { label: "Why MindWhiz", href: "/#why" },
   { label: "Industries", href: "/#industries" },
+  { label: "About Us", href: "/about" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ];
@@ -104,23 +104,26 @@ export const caseStudies = [
   {
     client: "Alpha Bravo",
     category: "Construction",
-    result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast.",
+    result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast. The team plugged directly into existing bid workflows, cutting turnaround on takeoffs and pricing. Within the first quarter, Alpha Bravo was submitting more competitive bids without adding headcount in-house.",
     highlights: ["Faster delivery", "Lower hiring friction", "Scalable support"],
     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
+    logo: "/clients/alpha-bravo.png",
   },
   {
     client: "Villa Tech",
     category: "IT Staffing",
-    result: "Delivered expert IT talent to scale infrastructure and improve system reliability across operations.",
+    result: "Delivered expert IT talent to scale infrastructure and improve system reliability across operations. Engineers were embedded within two weeks, closing coverage gaps across monitoring, patching, and incident response. Downtime incidents dropped sharply as proactive maintenance replaced reactive firefighting.",
     highlights: ["Rapid onboarding", "Better uptime", "Team expansion"],
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+    logo: "/clients/villa-tech.png",
   },
   {
     client: "Inovatiqa",
     category: "Back Office",
-    result: "Enabled improved accuracy and turnaround by strengthening back-office support and workflows.",
+    result: "Enabled improved accuracy and turnaround by strengthening back-office support and workflows. Standardized checklists and QA passes cut processing errors well below the client's target threshold. Leadership now gets same-day visibility into throughput instead of waiting on weekly manual reports.",
     highlights: ["Higher accuracy", "Faster turnaround", "Process clarity"],
     img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+    logo: "/clients/inovatiqa.png",
   },
 ];
 
@@ -146,15 +149,55 @@ export const finalCta = {
 export const footerGroups = [
   {
     title: "Services",
-    links: ["IT & Cybersecurity", "Business Support", "Construction Estimation", "Staff Augmentation"],
+    links: [
+      { label: "IT Helpdesk 24/7", href: "/services/it-helpdesk-24-7" },
+      { label: "NOC Monitoring", href: "/services/noc-monitoring" },
+      { label: "Cybersecurity Monitoring", href: "/services/cybersecurity-monitoring" },
+      { label: "Cloud Infrastructure", href: "/services/cloud-infrastructure" },
+      { label: "DevOps & Automation", href: "/services/devops-automation" },
+      { label: "Endpoint Security", href: "/services/endpoint-security" },
+      { label: "Server & Network Administration", href: "/services/server-network-administration" },
+      { label: "Remote Desktop & Assets", href: "/services/remote-desktop-assets" },
+      { label: "Staff Augmentation", href: "/services/staff-augmentation" },
+      { label: "HR Services", href: "/hr" },
+      { label: "Finance & Accounting", href: "/finance" },
+      { label: "Digital Marketing", href: "/service" },
+      { label: "Construction Estimation", href: "/construction-estimation" },
+    ],
+  },
+  {
+    title: "Industries",
+    links: [
+      { label: "Information Technology", href: "/industries/information-technology" },
+      { label: "E-commerce & Retail", href: "/industries/ecommerce-retail" },
+      { label: "Startups & SMBs", href: "/industries/startups-smbs" },
+      { label: "Construction & Engineering", href: "/industries/construction-engineering" },
+      { label: "Real Estate", href: "/industries/real-estate" },
+      { label: "Industrial Manufacturing", href: "/industries/industrial-manufacturing" },
+      { label: "Accounting & Finance", href: "/industries/accounting-finance" },
+      { label: "Professional Services", href: "/industries/professional-services" },
+      { label: "Logistics & Supply Chain", href: "/industries/logistics-supply-chain" },
+      { label: "Healthcare & HealthTech", href: "/industries/healthcare-healthtech" },
+    ],
   },
   {
     title: "Company",
-    links: ["Who We Are", "BPO Model", "Global Delivery", "Careers"],
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Why MindWhiz", href: "/why-mindwhiz" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Web Services", href: "/web-services" },
+      { label: "Careers", href: "/contact" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
   {
-    title: "Resources",
-    links: ["White Papers", "Case Studies", "Blog", "Contact"],
+    title: "Locations",
+    links: [
+      { label: "United States", href: "/locations/us" },
+      { label: "United Kingdom", href: "/locations/uk" },
+      { label: "Pakistan", href: "/locations/pk" },
+    ],
   },
 ];
 

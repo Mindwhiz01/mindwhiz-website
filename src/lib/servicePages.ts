@@ -112,9 +112,7 @@ export const servicePages: ServicePageContent[] = [
     process: [
       { title: "Initial Consultation and Needs Assessment", desc: "Review the current environment, pain points, and goals to define support outcomes, SLA targets, and onboarding steps." },
       { title: "Customized Service Plan Development", desc: "Design a support model that fits your team, tools, compliance needs, escalation paths, and reporting cadence." },
-      { title: "Seamless Integration With Your Systems", desc: "Connect into helpdesk workflows, documentation, and security standards with minimal disruption." },
       { title: "Ongoing Monitoring and Issue Resolution", desc: "Resolve tickets quickly, escalate when needed, and keep systems stable with proactive monitoring and playbooks." },
-      { title: "Continuous Improvement and Feedback Loop", desc: "Review trends, improve documentation, and optimize workflows using KPI reporting and stakeholder feedback." },
     ],
     finalCta: {
       title: "Build your hybrid team now.",

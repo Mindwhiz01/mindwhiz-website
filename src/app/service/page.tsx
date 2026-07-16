@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
+  AnimatePresence,
   useInView,
   useTransform,
   type MotionValue,
@@ -29,6 +30,8 @@ import {
 } from "lucide-react";
 import { company } from "@/lib/content";
 import { SiteHeader } from "@/components/SiteHeader";
+import Footer from "@/components/Footer";
+import Cta from "@/components/Cta";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -39,12 +42,10 @@ const display = Oswald({
 });
 
 const ORANGE = "#ff4b00";
-const BLUE = "#1000d8";
+const BLUE = "#ed1164";
 const CREAM = "#eee8e0";
 const INK = "#3f3f3d";
 
-const btnPrimary =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-[#1000d8] px-7 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-white transition-transform hover:-translate-y-0.5";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -235,7 +236,7 @@ function BentoTile({
   return (
     <motion.div
       style={{ x, y, scale, borderRadius: radius }}
-      className={`group relative min-h-0 overflow-hidden bg-[#1000d8] shadow-xl shadow-black/20 ring-1 ring-black/10 ${item.className}`}
+      className={`group relative min-h-0 overflow-hidden bg-[#ed1164] shadow-xl shadow-black/20 ring-1 ring-black/10 ${item.className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -244,7 +245,7 @@ function BentoTile({
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover opacity-55 mix-blend-luminosity transition-transform duration-700 group-hover:scale-[1.03]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1000d8]/95 via-[#1000d8]/68 to-[#ff4b00]/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#ed1164]/95 via-[#ed1164]/68 to-[#ff4b00]/25" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,75,0,0.35),transparent_34%)]" />
       <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
         <div className="flex items-center justify-between gap-4">
@@ -280,7 +281,7 @@ function ScrubbedBentoGallery() {
     <section className="bg-[#eee8e0] px-6 py-24 text-[#3f3f3d] sm:px-8">
       <div className="mx-auto max-w-7xl">
         <Reveal className="text-center">
-          <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#1000d8]">
+          <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ed1164]">
             Growth operations
           </p>
           <h2
@@ -459,7 +460,7 @@ function ReelsSection() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
-                <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[#1000d8] shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[#ed1164] shadow-lg transition-transform duration-300 group-hover:scale-110">
                   <Play className="ml-0.5 h-6 w-6 fill-current" />
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-5">
@@ -537,6 +538,156 @@ function Typewriter({
       />
       <span className="opacity-0">{text.slice(count)}</span>
     </h3>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Brand showcase: sticky brand story on the right, a stream of big campaign
+// images on the left — 3 per brand. Scrolling into a new brand's images swaps
+// the story content with an animated transition.
+// ---------------------------------------------------------------------------
+const brandShowcase = [
+  {
+    name: "Velocity Retail",
+    kicker: "E-commerce · Paid Media",
+    desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held — revenue grew 2.4x in six months.",
+    tags: ["Meta & TikTok Ads", "Creative testing", "Conversion tracking"],
+    images: [
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1400&q=80",
+    ],
+  },
+  {
+    name: "NovaTech",
+    kicker: "SaaS · Demand Generation",
+    desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns — qualified demos tripled and cost per lead dropped 48%.",
+    tags: ["SEO content engine", "LinkedIn ABM", "Marketing automation"],
+    images: [
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
+    ],
+  },
+  {
+    name: "UrbanBites",
+    kicker: "Hospitality · Social & Local",
+    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz — both openings sold out their first weekend.",
+    tags: ["Local campaigns", "Influencer collabs", "Launch strategy"],
+    images: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80",
+    ],
+  },
+];
+
+function BrandShowcaseSection() {
+  const [active, setActive] = useState(0);
+  const brand = brandShowcase[active];
+
+  return (
+    <section className="bg-[#eee8e0] text-[#3f3f3d]">
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
+        <Reveal>
+          <Kicker>Brand stories</Kicker>
+          <h2
+            className="mt-5 max-w-2xl text-4xl font-extrabold uppercase leading-[1.02] sm:text-6xl"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Campaigns that <span className="text-[#ed1164]">built brands.</span>
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          {/* left: big scrolling campaign images — 3 per brand */}
+          <div className="flex flex-col gap-6">
+            {brandShowcase.map((b, i) => (
+              <motion.div
+                key={b.name}
+                onViewportEnter={() => setActive(i)}
+                viewport={{ margin: "-45% 0px -45% 0px" }}
+                className="flex flex-col gap-6"
+              >
+                {b.images.map((src, j) => (
+                  <motion.div
+                    key={src}
+                    initial={{ clipPath: "inset(100% 0% 0% 0% round 2.5rem)" }}
+                    whileInView={{ clipPath: "inset(0% 0% 0% 0% round 2.5rem)" }}
+                    viewport={{ once: true, margin: "-15%" }}
+                    transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
+                    className="relative overflow-hidden rounded-[2.5rem]"
+                  >
+                    {/* mask wipe reveal + slow zoom-out for a cinematic feel */}
+                    <motion.img
+                      src={src}
+                      alt={`${b.name} campaign visual ${j + 1}`}
+                      loading="lazy"
+                      initial={{ scale: 1.3 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true, margin: "-15%" }}
+                      transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                      className="h-[85vh] min-h-[32rem] w-full object-cover"
+                    />
+                    <span className="absolute bottom-5 left-5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                      {b.name} · {String(j + 1).padStart(2, "0")}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* right: sticky brand story — swaps as the images scroll */}
+          <div>
+            <div className="lg:sticky lg:top-32">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -34, filter: "blur(10px)" }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#ed1164]">
+                    {String(active + 1).padStart(2, "0")} / {String(brandShowcase.length).padStart(2, "0")} · {brand.kicker}
+                  </span>
+                  <h3
+                    className="mt-4 text-4xl font-extrabold uppercase leading-none sm:text-5xl"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {brand.name}
+                  </h3>
+                  <p className="mt-6 max-w-md text-sm leading-7 text-[#3f3f3d]/75">{brand.desc}</p>
+                  <ul className="mt-8 space-y-3">
+                    {brand.tags.map((tag) => (
+                      <li key={tag} className="flex items-center gap-3 text-sm font-semibold">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#ed1164]">
+                          <CheckCircle2 className="h-4 w-4 text-white" />
+                        </span>
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* progress dots */}
+              <div className="mt-10 flex gap-2">
+                {brandShowcase.map((b, i) => (
+                  <span
+                    key={b.name}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      i === active ? "w-10 bg-[#ed1164]" : "w-4 bg-[#3f3f3d]/20"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -632,10 +783,7 @@ export default function ServicePage() {
               </motion.div>
 
               <div className="mt-8 flex flex-wrap gap-4 lg:hidden">
-                <a href="#contact" className={btnPrimary}>
-                  Start a growth sprint
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+                <Cta href="/contact" label="Start a growth sprint" />
                 <a
                   href="#bento"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white px-7 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-white hover:text-[#ed1164]"
@@ -707,7 +855,7 @@ export default function ServicePage() {
                         index % 2 === 1 ? "sm:translate-y-12" : ""
                       }`}
                     >
-                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#1000d8] transition-colors duration-300 group-hover:bg-white">
+                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] transition-colors duration-300 group-hover:bg-white">
                         <Icon className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ed1164]" />
                       </span>
                       <h3 className="mt-7 text-xl font-extrabold uppercase">{title}</h3>
@@ -752,7 +900,7 @@ export default function ServicePage() {
                 <Reveal key={step} delay={index * 0.06}>
                   <div className="grid gap-5 rounded-[2rem] border border-white/20 bg-white p-6 text-[#3f3f3d] shadow-sm sm:grid-cols-[4rem_1fr]">
                     <div
-                      className="text-4xl font-extrabold text-[#1000d8]"
+                      className="text-4xl font-extrabold text-[#ed1164]"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {String(index + 1).padStart(2, "0")}
@@ -796,7 +944,7 @@ export default function ServicePage() {
               ].map(({ Icon, text }, index) => (
                 <Reveal key={text} delay={index * 0.04}>
                   <div className="flex min-h-32 items-start gap-4 rounded-[2rem] border border-[#3f3f3d]/15 bg-[#fff8ed] p-5">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#1000d8]">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ed1164]">
                       <Icon className="h-5 w-5 text-white" />
                     </span>
                     <p className="text-sm font-semibold leading-7 text-[#3f3f3d]/75">{text}</p>
@@ -807,81 +955,9 @@ export default function ServicePage() {
           </div>
         </section>
 
-        <section id="contact" className="bg-[#1000d8] text-white">
-          <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <Reveal>
-              <Kicker>Start with the numbers</Kicker>
-              <h2
-                className="mt-5 text-4xl font-extrabold uppercase leading-[1.02] sm:text-6xl"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Bring us your funnel, your goals, and your constraints.
-              </h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-white/60">
-                We will map the fastest path from current performance to a
-                measurable growth sprint, then assign the right channel operators.
-              </p>
-              <div className="mt-8 space-y-3 text-sm text-white/70">
-                <a href={`mailto:${company.email}`} className="flex items-center gap-3 hover:text-white">
-                  <Mail className="h-4 w-4 text-[#ed1164]" />
-                  {company.email}
-                </a>
-                <a href={company.phoneHref} className="flex items-center gap-3 hover:text-white">
-                  <Phone className="h-4 w-4 text-[#ed1164]" />
-                  {company.phone}
-                </a>
-                <span className="flex items-center gap-3">
-                  <MapPin className="h-4 w-4 text-[#ed1164]" />
-                  {company.city}
-                </span>
-              </div>
-            </Reveal>
+        <BrandShowcaseSection />
 
-            <Reveal delay={0.1}>
-              <form
-                onSubmit={(event) => event.preventDefault()}
-                className="rounded-[2rem] border border-white/10 bg-[#eee8e0] p-6 text-[#3f3f3d] shadow-2xl shadow-black/25 sm:p-8"
-              >
-                <textarea
-                  rows={4}
-                  placeholder="What growth goal should the marketing team work toward?"
-                  className="w-full resize-none rounded-full border border-[#3f3f3d]/20 bg-white px-5 py-4 text-sm outline-none focus:border-[#ff4b00]"
-                />
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  <input
-                    placeholder="First name"
-                    className="rounded-full border border-[#3f3f3d]/20 bg-white px-5 py-4 text-sm outline-none focus:border-[#ff4b00]"
-                  />
-                  <input
-                    placeholder="Last name"
-                    className="rounded-full border border-[#3f3f3d]/20 bg-white px-5 py-4 text-sm outline-none focus:border-[#ff4b00]"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="rounded-full border border-[#3f3f3d]/20 bg-white px-5 py-4 text-sm outline-none focus:border-[#ff4b00]"
-                  />
-                  <input
-                    placeholder="Company"
-                    className="rounded-full border border-[#3f3f3d]/20 bg-white px-5 py-4 text-sm outline-none focus:border-[#ff4b00]"
-                  />
-                </div>
-                <button type="submit" className={`mt-6 w-full ${btnPrimary}`}>
-                  Request digital marketing plan
-                </button>
-              </form>
-            </Reveal>
-          </div>
-        </section>
-
-        <footer className="bg-[#1000d8] px-6 py-10 text-white sm:px-8">
-          <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/20 pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-2xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
-              MindWhiz digital marketing
-            </p>
-            <p className="text-sm text-white/65">Orange, blue, cream. Built for campaigns that connect.</p>
-          </div>
-        </footer>
+        <Footer />
     </main>
   );
 }

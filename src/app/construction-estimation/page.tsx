@@ -42,6 +42,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
 import CardCornerArrow from "@/components/CardCornerArrow";
+import ProcessScroll from "@/components/ProcessScroll";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -51,8 +52,6 @@ const display = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const btnPrimary =
-  "inline-flex items-center justify-center gap-2 rounded-md bg-[#9CCC3C] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#7DB022]";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -364,120 +363,6 @@ function CapabilitiesCarousel() {
     </section>
   );
 }
-
-// ---------------------------------------------------------------------------
-// Process: a pinned card-stack — each step card sticks near the top and the
-// next scrolls up over it (revealing the steps one by one as you scroll), while
-// the cards underneath scale down so their stacked edges stay visible.
-// ---------------------------------------------------------------------------
-function ProcessCard({
-  step,
-  i,
-  total,
-  progress,
-}: {
-  step: (typeof process)[number];
-  i: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const targetScale = 1 - (total - 1 - i) * 0.04;
-  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
-  const top = 150 + i * 30; // staggered sticky offset → cascading stack
-
-  return (
-    <div className="sticky flex justify-center" style={{ top }}>
-      <motion.div
-        style={{ scale, transformOrigin: "top center" }}
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ type: "spring", stiffness: 200, damping: 24 }}
-        className="flex h-[300px] w-full flex-col justify-between rounded-2xl border border-white/10 bg-[#2E2E2E] p-8 shadow-2xl shadow-black/40 sm:p-10"
-      >
-        <div className="flex items-start justify-between">
-          <span className="grid h-14 w-14 place-items-center rounded-xl bg-[#9CCC3C]/15 text-[#ed1164]">
-            <CheckCircle2 className="h-7 w-7" />
-          </span>
-          <span
-            className="text-6xl font-extrabold text-[#ed1164]/70"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-        </div>
-        <div>
-          <h3
-            className="text-2xl font-bold text-white sm:text-3xl"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {step.title}
-          </h3>
-          <p className="mt-3 text-base leading-7 text-white/60">{step.desc}</p>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-function ProcessStack() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-  const total = process.length;
-
-  return (
-    // white outer with left/right spacing; the dark panel curves at the top
-    // corners like the banner (no overflow-hidden so sticky keeps working).
-    <div className="bg-white px-3 pt-[10px] sm:px-4">
-      <section
-        data-header-dark
-        ref={ref}
-        className="relative rounded-t-[2rem] bg-[#383838] py-24 text-white"
-      >
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
-          {/* heading — sticky on the left */}
-          <div>
-            <div className="lg:sticky lg:top-32">
-              <Kicker>How it works</Kicker>
-              <h2
-                className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                From plans to a bid-ready package.
-              </h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-white/60">
-                A tight, repeatable workflow keeps every estimate accurate,
-                traceable, and on deadline — whether it&apos;s a single trade or a
-                full general-contractor bid.
-              </p>
-              <a href="#contact" className={`mt-8 ${btnPrimary}`}>
-                Start a takeoff
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* right: scroll-stack of steps */}
-          <div className="flex flex-col gap-[10vh]">
-            {process.map((step, i) => (
-              <ProcessCard
-                key={step.title}
-                step={step}
-                i={i}
-                total={total}
-                progress={scrollYProgress}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
 export default function ConstructionEstimationPage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -545,7 +430,15 @@ export default function ConstructionEstimationPage() {
       <CapabilitiesCarousel />
 
       {/* ===================== PROCESS (pinned card-stack, one by one) ===================== */}
-      <ProcessStack />
+      <ProcessScroll
+        steps={process}
+        title={
+          <>
+            From plans to a <span style={{ color: "#ed1164" }}>bid-ready</span> package.
+          </>
+        }
+        ctaLabel="Start a takeoff"
+      />
 
       {/* ===================== TRADES (image masonry) ===================== */}
       <section className="relative overflow-hidden bg-white">

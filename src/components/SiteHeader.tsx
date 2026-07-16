@@ -55,17 +55,31 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const regions = [
-  { code: "US", label: "United States", flag: "🇺🇸" },
-  { code: "UK", label: "United Kingdom", flag: "🇬🇧" },
-  { code: "PK", label: "Pakistan", flag: "🇵🇰" },
+  { code: "US", label: "United States", flag: "https://flagcdn.com/w40/us.png", href: "/locations/us" },
+  { code: "UK", label: "United Kingdom", flag: "https://flagcdn.com/w40/gb.png", href: "/locations/uk" },
+  { code: "PK", label: "Pakistan", flag: "https://flagcdn.com/w40/pk.png", href: "/locations/pk" },
 ];
+
+function FlagIcon({ src, label }: { src: string; label: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={`${label} flag`}
+      className="h-3.5 w-5 shrink-0 rounded-[3px] object-cover ring-1 ring-black/10"
+    />
+  );
+}
 
 // Mega-menu groupings — services & industries organised into labelled columns.
 const serviceMenu = [
   { heading: "IT & Security", items: [services[0], services[1], services[2], services[5]] },
   { heading: "Cloud & DevOps", items: [services[3], services[4], services[6], services[12]] },
   { heading: "Business Operations", items: [services[7], services[8], services[9], services[10]] },
-  { heading: "Talent & Workforce", items: [services[11]] },
+  {
+    heading: "Talent & Digital",
+    items: [services[11], { name: "Web Services", icon: "MonitorSmartphone" }],
+  },
 ];
 
 const industryMenu = [
@@ -113,6 +127,7 @@ const serviceRoutes: Record<string, string> = {
   "Construction Estimation": "/construction-estimation",
   "Finance & Accounting": "/finance",
   "HR Services": "/hr",
+  "Web Services": "/web-services",
   // industries
   "Information Technology": "/industries/information-technology",
   "E-commerce & Retail": "/industries/ecommerce-retail",
@@ -288,7 +303,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             aria-hidden
-            className="pointer-events-none fixed inset-0 hidden bg-black/10 backdrop-blur-md lg:block"
+            className="pointer-events-none fixed inset-0 hidden bg-black/10 backdrop-blur-md xl:block"
           />
         )}
       </AnimatePresence>
@@ -325,15 +340,27 @@ export function SiteHeader({ theme }: { theme: string }) {
         </a>
 
         {/* Center nav — absolutely centered so the logo hover doesn't shift it */}
-        <nav className="z-10 hidden items-center gap-1 rounded-full bg-neutral-900/60 p-1.5 lg:absolute lg:left-1/2 lg:top-1/2 lg:flex lg:-translate-x-1/2 lg:-translate-y-1/2">
+        {/* xl, not lg: at 1024-1279px this centered nav collides with the
+            region selector + CTA on the right, so those widths keep the
+            hamburger menu instead */}
+        <nav className="z-10 hidden items-center gap-1 rounded-full bg-neutral-900/60 p-1.5 xl:absolute xl:left-1/2 xl:top-1/2 xl:flex xl:-translate-x-1/2 xl:-translate-y-1/2">
           {nav.map((n, i) => {
             const isActive = active === n.label;
-            const hasMega = n.label === "Services" || n.label === "Industries";
+            const hasMega =
+              n.label === "Services" || n.label === "Industries" || n.label === "About Us";
             return (
               <motion.a
                 key={n.label}
                 href={n.href}
-                onClick={() => setActive(n.label)}
+                onClick={(e) => {
+                  // tabs with a mega dropdown shouldn't navigate on click —
+                  // just open their menu so the tab stays put
+                  if (hasMega) {
+                    e.preventDefault();
+                    openMega(mega === n.label ? null : n.label);
+                  }
+                  setActive(n.label);
+                }}
                 onMouseEnter={() => openMega(hasMega ? n.label : null)}
                 initial={{ opacity: 0, scale: 0.75 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -378,7 +405,10 @@ export function SiteHeader({ theme }: { theme: string }) {
                   : "border-white/15 text-neutral-200 hover:border-white/30 hover:text-white"
               }`}
             >
-              <span className="text-base">{regions.find((r) => r.code === region)?.flag}</span>
+              <FlagIcon
+                src={regions.find((r) => r.code === region)?.flag ?? regions[0].flag}
+                label={regions.find((r) => r.code === region)?.label ?? regions[0].label}
+              />
               {region}
               <ChevronDown
                 className={`h-3.5 w-3.5 opacity-70 transition-transform duration-300 ${
@@ -406,8 +436,9 @@ export function SiteHeader({ theme }: { theme: string }) {
                       className="fixed z-[71] w-48 overflow-hidden rounded-[14px] border border-white/15 bg-black/30 p-1.5 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150"
                     >
                       {regions.map((r) => (
-                        <button
+                        <a
                           key={r.code}
+                          href={r.href}
                           onClick={() => {
                             setRegion(r.code);
                             setRegionOpen(false);
@@ -416,9 +447,9 @@ export function SiteHeader({ theme }: { theme: string }) {
                             region === r.code ? "text-white" : "text-white/80"
                           }`}
                         >
-                          <span className="text-base">{r.flag}</span>
+                          <FlagIcon src={r.flag} label={r.label} />
                           {r.label}
-                        </button>
+                        </a>
                       ))}
                     </motion.div>
                   </>
@@ -427,15 +458,18 @@ export function SiteHeader({ theme }: { theme: string }) {
               document.body
             )}
           <a
-            href="/#contact"
-            className="hidden items-center gap-2 rounded-full border border-white/20 bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-900 sm:flex"
+            href="/contact"
+            className="group hidden items-center gap-2 rounded-full border border-white/20 bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-neutral-800 sm:flex"
           >
-            <ArrowUpRight className="h-4 w-4 text-[#9CCC3C]" />
+            <span className="relative h-4 w-4 overflow-hidden">
+              <ArrowUpRight className="absolute inset-0 h-4 w-4 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5" />
+              <ArrowUpRight className="absolute inset-0 h-4 w-4 -translate-x-5 translate-y-5 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+            </span>
             Get in Touch
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full text-white lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full text-white xl:hidden"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -443,7 +477,7 @@ export function SiteHeader({ theme }: { theme: string }) {
         </div>
       </motion.div>
 
-      {/* services / industries mega menu (desktop) */}
+      {/* services / industries / about mega menu (desktop) */}
       <AnimatePresence>
         {mega && (
           <motion.div
@@ -453,9 +487,29 @@ export function SiteHeader({ theme }: { theme: string }) {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             onMouseEnter={() => openMega(mega)}
             onMouseLeave={scheduleCloseMega}
-            className="relative z-10 mx-auto mt-3 hidden w-full max-w-6xl rounded-2xl border border-black/10 bg-white p-6 shadow-2xl shadow-black/20 lg:block"
+            className={`relative z-10 mx-auto mt-3 hidden rounded-2xl border border-black/10 bg-white shadow-2xl shadow-black/20 xl:block ${
+              mega === "About Us" ? "w-64 p-2" : "w-full max-w-6xl p-6"
+            }`}
           >
-            <MegaPanel groups={mega === "Services" ? serviceMenu : industryMenu} />
+            {mega === "About Us" ? (
+              <ul>
+                {[
+                  { label: "About Us", href: "/about" },
+                  { label: "Why MindWhiz", href: "/why-mindwhiz" },
+                ].map((it) => (
+                  <li key={it.label}>
+                    <a
+                      href={it.href}
+                      className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-black/5"
+                    >
+                      {it.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <MegaPanel groups={mega === "Services" ? serviceMenu : industryMenu} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -469,9 +523,15 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0, scale: 0.95, y: -6 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 lg:hidden"
+            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 xl:hidden"
           >
-            {nav.map((n, i) => (
+            {[
+              nav[0],
+              { label: "Web Services", href: "/web-services" },
+              ...nav.slice(1, 3),
+              { label: "Why MindWhiz", href: "/why-mindwhiz" },
+              ...nav.slice(3),
+            ].map((n, i) => (
               <motion.a
                 key={n.label}
                 href={n.href}
@@ -489,15 +549,18 @@ export function SiteHeader({ theme }: { theme: string }) {
               </motion.a>
             ))}
             <motion.a
-              href="/#contact"
+              href="/contact"
               onClick={() => setOpen(false)}
               initial={{ opacity: 0, scale: 0.75 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.04 * nav.length }}
-              className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-[#9CCC3C] px-4 py-3 text-sm font-semibold text-white"
+              className="group mt-1 flex items-center justify-center gap-2 rounded-full border border-white/20 bg-neutral-950 px-4 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-neutral-800"
             >
+              <span className="relative h-4 w-4 overflow-hidden">
+                <ArrowUpRight className="absolute inset-0 h-4 w-4 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5" />
+                <ArrowUpRight className="absolute inset-0 h-4 w-4 -translate-x-5 translate-y-5 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+              </span>
               Get in Touch
-              <ArrowRight className="h-4 w-4" />
             </motion.a>
           </motion.div>
         )}

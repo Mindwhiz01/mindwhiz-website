@@ -12,6 +12,7 @@ import {
 import { Inter, Oswald } from "next/font/google";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
+import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -313,17 +314,16 @@ function BenefitScrollCard({
   total: number;
   progress: MotionValue<number>;
 }) {
-  const step = total > 1 ? 0.68 / (total - 1) : 0;
+  // stagger each card along the scroll: gentle rise + fade, no sideways travel
+  const step = total > 1 ? 0.55 / (total - 1) : 0;
   const start = index * step;
-  const end = Math.min(1, start + 0.32);
-  const x = useTransform(progress, [start, end], [index % 2 === 0 ? 150 : 210, 0]);
-  const y = useTransform(progress, [start, end], [index < 2 ? 110 : 160, 0]);
-  const opacity = useTransform(progress, [start, start + 0.2], [0.25, 1]);
-  const scale = useTransform(progress, [start, end], [0.88, 1]);
+  const end = Math.min(1, start + 0.35);
+  const opacity = useTransform(progress, [start, end], [0, 1]);
+  const y = useTransform(progress, [start, end], [36, 0]);
 
   return (
     <motion.div
-      style={{ x, y, opacity, scale }}
+      style={{ opacity, y }}
       className="group flex min-h-[18rem] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7 shadow-lg shadow-black/5 transition-colors duration-300 hover:bg-[#ed1164] hover:text-white sm:p-8"
     >
       <div className="flex items-center justify-between">
@@ -346,9 +346,11 @@ function BenefitScrollCard({
 
 function BenefitsStackSection({ page }: { page: ServicePageContent }) {
   const sectionRef = useRef<HTMLElement>(null);
+  // progress runs while the section crosses the viewport, so cards finish
+  // revealing well before the section bottom — they never sit half-shown
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ["start 0.85", "end 0.9"],
   });
   const total = page.benefits.length;
 
@@ -384,6 +386,131 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
               progress={scrollYProgress}
             />
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Process: a pinned, full-screen scroll experience. Each step fills the
+// viewport with a big image; as you scroll, panels crossfade and the text
+// rises into view — one step at a time. Images are keyed by step order.
+// ---------------------------------------------------------------------------
+const processImages = [
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80",
+];
+
+function ProcessPanel({
+  step,
+  i,
+  total,
+  progress,
+}: {
+  step: ServicePageContent["process"][number];
+  i: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const seg = 1 / total;
+  const start = i * seg;
+  const end = (i + 1) * seg;
+  const fade = seg * 0.35;
+
+  const inStart = i === 0 ? 0 : start - fade;
+  const inEnd = start + fade;
+  const outStart = end - fade;
+  const outEnd = i === total - 1 ? 1 : end + fade;
+
+  const opacity = useTransform(progress, [inStart, inEnd, outStart, outEnd], [0, 1, 1, 0]);
+  const imgScale = useTransform(progress, [inStart, outEnd], [1.2, 1]);
+  const textY = useTransform(progress, [inStart, inEnd], [70, 0]);
+  const numY = useTransform(progress, [inStart, inEnd], [30, 0]);
+
+  return (
+    <motion.div style={{ opacity }} className="absolute inset-0">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <motion.img
+        src={processImages[i % processImages.length]}
+        alt={step.title}
+        style={{ scale: imgScale }}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+      <div className="absolute inset-0 bg-black/25" />
+
+      {/* giant ghost index number, top-right */}
+      <motion.span
+        style={{ y: numY, fontFamily: "var(--font-display)" }}
+        className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
+      >
+        {String(i + 1).padStart(2, "0")}
+      </motion.span>
+
+      <motion.div
+        style={{ y: textY }}
+        className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
+      >
+        <h3
+          className="max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {step.title}
+        </h3>
+        <div className="mt-8 flex items-center gap-6">
+          <span className="h-px w-16 shrink-0 bg-white/40" />
+          <p className="max-w-lg text-lg leading-relaxed text-white/85 sm:text-xl">
+            {step.desc}
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function ProcessScrollSection({ page }: { page: ServicePageContent }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+  const total = page.process.length;
+  const barScale = useTransform(scrollYProgress, [0, 1], [1 / total, 1]);
+
+  return (
+    <section data-header-dark className="relative bg-black">
+      {/* heading sits above the images, not overlaid on them */}
+      <div className="mx-auto flex max-w-6xl flex-col px-6 pb-16 pt-24 sm:px-8">
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+          How it works
+        </span>
+        <h2
+          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
+        </h2>
+        <Cta href="/contact" label={page.finalCta.button} className="mt-6 w-fit" />
+      </div>
+
+      <div ref={ref} className="relative" style={{ height: `${total * 100}vh` }}>
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {page.process.map((step, i) => (
+            <ProcessPanel key={step.title} step={step} i={i} total={total} progress={scrollYProgress} />
+          ))}
+
+          {/* bottom progress bar */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              style={{ scaleX: barScale, transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -514,47 +641,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
 
       <BenefitsStackSection page={page} />
 
-      <section data-header-dark className="bg-[#383838] py-24 text-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal>
-            <Kicker>How it works</Kicker>
-            <h2
-              className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Setup to
-              <br />
-              steady execution.
-            </h2>
-            <p className="mt-5 max-w-md text-sm leading-7 text-white/60">
-              Each engagement starts by understanding your environment, then moves into controlled execution with reporting and continuous improvement built in.
-            </p>
-            <a href="/#contact" className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c80f54]">
-              {page.finalCta.button}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </Reveal>
-
-          <div className="space-y-4">
-            {page.process.map((step, index) => (
-              <Reveal key={step.title} delay={index * 0.06}>
-                <div className="grid gap-5 rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:grid-cols-[4rem_1fr]">
-                  <div className="text-4xl font-extrabold text-[#ed1164]" style={{ fontFamily: "var(--font-display)" }}>
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-white">
-                      <CheckCircle2 className="h-4 w-4 text-[#ed1164]" />
-                      {step.title}
-                    </div>
-                    <p className="mt-3 text-sm leading-7 text-white/60">{step.desc}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessScrollSection page={page} />
 
       <section className="relative p-4 text-white sm:p-8">
         <GlassPanel className="relative overflow-hidden rounded-[2.5rem]">
@@ -568,10 +655,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/80">
               {page.finalCta.desc}
             </p>
-            <a href="/#contact" className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#ed1164] transition-colors hover:bg-white/90">
-              {page.finalCta.button}
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <Cta href="/contact" label={page.finalCta.button} className="mt-8" />
           </Reveal>
           </div>
         </GlassPanel>

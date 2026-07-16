@@ -41,7 +41,7 @@ export default function Footer() {
     <footer data-header-dark className="relative bg-[#383838] text-white">
       <div className="mx-auto max-w-7xl px-6 pt-16 sm:px-8">
         {/* ---- top grid ---- */}
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-[1.6fr_repeat(3,1fr)]">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-[1.6fr_repeat(4,1fr)]">
           {/* brand block */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <div className="flex items-center gap-3">
@@ -93,13 +93,13 @@ export default function Footer() {
               </h3>
               <ul className="mt-5 space-y-3">
                 {group.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="inline-flex items-center gap-2 text-sm text-white/55 transition-colors hover:text-[#9CCC3C]"
                     >
-                      {link}
-                      {link === HIRING_LINK && (
+                      {link.label}
+                      {link.label === HIRING_LINK && (
                         <span
                           className="rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide"
                           style={{ color: "#9CCC3C", borderColor: "#9CCC3C" }}

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
+import Cta from "@/components/Cta";
 
 const container: Variants = {
   hidden: {},
@@ -13,23 +13,7 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-type Cta = { label: string; href: string };
-
-function ArrowCta({ href, label, accent = "#9CCC3C" }: Cta & { accent?: string }) {
-  return (
-    <a href={href} className="group inline-flex items-stretch gap-2">
-      <span className="flex items-center rounded-2xl bg-[#232D26] px-7 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors group-hover:bg-[#1a221c]">
-        {label}
-      </span>
-      <span
-        className="grid w-14 shrink-0 place-items-center rounded-2xl text-black transition-transform group-hover:translate-x-0.5"
-        style={{ backgroundColor: accent }}
-      >
-        <ArrowRight className="h-5 w-5" />
-      </span>
-    </a>
-  );
-}
+type CtaLink = { label: string; href: string };
 
 /**
  * Shared page hero — same banner design as the home page: a rounded, inset
@@ -48,8 +32,8 @@ export function PageBanner({
   title: ReactNode;
   subtitle?: ReactNode;
   image: string;
-  primary?: Cta;
-  secondary?: Cta;
+  primary?: CtaLink;
+  secondary?: CtaLink;
   accent?: string;
   headingClassName?: string;
 }) {
@@ -91,16 +75,8 @@ export function PageBanner({
 
           {(primary || secondary) && (
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              {primary && <ArrowCta href={primary.href} label={primary.label} accent={accent} />}
-              {secondary && (
-                <a
-                  href={secondary.href}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white px-7 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-white hover:text-[var(--hover-color)]"
-                  style={{ ["--hover-color" as string]: accent }}
-                >
-                  {secondary.label}
-                </a>
-              )}
+              {primary && <Cta href={primary.href} label={primary.label} />}
+              {secondary && <Cta href={secondary.href} label={secondary.label} variant="outline" />}
             </motion.div>
           )}
         </div>

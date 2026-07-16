@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -11,6 +11,8 @@ import {
   type MotionValue,
   type Variants,
 } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   Headset,
@@ -34,9 +36,12 @@ import {
   Sun,
   Moon,
   ArrowRight,
+  ArrowLeft,
   ArrowUpRight,
   ChevronRight,
   ChevronDown,
+  Play,
+  Pause,
   Check,
   Mail,
   Phone,
@@ -60,9 +65,12 @@ import {
   footerGroups,
 } from "@/lib/content";
 import Footer from "@/components/Footer";
+import TrustedByClients from "@/components/TrustedByClients";
+import Cta from "@/components/Cta";
 import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import CardCornerArrow from "@/components/CardCornerArrow";
+import ContactFormSection from "@/components/ContactFormSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -93,11 +101,6 @@ const iconMap: Record<string, LucideIcon> = {
   Zap,
   Lock,
 };
-
-const btnPrimary =
-  "inline-flex items-center justify-center gap-2 rounded-md bg-[#9CCC3C] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#7DB022]";
-const btnOutline =
-  "inline-flex items-center justify-center gap-2 rounded-md border border-[#9CCC3C] px-6 py-3 text-sm font-semibold text-[#9CCC3C] transition-colors hover:bg-[#9CCC3C] hover:text-white";
 
 // Local template content (insights cards, technology platforms, socials)
 const insights = [
@@ -232,10 +235,12 @@ function HeroParticles() {
 // Rotating word — cycles through words in the same position, again and again.
 function RotatingWord({
   words,
+  icons,
   interval = 2200,
   className = "",
 }: {
   words: string[];
+  icons?: LucideIcon[];
   interval?: number;
   className?: string;
 }) {
@@ -244,19 +249,37 @@ function RotatingWord({
     const id = setInterval(() => setI((p) => (p + 1) % words.length), interval);
     return () => clearInterval(id);
   }, [words.length, interval]);
+  const Icon = icons?.[i];
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.span
-        key={words[i]}
-        initial={{ opacity: 0, y: "0.45em" }}
-        animate={{ opacity: 1, y: "0em" }}
-        exit={{ opacity: 0, y: "-0.45em" }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className={`inline-block whitespace-nowrap ${className}`}
-      >
-        {words[i]}
-      </motion.span>
-    </AnimatePresence>
+    <span className="inline-flex items-center gap-4 align-middle">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={words[i]}
+          initial={{ opacity: 0, y: "0.45em" }}
+          animate={{ opacity: 1, y: "0em" }}
+          exit={{ opacity: 0, y: "-0.45em" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className={`inline-block whitespace-nowrap ${className}`}
+        >
+          {words[i]}
+        </motion.span>
+      </AnimatePresence>
+      {Icon && (
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={words[i] + "-icon"}
+            initial={{ opacity: 0, scale: 0.6, rotate: -35 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.6, rotate: 35 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="grid shrink-0 place-items-center text-[#ed1164]"
+            style={{ width: "0.62em", height: "0.62em" }}
+          >
+            <Icon style={{ width: "0.5em", height: "0.5em" }} />
+          </motion.span>
+        </AnimatePresence>
+      )}
+    </span>
   );
 }
 
@@ -308,6 +331,103 @@ function CountStat({
   );
 }
 
+// Colored stat card with a corner arrow — modeled on the reference layout.
+function StatCard({
+  value,
+  label,
+  variant,
+  delay = 0,
+}: {
+  value: string;
+  label: string;
+  variant: "green" | "pink" | "dark" | "light";
+  delay?: number;
+}) {
+  const bg = {
+    green: "bg-[#9CCC3C] text-black",
+    pink: "bg-[#ed1164] text-white",
+    dark: "bg-[#1c1d21] text-white",
+    light: "bg-[#EEEEEE] text-black",
+  }[variant];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-[28px] p-6 sm:p-7 ${bg}`}
+    >
+      {/* top-right notched pocket — the card scoops inward with a smooth
+          curve and a circular arrow button sits in the cut-out, reading as
+          detached from the card */}
+      <div
+        className="absolute right-0 top-0 z-20"
+        style={{
+          padding: 9,
+          backgroundColor: "#ffffff",
+          borderBottomLeftRadius: 30,
+          borderTopRightRadius: 28,
+          borderTopLeftRadius: 16,
+          borderBottomRightRadius: 16,
+        }}
+      >
+        <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-black bg-white text-black transition-transform duration-300 group-hover:-translate-y-0.5">
+          <ArrowUpRight className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
+      </div>
+
+      <div>
+        <p className="text-4xl font-extrabold leading-none sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+          {value}
+        </p>
+        <p className="mt-3 text-sm leading-snug opacity-80">{label}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+// Growth bar chart — bars rise on scroll, with a CAGR pill, like the reference.
+function GrowthChart() {
+  const bars = [
+    { y: "2019", h: 26 },
+    { y: "2020", h: 33 },
+    { y: "2021", h: 42 },
+    { y: "2022", h: 52 },
+    { y: "2023", h: 63 },
+    { y: "2024", h: 74 },
+    { y: "2025", h: 84 },
+    { y: "2026", h: 92 },
+    { y: "2027", h: 100 },
+  ];
+  return (
+    <div className="relative flex h-full min-h-[22rem] flex-col justify-end rounded-3xl border border-slate-200 bg-[#f7f6f4] p-6 sm:p-8">
+      <span className="absolute right-6 top-6 rounded-full bg-[#1c1d21] px-4 py-1.5 text-[11px] font-semibold text-white sm:right-8 sm:top-8">
+        34% CAGR
+      </span>
+      <div className="flex h-64 items-end gap-1.5 sm:gap-2.5">
+        {bars.map((b, i) => (
+          <motion.div
+            key={b.y}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+            style={{ height: `${b.h}%`, transformOrigin: "bottom" }}
+            className="flex-1 rounded-t-md bg-gradient-to-t from-[#1c1d21] to-[#4a4b52]"
+          />
+        ))}
+      </div>
+      <div className="mt-3 flex gap-1.5 sm:gap-2.5">
+        {bars.map((b) => (
+          <span key={b.y} className="flex-1 text-center text-[10px] text-black/45">
+            {b.y}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
@@ -343,62 +463,6 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Frosted-glass "crystal" lens that follows the cursor — same treatment used
-// on the service/industry detail pages' closing CTA.
-function GlassPanel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  return (
-    <div
-      ref={ref}
-      onPointerMove={(e) => {
-        const el = ref.current;
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        el.style.setProperty("--my", `${e.clientY - r.top}px`);
-      }}
-      onPointerEnter={() => setActive(true)}
-      onPointerLeave={() => setActive(false)}
-      className={className}
-    >
-      {children}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 transition-opacity duration-200"
-        style={{
-          opacity: active ? 1 : 0,
-          maskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ transform: "scale(1.45)", transformOrigin: "var(--mx) var(--my)" }}
-        >
-          {children}
-        </div>
-        <div
-          className="absolute inset-0 mix-blend-soft-light"
-          style={{
-            background:
-              "radial-gradient(circle 135px at var(--mx) var(--my), rgba(255,255,255,0.55), rgba(255,255,255,0) 72%)",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 // Split CTA — a dark pill with the label beside a detached green arrow square.
 function ArrowCta({
   href,
@@ -409,16 +473,7 @@ function ArrowCta({
   label: string;
   className?: string;
 }) {
-  return (
-    <a href={href} className={`group inline-flex items-stretch gap-2 ${className}`}>
-      <span className="flex items-center rounded-2xl bg-[#232D26] px-7 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors group-hover:bg-[#1a221c]">
-        {label}
-      </span>
-      <span className="grid w-14 shrink-0 place-items-center rounded-2xl bg-[#9CCC3C] text-black transition-transform group-hover:translate-x-0.5">
-        <ArrowRight className="h-5 w-5" />
-      </span>
-    </a>
-  );
+  return <Cta href={href} label={label} className={className} />;
 }
 
 // ---------------------------------------------------------------------------
@@ -544,19 +599,19 @@ const industryCategories = [
         name: "Information Technology",
         slug: "information-technology",
         desc: "Software, cloud, and cybersecurity teams that ship faster and run secure infrastructure at scale.",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/information-technology.png",
       },
       {
         name: "E-commerce & Retail",
         slug: "ecommerce-retail",
         desc: "Catalog, support, and operations that keep storefronts running around the clock.",
-        img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/ecommerce-retail.png",
       },
       {
         name: "Startups & SMBs",
         slug: "startups-smbs",
         desc: "Flexible, cost-effective teams that scale exactly as fast as you grow.",
-        img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/startups-smbs.png",
       },
     ],
   },
@@ -567,19 +622,19 @@ const industryCategories = [
         name: "Construction & Engineering",
         slug: "construction-engineering",
         desc: "Estimation, takeoffs, and engineering support that speed up bids and keep projects moving.",
-        img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/construction-engineering.png",
       },
       {
         name: "Real Estate",
         slug: "real-estate",
         desc: "Listing, transaction, and operations support that keeps teams focused on deals, not admin.",
-        img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/real-estate.png",
       },
       {
         name: "Industrial Manufacturing",
         slug: "industrial-manufacturing",
         desc: "Engineering, back-office, and IT support that keep operations efficient and connected.",
-        img: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/industrial-manufacturing.png",
       },
     ],
   },
@@ -590,19 +645,19 @@ const industryCategories = [
         name: "Accounting & Finance",
         slug: "accounting-finance",
         desc: "Bookkeeping, reporting, and finance operations handled by vetted professionals.",
-        img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/accounting-finance.png",
       },
       {
         name: "Professional Services",
         slug: "professional-services",
         desc: "Research, operations, and back-office support for consulting and professional firms.",
-        img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/professional-services.png",
       },
       {
         name: "Logistics & Supply Chain",
         slug: "logistics-supply-chain",
         desc: "Coordination, tracking, and back-office support that keep goods moving.",
-        img: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/logistics-supply-chain.png",
       },
     ],
   },
@@ -613,7 +668,7 @@ const industryCategories = [
         name: "Healthcare & HealthTech",
         slug: "healthcare-healthtech",
         desc: "Compliant talent and support for care operations and health technology platforms.",
-        img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=640&h=640&q=80",
+        img: "/industries/healthcare-healthtech.png",
       },
     ],
   },
@@ -621,28 +676,117 @@ const industryCategories = [
 
 const industryWorlds = industryCategories.flatMap((cat) => cat.items);
 
+// ---------------------------------------------------------------------------
+// Scroll reveal band: "We Deliver" enters from the right, "Talent" from the
+// left, cross in the centre, and continue out the far side as the user
+// scrolls through the (taller-than-viewport) section.
+// ---------------------------------------------------------------------------
+function DriveTalentSection() {
+  const ref = useRef<HTMLElement>(null);
+  const driveRef = useRef<HTMLHeadingElement>(null);
+  const talentRef = useRef<HTMLSpanElement>(null);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      // scrub: 0.5 lerps the playhead toward the scroll position over ~0.5s.
+      // Unlike a spring it can never overshoot, so the words approach centre
+      // from one side only — no left/right wobble on browsers that animate
+      // wheel scrolling. Scrolling back up retraces the identical path.
+      //
+      // start "top bottom" (not "top top"): the sweep begins the moment the
+      // section's top touches the viewport bottom, so the words ride up with
+      // it instead of leaving a screen-height of blank white first.
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: 0.5,
+        },
+      });
+      // Two 1s halves: in to dead centre by the timeline midpoint (while the
+      // section is pinned), back out through the far edge. power1.inOut so
+      // they settle into centre rather than sail straight through. Words stay
+      // fully opaque the whole time — no fade in, no fade out — so the text
+      // reads solid throughout the section and while it hands off to Clients.
+      tl.fromTo(driveRef.current, { xPercent: -55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
+        .fromTo(talentRef.current, { xPercent: 55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
+        .to(driveRef.current, { xPercent: 55, duration: 1, ease: "power1.inOut", force3D: true }, 1)
+        .to(talentRef.current, { xPercent: -55, duration: 1, ease: "power1.inOut", force3D: true }, 1);
+    }, ref);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={ref}
+      // `overflow-clip`, never `overflow-hidden`: hidden makes this element a
+      // scroll container, which silently stops the child below from sticking.
+      // clip confines the sweeping text just the same without that side effect.
+      className="relative z-20 h-[250vh] overflow-clip bg-transparent"
+    >
+      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-6">
+        {/* light glow — top-left and bottom-right corners */}
+        <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
+        <h2
+          ref={driveRef}
+          style={{ fontFamily: "var(--font-display)" }}
+          className="relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
+        >
+          {/* The hover treatment transitions `transform`, so it must sit on an
+              inner element — on the outer one it would fight the transform
+              GSAP rewrites every frame. */}
+          <span className="crystal-heading">We Deliver</span>
+        </h2>
+        <span
+          ref={talentRef}
+          style={{ fontFamily: "var(--font-display)" }}
+          className="relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
+        >
+          <span className="crystal-heading">Talent</span>
+        </span>
+      </div>
+    </section>
+  );
+}
+
 function IndustriesWorlds() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
-  const [distance, setDistance] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-  const x = useSpring(xRaw, { stiffness: 90, damping: 22, mass: 0.4 });
-
-  useEffect(() => {
-    const update = () => {
-      const row = rowRef.current;
-      if (!row) return;
-      // how far the row must shift left so its end aligns with the viewport edge
-      setDistance(Math.max(0, row.scrollWidth - window.innerWidth + 48));
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const row = rowRef.current!;
+      // Shift needed to put the LAST card's centre on the viewport's centre —
+      // not merely flush with the right edge — so the run visibly finishes
+      // mid-screen. Subtracting the row's current x makes the measurement
+      // valid no matter where the scrub has dragged it (e.g. on resize).
+      const distance = () => {
+        const last = row.lastElementChild as HTMLElement;
+        const r = last.getBoundingClientRect();
+        const x = Number(gsap.getProperty(row, "x"));
+        return Math.max(0, r.left - x + r.width / 2 - window.innerWidth / 2);
+      };
+      // The row chases the scroll position over ~0.5s and can never
+      // overshoot, so wheel notches glide instead of stepping, and scrolling
+      // up retraces the identical path.
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+        },
+      });
+      // 0.85 of the pin for the ride, then a 0.15 dwell: the last card sits
+      // centred for a beat before the pin releases into normal scrolling.
+      tl.to(row, { x: () => -distance(), duration: 0.85, ease: "power1.inOut", force3D: true })
+        .to({}, { duration: 0.15 });
+    }, sectionRef);
+    return () => ctx.revert();
   }, []);
 
   const total = String(industryWorlds.length).padStart(2, "0");
@@ -652,10 +796,15 @@ function IndustriesWorlds() {
       ref={sectionRef}
       id="industries"
       data-header-dark
-      className="relative bg-[#EEEEEE] pt-10 pb-32 text-white sm:pt-14 sm:pb-40"
+      // No vertical padding here: the sticky child may only travel within the
+      // section's *content* box, so padding makes it latch late at the top
+      // and detach before the section ends — mid-dwell.
+      className="relative bg-[#EEEEEE] text-white"
       style={{ height: "300vh" }}
     >
-      <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-4 pb-4 sm:pt-6 sm:pb-5">
+      {/* pt clears the fixed site header so the heading stays readable below
+          it for the whole pinned ride */}
+      <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-[5.5rem] pb-4 sm:pt-[6.5rem] sm:pb-5">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
@@ -687,9 +836,8 @@ function IndustriesWorlds() {
           </Reveal>
         </div>
 
-        <motion.div
+        <div
           ref={rowRef}
-          style={{ x }}
           className="mt-4 flex gap-5 px-6 will-change-transform sm:px-8"
         >
           {industryWorlds.map((w, i) => (
@@ -730,7 +878,7 @@ function IndustriesWorlds() {
             </div>
           </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -791,55 +939,6 @@ function ClientMarquee({
 }
 
 // ---------------------------------------------------------------------------
-// Scroll reveal band: "We Drive" enters from the right, "talent" from the left
-// as the user scrolls through the (taller-than-viewport) section.
-// ---------------------------------------------------------------------------
-function DriveTalentSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
-
-  // Driven directly off scroll position (no spring lag) so the reveal starts
-  // the instant the section is entered, not after scrolling further in.
-  // "We Deliver" slides in from the left, is fully centered exactly at the
-  // section's midpoint, then continues sliding out to the right.
-  const driveX = useTransform(scrollYProgress, [0, 0.5, 1], ["-55%", "0%", "55%"]);
-  const driveOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-
-  // "Talent" slides in from the right, is fully centered at the same
-  // midpoint, then continues sliding out to the left.
-  const talentX = useTransform(scrollYProgress, [0, 0.5, 1], ["55%", "0%", "-55%"]);
-  const talentOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-
-  return (
-    <section
-      ref={ref}
-      className="relative z-20 h-[140vh] overflow-hidden bg-transparent"
-    >
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-6">
-        {/* green light glow — coming from the top-left and bottom-right corners */}
-        <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
-        <motion.h2
-          style={{ x: driveX, opacity: driveOpacity, fontFamily: "var(--font-display)" }}
-          className="crystal-heading relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
-          aria-label="We Deliver"
-        >
-          We Deliver
-        </motion.h2>
-        <motion.span
-          style={{ x: talentX, opacity: talentOpacity, fontFamily: "var(--font-display)" }}
-          className="crystal-heading relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
-        >
-          Talent
-        </motion.span>
-      </div>
-    </section>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Clients section: text slides in from the left, logos from the right — driven
 // by scroll progress as the section moves up through the viewport.
 // ---------------------------------------------------------------------------
@@ -861,7 +960,7 @@ function ClientsSection() {
   return (
     <section
       ref={ref}
-      className="relative z-30 -mt-[45vh] rounded-t-[2.5rem] bg-white shadow-[0_-30px_60px_-30px_rgba(0,0,0,0.15)]"
+      className="relative z-30 rounded-t-[2.5rem] bg-white shadow-[0_-30px_60px_-30px_rgba(0,0,0,0.15)]"
     >
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-6 pb-16 pt-20 sm:px-8">
         {/* centered header */}
@@ -959,10 +1058,98 @@ function StackCard({
         </div>
         <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-black">
           Learn more
-          <ArrowRight className="h-4 w-4 text-[#9CCC3C] transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="h-4 w-4 text-[#ed1164] transition-transform group-hover:translate-x-1" />
         </span>
       </motion.a>
     </div>
+  );
+}
+
+// 14th card, appended after the real services in both the stacked and grid
+// views — a background photo with a dark wash for contrast, card shadow, and
+// a prominent CTA instead of a "Learn more" link.
+const CTA_CARD_IMAGE =
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80";
+
+function StackCtaCard({
+  i,
+  total,
+  progress,
+}: {
+  i: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const targetScale = 1 - (total - 1 - i) * 0.045;
+  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
+  const top = 120 + i * 26;
+
+  return (
+    <div className="sticky flex justify-center" style={{ top }}>
+      <motion.div
+        style={{ scale, transformOrigin: "top center" }}
+        initial={{ opacity: 0, x: 110 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        whileHover={{ y: -8 }}
+        transition={{ type: "spring", stiffness: 200, damping: 24 }}
+        className="group relative flex h-[300px] w-full flex-col justify-between overflow-hidden rounded-2xl p-8 shadow-2xl shadow-black/30 sm:p-10"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={CTA_CARD_IMAGE}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full scale-110 object-cover blur-md transition-transform duration-500 group-hover:scale-125"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Custom builds</span>
+        </div>
+        <div className="relative">
+          <h3 className="text-2xl font-bold text-white sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
+            Don&apos;t see what you need?
+          </h3>
+          <p className="mt-3 max-w-sm text-base text-white/75">
+            We build custom staffing and operations solutions around whatever your business needs.
+          </p>
+          <Cta href="/contact" label="Talk to our team" className="mt-6" />
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function ServiceCtaCardFlat() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex h-full min-h-[16rem] flex-col justify-between overflow-hidden rounded-2xl p-7 shadow-2xl shadow-black/30"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={CTA_CARD_IMAGE}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full scale-110 object-cover blur-md transition-transform duration-500 group-hover:scale-125"
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="relative">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">Custom builds</span>
+      </div>
+      <div className="relative">
+        <h3 className="text-xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
+          Don&apos;t see what you need?
+        </h3>
+        <p className="mt-2 text-sm text-white/75">
+          We build custom solutions around whatever your business needs.
+        </p>
+        <Cta href="/contact" label="Talk to our team" className="mt-5" />
+      </div>
+    </motion.div>
   );
 }
 
@@ -1000,7 +1187,7 @@ function ServiceCardFlat({ s, i }: { s: (typeof services)[number]; i: number }) 
       </div>
       <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-black">
         Learn more
-        <ArrowRight className="h-4 w-4 text-[#9CCC3C] transition-transform group-hover:translate-x-1" />
+        <ArrowRight className="h-4 w-4 text-[#ed1164] transition-transform group-hover:translate-x-1" />
       </span>
     </motion.a>
   );
@@ -1012,7 +1199,9 @@ function ServicesScrollSection() {
     target: ref,
     offset: ["start start", "end end"],
   });
-  const total = services.length;
+  // +1 accounts for the 14th "custom builds" CTA card appended after the
+  // real services, so the scroll-stack scale math treats it as part of the run.
+  const total = services.length + 1;
   const [expanded, setExpanded] = useState(false);
 
   // Toggling to the expanded grid collapses the tall scroll-stack, which shrinks
@@ -1064,14 +1253,8 @@ function ServicesScrollSection() {
           </div>
         </div>
 
-        {/* right side: scroll-stack OR expanded grid */}
+        {/* right side: grid OR scroll-stack one-by-one */}
         {expanded ? (
-          <div className="grid gap-5 sm:grid-cols-2">
-            {services.map((s, i) => (
-              <ServiceCardFlat key={s.name} s={s} i={i} />
-            ))}
-          </div>
-        ) : (
           <div className="flex flex-col gap-[10vh]">
             {services.map((s, i) => (
               <StackCard
@@ -1082,6 +1265,14 @@ function ServicesScrollSection() {
                 progress={scrollYProgress}
               />
             ))}
+            <StackCtaCard i={services.length} total={total} progress={scrollYProgress} />
+          </div>
+        ) : (
+          <div className="grid gap-5 sm:grid-cols-2">
+            {services.map((s, i) => (
+              <ServiceCardFlat key={s.name} s={s} i={i} />
+            ))}
+            <ServiceCtaCardFlat />
           </div>
         )}
       </div>
@@ -1133,7 +1324,7 @@ function CaseCard({
             <h3 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
               {cs.client}
             </h3>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">{cs.result}</p>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">{cs.result}</p>
             <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
               Filed · {cs.category} · 2025
@@ -1144,17 +1335,18 @@ function CaseCard({
           <div>
             <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
               <span>Exhibit {no}-A</span>
-              <span>No photograph on file</span>
+              <span>Client on file</span>
             </div>
             <div className="relative mt-3 flex min-h-[26rem] flex-col overflow-hidden rounded-lg border border-white/20 bg-white/[0.03] p-6">
               <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-[#9CCC3C]/10 blur-3xl" />
-              <div className="relative">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">The outcome, on record</p>
-                <span className="mt-3 block h-0.5 w-7 bg-[#9CCC3C]" />
-              </div>
-              <div className="relative flex flex-1 items-center">
-                <p className="text-2xl font-medium leading-snug text-white/90">{cs.highlights.join(". ")}.</p>
-              </div>
+              {/* client logo, big and centred in the box */}
+              {cs.logo && (
+                <div className="pointer-events-none absolute inset-0 grid place-items-center p-10">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-contain opacity-60" />
+                </div>
+              )}
+              <div className="relative flex-1" />
               <p className="relative text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">{cs.client} · 2025</p>
             </div>
             <p className="mt-3 text-[11px] text-white/35">
@@ -1390,7 +1582,7 @@ export default function SystemLimitedHome() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
 
       {/* ===================== 1 · HERO (single video banner) ===================== */}
-      <section data-header-dark className="relative flex h-[100svh] min-h-[640px] items-center justify-start overflow-hidden bg-white">
+      <section data-header-dark className="relative mb-10 flex h-[100svh] min-h-[640px] items-center justify-start overflow-hidden bg-white">
         <div className="absolute inset-[10px] overflow-hidden rounded-3xl">
           <video autoPlay muted loop playsInline preload="auto" className="h-full w-full object-cover">
             <source src="/alphabravo-company-profile.mp4" type="video/mp4" />
@@ -1421,23 +1613,19 @@ export default function SystemLimitedHome() {
             <br />
             <RotatingWord
               words={["Teams", "Ops", "Reach", "Impact"]}
+              icons={[Users, Activity, Globe2, Zap]}
               interval={2200}
               className="text-[#9CCC3C]"
             />
           </motion.h1>
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-start gap-4">
             <ArrowCta href={hero.primaryCta.href} label={hero.primaryCta.label} />
-            <a
-              href={hero.secondaryCta.href}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-            >
-              {hero.secondaryCta.label}
-            </a>
+            <Cta href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="outline" />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* ===================== 1.2 · WE DRIVE TALENT (scroll reveal) ===================== */}
+      {/* ===================== 1.2 · WE DELIVER TALENT (scroll reveal) ===================== */}
       <DriveTalentSection />
 
       {/* ===================== 1.5 · CLIENTS (split) ===================== */}
@@ -1453,10 +1641,10 @@ export default function SystemLimitedHome() {
       <CaseRecordSection />
 
       {/* ===================== 6 · STATISTICS ===================== */}
-      <section className="relative overflow-hidden bg-white text-black">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-white text-black">
         {/* light-green glow in the top-left corner */}
         <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#9CCC3C]/40 blur-[130px]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8">
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-20 sm:px-8">
           {/* top: heading + description / CTA */}
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <Reveal>
@@ -1471,82 +1659,82 @@ export default function SystemLimitedHome() {
               <p className="text-sm leading-relaxed text-black">
                 Performance that grows with your business.
               </p>
-              <a
-                href="#contact"
-                className="mt-5 inline-flex items-center gap-2 rounded-md bg-[#2F343B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
-              >
-                Work with us
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <Cta href="/contact" label="Work with us" className="mt-5" />
             </Reveal>
           </div>
 
-          {/* stats row with dividers */}
-          <div className="mt-16 grid grid-cols-2 gap-y-10 border-t border-slate-200 pt-12 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
-            {stats.map((s) => (
-              <CountStat
-                key={s.label}
-                value={s.value}
-                label={s.label}
-                className="px-2 lg:px-8"
-                valueClassName="text-5xl font-bold text-black sm:text-6xl"
-                labelClassName="mt-3 text-xs font-semibold uppercase leading-relaxed tracking-[0.18em] text-black"
-              />
-            ))}
+          {/* body: stat cards on the left, growth chart on the right */}
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <StatCard value={stats[0].value} label={stats[0].label} variant="green" delay={0} />
+              <StatCard value={stats[1].value} label={stats[1].label} variant="dark" delay={0.06} />
+              <StatCard value={stats[2].value} label={stats[2].label} variant="pink" delay={0.12} />
+              <StatCard value={stats[3].value} label={stats[3].label} variant="light" delay={0.18} />
+            </div>
+            <Reveal delay={0.1}>
+              <GrowthChart />
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ===================== 7 · CREDENTIALS ===================== */}
-      <section className="relative overflow-hidden bg-white">
-        {/* light-green glow in the bottom-right corner */}
-        <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[#9CCC3C]/50 blur-[130px]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.7fr] lg:items-start lg:gap-16">
-            {/* left: intro */}
-            <Reveal>
-              <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
-                Credentials
-                <span className="h-px w-12 bg-slate-300" />
-              </div>
-              <h2
-                className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Earned.
-              </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-black">
-                Every credential here was earned under live production conditions
-                and verified externally.
-              </p>
-              <p className="mt-6 max-w-md text-xs leading-relaxed text-slate-400">
-                SOC 2 Type II formal audit underway, controls implemented and under
-                observation. Expected Q3 2026.
-              </p>
-            </Reveal>
+      <section className="relative overflow-hidden bg-[#f7f6f4] py-24 text-black">
+        <div className="relative mx-auto max-w-6xl px-6 text-center sm:px-8">
+          <Reveal>
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
+              Credentials
+            </span>
+            <h2
+              className="mx-auto mt-5 max-w-3xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-black"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Earned under live conditions
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-black/70">
+              Every credential here was earned under live production conditions and
+              verified externally.
+            </p>
+          </Reveal>
 
-            {/* right: credential badges */}
-            <Reveal delay={0.1}>
-              <div className="ml-auto grid max-w-md grid-cols-2 justify-items-center gap-2 sm:grid-cols-3">
-                {certBadges.map((b) => (
-                  <div
-                    key={b.alt}
-                    className="flex aspect-square w-full max-w-[150px] items-center justify-center rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={b.src}
-                      alt={b.alt}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+          {/* desktop: single row with vertical dividers, like the reference */}
+          <Reveal delay={0.1}>
+            <div className="mt-16 hidden grid-cols-6 divide-x divide-black/10 lg:grid">
+              {certBadges.map((b) => (
+                <div key={b.alt} className="flex items-center justify-center px-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={b.src}
+                    alt={b.alt}
+                    title={b.alt}
+                    className="h-24 w-auto max-w-full rounded-xl border border-slate-200 bg-white p-2.5 object-contain shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* mobile / tablet: tiled grid */}
+            <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
+              {certBadges.map((b) => (
+                <div
+                  key={b.alt}
+                  className="flex aspect-square items-center justify-center rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={b.src}
+                    alt={b.alt}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
+
+      {/* ===================== 7.5 · TRUSTED BY CLIENTS (video carousel) ===================== */}
+      <TrustedByClients />
 
       {/* ===================== 8 · BLOG ===================== */}
       <BlogSection />
@@ -1554,39 +1742,8 @@ export default function SystemLimitedHome() {
       {/* ===================== 8.5 · STUDIO CLOCK (timezones) ===================== */}
       <StudioClockSection />
 
-      {/* ===================== 9 · FINAL CTA ===================== */}
-      <section className="relative p-4 text-white sm:p-8">
-        <GlassPanel className="relative overflow-hidden rounded-[2.5rem] bg-[#8DC63F]">
-          <div
-            className="absolute inset-0 opacity-40 mix-blend-overlay"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-            }}
-          />
-          <div className="relative mx-auto px-6 py-24 text-center sm:px-10 lg:px-16">
-            <Reveal>
-              <h2
-                className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Build your hybrid team now.
-              </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-black/70">
-                Tell us what you are trying to achieve. Mindwhiz will respond with
-                the right people, the right approach, and a clear next step.
-              </p>
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-[#2F343B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
-              >
-                Get in touch
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Reveal>
-          </div>
-        </GlassPanel>
-      </section>
+      {/* ===================== 9 · CONTACT FORM ===================== */}
+      <ContactFormSection />
 
       {/* ===================== 13 · FOOTER ===================== */}
       <Footer />

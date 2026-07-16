@@ -120,8 +120,13 @@ body {
   color: #64748b;
 }
 
-/* subtle, professional hover on the big "We Drive / Talent" headings */
+/* subtle, professional hover on the big "We Drive / Talent" headings.
+   Belongs on an inner element, never on the one GSAP animates: a
+   `transition` on transform would ease every inline transform GSAP writes
+   per scroll frame, dragging the whole sweep 0.45s behind the scroll.
+   inline-block because transform does not apply to inline boxes. */
 .crystal-heading {
+  display: inline-block;
   cursor: default;
   transition: color 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }

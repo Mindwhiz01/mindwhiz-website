@@ -5,8 +5,14 @@
 // with the same chrome, motion language, and green theme as the home page.
 // ---------------------------------------------------------------------------
 
-import { useEffect, useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+  type Variants,
+} from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   ArrowRight,
@@ -24,6 +30,8 @@ import {
 } from "lucide-react";
 import { company } from "@/lib/content";
 import Footer from "@/components/Footer";
+import TrustedByClients from "@/components/TrustedByClients";
+import Cta from "@/components/Cta";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
@@ -187,12 +195,147 @@ function StudioSection() {
 // ---------------------------------------------------------------------------
 // Page data
 // ---------------------------------------------------------------------------
-const values: { title: string; desc: string; Icon: LucideIcon }[] = [
-  { title: "Compliant Workforce", desc: "Skilled talent aligned with regulations.", Icon: ShieldCheck },
-  { title: "Seamless Scalability", desc: "Effortless workforce expansion and flexibility.", Icon: Zap },
-  { title: "Rapid Deployment", desc: "Accelerated project execution and delivery.", Icon: Rocket },
-  { title: "Global Delivery", desc: "Worldwide solutions tailored for success.", Icon: Globe2 },
+const values: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
+  {
+    title: "Compliant Workforce",
+    desc: "Skilled talent aligned with regulations.",
+    Icon: ShieldCheck,
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80",
+  },
+  {
+    title: "Seamless Scalability",
+    desc: "Effortless workforce expansion and flexibility.",
+    Icon: Zap,
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80",
+  },
+  {
+    title: "Rapid Deployment",
+    desc: "Accelerated project execution and delivery.",
+    Icon: Rocket,
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2000&q=80",
+  },
+  {
+    title: "Global Delivery",
+    desc: "Worldwide solutions tailored for success.",
+    Icon: Globe2,
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
+  },
 ];
+
+// ---------------------------------------------------------------------------
+// Core values: a pinned, full-screen scroll experience. Each value fills the
+// viewport with a big image; as you scroll, panels crossfade and the text
+// rises into view — one value at a time.
+// ---------------------------------------------------------------------------
+function ValuePanel({
+  v,
+  i,
+  total,
+  progress,
+}: {
+  v: (typeof values)[number];
+  i: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const seg = 1 / total;
+  const start = i * seg;
+  const end = (i + 1) * seg;
+  const fade = seg * 0.35;
+
+  const inStart = i === 0 ? 0 : start - fade;
+  const inEnd = start + fade;
+  const outStart = end - fade;
+  const outEnd = i === total - 1 ? 1 : end + fade;
+
+  const opacity = useTransform(progress, [inStart, inEnd, outStart, outEnd], [0, 1, 1, 0]);
+  const imgScale = useTransform(progress, [inStart, outEnd], [1.2, 1]);
+  const textY = useTransform(progress, [inStart, inEnd], [70, 0]);
+  const numY = useTransform(progress, [inStart, inEnd], [30, 0]);
+
+  return (
+    <motion.div style={{ opacity }} className="absolute inset-0">
+      {/* big image fit to the screen */}
+      <motion.img
+        src={v.image}
+        alt={v.title}
+        style={{ scale: imgScale }}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* layered overlays so the text stays crisp over any image */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+      <div className="absolute inset-0 bg-black/25" />
+
+      {/* giant ghost index number, top-right */}
+      <motion.span
+        style={{ y: numY, fontFamily: "var(--font-display)" }}
+        className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
+      >
+        {String(i + 1).padStart(2, "0")}
+      </motion.span>
+
+      {/* text written on the image */}
+      <motion.div
+        style={{ y: textY }}
+        className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
+      >
+        <h3
+          className="max-w-4xl text-[clamp(3rem,8vw,7.5rem)] font-extrabold uppercase leading-[0.86] tracking-tight text-white"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {v.title}
+        </h3>
+        <div className="mt-8 flex items-center gap-6">
+          <span className="h-px w-16 shrink-0 bg-white/40" />
+          <p className="max-w-md text-lg leading-relaxed text-white/85 sm:text-xl">
+            {v.desc}
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function CoreValuesScroll() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+  const total = values.length;
+  const barScale = useTransform(scrollYProgress, [0, 1], [1 / total, 1]);
+
+  return (
+    <section ref={ref} className="relative bg-black" style={{ height: `${total * 100}vh` }}>
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {values.map((v, i) => (
+          <ValuePanel key={v.title} v={v} i={i} total={total} progress={scrollYProgress} />
+        ))}
+
+        {/* fixed heading overlay on top of the panels */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 mx-auto max-w-6xl px-6 pt-28 sm:px-8">
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+            Why choose MindWhiz
+          </span>
+          <h2
+            className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Talent, without the <span style={{ color: "#ed1164" }}>friction</span>.
+          </h2>
+        </div>
+
+        {/* bottom progress bar — fills as you scroll through the panels */}
+        <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+          <motion.div
+            style={{ scaleX: barScale, transformOrigin: "left" }}
+            className="h-full w-full bg-[#ed1164]"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const testimonials = [
   { client: "Villa Tech", role: "CTO, USA", quote: "MindWhiz provided the perfect talent to boost our cybersecurity efficiently. Highly recommended!", logo: "/clients/villa-tech.png" },
@@ -352,81 +495,55 @@ export default function WhyMindWhizPage() {
 
         {/* ===================== VISION / MISSION ===================== */}
         <section className="relative overflow-hidden bg-white py-24">
-          <div className="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full bg-[#9CCC3C]/30 blur-[140px]" />
           <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-              <Reveal>
-                <Kicker>Our mission</Kicker>
-                <h2
-                  className="mt-4 text-[clamp(2.2rem,4.5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Scale smarter.
-                </h2>
-              </Reveal>
-              <Reveal delay={0.1} className="space-y-5 text-lg leading-relaxed text-black">
-                <p>
-                  Our mission is simple: to help you scale smarter, adapt faster, and
-                  innovate boldly.
-                </p>
-                <p>
-                  With MindWhiz, you&apos;re not just hiring talent — you&apos;re gaining a
-                  reliable partner dedicated to your success.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* ===================== CORE VALUES ===================== */}
-        <section className="relative overflow-hidden bg-[#EEEEEE] py-24">
-          <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-[#9CCC3C]/20 blur-[150px]" />
-          <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <Reveal className="mx-auto max-w-2xl text-center">
-              <Kicker>Why choose MindWhiz</Kicker>
-              <h2
-                className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Talent, without the <span style={{ color: "#ed1164" }}>friction</span>.
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-black/60">
-                We deliver scalable staff augmentation solutions that remove hiring
-                friction and operational drag, so your team can move faster and
-                focus entirely on growth.
+            {/* kicker */}
+            <Reveal>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ed1164]">
+                MindWhiz&apos;s Talent Partnership
               </p>
             </Reveal>
 
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((v, i) => (
-                <Reveal key={v.title} delay={i * 0.08}>
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-[#9CCC3C]/50"
-                  >
-                    <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#9CCC3C]/15 ring-1 ring-[#9CCC3C]/30 transition-colors group-hover:bg-[#9CCC3C]/25">
-                      <v.Icon className="h-6 w-6 text-[#9CCC3C]" />
-                    </span>
-                    <h3
-                      className="mt-5 text-lg font-semibold text-black"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-black/60">{v.desc}</p>
-                  </motion.div>
-                </Reveal>
-              ))}
+            {/* big multi-line statement heading */}
+            <Reveal delay={0.05}>
+              <h2
+                className="mt-6 max-w-4xl text-[clamp(2.2rem,4.8vw,4.2rem)] font-semibold uppercase leading-[1.08] tracking-tight text-black"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Scale smarter,
+                <br />
+                adapt faster ...
+                <br />
+                and innovate boldly
+              </h2>
+            </Reveal>
+
+            {/* rule on the left, copy + cta on the right */}
+            <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
+              <Reveal delay={0.1}>
+                <span className="mt-3 block h-px w-full max-w-md bg-black/25" />
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="text-xl leading-relaxed text-black">
+                  Our mission is simple: to help you{" "}
+                  <span className="text-[#ed1164]">scale smarter</span>, adapt faster, and
+                  innovate boldly. With MindWhiz, you&apos;re not just hiring talent —
+                  you&apos;re gaining a reliable partner dedicated to your{" "}
+                  <span className="text-[#ed1164]">success</span>.
+                </p>
+                <Cta href="/#services" label="What we do" className="mt-8" />
+              </Reveal>
             </div>
           </div>
         </section>
+
+        {/* ===================== CORE VALUES (pinned full-screen scroll) ===================== */}
+        <CoreValuesScroll />
 
         {/* ===================== GLOBAL PRESENCE / STATS ===================== */}
         <section className="relative overflow-hidden bg-white py-24">
           <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#9CCC3C]/30 blur-[130px]" />
           <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <Reveal className="max-w-xl">
+            <Reveal className="ml-auto max-w-xl text-right">
               <Kicker>Global presence</Kicker>
               <h2
                 className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
@@ -550,51 +667,20 @@ export default function WhyMindWhizPage() {
           </div>
         </section>
 
-        {/* ===================== TESTIMONIALS ===================== */}
-        <section className="relative overflow-hidden bg-white py-24">
-          <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <Reveal className="max-w-2xl">
-              <Kicker>What clients say</Kicker>
-              <h2
-                className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-<span style={{ color: "#ed1164" }}>Trusted</span> by teams.
-              </h2>
-            </Reveal>
-
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((t, i) => (
-                <Reveal key={t.client} delay={i * 0.06}>
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-[#EEEEEE] p-6">
-                    <div>
-                      {t.logo ? (
-                        /* eslint-disable-next-line @next/next/no-img-element */
-                        <img src={t.logo} alt={t.client} className="h-7 w-auto object-contain object-left" />
-                      ) : (
-                        <Quote className="h-6 w-6 text-[#9CCC3C]" />
-                      )}
-                      <p className="mt-4 text-sm leading-relaxed text-black">
-                        &ldquo;{t.quote}&rdquo;
-                      </p>
-                    </div>
-                    <div className="mt-6">
-                      <p className="text-sm font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
-                        {t.client}
-                      </p>
-                      <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.14em] text-black/50">
-                        {t.role}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ===================== TESTIMONIALS (shared carousel) ===================== */}
+        <TrustedByClients />
 
         {/* ===================== CTA / CONTACT ===================== */}
         <section className="relative overflow-hidden bg-[#383838] py-24" data-header-dark>
+          {/* stock background image with dark overlay so the text stays readable */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/90" />
           <div className="pointer-events-none absolute -left-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-[#9CCC3C]/20 blur-[160px]" />
           <div className="relative mx-auto max-w-4xl px-6 text-center sm:px-8">
             <Reveal>
@@ -613,7 +699,7 @@ export default function WhyMindWhizPage() {
             <Reveal delay={0.1} className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={`mailto:${company.email}`}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#9CCC3C] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#7DB022]"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c40a4e]"
               >
                 <Mail className="h-4 w-4" />
                 {company.email}
@@ -622,7 +708,7 @@ export default function WhyMindWhizPage() {
                 href={company.phoneHref}
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
               >
-                <Phone className="h-4 w-4 text-[#9CCC3C]" />
+                <Phone className="h-4 w-4 text-[#ed1164]" />
                 {company.phone}
               </a>
             </Reveal>
