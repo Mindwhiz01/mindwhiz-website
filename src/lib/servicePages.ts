@@ -200,7 +200,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "NOC Strategy", desc: "Define the monitoring model, operational ownership, and reporting expectations." },
       { title: "NOC Implementation", desc: "Configure monitoring, alerting, dashboards, runbooks, and escalation paths." },
       { title: "NOC Operations", desc: "Operate the monitoring desk with continuous incident handling and response." },
-      { title: "NOC Optimization", desc: "Reduce alert noise, improve visibility, and tune performance over time." },
     ],
     finalCta: {
       title: "NOC support should strengthen your operations.",
@@ -249,7 +248,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Catalog Assets", desc: "Document devices, software, cloud resources, ownership, users, and access status." },
       { title: "Secure Access", desc: "Align remote access with security policies, identity controls, and user requirements." },
       { title: "Operate Lifecycle", desc: "Manage onboarding, offboarding, licensing, changes, and asset updates." },
-      { title: "Report and Improve", desc: "Provide regular reporting for audits, risk reviews, and operational planning." },
     ],
     finalCta: {
       title: "Unlock greater efficiency and security for every device.",
@@ -349,7 +347,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Monitor Continuously", desc: "Dedicated teams monitor server environments for potential issues." },
       { title: "Respond Quickly", desc: "When problems are detected, teams respond quickly and notify stakeholders according to defined timelines." },
       { title: "Maintain Proactively", desc: "Routine operating system and software updates reduce common server issues." },
-      { title: "Support Multiple Platforms", desc: "Adapt support to diverse server and network environments regardless of platform." },
     ],
     finalCta: {
       title: "We support multiple platforms.",
@@ -397,7 +394,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Inventory", desc: "Map endpoint tools, device groups, users, and security baselines." },
       { title: "Policy", desc: "Align endpoint rules with risk, compliance, and user workflows." },
       { title: "Monitor", desc: "Track detections, patch gaps, and device drift across the fleet." },
-      { title: "Remediate", desc: "Route findings to owners with clear next steps and reporting." },
     ],
     finalCta: {
       title: "Protect every device in your environment.",
@@ -447,12 +443,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Initiation", desc: "Identify the need for DevOps transformation, CI/CD improvements, deployment automation, and infrastructure modernization." },
       { title: "Requirement Gathering", desc: "Run stakeholder workshops, define KPIs such as MTTR and deployment frequency, and capture security requirements." },
       { title: "Discovery", desc: "Evaluate infrastructure, tooling, workflows, target architecture, and phase-based roadmap." },
-      { title: "Design", desc: "Design CI/CD pipelines, branching strategies, testing flows, IaC, and DevSecOps controls." },
-      { title: "Development and Implementation", desc: "Set up pipeline tooling, deployment automation, and monitoring integrations." },
-      { title: "Testing and Validation", desc: "Validate automated testing, performance, security, and production readiness." },
-      { title: "Deployment and Rollout", desc: "Use controlled releases, rollback strategy, and change management to minimize disruption." },
-      { title: "Monitoring and Optimization", desc: "Continuously monitor health, cost, performance, reliability, and feedback loops." },
-      { title: "Ongoing Support and Improvement", desc: "Provide 24/7 support, process refinement, and adoption of new tools and practices." },
     ],
     finalCta: {
       title: "Lead your digital journey to success.",
@@ -504,7 +494,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Assess Coverage", desc: "Review endpoints, networks, email, cloud environments, controls, and governance needs." },
       { title: "Integrate Monitoring", desc: "Connect SIEM, EDR, and existing tools into a flexible monitoring model." },
       { title: "Detect and Investigate", desc: "MDR analysts investigate suspicious activity and neutralize incidents with speed and accuracy." },
-      { title: "Improve Resilience", desc: "Use findings to improve controls, reduce risk, and strengthen preventive coverage." },
     ],
     finalCta: {
       title: "Built for prevention, backed by trust.",
@@ -571,8 +560,6 @@ export const servicePages: ServicePageContent[] = [
       { title: "Role and Skills Brief", desc: "We capture the exact skills, seniority, tools, and outcomes you need, plus how success will be measured." },
       { title: "Vetted Shortlist", desc: "You review a short list of pre-screened candidates matched to your stack, culture, and priorities." },
       { title: "Onboarding and Integration", desc: "Selected talent connects into your workflows, security, and documentation with minimal disruption." },
-      { title: "Delivery With Oversight", desc: "Your augmented team ships against your roadmap while we manage engagement and continuity." },
-      { title: "Scale and Optimize", desc: "Adjust team size as work shifts, with regular reviews to keep quality and velocity high." },
     ],
     finalCta: {
       title: "Build your hybrid team now.",
