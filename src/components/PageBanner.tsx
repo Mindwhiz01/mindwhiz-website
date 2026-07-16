@@ -43,6 +43,8 @@ export function PageBanner({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={image} alt="" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[#383838]/55" />
+        {/* bottom-weighted dark shadow so the heading and copy stay prominent */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
       </div>
       <div
         className="pointer-events-none absolute -bottom-32 -right-32 h-[38rem] w-[38rem] rounded-full blur-[150px]"

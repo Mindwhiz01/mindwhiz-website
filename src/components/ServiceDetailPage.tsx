@@ -663,9 +663,9 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
               </a>
               <a
                 href={`mailto:${company.email}`}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 transition-colors hover:text-white"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-8 py-4 text-base font-bold text-black shadow-lg shadow-[#9CCC3C]/40 transition-colors duration-300 hover:bg-[#8bbd2f]"
               >
-                <Mail className="h-4 w-4 text-[#ed1164]" />
+                <Mail className="h-5 w-5" />
                 {company.email}
               </a>
             </div>
