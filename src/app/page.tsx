@@ -827,7 +827,7 @@ function IndustriesWorlds() {
 
           <Reveal delay={0.1} className="shrink-0">
             <a
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-md bg-[#2F343B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
             >
               Get in touch

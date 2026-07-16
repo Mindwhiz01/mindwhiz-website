@@ -36,7 +36,7 @@ export const hero = {
   title: "Empowering businesses with hybrid staffing, staff augmentation & BPO",
   subtitle:
     "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery-focused support across IT, security, and business operations — built for speed, reliability, and enterprise trust.",
-  primaryCta: { label: "Get in touch", href: "#contact" },
+  primaryCta: { label: "Get in touch", href: "/contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
 
