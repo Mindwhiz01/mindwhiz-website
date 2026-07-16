@@ -167,7 +167,7 @@ function HelpdeskProofCard({
 
 function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intro"]["card"]> }) {
   return (
-    <div className="group relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2rem] text-white shadow-xl shadow-black/10">
+    <div className="group relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2rem] text-white shadow-xl shadow-black/10">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={card.image}
@@ -655,7 +655,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
           </Reveal>
 
           {page.intro.card && (
-            <Reveal delay={0.1} className="justify-self-center">
+            <Reveal delay={0.1}>
               <IntroProblemCard card={page.intro.card} />
             </Reveal>
           )}
