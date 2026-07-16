@@ -216,7 +216,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "NOC Operations", desc: "Operate the monitoring desk with continuous incident handling and response." },
     ],
     finalCta: {
-      title: "NOC support should strengthen your operations.",
+      title: "Strengthen your operations.",
       desc: "MindWhiz delivers end-to-end lifecycle solutions that reduce operational noise while improving performance, reliability, and visibility.",
       button: "Get started",
     },
@@ -271,7 +271,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Operate Lifecycle", desc: "Manage onboarding, offboarding, licensing, changes, and asset updates." },
     ],
     finalCta: {
-      title: "Unlock greater efficiency and security for every device.",
+      title: "Efficiency and security, unlocked.",
       desc: "MindWhiz simplifies management of devices, software, and access so your teams can stay focused on core business priorities.",
       button: "Request more information",
     },
@@ -327,7 +327,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Operate and Optimize", desc: "Monitor, improve, tune, and scale the environment continuously." },
     ],
     finalCta: {
-      title: "Ready to improve reliability and security?",
+      title: "Reliable, secure cloud.",
       desc: "Talk to MindWhiz and get a clear cloud infrastructure management plan.",
       button: "Book free consultation",
     },
@@ -438,7 +438,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Monitor", desc: "Track detections, patch gaps, and device drift across the fleet." },
     ],
     finalCta: {
-      title: "Protect every device in your environment.",
+      title: "Protect every device.",
       desc: "MindWhiz helps keep endpoint security visible, controlled, and responsive across distributed teams.",
       button: "Talk to MindWhiz",
     },
@@ -494,7 +494,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Discovery", desc: "Evaluate infrastructure, tooling, workflows, target architecture, and phase-based roadmap." },
     ],
     finalCta: {
-      title: "Lead your digital journey to success.",
+      title: "Lead your digital journey.",
       desc: "Get a structured, outcome-driven DevOps roadmap that accelerates delivery, improves reliability, and reduces operational risk.",
       button: "Get expert consultation",
     },
@@ -552,7 +552,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Detect and Investigate", desc: "MDR analysts investigate suspicious activity and neutralize incidents with speed and accuracy." },
     ],
     finalCta: {
-      title: "Built for prevention, backed by trust.",
+      title: "Prevention, backed by trust.",
       desc: "MindWhiz focuses on early threat prevention, always-on coverage, and unified visibility across your environment.",
       button: "Get a security review",
     },

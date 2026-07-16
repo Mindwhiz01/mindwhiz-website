@@ -10,12 +10,13 @@ import {
   type Variants,
 } from "framer-motion";
 import { Inter, Oswald } from "next/font/google";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
+import { company } from "@/lib/content";
 import type { ServicePageContent } from "@/lib/servicePages";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -63,65 +64,6 @@ function Kicker({ children }: { children: React.ReactNode }) {
       <span className="h-1.5 w-1.5 rounded-full bg-[#ed1164]" />
       {children}
       <span className="h-px w-12 bg-current/30" />
-    </div>
-  );
-}
-
-// Interactive panel: a frosted-glass "crystal" lens + sheen that follows the
-// cursor. Position is written to CSS vars on pointer move (no React re-render).
-function GlassPanel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  return (
-    <div
-      ref={ref}
-      onPointerMove={(e) => {
-        const el = ref.current;
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        el.style.setProperty("--my", `${e.clientY - r.top}px`);
-      }}
-      onPointerEnter={() => setActive(true)}
-      onPointerLeave={() => setActive(false)}
-      className={className}
-    >
-      {children}
-      {/* magnifier lens — a scaled duplicate of the content masked to a circle
-          that follows the cursor, so whatever is under it reads bigger/crisper */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 transition-opacity duration-200"
-        style={{
-          opacity: active ? 1 : 0,
-          maskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ transform: "scale(1.45)", transformOrigin: "var(--mx) var(--my)" }}
-        >
-          {children}
-        </div>
-        {/* soft glass sheen so the lens reads like polished crystal */}
-        <div
-          className="absolute inset-0 mix-blend-soft-light"
-          style={{
-            background:
-              "radial-gradient(circle 135px at var(--mx) var(--my), rgba(255,255,255,0.55), rgba(255,255,255,0) 72%)",
-          }}
-        />
-      </div>
     </div>
   );
 }
@@ -688,11 +630,11 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
       <ProcessScrollSection page={page} />
 
       <section className="relative p-[30px] text-white">
-        <GlassPanel className="relative overflow-hidden rounded-[2.5rem]">
-          {/* background photo */}
+        <div className="relative overflow-hidden rounded-[2.5rem]">
+          {/* per-page background photo */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
+            src={page.hero.image}
             alt=""
             aria-hidden
             className="absolute inset-0 h-full w-full object-cover"
@@ -708,10 +650,28 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
               {page.finalCta.desc}
             </p>
-            <Cta href="/contact" label={page.finalCta.button} className="mt-8" />
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+              <a
+                href="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#ed1164]/40 transition-colors duration-300 hover:bg-[#c50e55]"
+              >
+                <span className="relative h-5 w-5 overflow-hidden">
+                  <ArrowUpRight className="absolute inset-0 h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-6 group-hover:-translate-y-6" />
+                  <ArrowUpRight className="absolute inset-0 h-5 w-5 -translate-x-6 translate-y-6 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+                </span>
+                {page.finalCta.button}
+              </a>
+              <a
+                href={`mailto:${company.email}`}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 transition-colors hover:text-white"
+              >
+                <Mail className="h-4 w-4 text-[#ed1164]" />
+                {company.email}
+              </a>
+            </div>
           </Reveal>
           </div>
-        </GlassPanel>
+        </div>
       </section>
 
       <Footer />
