@@ -526,11 +526,9 @@ export function SiteHeader({ theme }: { theme: string }) {
             className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 xl:hidden"
           >
             {[
-              nav[0],
-              { label: "Web Services", href: "/web-services" },
-              ...nav.slice(1, 3),
+              ...nav.slice(0, 4),
               { label: "Why MindWhiz", href: "/why-mindwhiz" },
-              ...nav.slice(3),
+              ...nav.slice(4),
             ].map((n, i) => (
               <motion.a
                 key={n.label}
