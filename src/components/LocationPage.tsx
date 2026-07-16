@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// LocationPage — shared template for the regional pages (US / UK / PK) linked
+// LocationPage - shared template for the regional pages (US / UK / PK) linked
 // from the header's region selector. Hero, local highlights, office info with
 // a live clock, services emphasized in that market, and shared testimonials.
 // ---------------------------------------------------------------------------

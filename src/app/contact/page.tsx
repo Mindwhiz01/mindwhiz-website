@@ -142,7 +142,7 @@ export default function ContactPage() {
   const canContinueStep0 = form.name.trim() !== "" && form.email.trim() !== "";
   const canContinueStep1 = form.service !== "";
 
-  // world-zoom view — wide enough for the US, UK, and Pakistan hubs to all sit in frame
+  // world-zoom view - wide enough for the US, UK, and Pakistan hubs to all sit in frame
   const worldMapSrc = "https://www.google.com/maps?q=20,10&z=2&output=embed";
 
   return (
@@ -185,7 +185,7 @@ export default function ContactPage() {
               {sent ? (
                 <div className="mt-10 flex items-center gap-3 rounded-2xl border border-[#9CCC3C]/40 bg-[#9CCC3C]/10 px-6 py-5 text-sm font-semibold text-[#4d7a17]">
                   <Check className="h-5 w-5 shrink-0" />
-                  Thanks — your message has been received. We&apos;ll be in touch shortly.
+                  Thanks - your message has been received. We&apos;ll be in touch shortly.
                 </div>
               ) : (
                 <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-white/60 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-2xl backdrop-saturate-150">
@@ -450,7 +450,7 @@ export default function ContactPage() {
 
               <div id="map" className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg shadow-black/5">
                 <iframe
-                  title="MindWhiz global locations — United States, United Kingdom, Pakistan"
+                  title="MindWhiz global locations - United States, United Kingdom, Pakistan"
                   src={worldMapSrc}
                   className="h-64 w-full"
                   style={{ border: 0 }}

@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Shared site chrome — the floating glass header (with mega menu + region
+// Shared site chrome - the floating glass header (with mega menu + region
 // picker). Extracted so every page renders an identical, in-sync navigation.
 // ---------------------------------------------------------------------------
 
@@ -71,7 +71,7 @@ function FlagIcon({ src, label }: { src: string; label: string }) {
   );
 }
 
-// Mega-menu groupings — services & industries organised into labelled columns.
+// Mega-menu groupings - services & industries organised into labelled columns.
 const serviceMenu = [
   { heading: "IT & Security", items: [services[0], services[1], services[2], services[5]] },
   { heading: "Cloud & DevOps", items: [services[3], services[4], services[6], services[12]] },
@@ -181,7 +181,7 @@ function MegaPanel({
         ))}
       </div>
 
-      {/* featured rail — IT Staffing (Villa Tech) then Construction (Alpha Bravo) */}
+      {/* featured rail - IT Staffing (Villa Tech) then Construction (Alpha Bravo) */}
       <div className="hidden flex-col gap-4 xl:flex">
         {[caseStudies[1], caseStudies[0]].map((cs) => (
           <a
@@ -217,7 +217,7 @@ export function SiteHeader({ theme }: { theme: string }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(nav[0].label);
 
-  // Keep the active tab in sync with the actual page being viewed — nav
+  // Keep the active tab in sync with the actual page being viewed - nav
   // items that point to a real route (e.g. "/contact") take priority over
   // whatever was last clicked, so landing on that page always highlights
   // the right tab instead of whatever tab happened to be active before.
@@ -322,7 +322,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           transition={{ duration: 2.6, repeat: Infinity, repeatDelay: 3.5, ease: "easeInOut" }}
           className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent"
         />
-        {/* Brand — dark pill stretches on hover to reveal the wordmark inside it */}
+        {/* Brand - dark pill stretches on hover to reveal the wordmark inside it */}
         <a href="/" className="group relative z-10 flex cursor-pointer items-center pl-1">
           <div className="flex items-center overflow-hidden rounded-full bg-neutral-900 ring-1 ring-white/10 transition-all duration-700 ease-out">
             <span className="grid h-11 w-11 shrink-0 place-items-center">
@@ -339,7 +339,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           </div>
         </a>
 
-        {/* Center nav — absolutely centered so the logo hover doesn't shift it */}
+        {/* Center nav - absolutely centered so the logo hover doesn't shift it */}
         {/* xl, not lg: at 1024-1279px this centered nav collides with the
             region selector + CTA on the right, so those widths keep the
             hamburger menu instead */}
@@ -353,7 +353,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                 key={n.label}
                 href={n.href}
                 onClick={(e) => {
-                  // tabs with a mega dropdown shouldn't navigate on click —
+                  // tabs with a mega dropdown shouldn't navigate on click -
                   // just open their menu so the tab stays put
                   if (hasMega) {
                     e.preventDefault();
@@ -394,7 +394,7 @@ export function SiteHeader({ theme }: { theme: string }) {
 
         {/* Actions */}
         <div className="relative z-10 flex items-center gap-2">
-          {/* region selector — dropdown, portaled so it isn't clipped by the pill */}
+          {/* region selector - dropdown, portaled so it isn't clipped by the pill */}
           <div className="relative hidden sm:block">
             <button
               ref={regionBtnRef}
@@ -514,7 +514,7 @@ export function SiteHeader({ theme }: { theme: string }) {
         )}
       </AnimatePresence>
 
-      {/* mobile menu — liquid-glass panel with WhatsApp spring pop-in */}
+      {/* mobile menu - liquid-glass panel with WhatsApp spring pop-in */}
       <AnimatePresence>
         {open && (
           <motion.div

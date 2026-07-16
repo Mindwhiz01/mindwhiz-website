@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
+  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { ServicePageContent } from "@/lib/servicePages";
+import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -94,7 +96,7 @@ function GlassPanel({
       className={className}
     >
       {children}
-      {/* magnifier lens — a scaled duplicate of the content masked to a circle
+      {/* magnifier lens - a scaled duplicate of the content masked to a circle
           that follows the cursor, so whatever is under it reads bigger/crisper */}
       <div
         aria-hidden
@@ -392,7 +394,7 @@ function BenefitScrollCard({
 function BenefitsStackSection({ page }: { page: ServicePageContent }) {
   const sectionRef = useRef<HTMLElement>(null);
   // progress runs while the section crosses the viewport, so cards finish
-  // revealing well before the section bottom — they never sit half-shown
+  // revealing well before the section bottom - they never sit half-shown
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start 0.85", "end 0.9"],
@@ -438,10 +440,12 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
 }
 
 // ---------------------------------------------------------------------------
-// Process: a pinned, full-screen scroll experience. Each step fills the
-// viewport with a big image; as you scroll, panels crossfade and the text
-// rises into view — one step at a time. Images are keyed by step order.
+// Process: a pinned, full-screen slide deck. Each step fills the viewport
+// with a big image; one wheel gesture advances one step, and panels animate
+// in/out on a timed transition - never parked half-faded. Images are keyed
+// by step order.
 // ---------------------------------------------------------------------------
+const PROCESS_EASE = [0.22, 1, 0.36, 1] as const;
 const processImages = [
   "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
   "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
@@ -454,36 +458,35 @@ const processImages = [
 function ProcessPanel({
   step,
   i,
-  total,
-  progress,
+  active,
 }: {
   step: ServicePageContent["process"][number];
   i: number;
-  total: number;
-  progress: MotionValue<number>;
+  active: number;
 }) {
-  const seg = 1 / total;
-  const start = i * seg;
-  const end = (i + 1) * seg;
-  const fade = seg * 0.35;
-
-  const inStart = i === 0 ? 0 : start - fade;
-  const inEnd = start + fade;
-  const outStart = end - fade;
-  const outEnd = i === total - 1 ? 1 : end + fade;
-
-  const opacity = useTransform(progress, [inStart, inEnd, outStart, outEnd], [0, 1, 1, 0]);
-  const imgScale = useTransform(progress, [inStart, outEnd], [1.2, 1]);
-  const textY = useTransform(progress, [inStart, inEnd], [70, 0]);
-  const numY = useTransform(progress, [inStart, inEnd], [30, 0]);
+  const isActive = i === active;
+  const textAnimate = isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 };
+  const textTransition = {
+    duration: SLIDE_MS / 1000,
+    ease: PROCESS_EASE,
+    delay: isActive ? 0.12 : 0,
+  };
 
   return (
-    <motion.div style={{ opacity }} className="absolute inset-0">
+    <motion.div
+      initial={false}
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+      style={{ zIndex: isActive ? 2 : 1 }}
+      className="pointer-events-none absolute inset-0"
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
         src={processImages[i % processImages.length]}
         alt={step.title}
-        style={{ scale: imgScale }}
+        initial={false}
+        animate={{ scale: isActive ? 1 : 1.15 }}
+        transition={{ duration: 1.1, ease: PROCESS_EASE }}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
@@ -491,7 +494,10 @@ function ProcessPanel({
 
       {/* giant ghost index number, top-right */}
       <motion.span
-        style={{ y: numY, fontFamily: "var(--font-display)" }}
+        initial={false}
+        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+        style={{ fontFamily: "var(--font-display)" }}
         className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
       >
         {String(i + 1).padStart(2, "0")}
@@ -499,7 +505,9 @@ function ProcessPanel({
 
       {/* heading, top-left */}
       <motion.div
-        style={{ y: textY }}
+        initial={false}
+        animate={textAnimate}
+        transition={textTransition}
         className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
       >
         <h3
@@ -512,7 +520,9 @@ function ProcessPanel({
 
       {/* description, bottom-right */}
       <motion.div
-        style={{ y: textY }}
+        initial={false}
+        animate={textAnimate}
+        transition={textTransition}
         className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
       >
         <div className="flex max-w-lg items-start gap-6">
@@ -533,7 +543,15 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
     offset: ["start start", "end end"],
   });
   const total = page.process.length;
-  const barScale = useTransform(scrollYProgress, [0, 1], [1 / total, 1]);
+  const [active, setActive] = useState(0);
+
+  // Snap the visible step to whole steps no matter how the user scrolls.
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
+  });
+
+  // While the track is pinned, one wheel gesture moves exactly one step.
+  useSlideSnap(ref, total);
 
   return (
     <section data-header-dark className="relative bg-black">
@@ -554,13 +572,16 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
       <div ref={ref} className="relative" style={{ height: `${total * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden">
           {page.process.map((step, i) => (
-            <ProcessPanel key={step.title} step={step} i={i} total={total} progress={scrollYProgress} />
+            <ProcessPanel key={step.title} step={step} i={i} active={active} />
           ))}
 
-          {/* bottom progress bar */}
+          {/* bottom progress bar - fills one segment per step */}
           <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
             <motion.div
-              style={{ scaleX: barScale, transformOrigin: "left" }}
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+              style={{ transformOrigin: "left" }}
               className="h-full w-full bg-[#ed1164]"
             />
           </div>

@@ -163,7 +163,7 @@ body {
   }
 }
 
-/* construction hazard chevron tape — repeats a chevron tile and scrolls */
+/* construction hazard chevron tape - repeats a chevron tile and scrolls */
 .hazard-tape {
   height: 26px;
   background-image: url("/hazard-tape.svg");

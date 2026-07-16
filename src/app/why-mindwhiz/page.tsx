@@ -1,16 +1,15 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Why MindWhiz — company/about page. Content adapted from mindwhiz.com, built
+// Why MindWhiz - company/about page. Content adapted from mindwhiz.com, built
 // with the same chrome, motion language, and green theme as the home page.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
+  useMotionValueEvent,
   useScroll,
-  useTransform,
-  type MotionValue,
   type Variants,
 } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
@@ -35,6 +34,7 @@ import Cta from "@/components/Cta";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
+import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -129,7 +129,7 @@ function StudioSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
-            offices in the UK and the USA. Building since 2017 — somewhere, the
+            offices in the UK and the USA. Building since 2017 - somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -223,43 +223,38 @@ const values: { title: string; desc: string; Icon: LucideIcon; image: string }[]
 ];
 
 // ---------------------------------------------------------------------------
-// Core values: a pinned, full-screen scroll experience. Each value fills the
-// viewport with a big image; as you scroll, panels crossfade and the text
-// rises into view — one value at a time.
+// Core values: a pinned, full-screen slide deck. Each value fills the
+// viewport with a big image; one wheel gesture advances one value, and
+// panels animate in/out on a timed transition - never parked half-faded.
 // ---------------------------------------------------------------------------
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 function ValuePanel({
   v,
   i,
-  total,
-  progress,
+  active,
 }: {
   v: (typeof values)[number];
   i: number;
-  total: number;
-  progress: MotionValue<number>;
+  active: number;
 }) {
-  const seg = 1 / total;
-  const start = i * seg;
-  const end = (i + 1) * seg;
-  const fade = seg * 0.35;
-
-  const inStart = i === 0 ? 0 : start - fade;
-  const inEnd = start + fade;
-  const outStart = end - fade;
-  const outEnd = i === total - 1 ? 1 : end + fade;
-
-  const opacity = useTransform(progress, [inStart, inEnd, outStart, outEnd], [0, 1, 1, 0]);
-  const imgScale = useTransform(progress, [inStart, outEnd], [1.2, 1]);
-  const textY = useTransform(progress, [inStart, inEnd], [70, 0]);
-  const numY = useTransform(progress, [inStart, inEnd], [30, 0]);
+  const isActive = i === active;
 
   return (
-    <motion.div style={{ opacity }} className="absolute inset-0">
+    <motion.div
+      initial={false}
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+      style={{ zIndex: isActive ? 2 : 1 }}
+      className="pointer-events-none absolute inset-0"
+    >
       {/* big image fit to the screen */}
       <motion.img
         src={v.image}
         alt={v.title}
-        style={{ scale: imgScale }}
+        initial={false}
+        animate={{ scale: isActive ? 1 : 1.15 }}
+        transition={{ duration: 1.1, ease: EASE }}
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* layered overlays so the text stays crisp over any image */}
@@ -268,7 +263,10 @@ function ValuePanel({
 
       {/* giant ghost index number, top-right */}
       <motion.span
-        style={{ y: numY, fontFamily: "var(--font-display)" }}
+        initial={false}
+        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+        style={{ fontFamily: "var(--font-display)" }}
         className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
       >
         {String(i + 1).padStart(2, "0")}
@@ -276,7 +274,9 @@ function ValuePanel({
 
       {/* text written on the image */}
       <motion.div
-        style={{ y: textY }}
+        initial={false}
+        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: EASE, delay: isActive ? 0.12 : 0 }}
         className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
       >
         <h3
@@ -303,13 +303,21 @@ function CoreValuesScroll() {
     offset: ["start start", "end end"],
   });
   const total = values.length;
-  const barScale = useTransform(scrollYProgress, [0, 1], [1 / total, 1]);
+  const [active, setActive] = useState(0);
+
+  // Snap the visible value to whole steps no matter how the user scrolls.
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
+  });
+
+  // While the section is pinned, one wheel gesture moves exactly one value.
+  useSlideSnap(ref, total);
 
   return (
     <section ref={ref} className="relative bg-black" style={{ height: `${total * 100}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden">
         {values.map((v, i) => (
-          <ValuePanel key={v.title} v={v} i={i} total={total} progress={scrollYProgress} />
+          <ValuePanel key={v.title} v={v} i={i} active={active} />
         ))}
 
         {/* fixed heading overlay on top of the panels */}
@@ -325,10 +333,13 @@ function CoreValuesScroll() {
           </h2>
         </div>
 
-        {/* bottom progress bar — fills as you scroll through the panels */}
+        {/* bottom progress bar - fills one segment per value */}
         <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
           <motion.div
-            style={{ scaleX: barScale, transformOrigin: "left" }}
+            initial={false}
+            animate={{ scaleX: (active + 1) / total }}
+            transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+            style={{ transformOrigin: "left" }}
             className="h-full w-full bg-[#ed1164]"
           />
         </div>
@@ -352,7 +363,7 @@ const hubs = [
 ];
 
 const offerings = [
-  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers — built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
+  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers - built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO-level support from experienced finance professionals.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&h=860&q=80" },
@@ -369,11 +380,11 @@ const bannerStats = [
 const storyHighlights = [
   {
     title: "Founder-led, values-driven.",
-    desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses — headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
+    desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses - headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
   },
   {
     title: "Decades of hiring expertise.",
-    desc: "Our leadership brings decades of experience in technical recruiting across the industries we serve — construction, IT and cybersecurity, and finance.",
+    desc: "Our leadership brings decades of experience in technical recruiting across the industries we serve - construction, IT and cybersecurity, and finance.",
   },
   {
     title: "Built for speed.",
@@ -416,7 +427,7 @@ export default function WhyMindWhizPage() {
               Real <span className="text-[#9CCC3C]">teams.</span>
             </>
           }
-          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people — not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
+          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people - not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
           primary={{ label: "Talk to the founder", href: "/contact" }}
           secondary={{ label: "Read the story", href: "#story" }}
         />
@@ -467,7 +478,7 @@ export default function WhyMindWhizPage() {
                 <span style={{ color: "#ed1164" }}>talent</span> gap.
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-black">
-                MindWhiz is more than a service provider — it&apos;s your partner in
+                MindWhiz is more than a service provider - it&apos;s your partner in
                 building the future of your business.
               </p>
             </Reveal>
@@ -526,7 +537,7 @@ export default function WhyMindWhizPage() {
                 <p className="text-xl leading-relaxed text-black">
                   Our mission is simple: to help you{" "}
                   <span className="text-[#ed1164]">scale smarter</span>, adapt faster, and
-                  innovate boldly. With MindWhiz, you&apos;re not just hiring talent —
+                  innovate boldly. With MindWhiz, you&apos;re not just hiring talent -
                   you&apos;re gaining a reliable partner dedicated to your{" "}
                   <span className="text-[#ed1164]">success</span>.
                 </p>
@@ -554,7 +565,7 @@ export default function WhyMindWhizPage() {
               <p className="mt-4 text-lg leading-relaxed text-black">
                 With delivery hubs across the United States, the United Kingdom, and
                 Pakistan, we serve clients across North America, the Middle East,
-                Canada, and Australia — operations covered around the clock.
+                Canada, and Australia - operations covered around the clock.
               </p>
             </Reveal>
 
@@ -566,7 +577,7 @@ export default function WhyMindWhizPage() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={h.flag}
-                      alt={`${h.country} — ${h.city}`}
+                      alt={`${h.country} - ${h.city}`}
                       loading="lazy"
                       className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${
                         h.fit === "contain" ? "object-contain p-2" : "object-cover"
@@ -618,7 +629,7 @@ export default function WhyMindWhizPage() {
 
           </div>
 
-          {/* auto-scrolling carousel — pauses on hover */}
+          {/* auto-scrolling carousel - pauses on hover */}
           <div className="group/marquee relative mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_5%,#000_95%,transparent)]">
             <div
               className="flex w-max gap-5 px-6 [animation:marqueeX_38s_linear_infinite] group-hover/marquee:[animation-play-state:paused] sm:px-8"
@@ -638,7 +649,7 @@ export default function WhyMindWhizPage() {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* dark overlay — strengthens text contrast over the image */}
+                  {/* dark overlay - strengthens text contrast over the image */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
 
                   <span className="absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">

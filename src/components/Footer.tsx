@@ -57,7 +57,7 @@ export default function Footer() {
 
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
               {company.tagline}. Vetted engineers and 24/7 operations across the
-              US, UK, and Pakistan — built for speed, reliability, and enterprise
+              US, UK, and Pakistan - built for speed, reliability, and enterprise
               trust.
             </p>
 
@@ -115,7 +115,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* ---- certifications banner — hidden for now, restore by uncommenting ---- */}
+        {/* ---- certifications banner - hidden for now, restore by uncommenting ---- */}
         {/*
         <div className="mt-14 border-t border-white/10 pt-8">
           <a href="#" className="group flex items-center justify-between gap-4">
@@ -161,7 +161,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ---- floating chat pill — hidden for now, restore by uncommenting ---- */}
+      {/* ---- floating chat pill - hidden for now, restore by uncommenting ---- */}
       {/*
       <button
         type="button"

@@ -16,7 +16,7 @@ const item: Variants = {
 type CtaLink = { label: string; href: string };
 
 /**
- * Shared page hero — same banner design as the home page: a rounded, inset
+ * Shared page hero - same banner design as the home page: a rounded, inset
  * media panel with a dark gradient wash, a large display heading, and CTAs.
  * Uses a service-relevant background image (no eyebrow pill).
  */
@@ -42,7 +42,7 @@ export function PageBanner({
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={image} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[#383838]/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
       </div>
       <div
         className="pointer-events-none absolute -bottom-32 -right-32 h-[38rem] w-[38rem] rounded-full blur-[150px]"

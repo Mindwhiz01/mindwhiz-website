@@ -86,7 +86,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-// What we handle — core HR capabilities.
+// What we handle - core HR capabilities.
 const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string }[] = [
   {
     title: "Recruiting & RPO",
@@ -126,7 +126,7 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
 ];
 
-// Coverage — HR functions across the employee lifecycle.
+// Coverage - HR functions across the employee lifecycle.
 const coverage: {
   name: string;
   tag: string;
@@ -323,7 +323,7 @@ function CapabilitiesCarousel() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From first hire to a full HR function, we run recruiting, payroll,
-              systems, and compliance — so your leaders can focus on building the
+              systems, and compliance - so your leaders can focus on building the
               business.
             </p>
             <p className="mt-8 hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50 lg:flex">
@@ -365,7 +365,7 @@ export default function HrPage() {
             <span className="text-[#ed1164]">Teams</span>
           </>
         }
-        subtitle="End-to-end HR — recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."
+        subtitle="End-to-end HR - recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."
         primary={{ label: "Talk to HR", href: "#contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
@@ -422,7 +422,7 @@ export default function HrPage() {
                 <span className="text-[#ed1164]">every stage.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Across the full employee lifecycle — from sourcing to offboarding —
+                Across the full employee lifecycle - from sourcing to offboarding -
                 we cover the whole HR function or just the parts you need.
               </p>
             </Reveal>
@@ -500,7 +500,7 @@ export default function HrPage() {
                 <span className="text-[#ed1164]">your inbox.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Every engagement ends with organized, compliant HR docs — ready to
+                Every engagement ends with organized, compliant HR docs - ready to
                 sign, file, or act on.
               </p>
 

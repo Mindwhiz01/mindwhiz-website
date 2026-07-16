@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// About Us — leadership page. Beliefs section modeled on the "3 beliefs that
+// About Us - leadership page. Beliefs section modeled on the "3 beliefs that
 // guide our company" split layout, followed by a mirrored COO section.
 // ---------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 // ---------------------------------------------------------------------------
-// Beliefs — CEO section (heading + portrait left, belief rows right)
+// Beliefs - CEO section (heading + portrait left, belief rows right)
 // ---------------------------------------------------------------------------
 const beliefs = [
   {
@@ -103,7 +103,7 @@ function BeliefsSection() {
             <div className="max-w-xs">
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80"
-                alt="Muhammad Ali — Co-Founder and CEO at MindWhiz"
+                alt="Muhammad Ali - Co-Founder and CEO at MindWhiz"
                 className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
               />
               <p className="mt-4 text-sm font-semibold text-black">Muhammad Ali</p>
@@ -144,7 +144,7 @@ function BeliefsSection() {
 }
 
 // ---------------------------------------------------------------------------
-// COO section — content on the left, portrait on the right
+// COO section - content on the left, portrait on the right
 // ---------------------------------------------------------------------------
 const cooPoints = [
   {
@@ -153,7 +153,7 @@ const cooPoints = [
   },
   {
     title: "Quality you can measure.",
-    desc: "Every engagement ships with SLAs, reporting cadences, and named owners — so you always know how your team is performing.",
+    desc: "Every engagement ships with SLAs, reporting cadences, and named owners - so you always know how your team is performing.",
   },
   {
     title: "People before process.",
@@ -177,7 +177,7 @@ function CooSection() {
             </h2>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-black/65">
               As Chief Operating Officer, Muhammad Aftab Zafar leads delivery across our
-              US, UK, and Pakistan hubs — turning flexible talent, scalable teams, and
+              US, UK, and Pakistan hubs - turning flexible talent, scalable teams, and
               global impact into daily operational excellence for every client we serve.
             </p>
           </Reveal>
@@ -204,7 +204,7 @@ function CooSection() {
           <div>
             <img
               src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80"
-              alt="Muhammad Aftab Zafar — Chief Operating Officer at MindWhiz"
+              alt="Muhammad Aftab Zafar - Chief Operating Officer at MindWhiz"
               className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
             />
             <p className="mt-4 text-sm font-semibold text-black">Muhammad Aftab Zafar</p>
@@ -241,7 +241,7 @@ export default function AboutPage() {
               About <span className="text-[#9CCC3C]">us.</span>
             </>
           }
-          subtitle="The people and principles behind MindWhiz — a leadership team obsessed with building scalable, profitable operations for every client."
+          subtitle="The people and principles behind MindWhiz - a leadership team obsessed with building scalable, profitable operations for every client."
           primary={{ label: "Work with us", href: "/contact" }}
           secondary={{ label: "Our beliefs", href: "#beliefs" }}
         />

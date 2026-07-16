@@ -332,7 +332,7 @@ function ScrubbedBentoGallery() {
   );
 }
 
-// Clients shown as scattered, tilted cards (blob/rounded — not boxy), each with
+// Clients shown as scattered, tilted cards (blob/rounded - not boxy), each with
 // a short business note that appears on hover.
 const serviceClients: {
   name: string;
@@ -422,7 +422,7 @@ function ClientsScatter() {
   );
 }
 
-// Reels marquee — portrait video cards drifting on the left, big heading right.
+// Reels marquee - portrait video cards drifting on the left, big heading right.
 const reels: { label: string; tag: string; img: string }[] = [
   { label: "Campaign Launch", tag: "Paid social", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=500&h=850&q=80" },
   { label: "Brand Film", tag: "Creative", img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=500&h=850&q=80" },
@@ -485,7 +485,7 @@ function ReelsSection() {
             <span className="text-[#ed1164]">move brands.</span>
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-7 text-[#3f3f3d]/80">
-            Short-form video built to stop the scroll — scripted, shot, and cut for
+            Short-form video built to stop the scroll - scripted, shot, and cut for
             the platforms your audience actually uses.
           </p>
         </div>
@@ -543,14 +543,14 @@ function Typewriter({
 
 // ---------------------------------------------------------------------------
 // Brand showcase: sticky brand story on the right, a stream of big campaign
-// images on the left — 3 per brand. Scrolling into a new brand's images swaps
+// images on the left - 3 per brand. Scrolling into a new brand's images swaps
 // the story content with an animated transition.
 // ---------------------------------------------------------------------------
 const brandShowcase = [
   {
     name: "Velocity Retail",
     kicker: "E-commerce · Paid Media",
-    desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held — revenue grew 2.4x in six months.",
+    desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held - revenue grew 2.4x in six months.",
     tags: ["Meta & TikTok Ads", "Creative testing", "Conversion tracking"],
     images: [
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
@@ -561,7 +561,7 @@ const brandShowcase = [
   {
     name: "NovaTech",
     kicker: "SaaS · Demand Generation",
-    desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns — qualified demos tripled and cost per lead dropped 48%.",
+    desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns - qualified demos tripled and cost per lead dropped 48%.",
     tags: ["SEO content engine", "LinkedIn ABM", "Marketing automation"],
     images: [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
@@ -572,7 +572,7 @@ const brandShowcase = [
   {
     name: "UrbanBites",
     kicker: "Hospitality · Social & Local",
-    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz — both openings sold out their first weekend.",
+    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz - both openings sold out their first weekend.",
     tags: ["Local campaigns", "Influencer collabs", "Launch strategy"],
     images: [
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
@@ -600,7 +600,7 @@ function BrandShowcaseSection() {
         </Reveal>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          {/* left: big scrolling campaign images — 3 per brand */}
+          {/* left: big scrolling campaign images - 3 per brand */}
           <div className="flex flex-col gap-6">
             {brandShowcase.map((b, i) => (
               <motion.div
@@ -638,7 +638,7 @@ function BrandShowcaseSection() {
             ))}
           </div>
 
-          {/* right: sticky brand story — swaps as the images scroll */}
+          {/* right: sticky brand story - swaps as the images scroll */}
           <div>
             <div className="lg:sticky lg:top-32">
               <AnimatePresence mode="wait">
@@ -757,8 +757,8 @@ export default function ServicePage() {
             >
               <source src="/hero-service.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-[#383838]/55" />
           </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
 
           {/* light-orange glow from the bottom-right */}
           <div className="pointer-events-none absolute -bottom-32 -right-32 h-[38rem] w-[38rem] rounded-full bg-[#ff4b00]/35 blur-[150px]" />
@@ -800,7 +800,7 @@ export default function ServicePage() {
         <div className="relative">
         <ScrollManifestoSection />
 
-        {/* manifesto statement — rises over the pinned manifesto and takes its place */}
+        {/* manifesto statement - rises over the pinned manifesto and takes its place */}
         <section className="relative z-10 flex min-h-screen items-center justify-center bg-[#eee8e0] px-6 py-20">
           <motion.div
             initial={{ opacity: 0, y: 36 }}
@@ -818,16 +818,16 @@ export default function ServicePage() {
         </section>
         </div>
 
-        {/* clients — scattered, tilted cards */}
+        {/* clients - scattered, tilted cards */}
         <ClientsScatter />
 
-        {/* reels — drifting portrait cards + big heading */}
+        {/* reels - drifting portrait cards + big heading */}
         <ReelsSection />
 
         <section className="bg-[#eee8e0]">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              {/* left — heading + supporting copy */}
+              {/* left - heading + supporting copy */}
               <Reveal>
                 <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#ed1164]">
                   What we operate
@@ -846,7 +846,7 @@ export default function ServicePage() {
                 </p>
               </Reveal>
 
-              {/* right — staggered, offset service cards */}
+              {/* right - staggered, offset service cards */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
                 {channels.map(({ title, desc, Icon }, index) => (
                   <Reveal key={title} delay={index * 0.08}>

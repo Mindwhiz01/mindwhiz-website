@@ -232,7 +232,7 @@ function HeroParticles() {
   return <canvas ref={ref} className="absolute inset-0 h-full w-full" aria-hidden />;
 }
 
-// Rotating word — cycles through words in the same position, again and again.
+// Rotating word - cycles through words in the same position, again and again.
 function RotatingWord({
   words,
   icons,
@@ -331,7 +331,7 @@ function CountStat({
   );
 }
 
-// Colored stat card with a corner arrow — modeled on the reference layout.
+// Colored stat card with a corner arrow - modeled on the reference layout.
 function StatCard({
   value,
   label,
@@ -357,7 +357,7 @@ function StatCard({
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-[28px] p-6 sm:p-7 ${bg}`}
     >
-      {/* top-right notched pocket — the card scoops inward with a smooth
+      {/* top-right notched pocket - the card scoops inward with a smooth
           curve and a circular arrow button sits in the cut-out, reading as
           detached from the card */}
       <div
@@ -386,7 +386,7 @@ function StatCard({
   );
 }
 
-// Growth bar chart — bars rise on scroll, with a CAGR pill, like the reference.
+// Growth bar chart - bars rise on scroll, with a CAGR pill, like the reference.
 function GrowthChart() {
   const bars = [
     { y: "2019", h: 26 },
@@ -463,7 +463,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Split CTA — a dark pill with the label beside a detached green arrow square.
+// Split CTA - a dark pill with the label beside a detached green arrow square.
 function ArrowCta({
   href,
   label,
@@ -525,7 +525,7 @@ function StudioClockSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
-            offices in the UK and the USA. Building since 2017 — somewhere, the
+            offices in the UK and the USA. Building since 2017 - somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -691,10 +691,10 @@ function DriveTalentSection() {
     const ctx = gsap.context(() => {
       // scrub: 0.5 lerps the playhead toward the scroll position over ~0.5s.
       // Unlike a spring it can never overshoot, so the words approach centre
-      // from one side only — no left/right wobble on browsers that animate
+      // from one side only - no left/right wobble on browsers that animate
       // wheel scrolling. Scrolling back up retraces the identical path.
       //
-      // The section never pins — it scrolls through like any other content.
+      // The section never pins - it scrolls through like any other content.
       // "top bottom" → "bottom top" spans its whole pass across the viewport,
       // so the timeline midpoint (words dead centre) lands exactly when the
       // section fills the screen, with no held scroll on either side.
@@ -704,20 +704,20 @@ function DriveTalentSection() {
           start: "top bottom",
           end: "bottom top",
           scrub: 0.5,
-          // exit distances are measured from the DOM — re-derive on resize
+          // exit distances are measured from the DOM - re-derive on resize
           invalidateOnRefresh: true,
         },
       });
       // Distance that carries a centred element completely past a viewport
       // edge: half the viewport plus half the element, with a small margin so
       // the scrub's lerp tail can never leave a sliver behind. xPercent can't
-      // express this — the words differ in width, so a percentage that clears
+      // express this - the words differ in width, so a percentage that clears
       // the wide one strands the narrow one on screen.
       const offscreen = (el: HTMLElement) =>
         (window.innerWidth + el.getBoundingClientRect().width) / 2 + 32;
       // First half: sweep in to dead centre, easing into place. Second half:
       // accelerate away (power1.in, the mirror of arriving) until fully off
-      // the far edge — combined with the section itself scrolling on, the
+      // the far edge - combined with the section itself scrolling on, the
       // words swipe out diagonally instead of parking half-visible. The entry
       // animates xPercent, the exit animates x; GSAP sums the two, so at the
       // midpoint both are 0 and the word is exactly centred. Fully opaque
@@ -734,13 +734,13 @@ function DriveTalentSection() {
     <section
       ref={ref}
       // Exactly one viewport tall and no sticky child: the section flows past
-      // like ordinary content — the sweep rides the scroll instead of holding
+      // like ordinary content - the sweep rides the scroll instead of holding
       // it. overflow-clip confines the exiting words without making this a
       // scroll container.
       className="relative z-20 h-screen overflow-clip bg-transparent"
     >
       <div className="flex h-full flex-col items-center justify-center overflow-hidden px-6">
-        {/* light glow — top-left and bottom-right corners */}
+        {/* light glow - top-left and bottom-right corners */}
         <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
         <h2
           ref={driveRef}
@@ -748,7 +748,7 @@ function DriveTalentSection() {
           className="relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
         >
           {/* The hover treatment transitions `transform`, so it must sit on an
-              inner element — on the outer one it would fight the transform
+              inner element - on the outer one it would fight the transform
               GSAP rewrites every frame. */}
           <span className="crystal-heading">We Deliver</span>
         </h2>
@@ -772,8 +772,8 @@ function IndustriesWorlds() {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const row = rowRef.current!;
-      // Shift needed to put the LAST card's centre on the viewport's centre —
-      // not merely flush with the right edge — so the run visibly finishes
+      // Shift needed to put the LAST card's centre on the viewport's centre -
+      // not merely flush with the right edge - so the run visibly finishes
       // mid-screen. Subtracting the row's current x makes the measurement
       // valid no matter where the scrub has dragged it (e.g. on resize).
       const distance = () => {
@@ -811,7 +811,7 @@ function IndustriesWorlds() {
       data-header-dark
       // No vertical padding here: the sticky child may only travel within the
       // section's *content* box, so padding makes it latch late at the top
-      // and detach before the section ends — mid-dwell.
+      // and detach before the section ends - mid-dwell.
       className="relative bg-[#EEEEEE] text-white"
       style={{ height: "300vh" }}
     >
@@ -867,7 +867,7 @@ function IndustriesWorlds() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            {/* dark overlay — strengthens text contrast over the image */}
+            {/* dark overlay - strengthens text contrast over the image */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
 
             <span className="absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
@@ -952,7 +952,7 @@ function ClientMarquee({
 }
 
 // ---------------------------------------------------------------------------
-// Clients section: text slides in from the left, logos from the right — driven
+// Clients section: text slides in from the left, logos from the right - driven
 // by scroll progress as the section moves up through the viewport.
 // ---------------------------------------------------------------------------
 function ClientsSection() {
@@ -995,7 +995,7 @@ function ClientsSection() {
           </p>
         </motion.div>
 
-        {/* logo showcase panel — two contained rows */}
+        {/* logo showcase panel - two contained rows */}
         <motion.div
           style={{ y, opacity }}
           className="mt-14 overflow-hidden rounded-3xl bg-[#f5f5f5] p-5 sm:p-8"
@@ -1012,7 +1012,7 @@ function ClientsSection() {
 
 // ---------------------------------------------------------------------------
 // Services card-stack (GSAP-style): each card pins near the top and the next
-// card scrolls up over it, while the one underneath scales down — reverses on
+// card scrolls up over it, while the one underneath scales down - reverses on
 // scroll-up so you can see the cards behind.
 // ---------------------------------------------------------------------------
 function StackCard({
@@ -1079,7 +1079,7 @@ function StackCard({
 }
 
 // 14th card, appended after the real services in both the stacked and grid
-// views — a background photo with a dark wash for contrast, card shadow, and
+// views - a background photo with a dark wash for contrast, card shadow, and
 // a prominent CTA instead of a "Learn more" link.
 const CTA_CARD_IMAGE =
   "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80";
@@ -1235,7 +1235,7 @@ function ServicesScrollSection() {
   return (
     <section id="services" ref={ref} className="relative bg-[#EEEEEE] py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
-        {/* heading — sticky on the left */}
+        {/* heading - sticky on the left */}
         <div>
           <div className="lg:sticky lg:top-32">
             <Reveal>
@@ -1249,7 +1249,7 @@ function ServicesScrollSection() {
                 Solutions That <span style={{ color: "#ed1164" }}>Scale</span>
               </h2>
               <p className="mt-5 max-w-sm text-black">
-                From IT and security to business operations — explore the services we deliver as you
+                From IT and security to business operations - explore the services we deliver as you
                 scroll.
               </p>
               <button
@@ -1294,7 +1294,7 @@ function ServicesScrollSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Case record: a pinned card-stack — each engagement sticks in the same spot
+// Case record: a pinned card-stack - each engagement sticks in the same spot
 // and the next scrolls up over it, revealing them one by one as you scroll.
 // ---------------------------------------------------------------------------
 function CaseCard({
@@ -1454,7 +1454,7 @@ function BlogSection() {
                 Latest <span style={{ color: "#ed1164" }}>insights</span>.
               </h2>
               <p className="max-w-md text-sm leading-relaxed text-black/70">
-                Field notes from live engagements — security operations, delivery
+                Field notes from live engagements - security operations, delivery
                 playbooks, and what actually works at scale.
               </p>
             </div>
@@ -1600,7 +1600,8 @@ export default function SystemLimitedHome() {
           <video autoPlay muted loop playsInline preload="auto" className="h-full w-full object-cover">
             <source src="/alphabravo-company-profile.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#383838]/75 via-[#383838]/55 to-[#383838]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#383838]" />
         </div>
 
         <motion.div
