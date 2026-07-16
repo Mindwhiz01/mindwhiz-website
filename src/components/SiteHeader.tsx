@@ -216,6 +216,9 @@ export function SiteHeader({ theme }: { theme: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  // reveals the wordmark when the cursor is anywhere over the left region
+  // of the header bar, not only directly on the logo mark
+  const [brandOpen, setBrandOpen] = useState(false);
 
   // Keep the active tab in sync with the actual page being viewed. Detail
   // routes (e.g. "/services/it-helpdesk-24-7", "/industries/real-estate",
@@ -344,15 +347,32 @@ export function SiteHeader({ theme }: { theme: string }) {
           transition={{ duration: 2.6, repeat: Infinity, repeatDelay: 3.5, ease: "easeInOut" }}
           className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent"
         />
+        {/* left-side hover zone: reveals the wordmark whenever the cursor is
+            over the left region of the header, not only on the logo itself.
+            Sits behind the logo (z-0) so the mark stays clickable, and stops
+            short of the centered nav so tab hovers still work. */}
+        <div
+          className="absolute inset-y-0 left-0 z-0 w-1/3"
+          onMouseEnter={() => setBrandOpen(true)}
+          onMouseLeave={() => setBrandOpen(false)}
+        />
+
         {/* Brand — dark pill stretches on hover to reveal the wordmark inside it */}
-        <a href="/" className="group relative z-10 flex cursor-pointer items-center pl-1">
+        <a
+          href="/"
+          onMouseEnter={() => setBrandOpen(true)}
+          onMouseLeave={() => setBrandOpen(false)}
+          className="relative z-10 flex cursor-pointer items-center pl-1"
+        >
           <div className="flex items-center overflow-hidden rounded-full bg-neutral-900 ring-1 ring-white/10 transition-all duration-700 ease-out">
             <span className="grid h-11 w-11 shrink-0 place-items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-7 w-7" />
             </span>
             <span
-              className="max-w-0 overflow-hidden whitespace-nowrap pr-0 text-xl font-extrabold tracking-tight opacity-0 transition-all duration-700 ease-out group-hover:max-w-[200px] group-hover:pr-5 group-hover:opacity-100"
+              className={`overflow-hidden whitespace-nowrap text-xl font-extrabold tracking-tight transition-all duration-700 ease-out ${
+                brandOpen ? "max-w-[200px] pr-5 opacity-100" : "max-w-0 pr-0 opacity-0"
+              }`}
               style={{ fontFamily: "var(--font-display)" }}
             >
               <span className="text-white">Mind</span>
