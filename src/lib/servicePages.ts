@@ -14,6 +14,13 @@ export type ServicePageContent = {
     kicker: string;
     title: string;
     body: string[];
+    card?: {
+      tags: string[];
+      image: string;
+      title: string;
+      desc: string;
+      cta: string;
+    };
   };
   proof: { value: string; label: string }[];
   problems?: {
@@ -369,11 +376,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Endpoint security operations",
-      title: "Device protection and compliance management for distributed workforces.",
+      title: "Device protection for distributed workforces.",
       body: [
         "Endpoint security keeps laptops, workstations, and servers protected as teams scale across locations.",
         "MindWhiz supports monitoring, policy alignment, patch visibility, and remediation workflows that reduce device-level risk.",
       ],
+      card: {
+        tags: ["Endpoint Risk", "Compliance Gaps"],
+        image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80",
+        title: "Unmanaged Devices",
+        desc: "Unpatched laptops and unmonitored endpoints leave distributed teams exposed to preventable incidents.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "EDR", label: "Managed protection" },

@@ -165,6 +165,51 @@ function HelpdeskProofCard({
   );
 }
 
+function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intro"]["card"]> }) {
+  return (
+    <div className="group relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2rem] text-white shadow-xl shadow-black/10">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={card.image}
+        alt={card.title}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10" />
+
+      <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {card.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.06em] backdrop-blur"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#ed1164] text-white">
+          <ArrowRight className="h-4 w-4 -rotate-45" />
+        </span>
+      </div>
+
+      <div className="absolute inset-x-5 bottom-5">
+        <h3 className="text-2xl font-extrabold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+          {card.title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-white/80">{card.desc}</p>
+        <button
+          type="button"
+          className="mt-5 inline-flex w-full items-center justify-between rounded-full border border-white/30 px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] transition-colors duration-300 hover:bg-white hover:text-black"
+        >
+          {card.cta}
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
   return (
     <section className="relative overflow-hidden bg-[#EEEEEE] py-24">
@@ -584,7 +629,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
       ) : (
       <section className="relative overflow-hidden bg-white py-24">
         <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-[#ed1164]/20 blur-[140px]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 sm:px-8">
+        <div className={`relative mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 ${page.intro.card ? "lg:grid-cols-[1.2fr_0.8fr] lg:items-center" : ""}`}>
           <Reveal className="max-w-2xl">
             <Kicker>{page.intro.kicker}</Kicker>
             <h2
@@ -608,6 +653,12 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
           </Reveal>
+
+          {page.intro.card && (
+            <Reveal delay={0.1} className="justify-self-center">
+              <IntroProblemCard card={page.intro.card} />
+            </Reveal>
+          )}
         </div>
       </section>
       )}
