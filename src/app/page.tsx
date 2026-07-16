@@ -694,14 +694,15 @@ function DriveTalentSection() {
       // from one side only — no left/right wobble on browsers that animate
       // wheel scrolling. Scrolling back up retraces the identical path.
       //
-      // start "top bottom" (not "top top"): the sweep begins the moment the
-      // section's top touches the viewport bottom, so the words ride up with
-      // it instead of leaving a screen-height of blank white first.
+      // The section never pins — it scrolls through like any other content.
+      // "top bottom" → "bottom top" spans its whole pass across the viewport,
+      // so the timeline midpoint (words dead centre) lands exactly when the
+      // section fills the screen, with no held scroll on either side.
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
           start: "top bottom",
-          end: "bottom bottom",
+          end: "bottom top",
           scrub: 0.5,
           // exit distances are measured from the DOM — re-derive on resize
           invalidateOnRefresh: true,
@@ -714,24 +715,17 @@ function DriveTalentSection() {
       // the wide one strands the narrow one on screen.
       const offscreen = (el: HTMLElement) =>
         (window.innerWidth + el.getBoundingClientRect().width) / 2 + 32;
-      // First half: sweep in to dead centre by the timeline midpoint,
-      // easing into place (power1.inOut). Second half: a true exit — each
-      // word accelerates away from centre (power1.in, the mirror of arriving)
-      // until it has fully left through the far edge, rather than parking
-      // half-visible at 55% and waiting for the Clients panel to bury it.
-      // The entry animates xPercent, the exit animates x; GSAP sums the two,
-      // so at the midpoint both are 0 and the word is exactly centred. The
-      // exit finishes at 0.9 so the stage is clear a beat before the panel
-      // hand-off. Words stay fully opaque throughout — the exit is spatial,
-      // not a fade — and scrolling back up replays everything in reverse.
+      // First half: sweep in to dead centre, easing into place. Second half:
+      // accelerate away (power1.in, the mirror of arriving) until fully off
+      // the far edge — combined with the section itself scrolling on, the
+      // words swipe out diagonally instead of parking half-visible. The entry
+      // animates xPercent, the exit animates x; GSAP sums the two, so at the
+      // midpoint both are 0 and the word is exactly centred. Fully opaque
+      // throughout; scrolling back up replays everything in reverse.
       tl.fromTo(driveRef.current, { xPercent: -55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
         .fromTo(talentRef.current, { xPercent: 55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
-        .to(driveRef.current, { x: () => offscreen(driveRef.current!), duration: 0.9, ease: "power1.in", force3D: true }, 1)
-        .to(talentRef.current, { x: () => -offscreen(talentRef.current!), duration: 0.9, ease: "power1.in", force3D: true }, 1)
-        // spacer to keep total duration 2: centre stays at exactly half the
-        // scroll span, and the last 5% of the pin is an empty stage for the
-        // Clients panel hand-off
-        .to({}, { duration: 0.1 });
+        .to(driveRef.current, { x: () => offscreen(driveRef.current!), duration: 1, ease: "power1.in", force3D: true }, 1)
+        .to(talentRef.current, { x: () => -offscreen(talentRef.current!), duration: 1, ease: "power1.in", force3D: true }, 1);
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -739,12 +733,13 @@ function DriveTalentSection() {
   return (
     <section
       ref={ref}
-      // `overflow-clip`, never `overflow-hidden`: hidden makes this element a
-      // scroll container, which silently stops the child below from sticking.
-      // clip confines the sweeping text just the same without that side effect.
-      className="relative z-20 h-[250vh] overflow-clip bg-transparent"
+      // Exactly one viewport tall and no sticky child: the section flows past
+      // like ordinary content — the sweep rides the scroll instead of holding
+      // it. overflow-clip confines the exiting words without making this a
+      // scroll container.
+      className="relative z-20 h-screen overflow-clip bg-transparent"
     >
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-6">
+      <div className="flex h-full flex-col items-center justify-center overflow-hidden px-6">
         {/* light glow — top-left and bottom-right corners */}
         <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
         <h2
