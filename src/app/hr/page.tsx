@@ -218,8 +218,7 @@ const proof: {
 const process = [
   { title: "Role Intake", desc: "We align on the role, must-haves, comp, and timeline, then agree on SLAs and cadence." },
   { title: "Source & Screen", desc: "We source, screen, and shortlist vetted candidates matched to your criteria." },
-  { title: "Onboard & Manage", desc: "Offers, onboarding, payroll, and day-to-day HR run on a clear, compliant cadence." },
-  { title: "Review & Report", desc: "Performance cycles, compliance checks, and reporting keep the team on track." },
+  { title: "Onboard & Run", desc: "Offers, onboarding, payroll, and day-to-day HR run on a compliant cadence, with performance cycles, compliance checks, and reporting keeping the team on track." },
 ];
 
 const deliverables: { text: string; Icon: LucideIcon }[] = [

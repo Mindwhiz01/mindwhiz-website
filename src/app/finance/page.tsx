@@ -219,8 +219,7 @@ const proof: {
 const process = [
   { title: "Discovery & Setup", desc: "We map your chart of accounts, systems, and reporting needs, then agree on SLAs and cadence." },
   { title: "Secure Onboarding", desc: "Access is provisioned under least-privilege controls; historical data is cleaned and reconciled." },
-  { title: "Ongoing Operations", desc: "Daily bookkeeping, AP/AR, and payroll run on a fixed rhythm with clear ownership." },
-  { title: "Close & Report", desc: "A structured monthly close produces reviewed statements and the dashboards leadership needs." },
+  { title: "Operate & Report", desc: "Daily bookkeeping, AP/AR, and payroll run on a fixed rhythm, and a structured monthly close produces reviewed statements and the dashboards leadership needs." },
 ];
 
 // Staff augmentation — the two service groups from the source page.

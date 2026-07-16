@@ -224,8 +224,7 @@ const proof: {
 const process = [
   { title: "Plans & Scope Intake", desc: "Send drawings, specs, and the bid deadline. We confirm scope, trades, and deliverable format." },
   { title: "Digital Takeoff", desc: "Estimators measure quantities on-screen with audited tools for consistent, traceable counts." },
-  { title: "Pricing & Assembly", desc: "We apply current material, labor, and equipment rates, then build the priced estimate." },
-  { title: "Review & Handover", desc: "A senior estimator QA-checks the package before it lands in your inbox, ready to submit." },
+  { title: "Price & Handover", desc: "We apply current material, labor, and equipment rates to build the priced estimate, then a senior estimator QA-checks the package before it lands in your inbox, ready to submit." },
 ];
 
 const deliverables: { text: string; Icon: LucideIcon }[] = [
