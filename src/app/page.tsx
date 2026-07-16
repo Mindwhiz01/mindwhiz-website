@@ -997,6 +997,25 @@ function ClientsSection() {
   );
 }
 
+// Maps each service to its dedicated detail page so the cards (and their
+// "Learn more" links) send visitors to the related page.
+const serviceRoutes: Record<string, string> = {
+  "IT Helpdesk 24/7": "/services/it-helpdesk-24-7",
+  "NOC Monitoring": "/services/noc-monitoring",
+  "Cybersecurity Monitoring": "/services/cybersecurity-monitoring",
+  "Cloud Infrastructure": "/services/cloud-infrastructure",
+  "DevOps & Automation": "/services/devops-automation",
+  "Endpoint Security": "/services/endpoint-security",
+  "Server & Network Administration": "/services/server-network-administration",
+  "Remote Desktop & Assets": "/services/remote-desktop-assets",
+  "Staff Augmentation": "/services/staff-augmentation",
+  "Digital Marketing": "/service",
+  "Construction Estimation": "/construction-estimation",
+  "Finance & Accounting": "/finance",
+  "HR Services": "/hr",
+};
+const serviceHref = (name: string) => serviceRoutes[name] ?? "/#services";
+
 // ---------------------------------------------------------------------------
 // Services card-stack (GSAP-style): each card pins near the top and the next
 // card scrolls up over it, while the one underneath scales down — reverses on
@@ -1014,7 +1033,7 @@ function StackCard({
   progress: MotionValue<number>;
 }) {
   const Icon = iconMap[s.icon] ?? Activity;
-  const href = s.name === "Digital Marketing" ? "/service" : "/#services";
+  const href = serviceHref(s.name);
   // each lower card shrinks a little so the stacked edges stay visible
   const targetScale = 1 - (total - 1 - i) * 0.045;
   const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
@@ -1155,7 +1174,7 @@ function ServiceCtaCardFlat() {
 
 function ServiceCardFlat({ s, i }: { s: (typeof services)[number]; i: number }) {
   const Icon = iconMap[s.icon] ?? Activity;
-  const href = s.name === "Digital Marketing" ? "/service" : "/#services";
+  const href = serviceHref(s.name);
   return (
     <motion.a
       href={href}

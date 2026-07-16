@@ -311,7 +311,7 @@ export function SiteHeader({ theme }: { theme: string }) {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mx-auto flex w-full max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-full border border-white/15 bg-black/20 px-3 py-3 shadow-xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150"
+        className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-4 overflow-hidden rounded-full border border-white/15 bg-black/20 px-3 py-3 shadow-xl shadow-black/20 backdrop-blur-2xl backdrop-saturate-150"
       >
         {/* crystal sheen + top highlight */}
         <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -343,7 +343,7 @@ export function SiteHeader({ theme }: { theme: string }) {
         {/* xl, not lg: at 1024-1279px this centered nav collides with the
             region selector + CTA on the right, so those widths keep the
             hamburger menu instead */}
-        <nav className="z-10 hidden items-center gap-1 rounded-full bg-neutral-900/60 p-1.5 xl:absolute xl:left-1/2 xl:top-1/2 xl:flex xl:-translate-x-1/2 xl:-translate-y-1/2">
+        <nav className="z-10 hidden items-center gap-0.5 rounded-full bg-neutral-900/60 p-1 xl:absolute xl:left-1/2 xl:top-1/2 xl:flex xl:-translate-x-1/2 xl:-translate-y-1/2">
           {nav.map((n, i) => {
             const isActive = active === n.label;
             const hasMega =
@@ -366,7 +366,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.18 + 0.05 * i }}
                 style={{ transformOrigin: "bottom center" }}
-                className={`crystal-tab relative whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`crystal-tab relative whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold transition-colors ${
                   isActive ? "text-black" : "text-neutral-300 hover:text-white"
                 }`}
               >
@@ -393,13 +393,13 @@ export function SiteHeader({ theme }: { theme: string }) {
         </nav>
 
         {/* Actions */}
-        <div className="relative z-10 flex items-center gap-2">
+        <div className="relative z-10 flex items-center gap-1.5">
           {/* region selector — dropdown, portaled so it isn't clipped by the pill */}
           <div className="relative hidden sm:block">
             <button
               ref={regionBtnRef}
               onClick={() => setRegionOpen((v) => !v)}
-              className={`flex items-center gap-2 rounded-full border px-3.5 py-2.5 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-1.5 rounded-full border px-3 py-2.5 text-sm font-medium transition-colors ${
                 onLight
                   ? "border-black/20 text-black hover:border-black/40"
                   : "border-white/15 text-neutral-200 hover:border-white/30 hover:text-white"
@@ -459,7 +459,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             )}
           <a
             href="/contact"
-            className="group hidden items-center gap-2 rounded-full border border-white/20 bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-neutral-800 sm:flex"
+            className="group hidden items-center gap-2 rounded-full border border-white/20 bg-neutral-950 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-neutral-800 sm:flex"
           >
             <span className="relative h-4 w-4 overflow-hidden">
               <ArrowUpRight className="absolute inset-0 h-4 w-4 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5" />
