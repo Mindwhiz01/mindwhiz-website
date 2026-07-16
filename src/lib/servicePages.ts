@@ -142,11 +142,18 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Industry-leading NOC operations",
-      title: "Certified engineers delivering reliable monitoring and operational support.",
+      title: "Certified engineers, reliable monitoring.",
       body: [
         "MindWhiz works alongside organizations that value stability, responsiveness, and operational excellence.",
         "Our NOC teams help reduce downtime, improve visibility, and support business continuity with confidence.",
       ],
+      card: {
+        tags: ["Network Blind Spots", "Downtime Risk"],
+        image: sharedImages.noc,
+        title: "Delayed Detection",
+        desc: "Fragmented monitoring and slow alerts let small network issues turn into costly outages.",
+        cta: "Explore Problem",
+      },
     },
     proof: [
       { value: "5+", label: "Years of combined experience" },
