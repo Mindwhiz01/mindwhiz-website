@@ -703,17 +703,35 @@ function DriveTalentSection() {
           start: "top bottom",
           end: "bottom bottom",
           scrub: 0.5,
+          // exit distances are measured from the DOM — re-derive on resize
+          invalidateOnRefresh: true,
         },
       });
-      // Two 1s halves: in to dead centre by the timeline midpoint (while the
-      // section is pinned), back out through the far edge. power1.inOut so
-      // they settle into centre rather than sail straight through. Words stay
-      // fully opaque the whole time — no fade in, no fade out — so the text
-      // reads solid throughout the section and while it hands off to Clients.
+      // Distance that carries a centred element completely past a viewport
+      // edge: half the viewport plus half the element, with a small margin so
+      // the scrub's lerp tail can never leave a sliver behind. xPercent can't
+      // express this — the words differ in width, so a percentage that clears
+      // the wide one strands the narrow one on screen.
+      const offscreen = (el: HTMLElement) =>
+        (window.innerWidth + el.getBoundingClientRect().width) / 2 + 32;
+      // First half: sweep in to dead centre by the timeline midpoint,
+      // easing into place (power1.inOut). Second half: a true exit — each
+      // word accelerates away from centre (power1.in, the mirror of arriving)
+      // until it has fully left through the far edge, rather than parking
+      // half-visible at 55% and waiting for the Clients panel to bury it.
+      // The entry animates xPercent, the exit animates x; GSAP sums the two,
+      // so at the midpoint both are 0 and the word is exactly centred. The
+      // exit finishes at 0.9 so the stage is clear a beat before the panel
+      // hand-off. Words stay fully opaque throughout — the exit is spatial,
+      // not a fade — and scrolling back up replays everything in reverse.
       tl.fromTo(driveRef.current, { xPercent: -55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
         .fromTo(talentRef.current, { xPercent: 55 }, { xPercent: 0, duration: 1, ease: "power1.inOut", force3D: true }, 0)
-        .to(driveRef.current, { xPercent: 55, duration: 1, ease: "power1.inOut", force3D: true }, 1)
-        .to(talentRef.current, { xPercent: -55, duration: 1, ease: "power1.inOut", force3D: true }, 1);
+        .to(driveRef.current, { x: () => offscreen(driveRef.current!), duration: 0.9, ease: "power1.in", force3D: true }, 1)
+        .to(talentRef.current, { x: () => -offscreen(talentRef.current!), duration: 0.9, ease: "power1.in", force3D: true }, 1)
+        // spacer to keep total duration 2: centre stays at exactly half the
+        // scroll span, and the last 5% of the pin is an empty stage for the
+        // Clients panel hand-off
+        .to({}, { duration: 0.1 });
     }, ref);
     return () => ctx.revert();
   }, []);
