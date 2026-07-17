@@ -22,7 +22,14 @@
       "PowerShell(git config --global user.email \"assadullahnouman@gmail.com\")",
       "PowerShell(git init)",
       "PowerShell(git branch -M main)",
-      "PowerShell(git add -A)"
+      "PowerShell(git add -A)",
+      "Bash(npx tsc *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(chromium-cli --help)",
+      "Bash(npx --yes playwright --version)",
+      "Read(//Users/noumanassadullah/Library/Caches/**)",
+      "Bash(npm ls *)"
     ]
   }
 }

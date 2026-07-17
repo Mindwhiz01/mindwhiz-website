@@ -480,7 +480,7 @@ export const servicePages: ServicePageContent[] = [
     capabilities: [
       { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" },
       { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=900&q=80" },
-      { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80" },
+      { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "/service-coverage/cybersecurity/security-control.png" },
     ],
     benefits: [
       { title: "Faster Deployments", desc: "CI/CD and deployment automation reduce manual effort and speed release cycles." },
@@ -534,10 +534,10 @@ export const servicePages: ServicePageContent[] = [
       { value: "Unified", label: "Security visibility" },
     ],
     capabilities: [
-      { title: "Managed Detection and Response", desc: "Monitor activity, identify threats, and respond to security risks in real time.", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80" },
-      { title: "Threat Hunting", desc: "Structured threat hunting identifies suspicious activity and hidden risks before impact occurs.", image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=900&q=80" },
-      { title: "Attack Surface Visibility", desc: "Monitoring across endpoints, networks, email, and cloud environments maintains comprehensive coverage.", image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=900&q=80" },
-      { title: "Security Control Management", desc: "Best-practice security controls improve visibility while reducing operational complexity.", image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80" },
+      { title: "Managed Detection and Response", desc: "Monitor activity, identify threats, and respond to security risks in real time.", image: "/service-coverage/cybersecurity/managed-detection.png" },
+      { title: "Threat Hunting", desc: "Structured threat hunting identifies suspicious activity and hidden risks before impact occurs.", image: "/service-coverage/cybersecurity/threat-hunting.png" },
+      { title: "Attack Surface Visibility", desc: "Monitoring across endpoints, networks, email, and cloud environments maintains comprehensive coverage.", image: "/service-coverage/cybersecurity/attack-surface.png" },
+      { title: "Security Control Management", desc: "Best-practice security controls improve visibility while reducing operational complexity.", image: "/service-coverage/cybersecurity/security-control.png" },
     ],
     benefits: [
       { title: "Modern MDR Capabilities", desc: "Integrated threat detection and response supported by SOC workflows." },
