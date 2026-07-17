@@ -278,7 +278,7 @@ function CapabilitiesCarousel() {
                 <article
                   key={title}
                   style={{ width: cardW }}
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl text-white transition-transform duration-300 hover:-translate-y-1.5"
+                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

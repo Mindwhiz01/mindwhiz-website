@@ -639,7 +639,7 @@ export default function WhyMindWhizPage() {
                 <a
                   key={`${o.name}-${i}`}
                   href="/#services"
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[360px] w-[330px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5"
+                  className="group relative flex h-[58vh] max-h-[600px] min-h-[360px] w-[330px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5"
                 >
                   {/* stock image */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}

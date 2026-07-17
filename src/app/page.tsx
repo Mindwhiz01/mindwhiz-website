@@ -863,7 +863,7 @@ function IndustriesWorlds() {
           <a
             key={w.slug}
             href={`/industries/${w.slug}`}
-            className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] w-[360px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1.5"
+            className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] w-[360px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5"
           >
             {/* stock image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
