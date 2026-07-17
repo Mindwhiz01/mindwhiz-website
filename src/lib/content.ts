@@ -188,7 +188,7 @@ export const footerGroups = [
       { label: "Why MindWhiz", href: "/why-mindwhiz" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Web Services", href: "/web-services" },
-      { label: "Careers", href: "/contact" },
+      { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
   },

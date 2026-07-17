@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/why-mindwhiz", priority: 0.8 },
     { path: "/about", priority: 0.8 },
     { path: "/case-studies", priority: 0.8 },
+    { path: "/careers", priority: 0.8 },
+    { path: "/culture", priority: 0.7 },
     { path: "/contact", priority: 0.8 },
     { path: "/agency", priority: 0.7 },
     { path: "/finance", priority: 0.7 },
