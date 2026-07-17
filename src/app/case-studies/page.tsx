@@ -9,6 +9,7 @@ import {
   type Variants,
 } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { ArrowRight } from "lucide-react";
 import { caseStudies } from "@/lib/content";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -91,10 +92,19 @@ function CaseCard({
               {cs.client}
             </h3>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-black/60">{cs.result}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7DB022]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
-              Filed · {cs.category} · 2025
-            </span>
+            <div className="mt-6 flex flex-wrap items-center gap-5">
+              <a
+                href={`/case-studies/${cs.slug}`}
+                className="group inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ed1164]"
+              >
+                Read case study
+                <ArrowRight className="h-4 w-4 text-[#9CCC3C] transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7DB022]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
+                Filed · {cs.category} · 2025
+              </span>
+            </div>
           </div>
 
           {/* exhibit */}
@@ -194,7 +204,7 @@ export default function CaseStudiesPage() {
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
+          image="/banners/case-studies.png"
           title={
             <>
               On the <span className="text-[#9CCC3C]">record.</span>

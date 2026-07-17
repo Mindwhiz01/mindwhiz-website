@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { servicePages } from "@/lib/servicePages";
 import { industryPages } from "@/lib/industryPages";
 import { posts } from "@/lib/blog";
+import { caseStudies } from "@/lib/content";
 
 const siteUrl = "https://graphite-teal-template.vercel.app";
 
@@ -53,5 +54,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...blogRoutes];
+  const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((cs) => ({
+    url: `${siteUrl}/case-studies/${cs.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...industryRoutes,
+    ...blogRoutes,
+    ...caseStudyRoutes,
+  ];
 }

@@ -103,30 +103,103 @@ export const industries = [
 
 export const caseStudies = [
   {
+    slug: "alpha-bravo",
     client: "Alpha Bravo",
     category: "Construction",
     result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast. The team plugged directly into existing bid workflows, cutting turnaround on takeoffs and pricing. Within the first quarter, Alpha Bravo was submitting more competitive bids without adding headcount in-house.",
     highlights: ["Faster delivery", "Lower hiring friction", "Scalable support"],
     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
     logo: "/clients/alpha-bravo.png",
+    services: ["Construction Estimation", "Staff Augmentation", "Bid Support"],
+    challenge:
+      "Alpha Bravo's in-house estimating team was the bottleneck on every bid. Takeoffs and pricing took days, forcing them to pass on opportunities or submit rushed numbers. Hiring locally was slow and expensive, and each new estimator took months to become productive.",
+    approach: [
+      "We embedded vetted remote estimators directly into Alpha Bravo's existing bid workflow — no new tools to learn, no process disruption.",
+      "A shared cadence of daily handoffs let the team work takeoffs overnight, so pricing was ready when the office opened.",
+      "Clear SLAs and named owners kept accountability tight as volume scaled up.",
+    ],
+    outcomes: [
+      "Turnaround on takeoffs and pricing cut dramatically within weeks.",
+      "More competitive bids submitted without adding in-house headcount.",
+      "A repeatable staffing model the team could scale up or down by season.",
+    ],
+    metrics: [
+      { value: "1st Q", label: "More competitive bids submitted" },
+      { value: "0", label: "New in-house hires needed" },
+      { value: "~2x", label: "Bid throughput capacity" },
+    ],
+    quote: {
+      text: "MindWhiz plugged straight into how we already work. We were bidding more, faster, without growing the office.",
+      author: "Operations Lead, Alpha Bravo",
+    },
   },
   {
+    slug: "villa-tech",
     client: "Villa Tech",
     category: "IT Staffing",
     result: "Delivered expert IT talent to scale infrastructure and improve system reliability across operations. Engineers were embedded within two weeks, closing coverage gaps across monitoring, patching, and incident response. Downtime incidents dropped sharply as proactive maintenance replaced reactive firefighting.",
     highlights: ["Rapid onboarding", "Better uptime", "Team expansion"],
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
     logo: "/clients/villa-tech.png",
+    services: ["Staff Augmentation", "NOC Monitoring", "Server & Network Administration"],
+    challenge:
+      "Villa Tech was growing faster than its IT function could keep up. Monitoring gaps meant issues were caught late, patching slipped, and the small internal team spent its days firefighting incidents instead of preventing them.",
+    approach: [
+      "We embedded expert engineers within two weeks, closing coverage gaps across monitoring, patching, and incident response.",
+      "Proactive maintenance routines replaced reactive firefighting, with round-the-clock eyes on critical systems.",
+      "The augmented team scaled alongside Villa Tech's infrastructure as new services came online.",
+    ],
+    outcomes: [
+      "Downtime incidents dropped sharply as problems were caught before users noticed.",
+      "System reliability improved across the board.",
+      "The internal team was freed to focus on higher-value engineering work.",
+    ],
+    metrics: [
+      { value: "2 wks", label: "From kickoff to embedded" },
+      { value: "↓", label: "Sharp drop in downtime" },
+      { value: "24/7", label: "Proactive coverage" },
+    ],
+    quote: {
+      text: "MindWhiz provided the perfect talent to scale our infrastructure. Downtime is no longer something we worry about daily.",
+      author: "CTO, Villa Tech",
+    },
   },
   {
+    slug: "inovatiqa",
     client: "Inovatiqa",
     category: "Back Office",
     result: "Enabled improved accuracy and turnaround by strengthening back-office support and workflows. Standardized checklists and QA passes cut processing errors well below the client's target threshold. Leadership now gets same-day visibility into throughput instead of waiting on weekly manual reports.",
     highlights: ["Higher accuracy", "Faster turnaround", "Process clarity"],
     img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
     logo: "/clients/inovatiqa.png",
+    services: ["Back-Office Support", "Process Design", "Quality Assurance"],
+    challenge:
+      "Inovatiqa's back-office processing was inconsistent and error-prone. Leadership had no real-time view of throughput and relied on weekly manual reports that were already out of date by the time they landed.",
+    approach: [
+      "We strengthened back-office workflows with standardized checklists and structured QA passes at every stage.",
+      "A clear ownership model and daily reporting replaced the slow weekly manual roll-ups.",
+      "Continuous refinement kept error rates falling as volume grew.",
+    ],
+    outcomes: [
+      "Processing errors cut well below the client's target threshold.",
+      "Turnaround times improved noticeably.",
+      "Leadership gained same-day visibility into throughput.",
+    ],
+    metrics: [
+      { value: "<target", label: "Error rate vs. threshold" },
+      { value: "Same-day", label: "Throughput visibility" },
+      { value: "QA'd", label: "Every workflow standardized" },
+    ],
+    quote: {
+      text: "We finally trust our numbers and see them the same day. The workflows just run.",
+      author: "Head of Operations, Inovatiqa",
+    },
   },
 ];
+
+export function getCaseStudy(slug: string) {
+  return caseStudies.find((c) => c.slug === slug);
+}
 
 export const testimonials = [
   { name: "Villa Tech", role: "CTO, USA", quote: "MindWhiz provided the perfect talent to boost our cybersecurity efficiently. Highly recommended!" },
