@@ -906,6 +906,11 @@ const clientsRow1: ClientItem[] = [
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
   { name: "Villa Tech", src: "/clients/villa-tech.png" },
+  { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png" },
+  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png" },
+  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png" },
+  { name: "Dr. Owais", src: "/clients/dr-owais.png" },
+  { name: "Ideal Smile", src: "/clients/ideal-smile.png" },
 ];
 const clientsRow2: ClientItem[] = [...clientsRow1].reverse();
 
