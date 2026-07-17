@@ -37,7 +37,23 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     };
     document.addEventListener("click", onClick);
 
+    // cross-page anchor landings (e.g. /web-services -> /#services): the
+    // browser's native hash jump fires before images and pinned scroll
+    // sections settle the layout, so re-anchor to the hash target once early
+    // and again after the layout has stabilised.
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    if (window.location.hash) {
+      const jumpToHash = () => {
+        const target = document.getElementById(window.location.hash.slice(1));
+        if (!target) return;
+        lenis.scrollTo(target, { offset: -80, immediate: true });
+      };
+      timeouts.push(setTimeout(jumpToHash, 100));
+      timeouts.push(setTimeout(jumpToHash, 800));
+    }
+
     return () => {
+      timeouts.forEach(clearTimeout);
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(rafId);
       registerLenis(null);
