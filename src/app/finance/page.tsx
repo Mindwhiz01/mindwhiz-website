@@ -23,11 +23,9 @@ import {
   Coins,
   Scale,
   Percent,
-  Briefcase,
   CalendarClock,
   CheckCircle2,
   Clock,
-  BadgeCheck,
   FileSpreadsheet,
   Target,
   TrendingDown,
@@ -231,15 +229,6 @@ const coreServices: { title: string; desc: string; Icon: LucideIcon }[] = [
   { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", Icon: Landmark },
   { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", Icon: Percent },
   { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", Icon: Scale },
-];
-
-const advancedServices: { title: string; desc: string; Icon: LucideIcon }[] = [
-  { title: "Financial Planning & Analysis", desc: "Strategic analysis to support sustainable financial growth.", Icon: LineChart },
-  { title: "Cash Flow Management", desc: "Monitoring and optimizing cash inflows and outflows.", Icon: Coins },
-  { title: "Budgeting & Forecasting", desc: "Creating and managing budgets and financial projections.", Icon: Target },
-  { title: "Invoice Processing & Billing", desc: "Handling invoicing, billing cycles, and payment tracking.", Icon: Receipt },
-  { title: "Virtual CFO & Controller", desc: "Expert financial leadership without full-time overhead.", Icon: Briefcase },
-  { title: "Audit Prep & Vendor Payments", desc: "Ensuring readiness, transparency, and payment accuracy.", Icon: BadgeCheck },
 ];
 
 const whyPoints = ["Process improvement", "Cost efficiency", "Remote accountants"];
@@ -710,28 +699,6 @@ export default function FinancePage() {
             </div>
           </div>
 
-          {/* Group 2 - Advanced Financial Planning */}
-          <div className="mt-16">
-            <Reveal>
-              <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
-                <div className="max-w-xl">
-                  <h3 className="text-2xl font-bold text-black sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
-                    Advanced Financial Planning &amp; Oversight
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-black/60">
-                    A flexible finance team that scales with you - supporting
-                    strategic planning and executive-level financial control.
-                  </p>
-                </div>
-                <Cta href="/contact" label="Contact us" className="shrink-0" />
-              </div>
-            </Reveal>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {advancedServices.map((s, i) => (
-                <FinanceServiceCard key={s.title} s={s} i={i} />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
