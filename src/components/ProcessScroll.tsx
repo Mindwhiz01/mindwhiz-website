@@ -168,7 +168,7 @@ export default function ProcessScroll({
             <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
           </span>
           <span
-            className="text-center text-xl font-bold leading-tight sm:text-2xl"
+            className="text-center text-2xl font-extrabold leading-tight sm:text-3xl lg:text-4xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {ctaLabel}
