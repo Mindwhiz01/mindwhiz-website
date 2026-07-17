@@ -27,17 +27,22 @@ export default function CardCornerArrow({
   const pocket = size + gap * 2; // notch width/height along the card edges
   const w = pocket + radius; // svg box includes the concave eases
   const r = radius;
+  // overshoot the card's right/bottom edges — the card clips the excess, so
+  // the fill fully covers the clip boundary and no image pixel can fringe out
+  const bleed = 2;
 
   // trace: card right edge → concave ease in → pocket top edge → convex
   // inner corner → pocket left edge → concave ease out → card bottom edge
   const d = [
-    `M ${w} 0`,
+    `M ${w + bleed} 0`,
+    `L ${w} 0`,
     `A ${r} ${r} 0 0 1 ${pocket} ${r}`,
     `L ${r * 2} ${r}`,
     `A ${r} ${r} 0 0 0 ${r} ${r * 2}`,
     `L ${r} ${pocket}`,
     `A ${r} ${r} 0 0 1 0 ${w}`,
-    `L ${w} ${w}`,
+    `L 0 ${w + bleed}`,
+    `L ${w + bleed} ${w + bleed}`,
     "Z",
   ].join(" ");
 
@@ -45,10 +50,11 @@ export default function CardCornerArrow({
     <div className="absolute bottom-0 right-0 z-20" style={{ width: w, height: w }}>
       <svg
         aria-hidden
-        width={w}
-        height={w}
-        viewBox={`0 0 ${w} ${w}`}
-        className="absolute inset-0 block"
+        width={w + bleed}
+        height={w + bleed}
+        viewBox={`0 0 ${w + bleed} ${w + bleed}`}
+        shapeRendering="geometricPrecision"
+        className="absolute left-0 top-0 block max-w-none"
       >
         <path d={d} fill={bg} />
       </svg>
