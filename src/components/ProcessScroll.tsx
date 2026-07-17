@@ -145,9 +145,9 @@ export default function ProcessScroll({
 
   return (
     <section className="relative bg-white">
-      {/* heading sits above the images on a light background; CTA rides on
-          the right edge as a light pill with a pink circular arrow badge */}
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
+      {/* heading sits above the images on a light background; the CTA is a
+          square block on the right that stretches to the heading's height */}
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
         <div>
           <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
             {kicker}
@@ -161,12 +161,13 @@ export default function ProcessScroll({
         </div>
         <a
           href={ctaHref}
-          className="group inline-flex w-fit shrink-0 items-center gap-4 rounded-full border border-black/15 bg-white py-2 pl-6 pr-2 text-sm font-semibold text-black transition-colors duration-300 hover:border-black hover:bg-black hover:text-white"
+          className="group relative flex h-40 w-40 shrink-0 flex-col justify-between overflow-hidden rounded-2xl rounded-br-none bg-neutral-950 p-5 text-white transition-colors duration-300 hover:bg-[#ed1164] lg:aspect-square lg:h-auto lg:w-auto lg:self-stretch"
         >
-          {ctaLabel}
-          <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] text-white transition-transform duration-500 ease-out group-hover:rotate-[405deg] group-hover:bg-[#9CCC3C] group-hover:text-black">
-            <ArrowUpRight className="h-4 w-4" />
+          <span className="relative ml-auto h-8 w-8 overflow-hidden">
+            <ArrowUpRight className="absolute inset-0 h-8 w-8 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10" />
+            <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
           </span>
+          <span className="text-sm font-semibold leading-snug">{ctaLabel}</span>
         </a>
       </div>
 
