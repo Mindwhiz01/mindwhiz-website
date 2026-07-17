@@ -13,7 +13,6 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   ArrowRight,
   ArrowUpRight,
-  Calculator,
   BookOpen,
   Receipt,
   Wallet,
@@ -26,7 +25,6 @@ import {
   CalendarClock,
   CheckCircle2,
   Clock,
-  FileSpreadsheet,
   Target,
   TrendingDown,
   type LucideIcon,
@@ -220,30 +218,31 @@ const process = [
   { title: "Operate & Report", desc: "Daily bookkeeping, AP/AR, and payroll run on a fixed rhythm, and a structured monthly close produces reviewed statements and the dashboards leadership needs." },
 ];
 
-// Staff augmentation - the two service groups from the source page.
-const coreServices: { title: string; desc: string; Icon: LucideIcon }[] = [
-  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", Icon: Wallet },
-  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", Icon: BookOpen },
-  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision-making.", Icon: FileText },
-  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", Icon: FileSpreadsheet },
-  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", Icon: Landmark },
-  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", Icon: Percent },
-  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", Icon: Scale },
+// Staff augmentation - core services, rendered as image cards matching the
+// home-page industries design.
+const coreServices: { title: string; desc: string; img: string }[] = [
+  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision-making.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&h=1000&q=80" },
 ];
 
 const whyPoints = ["Process improvement", "Cost efficiency", "Remote accountants"];
 
-// Service card matching the home-page "ServiceCardFlat" design: green icon
-// square, a big index number in the corner, title + description, and a
-// "Learn more" link with a pink arrow.
+// Service card matching the home-page industries card design: full-bleed
+// image, dark gradient, index number top-left, scooped corner with a green
+// circular arrow, and title + description + link pinned to the bottom.
 function FinanceServiceCard({
   s,
   i,
 }: {
-  s: { title: string; desc: string; Icon: LucideIcon };
+  s: { title: string; desc: string; img: string };
   i: number;
 }) {
-  const { Icon } = s;
+  const total = String(coreServices.length).padStart(2, "0");
   return (
     <motion.a
       href="/contact"
@@ -251,29 +250,36 @@ function FinanceServiceCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7"
+      className="group relative flex h-[420px] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5"
     >
-      <div>
-        <div className="flex items-center justify-between">
-          <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#9CCC3C]/15 text-[#9CCC3C]">
-            <Icon className="h-6 w-6" />
-          </span>
-          <span
-            className="text-3xl font-extrabold text-[#9CCC3C]/60"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-        </div>
-        <h3 className="mt-5 text-xl font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={s.img}
+        alt={s.title}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
+
+      <span className="absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
+        {String(i + 1).padStart(2, "0")} / {total}
+      </span>
+
+      {/* scooped corner + green circular arrow */}
+      <CardCornerArrow bg="#EEEEEE" />
+
+      <div className="relative p-6 pb-12">
+        <h3
+          className="text-xl font-semibold leading-tight drop-shadow"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
           {s.title}
         </h3>
-        <p className="mt-2 text-sm text-black">{s.desc}</p>
+        <p className="mt-2 text-sm leading-relaxed text-white/75">{s.desc}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
+          Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+        </span>
       </div>
-      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-black">
-        Learn more
-        <ArrowRight className="h-4 w-4 text-[#ed1164] transition-transform group-hover:translate-x-1" />
-      </span>
     </motion.a>
   );
 }
