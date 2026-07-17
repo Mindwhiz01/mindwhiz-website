@@ -379,7 +379,7 @@ export default function ConstructionEstimationPage() {
 
       {/* ===================== HERO ===================== */}
       <PageBanner
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80"
+        image="/banners/construction-estimation.png"
         title={
           <>
             Win

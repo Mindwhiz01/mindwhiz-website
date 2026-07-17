@@ -535,7 +535,7 @@ export default function FinancePage() {
 
       {/* ===================== HERO ===================== */}
       <PageBanner
-        image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80"
+        image="/banners/finance.png"
         title={
           <>
             Close

@@ -54,7 +54,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/27-7/",
     group: "IT & Security",
     hero: {
-      image: sharedImages.helpdesk,
+      image: "/banners/it-helpdesk.png",
       title: ["Always-On", "IT"],
       highlight: "Support",
       subtitle:
@@ -133,7 +133,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/noc-dummy/",
     group: "IT & Security",
     hero: {
-      image: sharedImages.noc,
+      image: "/banners/noc-monitoring.png",
       title: ["Protect", "Your"],
       highlight: "Uptime",
       subtitle:
@@ -197,12 +197,12 @@ export const servicePages: ServicePageContent[] = [
       ],
     },
     capabilities: [
-      { title: "Network Monitoring", desc: "Continuous monitoring of routers, switches, firewalls, and wireless networks to identify performance issues, outages, and abnormal activity.", image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80" },
-      { title: "Server Monitoring", desc: "Real-time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" },
-      { title: "Application Monitoring", desc: "Visibility into application performance and dependencies to detect slowdowns, failures, and service degradation early.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" },
-      { title: "Website Monitoring", desc: "Availability checks, certificate status, and user experience validation for websites and portals.", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" },
-      { title: "Broadband Monitoring", desc: "Performance monitoring across broadband networks, including PON, DOCSIS, and customer equipment.", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" },
-      { title: "Outage Remediation", desc: "Fast issue resolution using documented runbooks, automated recovery actions, and coordinated escalation.", image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" },
+      { title: "Network Monitoring", desc: "Continuous monitoring of routers, switches, firewalls, and wireless networks to identify performance issues, outages, and abnormal activity.", image: "/service-coverage/noc-monitoring/network-monitoring.png" },
+      { title: "Server Monitoring", desc: "Real-time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "/service-coverage/noc-monitoring/server-monitoring.png" },
+      { title: "Application Monitoring", desc: "Visibility into application performance and dependencies to detect slowdowns, failures, and service degradation early.", image: "/service-coverage/noc-monitoring/application-monitoring.png" },
+      { title: "Website Monitoring", desc: "Availability checks, certificate status, and user experience validation for websites and portals.", image: "/service-coverage/noc-monitoring/website-monitoring.png" },
+      { title: "Broadband Monitoring", desc: "Performance monitoring across broadband networks, including PON, DOCSIS, and customer equipment.", image: "/service-coverage/noc-monitoring/broadband-monitoring.png" },
+      { title: "Outage Remediation", desc: "Fast issue resolution using documented runbooks, automated recovery actions, and coordinated escalation.", image: "/service-coverage/noc-monitoring/outage-remediation.png" },
     ],
     benefits: [
       { title: "Real-time Incident Management", desc: "Immediate detection, triage, escalation, and resolution help minimize downtime." },
@@ -227,7 +227,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/remote-desktop/",
     group: "Cloud & DevOps",
     hero: {
-      image: sharedImages.remote,
+      image: "/banners/remote-desktop-assets.png",
       title: ["Control", "From"],
       highlight: "Anywhere",
       subtitle:
@@ -282,7 +282,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/elementor-18765/",
     group: "Cloud & DevOps",
     hero: {
-      image: sharedImages.cloud,
+      image: "/banners/cloud-infrastructure.png",
       title: ["Optimize", "Your"],
       highlight: "Cloud",
       subtitle:
@@ -338,7 +338,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/server-dummy/",
     group: "Cloud & DevOps",
     hero: {
-      image: sharedImages.server,
+      image: "/banners/server-network-administration.png",
       title: ["Power", "Your"],
       highlight: "Backbone",
       subtitle:
@@ -395,7 +395,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
     hero: {
-      image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/endpoint-security.png",
       title: ["Secure", "Every"],
       highlight: "Device",
       subtitle:
@@ -423,9 +423,9 @@ export const servicePages: ServicePageContent[] = [
       { value: "Fleet", label: "Device visibility" },
     ],
     capabilities: [
-      { title: "Device Protection", desc: "EDR/AV posture monitoring, policy checks, and response coordination for risky devices.", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80" },
-      { title: "Patch Tracking", desc: "Patch status, exception follow-up, and reporting for laptops, workstations, and servers.", image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=900&q=80" },
-      { title: "Access Controls", desc: "Device compliance, enrollment checks, and security hygiene across remote work environments.", image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80" },
+      { title: "Device Protection", desc: "EDR/AV posture monitoring, policy checks, and response coordination for risky devices.", image: "/services/endpoint-security/device-protection.png" },
+      { title: "Patch Tracking", desc: "Patch status, exception follow-up, and reporting for laptops, workstations, and servers.", image: "/services/endpoint-security/patch-tracking.png" },
+      { title: "Access Controls", desc: "Device compliance, enrollment checks, and security hygiene across remote work environments.", image: "/services/endpoint-security/access-control.png" },
     ],
     benefits: [
       { title: "Centralized Visibility", desc: "Track device posture, protection status, and compliance from a clearer operational view." },
@@ -449,7 +449,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/elementor-18794/",
     group: "Cloud & DevOps",
     hero: {
-      image: sharedImages.devops,
+      image: "/banners/devops-automation.png",
       title: ["Ship", "With"],
       highlight: "Automation",
       subtitle:
@@ -505,7 +505,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
     hero: {
-      image: sharedImages.cyber,
+      image: "/banners/cybersecurity-monitoring.png",
       title: ["Defeat", "Cyber"],
       highlight: "Threats",
       subtitle:
@@ -563,7 +563,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/staff-augmentation/",
     group: "Talent & Workforce",
     hero: {
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/staff-augmentation.png",
       title: ["On-Demand"],
       highlight: "Teams",
       subtitle:

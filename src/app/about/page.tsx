@@ -85,7 +85,7 @@ const beliefs = [
 
 function BeliefsSection() {
   return (
-    <section className="bg-[#FAF9F5] py-24">
+    <section id="story" className="scroll-mt-24 bg-[#FAF9F5] py-24">
       <div className="mx-auto grid max-w-7xl gap-16 px-6 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
         {/* left: heading + CEO portrait */}
         <div className="flex flex-col justify-between gap-16">
@@ -235,7 +235,7 @@ export default function AboutPage() {
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80"
+          image="/banners/about-us.png"
           title={
             <>
               About <span className="text-[#9CCC3C]">us.</span>

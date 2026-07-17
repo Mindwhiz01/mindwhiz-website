@@ -421,15 +421,15 @@ export default function WhyMindWhizPage() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
-          image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80"
+          image="/banners/why-mindwhiz.png"
           title={
             <>
               Real <span className="text-[#9CCC3C]">teams.</span>
             </>
           }
           subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people - not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
-          primary={{ label: "Talk to the founder", href: "/contact" }}
-          secondary={{ label: "Read the story", href: "#story" }}
+          primary={{ label: "Contact us", href: "/contact" }}
+          secondary={{ label: "Read the story", href: "/about#story" }}
         />
 
         {/* ===================== ABOUT STATS ===================== */}
@@ -554,7 +554,7 @@ export default function WhyMindWhizPage() {
         <section className="relative overflow-hidden bg-white py-24">
           <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#9CCC3C]/30 blur-[130px]" />
           <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <Reveal className="ml-auto max-w-xl text-right">
+            <Reveal className="max-w-xl text-left">
               <Kicker>Global presence</Kicker>
               <h2
                 className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
@@ -708,20 +708,8 @@ export default function WhyMindWhizPage() {
             </Reveal>
 
             <Reveal delay={0.1} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href={`mailto:${company.email}`}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c40a4e]"
-              >
-                <Mail className="h-4 w-4" />
-                {company.email}
-              </a>
-              <a
-                href={company.phoneHref}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-              >
-                <Phone className="h-4 w-4 text-[#ed1164]" />
-                {company.phone}
-              </a>
+              <Cta href={`mailto:${company.email}`} label={company.email} />
+              <Cta href={company.phoneHref} label={company.phone} variant="outline" />
             </Reveal>
 
             <Reveal delay={0.2}>

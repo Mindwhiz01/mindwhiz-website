@@ -26,7 +26,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/information-technology.png",
       title: ["Powering"],
       highlight: "Technology",
       subtitle:
@@ -79,7 +79,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/ecommerce-retail.png",
       title: ["Retail That"],
       highlight: "Scales",
       subtitle:
@@ -132,7 +132,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/startups-smbs.png",
       title: ["Teams That"],
       highlight: "Scale",
       subtitle:
@@ -185,7 +185,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/construction-engineering.png",
       title: ["Win More"],
       highlight: "Bids",
       subtitle:
@@ -238,7 +238,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/real-estate.png",
       title: ["Property"],
       highlight: "Support",
       subtitle:
@@ -291,7 +291,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
-      image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/industrial-manufacturing.png",
       title: ["Built To"],
       highlight: "Run",
       subtitle:
@@ -344,7 +344,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/accounting-finance.png",
       title: ["Close The"],
       highlight: "Books",
       subtitle:
@@ -397,7 +397,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/professional-services.png",
       title: ["Deliver"],
       highlight: "More",
       subtitle:
@@ -450,7 +450,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
-      image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/logistics-supply-chain.png",
       title: ["Keep Goods"],
       highlight: "Moving",
       subtitle:
@@ -503,7 +503,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Healthcare",
     hero: {
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80",
+      image: "/banners/healthcare-healthtech.png",
       title: ["Compliant"],
       highlight: "Care",
       subtitle:
