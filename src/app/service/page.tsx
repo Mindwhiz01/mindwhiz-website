@@ -206,21 +206,6 @@ function CountPill({ value, label }: { value: string; label: string }) {
   );
 }
 
-function FlowerMark({ className = "" }: { className?: string }) {
-  return (
-    <span aria-hidden className={`relative inline-block h-[1em] w-[1em] ${className}`}>
-      {Array.from({ length: 8 }).map((_, index) => (
-        <span
-          key={index}
-          className="absolute left-1/2 top-1/2 h-[0.28em] w-[0.9em] origin-left rounded-full bg-current"
-          style={{ transform: `rotate(${index * 45}deg) translateY(-50%)` }}
-        />
-      ))}
-      <span className="absolute left-1/2 top-1/2 h-[0.28em] w-[0.28em] -translate-x-1/2 -translate-y-1/2 rounded-full bg-current" />
-    </span>
-  );
-}
-
 function BentoTile({
   item,
   index,
@@ -315,8 +300,8 @@ function ScrubbedBentoGallery() {
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/15" />
-                <div className="absolute inset-0 shadow-[inset_0_-160px_120px_rgba(0,0,0,0.75)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/35" />
+                <div className="absolute inset-0 shadow-[inset_0_-190px_140px_rgba(0,0,0,0.9)]" />
                 <div className="relative flex h-full min-h-[21rem] flex-col justify-between">
                   <div className="flex items-center justify-between gap-4">
                     <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] backdrop-blur">
@@ -710,14 +695,6 @@ function ScrollManifestoSection() {
       <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
       <div className="pointer-events-none absolute -right-32 bottom-[-8rem] h-[38rem] w-[38rem] rounded-full bg-[#D5D8DE]/35 blur-[170px]" />
 
-      <div
-        className="absolute left-5 top-5 z-10 flex items-center gap-2 text-2xl font-bold uppercase leading-none text-white sm:left-8"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        <FlowerMark className="text-white" />
-        Our manifesto
-      </div>
-
       <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
         <motion.h2
           initial={{ opacity: 0, x: "18%" }}
@@ -864,7 +841,7 @@ export default function ServicePage() {
                 {channels.map(({ title, desc, Icon }, index) => (
                   <Reveal key={title} delay={index * 0.08}>
                     <div
-                      className={`group h-full rounded-[2rem] border border-[#3f3f3d]/15 bg-[#fff8ed] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff4b00] hover:text-white ${
+                      className={`group h-full rounded-[2rem] border border-[#3f3f3d]/15 bg-[#fff8ed] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#ed1164] hover:text-white ${
                         index % 2 === 1 ? "sm:translate-y-12" : ""
                       }`}
                     >
