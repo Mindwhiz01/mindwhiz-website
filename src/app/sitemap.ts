@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicePages } from "@/lib/servicePages";
 import { industryPages } from "@/lib/industryPages";
+import { posts } from "@/lib/blog";
 
 const siteUrl = "https://graphite-teal-template.vercel.app";
 
@@ -14,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/case-studies", priority: 0.8 },
     { path: "/careers", priority: 0.8 },
     { path: "/culture", priority: 0.7 },
+    { path: "/blog", priority: 0.8 },
+    { path: "/newsletter", priority: 0.7 },
     { path: "/contact", priority: 0.8 },
     { path: "/agency", priority: 0.7 },
     { path: "/finance", priority: 0.7 },
@@ -43,5 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...industryRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...blogRoutes];
 }

@@ -189,6 +189,8 @@ export const footerGroups = [
       { label: "Case Studies", href: "/case-studies" },
       { label: "Web Services", href: "/web-services" },
       { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Newsletter", href: "/newsletter" },
       { label: "Contact", href: "/contact" },
     ],
   },
