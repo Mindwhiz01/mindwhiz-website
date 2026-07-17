@@ -7,6 +7,11 @@ import { ArrowRight } from "lucide-react";
 // right and bottom edges (an S-curve, not a hard step), so the cutout reads
 // as part of the card silhouette. A circular arrow button sits in the notch.
 // On hover of the parent card (.group) the arrow slides.
+//
+// The concave eases are SVG paths (square minus a quarter-disc) rather than
+// radial-gradients: gradients with a hard `transparent` stop leave a faint
+// dark anti-aliased fringe along the curve, which read as a stray curved
+// border over the card image.
 export default function CardCornerArrow({
   bg = "#EEEEEE",
   accent = "#9CCC3C",
@@ -20,9 +25,22 @@ export default function CardCornerArrow({
   gap?: number;
   radius?: number;
 }) {
-  // inverse corner: transparent quarter-circle, bg fills the rest — placed
-  // against the card edge it melts the pocket into the edge with a concave curve
-  const inverse = `radial-gradient(circle at 0 0, transparent ${radius}px, ${bg} ${radius}px)`;
+  // quarter-disc at the top-left is cut away (card shows through); the rest
+  // of the square is bg, melting the pocket into the card edge
+  const inversePath = `M ${radius} 0 V ${radius} H 0 A ${radius} ${radius} 0 0 0 ${radius} 0 Z`;
+
+  const inverseCorner = (style: React.CSSProperties) => (
+    <svg
+      aria-hidden
+      width={radius}
+      height={radius}
+      viewBox={`0 0 ${radius} ${radius}`}
+      className="absolute block"
+      style={style}
+    >
+      <path d={inversePath} fill={bg} />
+    </svg>
+  );
 
   return (
     <div
@@ -30,17 +48,9 @@ export default function CardCornerArrow({
       style={{ padding: gap, backgroundColor: bg, borderTopLeftRadius: radius }}
     >
       {/* concave ease into the card's right edge */}
-      <span
-        aria-hidden
-        className="absolute right-0"
-        style={{ top: -radius, width: radius, height: radius, background: inverse }}
-      />
+      {inverseCorner({ top: -radius, right: 0 })}
       {/* concave ease into the card's bottom edge */}
-      <span
-        aria-hidden
-        className="absolute bottom-0"
-        style={{ left: -radius, width: radius, height: radius, background: inverse }}
-      />
+      {inverseCorner({ bottom: 0, left: -radius })}
       <span
         className="grid place-items-center overflow-hidden rounded-full text-black transition-transform duration-300 group-hover:-translate-y-0.5"
         style={{ width: size, height: size, backgroundColor: accent }}
