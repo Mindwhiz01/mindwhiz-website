@@ -337,6 +337,49 @@ function CountStat({
   );
 }
 
+// Top-right scooped pocket for StatCard — one continuous SVG silhouette
+// (mirror of CardCornerArrow's bottom-right notch): concave quarter-circles
+// ease the white pocket into the card's top and right edges, the inner corner
+// is convex-rounded, and the fill bleeds 2px past the card's clip so no seam,
+// arc, or fringe can show around the circle button.
+function StatCornerPocket() {
+  const r = 22; // ease + inner corner radius
+  const pocket = 48 + 9 * 2; // circle size + padding = 66
+  const w = pocket + r; // 88
+  const bleed = 2;
+
+  // trace: card right edge → concave ease up → pocket bottom edge → convex
+  // inner corner → pocket left edge → concave ease out → card top edge
+  const d = [
+    `M ${w} ${w}`,
+    `A ${r} ${r} 0 0 1 ${pocket} ${pocket}`,
+    `L ${r * 2} ${pocket}`,
+    `A ${r} ${r} 0 0 1 ${r} ${pocket - r}`,
+    `L ${r} ${r}`,
+    `A ${r} ${r} 0 0 0 0 0`,
+    `L 0 ${-bleed}`,
+    `L ${w + bleed} ${-bleed}`,
+    `L ${w + bleed} ${w}`,
+    "Z",
+  ].join(" ");
+
+  return (
+    <div className="pointer-events-none absolute right-0 top-0 z-10" style={{ width: w, height: w }}>
+      <svg
+        aria-hidden
+        width={w + bleed}
+        height={w + bleed}
+        viewBox={`0 ${-bleed} ${w + bleed} ${w + bleed}`}
+        shapeRendering="geometricPrecision"
+        className="absolute block max-w-none"
+        style={{ right: -bleed, top: -bleed }}
+      >
+        <path d={d} fill="#ffffff" />
+      </svg>
+    </div>
+  );
+}
+
 // Colored stat card with a corner arrow - modeled on the reference layout.
 function StatCard({
   value,
@@ -361,26 +404,16 @@ function StatCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-[28px] p-6 sm:p-7 ${bg}`}
+      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-[28px] rounded-tr-none p-6 sm:p-7 ${bg}`}
     >
-      {/* top-right notched pocket - the card scoops inward with a smooth
-          curve and a circular arrow button sits in the cut-out, reading as
-          detached from the card */}
-      <div
-        className="absolute right-0 top-0 z-20"
-        style={{
-          padding: 9,
-          backgroundColor: "#ffffff",
-          borderBottomLeftRadius: 30,
-          borderTopRightRadius: 28,
-          borderTopLeftRadius: 16,
-          borderBottomRightRadius: 16,
-        }}
-      >
-        <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-black bg-white text-black transition-transform duration-300 group-hover:-translate-y-0.5">
-          <ArrowUpRight className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
-      </div>
+      {/* top-right scooped pocket - one continuous SVG silhouette (same
+          technique as CardCornerArrow): concave eases melt the notch into the
+          card's top and right edges, and the fill bleeds past the clip so no
+          seam or fringe can show around the circle */}
+      <StatCornerPocket />
+      <span className="absolute right-[9px] top-[9px] z-20 grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-black bg-white text-black transition-transform duration-300 group-hover:-translate-y-0.5">
+        <ArrowUpRight className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </span>
 
       <div>
         <p className="text-4xl font-extrabold leading-none sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
