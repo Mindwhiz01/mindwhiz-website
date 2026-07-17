@@ -244,6 +244,51 @@ const advancedServices: { title: string; desc: string; Icon: LucideIcon }[] = [
 
 const whyPoints = ["Process improvement", "Cost efficiency", "Remote accountants"];
 
+// Service card matching the home-page "ServiceCardFlat" design: green icon
+// square, a big index number in the corner, title + description, and a
+// "Learn more" link with a pink arrow.
+function FinanceServiceCard({
+  s,
+  i,
+}: {
+  s: { title: string; desc: string; Icon: LucideIcon };
+  i: number;
+}) {
+  const { Icon } = s;
+  return (
+    <motion.a
+      href="/contact"
+      initial={{ opacity: 0, x: 80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7"
+    >
+      <div>
+        <div className="flex items-center justify-between">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#9CCC3C]/15 text-[#9CCC3C]">
+            <Icon className="h-6 w-6" />
+          </span>
+          <span
+            className="text-3xl font-extrabold text-[#9CCC3C]/60"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+        </div>
+        <h3 className="mt-5 text-xl font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
+          {s.title}
+        </h3>
+        <p className="mt-2 text-sm text-black">{s.desc}</p>
+      </div>
+      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-black">
+        Learn more
+        <ArrowRight className="h-4 w-4 text-[#ed1164] transition-transform group-hover:translate-x-1" />
+      </span>
+    </motion.a>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Capabilities: pinned big heading + horizontal scroll carousel (3 at a time).
 // ---------------------------------------------------------------------------
@@ -535,108 +580,6 @@ export default function FinancePage() {
         </div>
       </section>
 
-      {/* ===================== CAPABILITIES ===================== */}
-      <CapabilitiesCarousel />
-
-      {/* ===================== PROCESS ===================== */}
-      <ProcessScroll
-        steps={process}
-        title={
-          <>
-            From messy books to <span style={{ color: "#ed1164" }}>monthly</span> clarity.
-          </>
-        }
-        ctaLabel="Book a consultation"
-      />
-
-      {/* ===================== COVERAGE (scroll-linked fly-in masonry) ===================== */}
-      <CoverageMasonry />
-
-      {/* ===================== STAFF AUGMENTATION (service lists) ===================== */}
-      <section className="bg-[#EEEEEE]">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
-          <Reveal className="max-w-2xl">
-            <Kicker>Staff augmentation</Kicker>
-            <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
-              Expert accountants.
-              <br />
-              <span className="text-[#ed1164]">On demand.</span>
-            </h2>
-            <p className="mt-5 text-base leading-7 text-black/70">
-              Expert accountants providing on-demand finance support through
-              flexible staff augmentation, helping you maintain accuracy,
-              compliance, and financial control.
-            </p>
-          </Reveal>
-
-          {/* Group 1 - Core Financial Management */}
-          <div className="mt-16">
-            <Reveal>
-              <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
-                <div className="max-w-xl">
-                  <h3 className="text-2xl font-bold text-black sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
-                    Core Financial Management
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-black/60">
-                    Reliable accounting support that keeps your financial operations
-                    accurate, compliant, and audit-ready.
-                  </p>
-                </div>
-                <Cta href="/contact" label="Contact us" className="shrink-0" />
-              </div>
-            </Reveal>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {coreServices.map(({ title, desc, Icon }, i) => (
-                <Reveal key={title} delay={(i % 3) * 0.05}>
-                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition-transform duration-300 hover:-translate-y-1">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#9CCC3C]/15 text-[#ed1164]">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <h4 className="mt-5 text-base font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
-                      {title}
-                    </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-black/65">{desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-
-          {/* Group 2 - Advanced Financial Planning */}
-          <div className="mt-16">
-            <Reveal>
-              <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
-                <div className="max-w-xl">
-                  <h3 className="text-2xl font-bold text-black sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
-                    Advanced Financial Planning &amp; Oversight
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-black/60">
-                    A flexible finance team that scales with you - supporting
-                    strategic planning and executive-level financial control.
-                  </p>
-                </div>
-                <Cta href="/contact" label="Contact us" className="shrink-0" />
-              </div>
-            </Reveal>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {advancedServices.map(({ title, desc, Icon }, i) => (
-                <Reveal key={title} delay={(i % 3) * 0.05}>
-                  <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition-transform duration-300 hover:-translate-y-1">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#9CCC3C]/15 text-[#ed1164]">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <h4 className="mt-5 text-base font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
-                      {title}
-                    </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-black/65">{desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===================== WHY MINDWHIZ ===================== */}
       <section data-header-dark className="relative overflow-hidden bg-[#383838] text-white">
         <div className="pointer-events-none absolute -left-24 top-0 h-96 w-96 rounded-full bg-[#9CCC3C]/20 blur-[130px]" />
@@ -706,6 +649,88 @@ export default function FinancePage() {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== CAPABILITIES ===================== */}
+      <CapabilitiesCarousel />
+
+      {/* ===================== PROCESS ===================== */}
+      <ProcessScroll
+        steps={process}
+        title={
+          <>
+            From messy books to <span style={{ color: "#ed1164" }}>monthly</span> clarity.
+          </>
+        }
+        ctaLabel="Book a consultation"
+      />
+
+      {/* ===================== COVERAGE (scroll-linked fly-in masonry) ===================== */}
+      <CoverageMasonry />
+
+      {/* ===================== STAFF AUGMENTATION (service lists) ===================== */}
+      <section className="bg-[#EEEEEE]">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
+          <Reveal className="max-w-2xl">
+            <Kicker>Staff augmentation</Kicker>
+            <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
+              Expert accountants.
+              <br />
+              <span className="text-[#ed1164]">On demand.</span>
+            </h2>
+            <p className="mt-5 text-base leading-7 text-black/70">
+              Expert accountants providing on-demand finance support through
+              flexible staff augmentation, helping you maintain accuracy,
+              compliance, and financial control.
+            </p>
+          </Reveal>
+
+          {/* Group 1 - Core Financial Management */}
+          <div className="mt-16">
+            <Reveal>
+              <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <div className="max-w-xl">
+                  <h3 className="text-2xl font-bold text-black sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
+                    Core Financial Management
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-black/60">
+                    Reliable accounting support that keeps your financial operations
+                    accurate, compliant, and audit-ready.
+                  </p>
+                </div>
+                <Cta href="/contact" label="Contact us" className="shrink-0" />
+              </div>
+            </Reveal>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {coreServices.map((s, i) => (
+                <FinanceServiceCard key={s.title} s={s} i={i} />
+              ))}
+            </div>
+          </div>
+
+          {/* Group 2 - Advanced Financial Planning */}
+          <div className="mt-16">
+            <Reveal>
+              <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <div className="max-w-xl">
+                  <h3 className="text-2xl font-bold text-black sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
+                    Advanced Financial Planning &amp; Oversight
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-black/60">
+                    A flexible finance team that scales with you - supporting
+                    strategic planning and executive-level financial control.
+                  </p>
+                </div>
+                <Cta href="/contact" label="Contact us" className="shrink-0" />
+              </div>
+            </Reveal>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {advancedServices.map((s, i) => (
+                <FinanceServiceCard key={s.title} s={s} i={i} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
