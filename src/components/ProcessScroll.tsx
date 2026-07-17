@@ -146,8 +146,15 @@ export default function ProcessScroll({
   return (
     <section className="relative bg-white">
       {/* heading sits above the images on a light background; the CTA is a
-          square block on the right that stretches to the heading's height */}
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
+          square block on the right that stretches to the heading's height.
+          overflow-hidden here is safe — the sticky scroll panels are a sibling
+          below, so clipping the glow doesn't affect their pinning. */}
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-8 overflow-hidden px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
+        {/* soft light-green glow on the bottom-left of this heading block */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
+        />
         <div>
           <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
             {kicker}
