@@ -9,7 +9,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import Cta from "@/components/Cta";
+import { ArrowUpRight } from "lucide-react";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 
 const defaultImages = [
@@ -145,18 +145,29 @@ export default function ProcessScroll({
 
   return (
     <section className="relative bg-white">
-      {/* heading sits above the images on a light background */}
-      <div className="mx-auto flex max-w-6xl flex-col px-6 pb-16 pt-24 sm:px-8">
-        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
-          {kicker}
-        </span>
-        <h2
-          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
-          style={{ fontFamily: "var(--font-display)" }}
+      {/* heading sits above the images on a light background; CTA rides on
+          the right edge as a light pill with a pink circular arrow badge */}
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
+            {kicker}
+          </span>
+          <h2
+            className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {title}
+          </h2>
+        </div>
+        <a
+          href={ctaHref}
+          className="group inline-flex w-fit shrink-0 items-center gap-4 rounded-full border border-black/15 bg-white py-2 pl-6 pr-2 text-sm font-semibold text-black transition-colors duration-300 hover:border-black hover:bg-black hover:text-white"
         >
-          {title}
-        </h2>
-        <Cta href={ctaHref} label={ctaLabel} className="mt-6 w-fit" />
+          {ctaLabel}
+          <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] text-white transition-transform duration-500 ease-out group-hover:rotate-[405deg] group-hover:bg-[#9CCC3C] group-hover:text-black">
+            <ArrowUpRight className="h-4 w-4" />
+          </span>
+        </a>
       </div>
 
       <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
