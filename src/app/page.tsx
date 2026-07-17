@@ -6,7 +6,6 @@ import {
   AnimatePresence,
   useScroll,
   useTransform,
-  useSpring,
   useInView,
   type MotionValue,
   type Variants,
@@ -71,6 +70,7 @@ import CardCornerArrow from "@/components/CardCornerArrow";
 import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import ContactFormSection from "@/components/ContactFormSection";
+import ClientsSection from "@/components/ClientsSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -337,91 +337,56 @@ function CountStat({
   );
 }
 
-// Top-right scooped pocket for StatCard — one continuous SVG silhouette
-// (mirror of CardCornerArrow's bottom-right notch): concave quarter-circles
-// ease the white pocket into the card's top and right edges, the inner corner
-// is convex-rounded, and the fill bleeds 2px past the card's clip so no seam,
-// arc, or fringe can show around the circle button.
-function StatCornerPocket() {
-  const r = 22; // ease + inner corner radius
-  const pocket = 48 + 9 * 2; // circle size + padding = 66
-  const w = pocket + r; // 88
-  const bleed = 2;
-
-  // trace: card right edge → concave ease up → pocket bottom edge → convex
-  // inner corner → pocket left edge → concave ease out → card top edge
-  const d = [
-    `M ${w} ${w}`,
-    `A ${r} ${r} 0 0 1 ${pocket} ${pocket}`,
-    `L ${r * 2} ${pocket}`,
-    `A ${r} ${r} 0 0 1 ${r} ${pocket - r}`,
-    `L ${r} ${r}`,
-    `A ${r} ${r} 0 0 0 0 0`,
-    `L 0 ${-bleed}`,
-    `L ${w + bleed} ${-bleed}`,
-    `L ${w + bleed} ${w}`,
-    "Z",
-  ].join(" ");
-
-  return (
-    <div className="pointer-events-none absolute right-0 top-0 z-10" style={{ width: w, height: w }}>
-      <svg
-        aria-hidden
-        width={w + bleed}
-        height={w + bleed}
-        viewBox={`0 ${-bleed} ${w + bleed} ${w + bleed}`}
-        shapeRendering="geometricPrecision"
-        className="absolute block max-w-none"
-        style={{ right: -bleed, top: -bleed }}
-      >
-        <path d={d} fill="#ffffff" />
-      </svg>
-    </div>
-  );
-}
-
-// Colored stat card with a corner arrow - modeled on the reference layout.
+// Stat card styled like the IndustriesWorlds cards: dark card, top-left
+// counter, bottom-anchored content, and the scooped CardCornerArrow corner -
+// but sized to the original 2x2 stat grid.
 function StatCard({
   value,
   label,
-  variant,
+  index,
+  total,
   delay = 0,
 }: {
   value: string;
   label: string;
-  variant: "green" | "pink" | "dark" | "light";
+  index: number;
+  total: number;
   delay?: number;
 }) {
-  const bg = {
-    green: "bg-[#9CCC3C] text-black",
-    pink: "bg-[#ed1164] text-white",
-    dark: "bg-[#1c1d21] text-white",
-    light: "bg-[#EEEEEE] text-black",
-  }[variant];
+  // brand color rotation: green / dark / pink / light
+  const variants = [
+    { bg: "bg-[#9CCC3C] text-black", counter: "text-black/60", sub: "text-black/70", arrow: "#ed1164", arrowText: "text-white" },
+    { bg: "bg-[#1c1d21] text-white", counter: "text-white/70", sub: "text-white/75", arrow: "#9CCC3C", arrowText: "text-black" },
+    { bg: "bg-[#ed1164] text-white", counter: "text-white/70", sub: "text-white/80", arrow: "#9CCC3C", arrowText: "text-black" },
+    { bg: "bg-[#EEEEEE] text-black", counter: "text-black/50", sub: "text-black/65", arrow: "#ed1164", arrowText: "text-white" },
+  ];
+  const v = variants[(index - 1) % variants.length];
   return (
-    <motion.div
+    <motion.a
+      href="/contact"
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-[28px] rounded-tr-none p-6 sm:p-7 ${bg}`}
+      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 ${v.bg}`}
     >
-      {/* top-right scooped pocket - one continuous SVG silhouette (same
-          technique as CardCornerArrow): concave eases melt the notch into the
-          card's top and right edges, and the fill bleeds past the clip so no
-          seam or fringe can show around the circle */}
-      <StatCornerPocket />
-      <span className="absolute right-[9px] top-[9px] z-20 grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-black bg-white text-black transition-transform duration-300 group-hover:-translate-y-0.5">
-        <ArrowUpRight className="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <span className={`absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] ${v.counter}`}>
+        {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </span>
 
-      <div>
-        <p className="text-4xl font-extrabold leading-none sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+      {/* scooped corner + circular arrow (section bg is white) */}
+      <CardCornerArrow bg="#ffffff" accent={v.arrow} />
+
+      <div className="relative p-6 pb-12 pr-20">
+        <p
+          className="text-4xl font-extrabold leading-none sm:text-5xl"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
           {value}
         </p>
-        <p className="mt-3 text-sm leading-snug opacity-80">{label}</p>
+        <p className={`mt-2 text-sm leading-relaxed ${v.sub}`}>{label}</p>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
@@ -939,120 +904,6 @@ function IndustriesWorlds() {
 // ---------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------
-// Client logo marquee data + components.
-type ClientItem = { name: string; src?: string };
-
-const clientsRow1: ClientItem[] = [
-  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png" },
-  { name: "Highland Redstone", src: "/clients/highland.png" },
-  { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
-  { name: "Jerdoni", src: "/clients/jerdoni.png" },
-  { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
-  { name: "Villa Tech", src: "/clients/villa-tech.png" },
-  { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png" },
-  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png" },
-  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png" },
-  { name: "Dr. Owais", src: "/clients/dr-owais.png" },
-  { name: "Ideal Smile", src: "/clients/ideal-smile.png" },
-];
-const clientsRow2: ClientItem[] = [...clientsRow1].reverse();
-
-function LogoChip({ item }: { item: ClientItem }) {
-  return (
-    // constant white card so logos (white backgrounds) render in both themes;
-    // logo files are pre-trimmed, so object-contain fits them cleanly in the box.
-    <span className="group flex h-24 w-[210px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEEEEE] px-6 py-4 ring-1 ring-black/5 transition-shadow hover:shadow-md">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={item.src}
-        alt={item.name}
-        className="h-full w-full object-contain"
-      />
-    </span>
-  );
-}
-
-function ClientMarquee({
-  items,
-  direction,
-}: {
-  items: ClientItem[];
-  direction: "left" | "right";
-}) {
-  const row = [...items, ...items];
-  return (
-    <div className="marquee marquee-mask relative overflow-hidden">
-      <div
-        className={`marquee-track gap-5 py-1 ${
-          direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
-        }`}
-      >
-        {row.map((item, i) => (
-          <LogoChip key={`${item.name}-${i}`} item={item} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Clients section: text slides in from the left, logos from the right - driven
-// by scroll progress as the section moves up through the viewport.
-// ---------------------------------------------------------------------------
-function ClientsSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
-  });
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    restDelta: 0.001,
-  });
-
-  const y = useTransform(progress, [0, 1], [48, 0]);
-  const opacity = useTransform(progress, [0, 0.6], [0, 1]);
-
-  return (
-    <section
-      ref={ref}
-      className="relative z-30 rounded-t-[2.5rem] bg-white"
-    >
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-6 pb-16 pt-20 sm:px-8">
-        {/* centered header */}
-        <motion.div style={{ y, opacity }} className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#9CCC3C]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
-            Trusted by
-          </span>
-          <h2
-            className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Teams that scale with{" "}
-            <span style={{ color: "#9CCC3C" }}>MindWhiz</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-black/70">
-            From construction to healthcare, our clients rely on us to deliver vetted talent and
-            24/7 operations.
-          </p>
-        </motion.div>
-
-        {/* logo showcase panel - two contained rows */}
-        <motion.div
-          style={{ y, opacity }}
-          className="mt-14 overflow-hidden rounded-3xl bg-[#f5f5f5] p-5 sm:p-8"
-        >
-          <div className="flex flex-col gap-5 overflow-hidden">
-            <ClientMarquee items={clientsRow1} direction="left" />
-            <ClientMarquee items={clientsRow2} direction="right" />
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 // Maps each service to its dedicated detail page so the cards (and their
 // "Learn more" links) send visitors to the related page.
@@ -1488,12 +1339,17 @@ function CaseRecordSection() {
 function BlogSection() {
   const [index, setIndex] = useState(0);
 
+  // depending on `index` restarts the timer after a manual arrow click, so
+  // the auto-rotate never fires right on the heels of a navigation
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % insights.length);
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [index]);
+
+  const prev = () => setIndex((i) => (i - 1 + insights.length) % insights.length);
+  const next = () => setIndex((i) => (i + 1) % insights.length);
 
   const featured = insights[index];
   const second = insights[(index + 1) % insights.length];
@@ -1517,10 +1373,30 @@ function BlogSection() {
               >
                 Latest <span style={{ color: "#ed1164" }}>insights</span>.
               </h2>
-              <p className="max-w-md text-sm leading-relaxed text-black/70">
-                Field notes from live engagements - security operations, delivery
-                playbooks, and what actually works at scale.
-              </p>
+              <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-8">
+                <p className="max-w-md text-sm leading-relaxed text-black/70">
+                  Field notes from live engagements - security operations, delivery
+                  playbooks, and what actually works at scale.
+                </p>
+                <div className="flex shrink-0 gap-3">
+                  <button
+                    type="button"
+                    onClick={prev}
+                    aria-label="Previous post"
+                    className="grid h-12 w-12 place-items-center rounded-full border border-black/15 bg-white text-black transition-colors hover:bg-[#9CCC3C] hover:border-transparent"
+                  >
+                    <ArrowLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    aria-label="Next post"
+                    className="grid h-12 w-12 place-items-center rounded-full border border-black/15 bg-white text-black transition-colors hover:bg-[#9CCC3C] hover:border-transparent"
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
             </div>
           </Reveal>
 
@@ -1744,10 +1620,16 @@ export default function SystemLimitedHome() {
           {/* body: stat cards on the left, growth chart on the right */}
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <StatCard value={stats[0].value} label={stats[0].label} variant="green" delay={0} />
-              <StatCard value={stats[1].value} label={stats[1].label} variant="dark" delay={0.06} />
-              <StatCard value={stats[2].value} label={stats[2].label} variant="pink" delay={0.12} />
-              <StatCard value={stats[3].value} label={stats[3].label} variant="light" delay={0.18} />
+              {stats.map((s, i) => (
+                <StatCard
+                  key={s.label}
+                  value={s.value}
+                  label={s.label}
+                  index={i + 1}
+                  total={stats.length}
+                  delay={i * 0.06}
+                />
+              ))}
             </div>
             <Reveal delay={0.1}>
               <GrowthChart />

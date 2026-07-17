@@ -25,6 +25,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import ClientsSection from "@/components/ClientsSection";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
@@ -675,6 +676,7 @@ export default function WebServicesPage() {
       <StackSection />
       <SeoSection />
       <ProcessSection />
+      <ClientsSection />
       <CtaBand />
       <Footer />
     </main>
