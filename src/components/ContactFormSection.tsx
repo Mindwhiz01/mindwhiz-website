@@ -86,7 +86,7 @@ const serviceIconMap: Record<string, LucideIcon> = {
 
 const FORM_STEPS = ["You", "Service", "Details"] as const;
 
-// world-zoom view — wide enough for the US, UK, and Pakistan hubs to all sit in frame
+// world-zoom view - wide enough for the US, UK, and Pakistan hubs to all sit in frame
 const worldMapSrc = "https://www.google.com/maps?q=20,10&z=2&output=embed";
 
 export default function ContactFormSection() {
@@ -108,7 +108,7 @@ export default function ContactFormSection() {
       <div className="pointer-events-none absolute -left-32 -top-20 h-96 w-96 rounded-full bg-[#9CCC3C]/30 blur-[140px]" />
       <div className="pointer-events-none absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-[#ed1164]/20 blur-[140px]" />
       <div className="relative mx-auto grid max-w-7xl gap-16 px-6 sm:px-8 lg:grid-cols-[1fr_0.6fr]">
-        {/* form — left */}
+        {/* form - left */}
         <Reveal delay={0}>
           <Kicker>Get in touch</Kicker>
           <h2
@@ -125,7 +125,7 @@ export default function ContactFormSection() {
           {sent ? (
             <div className="mt-10 flex items-center gap-3 rounded-2xl border border-[#9CCC3C]/40 bg-[#9CCC3C]/10 px-6 py-5 text-sm font-semibold text-[#4d7a17]">
               <Check className="h-5 w-5 shrink-0" />
-              Thanks — your message has been received. We&apos;ll be in touch shortly.
+              Thanks - your message has been received. We&apos;ll be in touch shortly.
             </div>
           ) : (
             <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-white/60 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-2xl backdrop-saturate-150">
@@ -378,7 +378,7 @@ export default function ContactFormSection() {
           )}
         </Reveal>
 
-        {/* klickpin video — right */}
+        {/* klickpin video - right */}
         <Reveal delay={0.1} className="flex items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-black">
           <video
             title="Klickpin Video"

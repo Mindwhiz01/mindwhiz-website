@@ -231,7 +231,7 @@ export default function ClientsSampleShowcase() {
       <div className="mx-auto max-w-7xl px-6 pt-10 sm:px-8">
         <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Sample showcase</p>
         <h1 className="mt-2 text-2xl font-bold" style={{ fontFamily: "var(--font-display)", color: INK }}>
-          Client section — design variants
+          Client section - design variants
         </h1>
       </div>
 
@@ -250,7 +250,7 @@ export default function ClientsSampleShowcase() {
       <Label n="E" title="Bordered divider grid" />
       <VariantDividerGrid />
 
-      <Label n="F" title="Split — heading left, twin marquee right" />
+      <Label n="F" title="Split - heading left, twin marquee right" />
       <VariantSplit />
 
       <div className="h-16" />

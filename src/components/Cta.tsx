@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Cta — the shared call-to-action button used site-wide. Matches the header's
+// Cta - the shared call-to-action button used site-wide. Matches the header's
 // "Get in Touch" pill: dark rounded pill, green up-right arrow, white text.
 // On hover the arrow flies out the top-right and a fresh one slides in from the
 // bottom-left.

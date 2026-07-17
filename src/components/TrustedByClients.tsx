@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Trusted by clients: horizontal testimonial carousel — each card pairs the
+// Trusted by clients: horizontal testimonial carousel - each card pairs the
 // client's words + stats with a video, arrows scroll one card at a time.
 // Shared between the homepage and Why MindWhiz page.
 // ---------------------------------------------------------------------------
@@ -59,7 +59,7 @@ const clientTestimonials = [
     ],
   },
   {
-    quote: "I would recommend MindWhiz to anyone. Don't take my word — see the results.",
+    quote: "I would recommend MindWhiz to anyone. Don't take my word - see the results.",
     author: "Inovatiqa",
     video: "https://videos.pexels.com/video-files/7989708/7989708-hd_1920_1080_25fps.mp4",
     stats: [
@@ -184,7 +184,7 @@ export default function TrustedByClients() {
         </div>
       </div>
 
-      {/* carousel track — neighbors peek at both edges, faded by gradient masks */}
+      {/* carousel track - neighbors peek at both edges, faded by gradient masks */}
       <div className="relative mt-10">
         {/* edge fades so the peeking cards read as inactive */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[5vw] bg-gradient-to-r from-white/60 to-transparent" />
@@ -225,7 +225,7 @@ export default function TrustedByClients() {
                 </div>
               </div>
 
-              {/* right: client video — flush with the card's top, bottom, and right edges */}
+              {/* right: client video - flush with the card's top, bottom, and right edges */}
               <TestimonialVideo src={t.video} />
             </div>
           ))}

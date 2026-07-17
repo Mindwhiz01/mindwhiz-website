@@ -200,7 +200,7 @@ export default function CaseStudiesPage() {
               On the <span className="text-[#9CCC3C]">record.</span>
             </>
           }
-          subtitle="Every engagement below is filed exactly as delivered — the client, the brief, and the outcome, on record."
+          subtitle="Every engagement below is filed exactly as delivered - the client, the brief, and the outcome, on record."
           primary={{ label: "Build your team", href: "/contact" }}
         />
 

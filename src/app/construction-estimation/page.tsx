@@ -91,7 +91,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-// What we deliver — core estimation capabilities.
+// What we deliver - core estimation capabilities.
 const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string }[] = [
   {
     title: "Quantity Takeoffs",
@@ -131,7 +131,7 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
 ];
 
-// Trades we estimate across — with CSI division, icon, stock image, and a
+// Trades we estimate across - with CSI division, icon, stock image, and a
 // masonry height class for visual rhythm.
 const trades: {
   name: string;
@@ -238,7 +238,7 @@ const deliverables: { text: string; Icon: LucideIcon }[] = [
 
 // ---------------------------------------------------------------------------
 // Capabilities: a pinned big heading on the left, with the capability cards in
-// a horizontal carousel on the right that scrubs left as the user scrolls —
+// a horizontal carousel on the right that scrubs left as the user scrolls -
 // contained to its own column so the cards never slide over the heading.
 // ---------------------------------------------------------------------------
 const CARD_GAP = 20; // matches gap-5 on the row
@@ -302,7 +302,7 @@ function CapabilitiesCarousel() {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* dark overlay — strengthens text contrast over the image */}
+                  {/* dark overlay - strengthens text contrast over the image */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
 
                   {/* index label */}
@@ -349,7 +349,7 @@ function CapabilitiesCarousel() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From the first set of drawings to the submitted bid, our estimators
-              handle the measuring, pricing, and packaging — so your project
+              handle the measuring, pricing, and packaging - so your project
               managers stay focused on winning and building the work.
             </p>
             <p className="mt-8 hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50 lg:flex">
@@ -389,7 +389,7 @@ export default function ConstructionEstimationPage() {
             <span className="text-[#ed1164]">Bids</span>
           </>
         }
-        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid-ready cost estimates — so your team quotes more work, faster, without carrying the overhead."
+        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid-ready cost estimates - so your team quotes more work, faster, without carrying the overhead."
         primary={{ label: "Request an estimate", href: "#contact" }}
         secondary={{ label: "Explore capabilities", href: "#capabilities" }}
       />
@@ -455,7 +455,7 @@ export default function ConstructionEstimationPage() {
                 <span className="text-[#ed1164]">every trade.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Commercial, residential, and industrial — our estimators work
+                Commercial, residential, and industrial - our estimators work
                 across the full CSI breakdown to price the whole job or just the
                 scopes you need.
               </p>
@@ -555,7 +555,7 @@ export default function ConstructionEstimationPage() {
                 <span className="text-[#ed1164]">your inbox.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Every engagement ends with a clean, organized package — reviewed,
+                Every engagement ends with a clean, organized package - reviewed,
                 labeled, and ready to hand straight to the client or drop into
                 your bid.
               </p>

@@ -87,7 +87,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-// What we handle — core finance capabilities.
+// What we handle - core finance capabilities.
 const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string }[] = [
   {
     title: "Bookkeeping",
@@ -127,7 +127,7 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
 ];
 
-// Coverage — finance functions we run, with a short tag, icon, image, height.
+// Coverage - finance functions we run, with a short tag, icon, image, height.
 const coverage: {
   name: string;
   tag: string;
@@ -222,7 +222,7 @@ const process = [
   { title: "Operate & Report", desc: "Daily bookkeeping, AP/AR, and payroll run on a fixed rhythm, and a structured monthly close produces reviewed statements and the dashboards leadership needs." },
 ];
 
-// Staff augmentation — the two service groups from the source page.
+// Staff augmentation - the two service groups from the source page.
 const coreServices: { title: string; desc: string; Icon: LucideIcon }[] = [
   { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", Icon: Wallet },
   { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", Icon: BookOpen },
@@ -336,7 +336,7 @@ function CapabilitiesCarousel() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From daily bookkeeping to CFO-level analysis, we plug into your stack
-              and run the numbers — so you get clean books, timely reports, and the
+              and run the numbers - so you get clean books, timely reports, and the
               insight to act on them.
             </p>
             <p className="mt-8 hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50 lg:flex">
@@ -354,7 +354,7 @@ function CapabilitiesCarousel() {
 // Coverage: cards fly in from all sides as the section scrolls up, settle into
 // their masonry slots, then retreat the same way on scroll-up (scroll-linked).
 // ---------------------------------------------------------------------------
-// each card enters clearly from one side — left, right, or bottom.
+// each card enters clearly from one side - left, right, or bottom.
 const coverageDirs = [
   { x: -360, y: 0 },   // 01 · from left
   { x: 0, y: 260 },    // 02 · from bottom
@@ -445,7 +445,7 @@ function CoverageMasonry() {
               <span className="text-[#ed1164]">every close.</span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-              Bookkeeping, payroll, reporting, and analysis — we cover the full
+              Bookkeeping, payroll, reporting, and analysis - we cover the full
               finance function or just the pieces you need.
             </p>
           </Reveal>
@@ -505,7 +505,7 @@ export default function FinancePage() {
             <span className="text-[#ed1164]">Books</span>
           </>
         }
-        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting — accurate numbers, faster closes, and up to 40% lower back-office cost."
+        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting - accurate numbers, faster closes, and up to 40% lower back-office cost."
         primary={{ label: "Talk to finance", href: "#contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
@@ -569,7 +569,7 @@ export default function FinancePage() {
             </p>
           </Reveal>
 
-          {/* Group 1 — Core Financial Management */}
+          {/* Group 1 - Core Financial Management */}
           <div className="mt-16">
             <Reveal>
               <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -602,7 +602,7 @@ export default function FinancePage() {
             </div>
           </div>
 
-          {/* Group 2 — Advanced Financial Planning */}
+          {/* Group 2 - Advanced Financial Planning */}
           <div className="mt-16">
             <Reveal>
               <div className="flex flex-col gap-5 border-b border-slate-300 pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -611,7 +611,7 @@ export default function FinancePage() {
                     Advanced Financial Planning &amp; Oversight
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-black/60">
-                    A flexible finance team that scales with you — supporting
+                    A flexible finance team that scales with you - supporting
                     strategic planning and executive-level financial control.
                   </p>
                 </div>
@@ -660,7 +660,7 @@ export default function FinancePage() {
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
                 MindWhiz is the trusted partner for finance and accounting staff
-                augmentation — delivering precise, compliant solutions with a
+                augmentation - delivering precise, compliant solutions with a
                 personalized approach for each business. By streamlining processes
                 and reducing costs, we help you increase efficiency and stay focused
                 on growth, with skilled remote accountants and responsive execution.

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Web Development Services",
   description:
-    "MindWhiz web department — custom websites, web apps, dashboards, and e-commerce built with modern technologies and SEO built in. See the sites we've shipped.",
+    "MindWhiz web department - custom websites, web apps, dashboards, and e-commerce built with modern technologies and SEO built in. See the sites we've shipped.",
   alternates: { canonical: "/web-services" },
 };
 

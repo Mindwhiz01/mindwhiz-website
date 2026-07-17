@@ -16,7 +16,7 @@ const item: Variants = {
 type CtaLink = { label: string; href: string };
 
 /**
- * Shared page hero — same banner design as the home page: a rounded, inset
+ * Shared page hero - same banner design as the home page: a rounded, inset
  * media panel with a dark gradient wash, a large display heading, and CTAs.
  * Uses a service-relevant background image (no eyebrow pill).
  */

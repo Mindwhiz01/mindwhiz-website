@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// MindWhiz home-page content — cleaned & reconciled from the existing site.
+// MindWhiz home-page content - cleaned & reconciled from the existing site.
 // Single source of truth shared by every design concept so they stay in sync.
 // ---------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ export const hero = {
   title: "Empowering businesses with hybrid staffing, staff augmentation & BPO",
   subtitle:
     "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery-focused support across IT, security, and business operations — built for speed, reliability, and enterprise trust.",
-  primaryCta: { label: "Get in touch", href: "/contact" },
+  primaryCta: { label: "Get in touch", href: "#contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
 
@@ -143,7 +143,7 @@ export const certifications = ["SOC 2", "ISO 27001", "ITIL", "CompTIA", "Microso
 export const finalCta = {
   title: "Stop struggling. Start scaling.",
   subtitle:
-    "Your team deserves better than burnout, delays, and distractions. MindWhiz puts the right people and processes in place — fast.",
+    "Your team deserves better than burnout, delays, and distractions. MindWhiz puts the right people and processes in place - fast.",
   cta: { label: "Book a free consultation", href: "#contact" },
 };
 
