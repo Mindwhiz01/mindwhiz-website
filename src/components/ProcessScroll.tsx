@@ -161,7 +161,7 @@ export default function ProcessScroll({
         </div>
         <a
           href={ctaHref}
-          className="group relative flex h-40 w-40 shrink-0 items-center justify-center overflow-hidden rounded-2xl rounded-br-none bg-neutral-950 p-5 text-white transition-colors duration-300 hover:bg-[#ed1164] lg:aspect-square lg:h-auto lg:w-auto lg:self-stretch"
+          className="animate-attention group relative flex h-40 w-40 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-neutral-950 p-5 text-white transition-colors duration-300 hover:bg-[#ed1164] hover:[animation-play-state:paused] lg:aspect-square lg:h-auto lg:w-auto lg:self-stretch"
         >
           <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
             <ArrowUpRight className="absolute inset-0 h-8 w-8 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10" />
