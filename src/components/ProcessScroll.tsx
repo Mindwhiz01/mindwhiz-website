@@ -161,11 +161,11 @@ export default function ProcessScroll({
         </div>
         <a
           href={ctaHref}
-          className="animate-attention group relative flex h-40 w-40 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-neutral-950 p-5 text-white transition-colors duration-300 hover:bg-[#ed1164] hover:[animation-play-state:paused] lg:aspect-square lg:h-auto lg:w-auto lg:self-stretch"
+          className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
         >
           <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
-            <ArrowUpRight className="absolute inset-0 h-8 w-8 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10" />
-            <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
+            <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
+            <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
           </span>
           <span
             className="text-center text-xl font-extrabold leading-tight sm:text-2xl"
