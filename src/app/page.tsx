@@ -69,7 +69,6 @@ import TrustedByClients from "@/components/TrustedByClients";
 import Cta from "@/components/Cta";
 import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
-import CardCornerArrow from "@/components/CardCornerArrow";
 import ContactFormSection from "@/components/ContactFormSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -874,10 +873,7 @@ function IndustriesWorlds() {
               {String(i + 1).padStart(2, "0")} / {total}
             </span>
 
-            {/* detached corner arrow (notched pocket) */}
-            <CardCornerArrow bg="#EEEEEE" />
-
-            <div className="relative p-6 pb-12">
+            <div className="relative p-6">
               <h3
                 className="text-xl font-semibold leading-tight drop-shadow"
                 style={{ fontFamily: "var(--font-display)" }}
