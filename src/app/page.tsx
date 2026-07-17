@@ -67,6 +67,7 @@ import {
 import Footer from "@/components/Footer";
 import TrustedByClients from "@/components/TrustedByClients";
 import Cta from "@/components/Cta";
+import CardCornerArrow from "@/components/CardCornerArrow";
 import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import ContactFormSection from "@/components/ContactFormSection";
@@ -873,7 +874,10 @@ function IndustriesWorlds() {
               {String(i + 1).padStart(2, "0")} / {total}
             </span>
 
-            <div className="relative p-6">
+            {/* scooped corner + green circular arrow */}
+            <CardCornerArrow bg="#EEEEEE" />
+
+            <div className="relative p-6 pb-12">
               <h3
                 className="text-xl font-semibold leading-tight drop-shadow"
                 style={{ fontFamily: "var(--font-display)" }}
