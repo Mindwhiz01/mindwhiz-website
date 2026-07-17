@@ -549,14 +549,14 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   useSlideSnap(ref, total);
 
   return (
-    <section data-header-dark className="relative bg-black">
-      {/* heading sits above the images, not overlaid on them */}
+    <section className="relative bg-white">
+      {/* heading sits above the images on a light background */}
       <div className="mx-auto flex max-w-6xl flex-col px-6 pb-16 pt-24 sm:px-8">
-        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
           How it works
         </span>
         <h2
-          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
@@ -564,7 +564,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
         <Cta href="/contact" label={page.finalCta.button} className="mt-6 w-fit" />
       </div>
 
-      <div ref={ref} className="relative" style={{ height: `${total * 100}vh` }}>
+      <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden">
           {page.process.map((step, i) => (
             <ProcessPanel key={step.title} step={step} i={i} active={active} />
