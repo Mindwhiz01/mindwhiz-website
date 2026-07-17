@@ -109,36 +109,42 @@ const insights = [
     title: "Scaling a 24/7 IT helpdesk without the hiring lag",
     desc: "How a hybrid Tier 1–3 model cut response times and cost.",
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&h=1400&q=80",
+    href: "/services/it-helpdesk-24-7",
   },
   {
     category: "White Paper",
     title: "Building a compliant SOC: SOC 2 & ISO 27001 in practice",
     desc: "A practical blueprint for security operations at scale.",
     img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&h=700&q=80",
+    href: "/services/cybersecurity-monitoring",
   },
   {
     category: "Blog",
     title: "NOC vs SOC: where monitoring ends and security begins",
     desc: "Clarifying roles, tooling, and escalation paths.",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&h=700&q=80",
+    href: "/services/noc-monitoring",
   },
   {
     category: "Case Study",
     title: "Construction estimation, delivered offshore",
     desc: "Faster takeoffs and bid prep with vetted estimators.",
     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&h=1400&q=80",
+    href: "/construction-estimation",
   },
   {
     category: "Blog",
     title: "Staff augmentation that actually integrates",
     desc: "Onboarding playbooks that get specialists productive fast.",
     img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&h=700&q=80",
+    href: "/services/staff-augmentation",
   },
   {
     category: "White Paper",
     title: "The economics of hybrid delivery",
     desc: "How onshore/offshore blends drive up to 30% cost savings.",
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&h=700&q=80",
+    href: "/why-mindwhiz",
   },
 ];
 
@@ -1491,7 +1497,7 @@ function BlogSection() {
               <AnimatePresence mode="wait">
                 <motion.a
                   key={featured.title}
-                  href="#contact"
+                  href={featured.href}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -1546,7 +1552,7 @@ function BlogSection() {
                   <AnimatePresence mode="wait">
                     <motion.a
                       key={post.title}
-                      href="#contact"
+                      href={post.href}
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
