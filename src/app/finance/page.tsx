@@ -576,8 +576,8 @@ export default function FinancePage() {
       </section>
 
       {/* ===================== WHY MINDWHIZ ===================== */}
-      <section data-header-dark className="relative overflow-hidden bg-[#383838] text-white">
-        <div className="pointer-events-none absolute -left-24 top-0 h-96 w-96 rounded-full bg-[#9CCC3C]/20 blur-[130px]" />
+      <section className="relative overflow-hidden bg-[#EEEEEE] text-black">
+        <div className="pointer-events-none absolute -left-24 top-0 h-96 w-96 rounded-full bg-[#9CCC3C]/25 blur-[130px]" />
         <div className="relative mx-auto max-w-7xl px-6 py-24 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <Reveal>
@@ -586,17 +586,17 @@ export default function FinancePage() {
                 Why choose MindWhiz for{" "}
                 <span className="text-[#ed1164]">finance &amp; accounting</span>
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/65">
+              <p className="mt-5 max-w-xl text-base leading-7 text-black/70">
                 Choosing the right partner for your finance and accounting needs is
                 critical to your success. MindWhiz combines expertise, precision,
                 and personalized solutions to help you build a stronger financial
                 foundation.
               </p>
 
-              <h3 className="mt-8 text-xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
+              <h3 className="mt-8 text-xl font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
                 Expertise you can trust
               </h3>
-              <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
+              <p className="mt-3 max-w-xl text-sm leading-7 text-black/65">
                 MindWhiz is the trusted partner for finance and accounting staff
                 augmentation - delivering precise, compliant solutions with a
                 personalized approach for each business. By streamlining processes
@@ -606,7 +606,7 @@ export default function FinancePage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 {whyPoints.map((p) => (
-                  <span key={p} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/85">
+                  <span key={p} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black/80">
                     <CheckCircle2 className="h-4 w-4 text-[#ed1164]" />
                     {p}
                   </span>
@@ -615,14 +615,14 @@ export default function FinancePage() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Cta href="/contact" label="Contact us" />
-                <a href="#capabilities" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10">
+                <a href="#capabilities" className="inline-flex items-center justify-center gap-2 rounded-md border border-black/20 bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-black/5">
                   Explore services
                 </a>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="relative h-full min-h-[380px] overflow-hidden rounded-2xl ring-1 ring-white/10">
+              <div className="relative h-full min-h-[380px] overflow-hidden rounded-2xl ring-1 ring-black/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
