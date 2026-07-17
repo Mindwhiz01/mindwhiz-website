@@ -550,18 +550,45 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
 
   return (
     <section className="relative bg-white">
-      {/* heading sits above the images on a light background */}
-      <div className="mx-auto flex max-w-6xl flex-col px-6 pb-16 pt-24 sm:px-8">
-        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
-          How it works
-        </span>
-        <h2
-          className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
-        </h2>
-        <Cta href="/contact" label={page.finalCta.button} className="mt-6 w-fit" />
+      {/* heading sits above the images on a light background; the CTA is a
+          square block on the right that stretches to the heading's height.
+          The glow is anchored to this full-width wrapper (not the centered
+          max-w container) so it bleeds all the way to the viewport's left
+          edge with no white gap. */}
+      <div className="relative overflow-hidden">
+        {/* soft light-green glow filling the bottom-left of the heading block */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
+        />
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
+              How it works
+            </span>
+            <h2
+              className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
+            </h2>
+          </div>
+          <a
+            href="/contact"
+            className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
+          >
+            <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
+              <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
+              <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
+            </span>
+            <span
+              className="text-center text-xl font-extrabold leading-tight sm:text-2xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {page.finalCta.button}
+            </span>
+          </a>
+        </div>
       </div>
 
       <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
