@@ -10,9 +10,9 @@ import { ArrowRight } from "lucide-react";
 export default function CardCornerArrow({
   bg = "#EEEEEE",
   accent = "#9CCC3C",
-  size = 48,
-  gap = 10,
-  radius = 18,
+  size = 54,
+  gap = 12,
+  radius = 26,
 }: {
   bg?: string;
   accent?: string;
