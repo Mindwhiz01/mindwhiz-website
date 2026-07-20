@@ -586,21 +586,34 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
               Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
             </h2>
           </div>
-          <a
+          <motion.a
             href="/contact"
-            className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
+            whileHover={{ y: -8 }}
+            className="group relative flex h-40 w-40 shrink-0 flex-col items-start justify-between rounded-3xl rounded-br-none border-2 border-[#ed1164] bg-white p-6 text-black shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:h-auto lg:w-full lg:max-w-sm"
           >
-            <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
-              <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
-              <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
-            </span>
-            <span
-              className="text-center text-xl font-extrabold leading-tight sm:text-2xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {page.finalCta.button}
-            </span>
-          </a>
+            {/* Corner circle with arrow */}
+            <div className="absolute right-6 top-6 grid h-10 w-10 place-items-center rounded-full bg-[#ed1164] transition-transform group-hover:scale-110">
+              <ArrowUpRight className="h-5 w-5 text-white" />
+            </div>
+
+            {/* Card content */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#ed1164]">
+                Ready to get started?
+              </p>
+              <h3
+                className="mt-3 text-xl font-extrabold leading-tight sm:text-2xl"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {page.finalCta.button}
+              </h3>
+            </div>
+
+            {/* Description */}
+            <p className="text-xs leading-relaxed text-black/60">
+              {page.finalCta.desc}
+            </p>
+          </motion.a>
         </div>
       </div>
 
