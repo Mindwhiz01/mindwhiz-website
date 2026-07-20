@@ -243,7 +243,7 @@ export default function AboutPage() {
           }
           subtitle="The people and principles behind MindWhiz - a leadership team obsessed with building scalable, profitable operations for every client."
           primary={{ label: "Work with us", href: "/contact" }}
-          secondary={{ label: "Our beliefs", href: "#beliefs" }}
+          secondary={{ label: "Our benefits", href: "/culture" }}
         />
 
         <div id="beliefs">
