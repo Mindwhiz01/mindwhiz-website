@@ -674,27 +674,25 @@ function SeoSection() {
           </p>
           <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-4">
             {seoTools.map((t, i) => (
-              <motion.a
+              <motion.div
                 key={t.slug}
-                href="#"
                 initial={{ opacity: 0, y: 24, scale: 0.92 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm transition-shadow hover:shadow-lg hover:shadow-black/5"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`https://cdn.simpleicons.org/${t.slug}`}
                   alt={t.name}
                   loading="lazy"
-                  className="h-10 w-10 object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
+                  className="h-10 w-10 object-contain grayscale"
                 />
-                <span className="text-sm font-semibold text-black/70 transition-colors group-hover:text-black">
+                <span className="text-sm font-semibold text-black/70">
                   {t.name}
                 </span>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </Reveal>
