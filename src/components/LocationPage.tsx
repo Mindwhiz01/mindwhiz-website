@@ -95,7 +95,7 @@ export default function LocationPage({ location }: { location: LocationContent }
                 className="mt-4 text-[clamp(2.2rem,4.5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                A hub built for <span style={{ color: "#ed1164" }}>{location.country}</span>.
+                A hub built for <span style={{ color: "#ed1164" }}>{location.country}</span>
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65">
                 {location.intro}
@@ -145,7 +145,7 @@ export default function LocationPage({ location }: { location: LocationContent }
               className="mt-4 max-w-xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              What {location.country} gives our clients.
+              What {location.country} gives our clients
             </h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {location.highlights.map((h) => (
@@ -182,7 +182,7 @@ export default function LocationPage({ location }: { location: LocationContent }
               className="mt-4 max-w-xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Services clients in {location.country} ask for most.
+              Services clients in {location.country} ask for most
             </h2>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {localServices.map((s) => (
@@ -214,7 +214,7 @@ export default function LocationPage({ location }: { location: LocationContent }
               className="mt-4 max-w-xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Also delivering from.
+              Also delivering from
             </h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
               {others.map((l) => (

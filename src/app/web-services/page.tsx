@@ -238,7 +238,7 @@ function Hero() {
             <h1 className="mt-7 text-[clamp(3rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
               We build
               <br />
-              the <span style={{ color: PINK }}>web</span>.
+              the <span style={{ color: PINK }}>web</span>
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
@@ -450,7 +450,7 @@ function PortfolioSection() {
         <Reveal className="max-w-2xl">
           <Kicker>Selected work</Kicker>
           <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Sites we&apos;ve <span style={{ color: PINK }}>shipped</span>.
+            Sites we&apos;ve <span style={{ color: PINK }}>shipped</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-black/55">
             Live websites and web projects designed, built, and launched by our team.
@@ -572,7 +572,7 @@ function StackSection() {
         <Reveal>
           <Kicker>Our stack</Kicker>
           <h2 className="mt-5 text-[clamp(2.4rem,5vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Languages &amp; <span style={{ color: PINK }}>technology</span>.
+            Languages &amp; <span style={{ color: PINK }}>technology</span>
           </h2>
         </Reveal>
       </div>
@@ -595,7 +595,7 @@ function SeoSection() {
             <Reveal>
               <Kicker>Search-ready</Kicker>
               <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-                SEO built <span style={{ color: PINK }}>in</span>.
+                SEO built <span style={{ color: PINK }}>in</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-black/55">
                 Every site we ship is engineered to be found - fast, technically sound,
@@ -713,7 +713,7 @@ function ProcessSection() {
         <Reveal className="max-w-2xl">
           <Kicker>How we work</Kicker>
           <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Idea to <span style={{ color: PINK }}>launch</span>.
+            Idea to <span style={{ color: PINK }}>launch</span>
           </h2>
         </Reveal>
 

@@ -36,7 +36,7 @@ export default function GrowSection() {
               className="max-w-md text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              The easiest way to grow your restaurant online.
+              The easiest way to grow your restaurant online
             </h2>
             <div className="mt-8 flex flex-wrap gap-3">
               <a

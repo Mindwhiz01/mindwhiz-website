@@ -42,7 +42,7 @@ export default function DigitalMarketingStackSection({
           className="mt-5 text-4xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-5xl"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          A complete digital marketing desk, built for execution.
+          A complete digital marketing desk, built for execution
         </h2>
         <p className="mt-6 max-w-xl text-base leading-7 text-[#3f3f3d]/75">
           The work is not split across disconnected specialists. Strategy,

@@ -242,7 +242,7 @@ function ManifestoStatementSection() {
           style={{ fontFamily: "var(--font-display)" }}
         >
           We bring strategy, creativity, and agile approach together to help
-          brands connect with people, and turn that connection into real results.
+          brands connect with people, and turn that connection into real results
         </h2>
       </Reveal>
     </section>
@@ -429,7 +429,7 @@ function NewsSection() {
       <Reveal>
         <h2 className="mx-auto mt-28 max-w-6xl text-center text-[clamp(2.5rem,4.5vw,5.4rem)] font-bold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
           We create, but we also reflect. Explore what we&apos;ve been thinking
-          about lately.
+          about lately
         </h2>
       </Reveal>
       <div className="mx-auto mt-24 grid max-w-7xl gap-10 lg:grid-cols-3">

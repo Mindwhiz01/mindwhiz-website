@@ -181,7 +181,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
                 className="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                {cs.highlights.join(". ")}.
+                {cs.highlights.join(". ")}
               </h2>
             </Reveal>
 

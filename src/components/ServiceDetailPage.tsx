@@ -172,7 +172,7 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
           >
             <span className="whitespace-nowrap">Support that</span>
             <br />
-            never sleeps.
+            never sleeps
           </h2>
           <div className="mt-6 space-y-4 text-base leading-7 text-black/70">
             {page.intro.body.map((paragraph) => (
@@ -353,7 +353,7 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
                 className="mt-3 text-4xl font-black uppercase tracking-tight text-black sm:text-5xl lg:text-6xl"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Outcomes Built Into The Service.
+                Outcomes Built Into The Service
               </h2>
               <p className="mt-5 max-w-sm text-black">
                 Predictable support, certified delivery practices, and transparent pricing help you scale IT operations without adding unnecessary overhead.
@@ -523,7 +523,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
               className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
+              Setup to <span style={{ color: "#ed1164" }}>steady execution</span>
             </h2>
           </div>
           <motion.div

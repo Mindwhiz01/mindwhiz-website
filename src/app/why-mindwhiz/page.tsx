@@ -126,7 +126,7 @@ function StudioSection() {
             className="mt-6 max-w-xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Always on.
+            Always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
@@ -330,7 +330,7 @@ function CoreValuesScroll() {
             className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Talent, without the <span style={{ color: "#ed1164" }}>friction</span>.
+            Talent, without the <span style={{ color: "#ed1164" }}>friction</span>
           </h2>
         </div>
 
@@ -499,7 +499,7 @@ export default function WhyMindWhizPage() {
               >
                 Bridging the
                 <br />
-                <span style={{ color: "#ed1164" }}>talent</span> gap.
+                <span style={{ color: "#ed1164" }}>talent</span> gap
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-black">
                 MindWhiz is more than a service provider - it&apos;s your partner in
@@ -584,7 +584,7 @@ export default function WhyMindWhizPage() {
                 className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-<span style={{ color: "#9CCC3C" }}>Global</span> delivery, built in.
+<span style={{ color: "#9CCC3C" }}>Global</span> delivery, built in
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-black">
                 With delivery hubs across the United States, the United Kingdom, and
@@ -647,7 +647,7 @@ export default function WhyMindWhizPage() {
                 className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                One partner.
+                One partner
               </h2>
             </Reveal>
 
@@ -726,7 +726,7 @@ export default function WhyMindWhizPage() {
                 className="text-[clamp(2.2rem,4.5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Build your team.
+                Build your team
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">
                 Tell us what you&apos;re trying to ship. We&apos;ll match you with vetted

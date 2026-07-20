@@ -527,7 +527,7 @@ function StudioClockSection() {
             className="mt-6 max-w-xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Always on.
+            Always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
@@ -842,7 +842,7 @@ function IndustriesWorlds() {
               className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              <span style={{ color: "#ed1164" }}>Industries</span> we serve.
+              <span style={{ color: "#ed1164" }}>Industries</span> we serve
             </h2>
             <p className="mb-6 mt-5 max-w-md text-sm leading-relaxed text-[#2F343B]">
               MindWhiz supports businesses across a wide range of industries. Our
@@ -1235,7 +1235,7 @@ function CaseRecordSection() {
             <div className="mt-6 flex flex-col gap-8 border-b border-white/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-xl">
                 <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                  The case <span style={{ color: "#ed1164" }}>record</span>.
+                  The case <span style={{ color: "#ed1164" }}>record</span>
                 </h2>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55">
                   Three engagements delivered since 2025. Every entry below is on
@@ -1300,7 +1300,7 @@ function BlogSection() {
                 className="max-w-2xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Latest <span style={{ color: "#ed1164" }}>insights</span>.
+                Latest <span style={{ color: "#ed1164" }}>insights</span>
               </h2>
               <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-8">
                 <p className="max-w-md text-sm leading-relaxed text-black/70">

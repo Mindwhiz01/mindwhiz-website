@@ -149,7 +149,7 @@ export default function ContactPage() {
                 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Build your hybrid team now.
+                Build your hybrid team now
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-black/70">
                 Fill out the form and a MindWhiz specialist will get back to you

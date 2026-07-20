@@ -161,7 +161,7 @@ export default function TrustedByClients() {
             className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Trusted by <span style={{ color: "#ed1164" }}>clients</span>.
+            Trusted by <span style={{ color: "#ed1164" }}>clients</span>
           </h2>
         </Reveal>
         <div className="flex items-center gap-2">
