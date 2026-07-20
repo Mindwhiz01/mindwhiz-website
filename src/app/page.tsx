@@ -72,6 +72,7 @@ import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import ContactFormSection from "@/components/ContactFormSection";
 import ClientsSection from "@/components/ClientsSection";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -744,6 +745,13 @@ function DriveTalentSection() {
       // scroll container.
       className="relative z-20 h-screen overflow-clip bg-transparent"
     >
+      {/* Particle background */}
+      <ParticleBackground
+        sectionRef={ref}
+        particleColor="rgba(156, 204, 60, 0.5)"
+        particleCount={50}
+      />
+
       <div className="flex h-full flex-col items-center justify-center overflow-hidden px-6">
         {/* light glow - top-left and bottom-right corners */}
         <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
@@ -1549,7 +1557,7 @@ export default function SystemLimitedHome() {
                 className="max-w-2xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Built for scale.
+                Built for scale
               </h2>
             </Reveal>
             <Reveal delay={0.1} className="shrink-0 lg:max-w-sm lg:text-right">
