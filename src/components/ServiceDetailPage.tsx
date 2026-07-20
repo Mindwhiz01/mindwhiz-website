@@ -588,31 +588,36 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
           </div>
           <motion.a
             href="/contact"
-            whileHover={{ y: -8 }}
-            className="group relative flex h-40 w-40 shrink-0 flex-col items-start justify-between rounded-3xl rounded-br-none border-2 border-[#ed1164] bg-white p-6 text-black shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:h-auto lg:w-full lg:max-w-sm"
+            whileHover={{ y: -8, scale: 1.02 }}
+            className="group relative flex shrink-0 flex-col justify-between rounded-3xl rounded-br-none bg-neutral-900 p-8 text-white shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:h-80 lg:w-full lg:max-w-sm"
           >
-            {/* Corner circle with arrow */}
-            <div className="absolute right-6 top-6 grid h-10 w-10 place-items-center rounded-full bg-[#ed1164] transition-transform group-hover:scale-110">
-              <ArrowUpRight className="h-5 w-5 text-white" />
+            {/* Counter - top left */}
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+              {page.proof.length > 0 ? "01 / " : ""}
+              {page.proof.length || "04"}
+            </span>
+
+            {/* Main stat display */}
+            <div className="flex-1">
+              {page.proof.length > 0 && (
+                <>
+                  <h3
+                    className="mt-8 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {page.proof[0].value}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-neutral-300">
+                    {page.proof[0].label}
+                  </p>
+                </>
+              )}
             </div>
 
-            {/* Card content */}
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#ed1164]">
-                Ready to get started?
-              </p>
-              <h3
-                className="mt-3 text-xl font-extrabold leading-tight sm:text-2xl"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {page.finalCta.button}
-              </h3>
+            {/* Green circle with arrow - bottom right */}
+            <div className="absolute right-6 bottom-6 grid h-16 w-16 place-items-center rounded-full bg-[#9CCC3C] transition-transform group-hover:scale-110">
+              <ArrowRight className="h-6 w-6 text-black" />
             </div>
-
-            {/* Description */}
-            <p className="text-xs leading-relaxed text-black/60">
-              {page.finalCta.desc}
-            </p>
           </motion.a>
         </div>
       </div>
