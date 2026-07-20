@@ -116,7 +116,7 @@ function Hero() {
           className="mt-4 max-w-4xl text-[clamp(3.2rem,9vw,8.5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Our people, <span className="text-[#9CCC3C]">our strength.</span>
+          Our people, <span className="text-[#9CCC3C]">our strength</span>
         </h1>
         <p className="mt-7 max-w-xl text-base leading-relaxed text-white/75">
           Empowered people build better outcomes. We invest in our team so they
@@ -186,7 +186,7 @@ function PhilosophySection() {
               className="mt-4 text-[clamp(2.4rem,5vw,4.4rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              People first, <span style={{ color: "#ed1164" }}>always.</span>
+              People first, <span style={{ color: "#ed1164" }}>always</span>
             </h2>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-black/65">
               We believe empowered people build better projects. When our team

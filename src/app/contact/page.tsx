@@ -129,7 +129,7 @@ export default function ContactPage() {
           image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
           title={
             <>
-              Let&apos;s <span className="text-[#9CCC3C]">talk.</span>
+              Let&apos;s <span className="text-[#9CCC3C]">talk</span>
             </>
           }
           subtitle="Tell us what you're trying to achieve. MindWhiz will respond with the right people, the right approach, and a clear next step."

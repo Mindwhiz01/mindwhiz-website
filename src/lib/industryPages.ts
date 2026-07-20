@@ -14,7 +14,7 @@ const cap = {
 };
 
 const finalCta = {
-  title: "Build your hybrid team now.",
+  title: "Build your hybrid team now",
   desc: "Tell us what you are trying to achieve. Mindwhiz will respond with the right people, the right approach, and a clear next step.",
   button: "Get in touch",
 };
@@ -35,7 +35,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Technology & Digital",
-      title: "Engineering capacity that scales with your roadmap.",
+      title: "Engineering capacity that scales with your roadmap",
       body: [
         "We embed vetted engineers, DevOps, and security specialists into IT and software teams so delivery keeps pace with demand.",
         "From cloud migrations to 24/7 monitoring, MindWhiz keeps your infrastructure reliable, compliant, and cost-efficient.",
@@ -110,7 +110,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Technology & Digital",
-      title: "Operations that keep every order moving.",
+      title: "Operations that keep every order moving",
       body: [
         "MindWhiz supports e-commerce and retail brands with catalog management, customer service, and back-office operations.",
         "We help you handle peak demand, protect margins, and deliver a consistent experience across every channel.",
@@ -185,7 +185,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Technology & Digital",
-      title: "Punch above your size.",
+      title: "Punch above your size",
       body: [
         "MindWhiz gives startups and SMBs on-demand access to engineering, operations, and support talent that grows exactly as fast as you do.",
         "Skip long hiring cycles and fixed overhead while still getting senior, dedicated people on your account.",
@@ -260,7 +260,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Built & Physical",
-      title: "Quote more work, without the overhead.",
+      title: "Quote more work, without the overhead",
       body: [
         "MindWhiz gives construction and engineering firms vetted offshore estimators and support teams that deliver fast, accurate takeoffs.",
         "Win more bids, keep projects on schedule, and scale delivery without carrying the fixed cost of in-house capacity.",
@@ -335,7 +335,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Built & Physical",
-      title: "Close more, coordinate less.",
+      title: "Close more, coordinate less",
       body: [
         "MindWhiz supports real estate and property teams with listing management, transaction coordination, and back-office operations.",
         "Free your agents and managers to focus on clients and deals while we handle the process work behind them.",
@@ -410,7 +410,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Built & Physical",
-      title: "Keep the line moving.",
+      title: "Keep the line moving",
       body: [
         "MindWhiz supports manufacturers with engineering documentation, IT operations, and back-office teams that reduce downtime.",
         "We help you connect systems, control costs, and scale support as production demand changes.",
@@ -485,7 +485,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Finance & Services",
-      title: "Finance operations that scale with you.",
+      title: "Finance operations that scale with you",
       body: [
         "MindWhiz supports finance teams with bookkeeping, AP/AR, payroll, and reporting delivered by vetted accountants.",
         "Get accurate numbers, faster closes, and up to 40% lower back-office cost without sacrificing control.",
@@ -560,7 +560,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Finance & Services",
-      title: "Deliver more without diluting quality.",
+      title: "Deliver more without diluting quality",
       body: [
         "MindWhiz gives professional services firms vetted analysts and support teams that extend delivery capacity on demand.",
         "Take on more engagements, protect utilization, and keep quality high while we handle the supporting work.",
@@ -635,7 +635,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Finance & Services",
-      title: "Operations that never stop.",
+      title: "Operations that never stop",
       body: [
         "MindWhiz supports logistics and supply chain teams with dispatch coordination, tracking, and back-office operations.",
         "We help you reduce delays, control cost, and keep visibility across every shipment and partner.",
@@ -710,7 +710,7 @@ export const industryPages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Healthcare",
-      title: "Care operations you can trust.",
+      title: "Care operations you can trust",
       body: [
         "MindWhiz supports healthcare and HealthTech organizations with back-office, IT, and support teams that respect compliance.",
         "We help you scale operations and technology while protecting patient data and meeting regulatory standards.",

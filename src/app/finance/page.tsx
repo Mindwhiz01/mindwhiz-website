@@ -373,7 +373,7 @@ function CapabilitiesCarousel() {
             <h2 className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
               Finance,
               <br />
-              <span className="text-[#ed1164]">handled.</span>
+              <span className="text-[#ed1164]">handled</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From daily bookkeeping to CFO-level analysis, we plug into your stack
@@ -483,7 +483,7 @@ function CoverageMasonry() {
             <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
               Every ledger,
               <br />
-              <span className="text-[#ed1164]">every close.</span>
+              <span className="text-[#ed1164]">every close</span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-7 text-black/70">
               Bookkeeping, payroll, reporting, and analysis - we cover the full
@@ -695,9 +695,9 @@ export default function FinancePage() {
           <Reveal className="max-w-2xl">
             <Kicker>Staff augmentation</Kicker>
             <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
-              Expert accountants.
+              Expert accountants
               <br />
-              <span className="text-[#ed1164]">On demand.</span>
+              <span className="text-[#ed1164]">On demand</span>
             </h2>
             <p className="mt-5 text-base leading-7 text-black/70">
               Expert accountants providing on-demand finance support through

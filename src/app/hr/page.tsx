@@ -319,7 +319,7 @@ function CapabilitiesCarousel() {
             <h2 className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
               People ops,
               <br />
-              <span className="text-[#ed1164]">handled.</span>
+              <span className="text-[#ed1164]">handled</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From first hire to a full HR function, we run recruiting, payroll,
@@ -442,7 +442,7 @@ export default function HrPage() {
               <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
                 Every role,
                 <br />
-                <span className="text-[#ed1164]">every stage.</span>
+                <span className="text-[#ed1164]">every stage</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
                 Across the full employee lifecycle - from sourcing to offboarding -
@@ -520,7 +520,7 @@ export default function HrPage() {
               <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
                 What lands in
                 <br />
-                <span className="text-[#ed1164]">your inbox.</span>
+                <span className="text-[#ed1164]">your inbox</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
                 Every engagement ends with organized, compliant HR docs - ready to

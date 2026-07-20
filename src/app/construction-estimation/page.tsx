@@ -346,7 +346,7 @@ function CapabilitiesCarousel() {
             >
               Estimation,
               <br />
-              <span className="text-[#ed1164]">end to end.</span>
+              <span className="text-[#ed1164]">end to end</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From the first set of drawings to the submitted bid, our estimators
@@ -476,7 +476,7 @@ export default function ConstructionEstimationPage() {
               >
                 Every division,
                 <br />
-                <span className="text-[#ed1164]">every trade.</span>
+                <span className="text-[#ed1164]">every trade</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
                 Commercial, residential, and industrial - our estimators work
@@ -576,7 +576,7 @@ export default function ConstructionEstimationPage() {
               >
                 What lands in
                 <br />
-                <span className="text-[#ed1164]">your inbox.</span>
+                <span className="text-[#ed1164]">your inbox</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
                 Every engagement ends with a clean, organized package - reviewed,

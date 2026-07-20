@@ -217,7 +217,7 @@ export default function BlogListPage() {
           image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1800&q=80"
           title={
             <>
-              The <span className="text-[#9CCC3C]">blog.</span>
+              The <span className="text-[#9CCC3C]">blog</span>
             </>
           }
           subtitle="Ideas, guides, and behind-the-scenes stories on hybrid staffing, IT operations, and building a team that scales."

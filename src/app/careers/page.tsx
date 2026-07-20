@@ -523,7 +523,7 @@ export default function CareersPage() {
           image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80"
           title={
             <>
-              Build your <span className="text-[#9CCC3C]">career.</span>
+              Build your <span className="text-[#9CCC3C]">career</span>
             </>
           }
           subtitle="Join a global delivery team spanning the US, UK, and Pakistan. Do meaningful work, grow fast, and help thousands of businesses run better."

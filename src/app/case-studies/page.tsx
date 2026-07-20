@@ -207,7 +207,7 @@ export default function CaseStudiesPage() {
           image="/banners/case-studies.png"
           title={
             <>
-              On the <span className="text-[#9CCC3C]">record.</span>
+              On the <span className="text-[#9CCC3C]">record</span>
             </>
           }
           subtitle="Every engagement below is filed exactly as delivered - the client, the brief, and the outcome, on record."

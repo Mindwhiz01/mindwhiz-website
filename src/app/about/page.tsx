@@ -61,21 +61,21 @@ function Kicker({ children }: { children: React.ReactNode }) {
 // ---------------------------------------------------------------------------
 const beliefs = [
   {
-    title: "We believe that performance beats endless customization.",
+    title: "We believe that performance beats endless customization",
     paragraphs: [
       "Everyone else promises you everything. We won't. Partnering with MindWhiz means giving up some control over how your operations are staffed and run.",
       "In return, you get a proven system built to grow your business. Our numbers prove it. It's why our clients outperform their competition.",
     ],
   },
   {
-    title: "We believe that all businesses should benefit from global talent.",
+    title: "We believe that all businesses should benefit from global talent",
     paragraphs: [
       "Corporations have teams working around the clock across the globe. Most small businesses have no one. MindWhiz changes this.",
       "Our team of experts puts vetted hybrid talent to work for you. You get the same capabilities as a global enterprise, without spending millions to get there.",
     ],
   },
   {
-    title: "We believe in growing your profits above all else.",
+    title: "We believe in growing your profits above all else",
     paragraphs: [
       "A lot of staffing companies make money whether you grow or not. We think that's wrong.",
       "MindWhiz is built around one question: is this business growing profitably? That's what we wake up thinking about.",
@@ -148,15 +148,15 @@ function BeliefsSection() {
 // ---------------------------------------------------------------------------
 const cooPoints = [
   {
-    title: "Operations that never sleep.",
+    title: "Operations that never sleep",
     desc: "From 24/7 helpdesk floors to NOC monitoring, our delivery engine runs across three time zones so your business never stops.",
   },
   {
-    title: "Quality you can measure.",
+    title: "Quality you can measure",
     desc: "Every engagement ships with SLAs, reporting cadences, and named owners - so you always know how your team is performing.",
   },
   {
-    title: "People before process.",
+    title: "People before process",
     desc: "We invest in training, retention, and career paths for every specialist we place. Happy teams do the best work.",
   },
 ];
@@ -238,7 +238,7 @@ export default function AboutPage() {
           image="/banners/about-us.png"
           title={
             <>
-              About <span className="text-[#9CCC3C]">us.</span>
+              About <span className="text-[#9CCC3C]">us</span>
             </>
           }
           subtitle="The people and principles behind MindWhiz - a leadership team obsessed with building scalable, profitable operations for every client."

@@ -64,7 +64,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Comparison",
-      title: "Support that never sleeps.",
+      title: "Support that never sleeps",
       body: [
         "Why Mindwhiz IT Helpdesk services stand out: round-the-clock expert support, faster response times, and compliant, cost-efficient service designed to scale with your business, not restrict it.",
         "Mindwhiz combines continuous availability, certified IT professionals, customized support plans, and SOC 2 and ISO 27001 aligned security practices.",
@@ -145,7 +145,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Build your hybrid team now.",
+      title: "Build your hybrid team now",
       desc: "Tell us what you are trying to achieve. Mindwhiz will respond with the right people, the right approach, and a clear next step.",
       button: "Get in touch",
     },
@@ -165,7 +165,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Industry-leading NOC operations",
-      title: "Certified engineers, reliable monitoring.",
+      title: "Certified engineers, reliable monitoring",
       body: [
         "MindWhiz works alongside organizations that value stability, responsiveness, and operational excellence.",
         "Our NOC teams help reduce downtime, improve visibility, and support business continuity with confidence.",
@@ -261,7 +261,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Strengthen your operations.",
+      title: "Strengthen your operations",
       desc: "MindWhiz delivers end-to-end lifecycle solutions that reduce operational noise while improving performance, reliability, and visibility.",
       button: "Get started",
     },
@@ -281,7 +281,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "The power of experience",
-      title: "Control every device and asset.",
+      title: "Control every device and asset",
       body: [
         "MindWhiz delivers IT asset management services that provide clear visibility and control across devices, software, and cloud environments.",
         "Structured lifecycle management supports secure onboarding, controlled access, and compliant asset retirement.",
@@ -338,7 +338,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Efficiency and security, unlocked.",
+      title: "Efficiency and security, unlocked",
       desc: "MindWhiz simplifies management of devices, software, and access so your teams can stay focused on core business priorities.",
       button: "Request more information",
     },
@@ -358,7 +358,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Reliable IT infrastructure services",
-      title: "Cloud that stays stable and secure.",
+      title: "Cloud that stays stable and secure",
       body: [
         "Your business relies on always-available networks, applications, and digital services. MindWhiz helps organizations maintain a resilient IT foundation.",
         "We work with your teams to design, manage, and optimize cloud environments that support performance, availability, and long-term scalability.",
@@ -416,7 +416,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Reliable, secure cloud.",
+      title: "Reliable, secure cloud",
       desc: "Talk to MindWhiz and get a clear cloud infrastructure management plan.",
       button: "Book free consultation",
     },
@@ -436,7 +436,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Server management",
-      title: "Servers online and protected.",
+      title: "Servers online and protected",
       body: [
         "MindWhiz server management services reduce the security and operational risks that often come with managing servers internally.",
         "Dedicated engineers monitor performance, apply updates, maintain security controls, and help prevent serious server issues before they affect the business.",
@@ -495,7 +495,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "We support multiple platforms.",
+      title: "We support multiple platforms",
       desc: "MindWhiz provides comprehensive support for servers and network infrastructure across diverse environments and operational requirements.",
       button: "Request more information",
     },
@@ -515,7 +515,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Endpoint security operations",
-      title: "Device protection for distributed workforces.",
+      title: "Device protection for distributed workforces",
       body: [
         "Endpoint security keeps laptops, workstations, and servers protected as teams scale across locations.",
         "MindWhiz supports monitoring, policy alignment, patch visibility, and remediation workflows that reduce device-level risk.",
@@ -571,7 +571,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Protect every device.",
+      title: "Protect every device",
       desc: "MindWhiz helps keep endpoint security visible, controlled, and responsive across distributed teams.",
       button: "Talk to MindWhiz",
     },
@@ -591,7 +591,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Software delivery and cloud infrastructure",
-      title: "Automate deployments, ship reliably.",
+      title: "Automate deployments, ship reliably",
       body: [
         "MindWhiz works across cloud platforms and environments to support DevOps and automation needs without relying on vendor-specific tools.",
         "By automating critical workflows, MindWhiz reduces operational complexity, increases efficiency, and supports security and compliance across modern infrastructure.",
@@ -649,7 +649,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Lead your digital journey.",
+      title: "Lead your digital journey",
       desc: "Get a structured, outcome-driven DevOps roadmap that accelerates delivery, improves reliability, and reduces operational risk.",
       button: "Get expert consultation",
     },
@@ -669,7 +669,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Cybersecurity protection 24/7/365",
-      title: "Coverage for modern threats.",
+      title: "Coverage for modern threats",
       body: [
         "Through monitoring capabilities and deep cybersecurity expertise, MindWhiz helps organizations stay protected while focusing on their most critical security priorities.",
         "MindWhiz supports continuous assessment, monitoring, and response across complex environments.",
@@ -729,7 +729,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Prevention, backed by trust.",
+      title: "Prevention, backed by trust",
       desc: "MindWhiz focuses on early threat prevention, always-on coverage, and unified visibility across your environment.",
       button: "Get a security review",
     },
@@ -749,7 +749,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Talent & Workforce",
-      title: "The right people, exactly when you need them.",
+      title: "The right people, exactly when you need them",
       body: [
         "MindWhiz staff augmentation gives you role-ready engineers, analysts, and operators who plug straight into your workflows, tools, and standards.",
         "You keep full control of direction and priorities while we handle sourcing, vetting, onboarding, and retention, so your roadmap never waits on hiring.",
@@ -824,7 +824,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     finalCta: {
-      title: "Build your hybrid team now.",
+      title: "Build your hybrid team now",
       desc: "Tell us what you are trying to achieve. Mindwhiz will respond with the right people, the right approach, and a clear next step.",
       button: "Get in touch",
     },

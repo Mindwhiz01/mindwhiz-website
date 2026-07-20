@@ -384,11 +384,11 @@ const storyHighlights = [
     desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses - headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
   },
   {
-    title: "Decades of hiring expertise.",
+    title: "Decades of hiring expertise",
     desc: "Our leadership brings decades of experience in technical recruiting across the industries we serve - construction, IT and cybersecurity, and finance.",
   },
   {
-    title: "Built for speed.",
+    title: "Built for speed",
     desc: "Clients get experts working on their projects within 48–72 hours, with an average full deployment time of 10 days from first call to productive team.",
   },
 ];
@@ -448,7 +448,7 @@ export default function WhyMindWhizPage() {
           image="/banners/why-mindwhiz.png"
           title={
             <>
-              Real <span className="text-[#9CCC3C]">teams.</span>
+              Real <span className="text-[#9CCC3C]">teams</span>
             </>
           }
           subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people - not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."

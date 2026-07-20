@@ -273,7 +273,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
             <h2 className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
               Service
               <br />
-              <span className="text-[#ed1164]">coverage.</span>
+              <span className="text-[#ed1164]">coverage</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               A clear view of the support coverage, response model, and operational controls that keep your teams productive around the clock.
