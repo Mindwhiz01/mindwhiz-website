@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Target, Search, ClipboardList, LineChart, type LucideIcon } from "lucide-react";
 import { company } from "@/lib/content";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -80,6 +80,29 @@ const offices = [
     city: "Lahore",
     img: "/hubs/pk.jpg",
     mapQuery: "Lahore, Pakistan",
+  },
+];
+
+const channels: { title: string; desc: string; Icon: LucideIcon }[] = [
+  {
+    title: "Performance Media",
+    desc: "Paid search, paid social, retargeting, and conversion campaigns managed against clean acquisition goals.",
+    Icon: Target,
+  },
+  {
+    title: "SEO & Content",
+    desc: "Technical SEO, topical content systems, landing pages, and reporting that lift organic visibility over time.",
+    Icon: Search,
+  },
+  {
+    title: "CRM & Lifecycle",
+    desc: "Email, lead nurturing, automation, and segmentation that move prospects from first touch to close.",
+    Icon: Mail,
+  },
+  {
+    title: "Analytics & CRO",
+    desc: "Tracking plans, dashboards, funnel analysis, and test cycles that turn spend into measurable learning.",
+    Icon: LineChart,
   },
 ];
 
@@ -213,6 +236,50 @@ export default function ContactPage() {
                   </a>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 py-24 sm:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              {/* left - heading + supporting copy */}
+              <Reveal>
+                <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#ed1164]">
+                  What we operate
+                </span>
+                <h2
+                  className="mt-5 text-4xl font-extrabold uppercase leading-[1.02] text-white sm:text-6xl"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  A complete digital marketing desk, built for execution.
+                </h2>
+                <p className="mt-6 max-w-xl text-base leading-7 text-white/75">
+                  The work is not split across disconnected specialists. Strategy,
+                  creative, media buying, technical SEO, automation, and reporting
+                  run from one operating cadence, so every channel is tied to the
+                  same commercial goal.
+                </p>
+              </Reveal>
+
+              {/* right - staggered, offset service cards */}
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+                {channels.map(({ title, desc, Icon }, index) => (
+                  <Reveal key={title} delay={index * 0.08}>
+                    <div
+                      className={`group h-full rounded-[2rem] border border-white/15 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#ed1164] hover:text-white ${
+                        index % 2 === 1 ? "sm:translate-y-12" : ""
+                      }`}
+                    >
+                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] transition-colors duration-300 group-hover:bg-white">
+                        <Icon className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ed1164]" />
+                      </span>
+                      <h3 className="mt-7 text-xl font-extrabold uppercase text-white">{title}</h3>
+                      <p className="mt-4 text-sm leading-6 text-white/75">{desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>

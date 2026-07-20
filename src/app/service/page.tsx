@@ -845,49 +845,6 @@ export default function ServicePage() {
         {/* reels - drifting portrait cards + big heading */}
         <ReelsSection />
 
-        <section className="bg-[#eee8e0]">
-          <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              {/* left - heading + supporting copy */}
-              <Reveal>
-                <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#ed1164]">
-                  What we operate
-                </span>
-                <h2
-                  className="mt-5 text-4xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-6xl"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  A complete digital marketing desk, built for execution.
-                </h2>
-                <p className="mt-6 max-w-xl text-base leading-7 text-[#3f3f3d]/75">
-                  The work is not split across disconnected specialists. Strategy,
-                  creative, media buying, technical SEO, automation, and reporting
-                  run from one operating cadence, so every channel is tied to the
-                  same commercial goal.
-                </p>
-              </Reveal>
-
-              {/* right - staggered, offset service cards */}
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
-                {channels.map(({ title, desc, Icon }, index) => (
-                  <Reveal key={title} delay={index * 0.08}>
-                    <div
-                      className={`group h-full rounded-[2rem] border border-[#3f3f3d]/15 bg-[#fff8ed] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#ed1164] hover:text-white ${
-                        index % 2 === 1 ? "sm:translate-y-12" : ""
-                      }`}
-                    >
-                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] transition-colors duration-300 group-hover:bg-white">
-                        <Icon className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ed1164]" />
-                      </span>
-                      <h3 className="mt-7 text-xl font-extrabold uppercase">{title}</h3>
-                      <p className="mt-4 text-sm leading-6 opacity-75">{desc}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         <div id="bento">
           <ScrubbedBentoGallery />
