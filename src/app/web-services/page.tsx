@@ -680,18 +680,23 @@ function SeoSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm"
+                whileHover={{ y: -8, scale: 1.05 }}
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm transition-all duration-300 hover:border-[#ed1164]/40 hover:bg-gradient-to-br hover:from-white hover:to-[#ed1164]/5 hover:shadow-lg hover:shadow-[#ed1164]/10 cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <motion.img
                   src={`https://cdn.simpleicons.org/${t.slug}`}
                   alt={t.name}
                   loading="lazy"
-                  className="h-10 w-10 object-contain grayscale"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-10 w-10 object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
                 />
-                <span className="text-sm font-semibold text-black/70">
+                <motion.span
+                  className="text-sm font-semibold text-black/70 transition-colors duration-300 group-hover:text-[#ed1164]"
+                >
                   {t.name}
-                </span>
+                </motion.span>
               </motion.div>
             ))}
           </div>
