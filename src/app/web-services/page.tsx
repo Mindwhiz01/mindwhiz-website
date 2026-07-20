@@ -382,7 +382,7 @@ function ServicesSection() {
   useSlideSnap(ref, total);
 
   return (
-    <section id="web-that-works" className="relative bg-white">
+    <section id="web-that-works" className="relative bg-[#faf9f7]">
       {/* heading sits above the images on a light background; the CTA is a
           square block on the right that stretches to the heading's height.
           The glow is anchored to this full-width wrapper so it bleeds all the
