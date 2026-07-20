@@ -40,12 +40,12 @@ export type ServicePageContent = {
 
 const sharedImages = {
   helpdesk: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80",
-  noc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80",
+  noc: "/service-coverage/noc-monitoring/network-monitoring.png",
   remote: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=80",
-  cloud: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80",
+  cloud: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png",
   server: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=80",
   devops: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
-  cyber: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1800&q=80",
+  cyber: "/service-coverage/cybersecurity/managed-detection.png",
 };
 
 export const servicePages: ServicePageContent[] = [
@@ -522,7 +522,7 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Endpoint Risk", "Compliance Gaps"],
-        image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80",
+        image: "/service-coverage/endpoint-security/endpoint-protection.png",
         title: "Unmanaged Devices",
         desc: "Unpatched laptops and unmonitored endpoints leave distributed teams exposed to preventable incidents.",
         cta: "Explore Problem",
@@ -756,7 +756,7 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Hiring Delays", "Skill Gaps"],
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+        image: "/service-coverage/staff-augmentation/skilled-talent.png",
         title: "Talent Gaps",
         desc: "Long hiring cycles and missing skills stall roadmaps while the work piles up.",
         cta: "Explore Problem",

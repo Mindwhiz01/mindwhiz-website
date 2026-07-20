@@ -12,6 +12,7 @@ import {
 import { Inter, Oswald } from "next/font/google";
 import {
   ArrowRight,
+  ArrowUpRight,
   BarChart3,
   CheckCircle2,
   ClipboardList,
@@ -28,13 +29,13 @@ import {
   Target,
   type LucideIcon,
 } from "lucide-react";
-import DigitalMarketingStackSection from "@/components/DigitalMarketingStackSection";
 import { company } from "@/lib/content";
 import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
 import ProcessScroll from "@/components/ProcessScroll";
+import CardCornerArrow from "@/components/CardCornerArrow";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -278,50 +279,50 @@ function BentoTile({
 
 function ScrubbedBentoGallery() {
   return (
-    <section className="bg-[#eee8e0] px-6 py-24 text-[#3f3f3d] sm:px-8">
+    <section className="bg-white px-6 py-24 sm:px-8">
       <div className="mx-auto max-w-7xl">
         <Reveal className="text-center">
           <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ed1164]">
             Growth operations
           </p>
           <h2
-            className="mx-auto mt-4 max-w-5xl text-4xl font-extrabold uppercase leading-[1.04] text-[#3f3f3d] sm:text-6xl"
+            className="mx-auto mt-4 max-w-5xl text-4xl font-extrabold uppercase leading-[1.04] text-black sm:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             The channels we plan, launch, and improve every week.
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {bentoImages.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.035}>
-              <div className="group relative flex min-h-[21rem] overflow-hidden rounded-[2rem] bg-black p-5 text-white shadow-2xl shadow-black/25">
+              <div className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.src}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/35" />
-                <div className="absolute inset-0 shadow-[inset_0_-190px_140px_rgba(0,0,0,0.9)]" />
-                <div className="relative flex h-full min-h-[21rem] flex-col justify-between">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] backdrop-blur">
-                      {item.meta}
-                    </span>
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-white/75">
-                      0{index + 1}
-                    </span>
-                  </div>
-                  <div>
-                    <h3
-                      className="text-3xl font-extrabold uppercase leading-none"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-6 text-white/78">{item.metric}</p>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
+
+                <span className="absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
+                  {String(index + 1).padStart(2, "0")} / {String(bentoImages.length).padStart(2, "0")}
+                </span>
+
+                {/* scooped corner + green circular arrow */}
+                <CardCornerArrow bg="#EEEEEE" />
+
+                <div className="relative p-6 pb-12">
+                  <h3
+                    className="text-2xl font-extrabold uppercase leading-none drop-shadow"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-6 text-white/75">{item.metric}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
+                    Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+                  </span>
                 </div>
               </div>
             </Reveal>
@@ -846,7 +847,45 @@ export default function ServicePage() {
 
         <section className="bg-[#eee8e0]">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
-            <DigitalMarketingStackSection channels={channels} />
+            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              {/* left - heading + supporting copy */}
+              <Reveal>
+                <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#ed1164]">
+                  What we operate
+                </span>
+                <h2
+                  className="mt-5 text-4xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-6xl"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  A complete digital marketing desk, built for execution.
+                </h2>
+                <p className="mt-6 max-w-xl text-base leading-7 text-[#3f3f3d]/75">
+                  The work is not split across disconnected specialists. Strategy,
+                  creative, media buying, technical SEO, automation, and reporting
+                  run from one operating cadence, so every channel is tied to the
+                  same commercial goal.
+                </p>
+              </Reveal>
+
+              {/* right - staggered, offset service cards */}
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+                {channels.map(({ title, desc, Icon }, index) => (
+                  <Reveal key={title} delay={index * 0.08}>
+                    <div
+                      className={`group h-full rounded-[2rem] border border-[#3f3f3d]/15 bg-[#fff8ed] p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#ed1164] hover:text-white ${
+                        index % 2 === 1 ? "sm:translate-y-12" : ""
+                      }`}
+                    >
+                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] transition-colors duration-300 group-hover:bg-white">
+                        <Icon className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ed1164]" />
+                      </span>
+                      <h3 className="mt-7 text-xl font-extrabold uppercase">{title}</h3>
+                      <p className="mt-4 text-sm leading-6 opacity-75">{desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

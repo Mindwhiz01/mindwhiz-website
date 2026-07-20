@@ -206,10 +206,13 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
         <p className="mt-2 text-sm leading-relaxed text-white/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">{card.desc}</p>
         <a
           href="/contact"
-          className="mt-5 inline-flex w-full items-center justify-between rounded-full bg-[#9CCC3C] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black transition-colors duration-300 hover:bg-[#8bbd2f]"
+          className="group/btn relative mt-5 inline-flex w-full items-center justify-between overflow-hidden rounded-full bg-[#9CCC3C] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black"
         >
-          {card.cta}
-          <ArrowRight className="h-4 w-4" />
+          <span className="absolute inset-0 bg-[#ed1164] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover/btn:scale-x-100" />
+          <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-white">
+            {card.cta}
+          </span>
+          <ArrowRight className="relative z-10 h-4 w-4 transition-colors duration-300 group-hover/btn:text-white" />
         </a>
       </div>
     </div>

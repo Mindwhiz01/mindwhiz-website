@@ -102,7 +102,7 @@ function BeliefsSection() {
           <Reveal delay={0.1}>
             <div className="max-w-xs">
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80"
+                src="/leadership/muhammad-ali.png"
                 alt="Muhammad Ali - Co-Founder and CEO at MindWhiz"
                 className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
               />
@@ -203,7 +203,7 @@ function CooSection() {
         <Reveal delay={0.1} className="mx-auto w-full max-w-xs">
           <div>
             <img
-              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80"
+              src="/leadership/muhammad-aftab-zafar.png"
               alt="Muhammad Aftab Zafar - Chief Operating Officer at MindWhiz"
               className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
             />

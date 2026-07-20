@@ -42,7 +42,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Scaling Pains", "Delivery Risk"],
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80",
+        image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png",
         title: "Stretched IT Teams",
         desc: "Growing roadmaps outpace in-house capacity, slowing delivery and stretching engineers thin.",
         cta: "Explore Problem",
@@ -117,7 +117,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Order Backlogs", "Support Load"],
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
         title: "Operations Overload",
         desc: "Order spikes, returns, and support volume overwhelm lean teams and hurt the customer experience.",
         cta: "Explore Problem",
@@ -192,7 +192,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Tight Runway", "Hiring Overhead"],
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80",
+        image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.png",
         title: "Scaling Too Slow",
         desc: "Long hiring cycles and fixed overhead hold back startups that need to move fast on a lean budget.",
         cta: "Explore Problem",
@@ -267,7 +267,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Slow Bids", "Estimating Load"],
-        image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=80",
         title: "Missed Bids",
         desc: "Slow, costly estimating limits how many bids you can quote and win each week.",
         cta: "Explore Problem",
@@ -342,7 +342,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Admin Overload", "Slow Deals"],
-        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
         title: "Coordination Drag",
         desc: "Manual admin and back-office work slow deals and pull your team away from clients.",
         cta: "Explore Problem",
@@ -417,7 +417,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Line Downtime", "Support Gaps"],
-        image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=80",
         title: "Production Stalls",
         desc: "Support and engineering gaps let small issues stop the line and eat into output.",
         cta: "Explore Problem",
@@ -492,7 +492,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Slow Closes", "Compliance Risk"],
-        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+        image: "/service-coverage/finance/bookkeeping.png",
         title: "Bottlenecked Finance",
         desc: "Manual processes stretch month-end closes and raise the risk of costly errors.",
         cta: "Explore Problem",
@@ -567,7 +567,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Capacity Limits", "Quality Risk"],
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80",
         title: "Delivery Strain",
         desc: "Rising demand strains delivery teams and threatens the quality clients expect.",
         cta: "Explore Problem",
@@ -642,7 +642,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Visibility Gaps", "Delays"],
-        image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80",
         title: "Supply Bottlenecks",
         desc: "Fragmented operations and blind spots cause delays that ripple across the supply chain.",
         cta: "Explore Problem",
@@ -717,7 +717,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Compliance Risk", "Admin Load"],
-        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80",
+        image: "https://images.unsplash.com/photo-1576091160550-112173f31f5f?auto=format&fit=crop&w=1800&q=80",
         title: "Care Operations Strain",
         desc: "Administrative load and compliance demands pull focus away from patients and outcomes.",
         cta: "Explore Problem",

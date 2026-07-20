@@ -400,7 +400,7 @@ function ServicesSection() {
               className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={displayFont}
             >
-              Web that <span style={{ color: PINK }}>works</span>.
+              Web that <span style={{ color: PINK }}>works</span>
             </h2>
           </div>
           <a
@@ -793,7 +793,7 @@ function CtaBand() {
         <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-white/20 blur-[120px]" />
         <div className="relative">
           <h2 className="mx-auto max-w-3xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
-            Let&apos;s build your next website.
+            Let&apos;s build your next website
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80">
             Tell us what you&apos;re trying to build. We&apos;ll scope it, design it, and ship it.
