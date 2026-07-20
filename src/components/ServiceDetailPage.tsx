@@ -588,35 +588,34 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
           </div>
           <motion.a
             href="/contact"
-            whileHover={{ y: -8, scale: 1.02 }}
-            className="group relative flex shrink-0 flex-col justify-between rounded-3xl rounded-br-none bg-neutral-900 p-8 text-white shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:h-80 lg:w-full lg:max-w-sm"
+            whileHover={{ y: -8 }}
+            className="group relative flex shrink-0 flex-col justify-between overflow-visible rounded-3xl bg-neutral-900 p-8 text-white shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:min-h-80 lg:w-full lg:max-w-sm"
           >
             {/* Counter - top left */}
             <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-              {page.proof.length > 0 ? "01 / " : ""}
-              {page.proof.length || "04"}
+              {page.proof.length > 1 ? "02 / 04" : "01 / 04"}
             </span>
 
             {/* Main stat display */}
-            <div className="flex-1">
+            <div className="mt-12 flex-1">
               {page.proof.length > 0 && (
                 <>
                   <h3
-                    className="mt-8 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight"
+                    className="text-[clamp(2.2rem,5vw,3.5rem)] font-extrabold leading-tight text-white"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    {page.proof[0].value}
+                    {page.proof[page.proof.length > 1 ? 1 : 0].value}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-neutral-300">
-                    {page.proof[0].label}
+                  <p className="mt-6 text-base leading-relaxed text-neutral-400">
+                    {page.proof[page.proof.length > 1 ? 1 : 0].label}
                   </p>
                 </>
               )}
             </div>
 
-            {/* Green circle with arrow - bottom right */}
-            <div className="absolute right-6 bottom-6 grid h-16 w-16 place-items-center rounded-full bg-[#9CCC3C] transition-transform group-hover:scale-110">
-              <ArrowRight className="h-6 w-6 text-black" />
+            {/* Green circle with arrow - overlapping bottom right */}
+            <div className="absolute -right-8 -bottom-8 grid h-20 w-20 place-items-center rounded-full bg-[#9CCC3C] shadow-lg transition-transform group-hover:scale-110">
+              <ArrowRight className="h-7 w-7 text-black font-bold" />
             </div>
           </motion.a>
         </div>
