@@ -382,7 +382,7 @@ function ServicesSection() {
   useSlideSnap(ref, total);
 
   return (
-    <section className="relative bg-white">
+    <section id="web-that-works" className="relative bg-white">
       {/* heading sits above the images on a light background; the CTA is a
           square block on the right that stretches to the heading's height.
           The glow is anchored to this full-width wrapper so it bleeds all the
@@ -802,10 +802,6 @@ function CtaBand() {
             <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#ed1164] transition-transform hover:-translate-y-0.5">
               Start a project
               <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a href="/#services" className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
-              Explore all services
-              <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </div>
