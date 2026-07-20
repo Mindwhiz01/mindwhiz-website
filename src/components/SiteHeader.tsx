@@ -254,9 +254,17 @@ export function SiteHeader({ theme }: { theme: string }) {
   const [regionOpen, setRegionOpen] = useState(false);
   const [region, setRegion] = useState("US");
   const [mega, setMega] = useState<string | null>(null);
+  const [mobileMenu, setMobileMenu] = useState<string | null>(null);
   const [onLight, setOnLight] = useState(false);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  // Sync region flag with current pathname
+  useEffect(() => {
+    if (pathname.includes("/locations/uk")) setRegion("UK");
+    else if (pathname.includes("/locations/pk")) setRegion("PK");
+    else setRegion("US");
+  }, [pathname]);
 
   // The region dropdown is portaled to <body> so it isn't clipped by the
   // header pill's overflow-hidden (needed for the crystal sheen animation).
@@ -571,23 +579,119 @@ export function SiteHeader({ theme }: { theme: string }) {
               ...nav.slice(0, 4),
               { label: "Why MindWhiz", href: "/why-mindwhiz" },
               ...nav.slice(4),
-            ].map((n, i) => (
-              <motion.a
-                key={n.label}
-                href={n.href}
-                onClick={() => {
-                  setActive(n.label);
-                  setOpen(false);
-                }}
-                initial={{ opacity: 0, scale: 0.75 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.04 * i }}
-                style={{ transformOrigin: "bottom left" }}
-                className="block rounded-xl px-4 py-3 text-base text-white/90 transition-colors hover:bg-white/10"
-              >
-                {n.label}
-              </motion.a>
-            ))}
+            ].map((n, i) => {
+              const hasMega =
+                n.label === "Services" || n.label === "Industries" || n.label === "About Us";
+              const isExpanded = mobileMenu === n.label;
+
+              return (
+                <div key={n.label}>
+                  <motion.button
+                    onClick={() => {
+                      if (hasMega) {
+                        setMobileMenu(isExpanded ? null : n.label);
+                      } else {
+                        setActive(n.label);
+                        setOpen(false);
+                      }
+                    }}
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.04 * i }}
+                    style={{ transformOrigin: "bottom left" }}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base text-white/90 transition-colors hover:bg-white/10"
+                  >
+                    <span>{n.label}</span>
+                    {hasMega && (
+                      <ChevronDown
+                        className={`h-4 w-4 opacity-70 transition-transform duration-300 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </motion.button>
+
+                  {hasMega && isExpanded && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden bg-white/5 pl-2"
+                    >
+                      {n.label === "Services" &&
+                        serviceMenu.map((g) => (
+                          <div key={g.heading} className="py-2">
+                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/50">
+                              {g.heading}
+                            </p>
+                            {g.items.map((item) => (
+                              <a
+                                key={item.name}
+                                href={serviceHref(item.name)}
+                                onClick={() => {
+                                  setOpen(false);
+                                  setMobileMenu(null);
+                                }}
+                                className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        ))}
+
+                      {n.label === "Industries" &&
+                        industryMenu.map((g) => (
+                          <div key={g.heading} className="py-2">
+                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/50">
+                              {g.heading}
+                            </p>
+                            {g.items.map((item) => (
+                              <a
+                                key={item.name}
+                                href={serviceHref(item.name)}
+                                onClick={() => {
+                                  setOpen(false);
+                                  setMobileMenu(null);
+                                }}
+                                className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        ))}
+
+                      {n.label === "About Us" && (
+                        <div>
+                          <a
+                            href="/about"
+                            onClick={() => {
+                              setOpen(false);
+                              setMobileMenu(null);
+                            }}
+                            className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                          >
+                            About Us
+                          </a>
+                          <a
+                            href="/why-mindwhiz"
+                            onClick={() => {
+                              setOpen(false);
+                              setMobileMenu(null);
+                            }}
+                            className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                          >
+                            Why MindWhiz
+                          </a>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
+                </div>
+              );
+            })}
             <motion.a
               href="/contact"
               onClick={() => setOpen(false)}

@@ -380,7 +380,7 @@ const bannerStats = [
 
 const storyHighlights = [
   {
-    title: "Founder-led, values-driven.",
+    title: "Founder-led, values-driven",
     desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses - headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
   },
   {
@@ -705,6 +705,9 @@ export default function WhyMindWhizPage() {
         {/* ===================== TESTIMONIALS (shared carousel) ===================== */}
         <TrustedByClients />
 
+        {/* ===================== FAQ ===================== */}
+        <FaqSection faqs={faqs} />
+
         {/* ===================== CTA / CONTACT ===================== */}
         <section className="relative overflow-hidden bg-[#383838] py-24" data-header-dark>
           {/* stock background image with dark overlay so the text stays readable */}
@@ -745,8 +748,6 @@ export default function WhyMindWhizPage() {
           </div>
         </section>
       </div>
-
-      <FaqSection faqs={faqs} />
 
       <Footer />
     </main>
