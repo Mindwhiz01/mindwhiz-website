@@ -574,33 +574,68 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
           aria-hidden
           className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
         />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
-              How it works
-            </span>
-            <h2
-              className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
-            </h2>
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-24 sm:px-8">
+          <div className="grid gap-12 lg:grid-cols-3 lg:items-center">
+            {/* Left - Stat Cards */}
+            <div className="flex flex-col gap-6">
+              {page.proof.map((stat, idx) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  className="group relative rounded-3xl border border-neutral-300 bg-neutral-900 p-6 text-white transition-all hover:border-[#ed1164]/50 hover:shadow-lg hover:shadow-[#ed1164]/20"
+                >
+                  <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+                    {String(idx + 1).padStart(2, "0")} / {String(page.proof.length).padStart(2, "0")}
+                  </span>
+                  <h3
+                    className="mt-6 text-[clamp(1.8rem,4vw,3.5rem)] font-extrabold leading-tight"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {stat.value}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-neutral-300">
+                    {stat.label}
+                  </p>
+                  <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#9CCC3C] transition-all group-hover:scale-110" />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right - Content */}
+            <div className="lg:col-span-2 flex flex-col gap-8 lg:items-end">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
+                  How it works
+                </span>
+                <h2
+                  className="mt-4 text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
+                </h2>
+              </div>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative flex h-40 w-40 shrink-0 items-center justify-center rounded-3xl rounded-br-none bg-[#ed1164] p-5 text-white shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/30"
+              >
+                <span className="absolute right-4 top-4 h-8 w-8 overflow-hidden">
+                  <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:text-[#9CCC3C]" />
+                  <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-8 translate-y-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
+                </span>
+                <span
+                  className="text-center text-lg font-extrabold leading-tight sm:text-xl"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {page.finalCta.button}
+                </span>
+              </motion.a>
+            </div>
           </div>
-          <a
-            href="/contact"
-            className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
-          >
-            <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
-              <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
-              <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
-            </span>
-            <span
-              className="text-center text-xl font-extrabold leading-tight sm:text-2xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {page.finalCta.button}
-            </span>
-          </a>
         </div>
       </div>
 
