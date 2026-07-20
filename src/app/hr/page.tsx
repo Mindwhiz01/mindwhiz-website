@@ -389,7 +389,7 @@ export default function HrPage() {
           </>
         }
         subtitle="End-to-end HR - recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."
-        primary={{ label: "Talk to HR", href: "#contact" }}
+        primary={{ label: "Talk to HR", href: "/contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
 
