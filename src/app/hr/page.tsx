@@ -304,7 +304,7 @@ function CapabilitiesCarousel() {
                       {title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/75">{desc}</p>
-                    <a href="#contact" className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+                    <a href="/contact" className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
                       Learn more <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
