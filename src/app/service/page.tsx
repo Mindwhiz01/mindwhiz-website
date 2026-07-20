@@ -388,7 +388,7 @@ function ClientsScatter() {
             className="mx-auto mt-4 max-w-4xl text-4xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Brands that grow with us.
+            Brands that grow with us
           </motion.h2>
         </div>
 
@@ -429,15 +429,17 @@ function ClientsScatter() {
 }
 
 // Reels marquee - portrait video cards drifting on the left, big heading right.
-const reels: { label: string; tag: string; img: string }[] = [
-  { label: "Campaign Launch", tag: "Paid social", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Brand Film", tag: "Creative", img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Product Teaser", tag: "Content", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Founder Story", tag: "Organic", img: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Behind The Scenes", tag: "Reels", img: "https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Ad Creative", tag: "Performance", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Testimonial", tag: "Proof", img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Case Study", tag: "Story", img: "https://images.unsplash.com/photo-1524749292158-7540c2494485?auto=format&fit=crop&w=500&h=850&q=80" },
+const reels: { label: string; tag: string; img: string; url: string }[] = [
+  { label: "Campaign Planning", tag: "Strategy", img: "/digital-marketing/COMPAIGN%20PLANNING.png", url: "https://www.instagram.com/reel/DYqEUf8RKJl/" },
+  { label: "Creative Testing", tag: "Design", img: "/digital-marketing/CREATIVE%20TESTING.png", url: "https://www.instagram.com/reel/DYqFNsPRDwA/" },
+  { label: "CRM Workflows", tag: "Automation", img: "/digital-marketing/CRM%20WORKFLOWS.png", url: "https://www.instagram.com/reel/DU_zLUqkarM/" },
+  { label: "Growth Planning", tag: "Analytics", img: "/digital-marketing/GROWTH%20PLANNING.png", url: "https://www.instagram.com/reel/DTBjABDkfSs/" },
+  { label: "Growth Workshops", tag: "Training", img: "/digital-marketing/GROWTH%20WORKSHOPS.png", url: "https://www.instagram.com/reel/DbBswDeG-CT/" },
+  { label: "Performance Reporting", tag: "Insights", img: "/digital-marketing/PERFORMANCE%20REPORTING.png", url: "https://www.instagram.com/reel/Da3W6QOCoHN/" },
+  { label: "Search Visibility", tag: "SEO", img: "/digital-marketing/SEARCH%20VISIBILITY.png", url: "https://www.instagram.com/reel/DaqTq6CkUCb/" },
+  { label: "Social Operations", tag: "Content", img: "/digital-marketing/SOCIAL%20OPERATIONS.png", url: "https://www.instagram.com/reel/C8ca06jCFiu/" },
+  { label: "Campaign Planning", tag: "Strategy", img: "/digital-marketing/COMPAIGN%20PLANNING.png", url: "https://www.instagram.com/reel/C0vqC7WIdVH/" },
+  { label: "Creative Testing", tag: "Design", img: "/digital-marketing/CREATIVE%20TESTING.png", url: "https://www.instagram.com/reel/CtMrMhFIIn6/" },
 ];
 
 function ReelsSection() {
@@ -456,7 +458,8 @@ function ReelsSection() {
             {[...reels, ...reels].map((r, i) => (
               <article
                 key={i}
-                className="group relative h-[60vh] max-h-[560px] min-h-[360px] w-[240px] shrink-0 overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:w-[280px]"
+                onClick={() => window.open(r.url, "_blank")}
+                className="group relative h-[60vh] max-h-[560px] min-h-[360px] w-[240px] shrink-0 overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:w-[280px] cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -488,7 +491,7 @@ function ReelsSection() {
           <h2 className="mt-4 text-[clamp(2.8rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
             Reels that
             <br />
-            <span className="text-[#ed1164]">move brands.</span>
+            <span className="text-[#ed1164]">move brands</span>
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-7 text-[#3f3f3d]/80">
             Short-form video built to stop the scroll - scripted, shot, and cut for
@@ -601,7 +604,7 @@ function BrandShowcaseSection() {
             className="mt-5 max-w-2xl text-4xl font-extrabold uppercase leading-[1.02] sm:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Campaigns that <span className="text-[#ed1164]">built brands.</span>
+            Campaigns that <span className="text-[#ed1164]">built brands</span>
           </h2>
         </Reveal>
 
@@ -859,6 +862,29 @@ export default function ServicePage() {
           }
           ctaLabel="Start a growth sprint"
         />
+
+        <section className="bg-[#EEEEEE] px-6 py-24 sm:px-8">
+          <div className="mx-auto max-w-7xl">
+            <a
+              href="/contact"
+              className="group relative flex h-96 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
+              <CardCornerArrow bg="#EEEEEE" />
+              <div className="relative px-8 pb-8">
+                <p className="text-6xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
+                  30%
+                </p>
+                <p className="mt-3 text-lg font-semibold text-white/90">
+                  Lower blended acquisition cost target
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
+                  Book now <ArrowUpRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+            </a>
+          </div>
+        </section>
 
         <section className="bg-[#eee8e0] text-[#3f3f3d]">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
