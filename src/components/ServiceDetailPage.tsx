@@ -532,7 +532,7 @@ function ProcessPanel({
             </p>
             <a
               href="/contact"
-              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
             >
               Get in touch
               <ArrowUpRight className="h-4 w-4" />

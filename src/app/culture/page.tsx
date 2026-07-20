@@ -125,14 +125,14 @@ function Hero() {
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
             href="/careers"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-7 py-3.5 text-sm font-semibold text-black"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-4 py-2.5 text-sm font-semibold text-black"
           >
             View open positions
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
           <a
             href="/about"
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
           >
             About our team
           </a>
@@ -605,14 +605,14 @@ function CultureCta() {
               <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="/careers"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-7 py-3.5 text-sm font-semibold text-black"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-4 py-2.5 text-sm font-semibold text-black"
                 >
                   Explore careers
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
                 >
                   Contact us
                 </a>

@@ -30,7 +30,7 @@ export default function Cta({
     <a
       href={href}
       onClick={onClick}
-      className={`group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors duration-300 ${look} ${className}`}
+      className={`group inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${look} ${className}`}
     >
       <span className="relative h-4 w-4 overflow-hidden">
         <ArrowUpRight className="absolute inset-0 h-4 w-4 text-[#9CCC3C] transition-transform duration-300 ease-out group-hover:translate-x-5 group-hover:-translate-y-5" />

@@ -175,7 +175,7 @@ function RolesRail() {
                     {r.title}
                   </h3>
                   <span
-                    className="mt-10 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+                    className="mt-10 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white"
                     style={{ backgroundColor: r.pill }}
                   >
                     Learn more
@@ -244,7 +244,7 @@ function LocationsSection() {
               />
               <a
                 href="/locations/us"
-                className="group absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-[#2F5BD1] px-6 py-3 text-sm font-semibold text-white"
+                className="group absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-[#2F5BD1] px-4 py-2.5 text-sm font-semibold text-white"
               >
                 View all locations
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -306,7 +306,7 @@ function FindYourTeam() {
 
               <a
                 href="/#services"
-                className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#2F5BD1] px-6 py-3 text-sm font-semibold text-white"
+                className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#2F5BD1] px-4 py-2.5 text-sm font-semibold text-white"
               >
                 View all teams
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -344,7 +344,7 @@ function BenefitsSection() {
               </p>
               <a
                 href="/why-mindwhiz"
-                className="group mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-[#2F5BD1] px-6 py-3 text-sm font-semibold text-white"
+                className="group mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-[#2F5BD1] px-4 py-2.5 text-sm font-semibold text-white"
               >
                 View all benefits
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -405,7 +405,7 @@ function WorkingAtCard({
         {title}
       </h3>
       <span
-        className="mt-8 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+        className="mt-8 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white"
         style={{ backgroundColor: pill }}
       >
         {cta}

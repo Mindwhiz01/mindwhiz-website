@@ -354,7 +354,7 @@ function ServicePanel({
             <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{s.desc}</p>
             <a
               href="/contact"
-              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
             >
               Get in touch
               <ArrowUpRight className="h-4 w-4" />
@@ -476,7 +476,7 @@ function PortfolioSection() {
                       {p.name}
                     </h3>
                     <p className="mt-4 max-w-md text-base leading-relaxed text-black/60">{p.blurb}</p>
-                    <a href={p.url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:border-[#ed1164] hover:text-[#ed1164]">
+                    <a href={p.url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/15 px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:border-[#ed1164] hover:text-[#ed1164]">
                       Visit site
                       <ArrowUpRight className="h-4 w-4" />
                     </a>
@@ -513,7 +513,7 @@ function AlphaBravoShowcase() {
           href={current.url}
           target="_blank"
           rel="noreferrer"
-          className="relative z-20 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#ed1164]/30 transition-colors hover:bg-[#c50e53]"
+          className="relative z-20 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white shadow-xl shadow-[#ed1164]/30 transition-colors hover:bg-[#c50e53]"
         >
           Visit {current.name}
           <ArrowUpRight className="h-4 w-4" />
@@ -802,7 +802,7 @@ function CtaBand() {
             Tell us what you&apos;re trying to build. We&apos;ll scope it, design it, and ship it.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#ed1164] transition-transform hover:-translate-y-0.5">
+            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#ed1164] transition-transform hover:-translate-y-0.5">
               Start a project
               <ArrowUpRight className="h-4 w-4" />
             </a>

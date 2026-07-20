@@ -41,13 +41,13 @@ export default function GrowSection() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm transition-transform hover:-translate-y-0.5"
+                className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-black shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 Get a free demo
               </a>
               <a
                 href="#how"
-                className="rounded-full bg-white/20 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/30"
+                className="rounded-full bg-white/20 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/30"
               >
                 See how it works
               </a>

@@ -854,7 +854,7 @@ function IndustriesWorlds() {
           <Reveal delay={0.1} className="shrink-0">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-[#2F343B] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
+              className="inline-flex items-center gap-2 rounded-md bg-[#2F343B] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
             >
               Get in touch
               <ArrowRight className="h-4 w-4" />
@@ -1088,7 +1088,7 @@ function ServicesScrollSection() {
               <button
                 type="button"
                 onClick={() => setExpanded((v) => !v)}
-                className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#ed1164] bg-[#ed1164] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
+                className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#ed1164] bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
               >
                 {expanded ? "Show stacked view" : "View all services"}
                 <ChevronDown
@@ -1176,7 +1176,7 @@ function CaseCard({
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">{cs.result}</p>
             <a
               href={`/case-studies/${cs.slug}`}
-              className="group mt-6 flex w-fit items-center gap-2 rounded-md bg-[#ed1164] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+              className="group mt-6 flex w-fit items-center gap-2 rounded-md bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
             >
               Read case study
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -95,7 +95,7 @@ function CaseCard({
             <div className="mt-6 flex flex-wrap items-center gap-5">
               <a
                 href={`/case-studies/${cs.slug}`}
-                className="group inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ed1164]"
+                className="group inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ed1164]"
               >
                 Read case study
                 <ArrowRight className="h-4 w-4 text-[#9CCC3C] transition-transform duration-300 group-hover:translate-x-1" />

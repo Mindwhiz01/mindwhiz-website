@@ -246,14 +246,14 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
                   <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                     <a
                       href="/contact"
-                      className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-7 py-3.5 text-sm font-semibold text-black"
+                      className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-4 py-2.5 text-sm font-semibold text-black"
                     >
                       Build your team
                       <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </a>
                     <a
                       href="/case-studies"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
                     >
                       All case studies
                     </a>

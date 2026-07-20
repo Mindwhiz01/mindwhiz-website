@@ -639,7 +639,7 @@ export default function FinancePage() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Cta href="/contact" label="Contact us" />
-                <a href="#capabilities" className="inline-flex items-center justify-center gap-2 rounded-md border border-black/20 bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-black/5">
+                <a href="#capabilities" className="inline-flex items-center justify-center gap-2 rounded-md border border-black/20 bg-white px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-black/5">
                   Explore services
                 </a>
               </div>
