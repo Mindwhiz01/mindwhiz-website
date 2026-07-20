@@ -562,7 +562,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   useSlideSnap(ref, total);
 
   return (
-    <section className="relative bg-white">
+    <section className="relative bg-slate-50">
       {/* heading sits above the images on a light background; the CTA is a
           square block on the right that stretches to the heading's height.
           The glow is anchored to this full-width wrapper (not the centered
