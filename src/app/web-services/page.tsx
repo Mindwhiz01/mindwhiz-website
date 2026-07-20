@@ -681,7 +681,7 @@ function SeoSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -8, scale: 1.05 }}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm transition-all duration-300 hover:border-[#ed1164]/40 hover:bg-gradient-to-br hover:from-white hover:to-[#ed1164]/5 hover:shadow-lg hover:shadow-[#ed1164]/10 cursor-pointer"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm transition-all duration-300 hover:border-[#ed1164]/40 hover:bg-gradient-to-br hover:from-white hover:to-[#ed1164]/5 cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <motion.img
