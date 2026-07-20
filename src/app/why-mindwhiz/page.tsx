@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { company } from "@/lib/content";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import TrustedByClients from "@/components/TrustedByClients";
 import Cta from "@/components/Cta";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -395,6 +396,29 @@ const storyHighlights = [
 // ---------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------
+const faqs: Faq[] = [
+  {
+    q: "What does MindWhiz actually do?",
+    a: "We provide managed IT and security services, finance, HR, and construction back-office support, and staff augmentation - either as your whole function or as an extension of the team you already have.",
+  },
+  {
+    q: "How is staff augmentation different from outsourcing a project?",
+    a: "You are adding people to your team rather than handing over a deliverable. Augmented staff work inside your tools, processes, and standups, and you direct their priorities day to day.",
+  },
+  {
+    q: "Which time zones can you cover?",
+    a: "Coverage can be aligned to your working hours, including live overlap with UK and US teams, and round-the-clock cover where operations require it.",
+  },
+  {
+    q: "How do you handle security, confidentiality, and IP?",
+    a: "Under signed agreements, with access scoped to only the systems a role requires and activity logged. Delivery is aligned to SOC 2 and ISO 27001 practices, and your data and IP remain yours throughout.",
+  },
+  {
+    q: "How does an engagement start?",
+    a: "With a free consultation covering your current situation, the gaps, and the outcome you want. You get a scoped plan, clear pricing, and a practical next step before committing to anything.",
+  },
+];
+
 export default function WhyMindWhizPage() {
   const container: Variants = {
     hidden: {},
@@ -721,6 +745,8 @@ export default function WhyMindWhizPage() {
           </div>
         </section>
       </div>
+
+      <FaqSection faqs={faqs} />
 
       <Footer />
     </main>

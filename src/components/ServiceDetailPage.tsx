@@ -15,6 +15,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
+import FaqSection from "@/components/FaqSection";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { company } from "@/lib/content";
@@ -522,9 +523,18 @@ function ProcessPanel({
       >
         <div className="flex max-w-lg items-start gap-6">
           <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
-          <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
-            {step.desc}
-          </p>
+          <div>
+            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
+              {step.desc}
+            </p>
+            <a
+              href="/contact"
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+            >
+              Get in touch
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -735,6 +745,8 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
       <BenefitsStackSection page={page} />
 
       <ProcessScrollSection page={page} />
+
+      {page.faqs?.length ? <FaqSection faqs={page.faqs} /> : null}
 
       <section className="relative p-[30px] text-white">
         <div className="relative overflow-hidden rounded-[2.5rem]">

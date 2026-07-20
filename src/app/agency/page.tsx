@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { Inter, Oswald } from "next/font/google";
 import { ArrowUpRight, Mail, MousePointer2, Phone } from "lucide-react";
 import { company } from "@/lib/content";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -493,6 +494,29 @@ function Footer() {
   );
 }
 
+const faqs: Faq[] = [
+  {
+    q: "What kind of work does the agency take on?",
+    a: "Brand, design, and digital product work - identity systems, websites, campaigns, and the interfaces around them - for teams that want the strategy and the execution handled together.",
+  },
+  {
+    q: "How do projects usually start?",
+    a: "With a conversation about what you are actually trying to move, then a scoped proposal with phases, deliverables, and cost itemized before any work begins.",
+  },
+  {
+    q: "How long does a project take?",
+    a: "It depends entirely on scope. Focused pieces of work run in weeks; full identity or platform builds run considerably longer. You get a timeline with milestones at proposal stage so progress is visible throughout.",
+  },
+  {
+    q: "Do you work with our in-house team?",
+    a: "Often, yes. We can lead the work end to end or plug into an existing team where you need specific capability, and we are comfortable handing over cleanly at the end.",
+  },
+  {
+    q: "What happens after launch?",
+    a: "We can stay on for iteration, new features, and ongoing support, or hand over documented files and assets so your team can run with it. Both are fine - the choice is yours.",
+  },
+];
+
 export default function AgencyPage() {
   return (
     <main className={`${sans.className} ${display.variable} bg-[#eee8e0]`}>
@@ -507,6 +531,8 @@ export default function AgencyPage() {
       <AboutSection />
       <NiceToBondSection />
       <NewsSection />
+      <FaqSection faqs={faqs} />
+
       <ContactSection />
       <Footer />
     </main>

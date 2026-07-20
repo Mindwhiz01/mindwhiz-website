@@ -35,6 +35,7 @@ export type ServicePageContent = {
     desc: string;
     button: string;
   };
+  faqs?: { q: string; a: string }[];
 };
 
 const sharedImages = {
@@ -120,6 +121,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Initial Consultation and Needs Assessment", desc: "Review the current environment, pain points, and goals to define support outcomes, SLA targets, and onboarding steps." },
       { title: "Customized Service Plan Development", desc: "Design a support model that fits your team, tools, compliance needs, escalation paths, and reporting cadence." },
       { title: "Ongoing Monitoring and Issue Resolution", desc: "Resolve tickets quickly, escalate when needed, and keep systems stable with proactive monitoring and playbooks." },
+    ],
+    faqs: [
+      {
+        q: "Is the helpdesk really staffed 24/7, including weekends and holidays?",
+        a: "Yes. Coverage runs continuously rather than on limited business hours, so a request raised overnight or on a holiday reaches a real engineer the same way it would midweek. Target first response is within 15 minutes.",
+      },
+      {
+        q: "What is the difference between Tier 1, Tier 2, and Tier 3 support?",
+        a: "Tier 1 handles the everyday volume - access and password issues, device setup, and common application faults. Tier 2 takes deeper operating system, configuration, and connectivity troubleshooting. Tier 3 covers complex escalations, root cause analysis, and vendor coordination, so tickets do not stall at the first person who picks them up.",
+      },
+      {
+        q: "How does pricing work?",
+        a: "A fixed monthly cost per user, so budgeting stays predictable as your team changes. The service scales with headcount and business growth, with no hidden fees or surprise charges for busy months.",
+      },
+      {
+        q: "Can you work with the ticketing and IT tools we already use?",
+        a: "In most cases yes - we plug into your existing service desk, asset, and monitoring tools rather than forcing a migration. Where you do not have a platform in place, we can bring ours and hand over full access.",
+      },
+      {
+        q: "What does onboarding involve before support goes live?",
+        a: "It starts with a consultation and needs assessment covering your current environment, pain points, and SLA targets. From there we build a customized support plan with defined escalation paths, documentation, and reporting cadence before the first ticket is ever routed to us.",
+      },
     ],
     finalCta: {
       title: "Build your hybrid team now.",
@@ -215,6 +238,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "NOC Implementation", desc: "Configure monitoring, alerting, dashboards, runbooks, and escalation paths." },
       { title: "NOC Operations", desc: "Operate the monitoring desk with continuous incident handling and response." },
     ],
+    faqs: [
+      {
+        q: "What does the NOC actually monitor?",
+        a: "Servers, network devices, connectivity, core services, and the availability and performance signals that tell you something is degrading. Thresholds and alert rules are tuned to your environment during onboarding rather than left at vendor defaults.",
+      },
+      {
+        q: "Do you only send alerts, or do you resolve issues too?",
+        a: "Both. Routine and well-understood conditions are actioned against agreed playbooks so they are fixed rather than forwarded. Anything outside that scope is escalated to your team with the diagnostic context already gathered.",
+      },
+      {
+        q: "How quickly is an alert picked up?",
+        a: "The NOC is staffed continuously, so alerts are triaged as they arrive rather than queued until the next working day. Priority and response targets for each alert class are agreed with you up front.",
+      },
+      {
+        q: "Will this replace the monitoring tools we already run?",
+        a: "Not necessarily. We can operate the stack you already own, extend it where there are blind spots, or stand up monitoring from scratch if you have none. The goal is coverage, not a tooling change for its own sake.",
+      },
+      {
+        q: "How do we see what the NOC has been doing?",
+        a: "You get regular reporting on incidents, response times, recurring faults, and trends - so the value is visible and repeat problems get engineered out instead of quietly absorbed.",
+      },
+    ],
     finalCta: {
       title: "Strengthen your operations.",
       desc: "MindWhiz delivers end-to-end lifecycle solutions that reduce operational noise while improving performance, reliability, and visibility.",
@@ -270,6 +315,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Secure Access", desc: "Align remote access with security policies, identity controls, and user requirements." },
       { title: "Operate Lifecycle", desc: "Manage onboarding, offboarding, licensing, changes, and asset updates." },
     ],
+    faqs: [
+      {
+        q: "What is included in IT asset management?",
+        a: "A maintained inventory of hardware and software across the business - what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
+      },
+      {
+        q: "Can you support remote and hybrid staff?",
+        a: "Yes. Remote desktop support is built for distributed teams, so a laptop at home or on the road is supported the same way as a machine in the office, without waiting for someone to be on site.",
+      },
+      {
+        q: "How is remote access to our machines secured?",
+        a: "Access is controlled, authenticated, and logged, with sessions run under agreed permissions rather than standing administrative access. Delivery is aligned to SOC 2 and ISO 27001 practices.",
+      },
+      {
+        q: "Do you handle software licensing and renewals?",
+        a: "Yes. Licences are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal - which usually surfaces spend that can be reclaimed.",
+      },
+      {
+        q: "Can you manage employee onboarding and offboarding?",
+        a: "Yes. New starters can be issued a configured device with the right access from day one, and leavers can have accounts, licences, and equipment recovered on a defined checklist so nothing stays open after they go.",
+      },
+    ],
     finalCta: {
       title: "Efficiency and security, unlocked.",
       desc: "MindWhiz simplifies management of devices, software, and access so your teams can stay focused on core business priorities.",
@@ -310,9 +377,9 @@ export const servicePages: ServicePageContent[] = [
       { value: "Scale", label: "Compute, storage, and network resources" },
     ],
     capabilities: [
-      { title: "Dependable Cloud Environments", desc: "Design and manage cloud environments built on trusted platforms that protect data and support uptime.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" },
-      { title: "Secure Backups and Storage", desc: "Implement backup and storage strategies to safeguard critical data and support recovery objectives.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" },
-      { title: "Scalable Infrastructure", desc: "Scale compute, storage, and network resources as demand grows without disruption or unnecessary overhead.", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" },
+      { title: "Dependable Cloud Environments", desc: "Design and manage cloud environments built on trusted platforms that protect data and support uptime.", image: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png" },
+      { title: "Secure Backups and Storage", desc: "Implement backup and storage strategies to safeguard critical data and support recovery objectives.", image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png" },
+      { title: "Scalable Infrastructure", desc: "Scale compute, storage, and network resources as demand grows without disruption or unnecessary overhead.", image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.png" },
     ],
     benefits: [
       { title: "24/7 System Monitoring", desc: "Continuous monitoring detects performance issues, outages, and anomalies early." },
@@ -325,6 +392,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Discovery", desc: "Map your cloud environment, risks, priorities, users, workloads, and performance gaps." },
       { title: "Management Plan", desc: "Define security, performance, backup, recovery, and scalability standards." },
       { title: "Operate and Optimize", desc: "Monitor, improve, tune, and scale the environment continuously." },
+    ],
+    faqs: [
+      {
+        q: "Which cloud platforms do you support?",
+        a: "The major providers - AWS, Azure, and Google Cloud - along with hybrid setups where part of the estate stays on premises. We work in whichever platform you have already committed to.",
+      },
+      {
+        q: "Can you help reduce what we spend on cloud?",
+        a: "Usually, yes. Cost review is part of ongoing management: right-sizing over-provisioned resources, removing orphaned storage and idle instances, and matching commitment models to actual usage. Savings depend on how the estate is currently configured.",
+      },
+      {
+        q: "Do you handle migration from on-premises infrastructure?",
+        a: "Yes. Migrations are planned in stages with defined rollback points rather than moved in a single cutover, so workloads transition without taking the business offline.",
+      },
+      {
+        q: "How are backups and disaster recovery handled?",
+        a: "Backup schedules, retention, and recovery targets are agreed with you and then tested rather than assumed. The point of a recovery plan is that it has been exercised before you need it.",
+      },
+      {
+        q: "Who owns our cloud accounts and data?",
+        a: "You do. We work inside your accounts and subscriptions under delegated access, so billing, data, and ownership stay with you and access can be revoked at any point.",
+      },
     ],
     finalCta: {
       title: "Reliable, secure cloud.",
@@ -383,6 +472,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Respond Quickly", desc: "When problems are detected, teams respond quickly and notify stakeholders according to defined timelines." },
       { title: "Maintain Proactively", desc: "Routine operating system and software updates reduce common server issues." },
     ],
+    faqs: [
+      {
+        q: "Do you support on-premises, cloud, and hybrid environments?",
+        a: "Yes. Most environments are a mix, and administration covers physical servers, virtualized workloads, and cloud instances under one arrangement rather than splitting responsibility across providers.",
+      },
+      {
+        q: "How do you handle patching without disrupting the business?",
+        a: "Patching runs on an agreed schedule inside maintenance windows that suit your operating hours, with critical security updates handled on a faster track. Changes are staged and reversible.",
+      },
+      {
+        q: "What network security is covered?",
+        a: "Firewall configuration and review, VPN and remote access, segmentation, and monitoring of the network layer for faults and suspicious activity - maintained continuously rather than set once at install.",
+      },
+      {
+        q: "Can you take over from our current provider?",
+        a: "Yes. Transitions start with an audit of the existing estate and documentation of what is actually running, so nothing is lost in handover before we assume day-to-day responsibility.",
+      },
+      {
+        q: "Will we get documentation of our own environment?",
+        a: "Yes. Configurations, topology, credentials handling, and procedures are documented and kept current, and that documentation is yours - it does not lock you into us.",
+      },
+    ],
     finalCta: {
       title: "We support multiple platforms.",
       desc: "MindWhiz provides comprehensive support for servers and network infrastructure across diverse environments and operational requirements.",
@@ -436,6 +547,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Inventory", desc: "Map endpoint tools, device groups, users, and security baselines." },
       { title: "Policy", desc: "Align endpoint rules with risk, compliance, and user workflows." },
       { title: "Monitor", desc: "Track detections, patch gaps, and device drift across the fleet." },
+    ],
+    faqs: [
+      {
+        q: "What counts as an endpoint?",
+        a: "Any device that connects to your environment and can be used to reach your data - laptops, desktops, servers, and mobile devices, whether they sit in an office or with a remote employee.",
+      },
+      {
+        q: "Does this replace the antivirus we already have?",
+        a: "Often it extends it. Traditional antivirus matches known threats; endpoint protection adds behavioural detection, response, and visibility across the fleet. Where your existing tool is capable, we manage it rather than rip it out.",
+      },
+      {
+        q: "What happens when a threat is detected on a device?",
+        a: "The device can be isolated to stop lateral movement, the threat is investigated and removed, and the device is restored to a known good state - with a record of what happened and what changed.",
+      },
+      {
+        q: "Can you support employee-owned or BYOD devices?",
+        a: "Yes, within policies agreed with you. Controls can be scoped to business data and applications so personal devices are protected where it matters without taking blanket control of the whole device.",
+      },
+      {
+        q: "Does endpoint security help with our compliance requirements?",
+        a: "It contributes directly. Device inventory, patch status, encryption, access control, and incident records are common evidence requirements, and delivery is aligned to SOC 2 and ISO 27001 practices.",
+      },
     ],
     finalCta: {
       title: "Protect every device.",
@@ -492,6 +625,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Initiation", desc: "Identify the need for DevOps transformation, CI/CD improvements, deployment automation, and infrastructure modernization." },
       { title: "Requirement Gathering", desc: "Run stakeholder workshops, define KPIs such as MTTR and deployment frequency, and capture security requirements." },
       { title: "Discovery", desc: "Evaluate infrastructure, tooling, workflows, target architecture, and phase-based roadmap." },
+    ],
+    faqs: [
+      {
+        q: "What does a DevOps engagement typically include?",
+        a: "Build and release pipelines, infrastructure as code, containerization and orchestration, environment consistency, and the monitoring that tells you whether a release actually behaved. Scope is set against where your delivery is currently slowest.",
+      },
+      {
+        q: "Which tools do you work with?",
+        a: "The mainstream ecosystem - Git-based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
+      },
+      {
+        q: "Can you improve our existing pipeline instead of rebuilding it?",
+        a: "Usually that is the better path. We audit what you have, fix the parts that cause failed or slow releases, and rebuild only where the existing setup cannot be made reliable.",
+      },
+      {
+        q: "How are secrets and production access handled?",
+        a: "Credentials move into managed secret storage rather than living in repositories or CI configuration, and access is scoped and logged. Production access is granted deliberately, not by default.",
+      },
+      {
+        q: "Will releases be disrupted while this is being set up?",
+        a: "Changes are introduced incrementally alongside your current process, so the existing route to production keeps working until the replacement is proven.",
+      },
     ],
     finalCta: {
       title: "Lead your digital journey.",
@@ -550,6 +705,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Assess Coverage", desc: "Review endpoints, networks, email, cloud environments, controls, and governance needs." },
       { title: "Integrate Monitoring", desc: "Connect SIEM, EDR, and existing tools into a flexible monitoring model." },
       { title: "Detect and Investigate", desc: "MDR analysts investigate suspicious activity and neutralize incidents with speed and accuracy." },
+    ],
+    faqs: [
+      {
+        q: "What is being monitored, and how?",
+        a: "Logs and security signals from endpoints, servers, network devices, and cloud services are collected centrally and correlated, so activity that looks harmless in isolation is caught when it forms a pattern. Monitoring runs continuously.",
+      },
+      {
+        q: "What happens when an incident is detected?",
+        a: "It is triaged and validated first to avoid acting on noise, then contained according to an agreed response plan, investigated for scope and root cause, and reported to you with what was affected and what was done.",
+      },
+      {
+        q: "Do you help with compliance frameworks?",
+        a: "Yes. Delivery is aligned to SOC 2 and ISO 27001 practices, and the monitoring, logging, and incident records the service produces are the evidence auditors typically ask for. We support your compliance programme rather than certify it on your behalf.",
+      },
+      {
+        q: "Do you replace our internal security team?",
+        a: "Only if you want us to. More often we extend an internal team by covering the hours and the alert volume they cannot sustain, and by handling the first line of triage so their time goes to the incidents that matter.",
+      },
+      {
+        q: "How is this reported back to us?",
+        a: "Regular reporting covers incidents raised, how they were resolved, response times, and the trends worth acting on - written to be read by both technical staff and management.",
+      },
     ],
     finalCta: {
       title: "Prevention, backed by trust.",
@@ -623,6 +800,28 @@ export const servicePages: ServicePageContent[] = [
       { title: "Role and Skills Brief", desc: "We capture the exact skills, seniority, tools, and outcomes you need, plus how success will be measured." },
       { title: "Vetted Shortlist", desc: "You review a short list of pre-screened candidates matched to your stack, culture, and priorities." },
       { title: "Onboarding and Integration", desc: "Selected talent connects into your workflows, security, and documentation with minimal disruption." },
+    ],
+    faqs: [
+      {
+        q: "How is this different from outsourcing a project?",
+        a: "You are adding people to your team, not handing over a deliverable. Augmented staff work inside your processes, tools, and standups, and you direct their priorities day to day.",
+      },
+      {
+        q: "How quickly can someone start?",
+        a: "It depends on the role and seniority, but the model exists to move faster than a direct hire - candidates are matched from an existing bench rather than recruited from scratch. We give you a realistic timeline once the role is scoped.",
+      },
+      {
+        q: "Who manages the person day to day?",
+        a: "You do. We handle employment, payroll, and retention; you handle direction and priorities, the same as with any member of your team.",
+      },
+      {
+        q: "What time zones can you cover?",
+        a: "Coverage can be aligned to your working hours, including overlap with UK and US teams, so collaboration happens live rather than through overnight handoffs.",
+      },
+      {
+        q: "What if someone is not the right fit?",
+        a: "Tell us early. Replacement is part of the arrangement, and the terms for it are agreed before an engagement starts so there is no dispute about it later.",
+      },
     ],
     finalCta: {
       title: "Build your hybrid team now.",

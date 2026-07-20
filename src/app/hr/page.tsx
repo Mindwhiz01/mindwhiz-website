@@ -36,6 +36,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
 
@@ -337,6 +338,29 @@ function CapabilitiesCarousel() {
 }
 
 
+const faqs: Faq[] = [
+  {
+    q: "Which HR functions can you handle?",
+    a: "Recruitment and screening, payroll and benefits administration, onboarding and offboarding, HR systems and data, and the day-to-day employee support that otherwise lands on a founder or office manager.",
+  },
+  {
+    q: "Can you support hiring across multiple regions?",
+    a: "Yes. Sourcing and screening run across regions, and payroll and benefits administration are handled with regional requirements in mind rather than a single-country assumption.",
+  },
+  {
+    q: "Do you replace our HR team or work alongside it?",
+    a: "Either. Smaller businesses often use us as the whole HR function, while established teams hand over the administrative load so their people can focus on culture, performance, and retention.",
+  },
+  {
+    q: "How is employee data protected?",
+    a: "Through restricted access, encryption, and logged activity, with delivery aligned to SOC 2 and ISO 27001 practices. Employee records are treated as sensitive data throughout, under signed confidentiality terms.",
+  },
+  {
+    q: "How quickly can you fill an open role?",
+    a: "It depends on seniority and market, but screening and shortlisting are handled up front so you review vetted candidates rather than raw applications. We give you a realistic timeline once the role is scoped.",
+  },
+];
+
 export default function HrPage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -573,6 +597,8 @@ export default function HrPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={faqs} />
 
       <Footer />
     </main>

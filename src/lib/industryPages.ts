@@ -71,6 +71,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Team Design", desc: "A blend of engineering, DevOps, and security roles matched to your needs." },
       { title: "Integration", desc: "We connect into your workflows, tooling, and security standards." },
     ],
+    faqs: [
+      {
+        q: "What kinds of technology companies do you work with?",
+        a: "Software firms, managed service providers, SaaS products, and internal IT functions - typically where the team is stretched across support, infrastructure, and delivery at the same time and something is being neglected.",
+      },
+      {
+        q: "Can you extend our existing engineering team rather than replace it?",
+        a: "That is the usual arrangement. Our people join your standups, tools, and workflow under your direction, which keeps context and ownership inside your team.",
+      },
+      {
+        q: "Can you cover our working hours?",
+        a: "Yes. Coverage is aligned to your time zone, including overlap with UK and US teams, and round-the-clock cover is available where operations require it.",
+      },
+      {
+        q: "How do you handle security and intellectual property?",
+        a: "Under signed agreements, with scoped access to only the systems required, and delivery aligned to SOC 2 and ISO 27001 practices. Code and data remain yours throughout.",
+      },
+      {
+        q: "How does an engagement start?",
+        a: "With a consultation to understand the environment, the gaps, and the outcome you want. You get a scoped plan and clear next step before any commitment.",
+      },
+    ],
     finalCta,
   },
   {
@@ -123,6 +145,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Store & Ops Review", desc: "We map your channels, tools, and volumes to define support outcomes." },
       { title: "Team Design", desc: "A mix of support, catalog, and ops roles matched to your season." },
       { title: "Integration", desc: "We connect into your platform, helpdesk, and SOPs." },
+    ],
+    faqs: [
+      {
+        q: "Can you support us through peak trading periods?",
+        a: "That is when the support matters most. Coverage runs continuously, so traffic spikes, checkout failures, and stock issues during a sale or holiday period are picked up as they happen rather than the next morning.",
+      },
+      {
+        q: "Which platforms do you work with?",
+        a: "The common commerce stacks - Shopify, WooCommerce, Magento, and custom storefronts - along with the hosting and infrastructure underneath them.",
+      },
+      {
+        q: "Can you help with payment security and PCI concerns?",
+        a: "We support the technical controls involved - segmentation, access control, monitoring, patching, and evidence collection - and work alongside your assessor. We support your compliance programme rather than certify it for you.",
+      },
+      {
+        q: "Can you connect our store to our other systems?",
+        a: "Yes. Integrations between storefront, ERP, inventory, and fulfilment or 3PL systems are common work, and are usually where manual effort and stock errors get eliminated.",
+      },
+      {
+        q: "What happens if the site goes down outside business hours?",
+        a: "It is treated as an incident immediately. Monitoring runs continuously, alerts are triaged as they arrive, and agreed escalation paths mean the right people are reached without waiting for the office to open.",
+      },
     ],
     finalCta,
   },
@@ -177,6 +221,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Right-Sized Team", desc: "A lean blend of roles matched to your runway and roadmap." },
       { title: "Onboarding", desc: "Talent connects into your tools and workflows quickly." },
     ],
+    faqs: [
+      {
+        q: "We have no internal IT team. Can you be it?",
+        a: "Yes. For smaller teams we act as the whole IT function - devices, accounts, support, security, and infrastructure - so nobody on your team has to absorb it alongside their real job.",
+      },
+      {
+        q: "Is this affordable at our size?",
+        a: "Pricing is per user on a fixed monthly cost, so it stays proportionate to your headcount and predictable month to month. It is designed to cost less than carrying the equivalent in-house.",
+      },
+      {
+        q: "Can the service grow as we grow?",
+        a: "That is the point of the model. Coverage scales with team size and complexity, so you are not re-procuring IT every time you add people or open a location.",
+      },
+      {
+        q: "Are we tied into a long contract?",
+        a: "Terms are agreed up front and kept clear, including how to change or exit. We would rather be kept because the service works than because the paperwork makes leaving difficult.",
+      },
+      {
+        q: "Can you help us meet the security expectations of larger customers?",
+        a: "Yes, and it is a common reason smaller firms come to us. Access control, endpoint protection, monitoring, and documented process are what enterprise buyers and investors ask for during due diligence, and delivery is aligned to SOC 2 and ISO 27001 practices.",
+      },
+    ],
     finalCta,
   },
   {
@@ -229,6 +295,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Scope & Standards", desc: "We align on trades, formats, and accuracy expectations." },
       { title: "Team Setup", desc: "Estimators and engineers matched to your project types." },
       { title: "Integration", desc: "We connect into your takeoff tools and bid workflows." },
+    ],
+    faqs: [
+      {
+        q: "What do you actually provide for construction firms?",
+        a: "Two things that usually sit apart: pre-construction support such as estimation and quantity takeoffs, and the IT side - site connectivity, devices, and support for teams split between office and field.",
+      },
+      {
+        q: "Which software do you work in?",
+        a: "The industry standards, including Bluebeam, PlanSwift, AutoCAD, and Revit, along with the estimating and project tools your team already uses.",
+      },
+      {
+        q: "How do you handle drawing revisions and addenda?",
+        a: "Revisions are tracked against the original scope so changes are visible rather than silently absorbed, and updated quantities are reissued with what changed made explicit.",
+      },
+      {
+        q: "Can you support crews working on site?",
+        a: "Yes. Site connectivity, mobile devices, and remote support are covered, so field teams are not cut off from systems while they are away from the office.",
+      },
+      {
+        q: "How is estimation work priced?",
+        a: "It is scoped per project or on an ongoing basis depending on your bid volume, with the basis of the quote itemized up front so you can see what is included before committing.",
+      },
     ],
     finalCta,
   },
@@ -283,6 +371,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Team Setup", desc: "Coordinators and support matched to your volume." },
       { title: "Integration", desc: "We connect into your CRM, forms, and compliance steps." },
     ],
+    faqs: [
+      {
+        q: "What do you do for real estate firms?",
+        a: "Support the systems the business runs on - agent devices, email and document security, CRM and listing platforms, and the infrastructure connecting multiple offices - so transactions are not delayed by technology.",
+      },
+      {
+        q: "Can you support several branches or offices?",
+        a: "Yes. Multi-site environments are standard work, with consistent setup, access control, and support across locations instead of each office solving IT differently.",
+      },
+      {
+        q: "How do you protect client and transaction data?",
+        a: "Through access control, encryption, endpoint protection, and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. Wire fraud and business email compromise are specific risks in this sector and are treated as such.",
+      },
+      {
+        q: "Do you work with the CRM and listing tools we already use?",
+        a: "Yes. We support and integrate the platforms you have rather than pushing a migration, unless the existing setup is genuinely holding the business back.",
+      },
+      {
+        q: "Can agents get help outside office hours?",
+        a: "Yes. Deals do not keep office hours, and support coverage can run continuously so an agent working an evening or weekend closing is not stuck.",
+      },
+    ],
     finalCta,
   },
   {
@@ -335,6 +445,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Operations Review", desc: "We assess systems, workflows, and support gaps." },
       { title: "Team Design", desc: "Engineering, IT, and ops roles matched to your plant." },
       { title: "Integration", desc: "We connect into your ERP, tooling, and standards." },
+    ],
+    faqs: [
+      {
+        q: "Do you support plant and operational systems as well as office IT?",
+        a: "We support the IT estate and the systems that connect to it, and work alongside your operational technology and engineering teams at the boundary. Control systems remain under the specialists who own them.",
+      },
+      {
+        q: "How do you avoid interrupting production?",
+        a: "Changes are scheduled around production windows and shift patterns, staged, and made reversible. Where a change carries real risk to output, it is planned with your operations team rather than pushed on an IT calendar.",
+      },
+      {
+        q: "Can you cover multiple facilities and shift patterns?",
+        a: "Yes. Continuous coverage suits multi-shift operations, so a fault on a night shift gets the same response as one at midday, across every site.",
+      },
+      {
+        q: "What about older equipment running unsupported software?",
+        a: "It is common in this sector and it is handled by managing risk rather than demanding replacement - segmentation, restricted access, and monitoring around legacy systems that cannot simply be upgraded.",
+      },
+      {
+        q: "How do you approach industrial cybersecurity?",
+        a: "With segmentation between corporate and production networks, controlled remote access for vendors and engineers, continuous monitoring, and a response plan that accounts for the cost of stopping a line.",
+      },
     ],
     finalCta,
   },
@@ -389,6 +521,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Team Setup", desc: "Accountants matched to your tools and volume." },
       { title: "Integration", desc: "We connect into your ledger, banking, and controls." },
     ],
+    faqs: [
+      {
+        q: "How is sensitive financial data protected?",
+        a: "Access is restricted to what each role requires, data is encrypted, endpoints are protected and monitored, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices.",
+      },
+      {
+        q: "Can you support us through busy season and year-end?",
+        a: "Yes, and capacity is planned for it. Coverage can scale for close periods and filing deadlines, when downtime is least affordable and support volume is highest.",
+      },
+      {
+        q: "Which accounting platforms do you work with?",
+        a: "The common ledger, tax, practice management, and reporting platforms used in the sector, along with the infrastructure and integrations around them.",
+      },
+      {
+        q: "Can you help with audit and compliance evidence?",
+        a: "Yes. Access records, monitoring logs, patch status, and documented procedures are what auditors typically request, and the service produces them as a matter of course rather than reconstructing them under pressure.",
+      },
+      {
+        q: "Can you provide finance staff as well as IT support?",
+        a: "Yes. Finance and accounting back-office roles are available through staff augmentation, working inside your processes and under your direction.",
+      },
+    ],
     finalCta,
   },
   {
@@ -441,6 +595,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Needs Review", desc: "We map your delivery model and support gaps." },
       { title: "Team Setup", desc: "Analysts and coordinators matched to your practice." },
       { title: "Integration", desc: "We connect into your tools, templates, and process." },
+    ],
+    faqs: [
+      {
+        q: "What kinds of firms do you work with?",
+        a: "Consultancies, legal and advisory practices, agencies, and similar firms - businesses where billable time is the product and technology failures translate directly into lost hours.",
+      },
+      {
+        q: "Can you support a team that travels or works from client sites?",
+        a: "Yes. Remote support and device management are built for distributed work, so someone at a client office or in transit gets the same support as someone at a desk.",
+      },
+      {
+        q: "How do you protect client confidentiality?",
+        a: "Through scoped access, encryption, monitoring, and signed confidentiality terms, with delivery aligned to SOC 2 and ISO 27001 practices. Where you hold client-imposed security obligations, we work within them.",
+      },
+      {
+        q: "Can you handle onboarding and offboarding as headcount changes?",
+        a: "Yes. Starters can be issued configured devices and correct access on day one, and leavers can have access, licences, and equipment recovered against a defined checklist.",
+      },
+      {
+        q: "Is support available around client deadlines?",
+        a: "Yes. Coverage can run outside standard hours, which matters when a filing, pitch, or delivery deadline does not move because a system failed at 9pm.",
+      },
     ],
     finalCta,
   },
@@ -495,6 +671,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Team Setup", desc: "Coordinators and support matched to your volume." },
       { title: "Integration", desc: "We connect into your TMS and communication tools." },
     ],
+    faqs: [
+      {
+        q: "Can you support round-the-clock operations?",
+        a: "Yes. Coverage runs continuously, which suits operations that do not stop - night shifts, weekend movements, and depots running outside standard office hours.",
+      },
+      {
+        q: "What about warehouse connectivity, scanners, and mobile devices?",
+        a: "Site networks, handheld and scanning devices, and the connectivity between depots are all supported, since these are usually what actually halts throughput when they fail.",
+      },
+      {
+        q: "Do you integrate with our TMS, WMS, or ERP?",
+        a: "Yes. Integration between transport, warehouse, and finance systems is common work, and is typically where duplicated manual entry and reconciliation errors get removed.",
+      },
+      {
+        q: "How is downtime handled during peak periods?",
+        a: "With monitoring that catches degradation early, agreed escalation paths, and tested recovery plans - because in peak season the cost of an outage compounds across every downstream commitment.",
+      },
+      {
+        q: "Can you support sites in multiple countries?",
+        a: "Yes. Multi-site and cross-border operations are supported with consistent standards and support processes across locations rather than different arrangements per country.",
+      },
+    ],
     finalCta,
   },
   {
@@ -547,6 +745,28 @@ export const industryPages: ServicePageContent[] = [
       { title: "Compliance Review", desc: "We align on regulatory, security, and data requirements." },
       { title: "Team Setup", desc: "Support and IT roles matched to your operations." },
       { title: "Integration", desc: "We connect into your systems with compliant controls." },
+    ],
+    faqs: [
+      {
+        q: "How is patient data handled?",
+        a: "Under strict access control, encryption, logging, and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. We work within your regulatory obligations, including HIPAA where it applies, and support your compliance programme rather than certify it on your behalf.",
+      },
+      {
+        q: "Can clinical systems be supported outside normal hours?",
+        a: "Yes. Care does not run on office hours, so coverage is continuous and clinical-impacting issues are prioritized accordingly.",
+      },
+      {
+        q: "Do you work with EHR and EMR platforms?",
+        a: "We support the infrastructure, access, integration, and endpoints around the major clinical platforms, and coordinate with the vendor where an issue sits inside the application itself.",
+      },
+      {
+        q: "What happens if there is a security incident?",
+        a: "It is contained and investigated against an agreed response plan, with the scope of any data exposure established and documented - which is what your breach notification obligations depend on.",
+      },
+      {
+        q: "Can you support multiple clinics or sites?",
+        a: "Yes. Multi-site environments get consistent device standards, access control, and support processes, so a smaller location is not left with weaker protection than the main site.",
+      },
     ],
     finalCta,
   },

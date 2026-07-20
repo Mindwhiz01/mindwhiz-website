@@ -31,6 +31,7 @@ import {
 import { company } from "@/lib/content";
 import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
 import ProcessScroll from "@/components/ProcessScroll";
 
@@ -717,6 +718,29 @@ function ScrollManifestoSection() {
   );
 }
 
+const faqs: Faq[] = [
+  {
+    q: "Which digital marketing services do you run?",
+    a: "Paid search, paid social, and retargeting; technical SEO and content systems; landing pages and conversion work; and email, nurturing, and marketing automation - run against acquisition goals rather than vanity metrics.",
+  },
+  {
+    q: "How soon will we see results?",
+    a: "Paid channels can produce measurable data within weeks, while SEO and content compound over months. We set the expected curve per channel up front so performance is judged against a realistic timeline.",
+  },
+  {
+    q: "How is performance measured and reported?",
+    a: "Against clean acquisition goals agreed at the start - cost per acquisition, pipeline, and revenue rather than impressions. Tracking and analytics are configured properly before spend scales, so the numbers can be trusted.",
+  },
+  {
+    q: "Do you work with our existing brand and website?",
+    a: "Yes. We work with what you have and flag where the site or messaging is limiting results. Where landing pages are the bottleneck, we can build them.",
+  },
+  {
+    q: "Do you require a long-term contract?",
+    a: "Terms are agreed up front and kept clear, including notice and how to exit. Performance work should be retained on results, not on contract length.",
+  },
+];
+
 export default function ServicePage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -914,6 +938,8 @@ export default function ServicePage() {
         </section>
 
         <BrandShowcaseSection />
+
+        <FaqSection faqs={faqs} />
 
         <Footer />
     </main>

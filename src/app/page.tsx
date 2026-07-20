@@ -64,6 +64,7 @@ import {
   footerGroups,
 } from "@/lib/content";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import TrustedByClients from "@/components/TrustedByClients";
 import Cta from "@/components/Cta";
 import CardCornerArrow from "@/components/CardCornerArrow";
@@ -992,94 +993,6 @@ function StackCard({
   );
 }
 
-// 14th card, appended after the real services in both the stacked and grid
-// views - a background photo with a dark wash for contrast, card shadow, and
-// a prominent CTA instead of a "Learn more" link.
-const CTA_CARD_IMAGE =
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80";
-
-function StackCtaCard({
-  i,
-  total,
-  progress,
-}: {
-  i: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const targetScale = 1 - (total - 1 - i) * 0.045;
-  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
-  const top = 120 + i * 26;
-
-  return (
-    <div className="sticky flex justify-center" style={{ top }}>
-      <motion.div
-        style={{ scale, transformOrigin: "top center" }}
-        initial={{ opacity: 0, x: 110 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        whileHover={{ y: -8 }}
-        transition={{ type: "spring", stiffness: 200, damping: 24 }}
-        className="group relative flex h-[300px] w-full flex-col justify-between overflow-hidden rounded-2xl p-8 shadow-2xl shadow-black/30 sm:p-10"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={CTA_CARD_IMAGE}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full scale-110 object-cover blur-md transition-transform duration-500 group-hover:scale-125"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Custom builds</span>
-        </div>
-        <div className="relative">
-          <h3 className="text-2xl font-bold text-white sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
-            Don&apos;t see what you need?
-          </h3>
-          <p className="mt-3 max-w-sm text-base text-white/75">
-            We build custom staffing and operations solutions around whatever your business needs.
-          </p>
-          <Cta href="/contact" label="Talk to our team" className="mt-6" />
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-function ServiceCtaCardFlat() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 80 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex h-full min-h-[16rem] flex-col justify-between overflow-hidden rounded-2xl p-7 shadow-2xl shadow-black/30"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={CTA_CARD_IMAGE}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 h-full w-full scale-110 object-cover blur-md transition-transform duration-500 group-hover:scale-125"
-      />
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="relative">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">Custom builds</span>
-      </div>
-      <div className="relative">
-        <h3 className="text-xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
-          Don&apos;t see what you need?
-        </h3>
-        <p className="mt-2 text-sm text-white/75">
-          We build custom solutions around whatever your business needs.
-        </p>
-        <Cta href="/contact" label="Talk to our team" className="mt-5" />
-      </div>
-    </motion.div>
-  );
-}
-
 function ServiceCardFlat({ s, i }: { s: (typeof services)[number]; i: number }) {
   const Icon = iconMap[s.icon] ?? Activity;
   const href = serviceHref(s.name);
@@ -1126,9 +1039,7 @@ function ServicesScrollSection() {
     target: ref,
     offset: ["start start", "end end"],
   });
-  // +1 accounts for the 14th "custom builds" CTA card appended after the
-  // real services, so the scroll-stack scale math treats it as part of the run.
-  const total = services.length + 1;
+  const total = services.length;
   const [expanded, setExpanded] = useState(false);
 
   // Toggling to the expanded grid collapses the tall scroll-stack, which shrinks
@@ -1169,39 +1080,42 @@ function ServicesScrollSection() {
               <button
                 type="button"
                 onClick={() => setExpanded((v) => !v)}
-                className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#9CCC3C] px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-[#9CCC3C] hover:text-white"
+                className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#ed1164] bg-[#ed1164] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
               >
                 {expanded ? "Show stacked view" : "View all services"}
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
                 />
               </button>
+              <div className="mt-4">
+                <Cta href="/contact" label="Contact us" />
+              </div>
             </Reveal>
           </div>
         </div>
 
         {/* right side: grid OR scroll-stack one-by-one */}
-        {expanded ? (
-          <div className="flex flex-col gap-[10vh]">
-            {services.map((s, i) => (
-              <StackCard
-                key={s.name}
-                s={s}
-                i={i}
-                total={total}
-                progress={scrollYProgress}
-              />
-            ))}
-            <StackCtaCard i={services.length} total={total} progress={scrollYProgress} />
-          </div>
-        ) : (
-          <div className="grid gap-5 sm:grid-cols-2">
-            {services.map((s, i) => (
-              <ServiceCardFlat key={s.name} s={s} i={i} />
-            ))}
-            <ServiceCtaCardFlat />
-          </div>
-        )}
+        <div>
+          {expanded ? (
+            <div className="flex flex-col gap-[10vh]">
+              {services.map((s, i) => (
+                <StackCard
+                  key={s.name}
+                  s={s}
+                  i={i}
+                  total={total}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2">
+              {services.map((s, i) => (
+                <ServiceCardFlat key={s.name} s={s} i={i} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -1252,7 +1166,14 @@ function CaseCard({
               {cs.client}
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">{cs.result}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
+            <a
+              href={`/case-studies/${cs.slug}`}
+              className="group mt-6 flex w-fit items-center gap-2 rounded-md bg-[#ed1164] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+            >
+              Read case study
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <span className="mt-6 flex w-fit items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
               Filed · {cs.category} · 2025
             </span>
@@ -1504,6 +1425,29 @@ function BlogSection() {
   );
 }
 
+const faqs: Faq[] = [
+  {
+    q: "What services does MindWhiz provide?",
+    a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back-office support across finance, HR, and construction estimation - plus staff augmentation when you need people rather than a project.",
+  },
+  {
+    q: "Do you work with businesses of our size?",
+    a: "We work with startups and small businesses through to established multi-site companies. Pricing is per user and scales with headcount, so the service stays proportionate whether you are ten people or several hundred.",
+  },
+  {
+    q: "Can you extend our existing team instead of replacing it?",
+    a: "Yes, and that is the more common arrangement. Our people work inside your tools and processes under your direction, covering the hours, volume, or specialisms your team cannot sustain alone.",
+  },
+  {
+    q: "Which time zones and regions do you cover?",
+    a: "Coverage is aligned to your working hours, with live overlap for UK and US teams and continuous cover available where operations require it.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Book a free consultation. We review your current situation, identify the gaps, and come back with a scoped plan, clear pricing, and a practical next step - with no obligation to proceed.",
+  },
+];
+
 export default function SystemLimitedHome() {
   const { scrollY } = useScroll();
   const heroTextY = useTransform(scrollY, [0, 600], [0, 120]);
@@ -1567,7 +1511,6 @@ export default function SystemLimitedHome() {
             <br />
             <RotatingWord
               words={["Teams", "Ops", "Reach", "Impact"]}
-              icons={[Users, Activity, Globe2, Zap]}
               interval={2200}
               className="text-[#9CCC3C]"
             />
@@ -1701,6 +1644,8 @@ export default function SystemLimitedHome() {
 
       {/* ===================== 8.5 · STUDIO CLOCK (timezones) ===================== */}
       <StudioClockSection />
+
+      <FaqSection faqs={faqs} />
 
       {/* ===================== 9 · CONTACT FORM ===================== */}
       <ContactFormSection />

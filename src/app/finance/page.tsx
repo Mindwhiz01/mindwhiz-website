@@ -32,6 +32,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
@@ -89,37 +90,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Bookkeeping",
     desc: "Day-to-day transaction recording, reconciliations, and clean books your accountant will thank you for.",
     Icon: BookOpen,
-    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/bookkeeping.png",
   },
   {
     title: "Accounts Payable",
     desc: "Invoice processing, approvals, and on-time vendor payments with full audit trails.",
     Icon: Receipt,
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/accounts-payable.png",
   },
   {
     title: "Accounts Receivable",
     desc: "Invoicing, collections, and cash application that keep working capital moving.",
     Icon: Wallet,
-    img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/accounts-receivable.png",
   },
   {
     title: "Financial Reporting",
     desc: "Monthly close, P&L, balance sheet, and cash-flow statements delivered on schedule.",
     Icon: FileText,
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/financial-reporting.png",
   },
   {
     title: "Payroll & Compliance",
     desc: "Accurate payroll runs, filings, and compliance support across regions.",
     Icon: Landmark,
-    img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/payroll.png",
   },
   {
     title: "FP&A & CFO Support",
     desc: "Budgets, forecasts, and dashboards that turn numbers into decisions.",
     Icon: LineChart,
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/service-coverage/finance/fpa-cfo-support.png",
   },
 ];
 
@@ -518,6 +519,29 @@ function CoverageMasonry() {
   );
 }
 
+const faqs: Faq[] = [
+  {
+    q: "Which finance and accounting tasks can you take over?",
+    a: "Day-to-day bookkeeping and reconciliations, accounts payable and receivable, payroll support, and management reporting. Most clients start with the recurring work that consumes the most internal time and expand from there.",
+  },
+  {
+    q: "Do you replace our accountant?",
+    a: "No. We handle the ongoing transactional and reporting work so your accountant or CFO is reviewing clean books and advising, rather than spending their time on data entry and chasing reconciliations.",
+  },
+  {
+    q: "Which accounting software do you work in?",
+    a: "The common ledger and bookkeeping platforms, along with the AP, expense, and payroll tools around them. We work inside the system you already use rather than requiring a migration.",
+  },
+  {
+    q: "How is our financial data kept secure?",
+    a: "Access is scoped to the specific roles and systems required, data is encrypted, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices, under signed confidentiality terms.",
+  },
+  {
+    q: "Can you scale up for month-end, year-end, and audit periods?",
+    a: "Yes. Capacity is planned around your reporting calendar, so close periods and audit requests are covered without your internal team absorbing the spike.",
+  },
+];
+
 export default function FinancePage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -707,6 +731,8 @@ export default function FinancePage() {
 
         </div>
       </section>
+
+      <FaqSection faqs={faqs} />
 
       <Footer />
     </main>

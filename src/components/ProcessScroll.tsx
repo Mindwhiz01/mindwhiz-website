@@ -30,11 +30,15 @@ function ProcessPanel({
   i,
   active,
   images,
+  ctaLabel,
+  ctaHref,
 }: {
   step: Step;
   i: number;
   active: number;
   images: string[];
+  ctaLabel: string;
+  ctaHref: string;
 }) {
   const isActive = i === active;
 
@@ -101,7 +105,16 @@ function ProcessPanel({
       >
         <div className="flex max-w-lg items-start gap-6">
           <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
-          <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
+          <div>
+            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
+            <a
+              href={ctaHref}
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+            >
+              {ctaLabel}
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -197,6 +210,8 @@ export default function ProcessScroll({
               i={i}
               active={active}
               images={images}
+              ctaLabel={ctaLabel}
+              ctaHref={ctaHref}
             />
           ))}
 

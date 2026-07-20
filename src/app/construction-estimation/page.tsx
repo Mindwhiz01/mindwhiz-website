@@ -41,6 +41,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
 
@@ -362,6 +363,29 @@ function CapabilitiesCarousel() {
     </section>
   );
 }
+const faqs: Faq[] = [
+  {
+    q: "What do you deliver on an estimation engagement?",
+    a: "Material and labor takeoffs from your drawings and specs, detailed cost breakdowns with regional pricing and markups, and complete bid packages reviewed against the scope of work - delivered in the format your team already works in.",
+  },
+  {
+    q: "Which software and file formats do you work with?",
+    a: "The industry standards including Bluebeam, PlanSwift, AutoCAD, and Revit, and we deliver in your preferred output format so estimates drop straight into your existing bid process.",
+  },
+  {
+    q: "How are drawing revisions and addenda handled?",
+    a: "Revisions are tracked against the original scope, so changed quantities and costs are reissued with what moved made explicit rather than quietly folded into a new total.",
+  },
+  {
+    q: "How accurate are the estimates?",
+    a: "Takeoffs are built from your actual drawings and specs and priced against current regional rates, with markups and contingencies stated separately. Every quote shows its basis and assumptions so you can see exactly what has been included and what has not.",
+  },
+  {
+    q: "How is the work priced, and what is the turnaround?",
+    a: "Per project or on an ongoing basis depending on your bid volume, with scope and cost itemized up front. Turnaround is confirmed against the drawing set and bid date before work starts.",
+  },
+];
+
 export default function ConstructionEstimationPage() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -643,6 +667,8 @@ export default function ConstructionEstimationPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={faqs} />
 
       <Footer />
     </main>

@@ -21,6 +21,8 @@ import {
   ShieldCheck,
   ArrowUpRight,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Star,
   type LucideIcon,
 } from "lucide-react";
@@ -28,6 +30,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import ClientsSection from "@/components/ClientsSection";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -223,7 +226,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
 
 function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white pt-36 pb-20">
+    <section className="relative overflow-hidden bg-white pt-36 pb-12">
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
       <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
@@ -259,9 +262,9 @@ function Hero() {
             className="group relative"
           >
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/30 to-[#9CCC3C]/25 opacity-50 blur-2xl" />
-            <BrowserFrame url="https://marqueeranch.com/" image="/portfolio/marquee-ranch.jpg" className="relative z-10 rotate-[-2deg]" />
+            <BrowserFrame url="https://alphabravous.com/" image="/portfolio/alpha-bravo.jpg" className="relative z-10 rotate-[-2deg]" />
             <div className="absolute -bottom-10 -right-2 z-20 hidden w-3/5 rotate-[4deg] sm:block">
-              <BrowserFrame url="https://tempurahalal.com/" image="/portfolio/tempura-halal.jpg" />
+              <BrowserFrame url="https://primeaxisinsurance.com/" image="/portfolio/prime-axis-insurance.jpg" />
             </div>
           </motion.div>
         </Reveal>
@@ -278,15 +281,16 @@ function MarqueeStrip() {
   );
 }
 
+// Full-screen image slide - matches the shared ProcessScroll look: the image
+// scales in behind a dark gradient, a giant ghost index sits top-right, the
+// title top-left and the description bottom-right.
 function ServicePanel({
   s,
   i,
-  total,
   active,
 }: {
   s: (typeof services)[number];
   i: number;
-  total: number;
   active: number;
 }) {
   const isActive = i === active;
@@ -297,30 +301,65 @@ function ServicePanel({
       animate={{ opacity: isActive ? 1 : 0 }}
       transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className="pointer-events-none absolute inset-x-0 top-[63%] -translate-y-1/2"
+      className="pointer-events-none absolute inset-0"
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <motion.img
+        src={s.image}
+        alt={s.title}
+        initial={false}
+        animate={{ scale: isActive ? 1 : 1.15 }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+      <div className="absolute inset-0 bg-black/25" />
+
+      {/* giant ghost index number, top-right */}
+      <motion.span
+        initial={false}
+        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+        style={displayFont}
+        className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
+      >
+        {String(i + 1).padStart(2, "0")}
+      </motion.span>
+
+      {/* heading, top-left */}
       <motion.div
         initial={false}
-        animate={{ y: isActive ? 0 : 50 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
       >
-        <div className="flex items-center gap-4">
-          <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#ed1164]/10 text-[#ed1164]">
-            <s.Icon className="h-6 w-6" />
-          </span>
-          <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#ed1164]">
-            {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-          </span>
-        </div>
         <h3
-          className="mt-5 text-[clamp(2rem,5vw,4rem)] font-bold uppercase leading-[1] tracking-tight text-black"
+          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={displayFont}
         >
           {s.title}
         </h3>
-        <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_1.2fr]">
-          <span className="mt-4 hidden h-px w-full bg-black/20 lg:block" />
-          <p className="max-w-xl text-lg leading-relaxed text-black/70">{s.desc}</p>
+      </motion.div>
+
+      {/* description, bottom-right */}
+      <motion.div
+        initial={false}
+        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
+        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+      >
+        <div className="flex max-w-lg items-start gap-6">
+          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+          <div>
+            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{s.desc}</p>
+            <a
+              href="/contact"
+              className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+            >
+              Get in touch
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -330,49 +369,74 @@ function ServicePanel({
 function ServicesSection() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const total = services.length;
+  const total = 3;
   const [active, setActive] = useState(0);
 
-  // Snap the visible card to whole steps no matter how the user scrolls -
-  // a card is always fully in or animating, never parked half-faded.
+  // Snap the visible slide to whole steps no matter how the user scrolls -
+  // a panel is always fully in or animating, never parked half-faded.
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
   });
 
-  // While the section is pinned, one wheel gesture moves exactly one card.
+  // While the section is pinned, one wheel gesture moves exactly one slide.
   useSlideSnap(ref, total);
 
   return (
-    <section ref={ref} className="relative bg-white" style={{ height: `${total * 100}vh` }}>
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full bg-[#ed1164]/10 blur-[150px]" />
-
-        {/* fixed heading */}
-        <div className="absolute inset-x-0 top-0 mx-auto max-w-7xl px-6 pt-28 sm:px-8">
-          <Kicker>What we build</Kicker>
-          <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Web
-            <br />
-            that <span style={{ color: PINK }}>works</span>.
-          </h2>
+    <section className="relative bg-white">
+      {/* heading sits above the images on a light background; the CTA is a
+          square block on the right that stretches to the heading's height.
+          The glow is anchored to this full-width wrapper so it bleeds all the
+          way to the viewport's left edge with no white gap. */}
+      <div className="relative overflow-hidden">
+        {/* soft light-green glow filling the bottom-left of the heading block */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
+        />
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
+          <div>
+            <Kicker>What we build</Kicker>
+            <h2
+              className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+              style={displayFont}
+            >
+              Web that <span style={{ color: PINK }}>works</span>.
+            </h2>
+          </div>
+          <a
+            href="/contact"
+            className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
+          >
+            <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
+              <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
+              <ArrowUpRight className="absolute inset-0 h-8 w-8 -translate-x-10 translate-y-10 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[#9CCC3C]" />
+            </span>
+            <span
+              className="text-center text-xl font-extrabold leading-tight sm:text-2xl"
+              style={displayFont}
+            >
+              Get in touch
+            </span>
+          </a>
         </div>
+      </div>
 
-        {/* crossfading service panels - same place, one at a time */}
-        <div className="relative mx-auto h-full max-w-7xl px-6 sm:px-8">
-          {services.map((s, i) => (
-            <ServicePanel key={s.title} s={s} i={i} total={total} active={active} />
+      <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {services.slice(0, total).map((s, i) => (
+            <ServicePanel key={s.title} s={s} i={i} active={active} />
           ))}
-        </div>
 
-        {/* progress bar - fills one segment per card */}
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-black/10">
-          <motion.div
-            initial={false}
-            animate={{ scaleX: (active + 1) / total }}
-            transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: "left" }}
-            className="h-full w-full bg-[#ed1164]"
-          />
+          {/* progress bar - fills one segment per slide */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -421,6 +485,80 @@ function PortfolioSection() {
               </Reveal>
             );
           })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const spotlightSites: { name: string; url: string; image: string }[] = [
+  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg" },
+  { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.jpg" },
+  { name: "Basil Pizza", url: "https://basilpizzanj.com/", image: "/portfolio/basil-pizza.jpg" },
+];
+
+// Website spotlight carousel - one centered browser mockup with a floating
+// pill button above it, on a soft light-gray band. Left/right arrows cycle
+// through each featured live site.
+function AlphaBravoShowcase() {
+  const [i, setI] = useState(0);
+  const total = spotlightSites.length;
+  const current = spotlightSites[i];
+  const go = (dir: number) => setI((p) => (p + dir + total) % total);
+
+  return (
+    <section className="relative overflow-hidden border-t border-slate-100 bg-[#EEEEEE] py-24">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 sm:px-8">
+        <a
+          href={current.url}
+          target="_blank"
+          rel="noreferrer"
+          className="relative z-20 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#ed1164]/30 transition-colors hover:bg-[#c50e53]"
+        >
+          Visit {current.name}
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
+
+        <div className="mt-12 w-full">
+          <div key={current.url} className="group relative">
+            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/20 to-[#9CCC3C]/15 opacity-60 blur-2xl" />
+            <BrowserFrame url={current.url} image={current.image} scroll className="relative" />
+          </div>
+        </div>
+
+        {/* arrows + dots below the mockup so users can move left / right */}
+        <div className="mt-8 flex items-center gap-6">
+          <button
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous website"
+            className="grid h-12 w-12 place-items-center rounded-full bg-white text-black shadow-lg shadow-black/10 transition-colors hover:bg-[#ed1164] hover:text-white"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <div className="flex items-center gap-2">
+            {spotlightSites.map((p, idx) => (
+              <button
+                key={p.url}
+                type="button"
+                onClick={() => setI(idx)}
+                aria-label={`Show ${p.name}`}
+                className={`h-2.5 rounded-full transition-all ${idx === i ? "w-6 bg-[#ed1164]" : "w-2.5 bg-black/20 hover:bg-black/40"}`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next website"
+            className="grid h-12 w-12 place-items-center rounded-full bg-white text-black shadow-lg shadow-black/10 transition-colors hover:bg-[#ed1164] hover:text-white"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div className="mt-14">
+          <Cta href="/contact" label="Contact us" />
         </div>
       </div>
     </section>
@@ -621,6 +759,29 @@ function ProcessSection() {
   );
 }
 
+const faqs: Faq[] = [
+  {
+    q: "How long does it take to build a website?",
+    a: "Most marketing sites and landing pages ship in 3-6 weeks, while larger web apps and dashboards run 8-12 weeks or more. After a short discovery call we scope the work and give you a clear timeline with milestones so you always know what's next.",
+  },
+  {
+    q: "How much does a custom website cost?",
+    a: "Pricing depends on scope - a focused landing page starts lower, while multi-page sites, e-commerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
+  },
+  {
+    q: "Will my site be fast, mobile-friendly, and SEO-ready?",
+    a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in - so it loads fast, feels smooth, and is set up to rank from day one.",
+  },
+  {
+    q: "Do you offer ongoing maintenance and support?",
+    a: "Yes. We offer monthly care and retainer plans covering hosting, security patches, performance tuning, content updates, and new features - so your site keeps running smoothly and evolving long after launch.",
+  },
+  {
+    q: "Can you redesign or migrate my existing website?",
+    a: "Absolutely. We regularly redesign dated sites and migrate them to modern, faster stacks without losing your content or SEO. We audit what you have, preserve your rankings, and rebuild it into something you're proud to share.",
+  },
+];
+
 function CtaBand() {
   return (
     <section className="bg-white px-6 pb-24 pt-4 sm:px-8">
@@ -671,12 +832,14 @@ export default function WebServicesPage() {
       <SiteHeader theme={theme} />
       <Hero />
       <MarqueeStrip />
+      <AlphaBravoShowcase />
       <ServicesSection />
       <PortfolioSection />
       <StackSection />
       <SeoSection />
       <ProcessSection />
       <ClientsSection />
+      <FaqSection faqs={faqs} />
       <CtaBand />
       <Footer />
     </main>
