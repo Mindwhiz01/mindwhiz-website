@@ -1088,7 +1088,7 @@ function ServicesScrollSection() {
               <button
                 type="button"
                 onClick={() => setExpanded((v) => !v)}
-                className="mt-7 inline-flex items-center gap-2 rounded-md border border-[#ed1164] bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
+                className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ed1164] bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
               >
                 {expanded ? "Show stacked view" : "View all services"}
                 <ChevronDown
