@@ -13,7 +13,6 @@ import {
 import { Inter, Oswald } from "next/font/google";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
-import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import FaqSection from "@/components/FaqSection";
 import { PageBanner } from "@/components/PageBanner";
@@ -67,65 +66,6 @@ function Kicker({ children }: { children: React.ReactNode }) {
       <span className="h-1.5 w-1.5 rounded-full bg-[#ed1164]" />
       {children}
       <span className="h-px w-12 bg-current/30" />
-    </div>
-  );
-}
-
-// Interactive panel: a frosted-glass "crystal" lens + sheen that follows the
-// cursor. Position is written to CSS vars on pointer move (no React re-render).
-function GlassPanel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  return (
-    <div
-      ref={ref}
-      onPointerMove={(e) => {
-        const el = ref.current;
-        if (!el) return;
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        el.style.setProperty("--my", `${e.clientY - r.top}px`);
-      }}
-      onPointerEnter={() => setActive(true)}
-      onPointerLeave={() => setActive(false)}
-      className={className}
-    >
-      {children}
-      {/* magnifier lens - a scaled duplicate of the content masked to a circle
-          that follows the cursor, so whatever is under it reads bigger/crisper */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 transition-opacity duration-200"
-        style={{
-          opacity: active ? 1 : 0,
-          maskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(circle 135px at var(--mx) var(--my), #000 62%, transparent 75%)",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ transform: "scale(1.45)", transformOrigin: "var(--mx) var(--my)" }}
-        >
-          {children}
-        </div>
-        {/* soft glass sheen so the lens reads like polished crystal */}
-        <div
-          className="absolute inset-0 mix-blend-soft-light"
-          style={{
-            background:
-              "radial-gradient(circle 135px at var(--mx) var(--my), rgba(255,255,255,0.55), rgba(255,255,255,0) 72%)",
-          }}
-        />
-      </div>
     </div>
   );
 }
@@ -586,38 +526,41 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
               Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
             </h2>
           </div>
-          <motion.a
-            href="/contact"
+          <motion.div
             whileHover={{ y: -8 }}
-            className="group relative flex shrink-0 flex-col justify-between overflow-visible rounded-3xl bg-neutral-900 p-8 text-white shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/20 lg:min-h-80 lg:w-full lg:max-w-sm"
+            className="group relative flex shrink-0 flex-col justify-between overflow-visible rounded-2xl bg-slate-100 p-6 text-black shadow-lg transition-all hover:shadow-xl hover:shadow-black/10 lg:min-h-64 lg:w-full lg:max-w-xs"
           >
-            {/* Counter - top left */}
-            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-              {page.proof.length > 1 ? "02 / 04" : "01 / 04"}
-            </span>
-
             {/* Main stat display */}
-            <div className="mt-12 flex-1">
+            <div className="flex-1">
               {page.proof.length > 0 && (
                 <>
                   <h3
-                    className="text-[clamp(2.2rem,5vw,3.5rem)] font-extrabold leading-tight text-white"
+                    className="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight text-black"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {page.proof[page.proof.length > 1 ? 1 : 0].value}
                   </h3>
-                  <p className="mt-6 text-base leading-relaxed text-neutral-400">
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
                     {page.proof[page.proof.length > 1 ? 1 : 0].label}
                   </p>
                 </>
               )}
             </div>
 
-            {/* Green circle with arrow - overlapping bottom right */}
-            <div className="absolute -right-8 -bottom-8 grid h-20 w-20 place-items-center rounded-full bg-[#9CCC3C] shadow-lg transition-transform group-hover:scale-110">
-              <ArrowRight className="h-7 w-7 text-black font-bold" />
-            </div>
-          </motion.a>
+            {/* Get in touch CTA circle - overlapping bottom right */}
+            <motion.a
+              href="/contact"
+              className="absolute -right-8 -bottom-8 grid h-20 w-20 place-items-center rounded-full bg-[#ed1164] shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/40"
+              whileHover={{ scale: 1.1 }}
+              title="Get in touch"
+            >
+              <div className="flex flex-col items-center justify-center gap-0.5">
+                <ArrowRight className="h-5 w-5 text-white font-bold" />
+                <span className="text-[9px] font-semibold text-white leading-tight">Get in</span>
+                <span className="text-[9px] font-semibold text-white leading-tight">touch</span>
+              </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
 

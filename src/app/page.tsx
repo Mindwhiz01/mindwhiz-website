@@ -890,7 +890,7 @@ function IndustriesWorlds() {
             {/* scooped corner + green circular arrow */}
             <CardCornerArrow bg="#EEEEEE" />
 
-            <div className="relative p-6 pb-12">
+            <div className="relative px-6 pb-6 pt-0">
               <h3
                 className="text-xl font-semibold leading-tight drop-shadow"
                 style={{ fontFamily: "var(--font-display)" }}

@@ -428,72 +428,101 @@ function ClientsScatter() {
   );
 }
 
-// Reels marquee - portrait video cards drifting on the left, big heading right.
-const reels: { label: string; tag: string; img: string }[] = [
-  { label: "Campaign Launch", tag: "Paid social", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Brand Film", tag: "Creative", img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Product Teaser", tag: "Content", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Founder Story", tag: "Organic", img: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Behind The Scenes", tag: "Reels", img: "https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Ad Creative", tag: "Performance", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Testimonial", tag: "Proof", img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&h=850&q=80" },
-  { label: "Case Study", tag: "Story", img: "https://images.unsplash.com/photo-1524749292158-7540c2494485?auto=format&fit=crop&w=500&h=850&q=80" },
+// Reels marquee - Instagram reels with embedded iframes and carousel
+const reels: { id: string; label: string; tag: string; url: string }[] = [
+  { id: "DYqEUf8RKJl", label: "Campaign Launch", tag: "Paid social", url: "https://www.instagram.com/reel/DYqEUf8RKJl/" },
+  { id: "DYqFNsPRDwA", label: "Brand Film", tag: "Creative", url: "https://www.instagram.com/reel/DYqFNsPRDwA/" },
+  { id: "DU_zLUqkarM", label: "Product Teaser", tag: "Content", url: "https://www.instagram.com/reel/DU_zLUqkarM/" },
+  { id: "DTBjABDkfSs", label: "Founder Story", tag: "Organic", url: "https://www.instagram.com/reel/DTBjABDkfSs/" },
+  { id: "DbBswDeG-CT", label: "Behind The Scenes", tag: "Reels", url: "https://www.instagram.com/reel/DbBswDeG-CT/" },
+  { id: "Da3W6QOCoHN", label: "Ad Creative", tag: "Performance", url: "https://www.instagram.com/reel/Da3W6QOCoHN/" },
+  { id: "DaqTq6CkUCb", label: "Testimonial", tag: "Proof", url: "https://www.instagram.com/reel/DaqTq6CkUCb/" },
+  { id: "C8ca06jCFiu", label: "Case Study", tag: "Story", url: "https://www.instagram.com/reel/C8ca06jCFiu/" },
+  { id: "C0vqC7WIdVH", label: "Social Proof", tag: "User Generated", url: "https://www.instagram.com/reel/C0vqC7WIdVH/" },
+  { id: "CtMrMhFIIn6", label: "Tutorial", tag: "How To", url: "https://www.instagram.com/reel/CtMrMhFIIn6/" },
 ];
 
 function ReelsSection() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#eee8e0] py-16 text-[#3f3f3d]">
+    <section className="relative bg-[#eee8e0] py-24 text-[#3f3f3d]">
       <div className="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-[#ff4b00]/15 blur-[150px]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1700px] items-center gap-12 px-6 sm:px-8 lg:grid-cols-[1.4fr_0.6fr]">
-        {/* left: drifting reels */}
-        <div className="order-2 overflow-hidden text-white lg:order-1">
-          <motion.div
-            className="flex w-max gap-5"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 34, ease: "linear", repeat: Infinity }}
-          >
-            {[...reels, ...reels].map((r, i) => (
-              <article
-                key={i}
-                className="group relative h-[60vh] max-h-[560px] min-h-[360px] w-[240px] shrink-0 overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:w-[280px]"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={r.img}
-                  alt={r.label}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10" />
-                <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-[#ed1164] shadow-lg transition-transform duration-300 group-hover:scale-110">
-                  <Play className="ml-0.5 h-6 w-6 fill-current" />
-                </span>
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <span className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] backdrop-blur">
-                    {r.tag}
-                  </span>
-                  <h3 className="mt-3 text-xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
-                    {r.label}
-                  </h3>
-                </div>
-              </article>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* right: big heading */}
-        <div className="order-1 lg:order-2">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
+        {/* Header */}
+        <div className="mb-16">
           <span className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ed1164]">The reels</span>
-          <h2 className="mt-4 text-[clamp(2.8rem,6vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="mt-4 text-[clamp(2.8rem,6vw,4rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
             Reels that
             <br />
             <span className="text-[#ed1164]">move brands.</span>
           </h2>
-          <p className="mt-6 max-w-sm text-sm leading-7 text-[#3f3f3d]/80">
+          <p className="mt-6 max-w-md text-sm leading-7 text-[#3f3f3d]/80">
             Short-form video built to stop the scroll - scripted, shot, and cut for
             the platforms your audience actually uses.
           </p>
+        </div>
+
+        {/* Embedded Instagram Reels */}
+        <div className="mb-16">
+          <h3 className="mb-8 text-lg font-extrabold uppercase tracking-wide text-[#1d1d1f]">Featured Reels</h3>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {reels.slice(0, 6).map((r) => (
+              <div key={r.id} className="overflow-hidden rounded-2xl bg-white shadow-lg">
+                <div style={{ position: "relative", width: "100%", paddingBottom: "177.78%" }}>
+                  <iframe
+                    src={`https://www.instagram.com/reel/${r.id}/embed/`}
+                    width="100%"
+                    height="560"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      borderRadius: "8px",
+                    }}
+                    allowTransparency
+                  ></iframe>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel Thumbnail View */}
+        <div>
+          <h3 className="mb-8 text-lg font-extrabold uppercase tracking-wide text-[#1d1d1f]">All Reels</h3>
+          <div className="overflow-hidden rounded-2xl">
+            <motion.div
+              className="flex w-max gap-4"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+            >
+              {[...reels, ...reels].map((r, i) => (
+                <a
+                  key={i}
+                  href={r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative h-[280px] w-[200px] shrink-0 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform hover:scale-105 sm:h-[360px] sm:w-[240px]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity group-hover:bg-black/60">
+                    <Play className="h-12 w-12 fill-white text-white opacity-90" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-4">
+                    <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#9CCC3C] sm:text-xs">
+                      {r.tag}
+                    </p>
+                    <h4 className="mt-1 line-clamp-2 text-xs font-bold sm:text-sm">
+                      {r.label}
+                    </h4>
+                  </div>
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
