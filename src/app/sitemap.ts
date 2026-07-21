@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/locations/us", priority: 0.6 },
     { path: "/locations/uk", priority: 0.6 },
     { path: "/locations/pk", priority: 0.6 },
+    { path: "/privacy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
   ].map(({ path, priority }) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),

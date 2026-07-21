@@ -52,8 +52,28 @@ export default function FaqSection({
   className?: string;
 }) {
   const [open, setOpen] = useState(0);
+
+  // FAQPage structured data - lets answer engines (Google AI Overviews,
+  // ChatGPT, Perplexity) lift these Q&As directly into generated answers.
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+
   return (
     <section className={`relative overflow-hidden bg-[#EEEEEE] py-24 ${className}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="relative mx-auto max-w-4xl px-6 sm:px-8">
         <Reveal>
           <h2

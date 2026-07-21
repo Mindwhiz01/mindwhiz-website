@@ -113,3 +113,51 @@ export const locations: LocationContent[] = [
 export function getLocation(slug: string) {
   return locations.find((l) => l.slug === slug);
 }
+
+const SITE_URL = "https://graphite-teal-template.vercel.app";
+
+// Shared metadata + LocalBusiness builder so the three region pages
+// (/locations/us|uk|pk) don't hand-roll the same local-SEO boilerplate.
+export function locationMetadata(loc: LocationContent) {
+  const title = `${loc.city}, ${loc.country} Team`;
+  const description = `${loc.tagline} ${loc.intro}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/locations/${loc.slug}` },
+    openGraph: {
+      title: `${title} | MindWhiz`,
+      description,
+      images: [{ url: loc.heroImage }],
+    },
+  };
+}
+
+export function locationJsonLd(loc: LocationContent) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: `MindWhiz - ${loc.city}`,
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    url: `${SITE_URL}/locations/${loc.slug}`,
+    description: loc.intro,
+    ...(loc.address
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: loc.address,
+            addressLocality: loc.city,
+            addressCountry: loc.code,
+          },
+        }
+      : {
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: loc.city,
+            addressCountry: loc.code,
+          },
+        }),
+    areaServed: { "@type": "Country", name: loc.country },
+    knowsAbout: loc.services,
+  };
+}

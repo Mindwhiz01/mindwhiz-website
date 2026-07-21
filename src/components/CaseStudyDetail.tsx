@@ -64,8 +64,39 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
 
   const others = caseStudies.filter((c) => c.slug !== cs.slug);
 
+  const siteUrl = "https://graphite-teal-template.vercel.app";
+  const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${siteUrl}/case-studies/${cs.slug}`,
+    articleSection: "Case Study",
+    headline: `${cs.client} — ${cs.category} engagement`,
+    description: cs.result,
+    image: cs.img,
+    about: { "@type": "Organization", name: cs.client },
+    publisher: { "@id": `${siteUrl}/#organization` },
+    mainEntityOfPage: `${siteUrl}/case-studies/${cs.slug}`,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Case Studies", item: `${siteUrl}/case-studies` },
+      { "@type": "ListItem", position: 3, name: cs.client, item: `${siteUrl}/case-studies/${cs.slug}` },
+    ],
+  };
+
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader theme={theme} />
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>

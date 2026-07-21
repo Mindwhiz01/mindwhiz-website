@@ -33,8 +33,26 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
 
   const more = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
+  const siteUrl = "https://graphite-teal-template.vercel.app";
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Person", name: post.author.name },
+    publisher: { "@id": `${siteUrl}/#organization` },
+    mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+  };
+
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <SiteHeader theme={theme} />
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>

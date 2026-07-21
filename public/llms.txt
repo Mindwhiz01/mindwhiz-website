@@ -1,0 +1,60 @@
+# MindWhiz
+
+> MindWhiz is a hybrid staffing and business process outsourcing (BPO) company. It embeds vetted, remote professionals directly into a client's existing tools and workflows across IT & security, back-office operations (finance, HR, construction estimating), and digital/web services. Headquartered in Houston, Texas, with delivery hubs in London, UK and Lahore, Pakistan.
+
+Key facts for citation:
+- Company name: MindWhiz
+- Founded / headquartered: Houston, Texas, USA (2313 W Sam Houston Pkwy N #147, Houston, TX 77043)
+- Additional hubs: London, United Kingdom; Lahore, Pakistan
+- Contact: info@mindwhiz.com, +1 (832) 900-4608
+- Model: staff augmentation and managed BPO teams that integrate into the client's own workflow, not a fixed-scope project handoff
+- Markets served: United States, United Kingdom, Pakistan
+
+## Services
+
+- [24/7 IT Helpdesk (Tier 1-3)](https://graphite-teal-template.vercel.app/services/it-helpdesk-24-7): Round-the-clock tiered IT support desk.
+- [NOC Monitoring (24/7)](https://graphite-teal-template.vercel.app/services/noc-monitoring): Network operations center monitoring and incident response.
+- [Remote Desktop & IT Asset Management](https://graphite-teal-template.vercel.app/services/remote-desktop-assets): Endpoint and IT asset lifecycle management.
+- [Cloud Infrastructure Management](https://graphite-teal-template.vercel.app/services/cloud-infrastructure): Cloud environment setup, monitoring, and cost control.
+- [Server & Network Administration](https://graphite-teal-template.vercel.app/services/server-network-administration): Ongoing server and network operations.
+- [Endpoint Security](https://graphite-teal-template.vercel.app/services/endpoint-security): Managed endpoint detection and protection.
+- [DevOps & Automation](https://graphite-teal-template.vercel.app/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
+- [Cybersecurity Monitoring](https://graphite-teal-template.vercel.app/services/cybersecurity-monitoring): Managed detection and response.
+- [Staff Augmentation](https://graphite-teal-template.vercel.app/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
+- [Finance & Accounting](https://graphite-teal-template.vercel.app/finance): Bookkeeping, AP/AR, reconciliations, and reporting.
+- [HR Services](https://graphite-teal-template.vercel.app/hr): Recruiting, onboarding, payroll support, and HR operations.
+- [Construction Estimating](https://graphite-teal-template.vercel.app/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
+- [Web Development](https://graphite-teal-template.vercel.app/web-services): Websites, web apps, and dashboards.
+- [Digital Agency Services](https://graphite-teal-template.vercel.app/service): Brand, growth, and web execution.
+
+## Industries served
+
+Information Technology, E-commerce & Retail, Startups & SMBs, Construction & Engineering, Real Estate, Industrial Manufacturing, Accounting & Finance, Professional Services, Logistics & Supply Chain, Healthcare & HealthTech.
+Full list: https://graphite-teal-template.vercel.app/#industries
+
+## Locations
+
+- [United States (Houston, TX - HQ)](https://graphite-teal-template.vercel.app/locations/us)
+- [United Kingdom (London)](https://graphite-teal-template.vercel.app/locations/uk)
+- [Pakistan (Lahore)](https://graphite-teal-template.vercel.app/locations/pk)
+
+## Proof of work
+
+- [Case Studies](https://graphite-teal-template.vercel.app/case-studies): Alpha Bravo Construction, Villa Tech, and Inovatiqa engagements with named outcomes.
+- [Why MindWhiz](https://graphite-teal-template.vercel.app/why-mindwhiz)
+
+## Frequently asked
+
+- What services does MindWhiz provide? Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back-office support across finance, HR, and construction estimation, plus staff augmentation.
+- Do you work with businesses of any size? Yes, from startups through established multi-site companies; pricing scales with headcount.
+- Can MindWhiz extend an existing team instead of replacing it? Yes, this is the most common arrangement - MindWhiz staff work inside the client's own tools and processes.
+- Which regions does MindWhiz cover? United States, United Kingdom, and Pakistan, with round-the-clock coverage across time zones.
+
+## Other pages
+
+- [Blog](https://graphite-teal-template.vercel.app/blog): Field notes on security operations, delivery playbooks, and staffing at scale.
+- [About](https://graphite-teal-template.vercel.app/about)
+- [Careers](https://graphite-teal-template.vercel.app/careers)
+- [Contact](https://graphite-teal-template.vercel.app/contact)
+
+Full sitemap: https://graphite-teal-template.vercel.app/sitemap.xml

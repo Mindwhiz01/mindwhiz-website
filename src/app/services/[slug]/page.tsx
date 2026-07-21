@@ -28,5 +28,5 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  return <ServiceDetailPage page={page} />;
+  return <ServiceDetailPage page={page} basePath="/services" sectionLabel="Services" />;
 }

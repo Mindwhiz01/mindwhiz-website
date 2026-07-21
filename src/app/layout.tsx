@@ -74,15 +74,24 @@ export const metadata: Metadata = {
   },
 };
 
+// LocalBusiness + ProfessionalService double-typed so both local-pack SEO
+// (address/geo/hours) and B2B service intent (areaServed, serviceType) are
+// covered from a single entity - this is the node every page's JSON-LD
+// (FAQPage, Service, BreadcrumbList) points back to via "provider"/"publisher".
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
+  "@id": `${siteUrl}/#organization`,
   name: siteName,
+  alternateName: "MindWhiz Solutions",
   url: siteUrl,
   logo: `${siteUrl}/mindwhiz-mark.png`,
+  image: `${siteUrl}/mindwhiz-mark.png`,
   description: siteDescription,
+  slogan: "Flexible Talent, Scalable Teams, Global Impact",
   email: "info@mindwhiz.com",
   telephone: "+1 (832) 900-4608",
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: "2313 W Sam Houston Pkwy N #147",
@@ -91,20 +100,49 @@ const organizationJsonLd = {
     postalCode: "77043",
     addressCountry: "US",
   },
-  areaServed: ["United States", "United Kingdom", "Pakistan"],
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+1 (832) 900-4608",
-    contactType: "sales",
-    email: "info@mindwhiz.com",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 29.8016,
+    longitude: -95.5788,
   },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=2313+W+Sam+Houston+Pkwy+N+%23147+Houston+TX+77043",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Pakistan" },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/company/mindwhiz",
+    "https://x.com/mindwhizco",
+    "https://www.instagram.com/mindwhiz2.0/",
+    "https://www.facebook.com/mindwhizofficial/",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+1 (832) 900-4608",
+      contactType: "sales",
+      email: "info@mindwhiz.com",
+      areaServed: ["US", "GB", "PK"],
+      availableLanguage: ["English"],
+    },
+  ],
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: siteName,
   url: siteUrl,
+  publisher: { "@id": `${siteUrl}/#organization` },
+  inLanguage: "en-US",
 };
 
 export default function RootLayout({

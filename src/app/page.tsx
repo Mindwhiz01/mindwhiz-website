@@ -1197,9 +1197,9 @@ function CaseCard({
               {/* client logo, big and centred in the box at full opacity so it
                   reads clearly against the dark exhibit card */}
               {cs.logo && (
-                <div className="pointer-events-none absolute inset-0 grid place-items-center p-10">
+                <div className="pointer-events-none absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-contain drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
+                  <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
                 </div>
               )}
               <div className="relative flex-1" />

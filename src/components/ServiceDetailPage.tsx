@@ -604,8 +604,50 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   );
 }
 
-export default function ServiceDetailPage({ page }: { page: ServicePageContent }) {
+const SITE_URL = "https://graphite-teal-template.vercel.app";
+
+export default function ServiceDetailPage({
+  page,
+  basePath = "/services",
+  sectionLabel = "Services",
+}: {
+  page: ServicePageContent;
+  basePath?: "/services" | "/industries";
+  sectionLabel?: string;
+}) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  const canonicalUrl = `${SITE_URL}${basePath}/${page.slug}`;
+  const isIndustry = basePath === "/industries";
+
+  // Service schema for /services/*, plus a matching breadcrumb trail on both
+  // /services/* and /industries/* so search results show the page hierarchy.
+  const serviceJsonLd = !isIndustry
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: page.name,
+        description: page.hero.subtitle,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: [
+          { "@type": "Country", name: "United States" },
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Country", name: "Pakistan" },
+        ],
+        serviceType: page.name,
+        url: canonicalUrl,
+      }
+    : null;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: sectionLabel, item: `${SITE_URL}${basePath}` },
+      { "@type": "ListItem", position: 3, name: page.name, item: canonicalUrl },
+    ],
+  };
 
   useEffect(() => {
     const saved = localStorage.getItem("mw-theme");
@@ -620,6 +662,16 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
 
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
+      {serviceJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <SiteHeader theme={theme} />
 
       <PageBanner

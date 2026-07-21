@@ -5,7 +5,6 @@ import {
   Twitter,
   Instagram,
   Facebook,
-  Youtube,
   Mail,
   ShieldCheck,
   ArrowUpRight,
@@ -21,11 +20,10 @@ import { company, footerGroups, certifications } from "@/lib/content";
 const ACCENT = "#9CCC3C"; // MindWhiz template accent (cyan)
 
 const socials: { label: string; Icon: LucideIcon; href: string }[] = [
-  { label: "LinkedIn", Icon: Linkedin, href: "#" },
-  { label: "Twitter", Icon: Twitter, href: "#" },
-  { label: "Instagram", Icon: Instagram, href: "#" },
-  { label: "Facebook", Icon: Facebook, href: "#" },
-  { label: "YouTube", Icon: Youtube, href: "#" },
+  { label: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/mindwhiz" },
+  { label: "Twitter", Icon: Twitter, href: "https://x.com/mindwhizco" },
+  { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/mindwhiz2.0/" },
+  { label: "Facebook", Icon: Facebook, href: "https://www.facebook.com/mindwhizofficial/" },
   { label: "Email", Icon: Mail, href: `mailto:${company.email}` },
 ];
 
@@ -77,6 +75,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-[#9CCC3C] hover:text-[#9CCC3C]"
                 >
                   <Icon className="h-4 w-4" />

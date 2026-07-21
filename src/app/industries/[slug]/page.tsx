@@ -28,5 +28,5 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  return <ServiceDetailPage page={page} />;
+  return <ServiceDetailPage page={page} basePath="/industries" sectionLabel="Industries" />;
 }
