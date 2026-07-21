@@ -36,6 +36,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
+import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -234,20 +235,26 @@ function ValuePanel({
   v,
   i,
   active,
+  mobile = false,
 }: {
   v: (typeof values)[number];
   i: number;
   active: number;
+  mobile?: boolean;
 }) {
-  const isActive = i === active;
+  const isActive = mobile || i === active;
 
   return (
     <motion.div
       initial={false}
-      animate={{ opacity: isActive ? 1 : 0 }}
-      transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+      animate={{ opacity: mobile || isActive ? 1 : 0 }}
+      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: EASE }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className="pointer-events-none absolute inset-0"
+      className={
+        mobile
+          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
+          : "pointer-events-none absolute inset-0"
+      }
     >
       {/* big image fit to the screen */}
       <motion.img
@@ -299,6 +306,7 @@ function ValuePanel({
 
 function CoreValuesScroll() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -312,7 +320,37 @@ function CoreValuesScroll() {
   });
 
   // While the section is pinned, one wheel gesture moves exactly one value.
-  useSlideSnap(ref, total);
+  // Disabled on mobile, where the section is a plain stack, not pinned.
+  useSlideSnap(ref, total, !isMobile);
+
+  // Shared heading block - rendered in normal flow on mobile (above the stack),
+  // as a fixed overlay on the pinned deck at sm+.
+  const heading = (
+    <>
+      <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+        Why choose MindWhiz
+      </span>
+      <h2
+        className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+        style={{ fontFamily: "var(--font-display)" }}
+      >
+        Talent, without the <span style={{ color: "#ed1164" }}>friction</span>
+      </h2>
+    </>
+  );
+
+  if (isMobile) {
+    return (
+      <section ref={ref} className="relative bg-black">
+        <div className="mx-auto max-w-6xl px-6 pt-24 pb-8">{heading}</div>
+        <div className="flex flex-col">
+          {values.map((v, i) => (
+            <ValuePanel key={v.title} v={v} i={i} active={active} mobile />
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={ref} className="relative bg-black" style={{ height: `${total * 100}vh` }}>
@@ -323,15 +361,7 @@ function CoreValuesScroll() {
 
         {/* fixed heading overlay on top of the panels */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 mx-auto max-w-6xl px-6 pt-28 sm:px-8">
-          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-            Why choose MindWhiz
-          </span>
-          <h2
-            className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Talent, without the <span style={{ color: "#ed1164" }}>friction</span>
-          </h2>
+          {heading}
         </div>
 
         {/* bottom progress bar - fills one segment per value */}

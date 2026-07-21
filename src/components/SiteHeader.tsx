@@ -573,7 +573,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0, scale: 0.95, y: -6 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 max-h-[calc(100dvh-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 xl:hidden"
+            className="mx-auto mt-2 max-h-[calc(100dvh-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-black/10 bg-white p-2 shadow-2xl shadow-black/20 xl:hidden"
           >
             {[
               ...nav.slice(0, 4),
@@ -599,7 +599,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.04 * i }}
                     style={{ transformOrigin: "bottom left" }}
-                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base text-white/90 transition-colors hover:bg-white/10"
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
                   >
                     <span>{n.label}</span>
                     {hasMega && (
@@ -617,12 +617,12 @@ export function SiteHeader({ theme }: { theme: string }) {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden bg-white/5 pl-2"
+                      className="mx-1 mb-1 overflow-hidden rounded-xl bg-black/[0.03] pl-2"
                     >
                       {n.label === "Services" &&
                         serviceMenu.map((g) => (
                           <div key={g.heading} className="py-2">
-                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/50">
+                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
                               {g.heading}
                             </p>
                             {g.items.map((item) => (
@@ -633,7 +633,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                                   setOpen(false);
                                   setMobileMenu(null);
                                 }}
-                                className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                                className="block rounded-lg px-4 py-2.5 text-sm text-black transition-colors hover:bg-black/5"
                               >
                                 {item.name}
                               </a>
@@ -644,7 +644,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                       {n.label === "Industries" &&
                         industryMenu.map((g) => (
                           <div key={g.heading} className="py-2">
-                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/50">
+                            <p className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
                               {g.heading}
                             </p>
                             {g.items.map((item) => (
@@ -655,7 +655,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                                   setOpen(false);
                                   setMobileMenu(null);
                                 }}
-                                className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                                className="block rounded-lg px-4 py-2.5 text-sm text-black transition-colors hover:bg-black/5"
                               >
                                 {item.name}
                               </a>
@@ -671,7 +671,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                               setOpen(false);
                               setMobileMenu(null);
                             }}
-                            className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                            className="block rounded-lg px-4 py-2.5 text-sm text-black transition-colors hover:bg-black/5"
                           >
                             About Us
                           </a>
@@ -681,7 +681,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                               setOpen(false);
                               setMobileMenu(null);
                             }}
-                            className="block rounded-lg px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                            className="block rounded-lg px-4 py-2.5 text-sm text-black transition-colors hover:bg-black/5"
                           >
                             Why MindWhiz
                           </a>

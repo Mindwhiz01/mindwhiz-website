@@ -32,6 +32,7 @@ import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
+import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -288,20 +289,27 @@ function ServicePanel({
   s,
   i,
   active,
+  mobile = false,
 }: {
   s: (typeof services)[number];
   i: number;
   active: number;
+  mobile?: boolean;
 }) {
-  const isActive = i === active;
+  // On mobile every panel is a static, always-visible block in normal flow.
+  const isActive = mobile || i === active;
 
   return (
     <motion.div
       initial={false}
-      animate={{ opacity: isActive ? 1 : 0 }}
-      transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+      animate={{ opacity: mobile || isActive ? 1 : 0 }}
+      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className="pointer-events-none absolute inset-0"
+      className={
+        mobile
+          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
+          : "pointer-events-none absolute inset-0"
+      }
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -368,6 +376,7 @@ function ServicePanel({
 
 function ServicesSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const total = 3;
   const [active, setActive] = useState(0);
@@ -379,7 +388,8 @@ function ServicesSection() {
   });
 
   // While the section is pinned, one wheel gesture moves exactly one slide.
-  useSlideSnap(ref, total);
+  // Disabled on mobile, where the section is a plain stack, not pinned.
+  useSlideSnap(ref, total, !isMobile);
 
   return (
     <section id="web-that-works" className="relative bg-[#faf9f7]">
@@ -421,23 +431,37 @@ function ServicesSection() {
         </div>
       </div>
 
-      <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-          {services.slice(0, total).map((s, i) => (
-            <ServicePanel key={s.title} s={s} i={i} active={active} />
-          ))}
-
-          {/* progress bar - fills one segment per slide */}
-          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-            <motion.div
-              initial={false}
-              animate={{ scaleX: (active + 1) / total }}
-              transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-              style={{ transformOrigin: "left" }}
-              className="h-full w-full bg-[#ed1164]"
-            />
+      {/* Below `sm`: plain stack of full panels, no pin/cross-fade. */}
+      <div
+        ref={ref}
+        data-header-dark
+        className="relative bg-black"
+        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+      >
+        {isMobile ? (
+          <div className="flex flex-col">
+            {services.slice(0, total).map((s, i) => (
+              <ServicePanel key={s.title} s={s} i={i} active={active} mobile />
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="sticky top-0 h-screen overflow-hidden">
+            {services.slice(0, total).map((s, i) => (
+              <ServicePanel key={s.title} s={s} i={i} active={active} />
+            ))}
+
+            {/* progress bar - fills one segment per slide */}
+            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+              <motion.div
+                initial={false}
+                animate={{ scaleX: (active + 1) / total }}
+                transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transformOrigin: "left" }}
+                className="h-full w-full bg-[#ed1164]"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

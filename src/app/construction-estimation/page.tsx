@@ -39,6 +39,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { useBelowSm } from "@/lib/useBelowSm";
 import { PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
@@ -247,6 +248,7 @@ const CARD_GAP = 20; // matches gap-5 on the row
 function CapabilitiesCarousel() {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const isMobile = useBelowSm();
   const [cardW, setCardW] = useState(300);
   const [distance, setDistance] = useState(0);
 
@@ -282,18 +284,24 @@ function CapabilitiesCarousel() {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: "260vh" }}
+      style={{ height: isMobile ? undefined : "260vh" }}
     >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
-          {/* contained carousel viewport (left) */}
-          <div ref={viewportRef} className="order-2 overflow-hidden lg:order-1">
-            <motion.div style={{ x }} className="flex gap-5 will-change-transform">
+          {/* contained carousel viewport (left) - native swipe on mobile */}
+          <div
+            ref={viewportRef}
+            className="order-2 -mx-6 overflow-x-auto px-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:overflow-hidden sm:px-0 lg:order-1 [&::-webkit-scrollbar]:hidden"
+          >
+            <motion.div
+              style={{ x: isMobile ? 0 : x }}
+              className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
+            >
               {capabilities.map(({ title, desc, Icon, img }, i) => (
                 <article
                   key={title}
-                  style={{ width: cardW }}
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5"
+                  style={{ width: isMobile ? undefined : cardW }}
+                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:w-auto sm:max-w-none"
                 >
                   {/* background image */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}

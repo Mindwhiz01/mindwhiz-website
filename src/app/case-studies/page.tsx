@@ -13,6 +13,7 @@ import { ArrowRight } from "lucide-react";
 import { caseStudies } from "@/lib/content";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
+import { useBelowSm } from "@/lib/useBelowSm";
 import { PageBanner } from "@/components/PageBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -62,15 +63,19 @@ function CaseCard({
   total: number;
   progress: MotionValue<number>;
 }) {
+  const isMobile = useBelowSm();
   const no = String(i + 1).padStart(2, "0");
   const targetScale = 1 - (total - 1 - i) * 0.04;
-  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
+  const scale = useTransform(progress, [i / total, 1], isMobile ? [1, 1] : [1, targetScale]);
   const top = 110 + i * 26;
 
   return (
-    <div className="sticky" style={{ top }}>
+    <div
+      className="relative sm:sticky sm:top-[var(--stack-top)]"
+      style={{ ["--stack-top" as string]: `${top}px` }}
+    >
       <motion.div
-        style={{ scale, transformOrigin: "top center" }}
+        style={{ scale: isMobile ? 1 : scale, transformOrigin: "top center" }}
         className="border-t border-black/10 bg-[#EEEEEE] pt-14 pb-4"
       >
         <div className="grid gap-10 lg:grid-cols-[6rem_1fr_17rem]">
@@ -176,8 +181,8 @@ function CaseRecordSection() {
             </div>
           </Reveal>
 
-          {/* pinned stack of entries */}
-          <div className="mt-10 flex flex-col gap-[14vh]">
+          {/* pinned stack of entries (plain flow below sm) */}
+          <div className="mt-10 flex flex-col gap-10 sm:gap-[14vh]">
             {caseStudies.map((cs, i) => (
               <CaseCard key={cs.client} cs={cs} i={i} total={total} progress={scrollYProgress} />
             ))}
