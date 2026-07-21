@@ -374,8 +374,11 @@ export default function ContactFormSection() {
           <ContactForm />
         </Reveal>
 
-        {/* klickpin video - right */}
-        <Reveal delay={0.1} className="flex items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-black">
+        {/* klickpin video - right (hidden on mobile) */}
+        <Reveal
+          delay={0.1}
+          className="hidden aspect-video min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-black sm:flex lg:aspect-auto lg:h-full lg:min-h-0"
+        >
           <video
             title="Klickpin Video"
             className="h-full w-full object-cover"

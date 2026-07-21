@@ -21,6 +21,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { company } from "@/lib/content";
 import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
+import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -253,8 +254,10 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
 function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const isMobile = useBelowSm();
   const [cardW, setCardW] = useState(300);
   const [distance, setDistance] = useState(0);
+  const [sectionVh, setSectionVh] = useState(180);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -268,11 +271,13 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
       const vp = viewportRef.current;
       if (!vp) return;
       const w = vp.clientWidth;
-      const perView = w >= 768 ? 3 : w >= 560 ? 2 : 1;
+      const perView = w >= 900 ? 3 : w >= 600 ? 2 : 1;
       const cw = (w - CARD_GAP * (perView - 1)) / perView;
       setCardW(cw);
       const rowW = page.capabilities.length * cw + (page.capabilities.length - 1) * CARD_GAP;
       setDistance(Math.max(0, rowW - w));
+      const long = page.capabilities.length > 3;
+      setSectionVh(window.innerWidth < 640 ? (long ? 190 : 140) : long ? 260 : 180);
     };
     update();
     window.addEventListener("resize", update);
@@ -281,23 +286,33 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
 
   const total = String(page.capabilities.length).padStart(2, "0");
 
+  // Below `sm` the vertical-scroll-driven horizontal ride becomes a plain
+  // swipeable snap-carousel - a scroll-jacked section reads as a long dead
+  // scroll on a phone, and native horizontal swipe is the expected mobile
+  // pattern. The pinned height/sticky/x-transform only apply at sm+.
   return (
     <section
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: page.capabilities.length > 3 ? "260vh" : "180vh" }}
+      style={{ height: isMobile ? undefined : `${sectionVh}vh` }}
     >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
-          <div ref={viewportRef} className="order-2 overflow-hidden lg:order-1">
-            <motion.div style={{ x }} className="flex gap-5 will-change-transform">
+      <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
+        <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-6 sm:gap-10 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
+          <div
+            ref={viewportRef}
+            className="order-2 -mx-6 overflow-x-auto px-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:overflow-hidden sm:px-0 lg:order-1 [&::-webkit-scrollbar]:hidden"
+          >
+            <motion.div
+              style={{ x: isMobile ? 0 : x }}
+              className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
+            >
               {page.capabilities.map((item, index) => (
                 <a
                   key={item.title}
                   href="/contact"
-                  style={{ width: cardW }}
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5"
+                  style={{ width: isMobile ? undefined : cardW }}
+                  className="group relative flex h-[48vh] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[58vh] sm:min-h-[340px] sm:w-auto sm:max-w-none"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -307,15 +322,15 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/35" />
-                  <div className="absolute left-6 top-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
+                  <div className="absolute left-4 top-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 sm:left-6 sm:top-6">
                     <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-[#ed1164] ring-1 ring-white/15 backdrop-blur">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     / {total}
                   </div>
                   <CardCornerArrow bg="#EEEEEE" accent={ACCENT} />
-                  <div className="relative p-6 pb-12">
-                    <h3 className="text-xl font-semibold leading-tight drop-shadow" style={{ fontFamily: "var(--font-display)" }}>
+                  <div className="relative p-4 pb-10 sm:p-6 sm:pb-12">
+                    <h3 className="text-lg font-semibold leading-tight drop-shadow sm:text-xl" style={{ fontFamily: "var(--font-display)" }}>
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/75">{item.desc}</p>
@@ -327,7 +342,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
 
           <div className="order-1 lg:order-2">
             <Kicker>{page.group}</Kicker>
-            <h2 className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="mt-6 text-[clamp(2.2rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
               Service
               <br />
               <span className="text-[#ed1164]">coverage.</span>
@@ -398,7 +413,7 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
   const total = page.benefits.length;
 
   return (
-    <section ref={sectionRef} className="relative bg-[#EEEEEE] py-24">
+    <section ref={sectionRef} className="relative bg-[#EEEEEE] py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <div className="lg:sticky lg:top-32">
@@ -455,26 +470,37 @@ function ProcessPanel({
   step,
   i,
   active,
+  mobile = false,
 }: {
   step: ServicePageContent["process"][number];
   i: number;
   active: number;
+  mobile?: boolean;
 }) {
-  const isActive = i === active;
+  // On mobile every panel is a static, always-visible block in normal flow -
+  // no pin, no cross-fade. isActive is forced true so the enter states below
+  // resolve to their final (visible) values with no animation.
+  const isActive = mobile || i === active;
   const textAnimate = isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 };
-  const textTransition = {
-    duration: SLIDE_MS / 1000,
-    ease: PROCESS_EASE,
-    delay: isActive ? 0.12 : 0,
-  };
+  const textTransition = mobile
+    ? { duration: 0 }
+    : {
+        duration: SLIDE_MS / 1000,
+        ease: PROCESS_EASE,
+        delay: isActive ? 0.12 : 0,
+      };
 
   return (
     <motion.div
       initial={false}
-      animate={{ opacity: isActive ? 1 : 0 }}
-      transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+      animate={{ opacity: mobile || isActive ? 1 : 0 }}
+      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className="pointer-events-none absolute inset-0"
+      className={
+        mobile
+          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
+          : "pointer-events-none absolute inset-0"
+      }
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -494,7 +520,7 @@ function ProcessPanel({
         animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
         transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
         style={{ fontFamily: "var(--font-display)" }}
-        className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
+        className="pointer-events-none absolute right-4 top-20 select-none text-[clamp(6rem,26vw,16rem)] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:top-24 sm:text-[18vw]"
       >
         {String(i + 1).padStart(2, "0")}
       </motion.span>
@@ -504,10 +530,10 @@ function ProcessPanel({
         initial={false}
         animate={textAnimate}
         transition={textTransition}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-20 sm:px-8 sm:pt-28"
       >
         <h3
-          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {step.title}
@@ -519,12 +545,12 @@ function ProcessPanel({
         initial={false}
         animate={textAnimate}
         transition={textTransition}
-        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-16 sm:px-8 sm:pb-28"
       >
-        <div className="flex max-w-lg items-start gap-6">
-          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+        <div className="flex max-w-lg items-start gap-4 sm:gap-6">
+          <span className="mt-2 hidden h-px w-16 shrink-0 bg-white/40 sm:block" />
           <div>
-            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">
+            <p className="text-base leading-relaxed text-white/85 sm:text-lg lg:text-xl">
               {step.desc}
             </p>
             <a
@@ -543,12 +569,23 @@ function ProcessPanel({
 
 function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
   const total = page.process.length;
   const [active, setActive] = useState(0);
+  // Shorter per-step scroll distance on small screens keeps the pinned
+  // track from demanding an excessive amount of scrolling on mobile.
+  const [stepVh, setStepVh] = useState(100);
+
+  useEffect(() => {
+    const update = () => setStepVh(window.innerWidth < 640 ? 70 : window.innerWidth < 1024 ? 85 : 100);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   // Snap the visible step to whole steps no matter how the user scrolls.
   useMotionValueEvent(scrollYProgress, "change", (v) => {
@@ -556,7 +593,8 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   });
 
   // While the track is pinned, one wheel gesture moves exactly one step.
-  useSlideSnap(ref, total);
+  // Disabled on mobile, where the section is a plain stack, not pinned.
+  useSlideSnap(ref, total, !isMobile);
 
   return (
     <section className="relative bg-white">
@@ -571,13 +609,13 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
           aria-hidden
           className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
         />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 pb-16 pt-24 sm:px-8 lg:flex-row lg:items-stretch lg:justify-between">
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-16 pt-16 sm:gap-8 sm:px-8 sm:pt-24 lg:flex-row lg:items-stretch lg:justify-between">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
               How it works
             </span>
             <h2
-              className="mt-4 max-w-lg text-[clamp(2rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+              className="mt-4 max-w-lg text-[clamp(1.9rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Setup to <span style={{ color: "#ed1164" }}>steady execution</span>.
@@ -585,7 +623,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
           </div>
           <a
             href="/contact"
-            className="animate-attention group relative flex h-36 w-32 shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] lg:h-auto lg:w-40 lg:self-stretch"
+            className="animate-attention group relative flex h-20 w-full shrink-0 items-center justify-center rounded-2xl rounded-br-none bg-[#ed1164] p-5 text-white transition-colors duration-300 hover:bg-neutral-950 hover:[animation-play-state:paused] sm:h-24 sm:w-40 lg:h-auto lg:w-40 lg:self-stretch"
           >
             <span className="absolute right-5 top-5 h-8 w-8 overflow-hidden">
               <ArrowUpRight className="absolute inset-0 h-8 w-8 text-white transition-[transform,color] duration-300 ease-out group-hover:translate-x-10 group-hover:-translate-y-10 group-hover:text-[#9CCC3C]" />
@@ -601,23 +639,39 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
         </div>
       </div>
 
-      <div ref={ref} data-header-dark className="relative bg-black" style={{ height: `${total * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-          {page.process.map((step, i) => (
-            <ProcessPanel key={step.title} step={step} i={i} active={active} />
-          ))}
-
-          {/* bottom progress bar - fills one segment per step */}
-          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-            <motion.div
-              initial={false}
-              animate={{ scaleX: (active + 1) / total }}
-              transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
-              style={{ transformOrigin: "left" }}
-              className="h-full w-full bg-[#ed1164]"
-            />
+      {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
+          cross-fade, every step visible as you scroll. sm+ keeps the pinned
+          one-panel-at-a-time track. */}
+      <div
+        ref={ref}
+        data-header-dark
+        className="relative bg-black"
+        style={{ height: isMobile ? undefined : `${total * stepVh}vh` }}
+      >
+        {isMobile ? (
+          <div className="flex flex-col">
+            {page.process.map((step, i) => (
+              <ProcessPanel key={step.title} step={step} i={i} active={active} mobile />
+            ))}
           </div>
-        </div>
+        ) : (
+          <div className="sticky top-0 h-screen overflow-hidden">
+            {page.process.map((step, i) => (
+              <ProcessPanel key={step.title} step={step} i={i} active={active} />
+            ))}
+
+            {/* bottom progress bar - fills one segment per step */}
+            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+              <motion.div
+                initial={false}
+                animate={{ scaleX: (active + 1) / total }}
+                transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+                style={{ transformOrigin: "left" }}
+                className="h-full w-full bg-[#ed1164]"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -653,16 +707,16 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
 
       {!isHelpdesk && (
         <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
+          <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-20">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {page.proof.map((item, index) => (
                 <Reveal key={item.label} delay={index * 0.08}>
                   <div
-                    className={`group h-full rounded-2xl p-6 shadow-lg shadow-black/5 transition-transform duration-300 hover:-translate-y-1.5 ${
+                    className={`group h-full rounded-2xl p-5 shadow-lg shadow-black/5 transition-transform duration-300 hover:-translate-y-1.5 sm:p-6 ${
                       index % 2 === 0 ? "bg-[#ed1164] text-white" : "border border-slate-200 bg-white text-black"
                     }`}
                   >
-                    <p className="text-5xl font-extrabold" style={{ fontFamily: "var(--font-display)" }}>
+                    <p className="text-4xl font-extrabold sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
                       {item.value}
                     </p>
                     <span className={`mt-4 block h-0.5 w-10 ${index % 2 === 0 ? "bg-white/50" : "bg-[#ed1164]"}`} />
@@ -680,9 +734,9 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
       {isHelpdesk ? (
         <HelpdeskComparisonSection page={page} />
       ) : (
-      <section className="relative overflow-hidden bg-white py-24">
+      <section className="relative overflow-hidden bg-white py-16 sm:py-24">
         <div className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-[#ed1164]/20 blur-[140px]" />
-        <div className={`relative mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 ${page.intro.card ? "lg:grid-cols-[1.2fr_0.8fr] lg:items-center" : ""}`}>
+        <div className={`relative mx-auto grid max-w-7xl gap-10 px-6 sm:gap-12 sm:px-8 ${page.intro.card ? "lg:grid-cols-[1.2fr_0.8fr] lg:items-center" : ""}`}>
           <Reveal className="max-w-2xl">
             <Kicker>{page.intro.kicker}</Kicker>
             <h2
@@ -708,7 +762,7 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
       )}
 
       {page.problems && (
-        <section className="bg-[#EEEEEE] py-24">
+        <section className="bg-[#EEEEEE] py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 sm:px-8">
             <Reveal className="max-w-3xl">
               <Kicker>Problems we solve</Kicker>
@@ -761,18 +815,18 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
           {/* dark shadow overlay so the copy stays prominent over the image */}
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50" />
-          <div className="relative mx-auto px-6 py-24 text-center sm:px-10 lg:px-16">
+          <div className="relative mx-auto px-6 py-16 text-center sm:px-10 sm:py-24 lg:px-16">
             <Reveal>
-            <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.65)]" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-[clamp(2.2rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.65)]" style={{ fontFamily: "var(--font-display)" }}>
               {page.finalCta.title}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
               {page.finalCta.desc}
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-7 sm:gap-y-4">
               <a
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#ed1164]/40 transition-colors duration-300 hover:bg-[#c50e55]"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#ed1164]/40 transition-colors duration-300 hover:bg-[#c50e55] sm:px-8 sm:py-4 sm:text-base"
               >
                 <span className="relative h-5 w-5 overflow-hidden">
                   <ArrowUpRight className="absolute inset-0 h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-6 group-hover:-translate-y-6" />
@@ -782,9 +836,9 @@ export default function ServiceDetailPage({ page }: { page: ServicePageContent }
               </a>
               <a
                 href={`mailto:${company.email}`}
-                className="group inline-flex items-center gap-2 rounded-full bg-[#9CCC3C] px-8 py-4 text-base font-bold text-black shadow-lg shadow-[#9CCC3C]/40 transition-colors duration-300 hover:bg-[#8bbd2f]"
+                className="group inline-flex items-center gap-2 break-all rounded-full bg-[#9CCC3C] px-6 py-3 text-sm font-bold text-black shadow-lg shadow-[#9CCC3C]/40 transition-colors duration-300 hover:bg-[#8bbd2f] sm:px-8 sm:py-4 sm:text-base"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5 shrink-0" />
                 {company.email}
               </a>
             </div>

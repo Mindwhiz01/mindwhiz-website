@@ -41,9 +41,9 @@ export default function Footer() {
     <footer data-header-dark className="relative bg-[#383838] text-white">
       <div className="mx-auto max-w-7xl px-6 pt-16 sm:px-8">
         {/* ---- top grid ---- */}
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-3 lg:grid-cols-[1.6fr_repeat(4,1fr)]">
+        <div className="grid grid-cols-2 gap-10 lg:grid-cols-[1.6fr_repeat(4,1fr)]">
           {/* brand block */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-9 w-9" />

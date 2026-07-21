@@ -16,8 +16,13 @@ import { getLenis } from "@/lib/lenis";
 // Shared with the slide enter/exit animations so scroll and visuals settle together.
 export const SLIDE_MS = 700;
 
-export function useSlideSnap(ref: RefObject<HTMLElement | null>, total: number) {
+export function useSlideSnap(
+  ref: RefObject<HTMLElement | null>,
+  total: number,
+  enabled = true,
+) {
   useEffect(() => {
+    if (!enabled) return;
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -45,8 +50,10 @@ export function useSlideSnap(ref: RefObject<HTMLElement | null>, total: number) 
       const pinned = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
       if (!pinned) return;
 
-      const vh = window.innerHeight;
-      const idx = Math.round(-rect.top / vh);
+      // Actual per-step scroll distance, so snapping stays correct even when
+      // the section's height is scaled down (e.g. shorter steps on mobile).
+      const step = rect.height / total;
+      const idx = Math.round(-rect.top / step);
       const next = idx + (e.deltaY > 0 ? 1 : -1);
 
       // At either end, hand control back to the page's native scroll.
@@ -56,7 +63,7 @@ export function useSlideSnap(ref: RefObject<HTMLElement | null>, total: number) 
       if (locked) return;
       locked = true;
 
-      const targetY = window.scrollY + rect.top + next * vh;
+      const targetY = window.scrollY + rect.top + next * step;
       const lenis = getLenis();
       if (lenis) {
         lenis.scrollTo(targetY, { duration: SLIDE_MS / 1000, lock: true });
@@ -76,5 +83,5 @@ export function useSlideSnap(ref: RefObject<HTMLElement | null>, total: number) 
       cancelAnimationFrame(raf);
       clearTimeout(unlockTimer);
     };
-  }, [ref, total]);
+  }, [ref, total, enabled]);
 }

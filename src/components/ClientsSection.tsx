@@ -89,7 +89,7 @@ export default function ClientsSection() {
       ref={ref}
       className="relative z-30 rounded-t-[2.5rem] bg-white"
     >
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-6 pb-16 pt-20 sm:px-8">
+      <div className="mx-auto flex min-h-0 max-w-7xl flex-col justify-start px-6 pb-16 pt-16 sm:px-8 sm:pt-20 lg:min-h-screen">
         {/* centered header */}
         <motion.div style={{ y, opacity }} className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#9CCC3C]">
@@ -97,13 +97,13 @@ export default function ClientsSection() {
             Trusted by
           </span>
           <h2
-            className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
+            className="mt-5 text-[clamp(2.4rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Teams that scale with{" "}
             <span style={{ color: "#9CCC3C" }}>MindWhiz</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-black/70">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-black/70 sm:text-lg">
             From construction to healthcare, our clients rely on us to deliver vetted talent and
             24/7 operations.
           </p>
@@ -112,7 +112,7 @@ export default function ClientsSection() {
         {/* logo showcase panel - two contained rows */}
         <motion.div
           style={{ y, opacity }}
-          className="mt-14 overflow-hidden rounded-3xl bg-[#f5f5f5] p-5 sm:p-8"
+          className="mt-10 overflow-hidden rounded-3xl bg-[#f5f5f5] p-4 sm:mt-14 sm:p-8"
         >
           <div className="flex flex-col gap-5 overflow-hidden">
             <ClientMarquee items={clientsRow1} direction="left" />
