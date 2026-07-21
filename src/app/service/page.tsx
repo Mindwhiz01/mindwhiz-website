@@ -615,21 +615,21 @@ function BrandShowcaseSection() {
                 {b.images.map((src, j) => (
                   <motion.div
                     key={src}
-                    initial={{ clipPath: "inset(100% 0% 0% 0% round 2.5rem)" }}
-                    whileInView={{ clipPath: "inset(0% 0% 0% 0% round 2.5rem)" }}
-                    viewport={{ once: true, margin: "-15%" }}
-                    transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className="relative overflow-hidden rounded-[2.5rem]"
                   >
-                    {/* mask wipe reveal + slow zoom-out for a cinematic feel */}
+                    {/* fade + rise reveal, slow zoom-out for a cinematic feel */}
                     <motion.img
                       src={src}
                       alt={`${b.name} campaign visual ${j + 1}`}
                       loading="lazy"
-                      initial={{ scale: 1.3 }}
+                      initial={{ scale: 1.15 }}
                       whileInView={{ scale: 1 }}
-                      viewport={{ once: true, margin: "-15%" }}
-                      transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                       className="h-[85vh] min-h-[32rem] w-full object-cover"
                     />
                     <span className="absolute bottom-5 left-5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
