@@ -138,12 +138,6 @@ const bentoImages = [
   },
 ];
 
-const proof = [
-  { value: "30%", label: "Lower blended acquisition cost target" },
-  { value: "90", label: "Day launch and optimization sprint" },
-  { value: "24/7", label: "Campaign monitoring coverage" },
-];
-
 const process = [
   {
     title: "Audit & Discovery",
@@ -862,29 +856,6 @@ export default function ServicePage() {
           }
           ctaLabel="Start a growth sprint"
         />
-
-        <section className="bg-[#EEEEEE] px-6 py-24 sm:px-8">
-          <div className="mx-auto max-w-7xl">
-            <a
-              href="/contact"
-              className="group relative flex h-96 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
-              <CardCornerArrow bg="#EEEEEE" />
-              <div className="relative px-8 pb-8">
-                <p className="text-6xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
-                  30%
-                </p>
-                <p className="mt-3 text-lg font-semibold text-white/90">
-                  Lower blended acquisition cost target
-                </p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
-                  Book now <ArrowUpRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
-            </a>
-          </div>
-        </section>
 
         <section className="bg-[#eee8e0] text-[#3f3f3d]">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">

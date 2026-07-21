@@ -116,8 +116,7 @@ export default function ContactPage() {
     localStorage.setItem("mw-theme", theme);
   }, [theme]);
 
-  // world-zoom view - wide enough for the US, UK, and Pakistan hubs to all sit in frame
-  const worldMapSrc = "https://www.google.com/maps?q=20,10&z=2&output=embed";
+  const worldMapSrc = `https://www.google.com/maps?q=${encodeURIComponent(company.address)}&z=15&output=embed`;
 
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
@@ -183,7 +182,7 @@ export default function ContactPage() {
 
               <div id="map" className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg shadow-black/5">
                 <iframe
-                  title="MindWhiz global locations - United States, United Kingdom, Pakistan"
+                  title={`MindWhiz office - ${company.address}`}
                   src={worldMapSrc}
                   className="h-64 w-full"
                   style={{ border: 0 }}
