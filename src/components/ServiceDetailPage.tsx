@@ -88,24 +88,42 @@ function ServiceHeroTitle({ page }: { page: ServicePageContent }) {
 function HelpdeskProofCard({
   value,
   label,
+  image,
   className = "",
 }: {
   value: string;
   label: string;
+  image?: string;
   className?: string;
 }) {
   return (
-    <article className={`group h-full rounded-[2rem] border border-[#3f3f3d]/15 bg-[#f7f7f7] p-6 text-[#3f3f3d] transition-all duration-300 hover:-translate-y-1 hover:bg-[#ed1164] hover:text-white ${className}`}>
-      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ed1164] transition-colors duration-300 group-hover:bg-white">
-        <CheckCircle2 className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ed1164]" />
-      </span>
-      <h3 className="mt-7 text-4xl font-extrabold uppercase leading-none" style={{ fontFamily: "var(--font-display)" }}>
-        {value}
-      </h3>
-      <p className="mt-4 text-sm font-semibold uppercase leading-6 tracking-[0.08em] opacity-75">
-        {label}
-      </p>
-    </article>
+    <a
+      href="/contact"
+      className={`group relative flex h-full min-h-[19rem] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 ${className}`}
+    >
+      {image && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={image}
+          alt={label}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
+
+      <CardCornerArrow bg="#EEEEEE" />
+
+      <div className="relative p-6 pb-12">
+        <h3 className="text-3xl font-extrabold uppercase leading-none drop-shadow" style={{ fontFamily: "var(--font-display)" }}>
+          {value}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/75">{label}</p>
+        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
+          Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+        </span>
+      </div>
+    </a>
   );
 }
 
@@ -184,7 +202,7 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
         <div className="grid gap-5 sm:grid-cols-2">
           {page.proof.map((item, index) => (
             <Reveal key={item.label} delay={index * 0.08} className={index % 2 === 1 ? "sm:translate-y-10" : ""}>
-              <HelpdeskProofCard value={item.value} label={item.label} />
+              <HelpdeskProofCard value={item.value} label={item.label} image={item.image} />
             </Reveal>
           ))}
         </div>

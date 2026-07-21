@@ -22,7 +22,7 @@ export type ServicePageContent = {
       cta: string;
     };
   };
-  proof: { value: string; label: string }[];
+  proof: { value: string; label: string; image?: string }[];
   problems?: {
     title: string;
     groups: { title: string; items: string[] }[];
@@ -71,10 +71,26 @@ export const servicePages: ServicePageContent[] = [
       ],
     },
     proof: [
-      { value: "24/7", label: "Continuous, round the clock support" },
-      { value: "15 min", label: "Fast response within 15 minutes" },
-      { value: "30%", label: "Up to 30% cost savings" },
-      { value: "Tier 1-3", label: "Rapid resolution across all support tiers" },
+      {
+        value: "24/7",
+        label: "Continuous, round the clock support",
+        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
+      },
+      {
+        value: "15 min",
+        label: "Fast response within 15 minutes",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+      },
+      {
+        value: "30%",
+        label: "Up to 30% cost savings",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+      },
+      {
+        value: "Tier 1-3",
+        label: "Rapid resolution across all support tiers",
+        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
+      },
     ],
     capabilities: [
       {

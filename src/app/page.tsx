@@ -402,8 +402,7 @@ function GrowthChart() {
     { y: "2023", h: 63 },
     { y: "2024", h: 74 },
     { y: "2025", h: 84 },
-    { y: "2026", h: 92 },
-    { y: "2027", h: 100 },
+    { y: "2026", h: 100 },
   ];
   return (
     <div className="relative flex h-full min-h-[22rem] flex-col justify-end rounded-3xl border border-slate-200 bg-[#f7f6f4] p-6 sm:p-8">
