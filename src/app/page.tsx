@@ -73,6 +73,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import ContactFormSection from "@/components/ContactFormSection";
 import ClientsSection from "@/components/ClientsSection";
 import ParticleBackground from "@/components/ParticleBackground";
+import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -549,33 +550,48 @@ function StudioClockSection() {
               ))}
 
               {/* city markers */}
-              {studioCities.map((c) => {
-                const t = cityClock(c.tz, now);
-                return (
-                  <div
-                    key={c.city}
-                    style={{ left: `${t.pct}%` }}
-                    className="absolute inset-y-0"
-                  >
-                    {/* dot on the bar */}
-                    <span className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9CCC3C] shadow-[0_0_0_5px_rgba(156,204,60,0.18)]" />
+              {(() => {
+                // Two zones can land close together on the bar (e.g. US/UK are
+                // only ~5h apart), and their labels would otherwise overlap -
+                // stagger same-side labels to a second tier so they never share
+                // a vertical band, regardless of how close the dots get.
+                let belowSeen = 0;
+                let aboveSeen = 0;
+                return studioCities.map((c) => {
+                  const t = cityClock(c.tz, now);
+                  const tier = c.above ? aboveSeen++ : belowSeen++;
+                  return (
+                    <div
+                      key={c.city}
+                      style={{ left: `${t.pct}%` }}
+                      className="absolute inset-y-0"
+                    >
+                      {/* dot on the bar */}
+                      <span className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9CCC3C] shadow-[0_0_0_5px_rgba(156,204,60,0.18)]" />
 
-                    {c.above ? (
-                      <div className="absolute bottom-full left-0 mb-4 -translate-x-1/2 whitespace-nowrap text-center">
-                        <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
-                        <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
-                        <span className="mx-auto mt-2 block h-4 w-px bg-slate-300" />
-                      </div>
-                    ) : (
-                      <div className="absolute top-full left-0 mt-4 -translate-x-1/2 whitespace-nowrap text-center">
-                        <span className="mx-auto mb-2 block h-4 w-px bg-slate-300" />
-                        <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
-                        <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                      {c.above ? (
+                        <div
+                          className="absolute bottom-full left-0 -translate-x-1/2 whitespace-nowrap text-center"
+                          style={{ marginBottom: tier === 0 ? "1rem" : "5rem" }}
+                        >
+                          <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
+                          <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
+                          <span className="mx-auto mt-2 block h-4 w-px bg-slate-300" />
+                        </div>
+                      ) : (
+                        <div
+                          className="absolute top-full left-0 -translate-x-1/2 whitespace-nowrap text-center"
+                          style={{ marginTop: tier === 0 ? "1rem" : "5rem" }}
+                        >
+                          <span className="mx-auto mb-2 block h-4 w-px bg-slate-300" />
+                          <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
+                          <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                });
+              })()}
             </div>
 
             {/* time-of-day scale */}
@@ -742,7 +758,7 @@ function DriveTalentSection() {
       // like ordinary content - the sweep rides the scroll instead of holding
       // it. overflow-clip confines the exiting words without making this a
       // scroll container.
-      className="relative z-20 h-screen overflow-clip bg-transparent"
+      className="relative z-20 hidden h-screen overflow-clip bg-transparent sm:block"
     >
       {/* Particle background */}
       <ParticleBackground
@@ -757,17 +773,17 @@ function DriveTalentSection() {
         <h2
           ref={driveRef}
           style={{ fontFamily: "var(--font-display)" }}
-          className="relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
+          className="relative text-center text-[clamp(2.75rem,14vw,4.5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black sm:text-[clamp(4rem,15vw,9rem)] lg:text-[clamp(5.5rem,17vw,17rem)]"
         >
           {/* The hover treatment transitions `transform`, so it must sit on an
               inner element - on the outer one it would fight the transform
               GSAP rewrites every frame. */}
-          <span className="crystal-heading">We Deliver</span>
+          <span className="crystal-heading">We&ensp;Deliver</span>
         </h2>
         <span
           ref={talentRef}
           style={{ fontFamily: "var(--font-display)" }}
-          className="relative text-center text-[clamp(5.5rem,17vw,17rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black"
+          className="relative text-center text-[clamp(2.75rem,14vw,4.5rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-black sm:text-[clamp(4rem,15vw,9rem)] lg:text-[clamp(5.5rem,17vw,17rem)]"
         >
           <span className="crystal-heading">Talent</span>
         </span>
@@ -782,36 +798,46 @@ function IndustriesWorlds() {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      const row = rowRef.current!;
-      // Shift needed to put the LAST card's centre on the viewport's centre -
-      // not merely flush with the right edge - so the run visibly finishes
-      // mid-screen. Subtracting the row's current x makes the measurement
-      // valid no matter where the scrub has dragged it (e.g. on resize).
-      const distance = () => {
-        const last = row.lastElementChild as HTMLElement;
-        const r = last.getBoundingClientRect();
-        const x = Number(gsap.getProperty(row, "x"));
-        return Math.max(0, r.left - x + r.width / 2 - window.innerWidth / 2);
-      };
-      // The row chases the scroll position over ~0.5s and can never
-      // overshoot, so wheel notches glide instead of stepping, and scrolling
-      // up retraces the identical path.
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5,
-          invalidateOnRefresh: true,
-        },
-      });
-      // 0.85 of the pin for the ride, then a 0.15 dwell: the last card sits
-      // centred for a beat before the pin releases into normal scrolling.
-      tl.to(row, { x: () => -distance(), duration: 0.85, ease: "power1.inOut", force3D: true })
-        .to({}, { duration: 0.15 });
-    }, sectionRef);
-    return () => ctx.revert();
+    // Below `sm` this becomes a plain swipeable carousel (see the row's
+    // className) instead of a pinned scroll-jack - a scroll-jacked 300vh
+    // section reads as a huge dead scroll on a phone, and native horizontal
+    // swipe is the more familiar mobile pattern anyway. matchMedia only
+    // builds the pin/scrub timeline at sm+ and tears it down if the viewport
+    // crosses back below it.
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 640px)", () => {
+      const ctx = gsap.context(() => {
+        const row = rowRef.current!;
+        // Shift needed to put the LAST card's centre on the viewport's centre -
+        // not merely flush with the right edge - so the run visibly finishes
+        // mid-screen. Subtracting the row's current x makes the measurement
+        // valid no matter where the scrub has dragged it (e.g. on resize).
+        const distance = () => {
+          const last = row.lastElementChild as HTMLElement;
+          const r = last.getBoundingClientRect();
+          const x = Number(gsap.getProperty(row, "x"));
+          return Math.max(0, r.left - x + r.width / 2 - window.innerWidth / 2);
+        };
+        // The row chases the scroll position over ~0.5s and can never
+        // overshoot, so wheel notches glide instead of stepping, and scrolling
+        // up retraces the identical path.
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        });
+        // 0.85 of the pin for the ride, then a 0.15 dwell: the last card sits
+        // centred for a beat before the pin releases into normal scrolling.
+        tl.to(row, { x: () => -distance(), duration: 0.85, ease: "power1.inOut", force3D: true })
+          .to({}, { duration: 0.15 });
+      }, sectionRef);
+      return () => ctx.revert();
+    });
+    return () => mm.revert();
   }, []);
 
   const total = String(industryWorlds.length).padStart(2, "0");
@@ -823,13 +849,13 @@ function IndustriesWorlds() {
       data-header-dark
       // No vertical padding here: the sticky child may only travel within the
       // section's *content* box, so padding makes it latch late at the top
-      // and detach before the section ends - mid-dwell.
-      className="relative bg-[#EEEEEE] text-white"
-      style={{ height: "300vh" }}
+      // and detach before the section ends - mid-dwell. Mobile skips the pin
+      // entirely, so it just needs its natural content height.
+      className="relative bg-[#EEEEEE] text-white sm:h-[210vh] lg:h-[300vh]"
     >
       {/* pt clears the fixed site header so the heading stays readable below
-          it for the whole pinned ride */}
-      <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-[5.5rem] pb-4 sm:pt-[6.5rem] sm:pb-5">
+          it for the whole pinned ride (sm+ only - mobile scrolls normally) */}
+      <div className="flex flex-col justify-start pt-[5.5rem] pb-10 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:pb-5 sm:pt-[6.5rem]">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
@@ -863,22 +889,25 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex gap-5 px-6 will-change-transform sm:px-8"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
             key={w.slug}
             href={`/industries/${w.slug}`}
-            className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] w-[360px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5"
+            className="group relative flex h-[58vh] max-h-[600px] min-h-[300px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 sm:w-[320px] lg:w-[360px]"
           >
-            {/* stock image */}
+            {/* stock image - using WebP for better performance */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={w.img}
-              alt={w.name}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+            <picture>
+              <source srcSet={w.img.replace('.png', '.webp')} type="image/webp" />
+              <img
+                src={w.img}
+                alt={w.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </picture>
             {/* dark overlay - strengthens text contrast over the image */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/40" />
 
@@ -1052,13 +1081,14 @@ function ServicesScrollSection() {
   // Toggling to the expanded grid collapses the tall scroll-stack, which shrinks
   // the section and would otherwise leave the viewport stranded further down the
   // page. Re-anchor to the top of the Services section after the layout updates.
-  // Skip the initial mount so the page doesn't jump here on load.
-  const didMount = useRef(false);
+  // Compares against the previous `expanded` value (rather than a mount-count
+  // flag) so this only fires on a real toggle - a boolean "have we mounted yet"
+  // ref falsely fires on React 18 Strict Mode's double-invoked mount effect in
+  // development, causing a random scroll jump on page load.
+  const prevExpanded = useRef(expanded);
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-      return;
-    }
+    if (prevExpanded.current === expanded) return;
+    prevExpanded.current = expanded;
     if (!ref.current) return;
     const y = ref.current.getBoundingClientRect().top + window.scrollY - 90;
     window.scrollTo({ top: y, behavior: "smooth" });
@@ -1131,6 +1161,8 @@ function ServicesScrollSection() {
 // ---------------------------------------------------------------------------
 // Case record: a pinned card-stack - each engagement sticks in the same spot
 // and the next scrolls up over it, revealing them one by one as you scroll.
+// Below `sm` this is skipped entirely - just three cards in plain, normal
+// vertical flow.
 // ---------------------------------------------------------------------------
 function CaseCard({
   cs,
@@ -1143,15 +1175,19 @@ function CaseCard({
   total: number;
   progress: MotionValue<number>;
 }) {
+  const isMobile = useBelowSm();
   const no = String(i + 1).padStart(2, "0");
   const targetScale = 1 - (total - 1 - i) * 0.04;
-  const scale = useTransform(progress, [i / total, 1], [1, targetScale]);
+  const scale = useTransform(progress, [i / total, 1], isMobile ? [1, 1] : [1, targetScale]);
   const top = 110 + i * 26;
 
   return (
-    <div className="sticky" style={{ top }}>
+    <div
+      className="relative sm:sticky sm:top-[var(--stack-top)]"
+      style={{ ["--stack-top" as string]: `${top}px` }}
+    >
       <motion.div
-        style={{ scale, transformOrigin: "top center" }}
+        style={{ scale: isMobile ? 1 : scale, transformOrigin: "top center" }}
         className="border-t border-white/10 bg-[#383838] pt-14 pb-4"
       >
         <div className="grid gap-10 lg:grid-cols-[6rem_1fr_17rem]">
@@ -1249,8 +1285,8 @@ function CaseRecordSection() {
             </div>
           </Reveal>
 
-          {/* pinned stack of entries */}
-          <div className="mt-10 flex flex-col gap-[14vh]">
+          {/* pinned stack of entries (plain flow below sm) */}
+          <div className="mt-10 flex flex-col gap-10 sm:gap-[14vh]">
             {caseStudies.map((cs, i) => (
               <CaseCard key={cs.client} cs={cs} i={i} total={total} progress={scrollYProgress} />
             ))}
@@ -1488,8 +1524,9 @@ export default function SystemLimitedHome() {
       {/* ===================== 1 · HERO (single video banner) ===================== */}
       <section data-header-dark className="relative mb-10 flex h-[100svh] min-h-[640px] items-center justify-start overflow-hidden bg-white">
         <div className="absolute inset-[10px] overflow-hidden rounded-3xl">
-          <video autoPlay muted loop playsInline preload="auto" className="h-full w-full object-cover">
-            <source src="/alphabravo-company-profile.mp4" type="video/mp4" />
+          <video autoPlay muted loop playsInline preload="metadata" className="h-full w-full object-cover">
+            <source src="/alphabravo-company-profile.webm" type="video/webm" />
+            <source src="/alphabravo-company-profile-compressed.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#383838]" />

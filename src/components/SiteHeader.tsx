@@ -573,7 +573,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0, scale: 0.95, y: -6 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 xl:hidden"
+            className="mx-auto mt-2 max-h-[calc(100dvh-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-black/40 backdrop-blur-2xl backdrop-saturate-150 xl:hidden"
           >
             {[
               ...nav.slice(0, 4),
