@@ -1,10 +1,10 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Careers — talent landing page. Section layouts modeled on the Google Careers
+// Careers, talent landing page. Section layouts modeled on the Google Careers
 // reference: a scrolling role-cards rail, an "Our locations" split card, a
 // "Find your team" media split, a benefits split, and a "Working at MindWhiz"
-// bento grid — all reskinned to the MindWhiz brand system.
+// bento grid, all reskinned to the MindWhiz brand system.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
@@ -60,7 +60,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 // ---------------------------------------------------------------------------
-// Role cards rail — pastel cards with an image, a title, and a pill CTA that
+// Role cards rail, pastel cards with an image, a title, and a pill CTA that
 // scrolls horizontally, mirroring the Google "Software Engineering roles" row.
 // ---------------------------------------------------------------------------
 const roles = [
@@ -192,7 +192,7 @@ function RolesRail() {
 }
 
 // ---------------------------------------------------------------------------
-// Our locations — split card: copy + linked hub list on the left, media right.
+// Our locations, split card: copy + linked hub list on the left, media right.
 // ---------------------------------------------------------------------------
 const locationLinks = [
   { label: "Houston", href: "/locations/us" },
@@ -258,7 +258,7 @@ function LocationsSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Find your team — media left, copy + featured team card right.
+// Find your team, media left, copy + featured team card right.
 // ---------------------------------------------------------------------------
 function FindYourTeam() {
   return (
@@ -320,7 +320,7 @@ function FindYourTeam() {
 }
 
 // ---------------------------------------------------------------------------
-// Benefits — copy left, media right.
+// Benefits, copy left, media right.
 // ---------------------------------------------------------------------------
 function BenefitsSection() {
   return (
@@ -339,7 +339,7 @@ function BenefitsSection() {
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-black/65">
                 We strive to give every MindWhizzer and their loved ones a
-                world-class experience — supporting their physical, emotional,
+                world-class experience, supporting their physical, emotional,
                 and financial wellbeing at every stage of their career.
               </p>
               <a
@@ -366,7 +366,7 @@ function BenefitsSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Working at MindWhiz — bento grid of feature cards (image + tinted panel).
+// Working at MindWhiz, bento grid of feature cards (image + tinted panel).
 // ---------------------------------------------------------------------------
 function WorkingAtCard({
   title,

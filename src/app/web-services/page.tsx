@@ -83,7 +83,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 const displayFont: React.CSSProperties = { fontFamily: "var(--font-display)" };
 const PINK = "#ed1164";
 
-// full-page screenshots captured once and served from /public/portfolio —
+// full-page screenshots captured once and served from /public/portfolio,
 // no third-party screenshot service at runtime, so frames load instantly.
 const FRAME_H = 360;
 const SCROLL_PX_PER_S = 450;
@@ -228,19 +228,19 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-36 pb-12">
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-white pt-36 pb-12">
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
       <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Reveal>
             <Kicker>Web Development Department</Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="mt-7 text-[clamp(3rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-              We build
+              Websites built for
               <br />
-              the <span style={{ color: PINK }}>web</span>
+              <span style={{ color: PINK }}>growth</span>
             </h1>
           </Reveal>
           <Reveal delay={0.1}>

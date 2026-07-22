@@ -1,14 +1,14 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Blog listing — featured post, category filter chips, a responsive card grid,
+// Blog listing, featured post, category filter chips, a responsive card grid,
 // and a newsletter CTA. Shares the MindWhiz brand system used across the site.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
@@ -53,9 +53,8 @@ function Reveal({
 function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: number }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <a
-        href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white transition-colors hover:border-black/25"
+      <div
+        className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white"
       >
         <div className="relative overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -82,12 +81,8 @@ function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: n
             {post.title}
           </h3>
           <p className="mt-3 flex-1 text-[15px] leading-relaxed text-black/65">{post.excerpt}</p>
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#4E7A22]">
-            Read article
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </span>
         </div>
-      </a>
+      </div>
     </Reveal>
   );
 }
@@ -95,8 +90,7 @@ function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: n
 function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
   return (
     <Reveal>
-      <a
-        href={`/blog/${post.slug}`}
+      <div
         className="group grid overflow-hidden rounded-[2rem] border border-black/10 bg-white lg:grid-cols-2"
       >
         <div className="relative min-h-[300px] overflow-hidden">
@@ -137,12 +131,8 @@ function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
               <p className="text-xs text-black/55">{post.author.role}</p>
             </div>
           </div>
-          <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white">
-            Read the story
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </span>
         </div>
-      </a>
+      </div>
     </Reveal>
   );
 }
@@ -170,7 +160,7 @@ function NewsletterCta() {
                   Get our best ideas in your inbox
                 </h2>
                 <p className="mt-3 max-w-md text-[15px] leading-relaxed text-white/65">
-                  Once a month. Practical takes on staffing, IT, and operations —
+                  Once a month. Practical takes on staffing, IT, and operations,
                   no spam, unsubscribe anytime.
                 </p>
               </div>

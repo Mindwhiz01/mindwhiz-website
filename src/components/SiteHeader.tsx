@@ -365,7 +365,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           onMouseLeave={() => setBrandOpen(false)}
         />
 
-        {/* Brand — dark pill stretches on hover to reveal the wordmark inside it */}
+        {/* Brand, dark pill stretches on hover to reveal the wordmark inside it */}
         <a
           href="/"
           onMouseEnter={() => setBrandOpen(true)}
@@ -444,7 +444,7 @@ export function SiteHeader({ theme }: { theme: string }) {
 
         {/* Actions */}
         <div className="relative z-10 flex items-center gap-2">
-          {/* region selector — dropdown, portaled so it isn't clipped by the pill */}
+          {/* region selector, dropdown, portaled so it isn't clipped by the pill */}
           <div className="relative hidden sm:block">
             <button
               ref={regionBtnRef}

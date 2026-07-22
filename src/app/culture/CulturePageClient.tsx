@@ -1,10 +1,10 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Culture — "life at MindWhiz". Section structure modeled on the Alpha Bravo
+// Culture, "life at MindWhiz". Section structure modeled on the Alpha Bravo
 // culture page: hero + 2x2 stats, a People-First philosophy split, a life
 // gallery, empowerment pillars, numbered programs, team spotlights with a
-// metrics strip, a core-values grid, and a closing CTA — reskinned to brand.
+// metrics strip, a core-values grid, and a closing CTA, reskinned to brand.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useState } from "react";
@@ -75,7 +75,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 // ---------------------------------------------------------------------------
-// Hero — full-bleed image, headline + 2 CTAs, and a 2x2 stats grid.
+// Hero, full-bleed image, headline + 2 CTAs, and a 2x2 stats grid.
 // ---------------------------------------------------------------------------
 const heroStats = [
   { value: "6+", label: "Years delivering globally" },
@@ -120,7 +120,7 @@ function Hero() {
         </h1>
         <p className="mt-7 max-w-xl text-base leading-relaxed text-white/75">
           Empowered people build better outcomes. We invest in our team so they
-          can do the best work of their careers — across the US, UK, and Pakistan.
+          can do the best work of their careers, across the US, UK, and Pakistan.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
@@ -157,13 +157,13 @@ function Hero() {
 }
 
 // ---------------------------------------------------------------------------
-// Philosophy — "People First, Always" split: image left, bullets right.
+// Philosophy, "People First, Always" split: image left, bullets right.
 // ---------------------------------------------------------------------------
 const philosophyPoints = [
-  "Every voice matters — open feedback and real transparency at every level.",
+  "Every voice matters, open feedback and real transparency at every level.",
   "We invest in training, certifications, and career growth for everyone.",
   "A culture of ownership: named owners, clear SLAs, and pride in the work.",
-  "Recognition that's real — we celebrate wins loudly and often.",
+  "Recognition that's real, we celebrate wins loudly and often.",
 ];
 
 function PhilosophySection() {
@@ -214,7 +214,7 @@ function PhilosophySection() {
 }
 
 // ---------------------------------------------------------------------------
-// Life at MindWhiz — 4-tile gallery (parties, off-sites, celebrations).
+// Life at MindWhiz, 4-tile gallery (parties, off-sites, celebrations).
 // ---------------------------------------------------------------------------
 const galleryTiles = [
   {
@@ -280,7 +280,7 @@ function GallerySection() {
 }
 
 // ---------------------------------------------------------------------------
-// Empowerment pillars — 4-column grid.
+// Empowerment pillars, 4-column grid.
 // ---------------------------------------------------------------------------
 const pillars = [
   {
@@ -291,7 +291,7 @@ const pillars = [
   {
     Icon: Handshake,
     title: "Team ownership",
-    desc: "Real decision-making authority on the floor — owners, not order-takers.",
+    desc: "Real decision-making authority on the floor, owners, not order-takers.",
   },
   {
     Icon: ShieldCheck,
@@ -301,7 +301,7 @@ const pillars = [
   {
     Icon: TrendingUp,
     title: "Clear growth paths",
-    desc: "Defined ladders from agent to team lead to delivery manager — and beyond.",
+    desc: "Defined ladders from agent to team lead to delivery manager, and beyond.",
   },
 ];
 
@@ -343,7 +343,7 @@ function PillarsSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Empowerment programs — 3-column numbered cards.
+// Empowerment programs, 3-column numbered cards.
 // ---------------------------------------------------------------------------
 const programs = [
   {
@@ -436,7 +436,7 @@ function ProgramsSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Team spotlights — 3 testimonial cards + a metrics strip.
+// Team spotlights, 3 testimonial cards + a metrics strip.
 // ---------------------------------------------------------------------------
 const spotlights = [
   {
@@ -455,7 +455,7 @@ const spotlights = [
   },
   {
     quote:
-      "The year-end party in Islamabad was unforgettable. It's the little things — being seen, celebrated, and part of the crew.",
+      "The year-end party in Islamabad was unforgettable. It's the little things, being seen, celebrated, and part of the crew.",
     name: "Sara T.",
     role: "Finance Analyst · London",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
@@ -530,13 +530,13 @@ function SpotlightSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Core values — 6-column grid.
+// Core values, 6-column grid.
 // ---------------------------------------------------------------------------
 const coreValues = [
   { Icon: ShieldHalf, title: "Integrity", desc: "Honest, consistent, and accountable in everything we do." },
   { Icon: Handshake, title: "Ownership", desc: "We take responsibility at every level, no passing the buck." },
   { Icon: HeartHandshake, title: "Respect", desc: "Equal dignity for every role, every hub, every person." },
-  { Icon: Sparkles, title: "Excellence", desc: "Quality in every detail — the small things add up." },
+  { Icon: Sparkles, title: "Excellence", desc: "Quality in every detail, the small things add up." },
   { Icon: ShieldCheck, title: "Reliability", desc: "A daily commitment to uptime and the trust it earns." },
   { Icon: Rocket, title: "Growth", desc: "We invest in learning people who never stop leveling up." },
 ];
@@ -579,7 +579,7 @@ function ValuesSection() {
 }
 
 // ---------------------------------------------------------------------------
-// Closing CTA — "Ready to build your future?"
+// Closing CTA, "Ready to build your future?"
 // ---------------------------------------------------------------------------
 function CultureCta() {
   return (
@@ -600,7 +600,7 @@ function CultureCta() {
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/70">
                 If you want to grow fast, do meaningful work, and be part of a team
-                that celebrates the wins together — we&apos;d love to meet you.
+                that celebrates the wins together, we&apos;d love to meet you.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
                 <a

@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Case study detail — the "on the record" dossier for a single engagement.
+// Case study detail, the "on the record" dossier for a single engagement.
 // Hero header, at-a-glance facts, challenge, approach, outcome metrics, a
 // pull quote, and links to the other cases. Brand-consistent with the site.
 // ---------------------------------------------------------------------------
@@ -70,7 +70,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
     "@type": "Article",
     "@id": `${siteUrl}/case-studies/${cs.slug}`,
     articleSection: "Case Study",
-    headline: `${cs.client} — ${cs.category} engagement`,
+    headline: `${cs.client}, ${cs.category} engagement`,
     description: cs.result,
     image: cs.img,
     about: { "@type": "Organization", name: cs.client },

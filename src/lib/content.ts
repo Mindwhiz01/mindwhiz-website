@@ -35,7 +35,7 @@ export const hero = {
   eyebrow: "Hybrid Staffing · Staff Augmentation · BPO",
   title: "Empowering businesses with hybrid staffing, staff augmentation & BPO",
   subtitle:
-    "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery-focused support across IT, security, and business operations — built for speed, reliability, and enterprise trust.",
+    "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery-focused support across IT, security, and business operations, built for speed, reliability, and enterprise trust.",
   primaryCta: { label: "Get in touch", href: "#contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
@@ -114,7 +114,7 @@ export const caseStudies = [
     challenge:
       "Alpha Bravo's in-house estimating team was the bottleneck on every bid. Takeoffs and pricing took days, forcing them to pass on opportunities or submit rushed numbers. Hiring locally was slow and expensive, and each new estimator took months to become productive.",
     approach: [
-      "We embedded vetted remote estimators directly into Alpha Bravo's existing bid workflow — no new tools to learn, no process disruption.",
+      "We embedded vetted remote estimators directly into Alpha Bravo's existing bid workflow, no new tools to learn, no process disruption.",
       "A shared cadence of daily handoffs let the team work takeoffs overnight, so pricing was ready when the office opened.",
       "Clear SLAs and named owners kept accountability tight as volume scaled up.",
     ],

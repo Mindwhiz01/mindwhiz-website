@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Newsletter — subscribe landing page. A centered sign-up hero with a working
+// Newsletter, subscribe landing page. A centered sign-up hero with a working
 // client-side form (front-end validation + success state), a "what you get"
 // benefits row, past editions, and social proof. Brand-consistent throughout.
 // ---------------------------------------------------------------------------
@@ -67,7 +67,7 @@ const benefits = [
   {
     Icon: Clock,
     title: "Once a month",
-    desc: "One thoughtful edition — never a flood of email cluttering your inbox.",
+    desc: "One thoughtful edition, never a flood of email cluttering your inbox.",
   },
   {
     Icon: ShieldCheck,
@@ -77,7 +77,7 @@ const benefits = [
 ];
 
 // ---------------------------------------------------------------------------
-// Subscribe form — front-end only. Validates the email and shows a success
+// Subscribe form, front-end only. Validates the email and shows a success
 // state. Wire the `onSubmit` up to your ESP (Mailchimp, Resend, etc.) later.
 // ---------------------------------------------------------------------------
 function SubscribeForm() {
@@ -193,7 +193,7 @@ export default function NewsletterPageClient() {
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/75">
               Join thousands of founders and operators getting our best thinking on
-              hybrid staffing, IT, and running lean teams — straight to their inbox.
+              hybrid staffing, IT, and running lean teams, straight to their inbox.
             </p>
           </motion.div>
 

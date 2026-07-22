@@ -148,7 +148,7 @@ export default function ProcessScroll({
   ctaHref?: string;
   images?: string[];
 }) {
-  // the ref must sit on the `total * 100vh` track — useSlideSnap keys its
+  // the ref must sit on the `total * 100vh` track, useSlideSnap keys its
   // snap math off this element's bounding rect
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = useBelowSm();

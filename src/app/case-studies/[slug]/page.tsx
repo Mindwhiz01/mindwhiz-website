@@ -20,11 +20,11 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!cs) return {};
   const description = metaDescription(cs.result);
   return {
-    title: `${cs.client} — Case Study`,
+    title: `${cs.client}, Case Study`,
     description,
     alternates: { canonical: `/case-studies/${cs.slug}` },
     openGraph: {
-      title: `${cs.client} — Case Study | MindWhiz`,
+      title: `${cs.client}, Case Study | MindWhiz`,
       description,
       images: [cs.img],
       type: "article",

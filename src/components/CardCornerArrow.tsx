@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react";
 
 // Scooped corner CTA: the card's bottom-right corner is carved out into a
-// smooth notch — concave quarter-circles ease the pocket into the card's
+// smooth notch, concave quarter-circles ease the pocket into the card's
 // right and bottom edges (an S-curve, not a hard step), so the cutout reads
 // as part of the card silhouette. A circular arrow button sits in the notch.
 // On hover of the parent card (.group) the arrow slides.
@@ -27,7 +27,7 @@ export default function CardCornerArrow({
   const pocket = size + gap * 2; // notch width/height along the card edges
   const w = pocket + radius; // svg box includes the concave eases
   const r = radius;
-  // overshoot the card's right/bottom edges — the card clips the excess, so
+  // overshoot the card's right/bottom edges, the card clips the excess, so
   // the fill fully covers the clip boundary and no image pixel can fringe out
   const bleed = 2;
 

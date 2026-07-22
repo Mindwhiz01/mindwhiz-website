@@ -1,7 +1,7 @@
 "use client";
 
 // ---------------------------------------------------------------------------
-// Blog post detail — hero header, article body (rendered from typed blocks),
+// Blog post detail, hero header, article body (rendered from typed blocks),
 // author card, and a "more articles" rail. Brand-consistent with the site.
 // ---------------------------------------------------------------------------
 

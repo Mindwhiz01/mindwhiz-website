@@ -1211,7 +1211,7 @@ function CaseCard({
               {cs.client}
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">{cs.result}</p>
-            <Cta href={`/case-studies/${cs.slug}`} label="Read case study" className="mt-6 w-fit" />
+            <Cta href="/contact" label="Get in touch" className="mt-6 w-fit" />
             <span className="mt-6 flex w-fit items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
               Filed · {cs.category} · 2025
