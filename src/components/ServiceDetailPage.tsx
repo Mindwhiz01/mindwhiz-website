@@ -79,7 +79,6 @@ function ServiceHeroTitle({ page }: { page: ServicePageContent }) {
       <span className="whitespace-nowrap">{firstLine}</span>
       <br />
       <span className="whitespace-nowrap">
-        {page.slug === "it-helpdesk-24-7" ? "IT " : ""}
         <span className="text-[#ed1164]">{page.hero.highlight}</span>
       </span>
     </>
@@ -438,24 +437,73 @@ function ProcessPanel({
   active: number;
   mobile?: boolean;
 }) {
-  // On mobile every panel is a static, always-visible block in normal flow -
-  // no pin, no cross-fade. isActive is forced true so the enter states below
-  // resolve to their final (visible) values with no animation.
+  // Desktop: a pinned cross-fade deck driven by the active step. Mobile: each
+  // panel is a normal-flow block that reveals itself - image zoom + text rise -
+  // the first time it scrolls into view. Native scrolling on phones, but the
+  // same visual language as the desktop deck, so the animation reads the same
+  // on every device.
   const isActive = mobile || i === active;
-  const textAnimate = isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 };
-  const textTransition = mobile
-    ? { duration: 0 }
+  const VIEWPORT = { once: true, margin: "-20%" } as const;
+
+  const wrapperMotion = mobile
+    ? {
+        initial: { opacity: 0 },
+        whileInView: { opacity: 1 },
+        viewport: VIEWPORT,
+        transition: { duration: 0.5, ease: PROCESS_EASE },
+      }
     : {
-        duration: SLIDE_MS / 1000,
-        ease: PROCESS_EASE,
-        delay: isActive ? 0.12 : 0,
+        initial: false as const,
+        animate: { opacity: isActive ? 1 : 0 },
+        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
+      };
+
+  const imgMotion = mobile
+    ? {
+        initial: { scale: 1.15 },
+        whileInView: { scale: 1 },
+        viewport: VIEWPORT,
+        transition: { duration: 1.1, ease: PROCESS_EASE },
+      }
+    : {
+        initial: false as const,
+        animate: { scale: isActive ? 1 : 1.15 },
+        transition: { duration: 1.1, ease: PROCESS_EASE },
+      };
+
+  const numberMotion = mobile
+    ? {
+        initial: { y: 30, opacity: 0 },
+        whileInView: { y: 0, opacity: 1 },
+        viewport: VIEWPORT,
+        transition: { duration: 0.6, ease: PROCESS_EASE },
+      }
+    : {
+        initial: false as const,
+        animate: { y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 },
+        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
+      };
+
+  const textMotion = mobile
+    ? {
+        initial: { y: 40, opacity: 0 },
+        whileInView: { y: 0, opacity: 1 },
+        viewport: VIEWPORT,
+        transition: { duration: 0.6, ease: PROCESS_EASE },
+      }
+    : {
+        initial: false as const,
+        animate: isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 },
+        transition: {
+          duration: SLIDE_MS / 1000,
+          ease: PROCESS_EASE,
+          delay: isActive ? 0.12 : 0,
+        },
       };
 
   return (
     <motion.div
-      initial={false}
-      animate={{ opacity: mobile || isActive ? 1 : 0 }}
-      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+      {...wrapperMotion}
       style={{ zIndex: isActive ? 2 : 1 }}
       className={
         mobile
@@ -467,9 +515,7 @@ function ProcessPanel({
       <motion.img
         src={processImages[i % processImages.length]}
         alt={step.title}
-        initial={false}
-        animate={{ scale: isActive ? 1 : 1.15 }}
-        transition={{ duration: 1.1, ease: PROCESS_EASE }}
+        {...imgMotion}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
@@ -477,9 +523,7 @@ function ProcessPanel({
 
       {/* giant ghost index number, top-right */}
       <motion.span
-        initial={false}
-        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+        {...numberMotion}
         style={{ fontFamily: "var(--font-display)" }}
         className="pointer-events-none absolute right-4 top-20 select-none text-[clamp(6rem,26vw,16rem)] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:top-24 sm:text-[18vw]"
       >
@@ -488,9 +532,7 @@ function ProcessPanel({
 
       {/* heading, top-left */}
       <motion.div
-        initial={false}
-        animate={textAnimate}
-        transition={textTransition}
+        {...textMotion}
         className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-20 sm:px-8 sm:pt-28"
       >
         <h3
@@ -503,9 +545,7 @@ function ProcessPanel({
 
       {/* description, bottom-right */}
       <motion.div
-        initial={false}
-        animate={textAnimate}
-        transition={textTransition}
+        {...textMotion}
         className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-16 sm:px-8 sm:pb-28"
       >
         <div className="flex max-w-lg items-start gap-4 sm:gap-6">
@@ -537,16 +577,6 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   });
   const total = page.process.length;
   const [active, setActive] = useState(0);
-  // Shorter per-step scroll distance on small screens keeps the pinned
-  // track from demanding an excessive amount of scrolling on mobile.
-  const [stepVh, setStepVh] = useState(100);
-
-  useEffect(() => {
-    const update = () => setStepVh(window.innerWidth < 640 ? 70 : window.innerWidth < 1024 ? 85 : 100);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
 
   // Snap the visible step to whole steps no matter how the user scrolls.
   useMotionValueEvent(scrollYProgress, "change", (v) => {
@@ -627,7 +657,10 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `${total * stepVh}vh` }}
+        // One full viewport of scroll per step at every width >= sm, matching
+        // the `h-screen` sticky pin below - so the wheel-snap step, the
+        // scroll-progress slice, and the pinned viewport all stay in sync.
+        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
       >
         {isMobile ? (
           <div className="flex flex-col">
