@@ -166,7 +166,7 @@ export default function LocationPage({ location }: { location: LocationContent }
           kicker="Why this hub"
           title={
             <>
-              What {location.country} <span style={{ color: "#ed1164" }}>gives</span> our clients.
+              What {location.country} <span style={{ color: "#9CCC3C" }}>gives</span> our clients.
             </>
           }
           ctaLabel="Get in touch"

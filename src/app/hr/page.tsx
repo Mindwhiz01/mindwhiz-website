@@ -434,7 +434,7 @@ export default function HrPage() {
         steps={process}
         title={
           <>
-            From open role to <span style={{ color: "#ed1164" }}>onboarded</span> hire.
+            From open role to <span style={{ color: "#9CCC3C" }}>onboarded</span> hire.
           </>
         }
         ctaLabel="Book a consultation"

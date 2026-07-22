@@ -688,7 +688,7 @@ export default function FinancePage() {
         steps={process}
         title={
           <>
-            From messy books to <span style={{ color: "#ed1164" }}>monthly</span> clarity.
+            From messy books to <span style={{ color: "#9CCC3C" }}>monthly</span> clarity.
           </>
         }
         ctaLabel="Book a consultation"

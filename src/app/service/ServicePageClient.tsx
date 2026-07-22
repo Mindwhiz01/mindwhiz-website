@@ -855,7 +855,7 @@ export default function ServicePageClient() {
           steps={process}
           title={
             <>
-              From audit to <span style={{ color: "#ed1164" }}>always-on</span> optimization.
+              From audit to <span style={{ color: "#9CCC3C" }}>always-on</span> optimization.
             </>
           }
           ctaLabel="Start a growth sprint"

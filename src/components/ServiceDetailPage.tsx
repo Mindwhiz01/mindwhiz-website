@@ -15,6 +15,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Footer from "@/components/Footer";
 import FaqSection from "@/components/FaqSection";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { company } from "@/lib/content";
@@ -589,66 +590,15 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
 
   return (
     <section className="relative bg-slate-50">
-      {/* heading sits above the images on a light background; the CTA is a
-          square block on the right that stretches to the heading's height.
-          The glow is anchored to this full-width wrapper (not the centered
-          max-w container) so it bleeds all the way to the viewport's left
-          edge with no white gap. */}
-      <div className="relative overflow-hidden">
-        {/* soft light-green glow filling the bottom-left of the heading block */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/40 blur-[130px]"
-        />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 pb-16 pt-16 sm:gap-8 sm:px-8 sm:pt-24 lg:flex-row lg:items-stretch lg:justify-between">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
-              How it works
-            </span>
-            <h2
-              className="mt-4 max-w-lg text-[clamp(1.9rem,4vw,3.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Setup to <span style={{ color: "#ed1164" }}>steady execution</span>
-            </h2>
-          </div>
-          <motion.div
-            whileHover={{ y: -8 }}
-            className="group relative flex shrink-0 flex-col justify-between overflow-visible rounded-2xl bg-slate-100 p-6 text-black shadow-lg transition-all hover:shadow-xl hover:shadow-black/10 lg:min-h-64 lg:w-full lg:max-w-xs"
-          >
-            {/* Main stat display */}
-            <div className="flex-1">
-              {page.proof.length > 0 && (
-                <>
-                  <h3
-                    className="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight text-black"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {page.proof[page.proof.length > 1 ? 1 : 0].value}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                    {page.proof[page.proof.length > 1 ? 1 : 0].label}
-                  </p>
-                </>
-              )}
-            </div>
-
-            {/* Get in touch CTA circle - overlapping bottom right */}
-            <motion.a
-              href="/contact"
-              className="absolute -right-8 -bottom-8 grid h-20 w-20 place-items-center rounded-full bg-[#ed1164] shadow-lg transition-all hover:shadow-xl hover:shadow-[#ed1164]/40"
-              whileHover={{ scale: 1.1 }}
-              title="Get in touch"
-            >
-              <div className="flex flex-col items-center justify-center gap-0.5">
-                <ArrowRight className="h-5 w-5 text-white font-bold" />
-                <span className="text-[9px] font-semibold text-white leading-tight">Get in</span>
-                <span className="text-[9px] font-semibold text-white leading-tight">touch</span>
-              </div>
-            </motion.a>
-          </motion.div>
-        </div>
-      </div>
+      {/* "How it works" intro banner: heading + service-specific line on the
+          left, CTA + customer social proof on the right. Shared across every
+          pinned process deck. */}
+      <ProcessIntroBanner
+        title="Setup to steady execution"
+        description={page.finalCta.desc}
+        ctaLabel="Get in touch"
+        ctaHref="/contact"
+      />
 
       {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
           cross-fade, every step visible as you scroll. sm+ keeps the pinned

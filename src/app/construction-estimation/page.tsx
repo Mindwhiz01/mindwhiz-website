@@ -465,7 +465,7 @@ export default function ConstructionEstimationPage() {
         steps={process}
         title={
           <>
-            From plans to a <span style={{ color: "#ed1164" }}>bid-ready</span> package.
+            From plans to a <span style={{ color: "#9CCC3C" }}>bid-ready</span> package.
           </>
         }
         ctaLabel="Start a takeoff"
