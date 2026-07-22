@@ -11,14 +11,13 @@ import {
   type Variants,
 } from "framer-motion";
 import { Inter, Oswald } from "next/font/google";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Footer from "@/components/Footer";
 import FaqSection from "@/components/FaqSection";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
-import { company } from "@/lib/content";
 import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { useBelowSm } from "@/lib/useBelowSm";
@@ -590,16 +589,6 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
 
   return (
     <section className="relative bg-slate-50">
-      {/* "How it works" intro banner: heading + service-specific line on the
-          left, CTA + customer social proof on the right. Shared across every
-          pinned process deck. */}
-      <ProcessIntroBanner
-        title="Setup to steady execution"
-        description={page.finalCta.desc}
-        ctaLabel="Get in touch"
-        ctaHref="/contact"
-      />
-
       {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
           cross-fade, every step visible as you scroll. sm+ keeps the pinned
           one-panel-at-a-time track. */}
@@ -816,50 +805,14 @@ export default function ServiceDetailPage({
 
       {page.faqs?.length ? <FaqSection faqs={page.faqs} /> : null}
 
-      <section className="relative p-[30px] text-white">
-        <div className="relative overflow-hidden rounded-[2.5rem]">
-          {/* per-page background photo */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={page.hero.image}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          {/* dark shadow overlay so the copy stays prominent over the image */}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50" />
-          <div className="relative mx-auto px-6 py-16 text-center sm:px-10 sm:py-24 lg:px-16">
-            <Reveal>
-            <h2 className="text-[clamp(2.2rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.65)]" style={{ fontFamily: "var(--font-display)" }}>
-              {page.finalCta.title}
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-              {page.finalCta.desc}
-            </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-7 sm:gap-y-4">
-              <a
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#ed1164]/40 transition-colors duration-300 hover:bg-[#c50e55] sm:px-8 sm:py-4 sm:text-base"
-              >
-                <span className="relative h-5 w-5 overflow-hidden">
-                  <ArrowUpRight className="absolute inset-0 h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-6 group-hover:-translate-y-6" />
-                  <ArrowUpRight className="absolute inset-0 h-5 w-5 -translate-x-6 translate-y-6 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0" />
-                </span>
-                {page.finalCta.button}
-              </a>
-              <a
-                href={`mailto:${company.email}`}
-                className="group inline-flex items-center gap-2 break-all rounded-full bg-[#9CCC3C] px-6 py-3 text-sm font-bold text-black shadow-lg shadow-[#9CCC3C]/40 transition-colors duration-300 hover:bg-[#8bbd2f] sm:px-8 sm:py-4 sm:text-base"
-              >
-                <Mail className="h-5 w-5 shrink-0" />
-                {company.email}
-              </a>
-            </div>
-          </Reveal>
-          </div>
-        </div>
-      </section>
+      {/* Final CTA rendered as the shared "How it works" style banner, with
+          this page's own finalCta content. */}
+      <ProcessIntroBanner
+        title={page.finalCta.title}
+        description={page.finalCta.desc}
+        ctaLabel={page.finalCta.button}
+        ctaHref="/contact"
+      />
 
       <Footer />
     </main>

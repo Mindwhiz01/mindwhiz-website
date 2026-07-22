@@ -379,9 +379,9 @@ function CapabilitiesCarousel() {
           <div className="order-1 lg:order-2">
             <Kicker>What we handle</Kicker>
             <h2 className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
-              Finance,
+              Finance &amp; accounting
               <br />
-              <span className="text-[#ed1164]">handled</span>
+              <span className="text-[#ed1164]">outsourcing</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From daily bookkeeping to CFO-level analysis, we plug into your stack

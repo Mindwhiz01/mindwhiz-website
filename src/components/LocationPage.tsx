@@ -95,7 +95,7 @@ export default function LocationPage({ location }: { location: LocationContent }
                 className="mt-4 text-[clamp(2.2rem,4.5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                A hub built for <span style={{ color: "#ed1164" }}>{location.country}</span>
+                Staff augmentation for <span style={{ color: "#ed1164" }}>{location.country}</span>
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65">
                 {location.intro}

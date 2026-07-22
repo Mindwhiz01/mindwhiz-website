@@ -166,7 +166,7 @@ function CaseRecordSection() {
             <div className="mt-6 flex flex-col gap-8 border-b border-black/10 pb-12 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-xl">
                 <h2 className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={{ fontFamily: "var(--font-display)" }}>
-                  The case <span style={{ color: "#ed1164" }}>record</span>
+                  Staff augmentation case <span style={{ color: "#ed1164" }}>studies</span>
                 </h2>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-black/60">
                   Three engagements delivered since 2025. Every entry below is on

@@ -352,7 +352,7 @@ function CapabilitiesCarousel() {
               className="mt-6 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Estimation,
+              Construction estimation,
               <br />
               <span className="text-[#ed1164]">end to end</span>
             </h2>

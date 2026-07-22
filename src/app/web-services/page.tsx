@@ -448,7 +448,7 @@ function PortfolioSection() {
         <Reveal className="max-w-2xl">
           <Kicker>Selected work</Kicker>
           <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Sites we&apos;ve <span style={{ color: PINK }}>shipped</span>
+            Web development we&apos;ve <span style={{ color: PINK }}>shipped</span>
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-black/55">
             Live websites and web projects designed, built, and launched by our team.

@@ -527,7 +527,7 @@ function StudioClockSection() {
             className="mt-6 max-w-xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Always on
+            Hybrid staffing, always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing

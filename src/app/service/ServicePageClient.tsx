@@ -283,7 +283,7 @@ function ScrubbedBentoGallery() {
             className="mx-auto mt-4 max-w-5xl text-4xl font-extrabold uppercase leading-[1.04] text-black sm:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            The channels we plan, launch, and improve every week
+            The digital marketing channels we plan, launch, and improve every week
           </h2>
         </Reveal>
 
