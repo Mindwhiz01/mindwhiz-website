@@ -808,15 +808,17 @@ function IndustriesWorlds() {
     mm.add("(min-width: 640px)", () => {
       const ctx = gsap.context(() => {
         const row = rowRef.current!;
-        // Shift needed to put the LAST card's centre on the viewport's centre -
-        // not merely flush with the right edge - so the run visibly finishes
-        // mid-screen. Subtracting the row's current x makes the measurement
-        // valid no matter where the scrub has dragged it (e.g. on resize).
+        // Shift needed to bring the LAST card's right edge flush with the
+        // viewport's right edge (less a small gutter), so the run finishes with
+        // no dead space on the right. Subtracting the row's current x makes the
+        // measurement valid no matter where the scrub has dragged it (e.g. on
+        // resize).
+        const GUTTER = 32; // matches the row's sm:px-8 padding
         const distance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
           const x = Number(gsap.getProperty(row, "x"));
-          return Math.max(0, r.left - x + r.width / 2 - window.innerWidth / 2);
+          return Math.max(0, r.right - x - window.innerWidth + GUTTER);
         };
         // The row chases the scroll position over ~0.5s and can never
         // overshoot, so wheel notches glide instead of stepping, and scrolling
@@ -889,7 +891,7 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pr-0 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pr-0 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
