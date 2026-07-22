@@ -45,6 +45,7 @@ import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -677,6 +678,13 @@ export default function ConstructionEstimationPage() {
       </section>
 
       <FaqSection faqs={faqs} />
+
+      <ProcessIntroBanner
+        title="Ready to win more bids?"
+        description="Send your plans and deadline. We'll respond with accurate takeoffs and a bid-ready package."
+        ctaLabel="Start a takeoff"
+        ctaHref="/contact"
+      />
 
       <Footer />
     </main>

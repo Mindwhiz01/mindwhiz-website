@@ -40,6 +40,7 @@ import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -607,6 +608,13 @@ export default function HrPage() {
       </section>
 
       <FaqSection faqs={faqs} />
+
+      <ProcessIntroBanner
+        title="Ready to build your team?"
+        description="Tell us the roles and outcomes you need. We'll respond with vetted people and a clear plan to get them onboarded."
+        ctaLabel="Book a consultation"
+        ctaHref="/contact"
+      />
 
       <Footer />
     </main>

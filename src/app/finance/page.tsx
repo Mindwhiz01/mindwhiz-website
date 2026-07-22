@@ -37,6 +37,7 @@ import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -741,6 +742,13 @@ export default function FinancePage() {
       </section>
 
       <FaqSection faqs={faqs} />
+
+      <ProcessIntroBanner
+        title="Ready to clean up your books?"
+        description="Tell us where your finance function needs support. We'll respond with the right team and a clear next step."
+        ctaLabel="Book a consultation"
+        ctaHref="/contact"
+      />
 
       <Footer />
     </main>

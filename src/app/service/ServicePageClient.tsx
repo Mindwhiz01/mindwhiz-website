@@ -35,6 +35,7 @@ import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
 import ProcessScroll from "@/components/ProcessScroll";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -900,6 +901,13 @@ export default function ServicePageClient() {
         <BrandShowcaseSection />
 
         <FaqSection faqs={faqs} />
+
+        <ProcessIntroBanner
+          title="Ready to grow?"
+          description="Tell us your goals. We'll respond with a channel plan, a measurement model, and a clear next step."
+          ctaLabel="Start a growth sprint"
+          ctaHref="/contact"
+        />
 
         <Footer />
     </main>

@@ -394,17 +394,6 @@ function ServicesSection() {
 
   return (
     <section id="web-that-works" className="relative bg-[#faf9f7]">
-      {/* shared "How it works" style intro banner sits above the pinned deck */}
-      <ProcessIntroBanner
-        title={
-          <>
-            Web that <span style={{ color: "#9CCC3C" }}>works</span>
-          </>
-        }
-        ctaLabel="Get in touch"
-        ctaHref="/contact"
-      />
-
       {/* Below `sm`: plain stack of full panels, no pin/cross-fade. */}
       <div
         ref={ref}
@@ -785,29 +774,12 @@ const faqs: Faq[] = [
 
 function CtaBand() {
   return (
-    <section className="bg-white px-6 pb-24 pt-4 sm:px-8">
-      <Reveal
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] px-8 py-20 text-center text-white sm:px-16"
-        // vibrant gradient band - bright, not dark
-      >
-        <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(120deg, #ff5d9e 0%, #ed1164 55%, #b80052 100%)" }} />
-        <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-white/20 blur-[120px]" />
-        <div className="relative">
-          <h2 className="mx-auto max-w-3xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
-            Let&apos;s build your next website
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80">
-            Tell us what you&apos;re trying to build. We&apos;ll scope it, design it, and ship it.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#ed1164] transition-transform hover:-translate-y-0.5">
-              Start a project
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </Reveal>
-    </section>
+    <ProcessIntroBanner
+      title="Let's build your next website"
+      description="Tell us what you're trying to build. We'll scope it, design it, and ship it."
+      ctaLabel="Start a project"
+      ctaHref="/contact"
+    />
   );
 }
 

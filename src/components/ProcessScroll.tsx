@@ -12,7 +12,6 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { useBelowSm } from "@/lib/useBelowSm";
-import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
 const defaultImages = [
   "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
@@ -134,18 +133,18 @@ function ProcessPanel({
 
 export default function ProcessScroll({
   steps,
-  title,
-  description,
-  ctaLabel,
+  ctaLabel = "Get in touch",
   ctaHref = "/contact",
   images = defaultImages,
 }: {
   steps: Step[];
-  // Kept for call-site compatibility; the redesigned banner drops the kicker.
+  // `kicker`/`title`/`description` are kept for call-site compatibility only -
+  // the intro banner moved to the bottom of each page, so the pinned deck
+  // renders on its own. `ctaLabel`/`ctaHref` still drive the per-slide CTA.
   kicker?: string;
-  title: React.ReactNode;
+  title?: React.ReactNode;
   description?: string;
-  ctaLabel: string;
+  ctaLabel?: string;
   ctaHref?: string;
   images?: string[];
 }) {
@@ -173,14 +172,6 @@ export default function ProcessScroll({
 
   return (
     <section className="relative bg-white">
-      {/* shared "How it works" style intro banner sits above the pinned deck */}
-      <ProcessIntroBanner
-        title={title}
-        description={description}
-        ctaLabel={ctaLabel}
-        ctaHref={ctaHref}
-      />
-
       {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
           cross-fade, every step visible as you scroll. sm+ keeps the pinned
           one-slide-at-a-time deck. */}

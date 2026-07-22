@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import TrustedByClients from "@/components/TrustedByClients";
 import ProcessScroll from "@/components/ProcessScroll";
+import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import type { LocationContent } from "@/lib/locations";
 import { locations } from "@/lib/locations";
 import { services as allServices, company } from "@/lib/content";
@@ -237,6 +238,13 @@ export default function LocationPage({ location }: { location: LocationContent }
             </div>
           </div>
         </section>
+
+        <ProcessIntroBanner
+          title={`Work with MindWhiz ${location.country}`}
+          description={location.tagline}
+          ctaLabel="Get in touch"
+          ctaHref="/contact"
+        />
 
         <Footer />
       </div>
