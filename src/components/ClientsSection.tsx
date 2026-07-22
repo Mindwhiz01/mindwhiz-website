@@ -14,12 +14,12 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 type ClientItem = { name: string; src?: string; bg?: string };
 
 const clientsRow1: ClientItem[] = [
-  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png" },
+  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo-light.png" },
   { name: "Highland Redstone", src: "/clients/highland.png" },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
-  { name: "Villa Tech", src: "/clients/villa-tech.png" },
+  { name: "Villa Tech", src: "/clients/villa-tech-light.png" },
   { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png" },
   { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png" },
   { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png" },
