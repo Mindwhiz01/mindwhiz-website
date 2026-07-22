@@ -191,7 +191,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.noc,
         title: "Delayed Detection",
         desc: "Fragmented monitoring and slow alerts let small network issues turn into costly outages.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -307,7 +307,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.remote,
         title: "Untracked Devices",
         desc: "Unmanaged laptops, licenses, and remote access create blind spots and security gaps across teams.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -384,7 +384,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.cloud,
         title: "Unstable Cloud",
         desc: "Misconfigured, unmonitored cloud environments raise cost, slow teams, and put uptime at risk.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -462,7 +462,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.server,
         title: "Fragile Infrastructure",
         desc: "Unpatched servers and unmonitored networks turn small faults into outages that stall the business.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -541,7 +541,7 @@ export const servicePages: ServicePageContent[] = [
         image: "/service-coverage/endpoint-security/endpoint-protection.png",
         title: "Unmanaged Devices",
         desc: "Unpatched laptops and unmonitored endpoints leave distributed teams exposed to preventable incidents.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -617,7 +617,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.devops,
         title: "Deployment Bottlenecks",
         desc: "Manual, error-prone releases slow delivery and make every deployment a risk instead of routine.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -695,7 +695,7 @@ export const servicePages: ServicePageContent[] = [
         image: sharedImages.cyber,
         title: "Blind To Threats",
         desc: "Limited monitoring and noisy alerts let real threats slip through until they become incidents.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
@@ -775,7 +775,7 @@ export const servicePages: ServicePageContent[] = [
         image: "/service-coverage/staff-augmentation/skilled-talent.png",
         title: "Talent Gaps",
         desc: "Long hiring cycles and missing skills stall roadmaps while the work piles up.",
-        cta: "Explore Problem",
+        cta: "Talk to expert",
       },
     },
     proof: [
