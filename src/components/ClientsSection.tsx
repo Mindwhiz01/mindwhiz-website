@@ -7,8 +7,7 @@
 // Shared between the homepage and Web Services page.
 // ---------------------------------------------------------------------------
 
-import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 // `bg` can override the default light card for a logo that needs it.
 type ClientItem = { name: string; src?: string; bg?: string };
@@ -73,29 +72,28 @@ function ClientMarquee({
   );
 }
 
+// Reveal is driven by the section entering the viewport (not scroll progress),
+// so it always completes regardless of viewport height - on short/"small
+// desktop" screens the scroll-linked version could never reach full opacity.
+const reveal = {
+  hidden: { y: 48, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+const revealTransition = { duration: 0.7, ease: "easeOut" as const };
+
 export default function ClientsSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
-  });
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    restDelta: 0.001,
-  });
-
-  const y = useTransform(progress, [0, 1], [48, 0]);
-  const opacity = useTransform(progress, [0, 0.6], [0, 1]);
-
   return (
-    <section
-      ref={ref}
-      className="relative z-30 rounded-t-[2.5rem] bg-white"
-    >
+    <section className="relative z-30 rounded-t-[2.5rem] bg-white">
       <div className="mx-auto flex min-h-0 max-w-7xl flex-col justify-start px-6 pb-16 pt-16 sm:px-8 sm:pt-20 lg:min-h-screen">
         {/* centered header */}
-        <motion.div style={{ y, opacity }} className="mx-auto max-w-3xl text-center">
+        <motion.div
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={revealTransition}
+          className="mx-auto max-w-3xl text-center"
+        >
           <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#9CCC3C]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
             Trusted by
@@ -115,7 +113,11 @@ export default function ClientsSection() {
 
         {/* logo showcase panel - two contained rows */}
         <motion.div
-          style={{ y, opacity }}
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={revealTransition}
           className="mt-10 overflow-hidden rounded-3xl bg-[#f5f5f5] p-4 sm:mt-14 sm:p-8"
         >
           <div className="flex flex-col gap-5 overflow-hidden">

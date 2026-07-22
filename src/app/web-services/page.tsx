@@ -235,7 +235,10 @@ function Hero() {
         <div className="order-2 lg:order-1">
           <Reveal delay={0.05}>
             <h1 className="mt-7 text-[clamp(3rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-              Websites built for
+              Websites
+              {/* on mobile, break after "Websites" so it reads: Websites / built for / growth */}
+              <br className="sm:hidden" />
+              built for
               <br />
               <span style={{ color: PINK }}>growth</span>
             </h1>
