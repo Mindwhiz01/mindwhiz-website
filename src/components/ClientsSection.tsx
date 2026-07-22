@@ -10,10 +10,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-type ClientItem = { name: string; src?: string };
+// `bg` overrides the default light card - the Alpha Bravo mark has white
+// elements (roof + "ALPHA"), so it needs a dark tile to stay legible.
+type ClientItem = { name: string; src?: string; bg?: string };
 
 const clientsRow1: ClientItem[] = [
-  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png" },
+  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png", bg: "#10203c" },
   { name: "Highland Redstone", src: "/clients/highland.png" },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
@@ -35,7 +37,10 @@ function LogoChip({ item }: { item: ClientItem }) {
   return (
     // constant white card so logos (white backgrounds) render in both themes;
     // logo files are pre-trimmed, so object-contain fits them cleanly in the box.
-    <span className="group flex h-24 w-[210px] items-center justify-center overflow-hidden rounded-2xl bg-[#EEEEEE] px-6 py-4 ring-1 ring-black/5 transition-shadow hover:shadow-md">
+    <span
+      className="group flex h-24 w-[210px] items-center justify-center overflow-hidden rounded-2xl px-6 py-4 ring-1 ring-black/5 transition-shadow hover:shadow-md"
+      style={{ backgroundColor: item.bg ?? "#EEEEEE" }}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={item.src}
