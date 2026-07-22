@@ -856,7 +856,7 @@ function IndustriesWorlds() {
       {/* pt clears the fixed site header so the heading stays readable below
           it for the whole pinned ride (sm+ only - mobile scrolls normally) */}
       <div className="flex flex-col justify-start pt-[5.5rem] pb-10 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:pb-5 sm:pt-[6.5rem]">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:-mr-10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
           <Reveal>
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
@@ -889,7 +889,7 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pr-0 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pr-0 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
