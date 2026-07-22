@@ -825,7 +825,7 @@ function IndustriesWorlds() {
         // no dead space on the right. Subtracting the row's current x makes the
         // measurement valid no matter where the scrub has dragged it (e.g. on
         // resize).
-        const GUTTER = 20; // matches the row's sm:px-5 padding
+        const GUTTER = 40; // white space left after the last card on the right
         const distance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
