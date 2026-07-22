@@ -16,7 +16,7 @@ type ClientItem = { name: string; src?: string; bg?: string };
 const clientsRow1: ClientItem[] = [
   { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo-light.png" },
   { name: "Highland Redstone", src: "/clients/highland.png" },
-  { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
+  { name: "Inovatiqa", src: "/clients/inovatiqa-light.png" },
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
   { name: "Villa Tech", src: "/clients/villa-tech-light.png" },
