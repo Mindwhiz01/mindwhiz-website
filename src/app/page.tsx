@@ -813,7 +813,7 @@ function IndustriesWorlds() {
         // no dead space on the right. Subtracting the row's current x makes the
         // measurement valid no matter where the scrub has dragged it (e.g. on
         // resize).
-        const GUTTER = 32; // matches the row's sm:px-8 padding
+        const GUTTER = 20; // matches the row's sm:px-5 padding
         const distance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
@@ -891,7 +891,7 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-8 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-5 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
