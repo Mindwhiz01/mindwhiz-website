@@ -101,24 +101,6 @@ const clientTestimonials = [
       { value: "15min", label: "Avg response" },
     ],
   },
-  {
-    quote: "Month-end closing used to take two weeks. Now it takes four days.",
-    author: "Jerdoni",
-    video: "https://videos.pexels.com/video-files/3205624/3205624-hd_1920_1080_25fps.mp4",
-    stats: [
-      { value: "+$104,500", label: "Annual savings" },
-      { value: "3x", label: "Faster closing" },
-    ],
-  },
-  {
-    quote: "We doubled our team capacity in two weeks without a single bad hire.",
-    author: "Texas Diagnostic Laboratories",
-    video: "https://videos.pexels.com/video-files/3191572/3191572-hd_1920_1080_25fps.mp4",
-    stats: [
-      { value: "+70%", label: "Team capacity" },
-      { value: "2wks", label: "To onboard" },
-    ],
-  },
 ];
 
 function TestimonialVideo({ src }: { src: string }) {
