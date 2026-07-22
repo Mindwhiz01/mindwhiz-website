@@ -217,7 +217,7 @@ function ManifestoArcSection() {
   return (
     <section id="manifesto" className="relative min-h-screen overflow-hidden bg-[#1000d8] px-5 py-7 text-white sm:px-8">
       <SectionLabel dark>Our manifesto</SectionLabel>
-      <div className="flex min-h-[78vh] items-center justify-center">
+      <div className="flex min-h-[calc(var(--vh)*78)] items-center justify-center">
         <motion.h2
           initial={{ opacity: 0, rotate: -12, y: 70 }}
           whileInView={{ opacity: 1, rotate: 9, y: 0 }}
@@ -333,7 +333,7 @@ function ClientsSection() {
   return (
     <section id="clients" className="relative overflow-hidden bg-[#eee8e0] px-5 py-7 text-[#3f3f3d] sm:px-8">
       <SectionLabel>Our clients</SectionLabel>
-      <div className="relative mx-auto min-h-[82vh] max-w-[105rem] pt-24">
+      <div className="relative mx-auto min-h-[calc(var(--vh)*82)] max-w-[105rem] pt-24">
         <Reveal>
           <h2 className="text-[clamp(3.5rem,7.2vw,9.2rem)] font-bold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             When the

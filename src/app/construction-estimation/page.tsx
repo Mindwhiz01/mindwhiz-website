@@ -285,7 +285,7 @@ function CapabilitiesCarousel() {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: isMobile ? undefined : "260vh" }}
+      style={{ height: isMobile ? undefined : "calc(var(--vh) * 260)" }}
     >
       <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
@@ -302,7 +302,7 @@ function CapabilitiesCarousel() {
                 <article
                   key={title}
                   style={{ width: isMobile ? undefined : cardW }}
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:w-auto sm:max-w-none"
+                  className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[340px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:w-auto sm:max-w-none"
                 >
                   {/* background image */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}

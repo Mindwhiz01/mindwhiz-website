@@ -255,7 +255,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: isMobile ? undefined : `${sectionVh}vh` }}
+      style={{ height: isMobile ? undefined : `calc(var(--vh) * ${sectionVh})` }}
     >
       <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-6 sm:gap-10 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
@@ -272,7 +272,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                   key={item.title}
                   href="/contact"
                   style={{ width: isMobile ? undefined : cardW }}
-                  className="group relative flex h-[48vh] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[58vh] sm:min-h-[340px] sm:w-auto sm:max-w-none"
+                  className="group relative flex h-[calc(var(--vh)*48)] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[calc(var(--vh)*58)] sm:min-h-[340px] sm:w-auto sm:max-w-none"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -599,7 +599,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
         // One full viewport of scroll per step at every width >= sm, matching
         // the `h-screen` sticky pin below - so the wheel-snap step, the
         // scroll-progress slice, and the pinned viewport all stay in sync.
-        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
       >
         {isMobile ? (
           <div className="flex flex-col">
@@ -608,7 +608,7 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
             ))}
           </div>
         ) : (
-          <div className="sticky top-0 h-screen overflow-hidden">
+          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
             {page.process.map((step, i) => (
               <ProcessPanel key={step.title} step={step} i={i} active={active} />
             ))}

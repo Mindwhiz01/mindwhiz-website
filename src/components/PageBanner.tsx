@@ -55,7 +55,7 @@ export function PageBanner({
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative flex min-h-[calc(100vh-20px)] items-end px-5 pb-10 pt-32 text-left sm:px-8"
+        className="relative flex min-h-[calc(var(--vh)*100-20px)] items-center px-5 pb-10 pt-32 text-left sm:px-8"
       >
         <div className="w-full">
           <motion.h1

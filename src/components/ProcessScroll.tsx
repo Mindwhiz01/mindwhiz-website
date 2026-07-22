@@ -179,7 +179,7 @@ export default function ProcessScroll({
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
       >
         {isMobile ? (
           <div className="flex flex-col">
@@ -197,7 +197,7 @@ export default function ProcessScroll({
             ))}
           </div>
         ) : (
-          <div className="sticky top-0 h-screen overflow-hidden">
+          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
             {steps.map((step, i) => (
               <ProcessPanel
                 key={step.title}

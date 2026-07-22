@@ -406,31 +406,44 @@ function GrowthChart() {
     { y: "2026", h: 100 },
   ];
   return (
-    <div className="relative flex h-full min-h-[22rem] flex-col justify-end rounded-3xl border border-slate-200 bg-[#f7f6f4] p-6 sm:p-8">
-      <span className="absolute right-6 top-6 rounded-full bg-[#1c1d21] px-4 py-1.5 text-[11px] font-semibold text-white sm:right-8 sm:top-8">
+    <motion.a
+      href="/contact"
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-2xl rounded-tl-none bg-[#1c1d21] text-white transition-transform duration-300 hover:-translate-y-1.5"
+    >
+      {/* scooped corner + circular arrow, top-left (section bg is white) */}
+      <CardCornerArrow bg="#ffffff" accent="#9CCC3C" corner="top-left" />
+
+      <span className="absolute right-6 top-6 rounded-full bg-white px-4 py-1.5 text-[11px] font-semibold text-black sm:right-8 sm:top-8">
         34% CAGR
       </span>
-      <div className="flex h-64 items-end gap-1.5 sm:gap-2.5">
-        {bars.map((b, i) => (
-          <motion.div
-            key={b.y}
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.7, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-            style={{ height: `${b.h}%`, transformOrigin: "bottom" }}
-            className="flex-1 rounded-t-md bg-gradient-to-t from-[#1c1d21] to-[#4a4b52]"
-          />
-        ))}
+
+      <div className="relative p-6 pb-8 pt-28 sm:p-8 sm:pb-10 sm:pt-28">
+        <div className="flex h-56 items-end gap-1.5 sm:gap-2.5">
+          {bars.map((b, i) => (
+            <motion.div
+              key={b.y}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.7, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              style={{ height: `${b.h}%`, transformOrigin: "bottom" }}
+              className="flex-1 rounded-t-md bg-gradient-to-t from-[#9CCC3C] to-[#d6ee9e]"
+            />
+          ))}
+        </div>
+        <div className="mt-3 flex gap-1.5 sm:gap-2.5">
+          {bars.map((b) => (
+            <span key={b.y} className="flex-1 text-center text-[10px] text-white/45">
+              {b.y}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className="mt-3 flex gap-1.5 sm:gap-2.5">
-        {bars.map((b) => (
-          <span key={b.y} className="flex-1 text-center text-[10px] text-black/45">
-            {b.y}
-          </span>
-        ))}
-      </div>
-    </div>
+    </motion.a>
   );
 }
 
@@ -763,8 +776,7 @@ function DriveTalentSection() {
       {/* Particle background */}
       <ParticleBackground
         sectionRef={ref}
-        particleColor="rgba(156, 204, 60, 0.5)"
-        particleCount={50}
+        particleCount={95}
       />
 
       <div className="flex h-full flex-col items-center justify-center overflow-hidden px-6">
@@ -853,7 +865,7 @@ function IndustriesWorlds() {
       // section's *content* box, so padding makes it latch late at the top
       // and detach before the section ends - mid-dwell. Mobile skips the pin
       // entirely, so it just needs its natural content height.
-      className="relative bg-[#EEEEEE] text-white sm:h-[210vh] lg:h-[300vh]"
+      className="relative bg-[#EEEEEE] text-white sm:h-[calc(var(--vh)*210)] lg:h-[calc(var(--vh)*300)]"
     >
       {/* pt clears the fixed site header so the heading stays readable below
           it for the whole pinned ride (sm+ only - mobile scrolls normally) */}
@@ -897,7 +909,7 @@ function IndustriesWorlds() {
           <a
             key={w.slug}
             href={`/industries/${w.slug}`}
-            className="group relative flex h-[58vh] max-h-[600px] min-h-[300px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 sm:w-[320px] lg:w-[360px]"
+            className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[300px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 sm:w-[320px] lg:w-[360px]"
           >
             {/* stock image - using WebP for better performance */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1136,7 +1148,7 @@ function ServicesScrollSection() {
         {/* right side: grid OR scroll-stack one-by-one */}
         <div>
           {expanded ? (
-            <div className="flex flex-col gap-[10vh]">
+            <div className="flex flex-col gap-[calc(var(--vh)*10)]">
               {services.map((s, i) => (
                 <StackCard
                   key={s.name}
@@ -1282,7 +1294,7 @@ function CaseRecordSection() {
           </Reveal>
 
           {/* pinned stack of entries (plain flow below sm) */}
-          <div className="mt-10 flex flex-col gap-10 sm:gap-[14vh]">
+          <div className="mt-10 flex flex-col gap-10 sm:gap-[calc(var(--vh)*14)]">
             {caseStudies.map((cs, i) => (
               <CaseCard key={cs.client} cs={cs} i={i} total={total} progress={scrollYProgress} />
             ))}
@@ -1518,7 +1530,7 @@ export default function SystemLimitedHome() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
 
       {/* ===================== 1 · HERO (single video banner) ===================== */}
-      <section data-header-dark className="relative mb-10 flex h-[100svh] min-h-[640px] items-center justify-start overflow-hidden bg-white">
+      <section data-header-dark className="relative mb-10 flex h-[calc(var(--svh)*100)] min-h-[640px] items-center justify-start overflow-hidden bg-white">
         <div className="absolute inset-[10px] overflow-hidden rounded-3xl">
           <video autoPlay muted loop playsInline preload="metadata" className="h-full w-full object-cover">
             <source src="/alphabravo-company-profile.webm" type="video/webm" />

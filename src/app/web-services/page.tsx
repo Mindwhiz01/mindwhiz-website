@@ -399,7 +399,7 @@ function ServicesSection() {
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
       >
         {isMobile ? (
           <div className="flex flex-col">
@@ -408,7 +408,7 @@ function ServicesSection() {
             ))}
           </div>
         ) : (
-          <div className="sticky top-0 h-screen overflow-hidden">
+          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
             {services.slice(0, total).map((s, i) => (
               <ServicePanel key={s.title} s={s} i={i} active={active} />
             ))}

@@ -36,7 +36,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
-import { useBelowSm } from "@/lib/useBelowSm";
+import {
+  PANEL_EASE,
+  panelImageMotion,
+  panelNumberMotion,
+  panelTextMotion,
+  panelWrapperMotion,
+} from "@/lib/panelMotion";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -229,40 +235,29 @@ const values: { title: string; desc: string; Icon: LucideIcon; image: string }[]
 // viewport with a big image; one wheel gesture advances one value, and
 // panels animate in/out on a timed transition - never parked half-faded.
 // ---------------------------------------------------------------------------
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 function ValuePanel({
   v,
   i,
   active,
-  mobile = false,
 }: {
   v: (typeof values)[number];
   i: number;
   active: number;
-  mobile?: boolean;
 }) {
-  const isActive = mobile || i === active;
+  const isActive = i === active;
+  const state = { isActive };
 
   return (
     <motion.div
-      initial={false}
-      animate={{ opacity: mobile || isActive ? 1 : 0 }}
-      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: EASE }}
+      {...panelWrapperMotion(state)}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* big image fit to the screen */}
       <motion.img
         src={v.image}
         alt={v.title}
-        initial={false}
-        animate={{ scale: isActive ? 1 : 1.15 }}
-        transition={{ duration: 1.1, ease: EASE }}
+        {...panelImageMotion(state)}
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* layered overlays so the text stays crisp over any image */}
@@ -271,9 +266,7 @@ function ValuePanel({
 
       {/* giant ghost index number, top-right */}
       <motion.span
-        initial={false}
-        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+        {...panelNumberMotion(state)}
         style={{ fontFamily: "var(--font-display)" }}
         className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
       >
@@ -282,9 +275,7 @@ function ValuePanel({
 
       {/* text written on the image */}
       <motion.div
-        initial={false}
-        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: EASE, delay: isActive ? 0.12 : 0 }}
+        {...panelTextMotion(state)}
         className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-6 pb-28 sm:px-8"
       >
         <h3
@@ -306,7 +297,6 @@ function ValuePanel({
 
 function CoreValuesScroll() {
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -319,12 +309,11 @@ function CoreValuesScroll() {
     setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
   });
 
-  // While the section is pinned, one wheel gesture moves exactly one value.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // While the section is pinned, one gesture moves exactly one value - wheel
+  // on desktop, swipe-then-settle on touch.
+  useSlideSnap(ref, total);
 
-  // Shared heading block - rendered in normal flow on mobile (above the stack),
-  // as a fixed overlay on the pinned deck at sm+.
+  // Heading overlay, fixed on top of the pinned deck.
   const heading = (
     <>
       <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
@@ -339,22 +328,12 @@ function CoreValuesScroll() {
     </>
   );
 
-  if (isMobile) {
-    return (
-      <section ref={ref} className="relative bg-black">
-        <div className="mx-auto max-w-6xl px-6 pt-24 pb-8">{heading}</div>
-        <div className="flex flex-col">
-          {values.map((v, i) => (
-            <ValuePanel key={v.title} v={v} i={i} active={active} mobile />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
+  // Pinned at every width. `svh` rather than `vh` so the pinned panel matches
+  // the *visible* viewport on phones; track and sticky child share the unit so
+  // one value is always exactly one snap point.
   return (
-    <section ref={ref} className="relative bg-black" style={{ height: `${total * 100}vh` }}>
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section ref={ref} className="relative bg-black" style={{ height: `calc(var(--svh) * ${total * 100})` }}>
+      <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
         {values.map((v, i) => (
           <ValuePanel key={v.title} v={v} i={i} active={active} />
         ))}
@@ -369,7 +348,7 @@ function CoreValuesScroll() {
           <motion.div
             initial={false}
             animate={{ scaleX: (active + 1) / total }}
-            transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+            transition={{ duration: SLIDE_MS / 1000, ease: PANEL_EASE }}
             style={{ transformOrigin: "left" }}
             className="h-full w-full bg-[#ed1164]"
           />
@@ -626,7 +605,7 @@ export default function WhyMindWhizPage() {
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {hubs.map((h, i) => (
                 <Reveal key={h.country} delay={i * 0.1}>
-                  <article className="group relative flex h-[58vh] max-h-[600px] min-h-[360px] flex-col justify-end overflow-hidden rounded-2xl bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5">
+                  <article className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[360px] flex-col justify-end overflow-hidden rounded-2xl bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5">
                     {/* landmark image */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -693,7 +672,7 @@ export default function WhyMindWhizPage() {
                 <a
                   key={`${o.name}-${i}`}
                   href="/#services"
-                  className="group relative flex h-[58vh] max-h-[600px] min-h-[360px] w-[330px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5"
+                  className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[360px] w-[330px] shrink-0 flex-col justify-end overflow-hidden rounded-2xl rounded-br-none bg-[#383838] transition-transform duration-300 hover:-translate-y-1.5"
                 >
                   {/* stock image */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}

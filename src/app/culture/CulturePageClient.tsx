@@ -109,7 +109,7 @@ function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative flex min-h-[calc(100vh-20px)] flex-col justify-end px-5 pb-10 pt-32 sm:px-8"
+        className="relative flex min-h-[calc(var(--vh)*100-20px)] flex-col justify-end px-5 pb-10 pt-32 sm:px-8"
       >
         <Kicker>Our culture</Kicker>
         <h1

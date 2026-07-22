@@ -182,7 +182,7 @@ function MegaPanel({
       </div>
 
       {/* featured rail - IT Staffing (Villa Tech) then Construction (Alpha Bravo) */}
-      <div className="hidden flex-col gap-4 xl:flex">
+      <div className="hidden flex-col gap-4 nav:flex">
         {[caseStudies[1], caseStudies[0]].map((cs) => (
           <a
             key={cs.client}
@@ -336,7 +336,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             aria-hidden
-            className="pointer-events-none fixed inset-0 hidden bg-black/10 backdrop-blur-md xl:block"
+            className="pointer-events-none fixed inset-0 hidden bg-black/10 backdrop-blur-md nav:block"
           />
         )}
       </AnimatePresence>
@@ -390,10 +390,10 @@ export function SiteHeader({ theme }: { theme: string }) {
         </a>
 
         {/* Center nav - absolutely centered so the logo hover doesn't shift it */}
-        {/* xl, not lg: at 1024-1279px this centered nav collides with the
+        {/* nav (1200px), not lg: below that this centered nav collides with the
             region selector + CTA on the right, so those widths keep the
             hamburger menu instead */}
-        <nav className="z-10 hidden items-center gap-0.5 rounded-full bg-neutral-900/60 p-1 xl:absolute xl:left-1/2 xl:top-1/2 xl:flex xl:-translate-x-1/2 xl:-translate-y-1/2">
+        <nav className="z-10 hidden items-center gap-0.5 rounded-full bg-neutral-900/60 p-1 nav:absolute nav:left-1/2 nav:top-1/2 nav:flex nav:-translate-x-1/2 nav:-translate-y-1/2">
           {nav.map((n, i) => {
             const isActive = active === n.label;
             const hasMega =
@@ -519,7 +519,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full text-white xl:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full text-white nav:hidden"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -537,7 +537,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             onMouseEnter={() => openMega(mega)}
             onMouseLeave={scheduleCloseMega}
-            className={`relative z-10 mx-auto mt-3 hidden rounded-2xl border border-black/10 bg-white shadow-2xl shadow-black/20 xl:block ${
+            className={`relative z-10 mx-auto mt-3 hidden rounded-2xl border border-black/10 bg-white shadow-2xl shadow-black/20 nav:block ${
               mega === "About Us" ? "w-64 p-2" : "w-full max-w-6xl p-6"
             }`}
           >
@@ -573,7 +573,7 @@ export function SiteHeader({ theme }: { theme: string }) {
             exit={{ opacity: 0, scale: 0.95, y: -6 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 max-h-[calc(100dvh-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-black/10 bg-white p-2 shadow-2xl shadow-black/20 xl:hidden"
+            className="mx-auto mt-2 max-h-[calc(var(--dvh)*100-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-black/10 bg-white p-2 shadow-2xl shadow-black/20 nav:hidden"
           >
             {[
               ...nav.slice(0, 4),
@@ -586,9 +586,11 @@ export function SiteHeader({ theme }: { theme: string }) {
 
               return (
                 <div key={n.label}>
-                  <motion.button
-                    onClick={() => {
+                  <motion.a
+                    href={hasMega ? undefined : n.href}
+                    onClick={(e) => {
                       if (hasMega) {
+                        e.preventDefault();
                         setMobileMenu(isExpanded ? null : n.label);
                       } else {
                         setActive(n.label);
@@ -599,7 +601,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ type: "spring", stiffness: 320, damping: 22, delay: 0.04 * i }}
                     style={{ transformOrigin: "bottom left" }}
-                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+                    className="flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
                   >
                     <span>{n.label}</span>
                     {hasMega && (
@@ -609,7 +611,7 @@ export function SiteHeader({ theme }: { theme: string }) {
                         }`}
                       />
                     )}
-                  </motion.button>
+                  </motion.a>
 
                   {hasMega && isExpanded && (
                     <motion.div

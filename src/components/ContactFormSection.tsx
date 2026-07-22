@@ -98,20 +98,22 @@ export default function ContactFormSection() {
         {/* klickpin video - right (hidden on mobile) */}
         <Reveal
           delay={0.1}
-          className="hidden aspect-video min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-black sm:flex lg:aspect-auto lg:h-full lg:min-h-0"
+          className="relative hidden aspect-video min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white sm:flex lg:aspect-auto lg:h-full lg:min-h-0"
         >
           <video
             title="Klickpin Video"
             className="h-full w-full object-cover"
-            controls
             autoPlay
             muted
             loop
+            playsInline
             preload="auto"
           >
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          {/* white wash overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-white/30" />
         </Reveal>
       </div>
     </section>
