@@ -238,7 +238,8 @@ function Hero() {
               Websites
               {/* on mobile, break after "Websites" so it reads: Websites / built for / growth */}
               <br className="sm:hidden" />
-              built for
+              {/* keep "built for" on one line so "for" never drops on narrow screens */}
+              <span className="whitespace-nowrap">built for</span>
               <br />
               <span style={{ color: PINK }}>growth</span>
             </h1>
