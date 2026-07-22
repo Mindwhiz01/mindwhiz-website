@@ -1211,13 +1211,7 @@ function CaseCard({
               {cs.client}
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">{cs.result}</p>
-            <a
-              href={`/case-studies/${cs.slug}`}
-              className="group mt-6 flex w-fit items-center gap-2 rounded-md bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
-            >
-              Read case study
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <Cta href={`/case-studies/${cs.slug}`} label="Read case study" className="mt-6 w-fit" />
             <span className="mt-6 flex w-fit items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
               Filed · {cs.category} · 2025
