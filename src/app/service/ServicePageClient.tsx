@@ -223,6 +223,8 @@ function BentoTile({
     { x: 0, y: 28, scale: 1.25 },
   ];
   const cfg = configs[index];
+  // raw viewport units here on purpose: framer interpolates these strings, and
+  // it cannot animate between `calc()` values.
   const x = useTransform(progress, [0, 1], ["0vw", `${cfg.x}vw`]);
   const y = useTransform(progress, [0, 1], ["0vh", `${cfg.y}vh`]);
   const scale = useTransform(progress, [0, 1], [1, cfg.scale]);
@@ -290,7 +292,7 @@ function ScrubbedBentoGallery() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {bentoImages.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.035}>
-              <div className="group relative flex h-[58vh] max-h-[600px] min-h-[340px] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5">
+              <div className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[340px] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.src}
@@ -453,7 +455,7 @@ function ReelsSection() {
               <article
                 key={i}
                 onClick={() => window.open(r.url, "_blank")}
-                className="group relative h-[60vh] max-h-[560px] min-h-[360px] w-[240px] shrink-0 overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:w-[280px] cursor-pointer"
+                className="group relative h-[calc(var(--vh)*60)] max-h-[560px] min-h-[360px] w-[240px] shrink-0 overflow-hidden rounded-[1.75rem] ring-1 ring-white/10 sm:w-[280px] cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -630,7 +632,7 @@ function BrandShowcaseSection() {
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true, margin: "-60px" }}
                       transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                      className="h-[85vh] min-h-[32rem] w-full object-cover"
+                      className="h-[calc(var(--vh)*85)] min-h-[32rem] w-full object-cover"
                     />
                     <span className="absolute bottom-5 left-5 rounded-full bg-black/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md">
                       {b.name} · {String(j + 1).padStart(2, "0")}
@@ -700,7 +702,7 @@ function ScrollManifestoSection() {
     // reveal (the statement below rising over this pinned heading) would
     // otherwise cost an extra full screen of scrolling on a phone. sm+ keeps
     // the original sticky effect.
-    <section className="relative z-0 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden bg-[#eee8e0] px-6 py-16 sm:sticky sm:top-0 sm:h-screen sm:min-h-0 sm:py-0">
+    <section className="relative z-0 flex min-h-[calc(var(--vh)*60)] flex-col items-center justify-center overflow-hidden bg-[#eee8e0] px-6 py-16 sm:sticky sm:top-0 sm:h-screen sm:min-h-0 sm:py-0">
       <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
       <div className="pointer-events-none absolute -right-32 bottom-[-8rem] h-[38rem] w-[38rem] rounded-full bg-[#D5D8DE]/35 blur-[170px]" />
 
@@ -763,7 +765,7 @@ export default function ServicePageClient() {
       <SiteHeader theme={theme} />
 
         <section data-header-dark className="relative min-h-screen overflow-hidden bg-white p-[10px] text-white">
-          <div className="relative flex min-h-[calc(100vh-20px)] overflow-hidden rounded-3xl bg-[#383838]">
+          <div className="relative flex min-h-[calc(var(--vh)*100-20px)] overflow-hidden rounded-3xl bg-[#383838]">
           <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-35">
             {/* portrait pin video rotated 90° so it fills the landscape hero:
                 sized width=100vh / height=100vw, then rotated a quarter turn */}
@@ -774,7 +776,7 @@ export default function ServicePageClient() {
               playsInline
               preload="auto"
               aria-hidden
-              style={{ width: "100vh", height: "100vw" }}
+              style={{ width: "calc(var(--vh) * 100)", height: "calc(var(--vw) * 100)" }}
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[270deg] object-cover mix-blend-luminosity"
             >
               <source src="/hero-service.mp4" type="video/mp4" />
@@ -785,7 +787,7 @@ export default function ServicePageClient() {
           {/* light-orange glow from the bottom-right */}
           <div className="pointer-events-none absolute -bottom-32 -right-32 h-[38rem] w-[38rem] rounded-full bg-[#ff4b00]/35 blur-[150px]" />
 
-          <div className="relative flex min-h-[calc(100vh-20px)] items-end px-5 pb-10 pt-32 sm:px-8">
+          <div className="relative flex min-h-[calc(var(--vh)*100-20px)] items-center px-5 pb-10 pt-32 sm:px-8">
             <div className="w-full">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}

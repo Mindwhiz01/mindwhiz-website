@@ -182,7 +182,7 @@ function CaseRecordSection() {
           </Reveal>
 
           {/* pinned stack of entries (plain flow below sm) */}
-          <div className="mt-10 flex flex-col gap-10 sm:gap-[14vh]">
+          <div className="mt-10 flex flex-col gap-10 sm:gap-[calc(var(--vh)*14)]">
             {caseStudies.map((cs, i) => (
               <CaseCard key={cs.client} cs={cs} i={i} total={total} progress={scrollYProgress} />
             ))}

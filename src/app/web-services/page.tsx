@@ -32,7 +32,12 @@ import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
-import { useBelowSm } from "@/lib/useBelowSm";
+import {
+  panelImageMotion,
+  panelNumberMotion,
+  panelTextMotion,
+  panelWrapperMotion,
+} from "@/lib/panelMotion";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -289,35 +294,25 @@ function ServicePanel({
   s,
   i,
   active,
-  mobile = false,
 }: {
   s: (typeof services)[number];
   i: number;
   active: number;
-  mobile?: boolean;
 }) {
-  // On mobile every panel is a static, always-visible block in normal flow.
-  const isActive = mobile || i === active;
+  const isActive = i === active;
+  const state = { isActive };
 
   return (
     <motion.div
-      initial={false}
-      animate={{ opacity: mobile || isActive ? 1 : 0 }}
-      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+      {...panelWrapperMotion(state)}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
         src={s.image}
         alt={s.title}
-        initial={false}
-        animate={{ scale: isActive ? 1 : 1.15 }}
-        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+        {...panelImageMotion(state)}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
@@ -325,9 +320,7 @@ function ServicePanel({
 
       {/* giant ghost index number, top-right */}
       <motion.span
-        initial={false}
-        animate={{ y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+        {...panelNumberMotion(state)}
         style={displayFont}
         className="pointer-events-none absolute right-4 top-24 select-none text-[26vw] font-extrabold leading-none text-white/[0.07] sm:right-10 sm:text-[18vw]"
       >
@@ -336,10 +329,10 @@ function ServicePanel({
 
       {/* heading, top-left */}
       <motion.div
-        initial={false}
-        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
+        {...panelTextMotion(state)}
+        // pt clears the floating header pill - on phones the pill is taller
+        // relative to the panel, so the heading needs more room than at sm+
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-32 sm:px-8 sm:pt-28"
       >
         <h3
           className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
@@ -351,9 +344,7 @@ function ServicePanel({
 
       {/* description, bottom-right */}
       <motion.div
-        initial={false}
-        animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
-        transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
+        {...panelTextMotion(state)}
         className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
       >
         <div className="flex max-w-lg items-start gap-6">
@@ -376,7 +367,6 @@ function ServicePanel({
 
 function ServicesSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const total = 3;
   const [active, setActive] = useState(0);
@@ -387,9 +377,9 @@ function ServicesSection() {
     setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
   });
 
-  // While the section is pinned, one wheel gesture moves exactly one slide.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // While the section is pinned, one gesture moves exactly one slide - wheel
+  // on desktop, swipe-then-settle on touch.
+  useSlideSnap(ref, total);
 
   return (
     <section id="web-that-works" className="relative bg-[#faf9f7]">
@@ -431,37 +421,31 @@ function ServicesSection() {
         </div>
       </div>
 
-      {/* Below `sm`: plain stack of full panels, no pin/cross-fade. */}
+      {/* Pinned deck at every width. `svh` rather than `vh` so the pinned
+          panel matches the *visible* viewport on phones; track and sticky
+          child share the unit so one slide is always exactly one snap point. */}
       <div
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+        style={{ height: `calc(var(--svh) * ${total * 100})` }}
       >
-        {isMobile ? (
-          <div className="flex flex-col">
-            {services.slice(0, total).map((s, i) => (
-              <ServicePanel key={s.title} s={s} i={i} active={active} mobile />
-            ))}
-          </div>
-        ) : (
-          <div className="sticky top-0 h-screen overflow-hidden">
-            {services.slice(0, total).map((s, i) => (
-              <ServicePanel key={s.title} s={s} i={i} active={active} />
-            ))}
+        <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
+          {services.slice(0, total).map((s, i) => (
+            <ServicePanel key={s.title} s={s} i={i} active={active} />
+          ))}
 
-            {/* progress bar - fills one segment per slide */}
-            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-              <motion.div
-                initial={false}
-                animate={{ scaleX: (active + 1) / total }}
-                transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transformOrigin: "left" }}
-                className="h-full w-full bg-[#ed1164]"
-              />
-            </div>
+          {/* progress bar - fills one segment per slide */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

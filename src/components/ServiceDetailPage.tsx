@@ -21,6 +21,13 @@ import { company } from "@/lib/content";
 import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { useBelowSm } from "@/lib/useBelowSm";
+import {
+  PANEL_EASE,
+  panelImageMotion,
+  panelNumberMotion,
+  panelTextMotion,
+  panelWrapperMotion,
+} from "@/lib/panelMotion";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Oswald({
@@ -255,7 +262,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: isMobile ? undefined : `${sectionVh}vh` }}
+      style={{ height: isMobile ? undefined : `calc(var(--vh) * ${sectionVh})` }}
     >
       <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-6 sm:gap-10 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
@@ -272,7 +279,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                   key={item.title}
                   href="/contact"
                   style={{ width: isMobile ? undefined : cardW }}
-                  className="group relative flex h-[48vh] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[58vh] sm:min-h-[340px] sm:w-auto sm:max-w-none"
+                  className="group relative flex h-[calc(var(--vh)*48)] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[calc(var(--vh)*58)] sm:min-h-[340px] sm:w-auto sm:max-w-none"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -416,7 +423,6 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
 // in/out on a timed transition - never parked half-faded. Images are keyed
 // by step order.
 // ---------------------------------------------------------------------------
-const PROCESS_EASE = [0.22, 1, 0.36, 1] as const;
 const processImages = [
   "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
   "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
@@ -430,86 +436,24 @@ function ProcessPanel({
   step,
   i,
   active,
-  mobile = false,
 }: {
   step: ServicePageContent["process"][number];
   i: number;
   active: number;
-  mobile?: boolean;
 }) {
-  // Desktop: a pinned cross-fade deck driven by the active step. Mobile: each
-  // panel is a normal-flow block that reveals itself - image zoom + text rise -
-  // the first time it scrolls into view. Native scrolling on phones, but the
-  // same visual language as the desktop deck, so the animation reads the same
-  // on every device.
-  const isActive = mobile || i === active;
-  const VIEWPORT = { once: true, margin: "-20%" } as const;
+  const isActive = i === active;
+  const state = { isActive };
 
-  const wrapperMotion = mobile
-    ? {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.5, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { opacity: isActive ? 1 : 0 },
-        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
-      };
-
-  const imgMotion = mobile
-    ? {
-        initial: { scale: 1.15 },
-        whileInView: { scale: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 1.1, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { scale: isActive ? 1 : 1.15 },
-        transition: { duration: 1.1, ease: PROCESS_EASE },
-      };
-
-  const numberMotion = mobile
-    ? {
-        initial: { y: 30, opacity: 0 },
-        whileInView: { y: 0, opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.6, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 },
-        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
-      };
-
-  const textMotion = mobile
-    ? {
-        initial: { y: 40, opacity: 0 },
-        whileInView: { y: 0, opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.6, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 },
-        transition: {
-          duration: SLIDE_MS / 1000,
-          ease: PROCESS_EASE,
-          delay: isActive ? 0.12 : 0,
-        },
-      };
+  const wrapperMotion = panelWrapperMotion(state);
+  const imgMotion = panelImageMotion(state);
+  const numberMotion = panelNumberMotion(state);
+  const textMotion = panelTextMotion(state);
 
   return (
     <motion.div
       {...wrapperMotion}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -533,7 +477,9 @@ function ProcessPanel({
       {/* heading, top-left */}
       <motion.div
         {...textMotion}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-20 sm:px-8 sm:pt-28"
+        // pt clears the floating header pill - on phones the pill is taller
+        // relative to the panel, so the heading needs more room than at sm+
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-32 sm:px-8 sm:pt-28"
       >
         <h3
           className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
@@ -570,7 +516,6 @@ function ProcessPanel({
 
 function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -583,9 +528,9 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
     setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
   });
 
-  // While the track is pinned, one wheel gesture moves exactly one step.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // While the track is pinned, one gesture moves exactly one step - wheel on
+  // desktop, swipe-then-settle on touch.
+  useSlideSnap(ref, total);
 
   return (
     <section className="relative bg-slate-50">
@@ -650,42 +595,34 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
         </div>
       </div>
 
-      {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
-          cross-fade, every step visible as you scroll. sm+ keeps the pinned
-          one-panel-at-a-time track. */}
+      {/* The pinned one-panel-at-a-time track, at every width. One full
+          viewport of scroll per step, matching the sticky pin below, so the
+          snap step, the scroll-progress slice and the pinned viewport all stay
+          in sync. `svh` rather than `vh`: on phones `vh` measures the viewport
+          with the browser chrome retracted, which would push the CTA down
+          behind the URL bar. */}
       <div
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        // One full viewport of scroll per step at every width >= sm, matching
-        // the `h-screen` sticky pin below - so the wheel-snap step, the
-        // scroll-progress slice, and the pinned viewport all stay in sync.
-        style={{ height: isMobile ? undefined : `${total * 100}vh` }}
+        style={{ height: `calc(var(--svh) * ${total * 100})` }}
       >
-        {isMobile ? (
-          <div className="flex flex-col">
-            {page.process.map((step, i) => (
-              <ProcessPanel key={step.title} step={step} i={i} active={active} mobile />
-            ))}
-          </div>
-        ) : (
-          <div className="sticky top-0 h-screen overflow-hidden">
-            {page.process.map((step, i) => (
-              <ProcessPanel key={step.title} step={step} i={i} active={active} />
-            ))}
+        <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
+          {page.process.map((step, i) => (
+            <ProcessPanel key={step.title} step={step} i={i} active={active} />
+          ))}
 
-            {/* bottom progress bar - fills one segment per step */}
-            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-              <motion.div
-                initial={false}
-                animate={{ scaleX: (active + 1) / total }}
-                transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
-                style={{ transformOrigin: "left" }}
-                className="h-full w-full bg-[#ed1164]"
-              />
-            </div>
+          {/* bottom progress bar - fills one segment per step */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: PANEL_EASE }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
