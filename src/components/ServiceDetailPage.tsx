@@ -672,26 +672,23 @@ export default function ServiceDetailPage({
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const canonicalUrl = `${SITE_URL}${basePath}/${page.slug}`;
-  const isIndustry = basePath === "/industries";
-
-  // Service schema for /services/*, plus a matching breadcrumb trail on both
-  // /services/* and /industries/* so search results show the page hierarchy.
-  const serviceJsonLd = !isIndustry
-    ? {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        name: page.name,
-        description: page.hero.subtitle,
-        provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: [
-          { "@type": "Country", name: "United States" },
-          { "@type": "Country", name: "United Kingdom" },
-          { "@type": "Country", name: "Pakistan" },
-        ],
-        serviceType: page.name,
-        url: canonicalUrl,
-      }
-    : null;
+  // Service schema on both /services/* and /industries/* (the keyword map lists
+  // Service for industry pages too), plus a matching breadcrumb trail so search
+  // results show the page hierarchy.
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: page.name,
+    description: page.hero.subtitle,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Pakistan" },
+    ],
+    serviceType: page.name,
+    url: canonicalUrl,
+  };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -702,6 +699,9 @@ export default function ServiceDetailPage({
       { "@type": "ListItem", position: 3, name: page.name, item: canonicalUrl },
     ],
   };
+
+  // NB: FAQPage schema is emitted by <FaqSection> itself (co-located with the
+  // rendered accordion), so it is intentionally not duplicated here.
 
   useEffect(() => {
     const saved = localStorage.getItem("mw-theme");
@@ -716,12 +716,10 @@ export default function ServiceDetailPage({
 
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
-      {serviceJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
