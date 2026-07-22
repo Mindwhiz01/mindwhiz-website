@@ -10,8 +10,12 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPost(params.slug);
   if (!post) return {};
+  // Post titles run long and are the page's real identity - past ~50 chars
+  // appending "| MindWhiz" pushes the <title> over Google's ~60 char cutoff,
+  // so drop the brand suffix instead of truncating the title itself.
+  const title = post.title.length > 50 ? { absolute: post.title } : post.title;
   return {
-    title: post.title,
+    title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
