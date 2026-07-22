@@ -232,10 +232,7 @@ function Hero() {
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
       <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <Reveal>
-            <Kicker>Web Development Department</Kicker>
-          </Reveal>
+        <div className="order-2 lg:order-1">
           <Reveal delay={0.05}>
             <h1 className="mt-7 text-[clamp(3rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
               Websites built for
@@ -257,7 +254,7 @@ function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.1} className="relative">
+        <Reveal delay={0.1} className="relative order-1 lg:order-2">
           <motion.div
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
