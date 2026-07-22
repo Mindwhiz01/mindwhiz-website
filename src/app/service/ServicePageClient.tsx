@@ -696,7 +696,11 @@ function BrandShowcaseSection() {
 
 function ScrollManifestoSection() {
   return (
-    <section className="sticky top-0 z-0 flex h-screen flex-col items-center justify-center overflow-hidden bg-[#eee8e0] px-6">
+    // Below `sm` this scrolls past like any normal section - the pin-and-cover
+    // reveal (the statement below rising over this pinned heading) would
+    // otherwise cost an extra full screen of scrolling on a phone. sm+ keeps
+    // the original sticky effect.
+    <section className="relative z-0 flex min-h-[60vh] flex-col items-center justify-center overflow-hidden bg-[#eee8e0] px-6 py-16 sm:sticky sm:top-0 sm:h-screen sm:min-h-0 sm:py-0">
       <div className="pointer-events-none absolute -left-32 -top-24 h-[42rem] w-[42rem] rounded-full bg-[#D5D8DE]/40 blur-[170px]" />
       <div className="pointer-events-none absolute -right-32 bottom-[-8rem] h-[38rem] w-[38rem] rounded-full bg-[#D5D8DE]/35 blur-[170px]" />
 
