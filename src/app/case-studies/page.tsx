@@ -99,10 +99,10 @@ function CaseCard({
             <p className="mt-4 max-w-md text-sm leading-relaxed text-black/60">{cs.result}</p>
             <div className="mt-6 flex flex-wrap items-center gap-5">
               <a
-                href={`/case-studies/${cs.slug}`}
+                href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ed1164]"
               >
-                Read case study
+                Get in touch
                 <ArrowRight className="h-4 w-4 text-[#9CCC3C] transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7DB022]">

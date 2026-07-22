@@ -8,6 +8,7 @@
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
+import Script from "next/script";
 import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -70,7 +71,7 @@ const roles = [
     pill: "#4E7A22",
     image:
       "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=900&q=80",
-    href: "/services/it-helpdesk-24-7",
+    href: "#apply",
   },
   {
     title: "Cloud & DevOps roles",
@@ -78,7 +79,7 @@ const roles = [
     pill: "#8A5A16",
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
-    href: "/services/cloud-infrastructure",
+    href: "#apply",
   },
   {
     title: "Cybersecurity roles",
@@ -86,7 +87,7 @@ const roles = [
     pill: "#B33241",
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80",
-    href: "/services/cybersecurity-monitoring",
+    href: "#apply",
   },
   {
     title: "Finance & BPO roles",
@@ -94,7 +95,7 @@ const roles = [
     pill: "#2F5BD1",
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80",
-    href: "/finance",
+    href: "#apply",
   },
   {
     title: "HR & Recruiting roles",
@@ -102,7 +103,7 @@ const roles = [
     pill: "#4E7A22",
     image:
       "https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=900&q=80",
-    href: "/hr",
+    href: "#apply",
   },
 ];
 
@@ -178,7 +179,7 @@ function RolesRail() {
                     className="mt-10 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white"
                     style={{ backgroundColor: r.pill }}
                   >
-                    Learn more
+                    Apply now
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </div>
@@ -196,11 +197,8 @@ function RolesRail() {
 // ---------------------------------------------------------------------------
 const locationLinks = [
   { label: "Houston", href: "/locations/us" },
-  { label: "New York", href: "/locations/us" },
-  { label: "London", href: "/locations/uk" },
-  { label: "Manchester", href: "/locations/uk" },
   { label: "Lahore", href: "/locations/pk" },
-  { label: "Islamabad", href: "/locations/pk" },
+  { label: "London", href: "/locations/uk" },
 ];
 
 function LocationsSection() {
@@ -502,6 +500,57 @@ function WorkingAtSection() {
 }
 
 // ---------------------------------------------------------------------------
+// Apply now, embedded LeadConnector (GoHighLevel) application form. Role cards
+// deep-link here via #apply.
+// ---------------------------------------------------------------------------
+function ApplicationForm() {
+  return (
+    <section id="apply" className="scroll-mt-24 bg-[#FAF9F5] py-24">
+      <div className="mx-auto max-w-3xl px-6 sm:px-8">
+        <Reveal>
+          <div className="text-center">
+            <Kicker>Apply now</Kicker>
+            <h2
+              className="mt-4 text-[clamp(2.4rem,5vw,4.4rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-black"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Start your <span style={{ color: "#ed1164" }}>application</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-black/65">
+              Tell us about yourself and the team you want to join. Our talent
+              team reviews every application and will be in touch soon.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.06}>
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-black/10 bg-white p-2 sm:p-4">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/CCAqC31eYUNM2RuEgODF"
+              style={{ width: "100%", height: "762px", border: "none", borderRadius: "8px" }}
+              id="inline-CCAqC31eYUNM2RuEgODF"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="MindWhiz Career Form"
+              data-height="762"
+              data-layout-iframe-id="inline-CCAqC31eYUNM2RuEgODF"
+              data-form-id="CCAqC31eYUNM2RuEgODF"
+              title="MindWhiz Career Form"
+            />
+          </div>
+        </Reveal>
+      </div>
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Page shell
 // ---------------------------------------------------------------------------
 export default function CareersPageClient() {
@@ -534,6 +583,7 @@ export default function CareersPageClient() {
         <div id="roles">
           <RolesRail />
         </div>
+        <ApplicationForm />
         <LocationsSection />
         <FindYourTeam />
         <BenefitsSection />
