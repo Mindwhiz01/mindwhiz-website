@@ -10,12 +10,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-// `bg` overrides the default light card - the Alpha Bravo mark has white
-// elements (roof + "ALPHA"), so it needs a dark tile to stay legible.
+// `bg` can override the default light card for a logo that needs it.
 type ClientItem = { name: string; src?: string; bg?: string };
 
 const clientsRow1: ClientItem[] = [
-  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png", bg: "#10203c" },
+  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo.png" },
   { name: "Highland Redstone", src: "/clients/highland.png" },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
