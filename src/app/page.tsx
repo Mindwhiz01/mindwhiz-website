@@ -776,7 +776,6 @@ function DriveTalentSection() {
       {/* Particle background */}
       <ParticleBackground
         sectionRef={ref}
-        particleColor="rgba(156, 204, 60, 0.9)"
         particleCount={95}
       />
 

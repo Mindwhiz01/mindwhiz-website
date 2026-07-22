@@ -13,17 +13,24 @@ interface Particle {
   targetOpacity: number;
   life: number;
   maxLife: number;
+  /** Smoothed offset toward the cursor, so the swarm eases in and out. */
+  ox: number;
+  oy: number;
 }
+
+// Brand green (tailwind.config.ts): #9CCC3C.
+const BRAND_GREEN = "156, 204, 60";
 
 interface ParticleBackgroundProps {
   sectionRef: React.RefObject<HTMLElement>;
+  /** "r, g, b" triple the particles are drawn in. */
   particleColor?: string;
   particleCount?: number;
 }
 
 export default function ParticleBackground({
   sectionRef,
-  particleColor = "rgba(156, 204, 60, 0.85)",
+  particleColor = BRAND_GREEN,
   particleCount = 70,
 }: ParticleBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -83,14 +90,21 @@ export default function ParticleBackground({
         targetOpacity: Math.random() * 0.45 + 0.55,
         life: 0,
         maxLife: Math.random() * 60 + 40,
+        ox: 0,
+        oy: 0,
       });
     }
 
     particlesRef.current = particles;
 
-    // Cursor influence: how far it reaches, and how hard it shoves.
-    const HOVER_RADIUS = 170;
-    const MAX_PUSH = 28;
+    // Cursor influence: how far it reaches, how far it can drag a particle, and
+    // how fast the swarm eases toward/away from the cursor.
+    const HOVER_RADIUS = 280;
+    const MAX_PULL = 220;
+    const EASE = 0.075;
+    // Particles stop short of the cursor so the swarm reads as a cluster
+    // rather than collapsing into one dot.
+    const CORE_GAP = 26;
 
     const animate = () => {
       if (!canvas || !ctx) return;
@@ -110,6 +124,9 @@ export default function ParticleBackground({
           particle.y = Math.random() * canvas.height;
           particle.opacity = 0;
           particle.targetOpacity = Math.random() * 0.45 + 0.55;
+          // Respawn is a teleport - drop any inherited cursor pull with it.
+          particle.ox = 0;
+          particle.oy = 0;
         }
 
         // Fade in and out
@@ -136,35 +153,44 @@ export default function ParticleBackground({
           particle.y = Math.max(particle.radius, Math.min(canvas.height - particle.radius, particle.y));
         }
 
-        // Cursor interaction: particles near the pointer are nudged away and
-        // burn brighter/bigger. Purely a render-time offset, so the underlying
-        // drift physics stay stable no matter how long the pointer lingers.
-        let px = particle.x;
-        let py = particle.y;
-        let pr = particle.radius;
-        let po = particle.opacity;
+        // Cursor interaction: particles in range are drawn toward the pointer
+        // and gather around it. The pull is a smoothed render-time offset, so
+        // the underlying drift physics stay untouched and the swarm drifts back
+        // home once the cursor leaves.
+        let targetOx = 0;
+        let targetOy = 0;
 
         if (mouse.active) {
-          const mdx = particle.x - mouse.x;
-          const mdy = particle.y - mouse.y;
+          const mdx = mouse.x - particle.x;
+          const mdy = mouse.y - particle.y;
           const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
 
           if (mdist < HOVER_RADIUS && mdist > 0.001) {
-            // Eased falloff - strongest right under the cursor.
-            const strength = (1 - mdist / HOVER_RADIUS) ** 2;
-            px += (mdx / mdist) * strength * MAX_PUSH;
-            py += (mdy / mdist) * strength * MAX_PUSH;
-            pr += strength * 2.2;
-            po = Math.min(1, po + strength * 0.5);
+            // Closer particles commit harder to the cursor.
+            const strength = 1 - mdist / HOVER_RADIUS;
+            const travel = Math.min(strength * MAX_PULL, Math.max(0, mdist - CORE_GAP));
+            targetOx = (mdx / mdist) * travel;
+            targetOy = (mdy / mdist) * travel;
           }
         }
+
+        particle.ox += (targetOx - particle.ox) * EASE;
+        particle.oy += (targetOy - particle.oy) * EASE;
+
+        const px = particle.x + particle.ox;
+        const py = particle.y + particle.oy;
+
+        // Gathered particles burn brighter and bigger.
+        const gather = Math.min(1, Math.hypot(particle.ox, particle.oy) / MAX_PULL);
+        const pr = particle.radius + gather * 2.2;
+        const po = Math.min(1, particle.opacity + gather * 0.5);
 
         points.push({ x: px, y: py, r: pr, o: po });
 
         // Draw particle with a soft glow so it reads against the dark band
-        ctx.fillStyle = particleColor.replace(/[\d.]+\)$/g, `${po})`);
+        ctx.fillStyle = `rgba(${particleColor}, ${po})`;
         ctx.shadowBlur = pr * 4;
-        ctx.shadowColor = particleColor.replace(/[\d.]+\)$/g, `${po * 0.8})`);
+        ctx.shadowColor = `rgba(${particleColor}, ${po * 0.8})`;
         ctx.beginPath();
         ctx.arc(px, py, pr, 0, Math.PI * 2);
         ctx.fill();
@@ -180,7 +206,7 @@ export default function ParticleBackground({
 
           if (distance < 150) {
             const lineOpacity = (1 - distance / 150) * 0.5 * Math.min(points[i].o, points[j].o);
-            ctx.strokeStyle = particleColor.replace(/[\d.]+\)$/g, `${lineOpacity})`);
+            ctx.strokeStyle = `rgba(${particleColor}, ${lineOpacity})`;
             ctx.lineWidth = 0.9;
             ctx.beginPath();
             ctx.moveTo(points[i].x, points[i].y);
@@ -198,9 +224,9 @@ export default function ParticleBackground({
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < HOVER_RADIUS) {
-            const lineOpacity = (1 - distance / HOVER_RADIUS) * 0.55 * p.o;
-            ctx.strokeStyle = particleColor.replace(/[\d.]+\)$/g, `${lineOpacity})`);
-            ctx.lineWidth = 1.1;
+            const lineOpacity = (1 - distance / HOVER_RADIUS) * 0.4 * p.o;
+            ctx.strokeStyle = `rgba(${particleColor}, ${lineOpacity})`;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(p.x, p.y);
