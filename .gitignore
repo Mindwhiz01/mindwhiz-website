@@ -12,5 +12,8 @@ next-env.d.ts
 /chrome-profile
 /chrome-profile-agency
 
+# local dev server logs
+dev-*.log
+
 .vercel
 .env*
