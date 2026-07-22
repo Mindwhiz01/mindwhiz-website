@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/seo.config";
 
-export const metadata: Metadata = {
-  title: "Construction Estimation Services",
-  description:
-    "Accurate construction estimation and takeoff services from MindWhiz - detailed, on-time estimates that help contractors win more bids.",
-  alternates: { canonical: "/construction-estimation" },
-};
+export const metadata = buildMetadata("/construction-estimation");
 
 export default function ConstructionEstimationLayout({
   children,

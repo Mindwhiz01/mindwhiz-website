@@ -29,7 +29,9 @@
       "Bash(chromium-cli --help)",
       "Bash(npx --yes playwright --version)",
       "Read(//Users/noumanassadullah/Library/Caches/**)",
-      "Bash(npm ls *)"
+      "Bash(npm ls *)",
+      "Bash(git merge-base *)",
+      "Bash(git merge *)"
     ]
   }
 }

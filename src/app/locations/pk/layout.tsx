@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/seo.config";
 
-export const metadata: Metadata = {
-  title: "MindWhiz Pakistan",
-  description:
-    "MindWhiz's largest engineering and delivery hub in Lahore, Pakistan - 24/7 NOC, SOC, and helpdesk operations backed by deep technical talent.",
-  alternates: { canonical: "/locations/pk" },
-};
+export const metadata = buildMetadata("/locations/pk");
 
 export default function PkLocationLayout({ children }: { children: React.ReactNode }) {
   return children;

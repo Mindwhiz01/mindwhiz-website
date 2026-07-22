@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
 import PrivacyPageClient from "./PrivacyPageClient";
+import { buildMetadata } from "@/seo.config";
 
-const title = "Privacy Policy";
-const description =
-  "How MindWhiz collects, uses, and protects information from clients, candidates, and website visitors.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/privacy" },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata("/privacy");
 
 export default function PrivacyPage() {
   return <PrivacyPageClient />;

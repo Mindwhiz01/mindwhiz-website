@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import LocationPage from "@/components/LocationPage";
-import { getLocation, locationMetadata, locationJsonLd } from "@/lib/locations";
+import { getLocation, locationJsonLd } from "@/lib/locations";
+import { buildMetadata } from "@/seo.config";
 
 const location = getLocation("us")!;
 
-export const metadata: Metadata = locationMetadata(location);
+export const metadata = buildMetadata("/locations/us");
 
 export default function UsLocationPage() {
   return (

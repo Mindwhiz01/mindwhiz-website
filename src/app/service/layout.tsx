@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/seo.config";
 
-export const metadata: Metadata = {
-  title: "Services - IT, Security & Business Operations",
-  description:
-    "Explore MindWhiz services: 24/7 IT helpdesk, NOC monitoring, cybersecurity, cloud, DevOps, HR, finance, and marketing - delivered by scalable hybrid teams.",
-  alternates: { canonical: "/service" },
-};
+export const metadata = buildMetadata("/service");
 
 export default function ServiceLayout({ children }: { children: React.ReactNode }) {
   return children;

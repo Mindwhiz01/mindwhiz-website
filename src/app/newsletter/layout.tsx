@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/seo.config";
 
-export const metadata: Metadata = {
-  title: "Newsletter",
-  description:
-    "Subscribe to The MindWhiz Dispatch — a once-a-month newsletter with practical ideas on hybrid staffing, IT operations, and building lean teams. No spam.",
-  alternates: { canonical: "/newsletter" },
-};
+export const metadata = buildMetadata("/newsletter");
 
 export default function NewsletterLayout({ children }: { children: React.ReactNode }) {
   return children;

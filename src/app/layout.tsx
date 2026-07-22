@@ -2,33 +2,27 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { SEO_MAP } from "@/seo.config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 const siteUrl = "https://graphite-teal-template.vercel.app";
 const siteName = "MindWhiz";
-const siteDescription =
-  "Hybrid staffing, staff augmentation, and BPO across IT, security, and business operations. Build scalable teams with flexible global talent from the US, UK, and Pakistan.";
+// Home (/) title + description are the hand-tuned entries from the SEO map, so
+// the homepage and its shared-link previews match the rest of the site. Child
+// routes set their own absolute title/description via buildMetadata().
+const homeSeo = SEO_MAP["/"];
+const siteDescription = homeSeo.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MindWhiz - Flexible Talent, Scalable Teams, Global Impact",
+    // default (home) already carries the brand suffix; template brands children
+    // that pass a bare string (none currently do - they use title.absolute).
+    default: homeSeo.title,
     template: "%s | MindWhiz",
   },
   description: siteDescription,
-  keywords: [
-    "staff augmentation",
-    "hybrid staffing",
-    "BPO services",
-    "IT helpdesk outsourcing",
-    "NOC monitoring",
-    "cybersecurity services",
-    "remote teams",
-    "talent solutions",
-    "business process outsourcing",
-    "MindWhiz",
-  ],
   authors: [{ name: siteName }],
   creator: siteName,
   publisher: siteName,
@@ -40,7 +34,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName,
-    title: "MindWhiz - Flexible Talent, Scalable Teams, Global Impact",
+    title: homeSeo.title,
     description: siteDescription,
     images: [
       {
@@ -53,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MindWhiz - Flexible Talent, Scalable Teams, Global Impact",
+    title: homeSeo.title,
     description: siteDescription,
     images: ["/mindwhiz-mark.png"],
   },

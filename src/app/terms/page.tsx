@@ -1,16 +1,7 @@
-import type { Metadata } from "next";
 import TermsPageClient from "./TermsPageClient";
+import { buildMetadata } from "@/seo.config";
 
-const title = "Terms & Conditions";
-const description =
-  "The terms and conditions governing use of the MindWhiz website and engagement of MindWhiz staffing and BPO services.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/terms" },
-  robots: { index: true, follow: true },
-};
+export const metadata = buildMetadata("/terms");
 
 export default function TermsPage() {
   return <TermsPageClient />;
