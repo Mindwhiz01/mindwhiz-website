@@ -189,9 +189,9 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
             className="mt-5 text-[clamp(2.8rem,5vw,5.4rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span className="whitespace-nowrap">Support that</span>
+            <span className="whitespace-nowrap">24/7 IT helpdesk</span>
             <br />
-            never sleeps
+            support across Tiers 1-3
           </h2>
           <div className="mt-6 space-y-4 text-base leading-7 text-black/70">
             {page.intro.body.map((paragraph) => (

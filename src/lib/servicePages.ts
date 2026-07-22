@@ -64,7 +64,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Comparison",
-      title: "Support that never sleeps",
+      title: "24/7 IT helpdesk support across Tiers 1-3",
       body: [
         "Why Mindwhiz IT Helpdesk services stand out: round-the-clock expert support, faster response times, and compliant, cost-efficient service designed to scale with your business, not restrict it.",
         "Mindwhiz combines continuous availability, certified IT professionals, customized support plans, and SOC 2 and ISO 27001 aligned security practices.",
@@ -181,7 +181,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Industry-leading NOC operations",
-      title: "Certified engineers, reliable monitoring",
+      title: "24/7 NOC monitoring and network operations",
       body: [
         "MindWhiz works alongside organizations that value stability, responsiveness, and operational excellence.",
         "Our NOC teams help reduce downtime, improve visibility, and support business continuity with confidence.",
@@ -297,7 +297,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "The power of experience",
-      title: "Control every device and asset",
+      title: "Secure remote desktop and IT asset management",
       body: [
         "MindWhiz delivers IT asset management services that provide clear visibility and control across devices, software, and cloud environments.",
         "Structured lifecycle management supports secure onboarding, controlled access, and compliant asset retirement.",
@@ -374,7 +374,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Reliable IT infrastructure services",
-      title: "Cloud that stays stable and secure",
+      title: "Managed cloud infrastructure, migration and operations",
       body: [
         "Your business relies on always-available networks, applications, and digital services. MindWhiz helps organizations maintain a resilient IT foundation.",
         "We work with your teams to design, manage, and optimize cloud environments that support performance, availability, and long-term scalability.",
@@ -452,7 +452,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Server management",
-      title: "Servers online and protected",
+      title: "Server and network administration services",
       body: [
         "MindWhiz server management services reduce the security and operational risks that often come with managing servers internally.",
         "Dedicated engineers monitor performance, apply updates, maintain security controls, and help prevent serious server issues before they affect the business.",
@@ -531,7 +531,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Endpoint security operations",
-      title: "Device protection for distributed workforces",
+      title: "Managed endpoint security and device protection",
       body: [
         "Endpoint security keeps laptops, workstations, and servers protected as teams scale across locations.",
         "MindWhiz supports monitoring, policy alignment, patch visibility, and remediation workflows that reduce device-level risk.",
@@ -607,7 +607,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Software delivery and cloud infrastructure",
-      title: "Automate deployments, ship reliably",
+      title: "DevOps and delivery automation services",
       body: [
         "MindWhiz works across cloud platforms and environments to support DevOps and automation needs without relying on vendor-specific tools.",
         "By automating critical workflows, MindWhiz reduces operational complexity, increases efficiency, and supports security and compliance across modern infrastructure.",
@@ -685,7 +685,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Cybersecurity protection 24/7/365",
-      title: "Coverage for modern threats",
+      title: "24/7 cybersecurity monitoring and threat response",
       body: [
         "Through monitoring capabilities and deep cybersecurity expertise, MindWhiz helps organizations stay protected while focusing on their most critical security priorities.",
         "MindWhiz supports continuous assessment, monitoring, and response across complex environments.",
@@ -765,7 +765,7 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Talent & Workforce",
-      title: "The right people, exactly when you need them",
+      title: "IT staff augmentation and team extension",
       body: [
         "MindWhiz staff augmentation gives you role-ready engineers, analysts, and operators who plug straight into your workflows, tools, and standards.",
         "You keep full control of direction and priorities while we handle sourcing, vetting, onboarding, and retention, so your roadmap never waits on hiring.",
