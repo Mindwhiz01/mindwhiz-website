@@ -497,7 +497,7 @@ function ReelsSection() {
             <span className="text-[#ed1164]">move brands</span>
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-7 text-[#3f3f3d]/80">
-            Short-form video built to stop the scroll - scripted, shot, and cut for
+            Short-form video built to stop the scroll, scripted, shot, and cut for
             the platforms your audience actually uses.
           </p>
         </div>
@@ -562,7 +562,7 @@ const brandShowcase = [
   {
     name: "Velocity Retail",
     kicker: "E-commerce · Paid Media",
-    desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held - revenue grew 2.4x in six months.",
+    desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held, revenue grew 2.4x in six months.",
     tags: ["Meta & TikTok Ads", "Creative testing", "Conversion tracking"],
     images: [
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
@@ -573,7 +573,7 @@ const brandShowcase = [
   {
     name: "NovaTech",
     kicker: "SaaS · Demand Generation",
-    desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns - qualified demos tripled and cost per lead dropped 48%.",
+    desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns, qualified demos tripled and cost per lead dropped 48%.",
     tags: ["SEO content engine", "LinkedIn ABM", "Marketing automation"],
     images: [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
@@ -584,7 +584,7 @@ const brandShowcase = [
   {
     name: "UrbanBites",
     kicker: "Hospitality · Social & Local",
-    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz - both openings sold out their first weekend.",
+    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz, both openings sold out their first weekend.",
     tags: ["Local campaigns", "Influencer collabs", "Launch strategy"],
     images: [
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
@@ -733,7 +733,7 @@ function ScrollManifestoSection() {
 const faqs: Faq[] = [
   {
     q: "Which digital marketing services do you run?",
-    a: "Paid search, paid social, and retargeting; technical SEO and content systems; landing pages and conversion work; and email, nurturing, and marketing automation - run against acquisition goals rather than vanity metrics.",
+    a: "Paid search, paid social, and retargeting; technical SEO and content systems; landing pages and conversion work; and email, nurturing, and marketing automation, run against acquisition goals rather than vanity metrics.",
   },
   {
     q: "How soon will we see results?",
@@ -741,7 +741,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How is performance measured and reported?",
-    a: "Against clean acquisition goals agreed at the start - cost per acquisition, pipeline, and revenue rather than impressions. Tracking and analytics are configured properly before spend scales, so the numbers can be trusted.",
+    a: "Against clean acquisition goals agreed at the start, cost per acquisition, pipeline, and revenue rather than impressions. Tracking and analytics are configured properly before spend scales, so the numbers can be trusted.",
   },
   {
     q: "Do you work with our existing brand and website?",

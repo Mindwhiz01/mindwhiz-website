@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// MindWhiz home-page content - cleaned & reconciled from the existing site.
+// MindWhiz home-page content, cleaned & reconciled from the existing site.
 // Single source of truth shared by every design concept so they stay in sync.
 // ---------------------------------------------------------------------------
 
@@ -216,7 +216,7 @@ export const certifications = ["SOC 2", "ISO 27001", "ITIL", "CompTIA", "Microso
 export const finalCta = {
   title: "Stop struggling. Start scaling.",
   subtitle:
-    "Your team deserves better than burnout, delays, and distractions. MindWhiz puts the right people and processes in place - fast.",
+    "Your team deserves better than burnout, delays, and distractions. MindWhiz puts the right people and processes in place, fast.",
   cta: { label: "Book a free consultation", href: "#contact" },
 };
 

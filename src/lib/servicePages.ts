@@ -53,7 +53,7 @@ const sharedImages = {
 export const servicePages: ServicePageContent[] = [
   {
     slug: "it-helpdesk-24-7",
-    name: "24/7 IT Helpdesk (Tier 1 - 3)",
+    name: "24/7 IT Helpdesk (Tier 1 to 3)",
     sourceUrl: "https://mindwhiz.com/27-7/",
     group: "IT & Security",
     hero: {
@@ -147,7 +147,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "What is the difference between Tier 1, Tier 2, and Tier 3 support?",
-        a: "Tier 1 handles the everyday volume - access and password issues, device setup, and common application faults. Tier 2 takes deeper operating system, configuration, and connectivity troubleshooting. Tier 3 covers complex escalations, root cause analysis, and vendor coordination, so tickets do not stall at the first person who picks them up.",
+        a: "Tier 1 handles the everyday volume, access and password issues, device setup, and common application faults. Tier 2 takes deeper operating system, configuration, and connectivity troubleshooting. Tier 3 covers complex escalations, root cause analysis, and vendor coordination, so tickets do not stall at the first person who picks them up.",
       },
       {
         q: "How does pricing work?",
@@ -155,7 +155,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Can you work with the ticketing and IT tools we already use?",
-        a: "In most cases yes - we plug into your existing service desk, asset, and monitoring tools rather than forcing a migration. Where you do not have a platform in place, we can bring ours and hand over full access.",
+        a: "In most cases yes, we plug into your existing service desk, asset, and monitoring tools rather than forcing a migration. Where you do not have a platform in place, we can bring ours and hand over full access.",
       },
       {
         q: "What does onboarding involve before support goes live?",
@@ -276,7 +276,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "How do we see what the NOC has been doing?",
-        a: "You get regular reporting on incidents, response times, recurring faults, and trends - so the value is visible and repeat problems get engineered out instead of quietly absorbed.",
+        a: "You get regular reporting on incidents, response times, recurring faults, and trends, so the value is visible and repeat problems get engineered out instead of quietly absorbed.",
       },
     ],
     finalCta: {
@@ -337,7 +337,7 @@ export const servicePages: ServicePageContent[] = [
     faqs: [
       {
         q: "What is included in IT asset management?",
-        a: "A maintained inventory of hardware and software across the business - what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
+        a: "A maintained inventory of hardware and software across the business, what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
       },
       {
         q: "Can you support remote and hybrid staff?",
@@ -349,7 +349,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Do you handle software licensing and renewals?",
-        a: "Yes. Licences are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal - which usually surfaces spend that can be reclaimed.",
+        a: "Yes. Licences are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal, which usually surfaces spend that can be reclaimed.",
       },
       {
         q: "Can you manage employee onboarding and offboarding?",
@@ -415,7 +415,7 @@ export const servicePages: ServicePageContent[] = [
     faqs: [
       {
         q: "Which cloud platforms do you support?",
-        a: "The major providers - AWS, Azure, and Google Cloud - along with hybrid setups where part of the estate stays on premises. We work in whichever platform you have already committed to.",
+        a: "The major providers, AWS, Azure, and Google Cloud, along with hybrid setups where part of the estate stays on premises. We work in whichever platform you have already committed to.",
       },
       {
         q: "Can you help reduce what we spend on cloud?",
@@ -502,7 +502,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "What network security is covered?",
-        a: "Firewall configuration and review, VPN and remote access, segmentation, and monitoring of the network layer for faults and suspicious activity - maintained continuously rather than set once at install.",
+        a: "Firewall configuration and review, VPN and remote access, segmentation, and monitoring of the network layer for faults and suspicious activity, maintained continuously rather than set once at install.",
       },
       {
         q: "Can you take over from our current provider?",
@@ -510,7 +510,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Will we get documentation of our own environment?",
-        a: "Yes. Configurations, topology, credentials handling, and procedures are documented and kept current, and that documentation is yours - it does not lock you into us.",
+        a: "Yes. Configurations, topology, credentials handling, and procedures are documented and kept current, and that documentation is yours, it does not lock you into us.",
       },
     ],
     finalCta: {
@@ -570,7 +570,7 @@ export const servicePages: ServicePageContent[] = [
     faqs: [
       {
         q: "What counts as an endpoint?",
-        a: "Any device that connects to your environment and can be used to reach your data - laptops, desktops, servers, and mobile devices, whether they sit in an office or with a remote employee.",
+        a: "Any device that connects to your environment and can be used to reach your data, laptops, desktops, servers, and mobile devices, whether they sit in an office or with a remote employee.",
       },
       {
         q: "Does this replace the antivirus we already have?",
@@ -578,7 +578,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "What happens when a threat is detected on a device?",
-        a: "The device can be isolated to stop lateral movement, the threat is investigated and removed, and the device is restored to a known good state - with a record of what happened and what changed.",
+        a: "The device can be isolated to stop lateral movement, the threat is investigated and removed, and the device is restored to a known good state, with a record of what happened and what changed.",
       },
       {
         q: "Can you support employee-owned or BYOD devices?",
@@ -652,7 +652,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Which tools do you work with?",
-        a: "The mainstream ecosystem - Git-based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
+        a: "The mainstream ecosystem, Git-based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
       },
       {
         q: "Can you improve our existing pipeline instead of rebuilding it?",
@@ -744,7 +744,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "How is this reported back to us?",
-        a: "Regular reporting covers incidents raised, how they were resolved, response times, and the trends worth acting on - written to be read by both technical staff and management.",
+        a: "Regular reporting covers incidents raised, how they were resolved, response times, and the trends worth acting on, written to be read by both technical staff and management.",
       },
     ],
     finalCta: {
@@ -827,7 +827,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "How quickly can someone start?",
-        a: "It depends on the role and seniority, but the model exists to move faster than a direct hire - candidates are matched from an existing bench rather than recruited from scratch. We give you a realistic timeline once the role is scoped.",
+        a: "It depends on the role and seniority, but the model exists to move faster than a direct hire, candidates are matched from an existing bench rather than recruited from scratch. We give you a realistic timeline once the role is scoped.",
       },
       {
         q: "Who manages the person day to day?",

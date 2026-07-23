@@ -8,9 +8,9 @@ const sections: LegalSection[] = [
     body: [
       "We collect information you provide directly to us, and limited technical information generated when you use our website.",
       [
-        "Contact details you submit through our forms - name, email address, phone number, company, and the message you send us.",
+        "Contact details you submit through our forms, name, email address, phone number, company, and the message you send us.",
         "Business information shared during engagements, such as project requirements, staffing needs, and billing details.",
-        "Candidate information where you apply to work with us - CV/resume, work history, and professional certifications.",
+        "Candidate information where you apply to work with us, CV/resume, work history, and professional certifications.",
         "Technical data such as IP address, browser type, pages visited, and referring URLs, collected through standard server logs and analytics.",
       ],
     ],
@@ -22,7 +22,7 @@ const sections: LegalSection[] = [
       [
         "Respond to enquiries and provide the services you request.",
         "Match client requirements with candidate profiles and manage ongoing engagements.",
-        "Send service-related communications, and - only where you have opted in - marketing updates.",
+        "Send service-related communications, and, only where you have opted in, marketing updates.",
         "Operate, secure, and improve our website and services.",
         "Meet legal, regulatory, and contractual obligations across the regions we operate in.",
       ],
@@ -55,7 +55,7 @@ const sections: LegalSection[] = [
   {
     heading: "Data Retention",
     body: [
-      "We keep personal information only as long as needed for the purposes described above - typically for the duration of an engagement plus the period required by law or legitimate business need. Candidate profiles are retained while relevant to placement opportunities and deleted on request.",
+      "We keep personal information only as long as needed for the purposes described above, typically for the duration of an engagement plus the period required by law or legitimate business need. Candidate profiles are retained while relevant to placement opportunities and deleted on request.",
     ],
   },
   {

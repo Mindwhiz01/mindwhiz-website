@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
-  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
@@ -20,6 +19,7 @@ import { PageBanner } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
+import { usePinnedActive } from "@/lib/usePinnedActive";
 import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -425,86 +425,48 @@ function ProcessPanel({
   step,
   i,
   active,
-  mobile = false,
 }: {
   step: ServicePageContent["process"][number];
   i: number;
   active: number;
-  mobile?: boolean;
 }) {
-  // Desktop: a pinned cross-fade deck driven by the active step. Mobile: each
-  // panel is a normal-flow block that reveals itself - image zoom + text rise -
-  // the first time it scrolls into view. Native scrolling on phones, but the
-  // same visual language as the desktop deck, so the animation reads the same
-  // on every device.
-  const isActive = mobile || i === active;
-  const VIEWPORT = { once: true, margin: "-20%" } as const;
+  // A pinned cross-fade deck driven by the active step - one panel fully in at
+  // a time, on every screen size.
+  const isActive = i === active;
 
-  const wrapperMotion = mobile
-    ? {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.5, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { opacity: isActive ? 1 : 0 },
-        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
-      };
+  const wrapperMotion = {
+    initial: false as const,
+    animate: { opacity: isActive ? 1 : 0 },
+    transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
+  };
 
-  const imgMotion = mobile
-    ? {
-        initial: { scale: 1.15 },
-        whileInView: { scale: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 1.1, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { scale: isActive ? 1 : 1.15 },
-        transition: { duration: 1.1, ease: PROCESS_EASE },
-      };
+  const imgMotion = {
+    initial: false as const,
+    animate: { scale: isActive ? 1 : 1.15 },
+    transition: { duration: 1.1, ease: PROCESS_EASE },
+  };
 
-  const numberMotion = mobile
-    ? {
-        initial: { y: 30, opacity: 0 },
-        whileInView: { y: 0, opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.6, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: { y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 },
-        transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
-      };
+  const numberMotion = {
+    initial: false as const,
+    animate: { y: isActive ? 0 : 30, opacity: isActive ? 1 : 0 },
+    transition: { duration: SLIDE_MS / 1000, ease: PROCESS_EASE },
+  };
 
-  const textMotion = mobile
-    ? {
-        initial: { y: 40, opacity: 0 },
-        whileInView: { y: 0, opacity: 1 },
-        viewport: VIEWPORT,
-        transition: { duration: 0.6, ease: PROCESS_EASE },
-      }
-    : {
-        initial: false as const,
-        animate: isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 },
-        transition: {
-          duration: SLIDE_MS / 1000,
-          ease: PROCESS_EASE,
-          delay: isActive ? 0.12 : 0,
-        },
-      };
+  const textMotion = {
+    initial: false as const,
+    animate: isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 },
+    transition: {
+      duration: SLIDE_MS / 1000,
+      ease: PROCESS_EASE,
+      delay: isActive ? 0.12 : 0,
+    },
+  };
 
   return (
     <motion.div
       {...wrapperMotion}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -528,7 +490,7 @@ function ProcessPanel({
       {/* heading, top-left */}
       <motion.div
         {...textMotion}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-20 sm:px-8 sm:pt-28"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-36 sm:px-8 sm:pt-40"
       >
         <h3
           className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
@@ -565,61 +527,45 @@ function ProcessPanel({
 
 function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
   const total = page.process.length;
-  const [active, setActive] = useState(0);
 
-  // Snap the visible step to whole steps no matter how the user scrolls.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
-  });
+  // Active step is read from the track geometry (see usePinnedActive) so it
+  // stays locked to the snap position on every size, including the zoomed
+  // laptop layout where scrollYProgress would leave the last panel skipped.
+  const active = usePinnedActive(ref, total);
 
-  // While the track is pinned, one wheel gesture moves exactly one step.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // Pinned, one-gesture-per-step track on every size - the hook drives both
+  // wheel (desktop/laptop) and touch (mobile/tablet), so the animated deck
+  // runs everywhere instead of falling back to a plain stack on phones.
+  useSlideSnap(ref, total);
 
   return (
     <section className="relative bg-slate-50">
-      {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
-          cross-fade, every step visible as you scroll. sm+ keeps the pinned
-          one-panel-at-a-time track. */}
       <div
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        // One full viewport of scroll per step at every width >= sm, matching
-        // the `h-screen` sticky pin below - so the wheel-snap step, the
-        // scroll-progress slice, and the pinned viewport all stay in sync.
-        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
+        // One full viewport of scroll per step, matching the sticky pin below -
+        // so the wheel-snap step, the active-step read, and the pinned viewport
+        // all stay in sync.
+        style={{ height: `calc(var(--svh) * ${total * 100})` }}
       >
-        {isMobile ? (
-          <div className="flex flex-col">
-            {page.process.map((step, i) => (
-              <ProcessPanel key={step.title} step={step} i={i} active={active} mobile />
-            ))}
-          </div>
-        ) : (
-          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
-            {page.process.map((step, i) => (
-              <ProcessPanel key={step.title} step={step} i={i} active={active} />
-            ))}
+        <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
+          {page.process.map((step, i) => (
+            <ProcessPanel key={step.title} step={step} i={i} active={active} />
+          ))}
 
-            {/* bottom progress bar - fills one segment per step */}
-            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-              <motion.div
-                initial={false}
-                animate={{ scaleX: (active + 1) / total }}
-                transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
-                style={{ transformOrigin: "left" }}
-                className="h-full w-full bg-[#ed1164]"
-              />
-            </div>
+          {/* bottom progress bar - fills one segment per step */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: PROCESS_EASE }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

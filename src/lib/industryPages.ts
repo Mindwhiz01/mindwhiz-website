@@ -74,7 +74,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "What kinds of technology companies do you work with?",
-        a: "Software firms, managed service providers, SaaS products, and internal IT functions - typically where the team is stretched across support, infrastructure, and delivery at the same time and something is being neglected.",
+        a: "Software firms, managed service providers, SaaS products, and internal IT functions, typically where the team is stretched across support, infrastructure, and delivery at the same time and something is being neglected.",
       },
       {
         q: "Can you extend our existing engineering team rather than replace it?",
@@ -153,11 +153,11 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Which platforms do you work with?",
-        a: "The common commerce stacks - Shopify, WooCommerce, Magento, and custom storefronts - along with the hosting and infrastructure underneath them.",
+        a: "The common commerce stacks, Shopify, WooCommerce, Magento, and custom storefronts, along with the hosting and infrastructure underneath them.",
       },
       {
         q: "Can you help with payment security and PCI concerns?",
-        a: "We support the technical controls involved - segmentation, access control, monitoring, patching, and evidence collection - and work alongside your assessor. We support your compliance programme rather than certify it for you.",
+        a: "We support the technical controls involved, segmentation, access control, monitoring, patching, and evidence collection, and work alongside your assessor. We support your compliance programme rather than certify it for you.",
       },
       {
         q: "Can you connect our store to our other systems?",
@@ -224,7 +224,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "We have no internal IT team. Can you be it?",
-        a: "Yes. For smaller teams we act as the whole IT function - devices, accounts, support, security, and infrastructure - so nobody on your team has to absorb it alongside their real job.",
+        a: "Yes. For smaller teams we act as the whole IT function, devices, accounts, support, security, and infrastructure, so nobody on your team has to absorb it alongside their real job.",
       },
       {
         q: "Is this affordable at our size?",
@@ -299,7 +299,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "What do you actually provide for construction firms?",
-        a: "Two things that usually sit apart: pre-construction support such as estimation and quantity takeoffs, and the IT side - site connectivity, devices, and support for teams split between office and field.",
+        a: "Two things that usually sit apart: pre-construction support such as estimation and quantity takeoffs, and the IT side, site connectivity, devices, and support for teams split between office and field.",
       },
       {
         q: "Which software do you work in?",
@@ -374,7 +374,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "What do you do for real estate firms?",
-        a: "Support the systems the business runs on - agent devices, email and document security, CRM and listing platforms, and the infrastructure connecting multiple offices - so transactions are not delayed by technology.",
+        a: "Support the systems the business runs on, agent devices, email and document security, CRM and listing platforms, and the infrastructure connecting multiple offices, so transactions are not delayed by technology.",
       },
       {
         q: "Can you support several branches or offices?",
@@ -461,7 +461,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "What about older equipment running unsupported software?",
-        a: "It is common in this sector and it is handled by managing risk rather than demanding replacement - segmentation, restricted access, and monitoring around legacy systems that cannot simply be upgraded.",
+        a: "It is common in this sector and it is handled by managing risk rather than demanding replacement, segmentation, restricted access, and monitoring around legacy systems that cannot simply be upgraded.",
       },
       {
         q: "How do you approach industrial cybersecurity?",
@@ -599,7 +599,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "What kinds of firms do you work with?",
-        a: "Consultancies, legal and advisory practices, agencies, and similar firms - businesses where billable time is the product and technology failures translate directly into lost hours.",
+        a: "Consultancies, legal and advisory practices, agencies, and similar firms, businesses where billable time is the product and technology failures translate directly into lost hours.",
       },
       {
         q: "Can you support a team that travels or works from client sites?",
@@ -674,7 +674,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "Can you support round-the-clock operations?",
-        a: "Yes. Coverage runs continuously, which suits operations that do not stop - night shifts, weekend movements, and depots running outside standard office hours.",
+        a: "Yes. Coverage runs continuously, which suits operations that do not stop, night shifts, weekend movements, and depots running outside standard office hours.",
       },
       {
         q: "What about warehouse connectivity, scanners, and mobile devices?",
@@ -686,7 +686,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "How is downtime handled during peak periods?",
-        a: "With monitoring that catches degradation early, agreed escalation paths, and tested recovery plans - because in peak season the cost of an outage compounds across every downstream commitment.",
+        a: "With monitoring that catches degradation early, agreed escalation paths, and tested recovery plans, because in peak season the cost of an outage compounds across every downstream commitment.",
       },
       {
         q: "Can you support sites in multiple countries?",
@@ -761,7 +761,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "What happens if there is a security incident?",
-        a: "It is contained and investigated against an agreed response plan, with the scope of any data exposure established and documented - which is what your breach notification obligations depend on.",
+        a: "It is contained and investigated against an agreed response plan, with the scope of any data exposure established and documented, which is what your breach notification obligations depend on.",
       },
       {
         q: "Can you support multiple clinics or sites?",

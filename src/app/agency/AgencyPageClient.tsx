@@ -497,7 +497,7 @@ function Footer() {
 const faqs: Faq[] = [
   {
     q: "What kind of work does the agency take on?",
-    a: "Brand, design, and digital product work - identity systems, websites, campaigns, and the interfaces around them - for teams that want the strategy and the execution handled together.",
+    a: "Brand, design, and digital product work, identity systems, websites, campaigns, and the interfaces around them, for teams that want the strategy and the execution handled together.",
   },
   {
     q: "How do projects usually start?",
@@ -513,7 +513,7 @@ const faqs: Faq[] = [
   },
   {
     q: "What happens after launch?",
-    a: "We can stay on for iteration, new features, and ongoing support, or hand over documented files and assets so your team can run with it. Both are fine - the choice is yours.",
+    a: "We can stay on for iteration, new features, and ongoing support, or hand over documented files and assets so your team can run with it. Both are fine, the choice is yours.",
   },
 ];
 

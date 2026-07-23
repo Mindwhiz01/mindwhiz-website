@@ -386,7 +386,7 @@ function CapabilitiesCarousel() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From daily bookkeeping to CFO-level analysis, we plug into your stack
-              and run the numbers - so you get clean books, timely reports, and the
+              and run the numbers, so you get clean books, timely reports, and the
               insight to act on them.
             </p>
             <p className="mt-8 hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50 lg:flex">
@@ -495,7 +495,7 @@ function CoverageMasonry() {
               <span className="text-[#ed1164]">every close</span>
             </h2>
             <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-              Bookkeeping, payroll, reporting, and analysis - we cover the full
+              Bookkeeping, payroll, reporting, and analysis, we cover the full
               finance function or just the pieces you need.
             </p>
           </Reveal>
@@ -578,7 +578,7 @@ export default function FinancePage() {
             <span className="text-[#ed1164]">Books</span>
           </>
         }
-        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting - accurate numbers, faster closes, and up to 40% lower back-office cost."
+        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and up to 40% lower back-office cost."
         primary={{ label: "Talk to finance", href: "#contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
@@ -631,7 +631,7 @@ export default function FinancePage() {
               </h3>
               <p className="mt-3 max-w-xl text-sm leading-7 text-black/65">
                 MindWhiz is the trusted partner for finance and accounting staff
-                augmentation - delivering precise, compliant solutions with a
+                augmentation, delivering precise, compliant solutions with a
                 personalized approach for each business. By streamlining processes
                 and reducing costs, we help you increase efficiency and stay focused
                 on growth, with skilled remote accountants and responsive execution.

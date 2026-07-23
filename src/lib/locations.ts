@@ -87,7 +87,7 @@ export const locations: LocationContent[] = [
       "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1800&q=80",
     tagline: "Our largest engineering and delivery hub.",
     intro:
-      "Lahore is home to the majority of our technical talent - engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
+      "Lahore is home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
     timezone: "Asia/Karachi",
     highlights: [
       {
@@ -137,7 +137,7 @@ export function locationJsonLd(loc: LocationContent) {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: `MindWhiz - ${loc.city}`,
+    name: `MindWhiz, ${loc.city}`,
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
     url: `${SITE_URL}/locations/${loc.slug}`,
     description: loc.intro,

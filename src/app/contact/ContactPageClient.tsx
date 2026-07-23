@@ -182,7 +182,7 @@ export default function ContactPageClient() {
 
               <div id="map" className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg shadow-black/5">
                 <iframe
-                  title={`MindWhiz office - ${company.address}`}
+                  title={`MindWhiz office, ${company.address}`}
                   src={worldMapSrc}
                   className="h-64 w-full"
                   style={{ border: 0 }}

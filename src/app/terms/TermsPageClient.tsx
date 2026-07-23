@@ -12,7 +12,7 @@ const sections: LegalSection[] = [
   {
     heading: "Our Services",
     body: [
-      "MindWhiz provides hybrid staffing, staff augmentation, and business process outsourcing services - including IT helpdesk, NOC monitoring, cybersecurity operations, cloud and DevOps support, construction estimation, finance and accounting, HR services, and web services - delivered from our hubs in the United States, the United Kingdom, and Pakistan.",
+      "MindWhiz provides hybrid staffing, staff augmentation, and business process outsourcing services, including IT helpdesk, NOC monitoring, cybersecurity operations, cloud and DevOps support, construction estimation, finance and accounting, HR services, and web services, delivered from our hubs in the United States, the United Kingdom, and Pakistan.",
       "Specific engagements are governed by the statement of work or service agreement signed for that engagement. Where those documents conflict with these terms, the signed agreement prevails.",
     ],
   },

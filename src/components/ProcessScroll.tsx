@@ -7,11 +7,11 @@
 // half-faded between two slides. Shared across service-style pages.
 // ---------------------------------------------------------------------------
 
-import { useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
-import { useBelowSm } from "@/lib/useBelowSm";
+import { usePinnedActive } from "@/lib/usePinnedActive";
 
 const defaultImages = [
   "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
@@ -33,7 +33,6 @@ function ProcessPanel({
   images,
   ctaLabel,
   ctaHref,
-  mobile = false,
 }: {
   step: Step;
   i: number;
@@ -41,24 +40,16 @@ function ProcessPanel({
   images: string[];
   ctaLabel: string;
   ctaHref: string;
-  mobile?: boolean;
 }) {
-  // On mobile every panel is a static, always-visible block in normal flow -
-  // no pin, no cross-fade. isActive is forced true so the enter states resolve
-  // to their final (visible) values with no animation.
-  const isActive = mobile || i === active;
+  const isActive = i === active;
 
   return (
     <motion.div
       initial={false}
-      animate={{ opacity: mobile || isActive ? 1 : 0 }}
-      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: EASE }}
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -92,10 +83,10 @@ function ProcessPanel({
           ease: EASE,
           delay: isActive ? 0.12 : 0,
         }}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-36 sm:px-8 sm:pt-40"
       >
         <h3
-          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {step.title}
@@ -111,12 +102,12 @@ function ProcessPanel({
           ease: EASE,
           delay: isActive ? 0.12 : 0,
         }}
-        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-16 sm:px-8 sm:pb-28"
       >
-        <div className="flex max-w-lg items-start gap-6">
-          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+        <div className="flex max-w-lg items-start gap-4 sm:gap-6">
+          <span className="mt-2 hidden h-px w-16 shrink-0 bg-white/40 sm:block" />
           <div>
-            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
+            <p className="text-base leading-relaxed text-white/85 sm:text-xl">{step.desc}</p>
             <a
               href={ctaHref}
               className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
@@ -151,77 +142,50 @@ export default function ProcessScroll({
   // the ref must sit on the `total * 100vh` track, useSlideSnap keys its
   // snap math off this element's bounding rect
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
   const total = steps.length;
-  const [active, setActive] = useState(0);
 
-  // Snap the visible slide to whole steps no matter how the user scrolls
-  // (scrollbar drag, keyboard, touch) - a panel is always fully in or out.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.min(total - 1, Math.max(0, Math.round(v * (total - 1))));
-    setActive(idx);
-  });
+  // Active slide is read from the track geometry (see usePinnedActive) so it
+  // stays locked to the snap position on every size, including the zoomed
+  // laptop layout where scrollYProgress would leave the last panel skipped.
+  const active = usePinnedActive(ref, total);
 
-  // While the section is pinned, one wheel gesture moves exactly one slide.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // Pinned, one-gesture-per-slide deck on every size - the hook drives both
+  // wheel (desktop/laptop) and touch (mobile/tablet), so the animated scroll
+  // runs everywhere instead of falling back to a plain stack on phones.
+  useSlideSnap(ref, total);
 
   return (
     <section className="relative bg-white">
-      {/* Below `sm`: a plain stack of full panels in normal flow - no pin, no
-          cross-fade, every step visible as you scroll. sm+ keeps the pinned
-          one-slide-at-a-time deck. */}
       <div
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
+        style={{ height: `calc(var(--svh) * ${total * 100})` }}
       >
-        {isMobile ? (
-          <div className="flex flex-col">
-            {steps.map((step, i) => (
-              <ProcessPanel
-                key={step.title}
-                step={step}
-                i={i}
-                active={active}
-                images={images}
-                ctaLabel={ctaLabel}
-                ctaHref={ctaHref}
-                mobile
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
-            {steps.map((step, i) => (
-              <ProcessPanel
-                key={step.title}
-                step={step}
-                i={i}
-                active={active}
-                images={images}
-                ctaLabel={ctaLabel}
-                ctaHref={ctaHref}
-              />
-            ))}
+        <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
+          {steps.map((step, i) => (
+            <ProcessPanel
+              key={step.title}
+              step={step}
+              i={i}
+              active={active}
+              images={images}
+              ctaLabel={ctaLabel}
+              ctaHref={ctaHref}
+            />
+          ))}
 
-            {/* bottom progress bar - fills one segment per slide */}
-            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-              <motion.div
-                initial={false}
-                animate={{ scaleX: (active + 1) / total }}
-                transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
-                style={{ transformOrigin: "left" }}
-                className="h-full w-full bg-[#ed1164]"
-              />
-            </div>
+          {/* bottom progress bar - fills one segment per slide */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: EASE }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

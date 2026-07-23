@@ -359,7 +359,7 @@ function CapabilitiesCarousel() {
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
               From the first set of drawings to the submitted bid, our estimators
-              handle the measuring, pricing, and packaging - so your project
+              handle the measuring, pricing, and packaging, so your project
               managers stay focused on winning and building the work.
             </p>
             <p className="mt-8 hidden items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50 lg:flex">
@@ -375,7 +375,7 @@ function CapabilitiesCarousel() {
 const faqs: Faq[] = [
   {
     q: "What do you deliver on an estimation engagement?",
-    a: "Material and labor takeoffs from your drawings and specs, detailed cost breakdowns with regional pricing and markups, and complete bid packages reviewed against the scope of work - delivered in the format your team already works in.",
+    a: "Material and labor takeoffs from your drawings and specs, detailed cost breakdowns with regional pricing and markups, and complete bid packages reviewed against the scope of work, delivered in the format your team already works in.",
   },
   {
     q: "Which software and file formats do you work with?",
@@ -422,7 +422,7 @@ export default function ConstructionEstimationPage() {
             <span className="text-[#ed1164]">Bids</span>
           </>
         }
-        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid-ready cost estimates - so your team quotes more work, faster, without carrying the overhead."
+        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid-ready cost estimates, so your team quotes more work, faster, without carrying the overhead."
         primary={{ label: "Request an estimate", href: "#contact" }}
         secondary={{ label: "Explore capabilities", href: "#capabilities" }}
       />
@@ -488,7 +488,7 @@ export default function ConstructionEstimationPage() {
                 <span className="text-[#ed1164]">every trade</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Commercial, residential, and industrial - our estimators work
+                Commercial, residential, and industrial, our estimators work
                 across the full CSI breakdown to price the whole job or just the
                 scopes you need.
               </p>
@@ -588,7 +588,7 @@ export default function ConstructionEstimationPage() {
                 <span className="text-[#ed1164]">your inbox</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-7 text-black/70">
-                Every engagement ends with a clean, organized package - reviewed,
+                Every engagement ends with a clean, organized package, reviewed,
                 labeled, and ready to hand straight to the client or drop into
                 your bid.
               </p>

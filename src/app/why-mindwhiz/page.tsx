@@ -6,12 +6,7 @@
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  type Variants,
-} from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   ArrowRight,
@@ -36,6 +31,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
+import { usePinnedActive } from "@/lib/usePinnedActive";
 import {
   PANEL_EASE,
   panelImageMotion,
@@ -137,7 +133,7 @@ function StudioSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
-            offices in the UK and the USA. Building since 2017 - somewhere, the
+            offices in the UK and the USA. Building since 2017, somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -297,17 +293,12 @@ function ValuePanel({
 
 function CoreValuesScroll() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
   const total = values.length;
-  const [active, setActive] = useState(0);
 
-  // Snap the visible value to whole steps no matter how the user scrolls.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
-  });
+  // Active value is read from the track geometry (see usePinnedActive) so it
+  // stays locked to the snap position on every size, including the zoomed
+  // laptop layout where scrollYProgress would leave the last panel skipped.
+  const active = usePinnedActive(ref, total);
 
   // While the section is pinned, one gesture moves exactly one value - wheel
   // on desktop, swipe-then-settle on touch.
@@ -373,7 +364,7 @@ const hubs = [
 ];
 
 const offerings = [
-  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers - built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
+  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO-level support from experienced finance professionals.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&h=860&q=80" },
@@ -390,11 +381,11 @@ const bannerStats = [
 const storyHighlights = [
   {
     title: "Founder-led, values-driven",
-    desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses - headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
+    desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses, headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
   },
   {
     title: "Decades of hiring expertise",
-    desc: "Our leadership brings decades of experience in technical recruiting across the industries we serve - construction, IT and cybersecurity, and finance.",
+    desc: "Our leadership brings decades of experience in technical recruiting across the industries we serve, construction, IT and cybersecurity, and finance.",
   },
   {
     title: "Built for speed",
@@ -408,7 +399,7 @@ const storyHighlights = [
 const faqs: Faq[] = [
   {
     q: "What does MindWhiz actually do?",
-    a: "We provide managed IT and security services, finance, HR, and construction back-office support, and staff augmentation - either as your whole function or as an extension of the team you already have.",
+    a: "We provide managed IT and security services, finance, HR, and construction back-office support, and staff augmentation, either as your whole function or as an extension of the team you already have.",
   },
   {
     q: "How is staff augmentation different from outsourcing a project?",
@@ -460,7 +451,7 @@ export default function WhyMindWhizPage() {
               Real <span className="text-[#9CCC3C]">teams</span>
             </>
           }
-          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people - not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
+          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people, not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
           primary={{ label: "Contact us", href: "/contact" }}
           secondary={{ label: "Read the story", href: "/about#story" }}
         />
@@ -511,7 +502,7 @@ export default function WhyMindWhizPage() {
                 <span style={{ color: "#ed1164" }}>talent</span> gap
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-black">
-                MindWhiz is more than a service provider - it&apos;s your partner in
+                MindWhiz is more than a service provider, it&apos;s your partner in
                 building the future of your business.
               </p>
             </Reveal>
@@ -598,7 +589,7 @@ export default function WhyMindWhizPage() {
               <p className="mt-4 text-lg leading-relaxed text-black">
                 With delivery hubs across the United States, the United Kingdom, and
                 Pakistan, we serve clients across North America, the Middle East,
-                Canada, and Australia - operations covered around the clock.
+                Canada, and Australia, operations covered around the clock.
               </p>
             </Reveal>
 
@@ -610,7 +601,7 @@ export default function WhyMindWhizPage() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={h.flag}
-                      alt={`${h.country} - ${h.city}`}
+                      alt={`${h.country}, ${h.city}`}
                       loading="lazy"
                       className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${
                         h.fit === "contain" ? "object-contain p-2" : "object-cover"

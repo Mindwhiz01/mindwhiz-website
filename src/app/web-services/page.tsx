@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   Code2,
@@ -23,6 +23,8 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  Play,
+  Pause,
   Star,
   type LucideIcon,
 } from "lucide-react";
@@ -32,7 +34,7 @@ import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
-import { useBelowSm } from "@/lib/useBelowSm";
+import { usePinnedActive } from "@/lib/usePinnedActive";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -103,6 +105,59 @@ function BrowserFrame({
   // hover-scroll speed follows the page length so short and long sites
   // both glide at the same pace; mouse-out snaps back quickly
   const [scrollDur, setScrollDur] = useState(8);
+
+  // Touch devices (mobile / tablet) have no hover, so the full-page preview
+  // is driven by a small play/pause button instead. rAF moves the image so a
+  // pause freezes it in place rather than snapping back.
+  const imgRef = useRef<HTMLImageElement>(null);
+  const posRef = useRef(0); // current translateY in px (0 → negative)
+  const rafRef = useRef<number | null>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    if (!playing) return;
+    const img = imgRef.current;
+    if (!img) return;
+    img.style.transition = "none";
+    let last = performance.now();
+    const tick = (now: number) => {
+      const el = imgRef.current;
+      if (!el) return;
+      const min = Math.min(0, FRAME_H - el.clientHeight); // most-negative offset
+      const dt = (now - last) / 1000;
+      last = now;
+      posRef.current = Math.max(min, posRef.current - SCROLL_PX_PER_S * dt);
+      el.style.transform = `translateY(${posRef.current}px)`;
+      if (posRef.current <= min) {
+        setPlaying(false);
+        return;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [playing]);
+
+  const toggleScroll = (e: React.MouseEvent) => {
+    // frames can sit inside a link, so don't navigate when tapping the control
+    e.preventDefault();
+    e.stopPropagation();
+    setPlaying((p) => {
+      if (!p) {
+        const el = imgRef.current;
+        const min = el ? Math.min(0, FRAME_H - el.clientHeight) : 0;
+        // if parked at the bottom, restart from the top
+        if (posRef.current <= min) {
+          posRef.current = 0;
+          if (el) el.style.transform = "translateY(0px)";
+        }
+      }
+      return !p;
+    });
+  };
+
   return (
     <div className={`overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-black/[0.08] ${className}`}>
       <div className="flex items-center gap-2 border-b border-slate-200 bg-[#f4f3f0] px-4 py-3">
@@ -118,6 +173,7 @@ function BrowserFrame({
         <div className="relative h-[360px] overflow-hidden bg-[#f2f1ee]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            ref={imgRef}
             src={image}
             alt={host}
             loading="lazy"
@@ -127,9 +183,19 @@ function BrowserFrame({
               if (dist > 0) setScrollDur(Math.max(4, dist / SCROLL_PX_PER_S));
             }}
             style={{ "--scroll-dur": `${scrollDur}s` } as React.CSSProperties}
-            className="w-full ease-linear [transition-property:transform] [transition-duration:0.9s] group-hover:translate-y-[min(0px,calc(360px-100%))] group-hover:[transition-duration:var(--scroll-dur)]"
+            className="w-full ease-linear [transition-property:transform] [transition-duration:0.9s] [@media(hover:hover)]:group-hover:translate-y-[min(0px,calc(360px-100%))] [@media(hover:hover)]:group-hover:[transition-duration:var(--scroll-dur)]"
           />
-          <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white opacity-100 backdrop-blur transition-opacity duration-300 group-hover:opacity-0">
+          {/* touch-only play / pause control, bottom-left, small */}
+          <button
+            type="button"
+            onClick={toggleScroll}
+            aria-label={playing ? "Pause preview scroll" : "Play preview scroll"}
+            className="absolute bottom-3 left-3 z-10 grid h-8 w-8 place-items-center rounded-full bg-black/60 text-white backdrop-blur transition-colors hover:bg-[#ed1164] lg:hidden"
+          >
+            {playing ? <Pause className="h-3.5 w-3.5 fill-current" /> : <Play className="h-3.5 w-3.5 translate-x-[1px] fill-current" />}
+          </button>
+          {/* hover hint only makes sense on pointer devices */}
+          <span className="pointer-events-none absolute bottom-3 right-3 hidden rounded-full bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white opacity-100 backdrop-blur transition-opacity duration-300 group-hover:opacity-0 lg:block">
             Hover to scroll
           </span>
         </div>
@@ -153,12 +219,12 @@ function BrowserFrame({
 // data
 // ---------------------------------------------------------------------------
 const services: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
-  { title: "Custom Websites", desc: "Marketing sites and landing pages designed to convert - fast, responsive, and pixel-perfect on every device. We craft clear messaging, intuitive navigation, and conversion-focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Custom Websites", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel-perfect on every device. We craft clear messaging, intuitive navigation, and conversion-focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Web Applications", desc: "Full-stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Dashboards & Portals", desc: "Data-rich admin panels, analytics dashboards, and customer portals with real-time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use - with role-based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Dashboards & Portals", desc: "Data-rich admin panels, analytics dashboards, and customer portals with real-time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role-based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
   { title: "E-commerce", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on-demand web team - ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on-demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
 ];
 
 const stack = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PHP", "Laravel", "Python", "Tailwind CSS", "WordPress", "WooCommerce", "Shopify", "Webflow", "MySQL", "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker"];
@@ -176,7 +242,7 @@ const portfolio: { name: string; url: string; image: string; category: string; b
 const seoCaps: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
   { title: "Technical SEO", desc: "Clean markup, crawlability, sitemaps, and canonical tags from day one.", Icon: Search, image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" },
   { title: "Core Web Vitals", desc: "Fast loads and stable layouts that Google rewards and users feel.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" },
-  { title: "Structured Data", desc: "Schema.org markup for rich results - products, reviews, and FAQs.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" },
+  { title: "Structured Data", desc: "Schema.org markup for rich results, products, reviews, and FAQs.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" },
   { title: "Analytics", desc: "GA4, Search Console, and conversion tracking wired up and measured.", Icon: LineChart, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" },
   { title: "On-page & Local", desc: "Optimized metadata, content structure, and local listings that rank.", Icon: Globe2, image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" },
   { title: "Secure & Accessible", desc: "HTTPS, best-practice security, and accessible semantic HTML.", Icon: ShieldCheck, image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80" },
@@ -246,7 +312,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-black/60">
-              High-performance websites, web apps, and dashboards - designed, built, and
+              High-performance websites, web apps, and dashboards, designed, built, and
               optimized to look sharp, load fast, and rank well.
             </p>
           </Reveal>
@@ -291,27 +357,20 @@ function ServicePanel({
   s,
   i,
   active,
-  mobile = false,
 }: {
   s: (typeof services)[number];
   i: number;
   active: number;
-  mobile?: boolean;
 }) {
-  // On mobile every panel is a static, always-visible block in normal flow.
-  const isActive = mobile || i === active;
+  const isActive = i === active;
 
   return (
     <motion.div
       initial={false}
-      animate={{ opacity: mobile || isActive ? 1 : 0 }}
-      transition={mobile ? { duration: 0 } : { duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+      animate={{ opacity: isActive ? 1 : 0 }}
+      transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
       style={{ zIndex: isActive ? 2 : 1 }}
-      className={
-        mobile
-          ? "pointer-events-none relative h-[85vh] min-h-[520px] w-full overflow-hidden"
-          : "pointer-events-none absolute inset-0"
-      }
+      className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -341,10 +400,10 @@ function ServicePanel({
         initial={false}
         animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
         transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
-        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-28 sm:px-8"
+        className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-36 sm:px-8 sm:pt-40"
       >
         <h3
-          className="max-w-2xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
+          className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={displayFont}
         >
           {s.title}
@@ -356,12 +415,12 @@ function ServicePanel({
         initial={false}
         animate={isActive ? { y: 0, opacity: 1 } : { y: 70, opacity: 0 }}
         transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
-        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-28 sm:px-8"
+        className="absolute inset-x-0 bottom-0 mx-auto flex max-w-6xl justify-end px-6 pb-16 sm:px-8 sm:pb-28"
       >
-        <div className="flex max-w-lg items-start gap-6">
-          <span className="mt-2 h-px w-16 shrink-0 bg-white/40" />
+        <div className="flex max-w-lg items-start gap-4 sm:gap-6">
+          <span className="mt-2 hidden h-px w-16 shrink-0 bg-white/40 sm:block" />
           <div>
-            <p className="text-lg leading-relaxed text-white/85 sm:text-xl">{s.desc}</p>
+            <p className="text-base leading-relaxed text-white/85 sm:text-xl">{s.desc}</p>
             <a
               href="/contact"
               className="pointer-events-auto mt-6 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
@@ -378,54 +437,42 @@ function ServicePanel({
 
 function ServicesSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const total = 3;
-  const [active, setActive] = useState(0);
 
-  // Snap the visible slide to whole steps no matter how the user scrolls -
-  // a panel is always fully in or animating, never parked half-faded.
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    setActive(Math.min(total - 1, Math.max(0, Math.round(v * (total - 1)))));
-  });
+  // Active slide is read from the track's geometry (see usePinnedActive) so it
+  // stays locked to the snap position on every size, including the zoomed
+  // laptop layout where scrollYProgress would leave the last panel skipped.
+  const active = usePinnedActive(ref, total);
 
-  // While the section is pinned, one wheel gesture moves exactly one slide.
-  // Disabled on mobile, where the section is a plain stack, not pinned.
-  useSlideSnap(ref, total, !isMobile);
+  // Pinned, one-gesture-per-slide deck on every size - the hook handles both
+  // wheel (desktop/laptop) and touch (mobile/tablet), so the same animated
+  // scroll experience runs everywhere.
+  useSlideSnap(ref, total);
 
   return (
     <section id="web-that-works" className="relative bg-[#faf9f7]">
-      {/* Below `sm`: plain stack of full panels, no pin/cross-fade. */}
       <div
         ref={ref}
         data-header-dark
         className="relative bg-black"
-        style={{ height: isMobile ? undefined : `calc(var(--svh) * ${total * 100})` }}
+        style={{ height: `calc(var(--svh) * ${total * 100})` }}
       >
-        {isMobile ? (
-          <div className="flex flex-col">
-            {services.slice(0, total).map((s, i) => (
-              <ServicePanel key={s.title} s={s} i={i} active={active} mobile />
-            ))}
-          </div>
-        ) : (
-          <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
-            {services.slice(0, total).map((s, i) => (
-              <ServicePanel key={s.title} s={s} i={i} active={active} />
-            ))}
+        <div className="sticky top-0 h-[calc(var(--svh)*100)] overflow-hidden">
+          {services.slice(0, total).map((s, i) => (
+            <ServicePanel key={s.title} s={s} i={i} active={active} />
+          ))}
 
-            {/* progress bar - fills one segment per slide */}
-            <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
-              <motion.div
-                initial={false}
-                animate={{ scaleX: (active + 1) / total }}
-                transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transformOrigin: "left" }}
-                className="h-full w-full bg-[#ed1164]"
-              />
-            </div>
+          {/* progress bar - fills one segment per slide */}
+          <div className="absolute inset-x-0 bottom-0 z-10 h-1 bg-white/15">
+            <motion.div
+              initial={false}
+              animate={{ scaleX: (active + 1) / total }}
+              transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
+              style={{ transformOrigin: "left" }}
+              className="h-full w-full bg-[#ed1164]"
+            />
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
@@ -586,7 +633,7 @@ function SeoSection() {
                 SEO built <span style={{ color: PINK }}>in</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-black/55">
-                Every site we ship is engineered to be found - fast, technically sound,
+                Every site we ship is engineered to be found, fast, technically sound,
                 and structured for search from the first commit.
               </p>
             </Reveal>
@@ -678,7 +725,7 @@ function SeoSection() {
                   loading="lazy"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
-                  className="h-10 w-10 object-contain grayscale transition-all duration-300 [@media(hover:hover)]:group-hover:grayscale-0"
+                  className="h-10 w-10 object-contain grayscale-0 lg:grayscale transition-all duration-300 [@media(hover:hover)]:group-hover:grayscale-0"
                 />
                 <motion.span
                   className="text-sm font-semibold text-black/70 transition-colors duration-300 group-hover:text-[#ed1164]"
@@ -757,15 +804,15 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does a custom website cost?",
-    a: "Pricing depends on scope - a focused landing page starts lower, while multi-page sites, e-commerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
+    a: "Pricing depends on scope, a focused landing page starts lower, while multi-page sites, e-commerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
   },
   {
     q: "Will my site be fast, mobile-friendly, and SEO-ready?",
-    a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in - so it loads fast, feels smooth, and is set up to rank from day one.",
+    a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in, so it loads fast, feels smooth, and is set up to rank from day one.",
   },
   {
     q: "Do you offer ongoing maintenance and support?",
-    a: "Yes. We offer monthly care and retainer plans covering hosting, security patches, performance tuning, content updates, and new features - so your site keeps running smoothly and evolving long after launch.",
+    a: "Yes. We offer monthly care and retainer plans covering hosting, security patches, performance tuning, content updates, and new features, so your site keeps running smoothly and evolving long after launch.",
   },
   {
     q: "Can you redesign or migrate my existing website?",
