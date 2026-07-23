@@ -10,7 +10,7 @@ import {
   type MotionValue,
   type Variants,
 } from "framer-motion";
-import { Inter, Oswald } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Footer from "@/components/Footer";
@@ -23,9 +23,9 @@ import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { useBelowSm } from "@/lib/useBelowSm";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
-const display = Oswald({
+const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
@@ -141,22 +141,6 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/35" />
       <div className="absolute inset-0 bg-black/20" />
 
-      <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
-          {card.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.06em] backdrop-blur"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#9CCC3C] text-black">
-          <ArrowRight className="h-4 w-4 -rotate-45" />
-        </span>
-      </div>
-
       <div className="absolute inset-x-5 bottom-5">
         <h3 className="text-2xl font-extrabold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]" style={{ fontFamily: "var(--font-display)" }}>
           {card.title}
@@ -164,13 +148,13 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
         <p className="mt-2 text-sm leading-relaxed text-white/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">{card.desc}</p>
         <a
           href="/contact"
-          className="group/btn relative mt-5 inline-flex w-full items-center justify-between overflow-hidden rounded-full bg-[#9CCC3C] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black"
+          className="group/btn relative mt-5 inline-flex w-full items-center justify-between overflow-hidden rounded-full bg-[#ed1164] px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white"
         >
-          <span className="absolute inset-0 bg-[#ed1164] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover/btn:scale-x-100" />
-          <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-white">
+          <span className="absolute inset-0 bg-[#c40d52] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover/btn:scale-x-100" />
+          <span className="relative z-10">
             {card.cta}
           </span>
-          <ArrowRight className="relative z-10 h-4 w-4 transition-colors duration-300 group-hover/btn:text-white" />
+          <ArrowRight className="relative z-10 h-4 w-4" />
         </a>
       </div>
     </div>
@@ -185,12 +169,12 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
         <Reveal className="max-w-2xl">
           <Kicker>{page.intro.kicker}</Kicker>
           <h2
-            className="mt-5 text-[clamp(3.6rem,5vw,5.4rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-black"
+            className="mt-5 text-4xl font-black uppercase tracking-tight text-black sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span className="whitespace-nowrap">24/7 IT helpdesk</span>
+            <span className="whitespace-nowrap">24/7 Helpdesk,</span>
             <br />
-            support across Tiers 1-3
+            Tiers 1-3
           </h2>
           <div className="mt-6 space-y-4 text-base leading-7 text-black/70">
             {page.intro.body.map((paragraph) => (
@@ -364,7 +348,7 @@ function BenefitScrollCard({
         </span>
       </div>
       <div>
-        <h3 className="mt-6 text-2xl font-bold leading-tight text-black transition-colors duration-300 group-hover:text-white sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
+        <h3 className="mt-6 text-2xl font-extrabold leading-tight text-black transition-colors duration-300 group-hover:text-white sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
           {benefit.title}
         </h3>
         <p className="mt-3 text-base text-black/75 transition-colors duration-300 group-hover:text-white/80">{benefit.desc}</p>
@@ -753,12 +737,24 @@ export default function ServiceDetailPage({
         <div className={`relative mx-auto grid max-w-7xl gap-10 px-6 sm:gap-12 sm:px-8 ${page.intro.card ? "lg:grid-cols-[1.2fr_0.8fr] lg:items-center" : ""}`}>
           <Reveal className="max-w-2xl">
             <Kicker>{page.intro.kicker}</Kicker>
-            <h2
-              className="mt-5 text-4xl font-extrabold uppercase leading-[0.94] tracking-tight text-black sm:text-5xl lg:text-6xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {page.intro.title}
-            </h2>
+            {page.intro.highlight ? (
+              // helpdesk-style heading: short, two lines, one word in brand pink
+              <h2
+                className="mt-5 text-[clamp(2.2rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                <span className="whitespace-nowrap">{page.intro.title}</span>
+                <br />
+                <span className="text-[#ed1164]">{page.intro.highlight}</span>
+              </h2>
+            ) : (
+              <h2
+                className="mt-5 text-4xl font-extrabold uppercase leading-[0.94] tracking-tight text-black sm:text-5xl lg:text-6xl"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {page.intro.title}
+              </h2>
+            )}
             <div className="mt-6 space-y-4 text-base leading-7 text-black/70">
               {page.intro.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -780,7 +776,7 @@ export default function ServiceDetailPage({
           <div className="mx-auto max-w-7xl px-6 sm:px-8">
             <Reveal className="max-w-3xl">
               <Kicker>Problems we solve</Kicker>
-              <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+              <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
                 {page.problems.title}
               </h2>
             </Reveal>
@@ -789,7 +785,7 @@ export default function ServiceDetailPage({
               {page.problems.groups.map((group, index) => (
                 <Reveal key={group.title} delay={index * 0.08}>
                   <div className="h-full rounded-2xl border border-slate-200 bg-white p-6">
-                    <h3 className="text-xl font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
+                    <h3 className="text-xl font-extrabold text-black" style={{ fontFamily: "var(--font-display)" }}>
                       {group.title}
                     </h3>
                     <ul className="mt-5 space-y-3">

@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
-import { Inter, Oswald } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowUpRight, Mail, MousePointer2, Phone } from "lucide-react";
 import { company } from "@/lib/content";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
-const display = Oswald({
+const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
@@ -119,7 +119,7 @@ function SectionLabel({
 }) {
   return (
     <div
-      className={`flex items-center gap-2 text-[clamp(1.25rem,2vw,2rem)] font-bold uppercase leading-none ${
+      className={`flex items-center gap-2 text-[clamp(1.25rem,2vw,2rem)] font-extrabold uppercase leading-none ${
         centered ? "justify-center" : ""
       } ${dark ? "text-white" : "text-[#1f1f1e]"}`}
       style={{ fontFamily: "var(--font-display)" }}
@@ -150,7 +150,7 @@ function BlobButton({ children, href = "#contact" }: { children: React.ReactNode
     <motion.a
       href={href}
       whileHover={{ scale: 1.06, rotate: -4 }}
-      className="relative grid h-36 w-36 place-items-center rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] text-center text-xl font-bold uppercase leading-none text-white"
+      className="relative grid h-36 w-36 place-items-center rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] text-center text-xl font-extrabold uppercase leading-none text-white"
       style={{ fontFamily: "var(--font-display)" }}
     >
       {children}
@@ -184,7 +184,7 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#ff4b00] text-white">
-      <div className="absolute left-5 top-7 z-10 max-w-44 text-2xl font-bold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+      <div className="absolute left-5 top-7 z-10 max-w-44 text-2xl font-extrabold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
         New studio,
         <br />
         same MindWhiz DNA
@@ -193,7 +193,7 @@ function HeroSection() {
       <div className="flex min-h-screen items-end px-5 pb-10 sm:px-8">
         <div className="relative w-full">
           <h1
-            className="max-w-[56rem] text-[clamp(3.6rem,15vw,13rem)] font-bold uppercase leading-[0.88] tracking-[-0.05em]"
+            className="max-w-[56rem] text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.05em]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <SplitLine text="Your" />
@@ -223,7 +223,7 @@ function ManifestoArcSection() {
           whileInView={{ opacity: 1, rotate: 9, y: 0 }}
           viewport={{ once: true, amount: 0.45 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-6xl text-center text-[clamp(3.4rem,7.2vw,7.5rem)] font-bold uppercase leading-none"
+          className="max-w-6xl text-center text-[clamp(3.4rem,7.2vw,7.5rem)] font-extrabold uppercase leading-none"
           style={{ fontFamily: "var(--font-display)" }}
         >
           The bond behind brand success
@@ -238,7 +238,7 @@ function ManifestoStatementSection() {
     <section className="flex min-h-screen items-center justify-center bg-[#1000d8] px-5 py-24 text-center text-white sm:px-8">
       <Reveal>
         <h2
-          className="mx-auto max-w-7xl text-[clamp(2.5rem,4.6vw,5.8rem)] font-bold uppercase leading-[1.05]"
+          className="mx-auto max-w-7xl text-[clamp(2.5rem,4.6vw,5.8rem)] font-extrabold uppercase leading-[1.05]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           We bring strategy, creativity, and agile approach together to help
@@ -255,7 +255,7 @@ function ServicesSection() {
       <SectionLabel>Services</SectionLabel>
       <div className="mx-auto grid max-w-7xl gap-12 pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <Reveal>
-          <h2 className="text-[clamp(3.2rem,5vw,6rem)] font-bold uppercase leading-none text-[#ff4b00]" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="text-[clamp(3.2rem,5vw,6rem)] font-extrabold uppercase leading-none text-[#ff4b00]" style={{ fontFamily: "var(--font-display)" }}>
             Performance & Growth
           </h2>
           <p className="mt-7 text-2xl text-[#1f1f1e]">
@@ -268,7 +268,7 @@ function ServicesSection() {
               </span>
             ))}
           </div>
-          <div className="mt-14 space-y-10 text-[clamp(2.8rem,4.4vw,5rem)] font-bold uppercase leading-none text-[#bdb7b1]" style={{ fontFamily: "var(--font-display)" }}>
+          <div className="mt-14 space-y-10 text-[clamp(2.8rem,4.4vw,5rem)] font-extrabold uppercase leading-none text-[#bdb7b1]" style={{ fontFamily: "var(--font-display)" }}>
             <p>Creative Solutions</p>
             <p>Digital Presence</p>
           </div>
@@ -295,7 +295,7 @@ function BondCtaSection() {
   return (
     <section className="bg-[#eee8e0] px-5 py-28 sm:px-8">
       <div className="mx-auto flex max-w-[95rem] items-center justify-between gap-10 rounded-full bg-[#ff4b00] px-8 py-12 text-white sm:px-16 sm:py-20">
-        <h2 className="max-w-5xl text-[clamp(2rem,3.4vw,4.4rem)] font-bold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
+        <h2 className="max-w-5xl text-[clamp(2rem,3.4vw,4.4rem)] font-extrabold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
           Ready when you are. Reach out and see what happens when the right
           minds connect
         </h2>
@@ -315,7 +315,7 @@ function WorkSection() {
         {work.map((item, index) => (
           <Reveal key={item} delay={index * 0.04}>
             <a href="#contact" className="group flex items-center justify-between gap-8 py-8">
-              <h3 className="text-[clamp(3rem,5vw,6rem)] font-bold uppercase leading-none" style={{ fontFamily: "var(--font-display)" }}>
+              <h3 className="text-[clamp(3rem,5vw,6rem)] font-extrabold uppercase leading-none" style={{ fontFamily: "var(--font-display)" }}>
                 {item}
               </h3>
               <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[#ff4b00] transition-transform group-hover:rotate-45">
@@ -335,7 +335,7 @@ function ClientsSection() {
       <SectionLabel>Our clients</SectionLabel>
       <div className="relative mx-auto min-h-[calc(var(--vh)*82)] max-w-[105rem] pt-24">
         <Reveal>
-          <h2 className="text-[clamp(3.5rem,7.2vw,9.2rem)] font-bold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="text-[clamp(3.5rem,7.2vw,9.2rem)] font-extrabold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             When the
             <br />
             C<span className="inline-block w-[0.12em]" />
@@ -354,16 +354,16 @@ function ClientsSection() {
           className="absolute bottom-8 right-10 hidden h-56 w-56 place-items-center rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] text-center text-white xl:grid"
         >
           <div>
-            <p className="text-[5.6rem] font-bold leading-none" style={{ fontFamily: "var(--font-display)" }}>
+            <p className="text-[5.6rem] font-extrabold leading-none" style={{ fontFamily: "var(--font-display)" }}>
               9.6
             </p>
-            <p className="mt-2 text-sm font-bold uppercase tracking-widest">Client score</p>
+            <p className="mt-2 text-sm font-extrabold uppercase tracking-widest">Client score</p>
           </div>
         </motion.div>
       </div>
       <div className="flex w-max animate-agency-marquee gap-4 pb-10">
         {clients.map((client, index) => (
-          <div key={`${client}-${index}`} className="grid h-20 min-w-52 place-items-center rounded-full border border-[#3f3f3d] px-8 text-xl font-bold uppercase" style={{ fontFamily: "var(--font-display)" }}>
+          <div key={`${client}-${index}`} className="grid h-20 min-w-52 place-items-center rounded-full border border-[#3f3f3d] px-8 text-xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
             {client}
           </div>
         ))}
@@ -378,12 +378,12 @@ function AboutSection() {
       <SectionLabel dark>About us</SectionLabel>
       <div className="mx-auto max-w-[106rem] pt-36">
         <Reveal>
-          <p className="max-w-[92rem] text-[clamp(3.1rem,5.1vw,6.4rem)] font-bold uppercase leading-[1.03]" style={{ fontFamily: "var(--font-display)" }}>
+          <p className="max-w-[92rem] text-[clamp(3.1rem,5.1vw,6.4rem)] font-extrabold uppercase leading-[1.03]" style={{ fontFamily: "var(--font-display)" }}>
             We&apos;re thinkers, makers, and doers. Curious by nature, strategic by
             choice. We explore, question, and connect until the answer fits.
             Every project is a journey, and we&apos;re here for the ride.
           </p>
-          <a href="#contact" className="mt-20 inline-block border-b-4 border-white text-3xl font-bold uppercase" style={{ fontFamily: "var(--font-display)" }}>
+          <a href="#contact" className="mt-20 inline-block border-b-4 border-white text-3xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
             Bond more with us
           </a>
         </Reveal>
@@ -410,7 +410,7 @@ function NiceToBondSection() {
       <div className="absolute inset-y-0 left-0 w-[24vw] rounded-r-[100%] bg-[#eee8e0]" />
       <div className="absolute inset-y-0 right-0 w-[24vw] rounded-l-[100%] bg-[#eee8e0]" />
       <Reveal>
-        <h2 className="relative z-10 text-[clamp(4rem,7vw,9rem)] font-bold uppercase leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
+        <h2 className="relative z-10 text-[clamp(4rem,7vw,9rem)] font-extrabold uppercase leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
           Nice to
           <br />
           bond
@@ -427,7 +427,7 @@ function NewsSection() {
     <section className="min-h-screen bg-[#1000d8] px-5 py-7 text-white sm:px-8">
       <SectionLabel dark centered>Latest news</SectionLabel>
       <Reveal>
-        <h2 className="mx-auto mt-28 max-w-6xl text-center text-[clamp(2.5rem,4.5vw,5.4rem)] font-bold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
+        <h2 className="mx-auto mt-28 max-w-6xl text-center text-[clamp(2.5rem,4.5vw,5.4rem)] font-extrabold uppercase leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
           We create, but we also reflect. Explore what we&apos;ve been thinking
           about lately
         </h2>
@@ -439,7 +439,7 @@ function NewsSection() {
               <div className="aspect-[0.86] overflow-hidden rounded-[48%_52%_45%_55%/8%_8%_16%_16%] bg-[#ff4b00]">
                 <img src={item.img} alt="" className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
               </div>
-              <p className="mt-5 text-2xl font-bold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+              <p className="mt-5 text-2xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
                 {item.title}
               </p>
             </a>
@@ -455,14 +455,14 @@ function ContactSection() {
     <section id="contact" className="bg-[#ff4b00] px-5 py-28 text-white sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <Reveal>
-          <h2 className="text-[clamp(4rem,7.5vw,10rem)] font-bold uppercase leading-[0.9]" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="text-[clamp(4rem,7.5vw,10rem)] font-extrabold uppercase leading-[0.9]" style={{ fontFamily: "var(--font-display)" }}>
             Let&apos;s
             <br />
             bond
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <div className="space-y-5 text-2xl font-bold uppercase" style={{ fontFamily: "var(--font-display)" }}>
+          <div className="space-y-5 text-2xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
             <a href={`mailto:${company.email}`} className="flex items-center gap-4 hover:text-[#1000d8]">
               <Mail className="h-7 w-7" />
               {company.email}
@@ -482,10 +482,10 @@ function Footer() {
   return (
     <footer className="bg-[#1000d8] px-5 py-16 text-white sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <p className="text-4xl font-bold uppercase" style={{ fontFamily: "var(--font-display)" }}>
+        <p className="text-4xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
           [mind-whiz] noun
         </p>
-        <p className="text-4xl font-bold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+        <p className="text-4xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
           A practical link between strategy, creativity, performance, and the
           delivery teams that make growth real.
         </p>

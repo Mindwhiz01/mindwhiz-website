@@ -60,7 +60,7 @@ export function PageBanner({
         <div className="w-full">
           <motion.h1
             variants={item}
-            className={`max-w-[48rem] text-[clamp(3.6rem,11vw,12rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white ${headingClassName}`}
+            className={`max-w-[48rem] text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white ${headingClassName}`}
             style={{ fontFamily: "var(--font-display)" }}
           >
             {title}

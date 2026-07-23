@@ -128,7 +128,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
               {cs.category} · Engagement · 2025
             </p>
             <h1
-              className="mt-4 text-[clamp(3.6rem,7vw,5.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
+              className="mt-4 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {cs.client}

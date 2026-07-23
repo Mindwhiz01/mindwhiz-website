@@ -13,6 +13,8 @@ export type ServicePageContent = {
   intro: {
     kicker: string;
     title: string;
+    // optional second-line word rendered in brand pink (helpdesk-style heading)
+    highlight?: string;
     body: string[];
     card?: {
       tags: string[];
@@ -181,7 +183,8 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Industry-leading NOC operations",
-      title: "24/7 NOC monitoring and network operations",
+      title: "24/7 NOC",
+      highlight: "Monitoring",
       body: [
         "MindWhiz works alongside organizations that value stability, responsiveness, and operational excellence.",
         "Our NOC teams help reduce downtime, improve visibility, and support business continuity with confidence.",

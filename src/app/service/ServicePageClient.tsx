@@ -9,7 +9,7 @@ import {
   type MotionValue,
   type Variants,
 } from "framer-motion";
-import { Inter, Oswald } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -39,9 +39,9 @@ import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
-const display = Oswald({
+const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
@@ -194,7 +194,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 function CountPill({ value, label }: { value: string; label: string }) {
   return (
     <div className="border-l border-white/15 pl-5">
-      <p className="text-3xl font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
+      <p className="text-3xl font-extrabold text-white" style={{ fontFamily: "var(--font-display)" }}>
         {value}
       </p>
       <p className="mt-2 text-xs font-semibold uppercase leading-relaxed tracking-[0.14em] text-white/45">
@@ -802,7 +802,7 @@ export default function ServicePageClient() {
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h1
-                  className="max-w-[48rem] text-[clamp(3.6rem,11vw,12rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white"
+                  className="max-w-[48rem] text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   Your
@@ -842,7 +842,7 @@ export default function ServicePageClient() {
           >
             <Typewriter
               text="We bring strategy, creativity, and agile approach together to help brands connect with people, and turn that connection into real results."
-              className="max-w-5xl rounded-[2rem] bg-black/90 px-6 py-5 text-[clamp(1.5rem,3vw,3.25rem)] font-bold uppercase leading-[1.02] tracking-[-0.02em] text-white shadow-2xl shadow-black/20 sm:px-10 sm:py-7"
+              className="max-w-5xl rounded-[2rem] bg-black/90 px-6 py-5 text-[clamp(1.5rem,3vw,3.25rem)] font-extrabold uppercase leading-[1.02] tracking-[-0.02em] text-white shadow-2xl shadow-black/20 sm:px-10 sm:py-7"
               style={{ fontFamily: "var(--font-display)" }}
             />
           </motion.div>
