@@ -234,7 +234,7 @@ function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:gap-10 lg:grid-cols-[0.7fr_1.3fr]">
         <div className="order-2 lg:order-1">
           <Reveal delay={0.05}>
-            <h1 className="mt-7 text-[clamp(3.6rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
+            <h1 className="mt-7 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
               Websites
               {/* three lines on every size: Websites / built for / growth */}
               <br />
@@ -673,12 +673,12 @@ function SeoSection() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <motion.img
-                  src={`https://cdn.simpleicons.org/${t.slug}`}
+                  src={`/seo-tools/${t.slug}.svg`}
                   alt={t.name}
                   loading="lazy"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
-                  className="h-10 w-10 object-contain grayscale transition-all duration-300 group-hover:grayscale-0"
+                  className="h-10 w-10 object-contain grayscale transition-all duration-300 [@media(hover:hover)]:group-hover:grayscale-0"
                 />
                 <motion.span
                   className="text-sm font-semibold text-black/70 transition-colors duration-300 group-hover:text-[#ed1164]"
