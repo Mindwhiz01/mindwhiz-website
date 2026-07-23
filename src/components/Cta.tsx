@@ -15,12 +15,16 @@ export default function Cta({
   className = "",
   onClick,
   variant = "solid",
+  target,
+  rel,
 }: {
   href: string;
   label: React.ReactNode;
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   variant?: "solid" | "outline";
+  target?: string;
+  rel?: string;
 }) {
   const look =
     variant === "outline"
@@ -30,6 +34,8 @@ export default function Cta({
     <a
       href={href}
       onClick={onClick}
+      target={target}
+      rel={rel}
       className={`group inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-300 ${look} ${className}`}
     >
       <span className="relative h-4 w-4 overflow-hidden">

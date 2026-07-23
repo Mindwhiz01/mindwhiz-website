@@ -13,7 +13,7 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-type CtaLink = { label: string; href: string };
+type CtaLink = { label: string; href: string; external?: boolean };
 
 /**
  * Shared page hero - same banner design as the home page: a rounded, inset
@@ -77,8 +77,21 @@ export function PageBanner({
 
           {(primary || secondary) && (
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              {primary && <Cta href={primary.href} label={primary.label} />}
-              {secondary && <Cta href={secondary.href} label={secondary.label} variant="outline" />}
+              {primary && (
+                <Cta
+                  href={primary.href}
+                  label={primary.label}
+                  {...(primary.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                />
+              )}
+              {secondary && (
+                <Cta
+                  href={secondary.href}
+                  label={secondary.label}
+                  variant="outline"
+                  {...(secondary.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                />
+              )}
             </motion.div>
           )}
         </div>

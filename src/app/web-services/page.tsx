@@ -319,7 +319,7 @@ function Hero() {
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Cta href="/contact" label="Start a project" />
-              <Cta href="/contact" label="Book free consultation" variant="outline" className="!border-black/20 !bg-transparent !text-black hover:!bg-black/5" />
+              <Cta href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3" target="_blank" rel="noreferrer" label="Book free consultation" variant="outline" className="!border-black/20 !bg-transparent !text-black hover:!bg-black/5" />
             </div>
           </Reveal>
         </div>

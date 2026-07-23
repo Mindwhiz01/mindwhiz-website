@@ -32,6 +32,7 @@ const display = Plus_Jakarta_Sans({
 
 const ACCENT = "#ed1164";
 const CARD_GAP = 20;
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -717,7 +718,7 @@ export default function ServiceDetailPage({
         title={<ServiceHeroTitle page={page} />}
         subtitle={page.hero.subtitle}
         primary={{ label: page.hero.cta, href: "/#contact" }}
-        secondary={{ label: "Explore capabilities", href: "#capabilities" }}
+        secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true }}
       />
 
       {!isHelpdesk && (
