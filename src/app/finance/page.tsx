@@ -384,7 +384,14 @@ function CapabilitiesCarousel() {
               <br />
               <span className="text-[#ed1164]">outsourcing</span>
             </h2>
-            <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
+            {/* audience-aware hook that pulls B2B readers in */}
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+              For B2B teams that need clean books
+            </p>
+            <p className="mt-3 max-w-sm text-lg font-semibold leading-snug text-black/80" style={{ fontFamily: "var(--font-display)" }}>
+              How much of your month disappears into manual number work?
+            </p>
+            <p className="mt-4 max-w-sm text-base leading-7 text-black/70">
               From daily bookkeeping to CFO level analysis, we plug into your stack
               and run the numbers, so you get clean books, timely reports, and the
               insight to act on them.

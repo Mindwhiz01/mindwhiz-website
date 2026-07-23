@@ -389,7 +389,7 @@ const storyHighlights = [
   },
   {
     title: "Built for speed",
-    desc: "Clients get experts working on their projects within 48–72 hours, with an average full deployment time of 10 days from first call to productive team.",
+    desc: "Clients get experts working on their projects within 48 to 72 hours, with an average full deployment time of 10 days from first call to productive team.",
   },
 ];
 

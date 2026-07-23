@@ -821,38 +821,54 @@ function IndustriesWorlds() {
       const ctx = gsap.context(() => {
         const row = rowRef.current!;
         // The run begins with one card-width of empty space on the LEFT (a
-        // responsive pl-[…] on the row). As you scroll, each card glides
-        // right-to-left through the viewport centre - so the run must END with
-        // the LAST card parked in that same centre, otherwise it alone stops
-        // short (right-of-centre) and never gets its centred beat like the rest.
-        // Subtracting the row's current x removes the transform, giving the
-        // card's layout centre; the shift then brings that to the viewport mid.
-        const distance = () => {
+        // responsive pl-[…] on the row) and ENDS with the last card tucked
+        // directly under the "Get in touch" button - its right edge lines up
+        // with the button's right edge.
+        //
+        // The travel is applied live from the timeline's onUpdate instead of a
+        // pre-resolved tween end value. GSAP resolves a tween's function value
+        // once, at load, while the section is still UNPINNED - but the moment
+        // the CSS-sticky pin engages, the full-width card row's layout left
+        // shifts ~one card to the right (the centred button does NOT move). A
+        // load-time measurement therefore stops the run a card short. Reading
+        // the geometry each frame in onUpdate happens while the section is
+        // pinned, so the target is always the final one.
+        const btn = sectionRef.current!.querySelector<HTMLElement>('a[href="/contact"]');
+        // Full leftward travel that brings the last card's right edge onto the
+        // button's right edge. r.right - x strips the transform we set last
+        // frame, so this reads the row's live layout right regardless of x.
+        const fullDistance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
           const x = Number(gsap.getProperty(row, "x"));
-          const cardCentre = (r.left + r.right) / 2 - x;
-          return Math.max(0, cardCentre - window.innerWidth / 2);
+          const target = btn ? btn.getBoundingClientRect().right : window.innerWidth * 0.85;
+          return Math.max(0, r.right - x - target);
         };
-        // The row chases the scroll position over ~0.5s and can never
-        // overshoot, so wheel notches glide instead of stepping, and scrolling
-        // up retraces the identical path.
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        });
-        // 0.7 of the pin for the ride (linear, so the row travels uniformly and
-        // the right-hand gap opens progressively instead of all at the tail),
-        // then a long 0.3 dwell: the last card rests one card-width from the
-        // right edge for a clear stretch of scroll before the pin releases, so
-        // the ending space is impossible to miss even if you stop a touch early.
-        tl.to(row, { x: () => -distance(), duration: 0.7, ease: "none", force3D: true })
-          .to({}, { duration: 0.3 });
+        // scrub:0.5 smooths the timeline playhead so the row chases the scroll
+        // over ~0.5s without overshoot.
+        // `progress` (a real animated proxy) runs 0->1 across the whole pin; its
+        // onUpdate fires every scrub-smoothed tick and re-derives x from the LIVE
+        // pinned geometry. The 0.7 split makes progress 0->0.7 the ride (mapped
+        // linearly onto the full travel, so the gap opens uniformly) and
+        // 0.7->1.0 a dwell that holds the last card under the button - because
+        // the proxy keeps ticking through the dwell, the final frame uses the
+        // fully-settled geometry rather than a mid-ride snapshot.
+        const state = { progress: 0 };
+        const apply = () => {
+          const p = Math.min(state.progress / 0.7, 1);
+          gsap.set(row, { x: -fullDistance() * p, force3D: true });
+        };
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          })
+          .to(state, { progress: 1, duration: 1, ease: "none", onUpdate: apply });
       }, sectionRef);
       return () => ctx.revert();
     });
@@ -888,7 +904,14 @@ function IndustriesWorlds() {
             >
               <span style={{ color: "#ed1164" }}>Industries</span> we serve
             </h2>
-            <p className="mb-6 mt-5 max-w-md text-sm leading-relaxed text-[#2F343B]">
+            {/* audience-aware hook that pulls B2B and B2C readers in */}
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+              For B2B &amp; B2C teams
+            </p>
+            <p className="mt-3 max-w-md text-lg font-semibold leading-snug text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
+              Whatever your sector, what is slowing your team down the most?
+            </p>
+            <p className="mb-6 mt-4 max-w-md text-sm leading-relaxed text-[#2F343B]">
               MindWhiz supports businesses across a wide range of industries. Our
               industry focused expertise lets us tailor solutions that align with
               the unique requirements of each sector.
@@ -1129,7 +1152,14 @@ function ServicesScrollSection() {
               >
                 Solutions That <span style={{ color: "#ed1164" }}>Scale</span>
               </h2>
-              <p className="mt-5 max-w-sm text-black">
+              {/* audience-aware hook that pulls B2B and B2C readers in */}
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+                For B2B &amp; B2C teams
+              </p>
+              <p className="mt-3 max-w-sm text-lg font-semibold leading-snug text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
+                What would your team achieve if IT and operations just ran themselves?
+              </p>
+              <p className="mt-4 max-w-sm text-black">
                 From IT and security to business operations. Explore the services we deliver as you
                 scroll.
               </p>
@@ -1747,3 +1777,4 @@ export default function SystemLimitedHome() {
     </main>
   );
 }
+

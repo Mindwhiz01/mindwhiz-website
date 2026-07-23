@@ -98,24 +98,42 @@ function BrowserFrame({
   image,
   className = "",
   scroll = false,
+  scrollCapPx,
+  hoverAutoScroll = false,
+  onScrollComplete,
 }: {
   url: string;
   image: string;
   className?: string;
   scroll?: boolean;
+  // when set, the hover / touch preview scrolls at most this many px instead of
+  // gliding through the whole page - used for a short "just a peek" scroll
+  scrollCapPx?: number;
+  // when true the preview is driven by JS on hover: it peeks down by scrollCapPx
+  // and then fires onScrollComplete (used to advance the spotlight slider)
+  hoverAutoScroll?: boolean;
+  onScrollComplete?: () => void;
 }) {
   const host = url.replace("https://", "").replace(/\/$/, "");
+  // most-negative translateY the preview may reach, capped by scrollCapPx
+  const minOffset = (clientHeight: number) => {
+    const full = Math.min(0, FRAME_H - clientHeight);
+    return scrollCapPx ? Math.max(full, -scrollCapPx) : full;
+  };
   // hover-scroll speed follows the page length so short and long sites
   // both glide at the same pace; mouse-out snaps back quickly
   const [scrollDur, setScrollDur] = useState(MIN_SCROLL_DUR);
 
-  // Touch devices (mobile / tablet) have no hover, so the full-page preview
-  // is driven by a small play/pause button instead. rAF moves the image so a
-  // pause freezes it in place rather than snapping back.
+  // rAF-driven preview: used for the touch play/pause button and, when
+  // hoverAutoScroll is on, for the desktop hover "peek then advance" behaviour.
   const imgRef = useRef<HTMLImageElement>(null);
   const posRef = useRef(0); // current translateY in px (0 → negative)
   const rafRef = useRef<number | null>(null);
   const [playing, setPlaying] = useState(false);
+  const hoveringRef = useRef(false);
+  // keep the latest callback without re-arming the rAF effect each render
+  const onCompleteRef = useRef(onScrollComplete);
+  onCompleteRef.current = onScrollComplete;
 
   useEffect(() => {
     if (!playing) return;
@@ -126,13 +144,16 @@ function BrowserFrame({
     const tick = (now: number) => {
       const el = imgRef.current;
       if (!el) return;
-      const min = Math.min(0, FRAME_H - el.clientHeight); // most-negative offset
+      const full = Math.min(0, FRAME_H - el.clientHeight);
+      const min = scrollCapPx ? Math.max(full, -scrollCapPx) : full;
       const dt = (now - last) / 1000;
       last = now;
       posRef.current = Math.max(min, posRef.current - SCROLL_PX_PER_S * dt);
       el.style.transform = `translateY(${posRef.current}px)`;
       if (posRef.current <= min) {
         setPlaying(false);
+        // peek finished - let the parent advance to the next slide
+        onCompleteRef.current?.();
         return;
       }
       rafRef.current = requestAnimationFrame(tick);
@@ -141,7 +162,43 @@ function BrowserFrame({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [playing]);
+  }, [playing, scrollCapPx]);
+
+  // start a fresh peek from the very top of the page
+  const startPeek = () => {
+    const el = imgRef.current;
+    posRef.current = 0;
+    if (el) {
+      el.style.transition = "none";
+      el.style.transform = "translateY(0px)";
+    }
+    setPlaying(false);
+    requestAnimationFrame(() => setPlaying(true));
+  };
+
+  // when the slide image swaps while the pointer is still over the frame,
+  // immediately peek the new site so the hover cycle keeps going
+  useEffect(() => {
+    if (hoverAutoScroll && hoveringRef.current) startPeek();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [image]);
+
+  const handleEnter = () => {
+    if (!hoverAutoScroll) return;
+    hoveringRef.current = true;
+    startPeek();
+  };
+  const handleLeave = () => {
+    if (!hoverAutoScroll) return;
+    hoveringRef.current = false;
+    setPlaying(false);
+    posRef.current = 0;
+    const el = imgRef.current;
+    if (el) {
+      el.style.transition = "transform 0.5s ease-out";
+      el.style.transform = "translateY(0px)";
+    }
+  };
 
   const toggleScroll = (e: React.MouseEvent) => {
     // frames can sit inside a link, so don't navigate when tapping the control
@@ -150,7 +207,7 @@ function BrowserFrame({
     setPlaying((p) => {
       if (!p) {
         const el = imgRef.current;
-        const min = el ? Math.min(0, FRAME_H - el.clientHeight) : 0;
+        const min = el ? minOffset(el.clientHeight) : 0;
         // if parked at the bottom, restart from the top
         if (posRef.current <= min) {
           posRef.current = 0;
@@ -173,7 +230,11 @@ function BrowserFrame({
       </div>
       {scroll ? (
         // full-page preview that scrolls top → bottom on hover
-        <div className="relative h-[360px] overflow-hidden bg-[#f2f1ee]">
+        <div
+          className="relative h-[360px] overflow-hidden bg-[#f2f1ee]"
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             ref={imgRef}
@@ -185,8 +246,18 @@ function BrowserFrame({
               const dist = e.currentTarget.clientHeight - FRAME_H;
               if (dist > 0) setScrollDur(Math.max(MIN_SCROLL_DUR, dist / SCROLL_PX_PER_S));
             }}
-            style={{ "--scroll-dur": `${scrollDur}s` } as React.CSSProperties}
-            className="w-full ease-linear [transition-property:transform] [transition-duration:0.9s] [@media(hover:hover)]:group-hover:translate-y-[min(0px,calc(360px-100%))] [@media(hover:hover)]:group-hover:[transition-duration:var(--scroll-dur)]"
+            style={{
+              "--scroll-dur": `${scrollDur}s`,
+              // capped or full CSS-hover target (only used when JS is not driving)
+              "--hover-y": scrollCapPx
+                ? `max(calc(360px - 100%), -${scrollCapPx}px)`
+                : "min(0px, calc(360px - 100%))",
+            } as React.CSSProperties}
+            className={`w-full ease-linear [transition-property:transform] [transition-duration:0.9s] ${
+              hoverAutoScroll
+                ? ""
+                : "[@media(hover:hover)]:group-hover:translate-y-[var(--hover-y)] [@media(hover:hover)]:group-hover:[transition-duration:var(--scroll-dur)]"
+            }`}
           />
           {/* touch-only play / pause control, bottom-left, small */}
           <button
@@ -230,7 +301,94 @@ const services: { title: string; desc: string; Icon: LucideIcon; image: string; 
   { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
 ];
 
-const stack = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PHP", "Laravel", "Python", "Tailwind CSS", "WordPress", "WooCommerce", "Shopify", "Webflow", "MySQL", "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker"];
+const stackGroups: { label: string; items: { name: string; slug: string; color: string }[] }[] = [
+  {
+    label: "Languages",
+    items: [
+      { name: "JavaScript", slug: "javascript", color: "#E8A400" },
+      { name: "TypeScript", slug: "typescript", color: "#3178C6" },
+      { name: "PHP", slug: "php", color: "#777BB4" },
+      { name: "Python", slug: "python", color: "#3776AB" },
+    ],
+  },
+  {
+    label: "Frameworks & Libraries",
+    items: [
+      { name: "React", slug: "react", color: "#149ECA" },
+      { name: "Next.js", slug: "nextdotjs", color: "#000000" },
+      { name: "Node.js", slug: "nodedotjs", color: "#5FA04E" },
+      { name: "Laravel", slug: "laravel", color: "#FF2D20" },
+      { name: "Tailwind CSS", slug: "tailwindcss", color: "#06B6D4" },
+    ],
+  },
+  {
+    label: "CMS & E-commerce",
+    items: [
+      { name: "WordPress", slug: "wordpress", color: "#21759B" },
+      { name: "WooCommerce", slug: "woocommerce", color: "#96588A" },
+      { name: "Shopify", slug: "shopify", color: "#5E8E3E" },
+      { name: "Webflow", slug: "webflow", color: "#146EF5" },
+      { name: "Wix", slug: "wix", color: "#0C6EFC" },
+    ],
+  },
+  {
+    label: "Databases",
+    items: [
+      { name: "MySQL", slug: "mysql", color: "#00758F" },
+      { name: "PostgreSQL", slug: "postgresql", color: "#336791" },
+      { name: "MongoDB", slug: "mongodb", color: "#47A248" },
+      { name: "Supabase", slug: "supabase", color: "#3FCF8E" },
+      { name: "Firebase", slug: "firebase", color: "#F57C00" },
+      { name: "Redis", slug: "redis", color: "#DC382D" },
+      { name: "SQLite", slug: "sqlite", color: "#003B57" },
+    ],
+  },
+  {
+    label: "AI & ML",
+    items: [
+      { name: "OpenAI", slug: "openai", color: "#412991" },
+      { name: "Claude", slug: "claude", color: "#D97757" },
+      { name: "Gemini", slug: "googlegemini", color: "#4285F4" },
+      { name: "Hugging Face", slug: "huggingface", color: "#FF9D00" },
+      { name: "LangChain", slug: "langchain", color: "#1C3C3C" },
+      { name: "TensorFlow", slug: "tensorflow", color: "#FF6F00" },
+      { name: "PyTorch", slug: "pytorch", color: "#EE4C2C" },
+      { name: "Ollama", slug: "ollama", color: "#000000" },
+    ],
+  },
+  {
+    label: "Mobile",
+    items: [
+      { name: "React Native", slug: "react", color: "#149ECA" },
+      { name: "Flutter", slug: "flutter", color: "#02569B" },
+      { name: "Swift", slug: "swift", color: "#F05138" },
+      { name: "Kotlin", slug: "kotlin", color: "#7F52FF" },
+      { name: "Expo", slug: "expo", color: "#000000" },
+    ],
+  },
+  {
+    label: "Cloud & Hosting",
+    items: [
+      { name: "AWS", slug: "amazonwebservices", color: "#FF9900" },
+      { name: "DigitalOcean", slug: "digitalocean", color: "#0080FF" },
+      { name: "Vercel", slug: "vercel", color: "#000000" },
+      { name: "Hostinger", slug: "hostinger", color: "#673DE6" },
+      { name: "GoDaddy", slug: "godaddy", color: "#018E8C" },
+    ],
+  },
+  {
+    label: "DevOps & Tools",
+    items: [
+      { name: "Docker", slug: "docker", color: "#2496ED" },
+      { name: "Kubernetes", slug: "kubernetes", color: "#326CE5" },
+      { name: "Git", slug: "git", color: "#F05032" },
+      { name: "GitHub Actions", slug: "githubactions", color: "#2088FF" },
+      { name: "GitLab", slug: "gitlab", color: "#FC6D26" },
+      { name: "Jenkins", slug: "jenkins", color: "#D33833" },
+      { name: "Nginx", slug: "nginx", color: "#009639" },
+    ],
+  },
+];
 
 const portfolio: { name: string; url: string; image: string; category: string; blurb: string }[] = [
   { name: "Marquee Ranch", url: "https://marqueeranch.com/", image: "/portfolio/marquee-ranch.jpg", category: "Hospitality · Real Estate", blurb: "An elegant venue and ranch experience with rich galleries and event enquiries." },
@@ -300,10 +458,10 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white pt-36 pb-12">
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
       <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:gap-6 lg:grid-cols-[0.3fr_1.7fr]">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:gap-6 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
           <Reveal delay={0.05}>
-            <h1 className="mt-7 text-[clamp(2.6rem,7vw,7rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
+            <h1 className="mt-7 text-[clamp(2.6rem,7vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
               Websites
               {/* three lines on every size: Websites / built for / growth */}
               <br />
@@ -322,7 +480,7 @@ function Hero() {
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Cta href="/contact" label="Start a project" />
-              <Cta href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3" target="_blank" rel="noreferrer" label="Book free consultation" variant="outline" className="!border-black/20 !bg-transparent !text-black hover:!bg-black/5" />
+              <Cta href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3" target="_blank" rel="noreferrer" label="Book free consultation" className="!border-[#ed1164] !bg-[#ed1164] !text-white shadow-xl shadow-[#ed1164]/50 hover:!bg-[#c50e53]" />
             </div>
           </Reveal>
         </div>
@@ -498,13 +656,14 @@ function PortfolioSection() {
   return (
     <section id="work" className="relative overflow-hidden border-t border-slate-100 bg-[#faf9f7] py-24">
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-        <Reveal className="max-w-2xl">
+        <Reveal className="max-w-3xl">
           <Kicker>Selected work</Kicker>
           <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-            Web development we&apos;ve <span style={{ color: PINK }}>shipped</span>
+            Web development we&apos;ve <span style={{ color: PINK }}>Delivered</span>
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-black/55">
-            Live websites and web projects designed, built, and launched by our team.
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-black/60">
+            From first concept to launch day, a selection of the websites, stores, and platforms
+            we&apos;ve designed, built, and shipped end to end for brands ready to stand out.
           </p>
         </Reveal>
 
@@ -572,38 +731,27 @@ function AlphaBravoShowcase() {
       onMouseLeave={() => setPaused(false)}
       className="relative overflow-hidden border-t border-slate-100 bg-[#EEEEEE] py-24"
     >
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-        {/* one featured site at a time, laid out like the "shipped" rows below:
-            scrolling browser frame on one side, detail block on the other */}
-        <motion.div
-          key={current.url}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
-        >
-          <a href={current.url} target="_blank" rel="noreferrer" className="group relative block">
-            <div className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/25 to-[#9CCC3C]/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-70" />
-            <BrowserFrame url={current.url} image={current.image} scroll className="relative transition-transform duration-500 group-hover:-translate-y-2" />
-          </a>
-          <div>
-            <span className="text-6xl font-extrabold text-black/[0.07] sm:text-7xl" style={{ fontFamily: "var(--font-display)" }}>
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">{current.category}</p>
-            <h3 className="mt-3 text-4xl font-extrabold uppercase tracking-tight text-black sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
-              {current.name}
-            </h3>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-black/60">{current.blurb}</p>
-            <a href={current.url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/15 px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:border-[#ed1164] hover:text-[#ed1164]">
-              Visit site
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 sm:px-8">
+        {/* single centered browser mockup, one featured site at a time.
+            No key remount here so the frame persists across slides and the
+            hover peek-then-advance cycle keeps running while the pointer stays. */}
+        <div className="w-full max-w-4xl">
+          <div className="group relative">
+            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/20 to-[#9CCC3C]/15 opacity-60 blur-2xl" />
+            <BrowserFrame
+              url={current.url}
+              image={current.image}
+              scroll
+              hoverAutoScroll
+              scrollCapPx={520}
+              onScrollComplete={() => go(1)}
+              className="relative"
+            />
           </div>
-        </motion.div>
+        </div>
 
         {/* arrows + dots so users can move left / right through the slider */}
-        <div className="mt-12 flex items-center justify-center gap-6">
+        <div className="mt-10 flex items-center justify-center gap-6">
           <button
             type="button"
             onClick={() => go(-1)}
@@ -641,20 +789,78 @@ function AlphaBravoShowcase() {
   );
 }
 
+// brand logo tinted to its own color via CSS mask (source SVGs live in /public/stack)
+function StackIcon({ slug, color }: { slug: string; color: string }) {
+  return (
+    <span
+      aria-hidden
+      className="h-6 w-6 shrink-0"
+      style={{
+        backgroundColor: color,
+        WebkitMaskImage: `url(/stack/${slug}.svg)`,
+        maskImage: `url(/stack/${slug}.svg)`,
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+      }}
+    />
+  );
+}
+
 function StackSection() {
   return (
     <section className="relative overflow-hidden border-y border-slate-200 bg-white py-20">
-      <div className="relative mx-auto mb-10 max-w-7xl px-6 text-center sm:px-8">
-        <Reveal>
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+        <Reveal className="text-center">
           <Kicker>Our stack</Kicker>
           <h2 className="mt-5 text-[clamp(2.4rem,5vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
             Languages &amp; <span style={{ color: PINK }}>technology</span>
           </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-black/55">
+            The tools we build with every day, from front end frameworks and CMS platforms
+            to databases, mobile, cloud hosting, and the DevOps that keeps it all shipping.
+          </p>
         </Reveal>
-      </div>
-      <div className="flex flex-col gap-5">
-        <Marquee items={stack.slice(0, 10)} />
-        <Marquee items={stack.slice(10)} reverse />
+
+        <div className="mt-14 flex flex-col gap-8">
+          {stackGroups.map((group, gi) => (
+            <Reveal
+              key={group.label}
+              delay={gi * 0.05}
+              className="grid gap-4 border-t border-slate-200/80 pt-8 sm:grid-cols-[210px_1fr] sm:gap-8"
+            >
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 text-sm font-bold text-[#ed1164]" style={displayFont}>
+                  {String(gi + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-lg font-bold uppercase tracking-tight text-black" style={displayFont}>
+                  {group.label}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {group.items.map((item, ii) => (
+                  <motion.div
+                    key={`${group.label}-${item.name}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.4, delay: ii * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ y: -3 }}
+                    className="group flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 shadow-sm transition-colors duration-300 hover:border-[#ed1164]/40 hover:shadow-md"
+                  >
+                    <StackIcon slug={item.slug} color={item.color} />
+                    <span className="whitespace-nowrap text-sm font-semibold text-black/70 transition-colors duration-300 group-hover:text-[#ed1164]">
+                      {item.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

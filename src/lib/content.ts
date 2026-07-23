@@ -49,7 +49,7 @@ export const stats = [
 
 // `icon` values are valid lucide-react icon names.
 export const services = [
-  { name: "IT Helpdesk 24/7", desc: "Tier 1–3 support that never misses a beat.", icon: "Headset" },
+  { name: "IT Helpdesk 24/7", desc: "Tier 1 to 3 support that never misses a beat.", icon: "Headset" },
   { name: "NOC Monitoring", desc: "Round the clock network operations and uptime.", icon: "Activity" },
   { name: "Cybersecurity Monitoring", desc: "24/7 threat detection, prevention, and response.", icon: "ShieldCheck" },
   { name: "Cloud Infrastructure", desc: "Design, migration, and managed cloud operations.", icon: "Cloud" },

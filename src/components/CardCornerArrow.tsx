@@ -37,7 +37,7 @@ export default function CardCornerArrow({
 
   const box = w + bleed;
   // the top-left notch is the same silhouette turned a half turn. Rotating the
-  // points (rather than the element via CSS) keeps the path axis-aligned — a
+  // points (rather than the element via CSS) keeps the path axis-aligned, a
   // transformed svg gets re-rasterised and leaves a soft hairline on the curve.
   const p = (x: number, y: number) => (topLeft ? `${box - x} ${box - y}` : `${x} ${y}`);
   // a half turn preserves orientation, so the arc sweep flags are unchanged
@@ -73,7 +73,7 @@ export default function CardCornerArrow({
         shapeRendering="geometricPrecision"
         className={`absolute block max-w-none ${topLeft ? "bottom-0 right-0" : "left-0 top-0"}`}
       >
-        {/* stroked in the fill colour so the anti-aliased edge is opaque —
+        {/* stroked in the fill colour so the anti-aliased edge is opaque,
             otherwise the card shows through as a hairline along the curve */}
         <path d={d} fill={bg} stroke={bg} strokeWidth={1} />
       </svg>

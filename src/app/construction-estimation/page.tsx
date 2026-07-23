@@ -220,7 +220,7 @@ const proof: {
 }[] = [
   { value: "1,200+", label: "Bids estimated", Icon: ClipboardList, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
   { value: "±2%", label: "Takeoff accuracy target", Icon: Target, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
-  { value: "24–48h", label: "Typical turnaround", Icon: Clock, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
+  { value: "24 to 48h", label: "Typical turnaround", Icon: Clock, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
   { value: "30%", label: "Average cost savings", Icon: TrendingDown, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
 ];
 
@@ -357,7 +357,14 @@ function CapabilitiesCarousel() {
               <br />
               <span className="text-[#ed1164]">end to end</span>
             </h2>
-            <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
+            {/* audience-aware hook that pulls B2B readers in */}
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+              For B2B contractors and builders
+            </p>
+            <p className="mt-3 max-w-sm text-lg font-semibold leading-snug text-black/80" style={{ fontFamily: "var(--font-display)" }}>
+              How many bids slip away while your team is stuck doing takeoffs?
+            </p>
+            <p className="mt-4 max-w-sm text-base leading-7 text-black/70">
               From the first set of drawings to the submitted bid, our estimators
               handle the measuring, pricing, and packaging, so your project
               managers stay focused on winning and building the work.
@@ -595,7 +602,7 @@ export default function ConstructionEstimationPage() {
 
               <div className="mt-8 space-y-3">
                 {[
-                  { Icon: Clock, title: "24–48 hour turnaround", sub: "From plans to a priced package" },
+                  { Icon: Clock, title: "24 to 48 hour turnaround", sub: "From plans to a priced package" },
                   { Icon: BadgeCheck, title: "Senior estimator QA", sub: "Every file double checked before send" },
                   { Icon: FileSpreadsheet, title: "Excel, PDF, or your template", sub: "Delivered in the format you use" },
                 ].map(({ Icon, title, sub }) => (

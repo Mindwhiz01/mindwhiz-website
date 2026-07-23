@@ -22,6 +22,7 @@ const finalCta = {
 export const industryPages: ServicePageContent[] = [
   {
     slug: "information-technology",
+    capabilitiesHook: { audience: "For B2B technology teams", question: "Is your IT keeping up with the pace you are trying to grow at?" },
     name: "Information Technology",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
@@ -97,6 +98,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "ecommerce-retail",
+    capabilitiesHook: { audience: "For B2C and retail brands", question: "How many shoppers are you losing to a slow, clunky store?" },
     name: "Ecommerce & Retail",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
@@ -172,6 +174,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "startups-smbs",
+    capabilitiesHook: { audience: "For B2B and B2C startups", question: "Ready to move like a big company without hiring like one?" },
     name: "Startups & SMBs",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
@@ -247,6 +250,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "construction-engineering",
+    capabilitiesHook: { audience: "For B2B construction and engineering firms", question: "How many bids are you missing while your team is buried in busywork?" },
     name: "Construction & Engineering",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
@@ -322,6 +326,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "real estate",
+    capabilitiesHook: { audience: "For B2B and B2C property teams", question: "Are slow processes costing you deals your competitors are closing?" },
     name: "Real Estate",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
@@ -397,6 +402,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "industrial-manufacturing",
+    capabilitiesHook: { audience: "For B2B manufacturers", question: "What is unplanned downtime really costing your production line?" },
     name: "Industrial Manufacturing",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
@@ -472,6 +478,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "accounting-finance",
+    capabilitiesHook: { audience: "For B2B finance teams", question: "How much of your month is lost to manual, repetitive number work?" },
     name: "Accounting & Finance",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
@@ -547,6 +554,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "professional-services",
+    capabilitiesHook: { audience: "For B2B service firms", question: "Are your experts spending more time on admin than on clients?" },
     name: "Professional Services",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
@@ -622,6 +630,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "logistics-supply-chain",
+    capabilitiesHook: { audience: "For B2B logistics teams", question: "Can you see exactly where every order is, right now?" },
     name: "Logistics & Supply Chain",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
@@ -697,6 +706,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "healthcare-healthtech",
+    capabilitiesHook: { audience: "For B2B and B2C healthcare teams", question: "Is your technology helping you care for patients, or getting in the way?" },
     name: "Healthcare & HealthTech",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Healthcare",

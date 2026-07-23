@@ -185,6 +185,13 @@ export default function LocationPage({ location }: { location: LocationContent }
             >
               Services clients in {location.country} ask for most
             </h2>
+            {/* audience-aware hook that pulls B2B readers in */}
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+              For B2B teams in {location.country}
+            </p>
+            <p className="mt-3 max-w-xl text-lg font-semibold leading-snug text-black/80" style={{ fontFamily: "var(--font-display)" }}>
+              Need a proven delivery team without the cost of building one in house?
+            </p>
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {localServices.map((s) => (
                 <a

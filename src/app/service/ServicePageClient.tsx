@@ -288,6 +288,13 @@ function ScrubbedBentoGallery() {
           >
             The digital marketing channels we plan, launch, and improve every week
           </h2>
+          {/* audience-aware hook that pulls B2B and B2C readers in */}
+          <p className="mx-auto mt-6 max-w-2xl text-lg font-semibold leading-snug text-black/70" style={{ fontFamily: "var(--font-display)" }}>
+            Is your marketing bringing in customers, or just burning budget?
+          </p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-black/45">
+            For B2B &amp; B2C brands
+          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

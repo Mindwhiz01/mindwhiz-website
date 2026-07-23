@@ -30,6 +30,10 @@ export type ServicePageContent = {
     groups: { title: string; items: string[] }[];
   };
   capabilities: { title: string; desc: string; image: string }[];
+  // catchy audience-aware hook shown above the capabilities deck. `audience`
+  // names who it is for (B2B / B2C), `question` is a short hook that pulls the
+  // reader in. Optional so pages without it keep the generic coverage blurb.
+  capabilitiesHook?: { audience: string; question: string };
   benefits: { title: string; desc: string }[];
   process: { title: string; desc: string }[];
   finalCta: {
@@ -53,6 +57,7 @@ const sharedImages = {
 export const servicePages: ServicePageContent[] = [
   {
     slug: "it-helpdesk-24-7",
+    capabilitiesHook: { audience: "For B2B teams that cannot afford downtime", question: "What happens to your team the next time IT goes down at 2am?" },
     name: "24/7 IT Helpdesk (Tier 1 to 3)",
     sourceUrl: "https://mindwhiz.com/27-7/",
     group: "IT & Security",
@@ -170,6 +175,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "noc-monitoring",
+    capabilitiesHook: { audience: "For B2B ops and IT leaders", question: "Would you rather hear about an outage from us, or from your customers?" },
     name: "NOC Monitoring (24/7)",
     sourceUrl: "https://mindwhiz.com/noc-dummy/",
     group: "IT & Security",
@@ -287,6 +293,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "remote-desktop-assets",
+    capabilitiesHook: { audience: "For B2B and hybrid teams", question: "Do you really know where every device and license in your company is right now?" },
     name: "Remote Desktop & IT Asset Management",
     sourceUrl: "https://mindwhiz.com/remote-desktop/",
     group: "Cloud & DevOps",
@@ -364,6 +371,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "cloud-infrastructure",
+    capabilitiesHook: { audience: "For B2B teams scaling in the cloud", question: "Is your cloud bill growing faster than your business?" },
     name: "Cloud Infrastructure Management",
     sourceUrl: "https://mindwhiz.com/elementor-18765/",
     group: "Cloud & DevOps",
@@ -442,6 +450,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "server-network-administration",
+    capabilitiesHook: { audience: "For B2B teams that live on their network", question: "When did you last check whether your servers could survive a bad day?" },
     name: "Server & Network Administration",
     sourceUrl: "https://mindwhiz.com/server-dummy/",
     group: "Cloud & DevOps",
@@ -521,6 +530,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "endpoint-security",
+    capabilitiesHook: { audience: "For B2B teams with staff everywhere", question: "How many laptops in your company could a single click take down?" },
     name: "Endpoint Security",
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
@@ -597,6 +607,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "devops-automation",
+    capabilitiesHook: { audience: "For B2B product and engineering teams", question: "How much faster could you ship if every deployment just worked?" },
     name: "DevOps & Automation",
     sourceUrl: "https://mindwhiz.com/elementor-18794/",
     group: "Cloud & DevOps",
@@ -675,6 +686,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "cybersecurity-monitoring",
+    capabilitiesHook: { audience: "For B2B teams that hold sensitive data", question: "If someone were inside your systems right now, would you even know?" },
     name: "Cybersecurity Monitoring",
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
@@ -755,6 +767,7 @@ export const servicePages: ServicePageContent[] = [
   },
   {
     slug: "staff-augmentation",
+    capabilitiesHook: { audience: "For B2B teams that need talent fast", question: "What could you build this quarter with the right people starting next week?" },
     name: "Staff Augmentation",
     sourceUrl: "https://mindwhiz.com/staff-augmentation/",
     group: "Talent & Workforce",

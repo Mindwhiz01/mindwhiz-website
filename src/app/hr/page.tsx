@@ -330,7 +330,14 @@ function CapabilitiesCarousel() {
               <br />
               <span className="text-[#ed1164]">payroll</span>
             </h2>
-            <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
+            {/* audience-aware hook that pulls B2B readers in */}
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
+              For B2B teams that are scaling headcount
+            </p>
+            <p className="mt-3 max-w-sm text-lg font-semibold leading-snug text-black/80" style={{ fontFamily: "var(--font-display)" }}>
+              Spending more time running HR than growing the business?
+            </p>
+            <p className="mt-4 max-w-sm text-base leading-7 text-black/70">
               From first hire to a full HR function, we run recruiting, payroll,
               systems, and compliance, so your leaders can focus on building the
               business.
