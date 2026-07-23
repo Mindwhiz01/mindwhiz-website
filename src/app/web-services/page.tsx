@@ -95,11 +95,13 @@ function BrowserFrame({
   image,
   className = "",
   scroll = false,
+  square = false,
 }: {
   url: string;
   image: string;
   className?: string;
   scroll?: boolean;
+  square?: boolean;
 }) {
   const host = url.replace("https://", "").replace(/\/$/, "");
   // hover-scroll speed follows the page length so short and long sites
@@ -168,7 +170,19 @@ function BrowserFrame({
           {host}
         </span>
       </div>
-      {scroll ? (
+      {square ? (
+        // fixed square preview - shows the top of a full-page screenshot
+        <div className="relative aspect-square overflow-hidden bg-[#f2f1ee]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt={host}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
+          />
+        </div>
+      ) : scroll ? (
         // full-page preview that scrolls top → bottom on hover
         <div className="relative h-[360px] overflow-hidden bg-[#f2f1ee]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -526,8 +540,8 @@ function PortfolioSection() {
   );
 }
 
-const spotlightSites: { name: string; url: string; image: string }[] = [
-  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg" },
+const spotlightSites: { name: string; url: string; image: string; square?: boolean }[] = [
+  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg", square: true },
   { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.jpg" },
   { name: "Basil Pizza", url: "https://basilpizzanj.com/", image: "/portfolio/basil-pizza.jpg" },
 ];
@@ -554,10 +568,10 @@ function AlphaBravoShowcase() {
           <ArrowUpRight className="h-4 w-4" />
         </a>
 
-        <div className="mt-12 w-full">
+        <div className={`mt-12 w-full ${current.square ? "mx-auto max-w-lg" : ""}`}>
           <div key={current.url} className="group relative">
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/20 to-[#9CCC3C]/15 opacity-60 blur-2xl" />
-            <BrowserFrame url={current.url} image={current.image} scroll className="relative" />
+            <BrowserFrame url={current.url} image={current.image} scroll={!current.square} square={current.square} className="relative" />
           </div>
         </div>
 
