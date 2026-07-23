@@ -88,7 +88,10 @@ const PINK = "#ed1164";
 // full-page screenshots captured once and served from /public/portfolio,
 // no third-party screenshot service at runtime, so frames load instantly.
 const FRAME_H = 360;
-const SCROLL_PX_PER_S = 450;
+// slow, readable glide - the same pace drives the desktop hover transition and
+// the touch play/pause loop, so both screens scroll identically
+const SCROLL_PX_PER_S = 170;
+const MIN_SCROLL_DUR = 10;
 
 function BrowserFrame({
   url,
@@ -104,7 +107,7 @@ function BrowserFrame({
   const host = url.replace("https://", "").replace(/\/$/, "");
   // hover-scroll speed follows the page length so short and long sites
   // both glide at the same pace; mouse-out snaps back quickly
-  const [scrollDur, setScrollDur] = useState(8);
+  const [scrollDur, setScrollDur] = useState(MIN_SCROLL_DUR);
 
   // Touch devices (mobile / tablet) have no hover, so the full-page preview
   // is driven by a small play/pause button instead. rAF moves the image so a
@@ -180,7 +183,7 @@ function BrowserFrame({
             decoding="async"
             onLoad={(e) => {
               const dist = e.currentTarget.clientHeight - FRAME_H;
-              if (dist > 0) setScrollDur(Math.max(4, dist / SCROLL_PX_PER_S));
+              if (dist > 0) setScrollDur(Math.max(MIN_SCROLL_DUR, dist / SCROLL_PX_PER_S));
             }}
             style={{ "--scroll-dur": `${scrollDur}s` } as React.CSSProperties}
             className="w-full ease-linear [transition-property:transform] [transition-duration:0.9s] [@media(hover:hover)]:group-hover:translate-y-[min(0px,calc(360px-100%))] [@media(hover:hover)]:group-hover:[transition-duration:var(--scroll-dur)]"
@@ -218,11 +221,11 @@ function BrowserFrame({
 // ---------------------------------------------------------------------------
 // data
 // ---------------------------------------------------------------------------
-const services: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
-  { title: "Custom Websites", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Web Applications", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Dashboards & Portals", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Ecommerce", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
+const services: { title: string; desc: string; Icon: LucideIcon; image: string; audience?: string; hook?: string }[] = [
+  { title: "Custom Websites", audience: "For B2B & B2C brands", hook: "Is your website winning customers, or quietly losing them?", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Web Applications", audience: "For B2B & SaaS teams", hook: "Still running your business on spreadsheets and manual work?", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Ecommerce", audience: "For B2C & retail brands", hook: "Are shoppers leaving before they reach your checkout?", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" },
   { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
 ];
@@ -230,13 +233,13 @@ const services: { title: string; desc: string; Icon: LucideIcon; image: string }
 const stack = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PHP", "Laravel", "Python", "Tailwind CSS", "WordPress", "WooCommerce", "Shopify", "Webflow", "MySQL", "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker"];
 
 const portfolio: { name: string; url: string; image: string; category: string; blurb: string }[] = [
-  { name: "Alpha Bravo", url: "https://alphabravous.com/", image: "/portfolio/alpha-bravo.jpg", category: "Corporate · Services", blurb: "A polished corporate presence with a clear services story and strong calls to action." },
-  { name: "Prime Axis Insurance", url: "https://primeaxisinsurance.com/", image: "/portfolio/prime-axis-insurance.jpg", category: "Insurance", blurb: "A trust first insurance site with clean quote flows and clear product pages." },
   { name: "Marquee Ranch", url: "https://marqueeranch.com/", image: "/portfolio/marquee-ranch.jpg", category: "Hospitality · Real Estate", blurb: "An elegant venue and ranch experience with rich galleries and event enquiries." },
   { name: "Tempura Halal", url: "https://tempurahalal.com/", image: "/portfolio/tempura-halal-updated.jpg", category: "Food & Restaurant", blurb: "An appetizing restaurant site with menus, online ordering, and event catering." },
   { name: "Tempura Food USA", url: "https://tempurafoodusa.com/", image: "/portfolio/tempura-food-usa.jpg", category: "Food & Beverage", blurb: "A bold food brand site showcasing products, story, and distribution." },
   { name: "My Safe Drives", url: "https://mysafedrives.com/", image: "/portfolio/my-safe-drives.jpg", category: "Automotive · Safety", blurb: "A clean, reassuring platform focused on safe driving services and signups." },
   { name: "Crownline Construction", url: "https://crownlineconstruct.com/", image: "/portfolio/crownline-construction.jpg", category: "Construction", blurb: "A sturdy construction brand with project showcases and lead capture." },
+  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg", category: "Fashion · Luxury", blurb: "A luxury couture store with rich lookbooks, featured collections, and shoppable edits." },
+  { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.jpg", category: "Ecommerce · Apparel", blurb: "An activewear storefront with collection browsing, product pages, and a smooth checkout." },
 ];
 
 const seoCaps: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
@@ -402,12 +405,25 @@ function ServicePanel({
         transition={{ duration: SLIDE_MS / 1000, ease: [0.22, 1, 0.36, 1], delay: isActive ? 0.12 : 0 }}
         className="absolute inset-x-0 top-0 mx-auto max-w-6xl px-6 pt-36 sm:px-8 sm:pt-40"
       >
+        {/* audience eyebrow - tells B2B and B2C visitors this is for them */}
+        {/* {s.audience && (
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#ed1164]" />
+            {s.audience}
+          </span>
+        )} */}
         <h3
           className="max-w-2xl text-[clamp(1.9rem,5.5vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white"
           style={displayFont}
         >
           {s.title}
         </h3>
+        {/* catchy hook line under the title */}
+        {s.hook && (
+          <p className="mt-5 max-w-xl text-lg font-medium leading-snug text-white/90 sm:text-2xl" style={displayFont}>
+            {s.hook}
+          </p>
+        )}
       </motion.div>
 
       {/* description, bottom-right */}
@@ -526,10 +542,10 @@ function PortfolioSection() {
   );
 }
 
-const spotlightSites: { name: string; url: string; image: string }[] = [
-  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg" },
-  { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.jpg" },
-  { name: "Basil Pizza", url: "https://basilpizzanj.com/", image: "/portfolio/basil-pizza.jpg" },
+const spotlightSites: { name: string; url: string; image: string; category: string; blurb: string }[] = [
+  { name: "Alpha Bravo", url: "https://alphabravous.com/", image: "/portfolio/alpha-bravo.jpg", category: "Corporate · Services", blurb: "A polished corporate presence with a clear services story and strong calls to action." },
+  { name: "Prime Axis Insurance", url: "https://primeaxisinsurance.com/", image: "/portfolio/prime-axis-insurance.jpg", category: "Insurance", blurb: "A trust first insurance site with clean quote flows and clear product pages." },
+  { name: "Basil Pizza", url: "https://basilpizzanj.com/", image: "/portfolio/basil-pizza.jpg", category: "Restaurant · Catering", blurb: "An appetizing Italian eatery site with full menus, catering enquiries, and online ordering." },
 ];
 
 // Website spotlight carousel - one centered browser mockup with a floating
@@ -537,32 +553,57 @@ const spotlightSites: { name: string; url: string; image: string }[] = [
 // through each featured live site.
 function AlphaBravoShowcase() {
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
   const total = spotlightSites.length;
   const current = spotlightSites[i];
   const go = (dir: number) => setI((p) => (p + dir + total) % total);
 
+  // auto-advance every few seconds; hovering the slider pauses it so visitors
+  // can read the detail and hover-scroll the preview without it moving on
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setI((p) => (p + 1) % total), 5000);
+    return () => clearInterval(id);
+  }, [paused, total]);
+
   return (
-    <section className="relative overflow-hidden border-t border-slate-100 bg-[#EEEEEE] py-24">
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 sm:px-8">
-        <a
-          href={current.url}
-          target="_blank"
-          rel="noreferrer"
-          className="relative z-20 inline-flex items-center gap-2 rounded-full bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white shadow-xl shadow-[#ed1164]/30 transition-colors hover:bg-[#c50e53]"
+    <section
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className="relative overflow-hidden border-t border-slate-100 bg-[#EEEEEE] py-24"
+    >
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
+        {/* one featured site at a time, laid out like the "shipped" rows below:
+            scrolling browser frame on one side, detail block on the other */}
+        <motion.div
+          key={current.url}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
         >
-          Visit {current.name}
-          <ArrowUpRight className="h-4 w-4" />
-        </a>
-
-        <div className="mt-12 w-full">
-          <div key={current.url} className="group relative">
-            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/20 to-[#9CCC3C]/15 opacity-60 blur-2xl" />
-            <BrowserFrame url={current.url} image={current.image} scroll className="relative" />
+          <a href={current.url} target="_blank" rel="noreferrer" className="group relative block">
+            <div className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/25 to-[#9CCC3C]/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-70" />
+            <BrowserFrame url={current.url} image={current.image} scroll className="relative transition-transform duration-500 group-hover:-translate-y-2" />
+          </a>
+          <div>
+            <span className="text-6xl font-extrabold text-black/[0.07] sm:text-7xl" style={{ fontFamily: "var(--font-display)" }}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">{current.category}</p>
+            <h3 className="mt-3 text-4xl font-extrabold uppercase tracking-tight text-black sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
+              {current.name}
+            </h3>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-black/60">{current.blurb}</p>
+            <a href={current.url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/15 px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:border-[#ed1164] hover:text-[#ed1164]">
+              Visit site
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* arrows + dots below the mockup so users can move left / right */}
-        <div className="mt-8 flex items-center gap-6">
+        {/* arrows + dots so users can move left / right through the slider */}
+        <div className="mt-12 flex items-center justify-center gap-6">
           <button
             type="button"
             onClick={() => go(-1)}
@@ -592,7 +633,7 @@ function AlphaBravoShowcase() {
           </button>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-14 flex justify-center">
           <Cta href="/contact" label="Contact us" />
         </div>
       </div>
@@ -773,21 +814,41 @@ function ProcessSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="relative"
+                className="relative flex gap-5 sm:block"
               >
+                {/* phone-only vertical connector: sits in the badge rail and
+                    draws downward to the next step as that step scrolls in,
+                    the portrait counterpart of the desktop horizontal line */}
+                {i < steps.length - 1 && (
+                  <div className="absolute left-[27.5px] top-14 -bottom-8 w-px bg-slate-200 sm:hidden">
+                    <motion.div
+                      initial={{ scaleY: 0 }}
+                      whileInView={{ scaleY: 1 }}
+                      viewport={{ once: true, margin: "-25% 0px -25% 0px" }}
+                      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ transformOrigin: "top" }}
+                      className="h-full w-full bg-[#ed1164]"
+                    />
+                  </div>
+                )}
                 {/* numbered badge on the line */}
                 <motion.span
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 300, damping: 18, delay: i * 0.12 + 0.15 }}
-                  className="relative z-10 grid h-14 w-14 place-items-center rounded-full bg-[#ed1164] text-lg font-extrabold text-white shadow-lg shadow-[#ed1164]/25"
+                  className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#ed1164] text-lg font-extrabold text-white shadow-lg shadow-[#ed1164]/25"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {s.n}
                 </motion.span>
-                <h3 className="mt-6 text-lg font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-black/55">{s.desc}</p>
+                {/* on phones the copy sits beside the badge; from sm up
+                    `contents` dissolves this wrapper so the original
+                    stacked layout is untouched */}
+                <div className="min-w-0 sm:contents">
+                  <h3 className="text-lg font-bold text-black sm:mt-6" style={{ fontFamily: "var(--font-display)" }}>{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-black/55">{s.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
