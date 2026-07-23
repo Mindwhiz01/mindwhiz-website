@@ -110,7 +110,7 @@ const insights = [
   {
     category: "Case Study",
     title: "Scaling a 24/7 IT helpdesk without the hiring lag",
-    desc: "How a hybrid Tier 1–3 model cut response times and cost.",
+    desc: "How a hybrid Tier 1 to 3 model cut response times and cost.",
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&h=1400&q=80",
     href: "/case-studies",
   },
@@ -544,7 +544,7 @@ function StudioClockSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty-five engineers headquartered in Lahore, with client-facing
-            offices in the UK and the USA. Building since 2017 - somewhere, the
+            offices in the UK and the USA. Building since 2017. Somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -820,17 +820,19 @@ function IndustriesWorlds() {
     mm.add("(min-width: 640px)", () => {
       const ctx = gsap.context(() => {
         const row = rowRef.current!;
-        // Shift needed to bring the LAST card's right edge flush with the
-        // viewport's right edge (less a small gutter), so the run finishes with
-        // no dead space on the right. Subtracting the row's current x makes the
-        // measurement valid no matter where the scrub has dragged it (e.g. on
-        // resize).
-        const GUTTER = 25; // white space left after the last card on the right
+        // The run begins with one card-width of empty space on the LEFT (a
+        // responsive pl-[…] on the row). As you scroll, each card glides
+        // right-to-left through the viewport centre - so the run must END with
+        // the LAST card parked in that same centre, otherwise it alone stops
+        // short (right-of-centre) and never gets its centred beat like the rest.
+        // Subtracting the row's current x removes the transform, giving the
+        // card's layout centre; the shift then brings that to the viewport mid.
         const distance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
           const x = Number(gsap.getProperty(row, "x"));
-          return Math.max(0, r.right - x - window.innerWidth + GUTTER);
+          const cardCentre = (r.left + r.right) / 2 - x;
+          return Math.max(0, cardCentre - window.innerWidth / 2);
         };
         // The row chases the scroll position over ~0.5s and can never
         // overshoot, so wheel notches glide instead of stepping, and scrolling
@@ -844,10 +846,13 @@ function IndustriesWorlds() {
             invalidateOnRefresh: true,
           },
         });
-        // 0.85 of the pin for the ride, then a 0.15 dwell: the last card sits
-        // centred for a beat before the pin releases into normal scrolling.
-        tl.to(row, { x: () => -distance(), duration: 0.85, ease: "power1.inOut", force3D: true })
-          .to({}, { duration: 0.15 });
+        // 0.7 of the pin for the ride (linear, so the row travels uniformly and
+        // the right-hand gap opens progressively instead of all at the tail),
+        // then a long 0.3 dwell: the last card rests one card-width from the
+        // right edge for a clear stretch of scroll before the pin releases, so
+        // the ending space is impossible to miss even if you stop a touch early.
+        tl.to(row, { x: () => -distance(), duration: 0.7, ease: "none", force3D: true })
+          .to({}, { duration: 0.3 });
       }, sectionRef);
       return () => ctx.revert();
     });
@@ -903,7 +908,7 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto pl-[25px] pr-0 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&>a:last-child]:mr-[25px] sm:snap-none sm:overflow-visible sm:px-[25px] sm:pb-0 sm:will-change-transform sm:[&>a:last-child]:mr-0 [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:pb-0 sm:pl-[320px] sm:pr-5 sm:will-change-transform lg:pl-[360px] [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
@@ -1125,7 +1130,7 @@ function ServicesScrollSection() {
                 Solutions That <span style={{ color: "#ed1164" }}>Scale</span>
               </h2>
               <p className="mt-5 max-w-sm text-black">
-                From IT and security to business operations - explore the services we deliver as you
+                From IT and security to business operations. Explore the services we deliver as you
                 scroll.
               </p>
               <button
@@ -1310,18 +1315,40 @@ function CaseRecordSection() {
 // ---------------------------------------------------------------------------
 function BlogSection() {
   const [index, setIndex] = useState(0);
+  // pause auto-rotate while a drag is in progress so a swipe never fights the timer
+  const [dragging, setDragging] = useState(false);
 
-  // depending on `index` restarts the timer after a manual arrow click, so
-  // the auto-rotate never fires right on the heels of a navigation
+  // depending on `index` (and `dragging`) restarts the timer after a manual
+  // navigation, so the auto-rotate never fires right on the heels of one
   useEffect(() => {
+    if (dragging) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % insights.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [index]);
+  }, [index, dragging]);
 
   const prev = () => setIndex((i) => (i - 1 + insights.length) % insights.length);
   const next = () => setIndex((i) => (i + 1) % insights.length);
+
+  // Drag/swipe on the featured card: pull left -> next post, pull right -> prev.
+  // `moved` gates the anchor's click so a swipe never opens the post.
+  const drag = useRef({ active: false, startX: 0, moved: false });
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    drag.current = { active: true, startX: e.clientX, moved: false };
+    setDragging(true);
+  };
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active) return;
+    if (Math.abs(e.clientX - drag.current.startX) > 5) drag.current.moved = true;
+  };
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active) return;
+    const dx = e.clientX - drag.current.startX;
+    drag.current.active = false;
+    setDragging(false);
+    if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+  };
 
   const featured = insights[index];
   const second = insights[(index + 1) % insights.length];
@@ -1347,7 +1374,7 @@ function BlogSection() {
               </h2>
               <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-8">
                 <p className="max-w-md text-sm leading-relaxed text-black/70">
-                  Field notes from live engagements - security operations, delivery
+                  Field notes from live engagements: security operations, delivery
                   playbooks, and what actually works at scale.
                 </p>
                 <div className="flex shrink-0 gap-3">
@@ -1374,7 +1401,17 @@ function BlogSection() {
 
           <div className="mt-14 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
             {/* featured post */}
-            <div className="relative h-[420px] overflow-hidden rounded-3xl sm:h-[520px]">
+            <div
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={endDrag}
+              onPointerCancel={endDrag}
+              // swallow the click that follows a swipe so the anchor doesn't navigate
+              onClickCapture={(e) => {
+                if (drag.current.moved) e.preventDefault();
+              }}
+              className="relative h-[420px] cursor-grab touch-pan-y overflow-hidden rounded-3xl active:cursor-grabbing sm:h-[520px]"
+            >
               <AnimatePresence mode="wait">
                 <motion.a
                   key={featured.title}
@@ -1384,13 +1421,15 @@ function BlogSection() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6 }}
                   className="group absolute inset-0 flex flex-col justify-end"
+                  draggable={false}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={featured.img}
                     alt={featured.title}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full select-none object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
                   <div className="relative p-7 sm:p-9">
@@ -1479,7 +1518,7 @@ function BlogSection() {
 const faqs: Faq[] = [
   {
     q: "What services does MindWhiz provide?",
-    a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back-office support across finance, HR, and construction estimation - plus staff augmentation when you need people rather than a project.",
+    a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back-office support across finance, HR, and construction estimation, plus staff augmentation when you need people rather than a project.",
   },
   {
     q: "Do you work with businesses of our size?",
@@ -1495,7 +1534,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How do we get started?",
-    a: "Book a free consultation. We review your current situation, identify the gaps, and come back with a scoped plan, clear pricing, and a practical next step - with no obligation to proceed.",
+    a: "Book a free consultation. We review your current situation, identify the gaps, and come back with a scoped plan, clear pricing, and a practical next step, with no obligation to proceed.",
   },
 ];
 
