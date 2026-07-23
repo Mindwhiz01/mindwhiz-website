@@ -108,7 +108,7 @@ export const caseStudies = [
     category: "Construction",
     result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast. The team plugged directly into existing bid workflows, cutting turnaround on takeoffs and pricing. Within the first quarter, Alpha Bravo was submitting more competitive bids without adding headcount in house.",
     highlights: ["Faster delivery", "Lower hiring friction", "Scalable support"],
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
+    img: "/clients/alpha-bravo.png",
     logo: "/clients/alpha-bravo.png",
     services: ["Construction Estimation", "Staff Augmentation", "Bid Support"],
     challenge:
@@ -139,7 +139,7 @@ export const caseStudies = [
     category: "IT Staffing",
     result: "Delivered expert IT talent to scale infrastructure and improve system reliability across operations. Engineers were embedded within two weeks, closing coverage gaps across monitoring, patching, and incident response. Downtime incidents dropped sharply as proactive maintenance replaced reactive firefighting.",
     highlights: ["Rapid onboarding", "Better uptime", "Team expansion"],
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+    img: "/clients/villa-tech.png",
     logo: "/clients/villa-tech.png",
     services: ["Staff Augmentation", "NOC Monitoring", "Server & Network Administration"],
     challenge:
@@ -170,7 +170,7 @@ export const caseStudies = [
     category: "Back Office",
     result: "Enabled improved accuracy and turnaround by strengthening back office support and workflows. Standardized checklists and QA passes cut processing errors well below the client's target threshold. Leadership now gets same day visibility into throughput instead of waiting on weekly manual reports.",
     highlights: ["Higher accuracy", "Faster turnaround", "Process clarity"],
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+    img: "/clients/inovatiqa.png",
     logo: "/clients/inovatiqa.png",
     services: ["Back Office Support", "Process Design", "Quality Assurance"],
     challenge:

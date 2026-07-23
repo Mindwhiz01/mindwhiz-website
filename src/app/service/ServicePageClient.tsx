@@ -307,7 +307,7 @@ function ScrubbedBentoGallery() {
                 </span>
 
                 {/* scooped corner + green circular arrow */}
-                <CardCornerArrow bg="#EEEEEE" />
+                <CardCornerArrow bg="#ffffff" />
 
                 <div className="relative p-6 pb-12">
                   <h3

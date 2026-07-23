@@ -60,13 +60,18 @@ export default function Footer() {
             </p>
 
             {/* status pill */}
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-1.5 text-[11px] font-medium uppercase tracking-wider text-white/70">
+            <a
+              href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-1.5 text-[11px] font-medium uppercase tracking-wider text-white/70 transition-colors hover:border-[#9CCC3C] hover:text-[#9CCC3C]"
+            >
               <span
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ backgroundColor: ACCENT }}
               />
               Accepting New Clients
-            </div>
+            </a>
 
             {/* socials */}
             <div className="mt-7 flex gap-3">

@@ -114,32 +114,15 @@ function CaseCard({
 
           {/* exhibit */}
           <div>
-            <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.18em] text-black/35">
-              <span>Exhibit {no}-A</span>
-              <span>Photograph on file</span>
-            </div>
-            <div className="relative mt-3 flex min-h-[26rem] flex-col overflow-hidden rounded-lg border border-black/10 bg-white p-6">
+            <div className="relative min-h-[26rem] overflow-hidden rounded-lg border border-black/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={cs.img}
-                alt=""
+                alt={`${cs.client} engagement`}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-25"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/50" />
-              <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-[#9CCC3C]/15 blur-3xl" />
-              <div className="relative">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">The outcome, on record</p>
-                <span className="mt-3 block h-0.5 w-7 bg-[#9CCC3C]" />
-              </div>
-              <div className="relative flex flex-1 items-center">
-                <p className="text-2xl font-medium leading-snug text-black/90">{cs.highlights.join(". ")}.</p>
-              </div>
-              <p className="relative text-[10px] font-semibold uppercase tracking-[0.18em] text-black/35">{cs.client} · 2025</p>
             </div>
-            <p className="mt-3 text-[11px] text-black/35">
-              On file: client engagement, {cs.client}, {cs.category}, 2025.
-            </p>
           </div>
         </div>
       </motion.div>

@@ -1133,18 +1133,18 @@ function ServicesScrollSection() {
                 From IT and security to business operations. Explore the services we deliver as you
                 scroll.
               </p>
-              <button
-                type="button"
-                onClick={() => setExpanded((v) => !v)}
-                className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ed1164] bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
-              >
-                {expanded ? "Show stacked view" : "View all services"}
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-                />
-              </button>
-              <div className="mt-4">
-                <Cta href="/contact" label="Contact us" />
+              <div className="mt-7 flex w-fit flex-col items-stretch gap-4">
+                <button
+                  type="button"
+                  onClick={() => setExpanded((v) => !v)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#ed1164] bg-[#ed1164] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53] hover:border-[#c50e53]"
+                >
+                  {expanded ? "Show stacked view" : "View all services"}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <Cta href="/contact" label="Contact us" className="justify-center" />
               </div>
             </Reveal>
           </div>
