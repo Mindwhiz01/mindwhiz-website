@@ -625,6 +625,75 @@ function ProcessScrollSection({ page }: { page: ServicePageContent }) {
   );
 }
 
+// Credentials shown on IT & Security and Cloud & DevOps service pages. Style
+// mirrors the homepage credentials section (centered heading + badge row).
+const certBadges = [
+  { src: "/certs/gsoc.webp", alt: "GIAC Security Operations Certified (GSOC)" },
+  { src: "/certs/oscp.webp", alt: "Offensive Security Certified Professional (OSCP)" },
+  { src: "/certs/csa.webp", alt: "EC-Council Certified SOC Analyst (CSA)" },
+  { src: "/certs/gwapt.webp", alt: "GIAC Web Application Penetration Tester (GWAPT)" },
+  { src: "/certs/google-comptia.webp", alt: "Google Cybersecurity Certificate & CompTIA Security+" },
+  { src: "/certs/ceh.webp", alt: "EC-Council Certified Ethical Hacker (CEH)" },
+];
+
+function CredentialsSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#f7f6f4] py-24 text-black">
+      <div className="relative mx-auto max-w-6xl px-6 text-center sm:px-8">
+        <Reveal>
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-[#ed1164]">
+            Credentials
+          </span>
+          <h2
+            className="mx-auto mt-5 max-w-3xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold uppercase leading-[1.02] tracking-tight text-black"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Earned under live conditions
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-black/70">
+            Every credential here was earned under live production conditions and
+            verified externally.
+          </p>
+        </Reveal>
+
+        {/* desktop: single row with vertical dividers, like the reference */}
+        <Reveal delay={0.1}>
+          <div className="mt-16 hidden grid-cols-6 divide-x divide-black/10 lg:grid">
+            {certBadges.map((b) => (
+              <div key={b.alt} className="flex items-center justify-center px-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={b.src}
+                  alt={b.alt}
+                  title={b.alt}
+                  className="h-24 w-auto max-w-full rounded-xl border border-slate-200 bg-white p-2.5 object-contain shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* mobile / tablet: tiled grid */}
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:hidden">
+            {certBadges.map((b) => (
+              <div
+                key={b.alt}
+                className="flex aspect-square items-center justify-center rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={b.src}
+                  alt={b.alt}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 const SITE_URL = "https://graphite-teal-template.vercel.app";
 
 export default function ServiceDetailPage({
@@ -680,6 +749,8 @@ export default function ServiceDetailPage({
   }, [theme]);
 
   const isHelpdesk = page.slug === "it-helpdesk-24-7";
+  // Credentials belong on the IT & Security and Cloud & DevOps service pages.
+  const showCredentials = page.group === "IT & Security" || page.group === "Cloud & DevOps";
 
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
@@ -809,6 +880,8 @@ export default function ServiceDetailPage({
       <BenefitsStackSection page={page} />
 
       <ProcessScrollSection page={page} />
+
+      {showCredentials && <CredentialsSection />}
 
       {page.faqs?.length ? <FaqSection faqs={page.faqs} /> : null}
 
