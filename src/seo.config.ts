@@ -28,9 +28,9 @@ export const SEO_MAP: Record<string, SeoEntry> = {
 
   // --- Services ---
   "/services/it-helpdesk-24-7": {
-    title: "24/7 IT Helpdesk Services (Tier 1-3) | MindWhiz",
+    title: "24/7 IT Helpdesk Services (Tier 1 to 3) | MindWhiz",
     description:
-      "Outsourced 24/7 IT helpdesk with Tier 1-3 support, 15-minute response and fixed per-user pricing. Cut downtime without hiring in-house. Book a free review.",
+      "Outsourced 24/7 IT helpdesk with Tier 1 to 3 support, 15 minute response and fixed per user pricing. Cut downtime without hiring in house. Book a free review.",
   },
   "/services/noc-monitoring": {
     title: "NOC Monitoring Services | 24/7 Network Operations | MindWhiz",
@@ -45,7 +45,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/services/cloud-infrastructure": {
     title: "Managed Cloud Infrastructure & Migration Services | MindWhiz",
     description:
-      "Cloud infrastructure design, migration and managed operations across AWS and Azure. Stable, secure, cost-controlled environments. Book a free consultation.",
+      "Cloud infrastructure design, migration and managed operations across AWS and Azure. Stable, secure, cost controlled environments. Book a free consultation.",
   },
   "/services/devops-automation": {
     title: "DevOps & Automation Services | CI/CD Pipelines | MindWhiz",
@@ -77,7 +77,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/hr": {
     title: "HR Outsourcing Services | RPO, Payroll & HRIS | MindWhiz",
     description:
-      "Outsourced HR covering RPO, payroll, HRIS administration and compliance. Hire faster and stay compliant without an in-house HR team. Book a free consultation.",
+      "Outsourced HR covering RPO, payroll, HRIS administration and compliance. Hire faster and stay compliant without an in house HR team. Book a free consultation.",
   },
   "/finance": {
     title: "Finance & Accounting Outsourcing | Bookkeeping | MindWhiz",
@@ -87,7 +87,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/service": {
     title: "Digital Marketing Services | SEO, PPC & CRM | MindWhiz",
     description:
-      "Digital marketing delivered by a dedicated team: SEO, paid campaigns, CRM and content operations. Grow pipeline without hiring in-house. Get in touch today.",
+      "Digital marketing delivered by a dedicated team: SEO, paid campaigns, CRM and content operations. Grow pipeline without hiring in house. Get in touch today.",
   },
   "/construction-estimation": {
     title: "Construction Estimation Services | Takeoffs | MindWhiz",
@@ -109,19 +109,19 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/industries/ecommerce-retail": {
     title: "Ecommerce & Retail Outsourcing Services | MindWhiz",
     description:
-      "Catalog, customer support and back-office operations that keep storefronts running around the clock. Outsourced teams for ecommerce and retail brands.",
+      "Catalog, customer support and back office operations that keep storefronts running around the clock. Outsourced teams for ecommerce and retail brands.",
   },
   "/industries/startups-smbs": {
     title: "Staffing & Outsourcing for Startups and SMBs | MindWhiz",
     description:
-      "Flexible, cost-effective teams that scale as fast as you grow. Staffing, IT and back-office support built for startups and SMBs. Book a free consultation.",
+      "Flexible, cost effective teams that scale as fast as you grow. Staffing, IT and back office support built for startups and SMBs. Book a free consultation.",
   },
   "/industries/construction-engineering": {
     title: "Construction & Engineering Support Services | MindWhiz",
     description:
       "Estimation, takeoffs and engineering support that speed up bids and keep projects moving. Outsourced teams for construction and engineering firms. Get in touch.",
   },
-  "/industries/real-estate": {
+  "/industries/real estate": {
     title: "Real Estate Back Office & Transaction Support | MindWhiz",
     description:
       "Listing, transaction and operations support that keeps agents focused on deals instead of admin. Outsourced real estate teams. Book a free consultation today.",
@@ -129,7 +129,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/industries/industrial-manufacturing": {
     title: "Manufacturing Support & Outsourcing Services | MindWhiz",
     description:
-      "Engineering, back-office and IT support that keeps manufacturing operations efficient and connected. Outsourced industrial support teams. Talk to a specialist.",
+      "Engineering, back office and IT support that keeps manufacturing operations efficient and connected. Outsourced industrial support teams. Talk to a specialist.",
   },
   "/industries/accounting-finance": {
     title: "Accounting & Finance Outsourcing Support | MindWhiz",
@@ -139,17 +139,17 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/industries/professional-services": {
     title: "Professional Services Back Office Support | MindWhiz",
     description:
-      "Research, operations and back-office support for consulting and professional firms. Free your billable team from admin. Book a free consultation with MindWhiz.",
+      "Research, operations and back office support for consulting and professional firms. Free your billable team from admin. Book a free consultation with MindWhiz.",
   },
   "/industries/logistics-supply-chain": {
     title: "Logistics & Supply Chain Support Services | MindWhiz",
     description:
-      "Coordination, tracking and back-office support that keeps goods moving. Outsourced logistics and supply chain teams available around the clock. Get in touch.",
+      "Coordination, tracking and back office support that keeps goods moving. Outsourced logistics and supply chain teams available around the clock. Get in touch.",
   },
   "/industries/healthcare-healthtech": {
     title: "Healthcare & HealthTech Outsourcing Services | MindWhiz",
     description:
-      "Compliant talent and support for care operations and health technology platforms. HIPAA-aware outsourced teams for healthcare and healthtech. Talk to our team.",
+      "Compliant talent and support for care operations and health technology platforms. HIPAA aware outsourced teams for healthcare and healthtech. Talk to our team.",
   },
 
   // --- Company ---
@@ -161,7 +161,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/why-mindwhiz": {
     title: "Why MindWhiz | Staff Augmentation Done Right",
     description:
-      "Why teams pick MindWhiz: vetted talent, 10-day deployment, 99.8% retention and 24/7 coverage across three regions. See how we compare. Book a free consultation.",
+      "Why teams pick MindWhiz: vetted talent, 10 day deployment, 99.8% retention and 24/7 coverage across three regions. See how we compare. Book a free consultation.",
   },
   "/case-studies": {
     title: "Case Studies | Staffing & Outsourcing Results | MindWhiz",

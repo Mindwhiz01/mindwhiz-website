@@ -25,7 +25,7 @@ export type BlogPost = {
 const authors = {
   ali: {
     name: "Muhammad Ali",
-    role: "Co-Founder & CEO",
+    role: "Cofounder & CEO",
     avatar:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80",
   },
@@ -65,7 +65,7 @@ export const posts: BlogPost[] = [
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
     featured: true,
     body: [
-      { type: "p", text: "For years, the choice was binary: hire expensive in-house teams, or hand everything to an offshore vendor and hope for the best. Hybrid staffing rejects that trade-off." },
+      { type: "p", text: "For years, the choice was binary: hire expensive in house teams, or hand everything to an offshore vendor and hope for the best. Hybrid staffing rejects that tradeoff." },
       { type: "h2", text: "What hybrid staffing actually means" },
       { type: "p", text: "A hybrid model pairs a small onshore core, people in your timezone who own strategy and client relationships, with a scalable offshore delivery team that handles execution around the clock." },
       { type: "list", items: [
@@ -75,14 +75,14 @@ export const posts: BlogPost[] = [
       ] },
       { type: "quote", text: "The best hybrid teams feel like one team, the timezone is an advantage, not a barrier." },
       { type: "h2", text: "Where it pays off" },
-      { type: "p", text: "IT support, monitoring, finance operations, and back-office work all benefit from continuous coverage. The result is faster resolution times and meaningful cost savings without cutting corners." },
+      { type: "p", text: "IT support, monitoring, finance operations, and back office work all benefit from continuous coverage. The result is faster resolution times and meaningful cost savings without cutting corners." },
     ],
   },
   {
     slug: "24-7-noc-monitoring-guide",
-    title: "Inside a 24/7 NOC: what always-on monitoring really looks like",
+    title: "Inside a 24/7 NOC: what always on monitoring really looks like",
     excerpt:
-      "A behind-the-scenes look at how a network operations center keeps systems healthy, the tooling, the runbooks, and the people behind the dashboards.",
+      "A behind the scenes look at how a network operations center keeps systems healthy, the tooling, the runbooks, and the people behind the dashboards.",
     category: "IT & Security",
     date: "2026-06-14",
     readTime: "6 min read",
@@ -93,7 +93,7 @@ export const posts: BlogPost[] = [
       { type: "p", text: "Uptime isn't luck. Behind every reliable system is a network operations center quietly catching problems before your users ever notice them." },
       { type: "h2", text: "The three layers of coverage" },
       { type: "list", items: [
-        "Detection: real-time alerts tuned to cut out the noise.",
+        "Detection: real time alerts tuned to cut out the noise.",
         "Triage: named owners with clear escalation paths.",
         "Resolution: documented runbooks for fast, consistent fixes.",
       ] },
@@ -105,7 +105,7 @@ export const posts: BlogPost[] = [
     slug: "cutting-cloud-costs",
     title: "Five ways we cut cloud spend by 30% without downtime",
     excerpt:
-      "Cloud bills creep up quietly. Here are the practical, low-risk moves our engineers use to reclaim budget while keeping everything running.",
+      "Cloud bills creep up quietly. Here are the practical, low risk moves our engineers use to reclaim budget while keeping everything running.",
     category: "Operations",
     date: "2026-05-30",
     readTime: "5 min read",
@@ -113,9 +113,9 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
     body: [
-      { type: "p", text: "Most cloud waste isn't dramatic, it's a thousand small inefficiencies. Fixing them is safer and more rewarding than a risky re-architecture." },
+      { type: "p", text: "Most cloud waste isn't dramatic, it's a thousand small inefficiencies. Fixing them is safer and more rewarding than a risky rearchitecture." },
       { type: "list", items: [
-        "Right-size instances against real usage, not guesses.",
+        "Right size instances against real usage, not guesses.",
         "Kill idle and orphaned resources on a schedule.",
         "Commit to savings plans for steady baseline load.",
         "Move cold data to cheaper storage tiers.",
@@ -168,7 +168,7 @@ export const posts: BlogPost[] = [
     slug: "faster-onboarding-remote-specialists",
     title: "How we onboard a remote specialist in under two weeks",
     excerpt:
-      "Speed-to-productivity is the whole game in staff augmentation. Here's the repeatable process that gets new hires shipping fast.",
+      "Speed to productivity is the whole game in staff augmentation. Here's the repeatable process that gets new hires shipping fast.",
     category: "Staffing",
     date: "2026-04-11",
     readTime: "5 min read",
@@ -177,7 +177,7 @@ export const posts: BlogPost[] = [
       "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1400&q=80",
     body: [
       { type: "p", text: "A specialist who takes two months to get productive isn't augmenting your team, they're a tax on it. We designed our onboarding to avoid exactly that." },
-      { type: "h2", text: "The two-week runway" },
+      { type: "h2", text: "The two week runway" },
       { type: "list", items: [
         "Week one: access, context, and shadowing real tickets.",
         "Week two: supervised ownership with a named buddy.",

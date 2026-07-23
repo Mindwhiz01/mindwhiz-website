@@ -483,7 +483,7 @@ function Footer() {
     <footer className="bg-[#1000d8] px-5 py-16 text-white sm:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <p className="text-4xl font-extrabold uppercase" style={{ fontFamily: "var(--font-display)" }}>
-          [mind-whiz] noun
+          [mindwhiz] noun
         </p>
         <p className="text-4xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
           A practical link between strategy, creativity, performance, and the
@@ -508,7 +508,7 @@ const faqs: Faq[] = [
     a: "It depends entirely on scope. Focused pieces of work run in weeks; full identity or platform builds run considerably longer. You get a timeline with milestones at proposal stage so progress is visible throughout.",
   },
   {
-    q: "Do you work with our in-house team?",
+    q: "Do you work with our in house team?",
     a: "Often, yes. We can lead the work end to end or plug into an existing team where you need specific capability, and we are comfortable handing over cleanly at the end.",
   },
   {

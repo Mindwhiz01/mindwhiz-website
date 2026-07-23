@@ -22,7 +22,7 @@ const sections: LegalSection[] = [
       [
         "Respond to enquiries and provide the services you request.",
         "Match client requirements with candidate profiles and manage ongoing engagements.",
-        "Send service-related communications, and, only where you have opted in, marketing updates.",
+        "Send service related communications, and, only where you have opted in, marketing updates.",
         "Operate, secure, and improve our website and services.",
         "Meet legal, regulatory, and contractual obligations across the regions we operate in.",
       ],
@@ -43,7 +43,7 @@ const sections: LegalSection[] = [
   {
     heading: "International Transfers",
     body: [
-      "MindWhiz operates delivery hubs in the United States, the United Kingdom, and Pakistan. Your information may be processed in any of these locations. Wherever it is processed, we apply the same safeguards described in this policy and put appropriate contractual protections in place for cross-border transfers.",
+      "MindWhiz operates delivery hubs in the United States, the United Kingdom, and Pakistan. Your information may be processed in any of these locations. Wherever it is processed, we apply the same safeguards described in this policy and put appropriate contractual protections in place for cross border transfers.",
     ],
   },
   {

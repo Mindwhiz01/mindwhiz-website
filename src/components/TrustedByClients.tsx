@@ -42,7 +42,7 @@ function Reveal({
 
 const clientTestimonials = [
   {
-    quote: "MindWhiz is a must-have for scaling support as a growing business today.",
+    quote: "MindWhiz is a must have for scaling support as a growing business today.",
     author: "Alpha Bravo Construction",
     video: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4",
     image: "/clients/alpha-bravo-site.png",
@@ -62,7 +62,7 @@ const clientTestimonials = [
     ],
   },
   {
-    quote: "MindWhiz let us ship an AI-powered site without growing the team.",
+    quote: "MindWhiz let us ship an AI powered site without growing the team.",
     author: "AISureTech",
     video: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4",
     image: "/clients/aisuretech-site.png",

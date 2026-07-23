@@ -35,7 +35,7 @@ function LogoImg({ src, name, className = "" }: { src: string; name: string; cla
   return <img src={src} alt={name} className={`w-auto object-contain ${className}`} />;
 }
 
-// ── Variant A · two-row marquee (current style) ─────────────────────────────
+// ── Variant A · two row marquee (current style) ─────────────────────────────
 function VariantMarquee() {
   const row2 = [...LOGOS].reverse();
   return (
@@ -235,7 +235,7 @@ export default function ClientsSampleShowcaseClient() {
         </h1>
       </div>
 
-      <Label n="A" title="Two-row opposite marquee" />
+      <Label n="A" title="Two row opposite marquee" />
       <VariantMarquee />
 
       <Label n="B" title="Dark band, single marquee" />

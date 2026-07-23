@@ -58,7 +58,7 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       image: "/banners/it-helpdesk.png",
-      title: ["Always-On", "IT"],
+      title: ["Always On", "IT"],
       highlight: "Support",
       subtitle:
         "From basic troubleshooting to complex issues, our 24/7 helpdesk ensures uninterrupted operations and rapid resolution across all support tiers.",
@@ -66,9 +66,9 @@ export const servicePages: ServicePageContent[] = [
     },
     intro: {
       kicker: "Comparison",
-      title: "24/7 IT helpdesk support across Tiers 1-3",
+      title: "24/7 IT helpdesk support across Tiers 1 to 3",
       body: [
-        "Why Mindwhiz IT Helpdesk services stand out: round-the-clock expert support, faster response times, and compliant, cost-efficient service designed to scale with your business, not restrict it.",
+        "Why Mindwhiz IT Helpdesk services stand out: round the clock expert support, faster response times, and compliant, cost efficient service designed to scale with your business, not restrict it.",
         "Mindwhiz combines continuous availability, certified IT professionals, customized support plans, and SOC 2 and ISO 27001 aligned security practices.",
       ],
     },
@@ -89,7 +89,7 @@ export const servicePages: ServicePageContent[] = [
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
       },
       {
-        value: "Tier 1-3",
+        value: "Tier 1 to 3",
         label: "Rapid resolution across all support tiers",
         image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
       },
@@ -107,7 +107,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         title: "Cost Efficiency",
-        desc: "A cost-efficient helpdesk model can deliver up to 30% cost savings compared with higher in-house costs.",
+        desc: "A cost efficient helpdesk model can deliver up to 30% cost savings compared with higher in house costs.",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
       },
       {
@@ -117,23 +117,23 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         title: "Tailored IT Support",
-        desc: "Customized support plans replace one-size-fits-all packages and align with your tools, team, and priorities.",
+        desc: "Customized support plans replace one size fits all packages and align with your tools, team, and priorities.",
         image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
       },
       {
         title: "Compliance and Security",
-        desc: "SOC 2 and ISO 27001 aligned delivery provides stronger controls than basic security-only support.",
+        desc: "SOC 2 and ISO 27001 aligned delivery provides stronger controls than basic security only support.",
         image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
       },
     ],
     benefits: [
-      { title: "Industry-leading Certifications", desc: "Mindwhiz prioritizes excellence in every aspect of service delivery, with certifications from globally recognized organizations." },
+      { title: "Industry leading Certifications", desc: "Mindwhiz prioritizes excellence in every aspect of service delivery, with certifications from globally recognized organizations." },
       { title: "Quality and Compliance", desc: "Certified practices help guarantee adherence to high standards of quality, security, and compliance." },
       { title: "Book a Free Consultation", desc: "Discuss your challenges, technical goals, and delivery priorities with a senior consultant." },
-      { title: "Clear Next Steps", desc: "Get in-depth insights, tailored solutions, and a practical support path for your environment." },
+      { title: "Clear Next Steps", desc: "Get in depth insights, tailored solutions, and a practical support path for your environment." },
       { title: "Simple Pricing That Grows With You", desc: "Fixed monthly cost per user supports predictable and transparent budgeting." },
       { title: "Transparent Billing", desc: "Service scales with team size and business growth, with no hidden fees or surprise charges." },
-      { title: "Maximize ROI", desc: "Reduce downtime, strengthen security, and minimize disruptions through always-on support." },
+      { title: "Maximize ROI", desc: "Reduce downtime, strengthen security, and minimize disruptions through always on support." },
     ],
     process: [
       { title: "Initial Consultation and Needs Assessment", desc: "Review the current environment, pain points, and goals to define support outcomes, SLA targets, and onboarding steps." },
@@ -178,11 +178,11 @@ export const servicePages: ServicePageContent[] = [
       title: ["Protect", "Your"],
       highlight: "Uptime",
       subtitle:
-        "Always-on monitoring, incident handling, performance optimization, and operational reporting that scales with your environment.",
+        "Always on monitoring, incident handling, performance optimization, and operational reporting that scales with your environment.",
       cta: "Take Control of Your IT",
     },
     intro: {
-      kicker: "Industry-leading NOC operations",
+      kicker: "Industry leading NOC operations",
       title: "24/7 NOC",
       highlight: "Monitoring",
       body: [
@@ -209,7 +209,7 @@ export const servicePages: ServicePageContent[] = [
         {
           title: "Network Monitoring and Visibility Gaps",
           items: [
-            "Limited real-time visibility across network and infrastructure",
+            "Limited real time visibility across network and infrastructure",
             "Delayed alerts causing longer downtime",
             "Too many monitoring tools with no clear signal",
             "Lack of centralized dashboards and reporting",
@@ -219,7 +219,7 @@ export const servicePages: ServicePageContent[] = [
         {
           title: "NOC Performance and Operational Strain",
           items: [
-            "Underperforming in-house or outsourced NOC teams",
+            "Underperforming in house or outsourced NOC teams",
             "Slow incident detection and escalation",
             "Engineers stretched across shifts and priorities",
             "Skill gaps in network, cloud, or security monitoring",
@@ -229,9 +229,9 @@ export const servicePages: ServicePageContent[] = [
         {
           title: "Cost Control and Service Predictability",
           items: [
-            "Rising costs to staff and manage a full-time NOC",
+            "Rising costs to staff and manage a full time NOC",
             "Unclear pricing tied to tickets or incidents",
-            "Hidden costs from overtime and on-call coverage",
+            "Hidden costs from overtime and on call coverage",
             "Vendor complexity across tools and providers",
             "Difficulty forecasting NOC operational spend",
           ],
@@ -240,14 +240,14 @@ export const servicePages: ServicePageContent[] = [
     },
     capabilities: [
       { title: "Network Monitoring", desc: "Continuous monitoring of routers, switches, firewalls, and wireless networks to identify performance issues, outages, and abnormal activity.", image: "/service-coverage/noc-monitoring/network-monitoring.png" },
-      { title: "Server Monitoring", desc: "Real-time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "/service-coverage/noc-monitoring/server-monitoring.png" },
+      { title: "Server Monitoring", desc: "Real time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "/service-coverage/noc-monitoring/server-monitoring.png" },
       { title: "Application Monitoring", desc: "Visibility into application performance and dependencies to detect slowdowns, failures, and service degradation early.", image: "/service-coverage/noc-monitoring/application-monitoring.png" },
       { title: "Website Monitoring", desc: "Availability checks, certificate status, and user experience validation for websites and portals.", image: "/service-coverage/noc-monitoring/website-monitoring.png" },
       { title: "Broadband Monitoring", desc: "Performance monitoring across broadband networks, including PON, DOCSIS, and customer equipment.", image: "/service-coverage/noc-monitoring/broadband-monitoring.png" },
       { title: "Outage Remediation", desc: "Fast issue resolution using documented runbooks, automated recovery actions, and coordinated escalation.", image: "/service-coverage/noc-monitoring/outage-remediation.png" },
     ],
     benefits: [
-      { title: "Real-time Incident Management", desc: "Immediate detection, triage, escalation, and resolution help minimize downtime." },
+      { title: "Real time Incident Management", desc: "Immediate detection, triage, escalation, and resolution help minimize downtime." },
       { title: "Patch and Maintenance Support", desc: "Scheduled patching and system maintenance help preserve operational stability." },
       { title: "Operational Reporting and SLAs", desc: "Clear reporting on uptime, incidents, and response times keeps delivery measurable." },
       { title: "Scalable NOC Architecture", desc: "Monitoring coverage can expand without disrupting the environment." },
@@ -264,7 +264,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Do you only send alerts, or do you resolve issues too?",
-        a: "Both. Routine and well-understood conditions are actioned against agreed playbooks so they are fixed rather than forwarded. Anything outside that scope is escalated to your team with the diagnostic context already gathered.",
+        a: "Both. Routine and well understood conditions are actioned against agreed playbooks so they are fixed rather than forwarded. Anything outside that scope is escalated to your team with the diagnostic context already gathered.",
       },
       {
         q: "How quickly is an alert picked up?",
@@ -281,7 +281,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     finalCta: {
       title: "Strengthen your operations",
-      desc: "MindWhiz delivers end-to-end lifecycle solutions that reduce operational noise while improving performance, reliability, and visibility.",
+      desc: "MindWhiz delivers end to end lifecycle solutions that reduce operational noise while improving performance, reliability, and visibility.",
       button: "Get started",
     },
   },
@@ -327,7 +327,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Complete Visibility", desc: "Know where hardware and software assets are, who owns them, and how they are being used." },
       { title: "Structured Lifecycle Management", desc: "Support procurement, assignment, access control, license management, and retirement." },
       { title: "Proactive Risk Detection", desc: "Use reporting and oversight to catch compliance gaps, access issues, and asset drift." },
-      { title: "Audit-Ready Reporting", desc: "Clear reporting supports audits and informed decisions across distributed environments." },
+      { title: "Audit Ready Reporting", desc: "Clear reporting supports audits and informed decisions across distributed environments." },
     ],
     process: [
       { title: "Catalog Assets", desc: "Document devices, software, cloud resources, ownership, users, and access status." },
@@ -372,15 +372,15 @@ export const servicePages: ServicePageContent[] = [
       title: ["Optimize", "Your"],
       highlight: "Cloud",
       subtitle:
-        "Optimize, secure, and scale your cloud without complexity. MindWhiz manages cloud environments end-to-end for performance, cost efficiency, and reliability.",
+        "Optimize, secure, and scale your cloud without complexity. MindWhiz manages cloud environments end to end for performance, cost efficiency, and reliability.",
       cta: "Optimize Your Cloud Today",
     },
     intro: {
       kicker: "Reliable IT infrastructure services",
       title: "Managed cloud infrastructure, migration and operations",
       body: [
-        "Your business relies on always-available networks, applications, and digital services. MindWhiz helps organizations maintain a resilient IT foundation.",
-        "We work with your teams to design, manage, and optimize cloud environments that support performance, availability, and long-term scalability.",
+        "Your business relies on always available networks, applications, and digital services. MindWhiz helps organizations maintain a resilient IT foundation.",
+        "We work with your teams to design, manage, and optimize cloud environments that support performance, availability, and long term scalability.",
       ],
       card: {
         tags: ["Cloud Sprawl", "Downtime Risk"],
@@ -405,7 +405,7 @@ export const servicePages: ServicePageContent[] = [
       { title: "Faster Recovery Times", desc: "Backup, recovery, and response processes help restore services quickly after incidents." },
       { title: "Cloud Management Expertise", desc: "MindWhiz handles configuration, monitoring, and optimization so internal teams can focus on priorities." },
       { title: "Predictable Operating Costs", desc: "Clear cost visibility and controlled spending help organizations plan budgets without surprises." },
-      { title: "More Focus on Business Growth", desc: "Offloading day-to-day cloud management gives internal teams more capacity for innovation and growth." },
+      { title: "More Focus on Business Growth", desc: "Offloading day to day cloud management gives internal teams more capacity for innovation and growth." },
     ],
     process: [
       { title: "Discovery", desc: "Map your cloud environment, risks, priorities, users, workloads, and performance gaps." },
@@ -419,10 +419,10 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Can you help reduce what we spend on cloud?",
-        a: "Usually, yes. Cost review is part of ongoing management: right-sizing over-provisioned resources, removing orphaned storage and idle instances, and matching commitment models to actual usage. Savings depend on how the estate is currently configured.",
+        a: "Usually, yes. Cost review is part of ongoing management: right sizing overprovisioned resources, removing orphaned storage and idle instances, and matching commitment models to actual usage. Savings depend on how the estate is currently configured.",
       },
       {
-        q: "Do you handle migration from on-premises infrastructure?",
+        q: "Do you handle migration from on premises infrastructure?",
         a: "Yes. Migrations are planned in stages with defined rollback points rather than moved in a single cutover, so workloads transition without taking the business offline.",
       },
       {
@@ -450,7 +450,7 @@ export const servicePages: ServicePageContent[] = [
       title: ["Power", "Your"],
       highlight: "Backbone",
       subtitle:
-        "Reliable infrastructure that powers business continuity. From server management to network optimization, MindWhiz keeps your IT backbone secure, stable, and high-performing.",
+        "Reliable infrastructure that powers business continuity. From server management to network optimization, MindWhiz keeps your IT backbone secure, stable, and high performing.",
       cta: "Strengthen Your Infrastructure",
     },
     intro: {
@@ -469,7 +469,7 @@ export const servicePages: ServicePageContent[] = [
       },
     },
     proof: [
-      { value: "Co-managed", label: "Operating model" },
+      { value: "Comanaged", label: "Operating model" },
       { value: "Reduced", label: "Operational risk" },
       { value: "Optimized", label: "Uptime and capacity" },
     ],
@@ -477,13 +477,13 @@ export const servicePages: ServicePageContent[] = [
       { title: "Proactive Monitoring", desc: "Health checks, performance baselines, and alert tuning reduce downtime and improve visibility.", image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80" },
       { title: "Patch and Harden", desc: "Routine updates and security controls keep server environments stable and aligned with risk posture.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" },
       { title: "Incident Response", desc: "Clear escalation paths and fast remediation help resolve issues before disruption spreads.", image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" },
-      { title: "Capacity Planning", desc: "Right-size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" },
+      { title: "Capacity Planning", desc: "Right size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" },
     ],
     benefits: [
       { title: "Troubleshooting", desc: "Identify, isolate, and resolve server problems through proactive monitoring and efficient support." },
       { title: "Maintenance", desc: "Ongoing server maintenance reduces downtime and security risk while keeping systems reliable." },
       { title: "Software Installations", desc: "Manage software installations and updates to ensure compatibility and reduce configuration errors." },
-      { title: "Cloud Management", desc: "Manage cloud-based server configurations and operations with specialized tools and experience." },
+      { title: "Cloud Management", desc: "Manage cloud based server configurations and operations with specialized tools and experience." },
       { title: "Server Optimization", desc: "Identify performance gaps and optimize configurations to improve reliability and resource utilization." },
     ],
     process: [
@@ -493,7 +493,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Do you support on-premises, cloud, and hybrid environments?",
+        q: "Do you support on premises, cloud, and hybrid environments?",
         a: "Yes. Most environments are a mix, and administration covers physical servers, virtualized workloads, and cloud instances under one arrangement rather than splitting responsibility across providers.",
       },
       {
@@ -506,7 +506,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Can you take over from our current provider?",
-        a: "Yes. Transitions start with an audit of the existing estate and documentation of what is actually running, so nothing is lost in handover before we assume day-to-day responsibility.",
+        a: "Yes. Transitions start with an audit of the existing estate and documentation of what is actually running, so nothing is lost in handover before we assume day to day responsibility.",
       },
       {
         q: "Will we get documentation of our own environment?",
@@ -537,7 +537,7 @@ export const servicePages: ServicePageContent[] = [
       title: "Managed endpoint security and device protection",
       body: [
         "Endpoint security keeps laptops, workstations, and servers protected as teams scale across locations.",
-        "MindWhiz supports monitoring, policy alignment, patch visibility, and remediation workflows that reduce device-level risk.",
+        "MindWhiz supports monitoring, policy alignment, patch visibility, and remediation workflows that reduce device level risk.",
       ],
       card: {
         tags: ["Endpoint Risk", "Compliance Gaps"],
@@ -554,7 +554,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     capabilities: [
       { title: "Device Protection", desc: "EDR/AV posture monitoring, policy checks, and response coordination for risky devices.", image: "/services/endpoint-security/device-protection.png" },
-      { title: "Patch Tracking", desc: "Patch status, exception follow-up, and reporting for laptops, workstations, and servers.", image: "/services/endpoint-security/patch-tracking.png" },
+      { title: "Patch Tracking", desc: "Patch status, exception followup, and reporting for laptops, workstations, and servers.", image: "/services/endpoint-security/patch-tracking.png" },
       { title: "Access Controls", desc: "Device compliance, enrollment checks, and security hygiene across remote work environments.", image: "/services/endpoint-security/access-control.png" },
     ],
     benefits: [
@@ -581,7 +581,7 @@ export const servicePages: ServicePageContent[] = [
         a: "The device can be isolated to stop lateral movement, the threat is investigated and removed, and the device is restored to a known good state, with a record of what happened and what changed.",
       },
       {
-        q: "Can you support employee-owned or BYOD devices?",
+        q: "Can you support employee owned or BYOD devices?",
         a: "Yes, within policies agreed with you. Controls can be scoped to business data and applications so personal devices are protected where it matters without taking blanket control of the whole device.",
       },
       {
@@ -612,14 +612,14 @@ export const servicePages: ServicePageContent[] = [
       kicker: "Software delivery and cloud infrastructure",
       title: "DevOps and delivery automation services",
       body: [
-        "MindWhiz works across cloud platforms and environments to support DevOps and automation needs without relying on vendor-specific tools.",
+        "MindWhiz works across cloud platforms and environments to support DevOps and automation needs without relying on vendor specific tools.",
         "By automating critical workflows, MindWhiz reduces operational complexity, increases efficiency, and supports security and compliance across modern infrastructure.",
       ],
       card: {
         tags: ["Manual Releases", "Slow Delivery"],
         image: sharedImages.devops,
         title: "Deployment Bottlenecks",
-        desc: "Manual, error-prone releases slow delivery and make every deployment a risk instead of routine.",
+        desc: "Manual, error prone releases slow delivery and make every deployment a risk instead of routine.",
         cta: "Talk to expert",
       },
     },
@@ -643,7 +643,7 @@ export const servicePages: ServicePageContent[] = [
     process: [
       { title: "Initiation", desc: "Identify the need for DevOps transformation, CI/CD improvements, deployment automation, and infrastructure modernization." },
       { title: "Requirement Gathering", desc: "Run stakeholder workshops, define KPIs such as MTTR and deployment frequency, and capture security requirements." },
-      { title: "Discovery", desc: "Evaluate infrastructure, tooling, workflows, target architecture, and phase-based roadmap." },
+      { title: "Discovery", desc: "Evaluate infrastructure, tooling, workflows, target architecture, and phase based roadmap." },
     ],
     faqs: [
       {
@@ -652,7 +652,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Which tools do you work with?",
-        a: "The mainstream ecosystem, Git-based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
+        a: "The mainstream ecosystem, Git based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
       },
       {
         q: "Can you improve our existing pipeline instead of rebuilding it?",
@@ -669,7 +669,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     finalCta: {
       title: "Lead your digital journey",
-      desc: "Get a structured, outcome-driven DevOps roadmap that accelerates delivery, improves reliability, and reduces operational risk.",
+      desc: "Get a structured, outcome driven DevOps roadmap that accelerates delivery, improves reliability, and reduces operational risk.",
       button: "Get expert consultation",
     },
   },
@@ -683,7 +683,7 @@ export const servicePages: ServicePageContent[] = [
       title: ["Defeat", "Cyber"],
       highlight: "Threats",
       subtitle:
-        "Real-time protection against evolving threats. MindWhiz monitors systems 24/7 to detect, prevent, and respond before threats impact your business.",
+        "Real time protection against evolving threats. MindWhiz monitors systems 24/7 to detect, prevent, and respond before threats impact your business.",
       cta: "Protect Your Business Now",
     },
     intro: {
@@ -704,21 +704,21 @@ export const servicePages: ServicePageContent[] = [
     proof: [
       { value: "24/7/365", label: "Security monitoring" },
       { value: "MDR", label: "Detection and response" },
-      { value: "SIEM + EDR", label: "Technology-enabled monitoring" },
+      { value: "SIEM + EDR", label: "Technology enabled monitoring" },
       { value: "Unified", label: "Security visibility" },
     ],
     capabilities: [
       { title: "Managed Detection and Response", desc: "Monitor activity, identify threats, and respond to security risks in real time.", image: "/service-coverage/cybersecurity/managed-detection.png" },
       { title: "Threat Hunting", desc: "Structured threat hunting identifies suspicious activity and hidden risks before impact occurs.", image: "/service-coverage/cybersecurity/threat-hunting.png" },
       { title: "Attack Surface Visibility", desc: "Monitoring across endpoints, networks, email, and cloud environments maintains comprehensive coverage.", image: "/service-coverage/cybersecurity/attack-surface.png" },
-      { title: "Security Control Management", desc: "Best-practice security controls improve visibility while reducing operational complexity.", image: "/service-coverage/cybersecurity/security-control.png" },
+      { title: "Security Control Management", desc: "Best practice security controls improve visibility while reducing operational complexity.", image: "/service-coverage/cybersecurity/security-control.png" },
     ],
     benefits: [
       { title: "Modern MDR Capabilities", desc: "Integrated threat detection and response supported by SOC workflows." },
-      { title: "Technology-Enabled Monitoring", desc: "Built on SIEM and EDR platforms without requiring additional tooling investment." },
+      { title: "Technology Enabled Monitoring", desc: "Built on SIEM and EDR platforms without requiring additional tooling investment." },
       { title: "Comprehensive Security Coverage", desc: "Monitoring across defensive controls, threat intelligence, and governance visibility." },
       { title: "Extension of Your Security Team", desc: "Frontline security operations support frees internal teams to focus on strategy." },
-      { title: "Prevention, Trust, Platform", desc: "Early prevention, always-on coverage, and integrated monitoring create unified visibility." },
+      { title: "Prevention, Trust, Platform", desc: "Early prevention, always on coverage, and integrated monitoring create unified visibility." },
     ],
     process: [
       { title: "Assess Coverage", desc: "Review endpoints, networks, email, cloud environments, controls, and governance needs." },
@@ -749,7 +749,7 @@ export const servicePages: ServicePageContent[] = [
     ],
     finalCta: {
       title: "Prevention, backed by trust",
-      desc: "MindWhiz focuses on early threat prevention, always-on coverage, and unified visibility across your environment.",
+      desc: "MindWhiz focuses on early threat prevention, always on coverage, and unified visibility across your environment.",
       button: "Get a security review",
     },
   },
@@ -760,17 +760,17 @@ export const servicePages: ServicePageContent[] = [
     group: "Talent & Workforce",
     hero: {
       image: "/banners/staff-augmentation.png",
-      title: ["On-Demand"],
+      title: ["On Demand"],
       highlight: "Teams",
       subtitle:
-        "Add vetted specialists to your team in weeks, not months. Scale delivery up or down without the cost and commitment of full-time hires.",
+        "Add vetted specialists to your team in weeks, not months. Scale delivery up or down without the cost and commitment of full time hires.",
       cta: "Augment your team",
     },
     intro: {
       kicker: "Talent & Workforce",
       title: "IT staff augmentation and team extension",
       body: [
-        "MindWhiz staff augmentation gives you role-ready engineers, analysts, and operators who plug straight into your workflows, tools, and standards.",
+        "MindWhiz staff augmentation gives you role ready engineers, analysts, and operators who plug straight into your workflows, tools, and standards.",
         "You keep full control of direction and priorities while we handle sourcing, vetting, onboarding, and retention, so your roadmap never waits on hiring.",
       ],
       card: {
@@ -784,13 +784,13 @@ export const servicePages: ServicePageContent[] = [
     proof: [
       { value: "2 wks", label: "Typical time from brief to onboarded talent" },
       { value: "500+", label: "Specialists across IT, finance, and operations" },
-      { value: "30%", label: "Lower cost than local full-time hiring" },
+      { value: "30%", label: "Lower cost than local full time hiring" },
       { value: "Flexible", label: "Scale up or down as projects change" },
     ],
     capabilities: [
       {
         title: "Vetted Specialists",
-        desc: "Role-ready professionals screened for skills, communication, and reliability before they ever reach your shortlist.",
+        desc: "Role ready professionals screened for skills, communication, and reliability before they ever reach your shortlist.",
         image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80",
       },
       {
@@ -811,13 +811,13 @@ export const servicePages: ServicePageContent[] = [
     ],
     benefits: [
       { title: "Keep Full Control", desc: "You set direction, priorities, and process; augmented talent works as an extension of your own team." },
-      { title: "No Hiring Overhead", desc: "Skip recruiting, benefits, and long-term commitments while still getting senior, dedicated people." },
-      { title: "Hybrid Delivery", desc: "Onshore and offshore specialists that stay aligned across time zones and hand-offs." },
+      { title: "No Hiring Overhead", desc: "Skip recruiting, benefits, and long term commitments while still getting senior, dedicated people." },
+      { title: "Hybrid Delivery", desc: "Onshore and offshore specialists that stay aligned across time zones and handoffs." },
       { title: "Predictable Cost", desc: "Transparent monthly rates that scale with your team, with no hidden fees or surprise charges." },
     ],
     process: [
       { title: "Role and Skills Brief", desc: "We capture the exact skills, seniority, tools, and outcomes you need, plus how success will be measured." },
-      { title: "Vetted Shortlist", desc: "You review a short list of pre-screened candidates matched to your stack, culture, and priorities." },
+      { title: "Vetted Shortlist", desc: "You review a short list of prescreened candidates matched to your stack, culture, and priorities." },
       { title: "Onboarding and Integration", desc: "Selected talent connects into your workflows, security, and documentation with minimal disruption." },
     ],
     faqs: [

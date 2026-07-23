@@ -543,7 +543,7 @@ function StudioClockSection() {
             Hybrid staffing, always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
-            Sixty-five engineers headquartered in Lahore, with client-facing
+            Sixty five engineers headquartered in Lahore, with client facing
             offices in the UK and the USA. Building since 2017. Somewhere, the
             studio is always at work.
           </p>
@@ -644,7 +644,7 @@ const industryCategories = [
       {
         name: "Startups & SMBs",
         slug: "startups-smbs",
-        desc: "Flexible, cost-effective teams that scale exactly as fast as you grow.",
+        desc: "Flexible, cost effective teams that scale exactly as fast as you grow.",
         img: "/industries/startups-smbs.png",
       },
     ],
@@ -660,14 +660,14 @@ const industryCategories = [
       },
       {
         name: "Real Estate",
-        slug: "real-estate",
+        slug: "real estate",
         desc: "Listing, transaction, and operations support that keeps teams focused on deals, not admin.",
-        img: "/industries/real-estate.png",
+        img: "/industries/real estate.png",
       },
       {
         name: "Industrial Manufacturing",
         slug: "industrial-manufacturing",
-        desc: "Engineering, back-office, and IT support that keep operations efficient and connected.",
+        desc: "Engineering, back office, and IT support that keep operations efficient and connected.",
         img: "/industries/industrial-manufacturing.png",
       },
     ],
@@ -684,13 +684,13 @@ const industryCategories = [
       {
         name: "Professional Services",
         slug: "professional-services",
-        desc: "Research, operations, and back-office support for consulting and professional firms.",
+        desc: "Research, operations, and back office support for consulting and professional firms.",
         img: "/industries/professional-services.png",
       },
       {
         name: "Logistics & Supply Chain",
         slug: "logistics-supply-chain",
-        desc: "Coordination, tracking, and back-office support that keep goods moving.",
+        desc: "Coordination, tracking, and back office support that keep goods moving.",
         img: "/industries/logistics-supply-chain.png",
       },
     ],
@@ -890,7 +890,7 @@ function IndustriesWorlds() {
             </h2>
             <p className="mb-6 mt-5 max-w-md text-sm leading-relaxed text-[#2F343B]">
               MindWhiz supports businesses across a wide range of industries. Our
-              industry-focused expertise lets us tailor solutions that align with
+              industry focused expertise lets us tailor solutions that align with
               the unique requirements of each sector.
             </p>
           </Reveal>
@@ -1518,11 +1518,11 @@ function BlogSection() {
 const faqs: Faq[] = [
   {
     q: "What services does MindWhiz provide?",
-    a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back-office support across finance, HR, and construction estimation, plus staff augmentation when you need people rather than a project.",
+    a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back office support across finance, HR, and construction estimation, plus staff augmentation when you need people rather than a project.",
   },
   {
     q: "Do you work with businesses of our size?",
-    a: "We work with startups and small businesses through to established multi-site companies. Pricing is per user and scales with headcount, so the service stays proportionate whether you are ten people or several hundred.",
+    a: "We work with startups and small businesses through to established multisite companies. Pricing is per user and scales with headcount, so the service stays proportionate whether you are ten people or several hundred.",
   },
   {
     q: "Can you extend our existing team instead of replacing it?",

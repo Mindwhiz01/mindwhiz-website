@@ -90,13 +90,13 @@ function Kicker({ children }: { children: React.ReactNode }) {
 const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string }[] = [
   {
     title: "Bookkeeping",
-    desc: "Day-to-day transaction recording, reconciliations, and clean books your accountant will thank you for.",
+    desc: "Day to day transaction recording, reconciliations, and clean books your accountant will thank you for.",
     Icon: BookOpen,
     img: "/service-coverage/finance/bookkeeping.png",
   },
   {
     title: "Accounts Payable",
-    desc: "Invoice processing, approvals, and on-time vendor payments with full audit trails.",
+    desc: "Invoice processing, approvals, and on time vendor payments with full audit trails.",
     Icon: Receipt,
     img: "/service-coverage/finance/accounts-payable.png",
   },
@@ -108,7 +108,7 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
   {
     title: "Financial Reporting",
-    desc: "Monthly close, P&L, balance sheet, and cash-flow statements delivered on schedule.",
+    desc: "Monthly close, P&L, balance sheet, and cash flow statements delivered on schedule.",
     Icon: FileText,
     img: "/service-coverage/finance/financial-reporting.png",
   },
@@ -211,13 +211,13 @@ const proof: {
 }[] = [
   { value: "99.9%", label: "Reconciliation accuracy", Icon: Target, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
   { value: "5 days", label: "Average monthly close", Icon: CalendarClock, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
-  { value: "40%", label: "Lower back-office cost", Icon: TrendingDown, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
-  { value: "24/7", label: "Follow-the-sun coverage", Icon: Clock, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
+  { value: "40%", label: "Lower back office cost", Icon: TrendingDown, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
+  { value: "24/7", label: "Follow the sun coverage", Icon: Clock, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
 ];
 
 const process = [
   { title: "Discovery & Setup", desc: "We map your chart of accounts, systems, and reporting needs, then agree on SLAs and cadence." },
-  { title: "Secure Onboarding", desc: "Access is provisioned under least-privilege controls; historical data is cleaned and reconciled." },
+  { title: "Secure Onboarding", desc: "Access is provisioned under least privilege controls; historical data is cleaned and reconciled." },
   { title: "Operate & Report", desc: "Daily bookkeeping, AP/AR, and payroll run on a fixed rhythm, and a structured monthly close produces reviewed statements and the dashboards leadership needs." },
 ];
 
@@ -226,7 +226,7 @@ const process = [
 const coreServices: { title: string; desc: string; img: string }[] = [
   { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80" },
   { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision-making.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision making.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=1000&q=80" },
   { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80" },
   { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=1000&q=80" },
   { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&h=1000&q=80" },
@@ -385,7 +385,7 @@ function CapabilitiesCarousel() {
               <span className="text-[#ed1164]">outsourcing</span>
             </h2>
             <p className="mt-6 max-w-sm text-base leading-7 text-black/70">
-              From daily bookkeeping to CFO-level analysis, we plug into your stack
+              From daily bookkeeping to CFO level analysis, we plug into your stack
               and run the numbers, so you get clean books, timely reports, and the
               insight to act on them.
             </p>
@@ -531,7 +531,7 @@ function CoverageMasonry() {
 const faqs: Faq[] = [
   {
     q: "Which finance and accounting tasks can you take over?",
-    a: "Day-to-day bookkeeping and reconciliations, accounts payable and receivable, payroll support, and management reporting. Most clients start with the recurring work that consumes the most internal time and expand from there.",
+    a: "Day to day bookkeeping and reconciliations, accounts payable and receivable, payroll support, and management reporting. Most clients start with the recurring work that consumes the most internal time and expand from there.",
   },
   {
     q: "Do you replace our accountant?",
@@ -546,7 +546,7 @@ const faqs: Faq[] = [
     a: "Access is scoped to the specific roles and systems required, data is encrypted, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices, under signed confidentiality terms.",
   },
   {
-    q: "Can you scale up for month-end, year-end, and audit periods?",
+    q: "Can you scale up for month end, year end, and audit periods?",
     a: "Yes. Capacity is planned around your reporting calendar, so close periods and audit requests are covered without your internal team absorbing the spike.",
   },
 ];
@@ -578,7 +578,7 @@ export default function FinancePage() {
             <span className="text-[#ed1164]">Books</span>
           </>
         }
-        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and up to 40% lower back-office cost."
+        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and up to 40% lower back office cost."
         primary={{ label: "Talk to finance", href: "#contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
@@ -709,7 +709,7 @@ export default function FinancePage() {
               <span className="text-[#ed1164]">On demand</span>
             </h2>
             <p className="mt-5 text-base leading-7 text-black/70">
-              Expert accountants providing on-demand finance support through
+              Expert accountants providing on demand finance support through
               flexible staff augmentation, helping you maintain accuracy,
               compliance, and financial control.
             </p>
@@ -725,7 +725,7 @@ export default function FinancePage() {
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-black/60">
                     Reliable accounting support that keeps your financial operations
-                    accurate, compliant, and audit-ready.
+                    accurate, compliant, and audit ready.
                   </p>
                 </div>
                 <Cta href="/contact" label="Contact us" className="shrink-0" />

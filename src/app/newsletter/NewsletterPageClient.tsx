@@ -2,7 +2,7 @@
 
 // ---------------------------------------------------------------------------
 // Newsletter, subscribe landing page. A centered sign-up hero with a working
-// client-side form (front-end validation + success state), a "what you get"
+// client-side form (front end validation + success state), a "what you get"
 // benefits row, past editions, and social proof. Brand-consistent throughout.
 // ---------------------------------------------------------------------------
 
@@ -77,7 +77,7 @@ const benefits = [
 ];
 
 // ---------------------------------------------------------------------------
-// Subscribe form, front-end only. Validates the email and shows a success
+// Subscribe form, front end only. Validates the email and shows a success
 // state. Wire the `onSubmit` up to your ESP (Mailchimp, Resend, etc.) later.
 // ---------------------------------------------------------------------------
 function SubscribeForm() {

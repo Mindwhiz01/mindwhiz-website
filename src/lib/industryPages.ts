@@ -30,7 +30,7 @@ export const industryPages: ServicePageContent[] = [
       title: ["Powering"],
       highlight: "Technology",
       subtitle:
-        "Software, cloud, and cybersecurity teams that help IT companies ship faster and run secure, tech-powered infrastructure at scale.",
+        "Software, cloud, and cybersecurity teams that help IT companies ship faster and run secure, tech powered infrastructure at scale.",
       cta: "Talk to an IT expert",
     },
     intro: {
@@ -38,13 +38,13 @@ export const industryPages: ServicePageContent[] = [
       title: "IT staffing and managed services",
       body: [
         "We embed vetted engineers, DevOps, and security specialists into IT and software teams so delivery keeps pace with demand.",
-        "From cloud migrations to 24/7 monitoring, MindWhiz keeps your infrastructure reliable, compliant, and cost-efficient.",
+        "From cloud migrations to 24/7 monitoring, MindWhiz keeps your infrastructure reliable, compliant, and cost efficient.",
       ],
       card: {
         tags: ["Scaling Pains", "Delivery Risk"],
         image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png",
         title: "Stretched IT Teams",
-        desc: "Growing roadmaps outpace in-house capacity, slowing delivery and stretching engineers thin.",
+        desc: "Growing roadmaps outpace in house capacity, slowing delivery and stretching engineers thin.",
         cta: "Talk to expert",
       },
     },
@@ -52,12 +52,12 @@ export const industryPages: ServicePageContent[] = [
       { value: "24/7", label: "Monitoring and support coverage" },
       { value: "500+", label: "Vetted technology specialists" },
       { value: "30%", label: "Lower blended engineering cost" },
-      { value: "SOC 2", label: "Security-aligned delivery" },
+      { value: "SOC 2", label: "Security aligned delivery" },
     ],
     capabilities: [
       { title: "Cloud & Infrastructure", desc: "Design, migration, and managed operations across AWS, Azure, and GCP.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" },
-      { title: "Software Engineering", desc: "Full-stack developers and QA who plug into your sprints and standards.", image: cap.a },
-      { title: "Cybersecurity", desc: "Threat monitoring, endpoint protection, and compliance-aligned controls.", image: cap.b },
+      { title: "Software Engineering", desc: "Full stack developers and QA who plug into your sprints and standards.", image: cap.a },
+      { title: "Cybersecurity", desc: "Threat monitoring, endpoint protection, and compliance aligned controls.", image: cap.b },
       { title: "DevOps & Automation", desc: "CI/CD pipelines and automated delivery that reduce release risk.", image: cap.c },
     ],
     benefits: [
@@ -82,7 +82,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you cover our working hours?",
-        a: "Yes. Coverage is aligned to your time zone, including overlap with UK and US teams, and round-the-clock cover is available where operations require it.",
+        a: "Yes. Coverage is aligned to your time zone, including overlap with UK and US teams, and round the clock cover is available where operations require it.",
       },
       {
         q: "How do you handle security and intellectual property?",
@@ -112,7 +112,7 @@ export const industryPages: ServicePageContent[] = [
       kicker: "Technology & Digital",
       title: "Ecommerce and retail outsourcing",
       body: [
-        "MindWhiz supports ecommerce and retail brands with catalog management, customer service, and back-office operations.",
+        "MindWhiz supports ecommerce and retail brands with catalog management, customer service, and back office operations.",
         "We help you handle peak demand, protect margins, and deliver a consistent experience across every channel.",
       ],
       card: {
@@ -180,14 +180,14 @@ export const industryPages: ServicePageContent[] = [
       title: ["Teams That"],
       highlight: "Scale",
       subtitle:
-        "Flexible, cost-effective talent that lets startups and small businesses move fast without the overhead of building every function in-house.",
+        "Flexible, cost effective talent that lets startups and small businesses move fast without the overhead of building every function in house.",
       cta: "Grow your team",
     },
     intro: {
       kicker: "Technology & Digital",
       title: "Outsourced teams for startups",
       body: [
-        "MindWhiz gives startups and SMBs on-demand access to engineering, operations, and support talent that grows exactly as fast as you do.",
+        "MindWhiz gives startups and SMBs on demand access to engineering, operations, and support talent that grows exactly as fast as you do.",
         "Skip long hiring cycles and fixed overhead while still getting senior, dedicated people on your account.",
       ],
       card: {
@@ -205,20 +205,20 @@ export const industryPages: ServicePageContent[] = [
       { value: "Senior", label: "Dedicated, vetted specialists" },
     ],
     capabilities: [
-      { title: "Engineering On Demand", desc: "Developers and DevOps who ship product without a full-time commitment.", image: cap.c },
-      { title: "Back-Office Support", desc: "Finance, admin, and operations handled so founders can focus on growth.", image: cap.a },
+      { title: "Engineering On Demand", desc: "Developers and DevOps who ship product without a full time commitment.", image: cap.c },
+      { title: "Back Office Support", desc: "Finance, admin, and operations handled so founders can focus on growth.", image: cap.a },
       { title: "Customer Support", desc: "Responsive service that scales as your customer base grows.", image: cap.f },
       { title: "Growth & Marketing", desc: "SEO, campaigns, and CRM operations that build a repeatable pipeline.", image: cap.d },
     ],
     benefits: [
       { title: "Move Fast", desc: "Add capacity in weeks instead of months of recruiting." },
       { title: "Stay Lean", desc: "Pay for the capacity you need with no fixed overhead." },
-      { title: "Senior Talent", desc: "Role-ready specialists, not junior generalists." },
+      { title: "Senior Talent", desc: "Role ready specialists, not junior generalists." },
       { title: "Grow Flexibly", desc: "Scale exactly as fast as your traction allows." },
     ],
     process: [
       { title: "Needs & Goals", desc: "We learn your product, stage, and priorities to define outcomes." },
-      { title: "Right-Sized Team", desc: "A lean blend of roles matched to your runway and roadmap." },
+      { title: "Right Sized Team", desc: "A lean blend of roles matched to your runway and roadmap." },
       { title: "Onboarding", desc: "Talent connects into your tools and workflows quickly." },
     ],
     faqs: [
@@ -228,11 +228,11 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Is this affordable at our size?",
-        a: "Pricing is per user on a fixed monthly cost, so it stays proportionate to your headcount and predictable month to month. It is designed to cost less than carrying the equivalent in-house.",
+        a: "Pricing is per user on a fixed monthly cost, so it stays proportionate to your headcount and predictable month to month. It is designed to cost less than carrying the equivalent in house.",
       },
       {
         q: "Can the service grow as we grow?",
-        a: "That is the point of the model. Coverage scales with team size and complexity, so you are not re-procuring IT every time you add people or open a location.",
+        a: "That is the point of the model. Coverage scales with team size and complexity, so you are not reprocuring IT every time you add people or open a location.",
       },
       {
         q: "Are we tied into a long contract?",
@@ -263,7 +263,7 @@ export const industryPages: ServicePageContent[] = [
       title: "Construction and engineering support",
       body: [
         "MindWhiz gives construction and engineering firms vetted offshore estimators and support teams that deliver fast, accurate takeoffs.",
-        "Win more bids, keep projects on schedule, and scale delivery without carrying the fixed cost of in-house capacity.",
+        "Win more bids, keep projects on schedule, and scale delivery without carrying the fixed cost of in house capacity.",
       ],
       card: {
         tags: ["Slow Bids", "Estimating Load"],
@@ -277,13 +277,13 @@ export const industryPages: ServicePageContent[] = [
       { value: "2x", label: "More bids quoted per week" },
       { value: "48h", label: "Typical takeoff turnaround" },
       { value: "30%", label: "Lower estimating cost" },
-      { value: "Accurate", label: "Bid-ready cost estimates" },
+      { value: "Accurate", label: "Bid ready cost estimates" },
     ],
     capabilities: [
       { title: "Quantity Takeoffs", desc: "Fast, accurate material and labor takeoffs across trades.", image: "/industries/construction/quantity-takeoffs.png" },
-      { title: "Cost Estimation", desc: "Bid-ready estimates built around current pricing and scope.", image: "/industries/construction/cost-estimation.png" },
+      { title: "Cost Estimation", desc: "Bid ready estimates built around current pricing and scope.", image: "/industries/construction/cost-estimation.png" },
       { title: "Engineering Support", desc: "Drafting, BIM, and documentation that keep projects moving.", image: "/industries/construction/engineering-support.png" },
-      { title: "Back-Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: "/industries/construction/back-office-operations.png" },
+      { title: "Back Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: "/industries/construction/back-office-operations.png" },
     ],
     benefits: [
       { title: "Win More Work", desc: "Quote more bids, faster, without adding headcount." },
@@ -299,7 +299,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "What do you actually provide for construction firms?",
-        a: "Two things that usually sit apart: pre-construction support such as estimation and quantity takeoffs, and the IT side, site connectivity, devices, and support for teams split between office and field.",
+        a: "Two things that usually sit apart: preconstruction support such as estimation and quantity takeoffs, and the IT side, site connectivity, devices, and support for teams split between office and field.",
       },
       {
         q: "Which software do you work in?",
@@ -321,12 +321,12 @@ export const industryPages: ServicePageContent[] = [
     finalCta,
   },
   {
-    slug: "real-estate",
+    slug: "real estate",
     name: "Real Estate",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
-      image: "/banners/real-estate.png",
+      image: "/banners/real estate.png",
       title: ["Property"],
       highlight: "Support",
       subtitle:
@@ -337,20 +337,20 @@ export const industryPages: ServicePageContent[] = [
       kicker: "Built & Physical",
       title: "Real estate back office support",
       body: [
-        "MindWhiz supports real estate and property teams with listing management, transaction coordination, and back-office operations.",
+        "MindWhiz supports real estate and property teams with listing management, transaction coordination, and back office operations.",
         "Free your agents and managers to focus on clients and deals while we handle the process work behind them.",
       ],
       card: {
         tags: ["Admin Overload", "Slow Deals"],
         image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
         title: "Coordination Drag",
-        desc: "Manual admin and back-office work slow deals and pull your team away from clients.",
+        desc: "Manual admin and back office work slow deals and pull your team away from clients.",
         cta: "Talk to expert",
       },
     },
     proof: [
       { value: "24/7", label: "Operations and support coverage" },
-      { value: "30%", label: "Lower back-office cost" },
+      { value: "30%", label: "Lower back office cost" },
       { value: "Faster", label: "Listing and transaction turnaround" },
       { value: "Accurate", label: "Documentation and records" },
     ],
@@ -358,11 +358,11 @@ export const industryPages: ServicePageContent[] = [
       { title: "Listing Management", desc: "Accurate listings, media coordination, and portal updates.", image: cap.a },
       { title: "Transaction Coordination", desc: "Documents, deadlines, and compliance handled end to end.", image: cap.b },
       { title: "Marketing Support", desc: "Campaigns, CRM, and content that keep pipelines full.", image: cap.d },
-      { title: "Back-Office Operations", desc: "Bookkeeping, reporting, and admin for property teams.", image: cap.e },
+      { title: "Back Office Operations", desc: "Bookkeeping, reporting, and admin for property teams.", image: cap.e },
     ],
     benefits: [
       { title: "Focus On Deals", desc: "Agents spend time with clients, not paperwork." },
-      { title: "Lower Overhead", desc: "Efficient support reduces back-office cost." },
+      { title: "Lower Overhead", desc: "Efficient support reduces back office cost." },
       { title: "Faster Turnaround", desc: "Listings and transactions move without bottlenecks." },
       { title: "Reliable Records", desc: "Accurate, compliant documentation you can trust." },
     ],
@@ -378,7 +378,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you support several branches or offices?",
-        a: "Yes. Multi-site environments are standard work, with consistent setup, access control, and support across locations instead of each office solving IT differently.",
+        a: "Yes. Multisite environments are standard work, with consistent setup, access control, and support across locations instead of each office solving IT differently.",
       },
       {
         q: "How do you protect client and transaction data?",
@@ -405,14 +405,14 @@ export const industryPages: ServicePageContent[] = [
       title: ["Built To"],
       highlight: "Run",
       subtitle:
-        "Engineering, back-office, and IT support that keep manufacturing operations efficient, connected, and running at capacity.",
+        "Engineering, back office, and IT support that keep manufacturing operations efficient, connected, and running at capacity.",
       cta: "Optimize operations",
     },
     intro: {
       kicker: "Built & Physical",
       title: "Manufacturing support services",
       body: [
-        "MindWhiz supports manufacturers with engineering documentation, IT operations, and back-office teams that reduce downtime.",
+        "MindWhiz supports manufacturers with engineering documentation, IT operations, and back office teams that reduce downtime.",
         "We help you connect systems, control costs, and scale support as production demand changes.",
       ],
       card: {
@@ -433,7 +433,7 @@ export const industryPages: ServicePageContent[] = [
       { title: "Engineering Support", desc: "CAD, documentation, and process support for production teams.", image: cap.b },
       { title: "IT & Systems", desc: "Network, ERP, and endpoint support that keep the floor connected.", image: cap.c },
       { title: "Supply & Procurement", desc: "Vendor coordination, purchasing, and inventory operations.", image: cap.e },
-      { title: "Back-Office Operations", desc: "Finance, reporting, and admin handled for lean plants.", image: cap.a },
+      { title: "Back Office Operations", desc: "Finance, reporting, and admin handled for lean plants.", image: cap.a },
     ],
     benefits: [
       { title: "Reduce Downtime", desc: "Proactive IT and support keep systems and lines running." },
@@ -457,7 +457,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you cover multiple facilities and shift patterns?",
-        a: "Yes. Continuous coverage suits multi-shift operations, so a fault on a night shift gets the same response as one at midday, across every site.",
+        a: "Yes. Continuous coverage suits multishift operations, so a fault on a night shift gets the same response as one at midday, across every site.",
       },
       {
         q: "What about older equipment running unsupported software?",
@@ -488,21 +488,21 @@ export const industryPages: ServicePageContent[] = [
       title: "Outsourced accounting and finance",
       body: [
         "MindWhiz supports finance teams with bookkeeping, AP/AR, payroll, and reporting delivered by vetted accountants.",
-        "Get accurate numbers, faster closes, and up to 40% lower back-office cost without sacrificing control.",
+        "Get accurate numbers, faster closes, and up to 40% lower back office cost without sacrificing control.",
       ],
       card: {
         tags: ["Slow Closes", "Compliance Risk"],
         image: "/service-coverage/finance/bookkeeping.png",
         title: "Bottlenecked Finance",
-        desc: "Manual processes stretch month-end closes and raise the risk of costly errors.",
+        desc: "Manual processes stretch month end closes and raise the risk of costly errors.",
         cta: "Talk to expert",
       },
     },
     proof: [
-      { value: "40%", label: "Lower back-office cost" },
-      { value: "Faster", label: "Month-end closes" },
+      { value: "40%", label: "Lower back office cost" },
+      { value: "Faster", label: "Month end closes" },
       { value: "99%", label: "Reconciliation accuracy" },
-      { value: "SOC 2", label: "Controls-aligned delivery" },
+      { value: "SOC 2", label: "Controls aligned delivery" },
     ],
     capabilities: [
       { title: "Bookkeeping", desc: "Clean, current books with reconciliations you can rely on.", image: cap.a },
@@ -511,10 +511,10 @@ export const industryPages: ServicePageContent[] = [
       { title: "Reporting & FP&A", desc: "Dashboards and analysis that inform better decisions.", image: cap.d },
     ],
     benefits: [
-      { title: "Faster Closes", desc: "Structured processes shorten month-end cycles." },
-      { title: "Lower Cost", desc: "Up to 40% savings versus in-house back office." },
+      { title: "Faster Closes", desc: "Structured processes shorten month end cycles." },
+      { title: "Lower Cost", desc: "Up to 40% savings versus in house back office." },
       { title: "Clean Data", desc: "Accurate books and reporting you can trust." },
-      { title: "Stay Compliant", desc: "Controls-aligned delivery reduces risk." },
+      { title: "Stay Compliant", desc: "Controls aligned delivery reduces risk." },
     ],
     process: [
       { title: "Finance Review", desc: "We map your systems, cadence, and reporting needs." },
@@ -527,7 +527,7 @@ export const industryPages: ServicePageContent[] = [
         a: "Access is restricted to what each role requires, data is encrypted, endpoints are protected and monitored, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices.",
       },
       {
-        q: "Can you support us through busy season and year-end?",
+        q: "Can you support us through busy season and year end?",
         a: "Yes, and capacity is planned for it. Coverage can scale for close periods and filing deadlines, when downtime is least affordable and support volume is highest.",
       },
       {
@@ -540,7 +540,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you provide finance staff as well as IT support?",
-        a: "Yes. Finance and accounting back-office roles are available through staff augmentation, working inside your processes and under your direction.",
+        a: "Yes. Finance and accounting back office roles are available through staff augmentation, working inside your processes and under your direction.",
       },
     ],
     finalCta,
@@ -555,7 +555,7 @@ export const industryPages: ServicePageContent[] = [
       title: ["Deliver"],
       highlight: "More",
       subtitle:
-        "Research, operations, and back-office support that let consulting and professional services firms take on more work with confidence.",
+        "Research, operations, and back office support that let consulting and professional services firms take on more work with confidence.",
       cta: "Add capacity",
     },
     intro: {
@@ -582,7 +582,7 @@ export const industryPages: ServicePageContent[] = [
     capabilities: [
       { title: "Research & Analysis", desc: "Market, data, and desk research that sharpens client work.", image: cap.d },
       { title: "Operations Support", desc: "Project coordination, scheduling, and delivery operations.", image: cap.f },
-      { title: "Back-Office", desc: "Finance, admin, and reporting that keep the firm running.", image: cap.a },
+      { title: "Back Office", desc: "Finance, admin, and reporting that keep the firm running.", image: cap.a },
       { title: "Presentation & Docs", desc: "Decks, reports, and documentation built to your standards.", image: cap.b },
     ],
     benefits: [
@@ -607,7 +607,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "How do you protect client confidentiality?",
-        a: "Through scoped access, encryption, monitoring, and signed confidentiality terms, with delivery aligned to SOC 2 and ISO 27001 practices. Where you hold client-imposed security obligations, we work within them.",
+        a: "Through scoped access, encryption, monitoring, and signed confidentiality terms, with delivery aligned to SOC 2 and ISO 27001 practices. Where you hold client imposed security obligations, we work within them.",
       },
       {
         q: "Can you handle onboarding and offboarding as headcount changes?",
@@ -630,14 +630,14 @@ export const industryPages: ServicePageContent[] = [
       title: ["Keep Goods"],
       highlight: "Moving",
       subtitle:
-        "Coordination, tracking, and back-office support that keep logistics and supply chain operations running without gaps.",
+        "Coordination, tracking, and back office support that keep logistics and supply chain operations running without gaps.",
       cta: "Streamline logistics",
     },
     intro: {
       kicker: "Finance & Services",
       title: "Logistics and supply chain support",
       body: [
-        "MindWhiz supports logistics and supply chain teams with dispatch coordination, tracking, and back-office operations.",
+        "MindWhiz supports logistics and supply chain teams with dispatch coordination, tracking, and back office operations.",
         "We help you reduce delays, control cost, and keep visibility across every shipment and partner.",
       ],
       card: {
@@ -652,19 +652,19 @@ export const industryPages: ServicePageContent[] = [
       { value: "24/7", label: "Coordination coverage" },
       { value: "30%", label: "Lower operations cost" },
       { value: "Visibility", label: "Tracking across the chain" },
-      { value: "Reliable", label: "On-time coordination" },
+      { value: "Reliable", label: "On time coordination" },
     ],
     capabilities: [
       { title: "Dispatch & Coordination", desc: "Load, carrier, and route coordination across time zones.", image: cap.b },
       { title: "Track & Trace", desc: "Shipment tracking and exception handling that reduce delays.", image: cap.c },
       { title: "Vendor & Procurement", desc: "Supplier coordination and purchasing operations.", image: cap.e },
-      { title: "Back-Office Operations", desc: "Billing, documentation, and reporting handled for your team.", image: cap.a },
+      { title: "Back Office Operations", desc: "Billing, documentation, and reporting handled for your team.", image: cap.a },
     ],
     benefits: [
       { title: "Reduce Delays", desc: "Proactive coordination keeps freight on schedule." },
       { title: "Control Cost", desc: "Efficient support lowers operating overhead." },
       { title: "Full Visibility", desc: "Tracking and reporting across the supply chain." },
-      { title: "Round-The-Clock", desc: "Coverage that matches global operations." },
+      { title: "Round The Clock", desc: "Coverage that matches global operations." },
     ],
     process: [
       { title: "Operations Review", desc: "We map your lanes, partners, and systems." },
@@ -673,7 +673,7 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Can you support round-the-clock operations?",
+        q: "Can you support round the clock operations?",
         a: "Yes. Coverage runs continuously, which suits operations that do not stop, night shifts, weekend movements, and depots running outside standard office hours.",
       },
       {
@@ -690,7 +690,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you support sites in multiple countries?",
-        a: "Yes. Multi-site and cross-border operations are supported with consistent standards and support processes across locations rather than different arrangements per country.",
+        a: "Yes. Multisite and cross border operations are supported with consistent standards and support processes across locations rather than different arrangements per country.",
       },
     ],
     finalCta,
@@ -712,7 +712,7 @@ export const industryPages: ServicePageContent[] = [
       kicker: "Healthcare",
       title: "Healthcare and HealthTech support",
       body: [
-        "MindWhiz supports healthcare and HealthTech organizations with back-office, IT, and support teams that respect compliance.",
+        "MindWhiz supports healthcare and HealthTech organizations with back office, IT, and support teams that respect compliance.",
         "We help you scale operations and technology while protecting patient data and meeting regulatory standards.",
       ],
       card: {
@@ -725,8 +725,8 @@ export const industryPages: ServicePageContent[] = [
     },
     proof: [
       { value: "24/7", label: "Support and operations coverage" },
-      { value: "HIPAA", label: "Compliance-aligned delivery" },
-      { value: "30%", label: "Lower back-office cost" },
+      { value: "HIPAA", label: "Compliance aligned delivery" },
+      { value: "30%", label: "Lower back office cost" },
       { value: "Accurate", label: "Records and documentation" },
     ],
     capabilities: [
@@ -736,8 +736,8 @@ export const industryPages: ServicePageContent[] = [
       { title: "Compliance & Records", desc: "Accurate documentation aligned with HIPAA standards.", image: cap.b },
     ],
     benefits: [
-      { title: "Stay Compliant", desc: "HIPAA-aligned processes protect patient data." },
-      { title: "Lower Cost", desc: "Efficient support reduces back-office overhead." },
+      { title: "Stay Compliant", desc: "HIPAA aligned processes protect patient data." },
+      { title: "Lower Cost", desc: "Efficient support reduces back office overhead." },
       { title: "Scale Safely", desc: "Grow operations without compromising standards." },
       { title: "Reliable Records", desc: "Accurate documentation and reporting." },
     ],
@@ -753,7 +753,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can clinical systems be supported outside normal hours?",
-        a: "Yes. Care does not run on office hours, so coverage is continuous and clinical-impacting issues are prioritized accordingly.",
+        a: "Yes. Care does not run on office hours, so coverage is continuous and clinical impacting issues are prioritized accordingly.",
       },
       {
         q: "Do you work with EHR and EMR platforms?",
@@ -765,7 +765,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you support multiple clinics or sites?",
-        a: "Yes. Multi-site environments get consistent device standards, access control, and support processes, so a smaller location is not left with weaker protection than the main site.",
+        a: "Yes. Multisite environments get consistent device standards, access control, and support processes, so a smaller location is not left with weaker protection than the main site.",
       },
     ],
     finalCta,

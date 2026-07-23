@@ -226,17 +226,17 @@ const proof: {
 
 const process = [
   { title: "Plans & Scope Intake", desc: "Send drawings, specs, and the bid deadline. We confirm scope, trades, and deliverable format." },
-  { title: "Digital Takeoff", desc: "Estimators measure quantities on-screen with audited tools for consistent, traceable counts." },
-  { title: "Price & Handover", desc: "We apply current material, labor, and equipment rates to build the priced estimate, then a senior estimator QA-checks the package before it lands in your inbox, ready to submit." },
+  { title: "Digital Takeoff", desc: "Estimators measure quantities on screen with audited tools for consistent, traceable counts." },
+  { title: "Price & Handover", desc: "We apply current material, labor, and equipment rates to build the priced estimate, then a senior estimator QA checks the package before it lands in your inbox, ready to submit." },
 ];
 
 const deliverables: { text: string; Icon: LucideIcon }[] = [
   { text: "Detailed quantity takeoff sheets by trade and division", Icon: FileSpreadsheet },
   { text: "Priced estimates with labor, material, and equipment splits", Icon: Calculator },
-  { text: "Bid-ready proposal packages and summary cover sheets", Icon: ClipboardList },
-  { text: "Marked-up plans showing measured areas and counts", Icon: Building2 },
+  { text: "Bid ready proposal packages and summary cover sheets", Icon: ClipboardList },
+  { text: "Marked up plans showing measured areas and counts", Icon: Building2 },
   { text: "Vendor and subcontractor comparison worksheets", Icon: Boxes },
-  { text: "Change-order and quantity reconciliation support", Icon: HardHat },
+  { text: "Change order and quantity reconciliation support", Icon: HardHat },
 ];
 
 // ---------------------------------------------------------------------------
@@ -422,7 +422,7 @@ export default function ConstructionEstimationPage() {
             <span className="text-[#ed1164]">Bids</span>
           </>
         }
-        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid-ready cost estimates, so your team quotes more work, faster, without carrying the overhead."
+        subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid ready cost estimates, so your team quotes more work, faster, without carrying the overhead."
         primary={{ label: "Request an estimate", href: "#contact" }}
         secondary={{ label: "Explore capabilities", href: "#capabilities" }}
       />
@@ -466,7 +466,7 @@ export default function ConstructionEstimationPage() {
         steps={process}
         title={
           <>
-            From plans to a <span style={{ color: "#9CCC3C" }}>bid-ready</span> package.
+            From plans to a <span style={{ color: "#9CCC3C" }}>bid ready</span> package.
           </>
         }
         ctaLabel="Start a takeoff"
@@ -596,7 +596,7 @@ export default function ConstructionEstimationPage() {
               <div className="mt-8 space-y-3">
                 {[
                   { Icon: Clock, title: "24–48 hour turnaround", sub: "From plans to a priced package" },
-                  { Icon: BadgeCheck, title: "Senior estimator QA", sub: "Every file double-checked before send" },
+                  { Icon: BadgeCheck, title: "Senior estimator QA", sub: "Every file double checked before send" },
                   { Icon: FileSpreadsheet, title: "Excel, PDF, or your template", sub: "Delivered in the format you use" },
                 ].map(({ Icon, title, sub }) => (
                   <div
@@ -665,7 +665,7 @@ export default function ConstructionEstimationPage() {
                 <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-5">
                   <span className="inline-flex items-center gap-2 text-xs text-black/50">
                     <BadgeCheck className="h-4 w-4 text-[#ed1164]" />
-                    All files QA-checked before send
+                    All files QA checked before send
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#9CCC3C] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-black">
                     Ready to submit
@@ -681,7 +681,7 @@ export default function ConstructionEstimationPage() {
 
       <ProcessIntroBanner
         title="Ready to win more bids?"
-        description="Send your plans and deadline. We'll respond with accurate takeoffs and a bid-ready package."
+        description="Send your plans and deadline. We'll respond with accurate takeoffs and a bid ready package."
         ctaLabel="Start a takeoff"
         ctaHref="/contact"
       />

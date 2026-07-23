@@ -103,11 +103,11 @@ function BeliefsSection() {
             <div className="max-w-xs">
               <img
                 src="/leadership/muhammad-ali.png"
-                alt="Muhammad Ali, Co-Founder and CEO at MindWhiz"
+                alt="Muhammad Ali, Cofounder and CEO at MindWhiz"
                 className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
               />
               <p className="mt-4 text-sm font-semibold text-black">Muhammad Ali</p>
-              <p className="text-sm text-black/60">Co-Founder and CEO at MindWhiz</p>
+              <p className="text-sm text-black/60">Cofounder and CEO at MindWhiz</p>
             </div>
           </Reveal>
         </div>

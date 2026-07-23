@@ -814,7 +814,7 @@ function ProcessSection() {
 const faqs: Faq[] = [
   {
     q: "How long does it take to build a website?",
-    a: "Most marketing sites and landing pages ship in 3-6 weeks, while larger web apps and dashboards run 8-12 weeks or more. After a short discovery call we scope the work and give you a clear timeline with milestones so you always know what's next.",
+    a: "Most marketing sites and landing pages ship in 3 to 6 weeks, while larger web apps and dashboards run 8 to 12 weeks or more. After a short discovery call we scope the work and give you a clear timeline with milestones so you always know what's next.",
   },
   {
     q: "How much does a custom website cost?",

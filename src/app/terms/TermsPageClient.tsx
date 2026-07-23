@@ -53,7 +53,7 @@ const sections: LegalSection[] = [
   {
     heading: "Disclaimers",
     body: [
-      "The website and its content are provided “as is” without warranties of any kind, express or implied. While we work to keep information accurate and current, we make no guarantee that the site is error-free, uninterrupted, or that its content reflects the final scope of any service.",
+      "The website and its content are provided “as is” without warranties of any kind, express or implied. While we work to keep information accurate and current, we make no guarantee that the site is error free, uninterrupted, or that its content reflects the final scope of any service.",
     ],
   },
   {
@@ -71,7 +71,7 @@ const sections: LegalSection[] = [
   {
     heading: "Governing Law",
     body: [
-      "These website terms are governed by the laws of the State of Texas, United States, without regard to conflict-of-law principles. Signed service agreements may specify a different governing law for the engagement they cover.",
+      "These website terms are governed by the laws of the State of Texas, United States, without regard to conflict of law principles. Signed service agreements may specify a different governing law for the engagement they cover.",
     ],
   },
   {

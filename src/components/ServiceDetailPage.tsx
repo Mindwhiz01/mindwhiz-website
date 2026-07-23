@@ -72,7 +72,7 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 function ServiceHeroTitle({ page }: { page: ServicePageContent }) {
-  const firstLine = page.hero.title.join(" ").replace("Always-On", "Always On");
+  const firstLine = page.hero.title.join(" ");
 
   return (
     <>
@@ -174,7 +174,7 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
           >
             <span className="whitespace-nowrap">24/7 Helpdesk,</span>
             <br />
-            Tiers 1-3
+            Tiers 1 to 3
           </h2>
           <div className="mt-6 space-y-4 text-base leading-7 text-black/70">
             {page.intro.body.map((paragraph) => (

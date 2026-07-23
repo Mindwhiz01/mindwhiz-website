@@ -210,7 +210,7 @@ export default function BlogListPage() {
               The <span className="text-[#9CCC3C]">blog</span>
             </>
           }
-          subtitle="Ideas, guides, and behind-the-scenes stories on hybrid staffing, IT operations, and building a team that scales."
+          subtitle="Ideas, guides, and behind the scenes stories on hybrid staffing, IT operations, and building a team that scales."
           primary={{ label: "Subscribe", href: "/newsletter" }}
           secondary={{ label: "Latest posts", href: "#latest" }}
         />

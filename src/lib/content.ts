@@ -35,7 +35,7 @@ export const hero = {
   eyebrow: "Hybrid Staffing · Staff Augmentation · BPO",
   title: "Empowering businesses with hybrid staffing, staff augmentation & BPO",
   subtitle:
-    "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery-focused support across IT, security, and business operations, built for speed, reliability, and enterprise trust.",
+    "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery focused support across IT, security, and business operations, built for speed, reliability, and enterprise trust.",
   primaryCta: { label: "Get in touch", href: "#contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
@@ -50,7 +50,7 @@ export const stats = [
 // `icon` values are valid lucide-react icon names.
 export const services = [
   { name: "IT Helpdesk 24/7", desc: "Tier 1–3 support that never misses a beat.", icon: "Headset" },
-  { name: "NOC Monitoring", desc: "Round-the-clock network operations and uptime.", icon: "Activity" },
+  { name: "NOC Monitoring", desc: "Round the clock network operations and uptime.", icon: "Activity" },
   { name: "Cybersecurity Monitoring", desc: "24/7 threat detection, prevention, and response.", icon: "ShieldCheck" },
   { name: "Cloud Infrastructure", desc: "Design, migration, and managed cloud operations.", icon: "Cloud" },
   { name: "DevOps & Automation", desc: "CI/CD pipelines and automated delivery.", icon: "GitBranch" },
@@ -60,23 +60,23 @@ export const services = [
   { name: "Finance & Accounting", desc: "AP, AR, bookkeeping, reporting, CFO support.", icon: "Calculator" },
   { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations.", icon: "Megaphone" },
   { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning.", icon: "Ruler" },
-  { name: "Staff Augmentation", desc: "On-demand specialists to scale fast.", icon: "UserPlus" },
+  { name: "Staff Augmentation", desc: "On demand specialists to scale fast.", icon: "UserPlus" },
   { name: "Remote Desktop & Assets", desc: "Secure remote access and IT asset tracking.", icon: "MonitorSmartphone" },
 ];
 
 export const differentiators = [
   { title: "Hybrid", desc: "Onshore and offshore delivery that stays aligned.", icon: "Globe2" },
-  { title: "Vetted", desc: "Role-ready professionals matched to your needs.", icon: "BadgeCheck" },
-  { title: "Fast", desc: "Short time-to-shortlist and faster onboarding.", icon: "Zap" },
-  { title: "Secure", desc: "Process-driven approach built for compliance.", icon: "Lock" },
+  { title: "Vetted", desc: "Role ready professionals matched to your needs.", icon: "BadgeCheck" },
+  { title: "Fast", desc: "Short time to shortlist and faster onboarding.", icon: "Zap" },
+  { title: "Secure", desc: "Process driven approach built for compliance.", icon: "Lock" },
 ];
 
 export const comparison = [
   { feature: "Availability", mindwhiz: "Continuous, 24/7 support", others: "Limited support hours" },
   { feature: "Expertise", mindwhiz: "Certified pros, diverse skills", others: "Basic technical support" },
-  { feature: "Cost efficiency", mindwhiz: "Up to 30% cost savings", others: "Higher in-house costs" },
+  { feature: "Cost efficiency", mindwhiz: "Up to 30% cost savings", others: "Higher in house costs" },
   { feature: "Response time", mindwhiz: "Within 15 minutes", others: "Slower response times" },
-  { feature: "Tailored support", mindwhiz: "Customized plans", others: "One-size-fits-all" },
+  { feature: "Tailored support", mindwhiz: "Customized plans", others: "One size fits all" },
   { feature: "Compliance", mindwhiz: "SOC 2 & ISO 27001", others: "Basic security only" },
 ];
 
@@ -106,13 +106,13 @@ export const caseStudies = [
     slug: "alpha-bravo",
     client: "Alpha Bravo",
     category: "Construction",
-    result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast. The team plugged directly into existing bid workflows, cutting turnaround on takeoffs and pricing. Within the first quarter, Alpha Bravo was submitting more competitive bids without adding headcount in-house.",
+    result: "Streamlined estimation and staffing by deploying vetted remote professionals that integrated fast. The team plugged directly into existing bid workflows, cutting turnaround on takeoffs and pricing. Within the first quarter, Alpha Bravo was submitting more competitive bids without adding headcount in house.",
     highlights: ["Faster delivery", "Lower hiring friction", "Scalable support"],
     img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80",
     logo: "/clients/alpha-bravo.png",
     services: ["Construction Estimation", "Staff Augmentation", "Bid Support"],
     challenge:
-      "Alpha Bravo's in-house estimating team was the bottleneck on every bid. Takeoffs and pricing took days, forcing them to pass on opportunities or submit rushed numbers. Hiring locally was slow and expensive, and each new estimator took months to become productive.",
+      "Alpha Bravo's in house estimating team was the bottleneck on every bid. Takeoffs and pricing took days, forcing them to pass on opportunities or submit rushed numbers. Hiring locally was slow and expensive, and each new estimator took months to become productive.",
     approach: [
       "We embedded vetted remote estimators directly into Alpha Bravo's existing bid workflow, no new tools to learn, no process disruption.",
       "A shared cadence of daily handoffs let the team work takeoffs overnight, so pricing was ready when the office opened.",
@@ -120,12 +120,12 @@ export const caseStudies = [
     ],
     outcomes: [
       "Turnaround on takeoffs and pricing cut dramatically within weeks.",
-      "More competitive bids submitted without adding in-house headcount.",
+      "More competitive bids submitted without adding in house headcount.",
       "A repeatable staffing model the team could scale up or down by season.",
     ],
     metrics: [
       { value: "1st Q", label: "More competitive bids submitted" },
-      { value: "0", label: "New in-house hires needed" },
+      { value: "0", label: "New in house hires needed" },
       { value: "~2x", label: "Bid throughput capacity" },
     ],
     quote: {
@@ -146,13 +146,13 @@ export const caseStudies = [
       "Villa Tech was growing faster than its IT function could keep up. Monitoring gaps meant issues were caught late, patching slipped, and the small internal team spent its days firefighting incidents instead of preventing them.",
     approach: [
       "We embedded expert engineers within two weeks, closing coverage gaps across monitoring, patching, and incident response.",
-      "Proactive maintenance routines replaced reactive firefighting, with round-the-clock eyes on critical systems.",
+      "Proactive maintenance routines replaced reactive firefighting, with round the clock eyes on critical systems.",
       "The augmented team scaled alongside Villa Tech's infrastructure as new services came online.",
     ],
     outcomes: [
       "Downtime incidents dropped sharply as problems were caught before users noticed.",
       "System reliability improved across the board.",
-      "The internal team was freed to focus on higher-value engineering work.",
+      "The internal team was freed to focus on higher value engineering work.",
     ],
     metrics: [
       { value: "2 wks", label: "From kickoff to embedded" },
@@ -168,26 +168,26 @@ export const caseStudies = [
     slug: "inovatiqa",
     client: "Inovatiqa",
     category: "Back Office",
-    result: "Enabled improved accuracy and turnaround by strengthening back-office support and workflows. Standardized checklists and QA passes cut processing errors well below the client's target threshold. Leadership now gets same-day visibility into throughput instead of waiting on weekly manual reports.",
+    result: "Enabled improved accuracy and turnaround by strengthening back office support and workflows. Standardized checklists and QA passes cut processing errors well below the client's target threshold. Leadership now gets same day visibility into throughput instead of waiting on weekly manual reports.",
     highlights: ["Higher accuracy", "Faster turnaround", "Process clarity"],
     img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
     logo: "/clients/inovatiqa.png",
-    services: ["Back-Office Support", "Process Design", "Quality Assurance"],
+    services: ["Back Office Support", "Process Design", "Quality Assurance"],
     challenge:
-      "Inovatiqa's back-office processing was inconsistent and error-prone. Leadership had no real-time view of throughput and relied on weekly manual reports that were already out of date by the time they landed.",
+      "Inovatiqa's back office processing was inconsistent and error prone. Leadership had no real time view of throughput and relied on weekly manual reports that were already out of date by the time they landed.",
     approach: [
-      "We strengthened back-office workflows with standardized checklists and structured QA passes at every stage.",
-      "A clear ownership model and daily reporting replaced the slow weekly manual roll-ups.",
+      "We strengthened back office workflows with standardized checklists and structured QA passes at every stage.",
+      "A clear ownership model and daily reporting replaced the slow weekly manual rollups.",
       "Continuous refinement kept error rates falling as volume grew.",
     ],
     outcomes: [
       "Processing errors cut well below the client's target threshold.",
       "Turnaround times improved noticeably.",
-      "Leadership gained same-day visibility into throughput.",
+      "Leadership gained same day visibility into throughput.",
     ],
     metrics: [
       { value: "<target", label: "Error rate vs. threshold" },
-      { value: "Same-day", label: "Throughput visibility" },
+      { value: "Same day", label: "Throughput visibility" },
       { value: "QA'd", label: "Every workflow standardized" },
     ],
     quote: {
@@ -246,7 +246,7 @@ export const footerGroups = [
       { label: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
       { label: "Startups & SMBs", href: "/industries/startups-smbs" },
       { label: "Construction & Engineering", href: "/industries/construction-engineering" },
-      { label: "Real Estate", href: "/industries/real-estate" },
+      { label: "Real Estate", href: "/industries/real estate" },
       { label: "Industrial Manufacturing", href: "/industries/industrial-manufacturing" },
       { label: "Accounting & Finance", href: "/industries/accounting-finance" },
       { label: "Professional Services", href: "/industries/professional-services" },

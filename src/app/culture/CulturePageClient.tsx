@@ -214,12 +214,12 @@ function PhilosophySection() {
 }
 
 // ---------------------------------------------------------------------------
-// Life at MindWhiz, 4-tile gallery (parties, off-sites, celebrations).
+// Life at MindWhiz, 4-tile gallery (parties, offsites, celebrations).
 // ---------------------------------------------------------------------------
 const galleryTiles = [
   {
     src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
-    caption: "Year-end team celebration",
+    caption: "Year end team celebration",
     span: "sm:col-span-2 sm:row-span-2",
   },
   {
@@ -291,7 +291,7 @@ const pillars = [
   {
     Icon: Handshake,
     title: "Team ownership",
-    desc: "Real decision-making authority on the floor, owners, not order-takers.",
+    desc: "Real decision making authority on the floor, owners, not order takers.",
   },
   {
     Icon: ShieldCheck,
@@ -353,7 +353,7 @@ const programs = [
     items: [
       "Cloud & security certifications",
       "Tooling & platform training",
-      "Project-management pathways",
+      "Project management pathways",
       "Bilingual workshops",
     ],
   },
@@ -364,7 +364,7 @@ const programs = [
     items: [
       "1:1 mentorship programs",
       "Quarterly leadership workshops",
-      "Cross-team rotation opportunities",
+      "Cross team rotation opportunities",
       "Structured annual reviews",
     ],
   },
@@ -373,7 +373,7 @@ const programs = [
     Icon: Wallet,
     title: "Compensation & benefits",
     items: [
-      "Above-market, transparent pay",
+      "Above market, transparent pay",
       "Health cover for you & family",
       "Generous paid time off",
       "Performance & referral bonuses",
@@ -455,7 +455,7 @@ const spotlights = [
   },
   {
     quote:
-      "The year-end party in Islamabad was unforgettable. It's the little things, being seen, celebrated, and part of the crew.",
+      "The year end party in Islamabad was unforgettable. It's the little things, being seen, celebrated, and part of the crew.",
     name: "Sara T.",
     role: "Finance Analyst · London",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",

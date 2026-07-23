@@ -99,13 +99,13 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
   {
     title: "Payroll & Benefits",
-    desc: "Accurate, on-time payroll plus benefits administration across regions.",
+    desc: "Accurate, on time payroll plus benefits administration across regions.",
     Icon: Banknote,
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80",
   },
   {
     title: "HRIS & Systems",
-    desc: "Setup and management of your HR systems, data, and self-service workflows.",
+    desc: "Setup and management of your HR systems, data, and self service workflows.",
     Icon: Building2,
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&h=1000&q=80",
   },
@@ -117,7 +117,7 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
   },
   {
     title: "Compliance & Policy",
-    desc: "Handbooks, policy, and labor-law compliance kept current and audit-ready.",
+    desc: "Handbooks, policy, and labor law compliance kept current and audit ready.",
     Icon: ShieldCheck,
     img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80",
   },
@@ -212,23 +212,23 @@ const proof: {
   accent: string;
   border: string;
 }[] = [
-  { value: "10 days", label: "Average time-to-hire", Icon: Clock, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
+  { value: "10 days", label: "Average time to hire", Icon: Clock, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
   { value: "98%", label: "Offer acceptance rate", Icon: Target, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
   { value: "40%", label: "Lower HR overhead", Icon: TrendingDown, bg: "#ed1164", fg: "#FFFFFF", chip: "bg-black/10", accent: "bg-black/30", border: "" },
   { value: "24/7", label: "Global coverage", Icon: Users, bg: "#FFFFFF", fg: "#111111", chip: "bg-[#9CCC3C]/15 text-[#ed1164]", accent: "bg-[#9CCC3C]", border: "border border-slate-200" },
 ];
 
 const process = [
-  { title: "Role Intake", desc: "We align on the role, must-haves, comp, and timeline, then agree on SLAs and cadence." },
+  { title: "Role Intake", desc: "We align on the role, must haves, comp, and timeline, then agree on SLAs and cadence." },
   { title: "Source & Screen", desc: "We source, screen, and shortlist vetted candidates matched to your criteria." },
-  { title: "Onboard & Run", desc: "Offers, onboarding, payroll, and day-to-day HR run on a compliant cadence, with performance cycles, compliance checks, and reporting keeping the team on track." },
+  { title: "Onboard & Run", desc: "Offers, onboarding, payroll, and day to day HR run on a compliant cadence, with performance cycles, compliance checks, and reporting keeping the team on track." },
 ];
 
 const deliverables: { text: string; Icon: LucideIcon }[] = [
   { text: "Vetted candidate shortlists with scorecards", Icon: UserPlus },
   { text: "Offer letters, contracts, and onboarding packs", Icon: FileText },
   { text: "Payroll registers and benefits enrollment", Icon: Banknote },
-  { text: "HRIS records, org charts, and self-service setup", Icon: Building2 },
+  { text: "HRIS records, org charts, and self service setup", Icon: Building2 },
   { text: "Compliant handbooks, policies, and filings", Icon: ShieldCheck },
   { text: "Headcount, retention, and engagement dashboards", Icon: LineChart },
 ];
@@ -350,11 +350,11 @@ function CapabilitiesCarousel() {
 const faqs: Faq[] = [
   {
     q: "Which HR functions can you handle?",
-    a: "Recruitment and screening, payroll and benefits administration, onboarding and offboarding, HR systems and data, and the day-to-day employee support that otherwise lands on a founder or office manager.",
+    a: "Recruitment and screening, payroll and benefits administration, onboarding and offboarding, HR systems and data, and the day to day employee support that otherwise lands on a founder or office manager.",
   },
   {
     q: "Can you support hiring across multiple regions?",
-    a: "Yes. Sourcing and screening run across regions, and payroll and benefits administration are handled with regional requirements in mind rather than a single-country assumption.",
+    a: "Yes. Sourcing and screening run across regions, and payroll and benefits administration are handled with regional requirements in mind rather than a single country assumption.",
   },
   {
     q: "Do you replace our HR team or work alongside it?",
@@ -397,7 +397,7 @@ export default function HrPage() {
             <span className="text-[#ed1164]">Teams</span>
           </>
         }
-        subtitle="End-to-end HR, recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."
+        subtitle="End to end HR, recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."
         primary={{ label: "Talk to HR", href: "/contact" }}
         secondary={{ label: "Explore services", href: "#capabilities" }}
       />
@@ -538,8 +538,8 @@ export default function HrPage() {
 
               <div className="mt-8 space-y-3">
                 {[
-                  { Icon: Clock, title: "10-day time-to-hire", sub: "From intake to signed offer" },
-                  { Icon: BadgeCheck, title: "Vetted, compliant candidates", sub: "Screened and reference-checked" },
+                  { Icon: Clock, title: "10 day time to hire", sub: "From intake to signed offer" },
+                  { Icon: BadgeCheck, title: "Vetted, compliant candidates", sub: "Screened and reference checked" },
                   { Icon: FileSpreadsheet, title: "Your ATS/HRIS or ours", sub: "Delivered in the tools you use" },
                 ].map(({ Icon, title, sub }) => (
                   <div key={title} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3">
@@ -566,7 +566,7 @@ export default function HrPage() {
                       <p className="text-sm font-semibold" style={{ fontFamily: "var(--font-display)" }}>
                         onboarding-pack.zip
                       </p>
-                      <p className="text-[11px] text-white/50">New-hire pack</p>
+                      <p className="text-[11px] text-white/50">New hire pack</p>
                     </div>
                   </div>
                   <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#ed1164] ring-1 ring-[#9CCC3C]/40">
@@ -595,7 +595,7 @@ export default function HrPage() {
                 <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-5">
                   <span className="inline-flex items-center gap-2 text-xs text-black/50">
                     <BadgeCheck className="h-4 w-4 text-[#ed1164]" />
-                    All docs compliance-checked
+                    All docs compliance checked
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#9CCC3C] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-black">
                     Ready to onboard

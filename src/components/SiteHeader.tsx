@@ -133,7 +133,7 @@ const serviceRoutes: Record<string, string> = {
   "Ecommerce & Retail": "/industries/ecommerce-retail",
   "Startups & SMBs": "/industries/startups-smbs",
   "Construction & Engineering": "/industries/construction-engineering",
-  "Real Estate": "/industries/real-estate",
+  "Real Estate": "/industries/real estate",
   "Industrial Manufacturing": "/industries/industrial-manufacturing",
   "Accounting & Finance": "/industries/accounting-finance",
   "Professional Services": "/industries/professional-services",
@@ -221,7 +221,7 @@ export function SiteHeader({ theme }: { theme: string }) {
   const [brandOpen, setBrandOpen] = useState(false);
 
   // Keep the active tab in sync with the actual page being viewed. Detail
-  // routes (e.g. "/services/it-helpdesk-24-7", "/industries/real-estate",
+  // routes (e.g. "/services/it-helpdesk-24-7", "/industries/real estate",
   // "/why-mindwhiz") don't have their own nav item, so map them onto the
   // parent tab. On the home page nothing is highlighted until a hash tab is
   // clicked. This runs on every navigation so landing on a page always

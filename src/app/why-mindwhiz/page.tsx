@@ -132,7 +132,7 @@ function StudioSection() {
             Staff augmentation, always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
-            Sixty-five engineers headquartered in Lahore, with client-facing
+            Sixty five engineers headquartered in Lahore, with client facing
             offices in the UK and the USA. Building since 2017, somewhere, the
             studio is always at work.
           </p>
@@ -367,7 +367,7 @@ const offerings = [
   { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=640&h=860&q=80" },
-  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO-level support from experienced finance professionals.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&h=860&q=80" },
+  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO level support from experienced finance professionals.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&h=860&q=80" },
   { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations that scale your pipeline around the clock.", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=640&h=860&q=80" },
 ];
 
@@ -380,8 +380,8 @@ const bannerStats = [
 
 const storyHighlights = [
   {
-    title: "Founder-led, values-driven",
-    desc: "MindWhiz is a founder-led, values-driven staffing firm on a mission to bridge the talent gap for modern businesses, headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
+    title: "Founder led, values driven",
+    desc: "MindWhiz is a founder led, values driven staffing firm on a mission to bridge the talent gap for modern businesses, headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
   },
   {
     title: "Decades of hiring expertise",
@@ -399,7 +399,7 @@ const storyHighlights = [
 const faqs: Faq[] = [
   {
     q: "What does MindWhiz actually do?",
-    a: "We provide managed IT and security services, finance, HR, and construction back-office support, and staff augmentation, either as your whole function or as an extension of the team you already have.",
+    a: "We provide managed IT and security services, finance, HR, and construction back office support, and staff augmentation, either as your whole function or as an extension of the team you already have.",
   },
   {
     q: "How is staff augmentation different from outsourcing a project?",
@@ -407,7 +407,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Which time zones can you cover?",
-    a: "Coverage can be aligned to your working hours, including live overlap with UK and US teams, and round-the-clock cover where operations require it.",
+    a: "Coverage can be aligned to your working hours, including live overlap with UK and US teams, and round the clock cover where operations require it.",
   },
   {
     q: "How do you handle security, confidentiality, and IP?",
@@ -561,7 +561,7 @@ export default function WhyMindWhizPage() {
                 <p className="text-xl leading-relaxed text-black">
                   Our mission is simple: to help you{" "}
                   <span className="text-[#ed1164]">scale smarter</span>, adapt faster, and
-                  innovate boldly. With MindWhiz, you&apos;re not just hiring talent -
+                  innovate boldly. With MindWhiz, you&apos;re not just hiring talent,
                   you&apos;re gaining a reliable partner dedicated to your{" "}
                   <span className="text-[#ed1164]">success</span>.
                 </p>

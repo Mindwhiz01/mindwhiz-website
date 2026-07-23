@@ -24,7 +24,7 @@ export const locations: LocationContent[] = [
       "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80",
     tagline: "Our headquarters and North American delivery hub.",
     intro:
-      "MindWhiz is headquartered in Houston, Texas, serving clients across the United States and Canada with onshore account management and round-the-clock delivery.",
+      "MindWhiz is headquartered in Houston, Texas, serving clients across the United States and Canada with onshore account management and round the clock delivery.",
     address: "2313 W Sam Houston Pkwy N #147, Houston, TX 77043, United States",
     timezone: "America/Chicago",
     highlights: [
@@ -35,11 +35,11 @@ export const locations: LocationContent[] = [
       },
       {
         title: "Onshore accountability",
-        desc: "US-based account managers who own delivery end to end.",
+        desc: "US based account managers who own delivery end to end.",
         image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80",
       },
       {
-        title: "Compliance-ready",
+        title: "Compliance ready",
         desc: "SOC 2-aligned practices built for US regulatory expectations.",
         image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=2000&q=80",
       },
@@ -56,22 +56,22 @@ export const locations: LocationContent[] = [
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1800&q=80",
     tagline: "Our European delivery hub and client success base.",
     intro:
-      "From London, MindWhiz supports clients across the United Kingdom and Europe with GDPR-aware delivery, local account management, and overlapping hours with our global teams.",
+      "From London, MindWhiz supports clients across the United Kingdom and Europe with GDPR aware delivery, local account management, and overlapping hours with our global teams.",
     timezone: "Europe/London",
     highlights: [
       {
         title: "European coverage",
-        desc: "Local account management for UK and EU-based clients.",
+        desc: "Local account management for UK and EU based clients.",
         image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=2000&q=80",
       },
       {
-        title: "GDPR-aware delivery",
+        title: "GDPR aware delivery",
         desc: "Data handling practices built around UK and EU requirements.",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
       },
       {
         title: "Overlapping hours",
-        desc: "Business-hours coverage that bridges US and APAC teams.",
+        desc: "Business hours coverage that bridges US and APAC teams.",
         image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80",
       },
     ],

@@ -344,15 +344,15 @@ const serviceClients: {
   bg?: string;
 }[] = [
   { name: "Alpha Bravo", src: "/clients/alpha-bravo-brands.png", rot: -7, y: 20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Construction & estimation firm scaling delivery with vetted remote teams.", bg: "#3f3f3d" },
-  { name: "Highland Redstone", src: "/clients/highland.png", rot: 6, y: -24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Real-estate group streamlining back-office and marketing operations." },
-  { name: "Inovatiqa", src: "/clients/inovatiqa.png", rot: -4, y: 32, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Technology company strengthening back-office accuracy and turnaround." },
+  { name: "Highland Redstone", src: "/clients/highland.png", rot: 6, y: -24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Real estate group streamlining back office and marketing operations." },
+  { name: "Inovatiqa", src: "/clients/inovatiqa.png", rot: -4, y: 32, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Technology company strengthening back office accuracy and turnaround." },
   { name: "Jerdoni", src: "/clients/jerdoni.png", rot: 9, y: -12, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Ecommerce brand growing with managed catalog and customer support." },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png", rot: -9, y: 28, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Healthcare lab improving reliability with dedicated IT and support." },
   { name: "Villa Tech", src: "/clients/villa-tech-brands.png", rot: 5, y: -26, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "IT services company scaling infrastructure with expert augmentation." },
   { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png", rot: -6, y: 24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Clinical research group accelerating operations with dedicated support." },
-  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png", rot: 7, y: -20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Family practice modernizing front-desk and administrative workflows." },
+  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png", rot: 7, y: -20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Family practice modernizing front desk and administrative workflows." },
   { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png", rot: -8, y: 30, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Wellness brand growing ecommerce with catalog and customer support." },
-  { name: "Dr. Owais", src: "/clients/dr-owais.png", rot: 5, y: -16, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Healthcare practice improving patient coordination and back-office ops." },
+  { name: "Dr. Owais", src: "/clients/dr-owais.png", rot: 5, y: -16, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Healthcare practice improving patient coordination and back office ops." },
   { name: "Ideal Smile", src: "/clients/ideal-smile.png", rot: -5, y: 26, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Dental clinic streamlining scheduling, billing, and support." },
 ];
 
@@ -497,7 +497,7 @@ function ReelsSection() {
             <span className="text-[#ed1164]">move brands</span>
           </h2>
           <p className="mt-6 max-w-sm text-sm leading-7 text-[#3f3f3d]/80">
-            Short-form video built to stop the scroll, scripted, shot, and cut for
+            Short form video built to stop the scroll, scripted, shot, and cut for
             the platforms your audience actually uses.
           </p>
         </div>
@@ -584,7 +584,7 @@ const brandShowcase = [
   {
     name: "UrbanBites",
     kicker: "Hospitality · Social & Local",
-    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch-week social blitz, both openings sold out their first weekend.",
+    desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch week social blitz, both openings sold out their first weekend.",
     tags: ["Local campaigns", "Influencer collabs", "Launch strategy"],
     images: [
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
@@ -748,7 +748,7 @@ const faqs: Faq[] = [
     a: "Yes. We work with what you have and flag where the site or messaging is limiting results. Where landing pages are the bottleneck, we can build them.",
   },
   {
-    q: "Do you require a long-term contract?",
+    q: "Do you require a long term contract?",
     a: "Terms are agreed up front and kept clear, including notice and how to exit. Performance work should be retained on results, not on contract length.",
   },
 ];
@@ -864,7 +864,7 @@ export default function ServicePageClient() {
           steps={process}
           title={
             <>
-              From audit to <span style={{ color: "#9CCC3C" }}>always-on</span> optimization.
+              From audit to <span style={{ color: "#9CCC3C" }}>always on</span> optimization.
             </>
           }
           ctaLabel="Start a growth sprint"

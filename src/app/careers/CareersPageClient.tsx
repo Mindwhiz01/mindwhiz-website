@@ -337,7 +337,7 @@ function BenefitsSection() {
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-black/65">
                 We strive to give every MindWhizzer and their loved ones a
-                world-class experience, supporting their physical, emotional,
+                world class experience, supporting their physical, emotional,
                 and financial wellbeing at every stage of their career.
               </p>
               <a
