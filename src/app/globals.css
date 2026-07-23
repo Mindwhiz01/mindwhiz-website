@@ -135,14 +135,10 @@ body {
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
-/* drag/auto-scroll logo row: hide the native scrollbar, keep touch panning */
+/* transform-driven logo row: horizontal drag is handled in JS, so reserve only
+   vertical panning for the browser (lets the page still scroll on touch) */
 .marquee-drag {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  touch-action: pan-x;
-}
-.marquee-drag::-webkit-scrollbar {
-  display: none;
+  touch-action: pan-y;
 }
 .marquee-mask {
   -webkit-mask-image: linear-gradient(

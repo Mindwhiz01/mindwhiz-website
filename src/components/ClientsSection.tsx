@@ -60,12 +60,14 @@ function LogoChip({
   );
 }
 
-// Native horizontal scroller with two behaviours layered on top:
-//  1. auto-scroll via requestAnimationFrame (replaces the CSS keyframe marquee
-//     so we can share one scroll position with manual input);
-//  2. click/touch drag to move it manually left <-> right.
-// Content is duplicated once, so scrollLeft is wrapped within [0, half] to give
-// a seamless infinite loop in either direction.
+// A single self-contained marquee row. Instead of native scrolling, the whole
+// track is moved with a GPU `transform: translate3d`, driven by one float
+// position (`pos`). Having one source of truth means the auto-scroll and manual
+// drag never fight each other (that tug-of-war was the mobile "shake").
+//  - auto-scroll: rAF advances `pos` each frame;
+//  - drag: pointer events move `pos` directly (all input types);
+//  - loop: content is duplicated once, so `pos` wraps within [0, half] for a
+//    seamless infinite loop in either direction.
 function ClientMarquee({
   items,
   direction,
@@ -74,19 +76,19 @@ function ClientMarquee({
   direction: "left" | "right";
 }) {
   const row = [...items, ...items];
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
+  const trackRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startPos: 0, moved: false });
   const hovered = useRef(false);
-  // true scroll position kept as a float: some displays round `scrollLeft` to a
-  // whole pixel, so accumulating a sub-pixel step on the element itself would
-  // get truncated back to the same integer and never move. We accumulate here.
   const pos = useRef(0);
 
   useEffect(() => {
-    const el = scrollerRef.current;
+    const el = trackRef.current;
     if (!el) return;
 
-    const half = () => el.scrollWidth / 2;
+    const half = () => el.scrollWidth / 2; // width of one copy of the set
+    const apply = () => {
+      el.style.transform = `translate3d(${-pos.current}px,0,0)`;
+    };
     const wrap = () => {
       const h = half();
       if (h <= 0) return;
@@ -96,16 +98,16 @@ function ClientMarquee({
 
     // start the "right" row mid-way so it has room to scroll backwards
     pos.current = direction === "right" ? half() : 0;
-    el.scrollLeft = pos.current;
+    apply();
 
-    const speed = direction === "left" ? 0.4 : -0.4; // px per frame
+    const speed = direction === "left" ? 0.75 : -0.75; // px per frame
     let raf = 0;
     const step = () => {
       // always moving unless the user is dragging or hovering a logo on this row
       if (!drag.current.active && !hovered.current) {
         pos.current += speed;
         wrap();
-        el.scrollLeft = pos.current;
+        apply();
       }
       raf = requestAnimationFrame(step);
     };
@@ -114,35 +116,31 @@ function ClientMarquee({
   }, [direction]);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
-    // touch is handled by native overflow-x scrolling; only drive mouse/pen
-    if (!el || e.pointerType === "touch") return;
-    drag.current = {
-      active: true,
-      startX: e.clientX,
-      startScroll: el.scrollLeft,
-      moved: false,
-    };
-    el.setPointerCapture(e.pointerId);
+    const el = trackRef.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startPos: pos.current, moved: false };
+    // capture mouse/pen so the drag keeps tracking outside the row; for touch we
+    // skip capture so a vertical swipe can still scroll the page (touch-action)
+    if (e.pointerType !== "touch") el.setPointerCapture(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
+    const el = trackRef.current;
     if (!el || !drag.current.active) return;
     const dx = e.clientX - drag.current.startX;
     if (Math.abs(dx) > 3) drag.current.moved = true;
-    el.scrollLeft = drag.current.startScroll - dx;
+    pos.current = drag.current.startPos - dx;
     const h = el.scrollWidth / 2;
     if (h > 0) {
-      if (el.scrollLeft >= h) el.scrollLeft -= h;
-      else if (el.scrollLeft < 0) el.scrollLeft += h;
+      if (pos.current >= h) pos.current -= h;
+      else if (pos.current < 0) pos.current += h;
+      // rebase so the next move is a small delta (keeps the loop seamless)
       drag.current.startX = e.clientX;
-      drag.current.startScroll = el.scrollLeft;
+      drag.current.startPos = pos.current;
     }
-    // keep the float accumulator in sync so auto-scroll continues from here
-    pos.current = el.scrollLeft;
+    el.style.transform = `translate3d(${-pos.current}px,0,0)`;
   };
   const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
+    const el = trackRef.current;
     if (el?.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
     drag.current.active = false;
   };
@@ -150,7 +148,7 @@ function ClientMarquee({
   return (
     <div className="marquee-mask relative overflow-hidden">
       <div
-        ref={scrollerRef}
+        ref={trackRef}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -159,7 +157,7 @@ function ClientMarquee({
         onClickCapture={(e) => {
           if (drag.current.moved) e.stopPropagation();
         }}
-        className="marquee-drag flex cursor-grab gap-3 overflow-x-auto py-1 active:cursor-grabbing sm:gap-5"
+        className="marquee-drag flex w-max cursor-grab select-none gap-3 py-1 will-change-transform active:cursor-grabbing sm:gap-5"
       >
         {row.map((item, i) => (
           <LogoChip
