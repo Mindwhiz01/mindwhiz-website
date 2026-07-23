@@ -636,7 +636,7 @@ const industryCategories = [
         img: "/industries/information-technology.png",
       },
       {
-        name: "E-commerce & Retail",
+        name: "Ecommerce & Retail",
         slug: "ecommerce-retail",
         desc: "Catalog, support, and operations that keep storefronts running around the clock.",
         img: "/industries/ecommerce-retail.png",

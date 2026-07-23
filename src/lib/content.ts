@@ -94,7 +94,7 @@ export const industries = [
   "Accounting & Finance",
   "Healthcare & HealthTech",
   "Real Estate",
-  "E-commerce & Retail",
+  "Ecommerce & Retail",
   "Logistics & Supply Chain",
   "Startups & SMBs",
   "Industrial Manufacturing",
@@ -243,7 +243,7 @@ export const footerGroups = [
     title: "Industries",
     links: [
       { label: "Information Technology", href: "/industries/information-technology" },
-      { label: "E-commerce & Retail", href: "/industries/ecommerce-retail" },
+      { label: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
       { label: "Startups & SMBs", href: "/industries/startups-smbs" },
       { label: "Construction & Engineering", href: "/industries/construction-engineering" },
       { label: "Real Estate", href: "/industries/real-estate" },

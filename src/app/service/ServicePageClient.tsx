@@ -346,12 +346,12 @@ const serviceClients: {
   { name: "Alpha Bravo", src: "/clients/alpha-bravo-brands.png", rot: -7, y: 20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Construction & estimation firm scaling delivery with vetted remote teams.", bg: "#3f3f3d" },
   { name: "Highland Redstone", src: "/clients/highland.png", rot: 6, y: -24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Real-estate group streamlining back-office and marketing operations." },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png", rot: -4, y: 32, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Technology company strengthening back-office accuracy and turnaround." },
-  { name: "Jerdoni", src: "/clients/jerdoni.png", rot: 9, y: -12, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "E-commerce brand growing with managed catalog and customer support." },
+  { name: "Jerdoni", src: "/clients/jerdoni.png", rot: 9, y: -12, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Ecommerce brand growing with managed catalog and customer support." },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png", rot: -9, y: 28, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Healthcare lab improving reliability with dedicated IT and support." },
   { name: "Villa Tech", src: "/clients/villa-tech-brands.png", rot: 5, y: -26, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "IT services company scaling infrastructure with expert augmentation." },
   { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png", rot: -6, y: 24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Clinical research group accelerating operations with dedicated support." },
   { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png", rot: 7, y: -20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Family practice modernizing front-desk and administrative workflows." },
-  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png", rot: -8, y: 30, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Wellness brand growing e-commerce with catalog and customer support." },
+  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png", rot: -8, y: 30, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Wellness brand growing ecommerce with catalog and customer support." },
   { name: "Dr. Owais", src: "/clients/dr-owais.png", rot: 5, y: -16, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Healthcare practice improving patient coordination and back-office ops." },
   { name: "Ideal Smile", src: "/clients/ideal-smile.png", rot: -5, y: 26, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Dental clinic streamlining scheduling, billing, and support." },
 ];
@@ -561,7 +561,7 @@ function Typewriter({
 const brandShowcase = [
   {
     name: "Velocity Retail",
-    kicker: "E-commerce · Paid Media",
+    kicker: "Ecommerce · Paid Media",
     desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held, revenue grew 2.4x in six months.",
     tags: ["Meta & TikTok Ads", "Creative testing", "Conversion tracking"],
     images: [

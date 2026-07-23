@@ -219,23 +219,23 @@ function BrowserFrame({
 // data
 // ---------------------------------------------------------------------------
 const services: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
-  { title: "Custom Websites", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel-perfect on every device. We craft clear messaging, intuitive navigation, and conversion-focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Web Applications", desc: "Full-stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Dashboards & Portals", desc: "Data-rich admin panels, analytics dashboards, and customer portals with real-time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role-based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
-  { title: "E-commerce", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Custom Websites", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Web Applications", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Dashboards & Portals", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Ecommerce", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on-demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
 ];
 
 const stack = ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PHP", "Laravel", "Python", "Tailwind CSS", "WordPress", "WooCommerce", "Shopify", "Webflow", "MySQL", "MongoDB", "PostgreSQL", "Firebase", "AWS", "Vercel", "Docker"];
 
 const portfolio: { name: string; url: string; image: string; category: string; blurb: string }[] = [
   { name: "Alpha Bravo", url: "https://alphabravous.com/", image: "/portfolio/alpha-bravo.jpg", category: "Corporate · Services", blurb: "A polished corporate presence with a clear services story and strong calls to action." },
-  { name: "Prime Axis Insurance", url: "https://primeaxisinsurance.com/", image: "/portfolio/prime-axis-insurance.jpg", category: "Insurance", blurb: "A trust-first insurance site with clean quote flows and clear product pages." },
+  { name: "Prime Axis Insurance", url: "https://primeaxisinsurance.com/", image: "/portfolio/prime-axis-insurance.jpg", category: "Insurance", blurb: "A trust first insurance site with clean quote flows and clear product pages." },
   { name: "Marquee Ranch", url: "https://marqueeranch.com/", image: "/portfolio/marquee-ranch.jpg", category: "Hospitality · Real Estate", blurb: "An elegant venue and ranch experience with rich galleries and event enquiries." },
   { name: "Tempura Halal", url: "https://tempurahalal.com/", image: "/portfolio/tempura-halal-updated.jpg", category: "Food & Restaurant", blurb: "An appetizing restaurant site with menus, online ordering, and event catering." },
   { name: "Tempura Food USA", url: "https://tempurafoodusa.com/", image: "/portfolio/tempura-food-usa.jpg", category: "Food & Beverage", blurb: "A bold food brand site showcasing products, story, and distribution." },
-  { name: "My Safe Drives", url: "https://mysafedrives.com/", image: "/portfolio/my-safe-drives.jpg", category: "Automotive · Safety", blurb: "A clean, reassuring platform focused on safe driving services and sign-ups." },
+  { name: "My Safe Drives", url: "https://mysafedrives.com/", image: "/portfolio/my-safe-drives.jpg", category: "Automotive · Safety", blurb: "A clean, reassuring platform focused on safe driving services and signups." },
   { name: "Crownline Construction", url: "https://crownlineconstruct.com/", image: "/portfolio/crownline-construction.jpg", category: "Construction", blurb: "A sturdy construction brand with project showcases and lead capture." },
 ];
 
@@ -244,14 +244,14 @@ const seoCaps: { title: string; desc: string; Icon: LucideIcon; image: string }[
   { title: "Core Web Vitals", desc: "Fast loads and stable layouts that Google rewards and users feel.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" },
   { title: "Structured Data", desc: "Schema.org markup for rich results, products, reviews, and FAQs.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" },
   { title: "Analytics", desc: "GA4, Search Console, and conversion tracking wired up and measured.", Icon: LineChart, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" },
-  { title: "On-page & Local", desc: "Optimized metadata, content structure, and local listings that rank.", Icon: Globe2, image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" },
-  { title: "Secure & Accessible", desc: "HTTPS, best-practice security, and accessible semantic HTML.", Icon: ShieldCheck, image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80" },
+  { title: "On page & Local", desc: "Optimized metadata, content structure, and local listings that rank.", Icon: Globe2, image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" },
+  { title: "Secure & Accessible", desc: "HTTPS, best practice security, and accessible semantic HTML.", Icon: ShieldCheck, image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80" },
 ];
 
 const steps = [
   { n: "01", title: "Discover", desc: "Map goals, audience, and scope, then set timeline and success metrics." },
-  { n: "02", title: "Design", desc: "Wireframes and high-fidelity designs turn the plan into an on-brand experience." },
-  { n: "03", title: "Build", desc: "Responsive front-end and secure back-end with your CMS and integrations." },
+  { n: "02", title: "Design", desc: "Wireframes and high fidelity designs turn the plan into an on brand experience." },
+  { n: "03", title: "Build", desc: "Responsive front end and secure back end with your CMS and integrations." },
   { n: "04", title: "Optimize", desc: "Tune performance, wire up SEO and analytics, and test across devices." },
   { n: "05", title: "Launch", desc: "Ship, monitor, and stay on for updates, features, and fixes." },
 ];
@@ -312,7 +312,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-black/60">
-              High-performance websites, web apps, and dashboards, designed, built, and
+              High performance websites, web apps, and dashboards, designed, built, and
               optimized to look sharp, load fast, and rank well.
             </p>
           </Reveal>
@@ -345,7 +345,7 @@ function Hero() {
 function MarqueeStrip() {
   return (
     <div className="border-y border-slate-200 bg-[#faf9f7] py-6">
-      <Marquee items={["Web Design", "Web Apps", "Dashboards", "E-Commerce", "SEO", "Performance", "Support"]} />
+      <Marquee items={["Web Design", "Web Apps", "Dashboards", "Ecommerce", "SEO", "Performance", "Support"]} />
     </div>
   );
 }
@@ -628,7 +628,7 @@ function SeoSection() {
           {/* left: heading - sticky while the notes scroll by */}
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal>
-              <Kicker>Search-ready</Kicker>
+              <Kicker>Search ready</Kicker>
               <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
                 SEO built <span style={{ color: PINK }}>in</span>
               </h2>
@@ -804,10 +804,10 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does a custom website cost?",
-    a: "Pricing depends on scope, a focused landing page starts lower, while multi-page sites, e-commerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
+    a: "Pricing depends on scope, a focused landing page starts lower, while multipage sites, ecommerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
   },
   {
-    q: "Will my site be fast, mobile-friendly, and SEO-ready?",
+    q: "Will my site be fast, mobile friendly, and SEO ready?",
     a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in, so it loads fast, feels smooth, and is set up to rank from day one.",
   },
   {

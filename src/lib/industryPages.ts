@@ -97,7 +97,7 @@ export const industryPages: ServicePageContent[] = [
   },
   {
     slug: "ecommerce-retail",
-    name: "E-commerce & Retail",
+    name: "Ecommerce & Retail",
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
@@ -112,7 +112,7 @@ export const industryPages: ServicePageContent[] = [
       kicker: "Technology & Digital",
       title: "Ecommerce and retail outsourcing",
       body: [
-        "MindWhiz supports e-commerce and retail brands with catalog management, customer service, and back-office operations.",
+        "MindWhiz supports ecommerce and retail brands with catalog management, customer service, and back-office operations.",
         "We help you handle peak demand, protect margins, and deliver a consistent experience across every channel.",
       ],
       card: {

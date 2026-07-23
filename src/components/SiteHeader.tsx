@@ -87,7 +87,7 @@ const industryMenu = [
     heading: "Technology & Digital",
     items: [
       { name: "Information Technology", icon: "Laptop" },
-      { name: "E-commerce & Retail", icon: "Megaphone" },
+      { name: "Ecommerce & Retail", icon: "Megaphone" },
       { name: "Startups & SMBs", icon: "Zap" },
     ],
   },
@@ -130,7 +130,7 @@ const serviceRoutes: Record<string, string> = {
   "Web Services": "/web-services",
   // industries
   "Information Technology": "/industries/information-technology",
-  "E-commerce & Retail": "/industries/ecommerce-retail",
+  "Ecommerce & Retail": "/industries/ecommerce-retail",
   "Startups & SMBs": "/industries/startups-smbs",
   "Construction & Engineering": "/industries/construction-engineering",
   "Real Estate": "/industries/real-estate",
