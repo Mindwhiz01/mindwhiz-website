@@ -568,7 +568,7 @@ function AlphaBravoShowcase() {
           <ArrowUpRight className="h-4 w-4" />
         </a>
 
-        <div className={`mt-12 w-full ${current.square ? "mx-auto max-w-3xl" : ""}`}>
+        <div className={`mt-12 w-full ${current.square ? "mx-auto max-w-lg" : ""}`}>
           <div key={current.url} className="group relative">
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/20 to-[#9CCC3C]/15 opacity-60 blur-2xl" />
             <BrowserFrame url={current.url} image={current.image} scroll={!current.square} square={current.square} className="relative" />
