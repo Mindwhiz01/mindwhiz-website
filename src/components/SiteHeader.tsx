@@ -377,6 +377,9 @@ export function SiteHeader({ theme }: { theme: string }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-7 w-7" />
             </span>
+            {/* below the `nav` breakpoint (hamburger layout) the wordmark is
+                always shown - there's no hover on touch, so the brand would
+                otherwise never expand. From `nav:` up it stays hover-driven. */}
             <span
               className={`overflow-hidden whitespace-nowrap text-xl font-extrabold tracking-tight transition-all duration-700 ease-out max-w-[200px] pr-5 opacity-100 ${
                 brandOpen
@@ -400,18 +403,24 @@ export function SiteHeader({ theme }: { theme: string }) {
             const isActive = active === n.label;
             const hasMega =
               n.label === "Services" || n.label === "Industries" || n.label === "About Us";
+            // Mega tabs still navigate on click (hover opens the dropdown).
+            // Services/Industries jump to their home-page sections; About Us
+            // lands on the CEO section of the about page.
+            const megaHref: Record<string, string> = {
+              Services: "/#services",
+              Industries: "/#industries",
+              "About Us": "/about#story",
+            };
+            const tabHref = hasMega ? megaHref[n.label] ?? n.href : n.href;
             return (
               <motion.a
                 key={n.label}
-                href={n.href}
-                onClick={(e) => {
-                  // tabs with a mega dropdown shouldn't navigate on click -
-                  // just open their menu so the tab stays put
-                  if (hasMega) {
-                    e.preventDefault();
-                    openMega(mega === n.label ? null : n.label);
-                  }
+                href={tabHref}
+                onClick={() => {
+                  // navigate to the tab's section; close any open dropdown so
+                  // it doesn't linger over the destination
                   setActive(n.label);
+                  setMega(null);
                 }}
                 onMouseEnter={() => openMega(hasMega ? n.label : null)}
                 initial={{ opacity: 0, scale: 0.75 }}
@@ -569,19 +578,28 @@ export function SiteHeader({ theme }: { theme: string }) {
       {/* mobile menu - liquid-glass panel with WhatsApp spring pop-in */}
       <AnimatePresence>
         {open && (
+          <>
+            {/* click-away catcher - closes the menu on any tap outside the panel.
+                Sits below the panel (header content is z-10) so links stay tappable. */}
+            <div
+              className="fixed inset-0 z-0 nav:hidden"
+              aria-hidden
+              onClick={() => {
+                setOpen(false);
+                setMobileMenu(null);
+              }}
+            />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: -6 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -6 }}
             transition={{ type: "spring", stiffness: 320, damping: 28 }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 max-h-[calc(var(--dvh)*100-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-black/10 bg-white p-2 shadow-2xl shadow-black/20 nav:hidden"
+            className="relative z-10 mx-auto mt-2 max-h-[calc(var(--dvh)*100-6.5rem)] max-w-6xl overflow-y-auto overflow-x-hidden overscroll-contain rounded-[14px] border border-black/10 bg-white p-2 shadow-2xl shadow-black/20 nav:hidden"
           >
-            {[
-              ...nav.slice(0, 4),
-              { label: "Why MindWhiz", href: "/why-mindwhiz" },
-              ...nav.slice(4),
-            ].map((n, i) => {
+            {/* same source of truth as the desktop bar - "Why MindWhiz" lives
+                inside the About Us dropdown here too, not as a top-level item */}
+            {nav.map((n, i) => {
               const hasMega =
                 n.label === "Services" || n.label === "Industries" || n.label === "About Us";
               const isExpanded = mobileMenu === n.label;
@@ -711,6 +729,7 @@ export function SiteHeader({ theme }: { theme: string }) {
               Get in Touch
             </motion.a>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

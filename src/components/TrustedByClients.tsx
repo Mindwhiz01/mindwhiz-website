@@ -82,7 +82,7 @@ const clientTestimonials = [
     ],
   },
   {
-    quote: "I would recommend MindWhiz to anyone. Don't take my word - see the results.",
+    quote: "I would recommend MindWhiz to anyone. Don't take my word for it, see the results.",
     author: "Inovatiqa",
     video: "https://videos.pexels.com/video-files/7989708/7989708-hd_1920_1080_25fps.mp4",
     image: "/clients/basil-pizza-site.png",
@@ -216,9 +216,9 @@ export default function TrustedByClients() {
                 >
                   &quot;{t.quote}&quot;
                 </p>
-                <p className="mt-6 text-sm text-black/60">{t.author}</p>
+                <p className="mt-4 text-sm text-black/60 sm:mt-6">{t.author}</p>
                 <Cta href="/contact" label="Learn more" className="mt-7 w-fit max-sm:hidden" />
-                <div className="mt-auto flex gap-12 pt-12">
+                <div className="mt-auto flex gap-8 pt-6 sm:gap-12 sm:pt-12">
                   {t.stats.map((s) => (
                     <div key={s.label}>
                       <p

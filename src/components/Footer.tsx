@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 lg:grid-cols-[1.6fr_repeat(4,1fr)]">
           {/* brand block */}
           <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3">
+            <a href="/" aria-label={`${company.name} home`} className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-9 w-9" />
               <span
@@ -51,11 +51,11 @@ export default function Footer() {
               >
                 {company.name}
               </span>
-            </div>
+            </a>
 
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
               {company.tagline}. Vetted engineers and 24/7 operations across the
-              US, UK, and Pakistan - built for speed, reliability, and enterprise
+              US, UK, and Pakistan, built for speed, reliability, and enterprise
               trust.
             </p>
 

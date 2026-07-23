@@ -135,6 +135,15 @@ body {
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
+/* drag/auto-scroll logo row: hide the native scrollbar, keep touch panning */
+.marquee-drag {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-x;
+}
+.marquee-drag::-webkit-scrollbar {
+  display: none;
+}
 .marquee-mask {
   -webkit-mask-image: linear-gradient(
     to right,
