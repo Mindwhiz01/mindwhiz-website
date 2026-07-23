@@ -65,7 +65,7 @@ export function LegalPage({
             <span className="h-px w-12 bg-white/20" />
           </div>
           <h1
-            className="mt-5 text-[clamp(2.6rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
+            className="mt-5 text-[clamp(3.6rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {title}

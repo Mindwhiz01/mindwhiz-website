@@ -231,13 +231,13 @@ function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white pt-36 pb-12">
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
       <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:gap-10 lg:grid-cols-[0.7fr_1.3fr]">
         <div className="order-2 lg:order-1">
           <Reveal delay={0.05}>
-            <h1 className="mt-7 text-[clamp(3rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
+            <h1 className="mt-7 text-[clamp(3.6rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
               Websites
-              {/* on mobile, break after "Websites" so it reads: Websites / built for / growth */}
-              <br className="sm:hidden" />
+              {/* three lines on every size: Websites / built for / growth */}
+              <br />
               {/* keep "built for" on one line so "for" never drops on narrow screens */}
               <span className="whitespace-nowrap">built for</span>
               <br />
@@ -253,7 +253,7 @@ function Hero() {
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Cta href="/contact" label="Start a project" />
-              <Cta href="#work" label="See our work" variant="outline" className="!border-black/20 !bg-transparent !text-black hover:!bg-black/5" />
+              <Cta href="/contact" label="Book free consultation" variant="outline" className="!border-black/20 !bg-transparent !text-black hover:!bg-black/5" />
             </div>
           </Reveal>
         </div>

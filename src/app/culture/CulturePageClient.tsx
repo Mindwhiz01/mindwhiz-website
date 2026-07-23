@@ -113,7 +113,7 @@ function Hero() {
       >
         <Kicker>Our culture</Kicker>
         <h1
-          className="mt-4 max-w-4xl text-[clamp(3.2rem,9vw,8.5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]"
+          className="mt-4 max-w-4xl text-[clamp(3.6rem,9vw,8.5rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Our people, <span className="text-[#9CCC3C]">our strength</span>

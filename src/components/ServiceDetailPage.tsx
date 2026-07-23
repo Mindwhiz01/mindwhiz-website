@@ -185,7 +185,7 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
         <Reveal className="max-w-2xl">
           <Kicker>{page.intro.kicker}</Kicker>
           <h2
-            className="mt-5 text-[clamp(2.8rem,5vw,5.4rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-black"
+            className="mt-5 text-[clamp(3.6rem,5vw,5.4rem)] font-extrabold uppercase leading-[0.94] tracking-tight text-black"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <span className="whitespace-nowrap">24/7 IT helpdesk</span>
@@ -268,10 +268,21 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
               className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
             >
               {page.capabilities.map((item, index) => (
-                <a
+                <motion.a
                   key={item.title}
                   href="/contact"
                   style={{ width: isMobile ? undefined : cardW }}
+                  // On phones the section is a native swipe carousel rather than
+                  // a scroll-jacked ride, so give each card its own reveal on the
+                  // way in - the same visual language as the desktop animation.
+                  {...(isMobile
+                    ? {
+                        initial: { opacity: 0, y: 40 },
+                        whileInView: { opacity: 1, y: 0 },
+                        viewport: { once: true, margin: "-15%" },
+                        transition: { duration: 0.5, ease: PROCESS_EASE },
+                      }
+                    : {})}
                   className="group relative flex h-[calc(var(--vh)*48)] min-h-[280px] max-h-[600px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none text-white transition-transform duration-300 hover:-translate-y-1.5 sm:h-[calc(var(--vh)*58)] sm:min-h-[340px] sm:w-auto sm:max-w-none"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -295,7 +306,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/75">{item.desc}</p>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </motion.div>
           </div>

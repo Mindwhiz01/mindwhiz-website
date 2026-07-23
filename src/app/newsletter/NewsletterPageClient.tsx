@@ -186,7 +186,7 @@ export default function NewsletterPageClient() {
               The MindWhiz Dispatch
             </span>
             <h1
-              className="mt-6 text-[clamp(2.6rem,6vw,4.8rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
+              className="mt-6 text-[clamp(3.6rem,6vw,4.8rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Smarter operations, <span className="text-[#9CCC3C]">once a month</span>

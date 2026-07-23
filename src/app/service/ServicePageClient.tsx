@@ -339,13 +339,16 @@ const serviceClients: {
   y: number;
   size: string;
   desc: string;
+  // optional card background - used for logos with white text that would
+  // vanish on the default white card.
+  bg?: string;
 }[] = [
-  { name: "Alpha Bravo", src: "/clients/alpha-bravo.png", rot: -7, y: 20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Construction & estimation firm scaling delivery with vetted remote teams." },
+  { name: "Alpha Bravo", src: "/clients/alpha-bravo-brands.png", rot: -7, y: 20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Construction & estimation firm scaling delivery with vetted remote teams.", bg: "#3f3f3d" },
   { name: "Highland Redstone", src: "/clients/highland.png", rot: 6, y: -24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Real-estate group streamlining back-office and marketing operations." },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png", rot: -4, y: 32, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Technology company strengthening back-office accuracy and turnaround." },
   { name: "Jerdoni", src: "/clients/jerdoni.png", rot: 9, y: -12, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "E-commerce brand growing with managed catalog and customer support." },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png", rot: -9, y: 28, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Healthcare lab improving reliability with dedicated IT and support." },
-  { name: "Villa Tech", src: "/clients/villa-tech.png", rot: 5, y: -26, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "IT services company scaling infrastructure with expert augmentation." },
+  { name: "Villa Tech", src: "/clients/villa-tech-brands.png", rot: 5, y: -26, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "IT services company scaling infrastructure with expert augmentation." },
   { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png", rot: -6, y: 24, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Clinical research group accelerating operations with dedicated support." },
   { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png", rot: 7, y: -20, size: "h-44 w-64 sm:h-48 sm:w-72", desc: "Family practice modernizing front-desk and administrative workflows." },
   { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png", rot: -8, y: 30, size: "h-40 w-60 sm:h-44 sm:w-64", desc: "Wellness brand growing e-commerce with catalog and customer support." },
@@ -382,7 +385,7 @@ function ClientsScatter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-4 max-w-4xl text-4xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-6xl"
+            className="mx-auto mt-4 max-w-5xl text-5xl font-extrabold uppercase leading-[1.02] text-[#3f3f3d] sm:text-7xl lg:text-8xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Brands that grow with us
@@ -401,7 +404,10 @@ function ClientsScatter() {
               style={{ marginTop: c.y }}
               className="group relative z-0 shrink-0"
             >
-              <div className={`flex items-center justify-center overflow-hidden rounded-[2.25rem] bg-white shadow-xl shadow-black/10 ring-1 ring-black/5 ${c.size}`}>
+              <div
+                className={`flex items-center justify-center overflow-hidden rounded-[2.25rem] shadow-xl shadow-black/10 ring-1 ring-black/5 ${c.size} ${c.bg ? "" : "bg-white"}`}
+                style={c.bg ? { backgroundColor: c.bg } : undefined}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={c.src}
@@ -796,7 +802,7 @@ export default function ServicePageClient() {
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h1
-                  className="max-w-[48rem] text-[clamp(4.2rem,11vw,12rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white"
+                  className="max-w-[48rem] text-[clamp(3.6rem,11vw,12rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   Your

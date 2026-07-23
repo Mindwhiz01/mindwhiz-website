@@ -500,7 +500,7 @@ function ArrowCta({
 // ---------------------------------------------------------------------------
 const studioCities = [
   { city: "United Kingdom", tz: "Europe/London", above: false },
-  { city: "United States", tz: "America/New_York", above: false },
+  { city: "United States", tz: "America/New_York", above: true },
   { city: "Pakistan", tz: "Asia/Karachi", above: true },
 ];
 
@@ -528,7 +528,7 @@ function StudioClockSection() {
   }, []);
 
   return (
-    <section className="bg-[#EEEEEE] text-[#2F343B]">
+    <section className="hidden bg-[#EEEEEE] text-[#2F343B] md:block">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
         <Reveal>
           <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
@@ -825,7 +825,7 @@ function IndustriesWorlds() {
         // no dead space on the right. Subtracting the row's current x makes the
         // measurement valid no matter where the scrub has dragged it (e.g. on
         // resize).
-        const GUTTER = 40; // white space left after the last card on the right
+        const GUTTER = 25; // white space left after the last card on the right
         const distance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
@@ -903,7 +903,7 @@ function IndustriesWorlds() {
 
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:px-5 sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
+          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto pl-[25px] pr-0 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&>a:last-child]:mr-[25px] sm:snap-none sm:overflow-visible sm:px-[25px] sm:pb-0 sm:will-change-transform sm:[&>a:last-child]:mr-0 [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a

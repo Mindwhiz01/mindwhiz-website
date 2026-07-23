@@ -378,8 +378,10 @@ export function SiteHeader({ theme }: { theme: string }) {
               <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-7 w-7" />
             </span>
             <span
-              className={`overflow-hidden whitespace-nowrap text-xl font-extrabold tracking-tight transition-all duration-700 ease-out ${
-                brandOpen ? "max-w-[200px] pr-5 opacity-100" : "max-w-0 pr-0 opacity-0"
+              className={`overflow-hidden whitespace-nowrap text-xl font-extrabold tracking-tight transition-all duration-700 ease-out max-w-[200px] pr-5 opacity-100 ${
+                brandOpen
+                  ? "nav:max-w-[200px] nav:pr-5 nav:opacity-100"
+                  : "nav:max-w-0 nav:pr-0 nav:opacity-0"
               }`}
               style={{ fontFamily: "var(--font-display)" }}
             >

@@ -152,7 +152,8 @@ export default function TrustedByClients() {
     if (!el) return;
     const cards = el.querySelectorAll<HTMLElement>("[data-tcard]");
     if (!cards.length) return;
-    const next = Math.min(cards.length - 1, Math.max(0, indexRef.current + dir));
+    // wrap around: past the last card loops back to the first (and vice versa)
+    const next = (indexRef.current + dir + cards.length) % cards.length;
     indexRef.current = next;
     const card = cards[next];
     const target = card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2;
@@ -176,7 +177,7 @@ export default function TrustedByClients() {
             type="button"
             onClick={() => scrollByCard(-1)}
             aria-label="Previous testimonial"
-            className="grid h-11 w-11 place-items-center rounded-full bg-black/5 text-black transition-colors hover:bg-black/10"
+            className="grid h-11 w-11 place-items-center rounded-full bg-black/5 text-black transition-colors hover:bg-[#9CCC3C] hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -184,7 +185,7 @@ export default function TrustedByClients() {
             type="button"
             onClick={() => scrollByCard(1)}
             aria-label="Next testimonial"
-            className="grid h-11 w-11 place-items-center rounded-full bg-black/5 text-black transition-colors hover:bg-black/10"
+            className="grid h-11 w-11 place-items-center rounded-full bg-black/5 text-black transition-colors hover:bg-[#9CCC3C] hover:text-white"
           >
             <ArrowRight className="h-4 w-4" />
           </button>
@@ -216,7 +217,7 @@ export default function TrustedByClients() {
                   &quot;{t.quote}&quot;
                 </p>
                 <p className="mt-6 text-sm text-black/60">{t.author}</p>
-                <Cta href="/contact" label="Learn more" className="mt-7 w-fit" />
+                <Cta href="/contact" label="Learn more" className="mt-7 w-fit max-sm:hidden" />
                 <div className="mt-auto flex gap-12 pt-12">
                   {t.stats.map((s) => (
                     <div key={s.label}>

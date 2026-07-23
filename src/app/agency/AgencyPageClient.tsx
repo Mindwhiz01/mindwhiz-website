@@ -193,7 +193,7 @@ function HeroSection() {
       <div className="flex min-h-screen items-end px-5 pb-10 sm:px-8">
         <div className="relative w-full">
           <h1
-            className="max-w-[56rem] text-[clamp(5rem,15vw,13rem)] font-bold uppercase leading-[0.88] tracking-[-0.05em]"
+            className="max-w-[56rem] text-[clamp(3.6rem,15vw,13rem)] font-bold uppercase leading-[0.88] tracking-[-0.05em]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <SplitLine text="Your" />
