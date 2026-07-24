@@ -14,7 +14,7 @@ import { caseStudies } from "@/lib/content";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useBelowSm } from "@/lib/useBelowSm";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -193,13 +193,12 @@ export default function CaseStudiesPage() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="/banners/case-studies.png"
-          title={
-            <>
-              On the <span className="text-[#9CCC3C]">record</span>
-            </>
-          }
+          titleLines={["On", "The"]}
+          rotateWords={["Record", "Results", "Proof", "Wins"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="Every engagement below is filed exactly as delivered, the client, the brief, and the outcome, on record."
           primary={{ label: "Build your team", href: "/contact" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         <CaseRecordSection />

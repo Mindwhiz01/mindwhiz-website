@@ -30,6 +30,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/information-technology.png",
       title: ["Powering"],
       highlight: "Technology",
+      heroRotate: ["Innovation", "Systems", "Growth"],
       subtitle:
         "Software, cloud, and cybersecurity teams that help IT companies ship faster and run secure, tech powered infrastructure at scale.",
       cta: "Talk to an IT expert",
@@ -106,6 +107,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/ecommerce-retail.png",
       title: ["Retail That"],
       highlight: "Scales",
+      heroRotate: ["Sells", "Grows", "Converts"],
       subtitle:
         "Catalog, customer support, and operations teams that keep online and retail businesses running smoothly around the clock.",
       cta: "Scale your store",
@@ -182,6 +184,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/startups-smbs.png",
       title: ["Teams That"],
       highlight: "Scale",
+      heroRotate: ["Ship", "Grow", "Deliver"],
       subtitle:
         "Flexible, cost effective talent that lets startups and small businesses move fast without the overhead of building every function in house.",
       cta: "Grow your team",
@@ -258,6 +261,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/construction-engineering.png",
       title: ["Win More"],
       highlight: "Bids",
+      heroRotate: ["Projects", "Contracts", "Deals"],
       subtitle:
         "Estimation, takeoffs, and engineering support that speed up bids, control costs, and keep construction projects moving.",
       cta: "Request an estimate",
@@ -325,82 +329,6 @@ export const industryPages: ServicePageContent[] = [
     finalCta,
   },
   {
-    slug: "real estate",
-    capabilitiesHook: { audience: "For B2B and B2C property teams", question: "Are slow processes costing you deals your competitors are closing?" },
-    name: "Real Estate",
-    sourceUrl: "https://mindwhiz.com/industries/",
-    group: "Built & Physical",
-    hero: {
-      image: "/banners/real estate.png",
-      title: ["Property"],
-      highlight: "Support",
-      subtitle:
-        "Listing, transaction, and operations support that keeps real estate and property management teams focused on deals, not admin.",
-      cta: "Streamline operations",
-    },
-    intro: {
-      kicker: "Built & Physical",
-      title: "Real estate back office support",
-      body: [
-        "MindWhiz supports real estate and property teams with listing management, transaction coordination, and back office operations.",
-        "Free your agents and managers to focus on clients and deals while we handle the process work behind them.",
-      ],
-      card: {
-        tags: ["Admin Overload", "Slow Deals"],
-        image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
-        title: "Coordination Drag",
-        desc: "Manual admin and back office work slow deals and pull your team away from clients.",
-        cta: "Talk to expert",
-      },
-    },
-    proof: [
-      { value: "24/7", label: "Operations and support coverage" },
-      { value: "30%", label: "Lower back office cost" },
-      { value: "Faster", label: "Listing and transaction turnaround" },
-      { value: "Accurate", label: "Documentation and records" },
-    ],
-    capabilities: [
-      { title: "Listing Management", desc: "Accurate listings, media coordination, and portal updates.", image: cap.a },
-      { title: "Transaction Coordination", desc: "Documents, deadlines, and compliance handled end to end.", image: cap.b },
-      { title: "Marketing Support", desc: "Campaigns, CRM, and content that keep pipelines full.", image: cap.d },
-      { title: "Back Office Operations", desc: "Bookkeeping, reporting, and admin for property teams.", image: cap.e },
-    ],
-    benefits: [
-      { title: "Focus On Deals", desc: "Agents spend time with clients, not paperwork." },
-      { title: "Lower Overhead", desc: "Efficient support reduces back office cost." },
-      { title: "Faster Turnaround", desc: "Listings and transactions move without bottlenecks." },
-      { title: "Reliable Records", desc: "Accurate, compliant documentation you can trust." },
-    ],
-    process: [
-      { title: "Process Review", desc: "We map your listing and transaction workflows and tools." },
-      { title: "Team Setup", desc: "Coordinators and support matched to your volume." },
-      { title: "Integration", desc: "We connect into your CRM, forms, and compliance steps." },
-    ],
-    faqs: [
-      {
-        q: "What do you do for real estate firms?",
-        a: "Support the systems the business runs on, agent devices, email and document security, CRM and listing platforms, and the infrastructure connecting multiple offices, so transactions are not delayed by technology.",
-      },
-      {
-        q: "Can you support several branches or offices?",
-        a: "Yes. Multisite environments are standard work, with consistent setup, access control, and support across locations instead of each office solving IT differently.",
-      },
-      {
-        q: "How do you protect client and transaction data?",
-        a: "Through access control, encryption, endpoint protection, and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. Wire fraud and business email compromise are specific risks in this sector and are treated as such.",
-      },
-      {
-        q: "Do you work with the CRM and listing tools we already use?",
-        a: "Yes. We support and integrate the platforms you have rather than pushing a migration, unless the existing setup is genuinely holding the business back.",
-      },
-      {
-        q: "Can agents get help outside office hours?",
-        a: "Yes. Deals do not keep office hours, and support coverage can run continuously so an agent working an evening or weekend closing is not stuck.",
-      },
-    ],
-    finalCta,
-  },
-  {
     slug: "industrial-manufacturing",
     capabilitiesHook: { audience: "For B2B manufacturers", question: "What is unplanned downtime really costing your production line?" },
     name: "Industrial Manufacturing",
@@ -410,6 +338,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/industrial-manufacturing.png",
       title: ["Built To"],
       highlight: "Run",
+      heroRotate: ["Last", "Scale", "Perform"],
       subtitle:
         "Engineering, back office, and IT support that keep manufacturing operations efficient, connected, and running at capacity.",
       cta: "Optimize operations",
@@ -486,6 +415,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/accounting-finance.png",
       title: ["Close The"],
       highlight: "Books",
+      heroRotate: ["Gap", "Quarter", "Year"],
       subtitle:
         "Bookkeeping, reporting, and finance operations handled by vetted professionals, so your close is faster and your data is clean.",
       cta: "Talk to finance",
@@ -562,6 +492,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/professional-services.png",
       title: ["Deliver"],
       highlight: "More",
+      heroRotate: ["Results", "Value", "Growth"],
       subtitle:
         "Research, operations, and back office support that let consulting and professional services firms take on more work with confidence.",
       cta: "Add capacity",
@@ -638,6 +569,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/logistics-supply-chain.png",
       title: ["Keep Goods"],
       highlight: "Moving",
+      heroRotate: ["Flowing", "Tracked", "On Track"],
       subtitle:
         "Coordination, tracking, and back office support that keep logistics and supply chain operations running without gaps.",
       cta: "Streamline logistics",
@@ -714,6 +646,7 @@ export const industryPages: ServicePageContent[] = [
       image: "/banners/healthcare-healthtech.png",
       title: ["Compliant"],
       highlight: "Care",
+      heroRotate: ["Health", "Systems", "Data"],
       subtitle:
         "Talent and operations support for care operations and health technology platforms, delivered with compliance built in.",
       cta: "Talk to healthcare",

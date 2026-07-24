@@ -7,7 +7,7 @@ import { Mail, MapPin, Phone, Target, Search, ClipboardList, LineChart, type Luc
 import { company } from "@/lib/content";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import { ContactForm } from "@/components/ContactFormSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -126,14 +126,12 @@ export default function ContactPageClient() {
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
           image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
-          title={
-            <>
-              Let&apos;s <span className="text-[#9CCC3C]">talk</span>
-            </>
-          }
+          titleLines={["Let's"]}
+          rotateWords={["Talk", "Connect", "Chat", "Meet"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="Tell us what you're trying to achieve. MindWhiz will respond with the right people, the right approach, and a clear next step."
           primary={{ label: "Send a message", href: "#form" }}
-          secondary={{ label: "Call us", href: company.phoneHref }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         {/* ===================== FORM ===================== */}

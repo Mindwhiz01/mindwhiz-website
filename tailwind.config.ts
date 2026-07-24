@@ -29,6 +29,22 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
+      keyframes: {
+        // normal state -> green glow -> back, for the footer "Hiring" badge
+        "glow-pulse": {
+          "0%, 100%": {
+            boxShadow: "0 0 0 0 rgba(156, 204, 60, 0)",
+            textShadow: "0 0 0 rgba(156, 204, 60, 0)",
+          },
+          "50%": {
+            boxShadow: "0 0 12px 1px rgba(156, 204, 60, 0.65)",
+            textShadow: "0 0 8px rgba(156, 204, 60, 0.75)",
+          },
+        },
+      },
+      animation: {
+        "glow-pulse": "glow-pulse 1.8s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

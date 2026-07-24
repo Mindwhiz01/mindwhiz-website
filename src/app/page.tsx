@@ -544,7 +544,7 @@ function StudioClockSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty five engineers headquartered in Lahore, with client facing
-            offices in the UK and the USA. Building since 2017. Somewhere, the
+            offices in the UK and the USA. Building since 2020. Somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -657,12 +657,6 @@ const industryCategories = [
         slug: "construction-engineering",
         desc: "Estimation, takeoffs, and engineering support that speed up bids and keep projects moving.",
         img: "/industries/construction-engineering.png",
-      },
-      {
-        name: "Real Estate",
-        slug: "real estate",
-        desc: "Listing, transaction, and operations support that keeps teams focused on deals, not admin.",
-        img: "/industries/real estate.png",
       },
       {
         name: "Industrial Manufacturing",
@@ -820,29 +814,32 @@ function IndustriesWorlds() {
     mm.add("(min-width: 640px)", () => {
       const ctx = gsap.context(() => {
         const row = rowRef.current!;
-        // The run begins with one card-width of empty space on the LEFT (a
-        // responsive pl-[…] on the row) and ENDS with the last card tucked
-        // directly under the "Get in touch" button - its right edge lines up
-        // with the button's right edge.
+        // The row shares the same max-w-7xl container as the heading, so at rest
+        // the first card's left edge already lines up with the heading's left
+        // edge. The ride ENDS with the last card's right edge landing on that
+        // container's inner right edge - the whole carousel stays bounded to the
+        // heading's column instead of bleeding to the button or the viewport.
         //
         // The travel is applied live from the timeline's onUpdate instead of a
         // pre-resolved tween end value. GSAP resolves a tween's function value
         // once, at load, while the section is still UNPINNED - but the moment
-        // the CSS-sticky pin engages, the full-width card row's layout left
-        // shifts ~one card to the right (the centred button does NOT move). A
-        // load-time measurement therefore stops the run a card short. Reading
-        // the geometry each frame in onUpdate happens while the section is
-        // pinned, so the target is always the final one.
-        const btn = sectionRef.current!.querySelector<HTMLElement>('a[href="/contact"]');
+        // the CSS-sticky pin engages, the layout can shift. Reading the geometry
+        // each frame in onUpdate happens while the section is pinned, so the
+        // target is always the final one.
+        const container = row.parentElement as HTMLElement; // the max-w-7xl wrapper
+        // Inner right edge of the container (its right minus its own padding).
+        const containerRight = () => {
+          const cs = getComputedStyle(container);
+          return container.getBoundingClientRect().right - parseFloat(cs.paddingRight || "0");
+        };
         // Full leftward travel that brings the last card's right edge onto the
-        // button's right edge. r.right - x strips the transform we set last
-        // frame, so this reads the row's live layout right regardless of x.
+        // container's inner right edge. r.right - x strips the transform we set
+        // last frame, so this reads the row's live layout right regardless of x.
         const fullDistance = () => {
           const last = row.lastElementChild as HTMLElement;
           const r = last.getBoundingClientRect();
           const x = Number(gsap.getProperty(row, "x"));
-          const target = btn ? btn.getBoundingClientRect().right : window.innerWidth * 0.85;
-          return Math.max(0, r.right - x - target);
+          return Math.max(0, r.right - x - containerRight());
         };
         // scrub:0.5 smooths the timeline playhead so the row chases the scroll
         // over ~0.5s without overshoot.
@@ -850,7 +847,7 @@ function IndustriesWorlds() {
         // onUpdate fires every scrub-smoothed tick and re-derives x from the LIVE
         // pinned geometry. The 0.7 split makes progress 0->0.7 the ride (mapped
         // linearly onto the full travel, so the gap opens uniformly) and
-        // 0.7->1.0 a dwell that holds the last card under the button - because
+        // 0.7->1.0 a dwell that holds the last card at the container edge - because
         // the proxy keeps ticking through the dwell, the final frame uses the
         // fully-settled geometry rather than a mid-ride snapshot.
         const state = { progress: 0 };
@@ -875,6 +872,17 @@ function IndustriesWorlds() {
     return () => mm.revert();
   }, []);
 
+  // Mobile-only: below `sm` the row is a native horizontal scroll carousel
+  // (no scroll-jack pin), so these prev/next buttons nudge it one card at a
+  // time. gap-5 == 20px, added to the card width for a full card+gap step.
+  const scrollByCard = (dir: 1 | -1) => {
+    const row = rowRef.current;
+    if (!row) return;
+    const card = row.firstElementChild as HTMLElement | null;
+    const step = card ? card.offsetWidth + 20 : row.clientWidth * 0.85;
+    row.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
   const total = String(industryWorlds.length).padStart(2, "0");
 
   return (
@@ -886,58 +894,79 @@ function IndustriesWorlds() {
       // section's *content* box, so padding makes it latch late at the top
       // and detach before the section ends - mid-dwell. Mobile skips the pin
       // entirely, so it just needs its natural content height.
-      className="relative bg-[#EEEEEE] text-white sm:h-[calc(var(--vh)*210)] lg:h-[calc(var(--vh)*300)]"
+      className="relative bg-[#EEEEEE] text-white sm:h-[calc(var(--vh)*220)] lg:h-[calc(var(--vh)*300)]"
     >
       {/* pt clears the fixed site header so the heading stays readable below
           it for the whole pinned ride (sm+ only - mobile scrolls normally) */}
       <div className="flex flex-col justify-start pt-[5.5rem] pb-10 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:pb-5 sm:pt-[6.5rem]">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
-          <Reveal>
+        {/* Two equal columns. LEFT: heading, audience label and CTA stacked
+            together. RIGHT: the hook + description. Splitting the copy this way
+            keeps the header a compact band so the card row below clears the fold
+            on small laptops during the pinned ride. */}
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 sm:flex-row sm:items-start sm:gap-8 sm:px-8 lg:gap-12">
+          <Reveal className="sm:flex-1">
             <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
               The industries
               <span className="h-px w-12 bg-white/20" />
             </div>
             <h2
-              className="text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
+              className="mt-3 text-[clamp(2.4rem,5vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
               <span style={{ color: "#ed1164" }}>Industries</span> we serve
             </h2>
-            {/* audience-aware hook that pulls B2B and B2C readers in */}
+            {/* audience-aware label sits directly under the heading */}
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
               For B2B &amp; B2C teams
             </p>
-            <p className="mt-3 max-w-md text-lg font-semibold leading-snug text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
-              Whatever your sector, what is slowing your team down the most?
-            </p>
-            <p className="mb-6 mt-4 max-w-md text-sm leading-relaxed text-[#2F343B]">
-              MindWhiz supports businesses across a wide range of industries. Our
-              industry focused expertise lets us tailor solutions that align with
-              the unique requirements of each sector.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1} className="shrink-0">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#2F343B] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#2F343B] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#242A31]"
             >
               Get in touch
               <ArrowRight className="h-4 w-4" />
             </a>
           </Reveal>
+
+          {/* sm/lg:mt-* drops the right column down so its first line sits level
+              with the big heading (not the eyebrow above it). */}
+          <Reveal delay={0.1} className="sm:mt-8 sm:flex-1 lg:mt-11">
+            {/* audience-aware hook that pulls B2B and B2C readers in */}
+            <p className="max-w-md text-lg font-semibold leading-snug text-[#1d1d1f]" style={{ fontFamily: "var(--font-display)" }}>
+              Whatever your sector, what is slowing your team down the most?
+            </p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-[#2F343B]">
+              MindWhiz supports businesses across a wide range of industries. Our
+              industry focused expertise lets us tailor solutions that align with
+              the unique requirements of each sector.
+            </p>
+          </Reveal>
         </div>
 
+        {/* Same max-w-7xl container as the heading, so the first card's left
+            edge lines up with the heading and the ride stays bounded to this
+            column. The row itself carries no left padding - the wrapper's
+            padding is what positions the first card at the heading edge. */}
+        <div className="mx-auto mt-8 w-full max-w-7xl px-6 sm:px-8">
         <div
           ref={rowRef}
-          className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:pb-0 sm:pl-[320px] sm:pr-5 sm:will-change-transform lg:pl-[360px] [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:snap-none sm:overflow-visible sm:pb-0 sm:will-change-transform [&::-webkit-scrollbar]:hidden"
         >
           {industryWorlds.map((w, i) => (
           <a
             key={w.slug}
             href={`/industries/${w.slug}`}
-            className="group relative flex h-[calc(var(--vh)*58)] max-h-[600px] min-h-[300px] w-[78vw] max-w-[320px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 sm:w-[320px] lg:w-[360px]"
+            // During the pinned ride (sm+) the card height is the LEFTOVER
+            // height after the header. It's sized against var(--vh)*100 - the
+            // exact same base as the sm:h-screen sticky container (Tailwind's
+            // h-screen is remapped to calc(var(--vh)*100) in tailwind.config) -
+            // minus ~420px for the header + bottom padding. That base already
+            // absorbs the laptop `zoom:0.8` compensation, so the card always
+            // clears the fold on short laptops instead of a fixed vh fraction
+            // that overflowed. Capped so it never gets huge on tall screens or
+            // vanish on tiny ones. On mobile (no pin) it keeps a simple vh height.
+            className="group relative flex h-[calc(var(--vh)*50)] max-h-[560px] min-h-[240px] w-[78vw] max-w-[300px] shrink-0 snap-center flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 sm:h-[calc(var(--vh)*100-420px)] sm:w-[280px] lg:w-[330px]"
           >
             {/* stock image - using WebP for better performance */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -967,13 +996,36 @@ function IndustriesWorlds() {
               >
                 {w.name}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/75">{w.desc}</p>
+              <p className="mt-2 pr-16 text-sm leading-relaxed text-white/75">{w.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
                 Enter <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
             </div>
           </a>
           ))}
+        </div>
+
+        {/* Mobile-only carousel controls - the row is a plain swipe carousel
+            below sm, so give it explicit prev/next buttons. Hidden at sm+ where
+            the pinned scroll-jack drives the ride instead. */}
+        <div className="mt-6 flex items-center justify-center gap-3 sm:hidden">
+          <button
+            type="button"
+            onClick={() => scrollByCard(-1)}
+            aria-label="Previous industry"
+            className="grid h-12 w-12 place-items-center rounded-full border border-black/15 bg-white text-black transition-colors hover:border-transparent hover:bg-[#9CCC3C] active:scale-95"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByCard(1)}
+            aria-label="Next industry"
+            className="grid h-12 w-12 place-items-center rounded-full border border-black/15 bg-white text-black transition-colors hover:border-transparent hover:bg-[#9CCC3C] active:scale-95"
+          >
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
         </div>
       </div>
     </section>
@@ -996,10 +1048,10 @@ const serviceRoutes: Record<string, string> = {
   "Server & Network Administration": "/services/server-network-administration",
   "Remote Desktop & Assets": "/services/remote-desktop-assets",
   "Staff Augmentation": "/services/staff-augmentation",
-  "Digital Marketing": "/service",
-  "Construction Estimation": "/construction-estimation",
-  "Finance & Accounting": "/finance",
-  "HR Services": "/hr",
+  "Digital Marketing": "/services/digital-marketing",
+  "Construction Estimation": "/services/construction-estimation",
+  "Finance & Accounting": "/services/finance-accounting",
+  "HR Services": "/services/hr-services",
 };
 const serviceHref = (name: string) => serviceRoutes[name] ?? "/#services";
 

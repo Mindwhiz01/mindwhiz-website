@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import TrustedByClients from "@/components/TrustedByClients";
@@ -76,14 +76,12 @@ export default function LocationPage({ location }: { location: LocationContent }
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image={location.heroImage}
-          title={
-            <>
-              MindWhiz <span className="text-[#9CCC3C]">{location.country}</span>
-            </>
-          }
+          titleLines={["MindWhiz"]}
+          rotateWords={[location.country, "Talent", "Teams", "Support"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle={location.tagline}
           primary={{ label: "Talk to our team", href: "/contact" }}
-          secondary={{ label: "See all services", href: "/#services" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         {/* ===================== INTRO + OFFICE CARD ===================== */}

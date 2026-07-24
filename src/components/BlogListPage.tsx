@@ -11,7 +11,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowUpRight, Mail } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import { posts, blogCategories, formatDate } from "@/lib/blog";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -205,14 +205,12 @@ export default function BlogListPage() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1800&q=80"
-          title={
-            <>
-              The <span className="text-[#9CCC3C]">blog</span>
-            </>
-          }
+          titleLines={["The"]}
+          rotateWords={["Blog", "Insights", "Guides", "Stories"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="Ideas, guides, and behind the scenes stories on hybrid staffing, IT operations, and building a team that scales."
           primary={{ label: "Subscribe", href: "/newsletter" }}
-          secondary={{ label: "Latest posts", href: "#latest" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         <section className="bg-white py-24" id="latest">

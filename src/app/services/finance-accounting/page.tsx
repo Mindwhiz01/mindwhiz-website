@@ -31,7 +31,8 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useBelowSm } from "@/lib/useBelowSm";
-import { PageBanner } from "@/components/PageBanner";
+import { useCapabilitiesRide } from "@/lib/useCapabilitiesRide";
+import { BOOKING_URL, PageBanner, PINK_CTA_CLASS } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import Cta from "@/components/Cta";
@@ -293,49 +294,26 @@ function FinanceServiceCard({
 const CARD_GAP = 20;
 
 function CapabilitiesCarousel() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
-  const [cardW, setCardW] = useState(300);
-  const [distance, setDistance] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-  const x = useSpring(xRaw, { stiffness: 90, damping: 22, mass: 0.4 });
-
-  useEffect(() => {
-    const update = () => {
-      const vp = viewportRef.current;
-      if (!vp) return;
-      const w = vp.clientWidth;
-      const perView = w >= 768 ? 3 : w >= 560 ? 2 : 1;
-      const cw = (w - CARD_GAP * (perView - 1)) / perView;
-      setCardW(cw);
-      const n = capabilities.length;
-      const rowW = n * cw + (n - 1) * CARD_GAP;
-      setDistance(Math.max(0, rowW - w));
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  const { sectionRef, viewportRef, rowRef, isMobile, cardW, sectionVh, needsRide } =
+    useCapabilitiesRide(capabilities.length);
 
   const total = String(capabilities.length).padStart(2, "0");
 
   return (
-    <section ref={sectionRef} id="capabilities" className="relative bg-[#EEEEEE]" style={{ height: isMobile ? undefined : "calc(var(--vh) * 260)" }}>
-      <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
+    <section ref={sectionRef} id="capabilities" className="relative bg-[#EEEEEE]" style={{ height: isMobile || !needsRide ? undefined : `calc(var(--vh) * ${sectionVh})` }}>
+      <div
+        className={`flex items-center py-12 ${
+          needsRide ? "sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0" : ""
+        }`}
+      >
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
           {/* carousel (left) - native swipe on mobile, scroll-driven at sm+ */}
           <div
             ref={viewportRef}
             className="order-2 -mx-6 overflow-x-auto px-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:overflow-hidden sm:px-0 lg:order-1 [&::-webkit-scrollbar]:hidden"
           >
-            <motion.div
-              style={{ x: isMobile ? 0 : x }}
+            <div
+              ref={rowRef}
               className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
             >
               {capabilities.map(({ title, desc, Icon, img }, i) => (
@@ -366,14 +344,14 @@ function CapabilitiesCarousel() {
                     <h3 className="text-xl font-semibold leading-tight drop-shadow" style={{ fontFamily: "var(--font-display)" }}>
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75">{desc}</p>
+                    <p className="mt-2 pr-16 text-sm leading-relaxed text-white/75">{desc}</p>
                     <a href="#contact" className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]">
                       Learn more <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 </article>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* pinned heading (right) */}
@@ -576,18 +554,11 @@ export default function FinancePage() {
       {/* ===================== HERO ===================== */}
       <PageBanner
         image="/banners/finance.png"
-        title={
-          <>
-            Close
-            <br />
-            The
-            <br />
-            <span className="text-[#ed1164]">Books</span>
-          </>
-        }
+        titleLines={["Close", "The"]}
+        rotateWords={["Books", "Gap", "Quarter", "Year"]}
         subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and up to 40% lower back office cost."
-        primary={{ label: "Talk to finance", href: "#contact" }}
-        secondary={{ label: "Explore services", href: "#capabilities" }}
+        primary={{ label: "Talk to finance", href: "/contact" }}
+        secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: PINK_CTA_CLASS }}
       />
 
       {/* ===================== PROOF STATS ===================== */}

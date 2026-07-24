@@ -73,23 +73,23 @@ export const SEO_MAP: Record<string, SeoEntry> = {
       "Staff augmentation that extends your team with vetted engineers and specialists, deployed in around 10 days. Scale without long hiring cycles. Get in touch.",
   },
 
-  // --- Services (root-level) ---
-  "/hr": {
+  // --- Services (standalone pages under /services) ---
+  "/services/hr-services": {
     title: "HR Outsourcing Services | RPO, Payroll & HRIS | MindWhiz",
     description:
       "Outsourced HR covering RPO, payroll, HRIS administration and compliance. Hire faster and stay compliant without an in house HR team. Book a free consultation.",
   },
-  "/finance": {
+  "/services/finance-accounting": {
     title: "Finance & Accounting Outsourcing | Bookkeeping | MindWhiz",
     description:
       "Outsourced finance covering AP, AR, bookkeeping, reporting and CFO support. Close the month in days, not weeks, with vetted accountants. Talk to a specialist.",
   },
-  "/service": {
+  "/services/digital-marketing": {
     title: "Digital Marketing Services | SEO, PPC & CRM | MindWhiz",
     description:
       "Digital marketing delivered by a dedicated team: SEO, paid campaigns, CRM and content operations. Grow pipeline without hiring in house. Get in touch today.",
   },
-  "/construction-estimation": {
+  "/services/construction-estimation": {
     title: "Construction Estimation Services | Takeoffs | MindWhiz",
     description:
       "Outsourced construction estimating: quantity takeoffs, bid prep and cost planning by experienced estimators. Bid more, win more. Request a free sample takeoff.",
@@ -121,11 +121,6 @@ export const SEO_MAP: Record<string, SeoEntry> = {
     description:
       "Estimation, takeoffs and engineering support that speed up bids and keep projects moving. Outsourced teams for construction and engineering firms. Get in touch.",
   },
-  "/industries/real estate": {
-    title: "Real Estate Back Office & Transaction Support | MindWhiz",
-    description:
-      "Listing, transaction and operations support that keeps agents focused on deals instead of admin. Outsourced real estate teams. Book a free consultation today.",
-  },
   "/industries/industrial-manufacturing": {
     title: "Manufacturing Support & Outsourcing Services | MindWhiz",
     description:
@@ -156,7 +151,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/about": {
     title: "About MindWhiz | Global Staffing & Outsourcing Company",
     description:
-      "Meet MindWhiz: 65 engineers in Lahore with client offices in the UK and USA, delivering staffing and managed operations since 2017. Learn our story.",
+      "Meet MindWhiz: 65 engineers in Lahore with client offices in the UK and USA, delivering staffing and managed operations since 2020. Learn our story.",
   },
   "/why-mindwhiz": {
     title: "Why MindWhiz | Staff Augmentation Done Right",

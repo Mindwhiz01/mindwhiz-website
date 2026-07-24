@@ -11,12 +11,12 @@ import { siteUrl } from "@/seo.config";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { path: "", priority: 1.0 },
-    // High-intent commercial service pages
-    { path: "/service", priority: 0.9 },
+    // High-intent commercial service pages (standalone pages under /services)
+    { path: "/services/digital-marketing", priority: 0.9 },
     { path: "/web-services", priority: 0.9 },
-    { path: "/hr", priority: 0.9 },
-    { path: "/finance", priority: 0.9 },
-    { path: "/construction-estimation", priority: 0.9 },
+    { path: "/services/hr-services", priority: 0.9 },
+    { path: "/services/finance-accounting", priority: 0.9 },
+    { path: "/services/construction-estimation", priority: 0.9 },
     // High-intent company + local pages
     { path: "/why-mindwhiz", priority: 0.9 },
     { path: "/case-studies", priority: 0.9 },

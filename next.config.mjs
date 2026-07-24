@@ -7,6 +7,20 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   compress: true,
+  // Legacy root-level service URLs were consolidated under /services/*.
+  // 301 the old paths so existing links and search rankings carry over.
+  async redirects() {
+    return [
+      { source: "/hr", destination: "/services/hr-services", permanent: true },
+      { source: "/finance", destination: "/services/finance-accounting", permanent: true },
+      { source: "/service", destination: "/services/digital-marketing", permanent: true },
+      {
+        source: "/construction-estimation",
+        destination: "/services/construction-estimation",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

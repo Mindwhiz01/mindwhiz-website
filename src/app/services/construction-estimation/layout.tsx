@@ -1,7 +1,7 @@
 import { buildMetadata } from "@/seo.config";
 import { JsonLd, serviceJsonLd } from "@/components/JsonLd";
 
-export const metadata = buildMetadata("/construction-estimation");
+export const metadata = buildMetadata("/services/construction-estimation");
 
 export default function ConstructionEstimationLayout({
   children,
@@ -11,7 +11,7 @@ export default function ConstructionEstimationLayout({
   return (
     <>
       <JsonLd
-        data={serviceJsonLd("/construction-estimation", "Construction Estimation Services")}
+        data={serviceJsonLd("/services/construction-estimation", "Construction Estimation Services")}
       />
       {children}
     </>
