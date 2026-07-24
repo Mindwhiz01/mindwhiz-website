@@ -21,6 +21,8 @@ const clientsRow1: ClientItem[] = [
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
   { name: "Villa Tech", src: "/clients/villa-tech-light.png" },
   { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png" },
+  { name: "Advanced Clinical Research", src: "/clients/advanced-clinical-research.png" },
+  { name: "Mondok", src: "/clients/mondok.png" },
   { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png" },
   { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png" },
   { name: "Dr. Owais", src: "/clients/dr-owais.png" },

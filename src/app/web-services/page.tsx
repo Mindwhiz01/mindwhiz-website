@@ -33,6 +33,7 @@ import ClientsSection from "@/components/ClientsSection";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import FaqSection, { type Faq } from "@/components/FaqSection";
+import { ContactForm } from "@/components/ContactFormSection";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
@@ -1087,6 +1088,35 @@ const faqs: Faq[] = [
   },
 ];
 
+function ContactSection() {
+  return (
+    <section id="contact" className="relative overflow-hidden border-t border-slate-100 bg-white py-24">
+      <div className="pointer-events-none absolute -right-32 -top-20 h-96 w-96 rounded-full bg-[#ed1164]/12 blur-[150px]" />
+      <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-[#9CCC3C]/12 blur-[150px]" />
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-6 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        {/* left: heading */}
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <Reveal>
+            <Kicker>Get in touch</Kicker>
+            <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
+              Let&apos;s start your <span style={{ color: PINK }}>project</span>
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-black/60">
+              Tell us what you&apos;re building and a MindWhiz specialist will get
+              back to you within one business day with next steps.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* right: embedded lead form */}
+        <Reveal delay={0.1}>
+          <ContactForm />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function CtaBand() {
   return (
     <ProcessIntroBanner
@@ -1124,6 +1154,7 @@ export default function WebServicesPage() {
       <ProcessSection />
       <ClientsSection />
       <FaqSection faqs={faqs} />
+      <ContactSection />
       <CtaBand />
       <Footer />
     </main>
