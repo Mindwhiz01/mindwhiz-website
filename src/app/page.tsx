@@ -49,7 +49,6 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Twitter,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -165,7 +164,6 @@ const socials: { label: string; Icon: LucideIcon }[] = [
   { label: "Facebook", Icon: Facebook },
   { label: "Instagram", Icon: Instagram },
   { label: "YouTube", Icon: Youtube },
-  { label: "Twitter", Icon: Twitter },
 ];
 
 // ---------------------------------------------------------------------------

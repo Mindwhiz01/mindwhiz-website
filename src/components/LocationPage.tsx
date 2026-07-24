@@ -18,7 +18,7 @@ import ProcessScroll from "@/components/ProcessScroll";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import type { LocationContent } from "@/lib/locations";
 import { locations } from "@/lib/locations";
-import { services as allServices, company } from "@/lib/content";
+import { services as allServices, company, footerGroups } from "@/lib/content";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -27,6 +27,14 @@ const display = Plus_Jakarta_Sans({
   variable: "--font-display",
   display: "swap",
 });
+
+// Canonical service name -> its dedicated /services/* page, reused from the
+// footer's Services group so each local service card links to the proper
+// service page (instead of the generic /#services anchor) and stays in sync
+// with the footer's routes.
+const serviceHrefByName: Record<string, string> = Object.fromEntries(
+  (footerGroups.find((g) => g.title === "Services")?.links ?? []).map((l) => [l.label, l.href])
+);
 
 function Kicker({ children }: { children: React.ReactNode }) {
   return (
@@ -194,7 +202,7 @@ export default function LocationPage({ location }: { location: LocationContent }
               {localServices.map((s) => (
                 <a
                   key={s.name}
-                  href="/#services"
+                  href={serviceHrefByName[s.name] ?? "/#services"}
                   className="group rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-[#ed1164]/40"
                 >
                   <h3 className="text-base font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
