@@ -26,6 +26,8 @@ import {
   Play,
   Pause,
   Star,
+  Sparkles,
+  MessageCircleQuestion,
   type LucideIcon,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -428,6 +430,71 @@ const seoTools: { name: string; slug: string }[] = [
   { name: "Yoast SEO", slug: "yoast" },
   { name: "Hotjar", slug: "hotjar" },
 ];
+
+// The three optimization disciplines we cover - each acronym spelled out in
+// full and shown as a stepped column that floods with its own colour on hover.
+// fill = full-colour hover wash, num = acronym colour at rest (readable on
+// white), ink = text colour once the column is filled.
+const optimizations: {
+  abbr: string;
+  rank: string;
+  full: string;
+  tag: string;
+  desc: string;
+  Icon: LucideIcon;
+  fill: string;
+  num: string;
+  ink: string;
+}[] = [
+  {
+    abbr: "SEO",
+    rank: "01",
+    full: "Search Engine Optimization",
+    tag: "search / google · bing",
+    desc: "Rank higher on Google and Bing with fast, clean, technically sound pages built to be crawled and indexed.",
+    Icon: Search,
+    fill: "#111827",
+    num: "#111827",
+    ink: "#ffffff",
+  },
+  {
+    abbr: "AEO",
+    rank: "02",
+    full: "Answer Engine Optimization",
+    tag: "answers / snippets · voice",
+    desc: "Win the direct answer in voice search, featured snippets, and assistants with structured, question-first content.",
+    Icon: MessageCircleQuestion,
+    fill: "#ed1164",
+    num: "#ed1164",
+    ink: "#ffffff",
+  },
+  {
+    abbr: "GEO",
+    rank: "03",
+    full: "Generative Engine Optimization",
+    tag: "ai / chatgpt · gemini",
+    desc: "Get cited inside AI answers from ChatGPT, Gemini, and Perplexity so your brand shows up where buyers now search.",
+    Icon: Sparkles,
+    fill: "#9CCC3C",
+    num: "#5f8a1e",
+    ink: "#14210a",
+  },
+];
+
+// Rest bottom inset per column (sm+). Every block reaches the top of the board
+// and steps along the bottom - a descending staircase that grows taller left to
+// right. On hover the block animates to bottom:0 and fills its whole column.
+const OPT_BOTTOM = ["230px", "130px", "20px"];
+
+// Extra top padding per column (sm+) so each title sits lower than the one
+// before it - the cascading-number look from the reference. The last column is
+// kept a touch higher so its longer, hover-revealed description still fits.
+const OPT_PT = ["", "sm:pt-24", "sm:pt-36"];
+
+// Mobile only: at rest each stacked card's colour starts at the left and leaves
+// a little empty space on the right (a bit more on each row down). On hover the
+// card grows to full width - see hover:mr-0 on the card.
+const OPT_MR = ["", "mr-6", "mr-12"];
 
 // ---------------------------------------------------------------------------
 // sections
@@ -950,6 +1017,102 @@ function SeoSection() {
           </div>
         </div>
 
+        {/* SEO / AEO / GEO - the three optimization disciplines, each acronym
+            spelled out in full and shown as prominent cards */}
+        <Reveal delay={0.05} className="mt-24">
+          <div className="text-center">
+            <h3
+              className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
+              style={displayFont}
+            >
+              Search, answer &amp; <span style={{ color: PINK }}>generative</span> optimization
+            </h3>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-black/55">
+              We optimize for every way people find you today, classic search engines,
+              answer engines, and the AI models rewriting how discovery works.
+            </p>
+          </div>
+
+          {/* one board - three flush colour columns that step down like the
+              reference; hovering a column grows its block to fill the column */}
+          <div className="mt-14 overflow-hidden rounded-3xl border border-slate-200 bg-[#e7e7e7] shadow-xl shadow-black/[0.06]">
+            {/* colour columns, flush with no divider between them */}
+            <div className="grid sm:h-[460px] sm:grid-cols-3">
+              {optimizations.map((o, i) => (
+                <motion.div
+                  key={o.abbr}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ "--bottom": OPT_BOTTOM[i], "--ink": o.ink } as React.CSSProperties}
+                  className={`group relative min-h-[260px] transition-[margin-right] duration-500 ease-out sm:min-h-0 ${OPT_MR[i]} sm:mr-0 hover:mr-0`}
+                >
+                  {/* colour block. Mobile: flows to its content height with the
+                      chamfer on the bottom-right. Desktop: absolute, fills to the
+                      top, steps along the bottom, grows to fill on hover, chamfer
+                      on the bottom-left. */}
+                  <div
+                    style={{
+                      background: o.fill,
+                      transition: "bottom 0.5s ease, clip-path 0.5s ease",
+                    }}
+                    className={`relative flex flex-col p-6 pb-9 [clip-path:polygon(0_0,100%_0,100%_88%,88%_100%,0_100%)] sm:absolute sm:inset-x-0 sm:top-0 sm:bottom-[var(--bottom)] sm:[clip-path:polygon(0_0,100%_0,100%_100%,16%_100%,0_84%)] ${OPT_PT[i]} [@media(hover:hover)]:group-hover:bottom-0 [@media(hover:hover)]:group-hover:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%,0_100%)]`}
+                  >
+                    {/* big acronym + rank superscript + corner icon */}
+                    <div className="flex max-w-[13rem] items-start gap-1.5 sm:max-w-none">
+                      <span
+                        className="text-6xl font-extrabold leading-none tracking-tight text-[var(--ink)] sm:text-7xl"
+                        style={displayFont}
+                      >
+                        {o.abbr}
+                      </span>
+                      <span className="mt-1.5 text-xs font-bold uppercase tracking-wider text-[var(--ink)] opacity-70">
+                        ({o.rank})
+                      </span>
+                      <o.Icon className="ml-auto mt-1 h-5 w-5 shrink-0 text-[var(--ink)] opacity-60" />
+                    </div>
+
+                    {/* label lines - always visible */}
+                    <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--ink)] opacity-80">
+                      {o.tag}
+                    </p>
+                    <p
+                      className="mt-1 max-w-[13rem] text-sm font-bold uppercase tracking-tight text-[var(--ink)] sm:max-w-none"
+                      style={displayFont}
+                    >
+                      {o.full}
+                    </p>
+
+                    {/* description - shown on mobile, revealed as the column
+                        fills on hover */}
+                    <p className="mt-5 max-w-[13rem] text-sm leading-relaxed text-[var(--ink)] transition-all duration-300 sm:max-w-[15rem] sm:translate-y-2 sm:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
+                      {o.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* board copy along the bottom, echoing the reference layout */}
+            <div className="grid gap-6 px-7 pb-8 pt-6 sm:grid-cols-3">
+              <p
+                className="text-2xl font-medium lowercase leading-tight text-black/70"
+                style={displayFont}
+              >
+                found everywhere
+                <br />
+                your buyers search
+              </p>
+              <p className="self-end text-xs leading-relaxed text-black/40">
+                Optimized for search, answer,
+                <br />
+                and generative engines alike.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
         {/* SEO tools we use */}
         <Reveal delay={0.1} className="mt-16">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
@@ -1149,9 +1312,9 @@ export default function WebServicesPage() {
       <AlphaBravoShowcase />
       <ServicesSection />
       <PortfolioSection />
+      <ProcessSection />
       <StackSection />
       <SeoSection />
-      <ProcessSection />
       <ClientsSection />
       <FaqSection faqs={faqs} />
       <ContactSection />

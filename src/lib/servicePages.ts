@@ -7,6 +7,9 @@ export type ServicePageContent = {
     image: string;
     title: string[];
     highlight: string;
+    // extra words the hero highlight rotates through - each slides in from the
+    // right. Optional; without it the highlight renders as a single word.
+    heroRotate?: string[];
     subtitle: string;
     cta: string;
   };
@@ -63,8 +66,9 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       image: "/banners/it-helpdesk.png",
-      title: ["Always On", "IT"],
-      highlight: "Support",
+      title: ["Rapid", "IT"],
+      highlight: "Response",
+      heroRotate: ["Support", "Helpdesk", "Coverage"],
       subtitle:
         "From basic troubleshooting to complex issues, our 24/7 helpdesk ensures uninterrupted operations and rapid resolution across all support tiers.",
       cta: "Get 24/7 IT Support",
@@ -183,6 +187,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/noc-monitoring.png",
       title: ["Protect", "Your"],
       highlight: "Uptime",
+      heroRotate: ["Network", "Systems", "Servers"],
       subtitle:
         "Always on monitoring, incident handling, performance optimization, and operational reporting that scales with your environment.",
       cta: "Take Control of Your IT",
@@ -301,6 +306,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/remote-desktop-assets.png",
       title: ["Control", "From"],
       highlight: "Anywhere",
+      heroRotate: ["Everywhere", "Any Device", "The Office"],
       subtitle:
         "Complete control over your IT from anywhere. Manage devices, users, and assets with secure remote access and centralized IT asset tracking.",
       cta: "Take Control of Your IT",
@@ -379,6 +385,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/cloud-infrastructure.png",
       title: ["Optimize", "Your"],
       highlight: "Cloud",
+      heroRotate: ["Servers", "Workloads", "Spend"],
       subtitle:
         "Optimize, secure, and scale your cloud without complexity. MindWhiz manages cloud environments end to end for performance, cost efficiency, and reliability.",
       cta: "Optimize Your Cloud Today",
@@ -458,6 +465,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/server-network-administration.png",
       title: ["Power", "Your"],
       highlight: "Backbone",
+      heroRotate: ["Network", "Servers", "Systems"],
       subtitle:
         "Reliable infrastructure that powers business continuity. From server management to network optimization, MindWhiz keeps your IT backbone secure, stable, and high performing.",
       cta: "Strengthen Your Infrastructure",
@@ -538,6 +546,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/endpoint-security.png",
       title: ["Secure", "Every"],
       highlight: "Device",
+      heroRotate: ["Endpoint", "Laptop", "Desktop"],
       subtitle:
         "Endpoint protection, patch visibility, device compliance, and response workflows for distributed teams and managed fleets.",
       cta: "Secure your endpoints",
@@ -615,6 +624,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/devops-automation.png",
       title: ["Ship", "With"],
       highlight: "Automation",
+      heroRotate: ["Confidence", "Speed", "Precision"],
       subtitle:
         "Accelerate development with smarter automation. Streamline workflows, reduce deployment time, and improve reliability with modern DevOps practices.",
       cta: "Speed Up Your Delivery",
@@ -694,6 +704,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/cybersecurity-monitoring.png",
       title: ["Defeat", "Cyber"],
       highlight: "Threats",
+      heroRotate: ["Attacks", "Breaches", "Risk"],
       subtitle:
         "Real time protection against evolving threats. MindWhiz monitors systems 24/7 to detect, prevent, and respond before threats impact your business.",
       cta: "Protect Your Business Now",
@@ -775,6 +786,7 @@ export const servicePages: ServicePageContent[] = [
       image: "/banners/staff-augmentation.png",
       title: ["On Demand"],
       highlight: "Teams",
+      heroRotate: ["Talent", "Engineers", "Experts"],
       subtitle:
         "Add vetted specialists to your team in weeks, not months. Scale delivery up or down without the cost and commitment of full time hires.",
       cta: "Augment your team",

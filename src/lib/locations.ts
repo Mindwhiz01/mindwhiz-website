@@ -84,7 +84,7 @@ export const locations: LocationContent[] = [
     city: "Lahore",
     flag: "https://flagcdn.com/w80/pk.png",
     heroImage:
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1595426496987-37c7113b24a6?auto=format&fit=crop&w=1800&q=80",
     tagline: "Our largest engineering and delivery hub.",
     intro:
       "Lahore is home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
@@ -93,7 +93,7 @@ export const locations: LocationContent[] = [
       {
         title: "Engineering depth",
         desc: "The largest concentration of vetted technical talent in our network.",
-        image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=2000&q=80",
+        image: "https://images.unsplash.com/photo-1595426496987-37c7113b24a6?auto=format&fit=crop&w=2000&q=80",
       },
       {
         title: "24/7 operations",

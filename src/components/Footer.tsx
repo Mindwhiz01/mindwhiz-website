@@ -2,7 +2,6 @@
 
 import {
   Linkedin,
-  Twitter,
   Instagram,
   Facebook,
   Mail,
@@ -21,7 +20,6 @@ const ACCENT = "#9CCC3C"; // MindWhiz template accent (cyan)
 
 const socials: { label: string; Icon: LucideIcon; href: string }[] = [
   { label: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/mindwhiz" },
-  { label: "Twitter", Icon: Twitter, href: "https://x.com/mindwhizco" },
   { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/mindwhiz2.0/" },
   { label: "Facebook", Icon: Facebook, href: "https://www.facebook.com/mindwhizofficial/" },
   { label: "Email", Icon: Mail, href: `mailto:${company.email}` },
@@ -105,7 +103,7 @@ export default function Footer() {
                       {link.label}
                       {link.label === HIRING_LINK && (
                         <span
-                          className="rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide"
+                          className="animate-glow-pulse rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide"
                           style={{ color: "#9CCC3C", borderColor: "#9CCC3C" }}
                         >
                           Hiring
@@ -156,7 +154,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <span className="text-white/50">Pakistan · UK · USA</span>
             <span
-              className="rounded-md border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
+              className="rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider"
               style={{ color: "#9CCC3C", borderColor: "#9CCC3C" }}
             >
               Since 2020

@@ -10,7 +10,7 @@ import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -236,14 +236,12 @@ export default function AboutPageClient() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="/banners/about-us.png"
-          title={
-            <>
-              About <span className="text-[#9CCC3C]">us</span>
-            </>
-          }
+          titleLines={["About"]}
+          rotateWords={["Us", "MindWhiz", "Our Team", "Our Story"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="The people and principles behind MindWhiz, a leadership team obsessed with building scalable, profitable operations for every client."
           primary={{ label: "Work with us", href: "/contact" }}
-          secondary={{ label: "Our benefits", href: "/culture" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         <div id="beliefs">

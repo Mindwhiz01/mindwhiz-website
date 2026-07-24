@@ -28,7 +28,7 @@ import FaqSection, { type Faq } from "@/components/FaqSection";
 import TrustedByClients from "@/components/TrustedByClients";
 import Cta from "@/components/Cta";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
@@ -133,7 +133,7 @@ function StudioSection() {
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
             Sixty five engineers headquartered in Lahore, with client facing
-            offices in the UK and the USA. Building since 2017, somewhere, the
+            offices in the UK and the USA. Building since 2020, somewhere, the
             studio is always at work.
           </p>
         </Reveal>
@@ -446,14 +446,12 @@ export default function WhyMindWhizPage() {
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
           image="/banners/why-mindwhiz.png"
-          title={
-            <>
-              Real <span className="text-[#9CCC3C]">teams</span>
-            </>
-          }
+          titleLines={["Real"]}
+          rotateWords={["Teams", "Talent", "People", "Experts"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people, not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
           primary={{ label: "Contact us", href: "/contact" }}
-          secondary={{ label: "Read the story", href: "/about#story" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         {/* ===================== ABOUT STATS ===================== */}
@@ -691,7 +689,7 @@ export default function WhyMindWhizPage() {
                     >
                       {o.name}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75">{o.desc}</p>
+                    <p className="mt-2 pr-16 text-sm leading-relaxed text-white/75">{o.desc}</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#9CCC3C]">
                       Explore <ArrowUpRight className="h-3.5 w-3.5" />
                     </span>

@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-  type Variants,
-} from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {
   ArrowRight,
@@ -40,7 +33,8 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useBelowSm } from "@/lib/useBelowSm";
-import { PageBanner } from "@/components/PageBanner";
+import { useCapabilitiesRide } from "@/lib/useCapabilitiesRide";
+import { BOOKING_URL, PageBanner, PINK_CTA_CLASS } from "@/components/PageBanner";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import CardCornerArrow from "@/components/CardCornerArrow";
@@ -247,36 +241,8 @@ const deliverables: { text: string; Icon: LucideIcon }[] = [
 const CARD_GAP = 20; // matches gap-5 on the row
 
 function CapabilitiesCarousel() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const isMobile = useBelowSm();
-  const [cardW, setCardW] = useState(300);
-  const [distance, setDistance] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-  const x = useSpring(xRaw, { stiffness: 90, damping: 22, mass: 0.4 });
-
-  useEffect(() => {
-    const update = () => {
-      const vp = viewportRef.current;
-      if (!vp) return;
-      const w = vp.clientWidth;
-      // how many cards to show at once, then size each so exactly that many fit.
-      const perView = w >= 768 ? 3 : w >= 560 ? 2 : 1;
-      const cw = (w - CARD_GAP * (perView - 1)) / perView;
-      setCardW(cw);
-      const n = capabilities.length;
-      const rowW = n * cw + (n - 1) * CARD_GAP;
-      setDistance(Math.max(0, rowW - w));
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  const { sectionRef, viewportRef, rowRef, isMobile, cardW, sectionVh, needsRide } =
+    useCapabilitiesRide(capabilities.length);
 
   const total = String(capabilities.length).padStart(2, "0");
 
@@ -285,17 +251,21 @@ function CapabilitiesCarousel() {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: isMobile ? undefined : "calc(var(--vh) * 260)" }}
+      style={{ height: isMobile || !needsRide ? undefined : `calc(var(--vh) * ${sectionVh})` }}
     >
-      <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
+      <div
+        className={`flex items-center py-12 ${
+          needsRide ? "sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0" : ""
+        }`}
+      >
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
           {/* contained carousel viewport (left) - native swipe on mobile */}
           <div
             ref={viewportRef}
             className="order-2 -mx-6 overflow-x-auto px-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:overflow-hidden sm:px-0 lg:order-1 [&::-webkit-scrollbar]:hidden"
           >
-            <motion.div
-              style={{ x: isMobile ? 0 : x }}
+            <div
+              ref={rowRef}
               className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
             >
               {capabilities.map(({ title, desc, Icon, img }, i) => (
@@ -333,7 +303,7 @@ function CapabilitiesCarousel() {
                     >
                       {title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75">{desc}</p>
+                    <p className="mt-2 pr-16 text-sm leading-relaxed text-white/75">{desc}</p>
                     <a
                       href="#contact"
                       className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed1164]"
@@ -343,7 +313,7 @@ function CapabilitiesCarousel() {
                   </div>
                 </article>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* pinned big heading (right) */}
@@ -420,18 +390,11 @@ export default function ConstructionEstimationPage() {
       {/* ===================== HERO ===================== */}
       <PageBanner
         image="/banners/construction-estimation.png"
-        title={
-          <>
-            Win
-            <br />
-            More
-            <br />
-            <span className="text-[#ed1164]">Bids</span>
-          </>
-        }
+        titleLines={["Win", "More"]}
+        rotateWords={["Bids", "Projects", "Contracts", "Deals"]}
         subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid ready cost estimates, so your team quotes more work, faster, without carrying the overhead."
-        primary={{ label: "Request an estimate", href: "#contact" }}
-        secondary={{ label: "Explore capabilities", href: "#capabilities" }}
+        primary={{ label: "Request an estimate", href: "/contact" }}
+        secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: PINK_CTA_CLASS }}
       />
 
       {/* ===================== PROOF STATS (colored cards) ===================== */}

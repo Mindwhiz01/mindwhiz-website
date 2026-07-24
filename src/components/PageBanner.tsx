@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { useEffect, useState, type ReactNode } from "react";
 import Cta from "@/components/Cta";
 
 const container: Variants = {
@@ -13,30 +13,90 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-type CtaLink = { label: string; href: string; external?: boolean };
+// Shared booking link + pink "Book free consultation" button styling, so every
+// hero across the site can reuse the exact same call-to-action.
+export const BOOKING_URL =
+  "https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3";
+export const PINK_CTA_CLASS =
+  "!border-[#ed1164] !bg-[#ed1164] !text-white shadow-xl shadow-[#ed1164]/50 hover:!bg-[#c50e53]";
+// Green counterpart, for heroes whose highlight word is green. Uses dark text
+// and dark arrows since white on lime green reads poorly.
+export const GREEN_CTA_CLASS =
+  "!border-[#9CCC3C] !bg-[#9CCC3C] !text-black shadow-xl shadow-[#9CCC3C]/50 hover:!bg-[#7DB022] [&_svg]:!text-black";
+
+// Highlight word that cycles through a list, each one sliding in from the
+// right (right-to-left). `initial={false}` lets the parent heading reveal
+// handle the first paint, then it loops through the words.
+export function SlidingHighlight({
+  words,
+  className = "",
+}: {
+  words: string[];
+  className?: string;
+}) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (words.length < 2) return;
+    const id = setInterval(() => setI((p) => (p + 1) % words.length), 2600);
+    return () => clearInterval(id);
+  }, [words.length]);
+  return (
+    <span className="block">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={words[i]}
+          initial={{ x: "0.7em", opacity: 0 }}
+          animate={{ x: "0em", opacity: 1 }}
+          exit={{ x: "-0.7em", opacity: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className={`inline-block whitespace-nowrap ${className}`}
+        >
+          {words[i]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
+type CtaLink = { label: string; href: string; external?: boolean; className?: string };
 
 /**
  * Shared page hero - same banner design as the home page: a rounded, inset
  * media panel with a dark gradient wash, a large display heading, and CTAs.
  * Uses a service-relevant background image (no eyebrow pill).
+ *
+ * Two ways to supply the heading:
+ *  - `title`: a ready-made React node (legacy / fully custom heading).
+ *  - `titleLines` + `rotateWords`: the "Build Great Teams" treatment - each
+ *    lead word stacked on its own line, then a pink last word that slides in
+ *    from the right and rotates through `rotateWords`.
  */
 export function PageBanner({
   title,
+  titleLines,
+  rotateWords,
   subtitle,
   image,
   primary,
   secondary,
   accent = "#9CCC3C",
   headingClassName = "",
+  highlightClassName = "text-[#ed1164]",
 }: {
-  title: ReactNode;
+  title?: ReactNode;
+  titleLines?: string[];
+  rotateWords?: string[];
   subtitle?: ReactNode;
   image: string;
   primary?: CtaLink;
   secondary?: CtaLink;
   accent?: string;
   headingClassName?: string;
+  // color (and any extra styling) for the sliding highlight word. Defaults to
+  // brand pink; pass "text-[#9CCC3C]" to keep a page's original green accent.
+  highlightClassName?: string;
 }) {
+  const useStacked = Boolean(titleLines && rotateWords);
   return (
     <section data-header-dark className="relative min-h-screen overflow-hidden bg-white p-[10px] text-white">
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
@@ -63,7 +123,18 @@ export function PageBanner({
             className={`max-w-[48rem] text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white ${headingClassName}`}
             style={{ fontFamily: "var(--font-display)" }}
           >
-            {title}
+            {useStacked ? (
+              <>
+                {titleLines!.map((word) => (
+                  <span key={word} className="block whitespace-nowrap">
+                    {word}
+                  </span>
+                ))}
+                <SlidingHighlight words={rotateWords!} className={highlightClassName} />
+              </>
+            ) : (
+              title
+            )}
           </motion.h1>
 
           {subtitle && (
@@ -89,6 +160,7 @@ export function PageBanner({
                   href={secondary.href}
                   label={secondary.label}
                   variant="outline"
+                  className={secondary.className}
                   {...(secondary.external ? { target: "_blank", rel: "noreferrer" } : {})}
                 />
               )}

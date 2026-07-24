@@ -95,7 +95,6 @@ const industryMenu = [
     heading: "Built & Physical",
     items: [
       { name: "Construction & Engineering", icon: "Ruler" },
-      { name: "Real Estate", icon: "Globe2" },
       { name: "Industrial Manufacturing", icon: "Activity" },
     ],
   },
@@ -123,17 +122,16 @@ const serviceRoutes: Record<string, string> = {
   "Server & Network Administration": "/services/server-network-administration",
   "Remote Desktop & Assets": "/services/remote-desktop-assets",
   "Staff Augmentation": "/services/staff-augmentation",
-  "Digital Marketing": "/service",
-  "Construction Estimation": "/construction-estimation",
-  "Finance & Accounting": "/finance",
-  "HR Services": "/hr",
+  "Digital Marketing": "/services/digital-marketing",
+  "Construction Estimation": "/services/construction-estimation",
+  "Finance & Accounting": "/services/finance-accounting",
+  "HR Services": "/services/hr-services",
   "Web Services": "/web-services",
   // industries
   "Information Technology": "/industries/information-technology",
   "Ecommerce & Retail": "/industries/ecommerce-retail",
   "Startups & SMBs": "/industries/startups-smbs",
   "Construction & Engineering": "/industries/construction-engineering",
-  "Real Estate": "/industries/real estate",
   "Industrial Manufacturing": "/industries/industrial-manufacturing",
   "Accounting & Finance": "/industries/accounting-finance",
   "Professional Services": "/industries/professional-services",
@@ -221,7 +219,7 @@ export function SiteHeader({ theme }: { theme: string }) {
   const [brandOpen, setBrandOpen] = useState(false);
 
   // Keep the active tab in sync with the actual page being viewed. Detail
-  // routes (e.g. "/services/it-helpdesk-24-7", "/industries/real estate",
+  // routes (e.g. "/services/it-helpdesk-24-7", "/industries/healthcare-healthtech",
   // "/why-mindwhiz") don't have their own nav item, so map them onto the
   // parent tab. On the home page nothing is highlighted until a hash tab is
   // clicked. This runs on every navigation so landing on a page always
@@ -231,7 +229,9 @@ export function SiteHeader({ theme }: { theme: string }) {
       setActive(null);
       return;
     }
-    if (pathname.startsWith("/services") || ["/hr", "/finance", "/service", "/construction-estimation"].includes(pathname)) {
+    // All service detail pages (data-driven and standalone) now live under
+    // /services/*, so a single prefix check keeps the Services tab active.
+    if (pathname.startsWith("/services")) {
       setActive("Services");
       return;
     }

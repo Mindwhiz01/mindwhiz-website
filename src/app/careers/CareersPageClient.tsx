@@ -14,7 +14,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PageBanner } from "@/components/PageBanner";
+import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -570,14 +570,12 @@ export default function CareersPageClient() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80"
-          title={
-            <>
-              Build your <span className="text-[#9CCC3C]">career</span>
-            </>
-          }
+          titleLines={["Build", "Your"]}
+          rotateWords={["Career", "Future", "Skills", "Path"]}
+          highlightClassName="text-[#9CCC3C]"
           subtitle="Join a global delivery team spanning the US, UK, and Pakistan. Do meaningful work, grow fast, and help thousands of businesses run better."
           primary={{ label: "See open roles", href: "#roles" }}
-          secondary={{ label: "Life at MindWhiz", href: "#working" }}
+          secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
 
         <div id="roles">

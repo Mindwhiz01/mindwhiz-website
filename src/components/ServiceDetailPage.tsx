@@ -1,21 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-  type Variants,
-} from "framer-motion";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { motion, type Variants } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
 import Footer from "@/components/Footer";
 import FaqSection from "@/components/FaqSection";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
-import { PageBanner } from "@/components/PageBanner";
+import { PageBanner, SlidingHighlight } from "@/components/PageBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
@@ -73,15 +68,21 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 function ServiceHeroTitle({ page }: { page: ServicePageContent }) {
-  const firstLine = page.hero.title.join(" ");
+  // "Build Great Teams" style shared by every service and industry hero: each
+  // title word is stacked on its own line, and the highlight renders as a
+  // rotating word that slides in from the right (right-to-left). The rotation
+  // list is page-specific (hero.heroRotate); it falls back to just the single
+  // highlight when a page has not defined extra words.
+  const rotating = [page.hero.highlight, ...(page.hero.heroRotate ?? [])];
 
   return (
     <>
-      <span className="whitespace-nowrap">{firstLine}</span>
-      <br />
-      <span className="whitespace-nowrap">
-        <span className="text-[#ed1164]">{page.hero.highlight}</span>
-      </span>
+      {page.hero.title.map((word) => (
+        <span key={word} className="block whitespace-nowrap">
+          {word}
+        </span>
+      ))}
+      <SlidingHighlight words={rotating} className="text-[#ed1164]" />
     </>
   );
 }
@@ -199,17 +200,15 @@ function HelpdeskComparisonSection({ page }: { page: ServicePageContent }) {
 function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
   const isMobile = useBelowSm();
   const [cardW, setCardW] = useState(300);
-  const [distance, setDistance] = useState(0);
   const [sectionVh, setSectionVh] = useState(180);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-  const x = useSpring(xRaw, { stiffness: 90, damping: 22, mass: 0.4 });
+  // Whether the card row is wider than its viewport at the current breakpoint.
+  // When it is not (e.g. a 3-card page at 3-per-view), there is nothing to ride,
+  // so the section drops the tall pinned height and renders as a normal row -
+  // otherwise it would be a pinned dead-scroll with no horizontal movement.
+  const [needsRide, setNeedsRide] = useState(true);
 
   useEffect(() => {
     const update = () => {
@@ -219,15 +218,62 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
       const perView = w >= 900 ? 3 : w >= 600 ? 2 : 1;
       const cw = (w - CARD_GAP * (perView - 1)) / perView;
       setCardW(cw);
-      const rowW = page.capabilities.length * cw + (page.capabilities.length - 1) * CARD_GAP;
-      setDistance(Math.max(0, rowW - w));
-      const long = page.capabilities.length > 3;
-      setSectionVh(window.innerWidth < 640 ? (long ? 190 : 140) : long ? 260 : 180);
+      const count = page.capabilities.length;
+      const rowW = count * cw + (count - 1) * CARD_GAP;
+      const distance = Math.max(0, rowW - w);
+      const ride = distance > 4;
+      setNeedsRide(ride);
+      // Size the pinned scroll length to a bit less than the actual travel
+      // (~0.9x) so the row keeps pace with the scroll and the section releases
+      // promptly once the last card lands - a longer pin left the page holding
+      // after the ride visually finished. Clamped so very short/long rides stay
+      // reasonable.
+      const vh = window.innerHeight || 800;
+      const extraVh = ride ? Math.min(140, Math.max(28, (distance / vh) * 90)) : 0;
+      setSectionVh(100 + extraVh);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, [page.capabilities.length]);
+
+  // At sm+ the section pins (CSS sticky) and the card row rides left as you
+  // scroll - the same GSAP ScrollTrigger scrub the home page "Industries we
+  // serve" section uses. It re-reads the row's LIVE width every frame, so it
+  // works on every viewport size; the previous framer useScroll version
+  // measured 0px of travel on desktop/laptop and never moved. matchMedia only
+  // builds the timeline at sm+ and tears it down below, where the row stays a
+  // native swipe carousel.
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 640px)", () => {
+      const ctx = gsap.context(() => {
+        const row = rowRef.current!;
+        const vp = viewportRef.current!;
+        // Leftward travel that scrolls the row until its last card's right edge
+        // meets the viewport's right edge, read live each frame while pinned.
+        const fullDistance = () => Math.max(0, row.scrollWidth - vp.clientWidth);
+        const state = { progress: 0 };
+        const apply = () => {
+          gsap.set(row, { x: -fullDistance() * state.progress, force3D: true });
+        };
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          })
+          .to(state, { progress: 1, duration: 1, ease: "none", onUpdate: apply });
+      }, sectionRef);
+      return () => ctx.revert();
+    });
+    return () => mm.revert();
+  }, []);
 
   const total = String(page.capabilities.length).padStart(2, "0");
 
@@ -240,16 +286,20 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
       ref={sectionRef}
       id="capabilities"
       className="relative bg-[#EEEEEE]"
-      style={{ height: isMobile ? undefined : `calc(var(--vh) * ${sectionVh})` }}
+      style={{ height: isMobile || !needsRide ? undefined : `calc(var(--vh) * ${sectionVh})` }}
     >
-      <div className="flex items-center py-12 sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0">
+      <div
+        className={`flex items-center py-12 ${
+          needsRide ? "sm:sticky sm:top-0 sm:h-screen sm:overflow-hidden sm:py-0" : ""
+        }`}
+      >
         <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-6 sm:gap-10 sm:px-8 lg:grid-cols-[1.5fr_0.66fr]">
           <div
             ref={viewportRef}
             className="order-2 -mx-6 overflow-x-auto px-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:overflow-hidden sm:px-0 lg:order-1 [&::-webkit-scrollbar]:hidden"
           >
-            <motion.div
-              style={{ x: isMobile ? 0 : x }}
+            <div
+              ref={rowRef}
               className="flex snap-x snap-mandatory gap-5 sm:snap-none sm:will-change-transform"
             >
               {page.capabilities.map((item, index) => (
@@ -257,10 +307,11 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                   key={item.title}
                   href="/contact"
                   style={{ width: isMobile ? undefined : cardW }}
-                  // On phones the section is a native swipe carousel rather than
-                  // a scroll-jacked ride, so give each card its own reveal on the
-                  // way in - the same visual language as the desktop animation.
-                  {...(isMobile
+                  // When the row isn't riding (phones, or a page whose cards fit
+                  // without overflow) each card gets its own reveal on the way in
+                  // - the same visual language as the desktop ride. While riding,
+                  // the row itself moves, so the cards stay put and fully shown.
+                  {...(isMobile || !needsRide
                     ? {
                         initial: { opacity: 0, y: 40 },
                         whileInView: { opacity: 1, y: 0 },
@@ -285,15 +336,17 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                     / {total}
                   </div>
                   <CardCornerArrow bg="#EEEEEE" accent={ACCENT} />
-                  <div className="relative p-4 pb-10 sm:p-6 sm:pb-12">
+                  {/* extra bottom + right padding keeps the copy clear of the
+                      corner-arrow button carved into the bottom-right */}
+                  <div className="relative p-4 pb-14 sm:p-6 sm:pb-16">
                     <h3 className="text-lg font-semibold leading-tight drop-shadow sm:text-xl" style={{ fontFamily: "var(--font-display)" }}>
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75">{item.desc}</p>
+                    <p className="mt-2 pr-16 text-sm leading-relaxed text-white/75">{item.desc}</p>
                   </div>
                 </motion.a>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           <div className="order-1 lg:order-2">
@@ -332,24 +385,23 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
 function BenefitScrollCard({
   benefit,
   index,
-  total,
-  progress,
 }: {
   benefit: ServicePageContent["benefits"][number];
   index: number;
-  total: number;
-  progress: MotionValue<number>;
 }) {
-  // stagger each card along the scroll: gentle rise + fade, no sideways travel
-  const step = total > 1 ? 0.55 / (total - 1) : 0;
-  const start = index * step;
-  const end = Math.min(1, start + 0.35);
-  const opacity = useTransform(progress, [start, end], [0, 1]);
-  const y = useTransform(progress, [start, end], [36, 0]);
-
+  // Fade + rise each card in as it enters the viewport, using whileInView
+  // (IntersectionObserver) so the reveal fires reliably on every viewport size.
+  // The previous version tied every card's reveal to a slice of the whole
+  // section's scroll progress, which only lined up when the section fit the
+  // viewport (desktop). On shorter viewports (laptop) and when the cards stack
+  // tall (mobile) the slice elapsed off-screen, so the animation never played.
+  // A small index-based delay keeps the original staggered feel.
   return (
     <motion.div
-      style={{ opacity, y }}
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: (index % 2) * 0.08 }}
       className="group flex min-h-[18rem] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-7 shadow-lg shadow-black/5 transition-colors duration-300 hover:bg-[#ed1164] hover:text-white sm:p-8"
     >
       <div className="flex items-center justify-between">
@@ -371,17 +423,8 @@ function BenefitScrollCard({
 }
 
 function BenefitsStackSection({ page }: { page: ServicePageContent }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  // progress runs while the section crosses the viewport, so cards finish
-  // revealing well before the section bottom - they never sit half-shown
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.85", "end 0.9"],
-  });
-  const total = page.benefits.length;
-
   return (
-    <section ref={sectionRef} className="relative bg-[#EEEEEE] py-16 sm:py-24">
+    <section className="relative bg-[#EEEEEE] py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <div className="lg:sticky lg:top-32">
@@ -408,8 +451,6 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
               key={benefit.title}
               benefit={benefit}
               index={index}
-              total={total}
-              progress={scrollYProgress}
             />
           ))}
         </div>
@@ -729,8 +770,17 @@ export default function ServiceDetailPage({
         headingClassName="text-[clamp(3.25rem,8.6vw,10.5rem)]"
         title={<ServiceHeroTitle page={page} />}
         subtitle={page.hero.subtitle}
-        primary={{ label: page.hero.cta, href: "/#contact" }}
-        secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true }}
+        // Primary hero CTA goes straight to the contact page on every service
+        // and industry hero.
+        primary={{ label: page.hero.cta, href: "/contact" }}
+        secondary={{
+          label: "Book free consultation",
+          href: BOOKING_URL,
+          external: true,
+          // Pink "Book free consultation" button, matching the web services hero.
+          className:
+            "!border-[#ed1164] !bg-[#ed1164] !text-white shadow-xl shadow-[#ed1164]/50 hover:!bg-[#c50e53]",
+        }}
       />
 
       {!isHelpdesk && (
