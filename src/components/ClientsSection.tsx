@@ -20,7 +20,6 @@ const clientsRow1: ClientItem[] = [
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
   { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
   { name: "Villa Tech", src: "/clients/villa-tech-light.png" },
-  { name: "Roshni Clinical Research", src: "/clients/roshni-clinical.png" },
   { name: "Advanced Clinical Research", src: "/clients/advanced-clinical-research.png" },
   { name: "Mondok", src: "/clients/mondok.png" },
   { name: "Basil Pizza", src: "/clients/basil-pizza.png" },
