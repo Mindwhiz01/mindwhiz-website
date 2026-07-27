@@ -10,7 +10,7 @@ const GOOGLE_ADS_ID = "AW-18340987821";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
-const siteUrl = "https://graphite-teal-template.vercel.app";
+const siteUrl = "https://www.mindwhiz.com";
 const siteName = "MindWhiz";
 // Home (/) title + description are the hand-tuned entries from the SEO map, so
 // the homepage and its shared-link previews match the rest of the site. Child
