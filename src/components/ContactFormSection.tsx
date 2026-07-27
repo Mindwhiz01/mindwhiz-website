@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
+import Script from "next/script";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -42,15 +42,12 @@ function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 export function ContactForm() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
-
   return (
     <div className="mt-10 w-full overflow-hidden rounded-[2rem]">
+      {/* next/script loads the LeadConnector embed once and de-dupes it across
+          navigations — no manual createElement/appendChild (which stacked a new
+          <script> on every mount). Matches the careers page. */}
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/OyGF6Yyhw5QmxIveuuln"
         style={{ width: "100%", height: "666px", border: "none", borderRadius: "8px" }}

@@ -1,5 +1,6 @@
 /node_modules
 /.next
+/.next-verify
 /out
 /build
 .DS_Store
@@ -14,6 +15,9 @@ next-env.d.ts
 
 # local dev server logs
 dev-*.log
+
+# scratch / verification scripts (never commit eval-containing test helpers)
+.tmp-*
 
 .vercel
 .env*

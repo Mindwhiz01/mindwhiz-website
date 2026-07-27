@@ -12,6 +12,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowLeft, ArrowRight, Check, Quote } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
+import { jsonLdScript } from "@/lib/jsonLd";
 import { caseStudies } from "@/lib/content";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
@@ -64,7 +65,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
 
   const others = caseStudies.filter((c) => c.slug !== cs.slug);
 
-  const siteUrl = "https://graphite-teal-template.vercel.app";
+  const siteUrl = "https://mindwhiz.com";
   const caseStudyJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -91,11 +92,11 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(caseStudyJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbJsonLd) }}
       />
       <SiteHeader theme={theme} />
 

@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { SEO_MAP } from "@/seo.config";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
-const siteUrl = "https://graphite-teal-template.vercel.app";
+const siteUrl = "https://mindwhiz.com";
 const siteName = "MindWhiz";
 // Home (/) title + description are the hand-tuned entries from the SEO map, so
 // the homepage and its shared-link previews match the rest of the site. Child
@@ -148,11 +149,11 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(organizationJsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd) }}
         />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
