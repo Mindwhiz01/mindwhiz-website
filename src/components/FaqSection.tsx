@@ -9,6 +9,7 @@
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Plus, X } from "lucide-react";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 export type Faq = { q: string; a: string };
 
@@ -72,7 +73,7 @@ export default function FaqSection({
     <section className={`relative overflow-hidden bg-[#EEEEEE] py-24 ${className}`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd) }}
       />
       <div className="relative mx-auto max-w-4xl px-6 sm:px-8">
         <Reveal>

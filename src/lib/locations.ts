@@ -114,7 +114,7 @@ export function getLocation(slug: string) {
   return locations.find((l) => l.slug === slug);
 }
 
-const SITE_URL = "https://graphite-teal-template.vercel.app";
+const SITE_URL = "https://mindwhiz.com";
 
 // Shared metadata + LocalBusiness builder so the three region pages
 // (/locations/us|uk|pk) don't hand-roll the same local-SEO boilerplate.

@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { SEO_MAP } from "@/seo.config";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const GA_MEASUREMENT_ID = "G-KELVNBGDRP";
 const GOOGLE_ADS_ID = "AW-18340987821";
@@ -168,11 +169,11 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(organizationJsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd) }}
         />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

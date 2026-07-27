@@ -1,6 +1,7 @@
 import LocationPage from "@/components/LocationPage";
 import { getLocation, locationJsonLd } from "@/lib/locations";
 import { buildMetadata } from "@/seo.config";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const location = getLocation("uk")!;
 
@@ -11,7 +12,7 @@ export default function UkLocationPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationJsonLd(location)) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(locationJsonLd(location)) }}
       />
       <LocationPage location={location} />
     </>

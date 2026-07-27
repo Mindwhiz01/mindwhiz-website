@@ -1,4 +1,5 @@
 import { SEO_MAP, siteUrl } from "@/seo.config";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 // Renders one or more JSON-LD blocks. Server-safe (plain script tags) so the
 // structured data is in the initial HTML for crawlers.
@@ -10,7 +11,7 @@ export function JsonLd({ data }: { data: Record<string, unknown> | Record<string
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(block) }}
         />
       ))}
     </>

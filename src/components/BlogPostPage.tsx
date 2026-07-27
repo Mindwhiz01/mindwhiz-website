@@ -12,6 +12,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { posts, formatDate, type BlogPost } from "@/lib/blog";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -33,7 +34,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
 
   const more = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
-  const siteUrl = "https://graphite-teal-template.vercel.app";
+  const siteUrl = "https://mindwhiz.com";
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -51,7 +52,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(articleJsonLd) }}
       />
       <SiteHeader theme={theme} />
 

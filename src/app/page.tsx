@@ -347,12 +347,18 @@ function StatCard({
   index,
   total,
   delay = 0,
+  bg = "#ffffff",
+  compact = false,
 }: {
   value: string;
   label: string;
   index: number;
   total: number;
   delay?: number;
+  /** section background the scooped corner blends into */
+  bg?: string;
+  /** smaller footprint - for side-by-side use next to a heading */
+  compact?: boolean;
 }) {
   // brand color rotation: green / dark / pink / light
   const variants = [
@@ -369,23 +375,39 @@ function StatCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex min-h-[14rem] flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 ${v.bg}`}
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl rounded-br-none transition-transform duration-300 hover:-translate-y-1.5 ${
+        compact ? "min-h-[10rem] ring-1 ring-black/5" : "min-h-[14rem]"
+      } ${v.bg}`}
     >
-      <span className={`absolute left-6 top-6 text-[11px] font-semibold uppercase tracking-[0.2em] ${v.counter}`}>
+      <span
+        className={`absolute text-[10px] font-semibold uppercase tracking-[0.2em] ${v.counter} ${
+          compact ? "left-4 top-4" : "left-6 top-6 sm:text-[11px]"
+        }`}
+      >
         {String(index).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </span>
 
-      {/* scooped corner + circular arrow (section bg is white) */}
-      <CardCornerArrow bg="#ffffff" accent={v.arrow} />
+      {/* scooped corner + circular arrow (blends into the section bg) */}
+      {compact ? (
+        <CardCornerArrow bg={bg} accent={v.arrow} size={40} gap={9} radius={18} />
+      ) : (
+        <CardCornerArrow bg={bg} accent={v.arrow} />
+      )}
 
-      <div className="relative p-6 pb-12 pr-20">
+      <div className={compact ? "relative p-5 pb-6 pr-16" : "relative p-6 pb-12 pr-20"}>
         <p
-          className="text-4xl font-extrabold leading-none sm:text-5xl"
+          className={
+            compact
+              ? "text-3xl font-extrabold leading-none sm:text-4xl"
+              : "text-4xl font-extrabold leading-none sm:text-5xl"
+          }
           style={{ fontFamily: "var(--font-display)" }}
         >
           {value}
         </p>
-        <p className={`mt-2 text-sm leading-relaxed ${v.sub}`}>{label}</p>
+        <p className={`${compact ? "mt-1.5 text-xs leading-snug" : "mt-2 text-sm leading-relaxed"} ${v.sub}`}>
+          {label}
+        </p>
       </div>
     </motion.a>
   );
@@ -517,6 +539,13 @@ function cityClock(tz: string, now: Date | null) {
   return { label, pct };
 }
 
+const studioStats = [
+  { value: "65", label: "Engineers in Lahore" },
+  { value: "3", label: "Countries, one team" },
+  { value: "24/7", label: "Always-on coverage" },
+  { value: "2020", label: "Building since" },
+];
+
 function StudioClockSection() {
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
@@ -526,31 +555,59 @@ function StudioClockSection() {
   }, []);
 
   return (
-    <section className="hidden bg-[#EEEEEE] text-[#2F343B] md:block">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
+    <section className="bg-[#EEEEEE] text-[#2F343B]">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 md:py-24">
+        {/* --- header: title left, compact stat cards right --- */}
         <Reveal>
-          <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
-            The studio
-            <span className="h-px w-12 bg-slate-300" />
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+            {/* left: section title */}
+            <div>
+              <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
+                The studio
+                <span className="h-px w-12 bg-slate-300" />
+              </div>
+              <h2
+                className="mt-6 max-w-xl text-[clamp(2.4rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Hybrid staffing, always on
+              </h2>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-black">
+                Sixty five engineers headquartered in Lahore, with client facing
+                offices in the UK and the USA. Building since 2020. Somewhere,
+                the studio is always at work.
+              </p>
+            </div>
+
+            {/* right: small stat cards (same treatment as "Built for scale") */}
+            <div className="grid grid-cols-2 gap-4 sm:gap-5">
+              {studioStats.map((s, i) => (
+                <StatCard
+                  key={s.label}
+                  value={s.value}
+                  label={s.label}
+                  index={i + 1}
+                  total={studioStats.length}
+                  delay={i * 0.06}
+                  bg="#EEEEEE"
+                  compact
+                />
+              ))}
+            </div>
           </div>
-          <h2
-            className="mt-6 max-w-xl text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Hybrid staffing, always on
-          </h2>
-          <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
-            Sixty five engineers headquartered in Lahore, with client facing
-            offices in the UK and the USA. Building since 2020. Somewhere, the
-            studio is always at work.
-          </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-32 mb-24 max-w-5xl">
+          {/* --- desktop: day-gradient bar with live office clocks --- */}
+          <div className="relative mx-auto mt-32 mb-24 hidden max-w-5xl md:block">
+            {/* ambient glow */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-10 top-1/2 h-24 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(156,204,60,0.12),transparent_70%)] blur-xl"
+            />
             {/* day gradient bar */}
-            <div className="relative h-10 rounded-full bg-[linear-gradient(90deg,#383838_0%,#5E5E5E_22%,#B0B0B0_50%,#5E5E5E_78%,#383838_100%)] ring-1 ring-white/10">
+            <div className="relative h-10 rounded-full bg-[linear-gradient(90deg,#26262b_0%,#4d4d55_20%,#c9ccd2_50%,#4d4d55_80%,#26262b_100%)] shadow-[0_18px_50px_-18px_rgba(0,0,0,0.5)] ring-1 ring-white/10">
               {/* segment dividers */}
               {[25, 50, 75].map((x) => (
                 <span
@@ -577,15 +634,18 @@ function StudioClockSection() {
                       style={{ left: `${t.pct}%` }}
                       className="absolute inset-y-0"
                     >
-                      {/* dot on the bar */}
-                      <span className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9CCC3C] shadow-[0_0_0_5px_rgba(156,204,60,0.18)]" />
+                      {/* live dot on the bar (pulsing ring conveys "always on") */}
+                      <span className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2">
+                        <span className="absolute inset-0 rounded-full bg-[#9CCC3C] opacity-60 animate-ping" />
+                        <span className="absolute inset-0 rounded-full bg-[#9CCC3C] shadow-[0_0_0_5px_rgba(156,204,60,0.18)]" />
+                      </span>
 
                       {c.above ? (
                         <div
                           className="absolute bottom-full left-0 -translate-x-1/2 whitespace-nowrap text-center"
                           style={{ marginBottom: tier === 0 ? "1rem" : "5rem" }}
                         >
-                          <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
+                          <p className="text-xl font-semibold tabular-nums text-[#2F343B]">{t.label}</p>
                           <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
                           <span className="mx-auto mt-2 block h-4 w-px bg-slate-300" />
                         </div>
@@ -595,7 +655,7 @@ function StudioClockSection() {
                           style={{ marginTop: tier === 0 ? "1rem" : "5rem" }}
                         >
                           <span className="mx-auto mb-2 block h-4 w-px bg-slate-300" />
-                          <p className="text-xl font-semibold text-[#2F343B]">{t.label}</p>
+                          <p className="text-xl font-semibold tabular-nums text-[#2F343B]">{t.label}</p>
                           <p className="text-xs font-semibold text-[#767D86]">{c.city}</p>
                         </div>
                       )}
@@ -605,14 +665,47 @@ function StudioClockSection() {
               })()}
             </div>
 
-            {/* time-of-day scale */}
-            <div className="mt-3 flex justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
-              <span>Midnight</span>
+            {/* time-of-day scale with sun / moon anchors */}
+            <div className="mt-4 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <Moon className="h-3 w-3" /> Midnight
+              </span>
               <span>Dawn</span>
-              <span>Noon</span>
+              <span className="flex items-center gap-1.5">
+                <Sun className="h-3 w-3 text-[#9CCC3C]" /> Noon
+              </span>
               <span>Dusk</span>
-              <span>Midnight</span>
+              <span className="flex items-center gap-1.5">
+                Midnight <Moon className="h-3 w-3" />
+              </span>
             </div>
+          </div>
+
+          {/* --- mobile: stacked live office clocks --- */}
+          <div className="mt-12 space-y-3 md:hidden">
+            {studioCities.map((c) => {
+              const t = cityClock(c.tz, now);
+              const isDay = t.pct >= 25 && t.pct < 75;
+              return (
+                <div
+                  key={c.city}
+                  className="flex items-center justify-between rounded-2xl bg-white/60 px-5 py-4 ring-1 ring-black/5"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1c1d21] text-[#9CCC3C]">
+                      {isDay ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                    </span>
+                    <span className="text-sm font-semibold text-[#2F343B]">{c.city}</span>
+                  </div>
+                  <span
+                    className="text-2xl font-semibold tabular-nums text-black"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {t.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </Reveal>
       </div>

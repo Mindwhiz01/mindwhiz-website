@@ -16,6 +16,7 @@ import type { ServicePageContent } from "@/lib/servicePages";
 import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 import { useBelowSm } from "@/lib/useBelowSm";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -694,7 +695,7 @@ function CredentialsSection() {
   );
 }
 
-const SITE_URL = "https://graphite-teal-template.vercel.app";
+const SITE_URL = "https://mindwhiz.com";
 
 export default function ServiceDetailPage({
   page,
@@ -756,11 +757,11 @@ export default function ServiceDetailPage({
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(serviceJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbJsonLd) }}
       />
       <SiteHeader theme={theme} />
 
