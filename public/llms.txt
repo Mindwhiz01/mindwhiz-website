@@ -12,36 +12,36 @@ Key facts for citation:
 
 ## Services
 
-- [24/7 IT Helpdesk (Tier 1-3)](https://graphite-teal-template.vercel.app/services/it-helpdesk-24-7): Round-the-clock tiered IT support desk.
-- [NOC Monitoring (24/7)](https://graphite-teal-template.vercel.app/services/noc-monitoring): Network operations center monitoring and incident response.
-- [Remote Desktop & IT Asset Management](https://graphite-teal-template.vercel.app/services/remote-desktop-assets): Endpoint and IT asset lifecycle management.
-- [Cloud Infrastructure Management](https://graphite-teal-template.vercel.app/services/cloud-infrastructure): Cloud environment setup, monitoring, and cost control.
-- [Server & Network Administration](https://graphite-teal-template.vercel.app/services/server-network-administration): Ongoing server and network operations.
-- [Endpoint Security](https://graphite-teal-template.vercel.app/services/endpoint-security): Managed endpoint detection and protection.
-- [DevOps & Automation](https://graphite-teal-template.vercel.app/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
-- [Cybersecurity Monitoring](https://graphite-teal-template.vercel.app/services/cybersecurity-monitoring): Managed detection and response.
-- [Staff Augmentation](https://graphite-teal-template.vercel.app/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
-- [Finance & Accounting](https://graphite-teal-template.vercel.app/services/finance-accounting): Bookkeeping, AP/AR, reconciliations, and reporting.
-- [HR Services](https://graphite-teal-template.vercel.app/services/hr-services): Recruiting, onboarding, payroll support, and HR operations.
-- [Construction Estimating](https://graphite-teal-template.vercel.app/services/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
-- [Web Development](https://graphite-teal-template.vercel.app/web-services): Websites, web apps, and dashboards.
-- [Digital Marketing](https://graphite-teal-template.vercel.app/services/digital-marketing): Brand, growth, and web execution.
+- [24/7 IT Helpdesk (Tier 1-3)](https://mindwhiz.com/services/it-helpdesk-24-7): Round-the-clock tiered IT support desk.
+- [NOC Monitoring (24/7)](https://mindwhiz.com/services/noc-monitoring): Network operations center monitoring and incident response.
+- [Remote Desktop & IT Asset Management](https://mindwhiz.com/services/remote-desktop-assets): Endpoint and IT asset lifecycle management.
+- [Cloud Infrastructure Management](https://mindwhiz.com/services/cloud-infrastructure): Cloud environment setup, monitoring, and cost control.
+- [Server & Network Administration](https://mindwhiz.com/services/server-network-administration): Ongoing server and network operations.
+- [Endpoint Security](https://mindwhiz.com/services/endpoint-security): Managed endpoint detection and protection.
+- [DevOps & Automation](https://mindwhiz.com/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
+- [Cybersecurity Monitoring](https://mindwhiz.com/services/cybersecurity-monitoring): Managed detection and response.
+- [Staff Augmentation](https://mindwhiz.com/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
+- [Finance & Accounting](https://mindwhiz.com/services/finance-accounting): Bookkeeping, AP/AR, reconciliations, and reporting.
+- [HR Services](https://mindwhiz.com/services/hr-services): Recruiting, onboarding, payroll support, and HR operations.
+- [Construction Estimating](https://mindwhiz.com/services/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
+- [Web Development](https://mindwhiz.com/web-services): Websites, web apps, and dashboards.
+- [Digital Marketing](https://mindwhiz.com/services/digital-marketing): Brand, growth, and web execution.
 
 ## Industries served
 
 Information Technology, E-commerce & Retail, Startups & SMBs, Construction & Engineering, Industrial Manufacturing, Accounting & Finance, Professional Services, Logistics & Supply Chain, Healthcare & HealthTech.
-Full list: https://graphite-teal-template.vercel.app/#industries
+Full list: https://mindwhiz.com/#industries
 
 ## Locations
 
-- [United States (Houston, TX - HQ)](https://graphite-teal-template.vercel.app/locations/us)
-- [United Kingdom (London)](https://graphite-teal-template.vercel.app/locations/uk)
-- [Pakistan (Lahore)](https://graphite-teal-template.vercel.app/locations/pk)
+- [United States (Houston, TX - HQ)](https://mindwhiz.com/locations/us)
+- [United Kingdom (London)](https://mindwhiz.com/locations/uk)
+- [Pakistan (Lahore)](https://mindwhiz.com/locations/pk)
 
 ## Proof of work
 
-- [Case Studies](https://graphite-teal-template.vercel.app/case-studies): Alpha Bravo Construction, Villa Tech, and Inovatiqa engagements with named outcomes.
-- [Why MindWhiz](https://graphite-teal-template.vercel.app/why-mindwhiz)
+- [Case Studies](https://mindwhiz.com/case-studies): Alpha Bravo Construction, Villa Tech, and Inovatiqa engagements with named outcomes.
+- [Why MindWhiz](https://mindwhiz.com/why-mindwhiz)
 
 ## Frequently asked
 
@@ -52,9 +52,9 @@ Full list: https://graphite-teal-template.vercel.app/#industries
 
 ## Other pages
 
-- [Blog](https://graphite-teal-template.vercel.app/blog): Field notes on security operations, delivery playbooks, and staffing at scale.
-- [About](https://graphite-teal-template.vercel.app/about)
-- [Careers](https://graphite-teal-template.vercel.app/careers)
-- [Contact](https://graphite-teal-template.vercel.app/contact)
+- [Blog](https://mindwhiz.com/blog): Field notes on security operations, delivery playbooks, and staffing at scale.
+- [About](https://mindwhiz.com/about)
+- [Careers](https://mindwhiz.com/careers)
+- [Contact](https://mindwhiz.com/contact)
 
-Full sitemap: https://graphite-teal-template.vercel.app/sitemap.xml
+Full sitemap: https://mindwhiz.com/sitemap.xml

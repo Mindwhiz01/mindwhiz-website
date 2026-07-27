@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 // from this map. Keep titles 50-60 chars and descriptions 150-160 chars.
 // ---------------------------------------------------------------------------
 
-export const siteUrl = "https://graphite-teal-template.vercel.app";
+export const siteUrl = "https://mindwhiz.com";
 
 export type SeoEntry = { title: string; description: string };
 
