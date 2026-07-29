@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogPostPage from "@/components/BlogPostPage";
-import { getPost, posts } from "@/lib/blog";
+import { getPostBySlug, posts } from "@/lib/blog";
+
+// Pre-render the static seed posts; admin-created slugs render on demand.
+export const dynamicParams = true;
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPost(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
   if (!post) return {};
   // Post titles run long and are the page's real identity - past ~50 chars
   // appending "| MindWhiz" pushes the <title> over Google's ~60 char cutoff,
@@ -21,14 +25,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     openGraph: {
       title: `${post.title} | MindWhiz`,
       description: post.excerpt,
-      images: [post.image],
+      images: post.image ? [post.image] : undefined,
       type: "article",
     },
   };
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default async function Page({ params }: { params: { slug: string } }) {
+  const post = await getPostBySlug(params.slug);
   if (!post) notFound();
   return <BlogPostPage post={post} />;
 }

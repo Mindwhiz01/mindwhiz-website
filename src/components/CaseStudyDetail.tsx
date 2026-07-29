@@ -108,7 +108,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
         >
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cs.img} alt="" className="h-full w-full object-cover" />
+            <img src={cs.img} alt={`${cs.client} — MindWhiz case study`} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/45" />
           </div>
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/25 blur-[130px]" />

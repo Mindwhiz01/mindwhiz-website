@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CaseStudyDetail from "@/components/CaseStudyDetail";
-import { caseStudies, getCaseStudy } from "@/lib/content";
+import { getCaseStudyBySlug } from "@/lib/caseStudies";
+import { caseStudies } from "@/lib/content";
+
+// Pre-render the static seed studies; admin-created slugs render on demand.
+export const dynamicParams = true;
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -15,8 +20,8 @@ function metaDescription(text: string, max = 155) {
   return `${text.slice(0, max - 1).trimEnd()}…`;
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const cs = getCaseStudy(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const cs = await getCaseStudyBySlug(params.slug);
   if (!cs) return {};
   const description = metaDescription(cs.result);
   return {
@@ -26,14 +31,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     openGraph: {
       title: `${cs.client}, Case Study | MindWhiz`,
       description,
-      images: [cs.img],
+      images: cs.img ? [cs.img] : undefined,
       type: "article",
     },
   };
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const cs = getCaseStudy(params.slug);
+export default async function Page({ params }: { params: { slug: string } }) {
+  const cs = await getCaseStudyBySlug(params.slug);
   if (!cs) notFound();
   return <CaseStudyDetail cs={cs} />;
 }

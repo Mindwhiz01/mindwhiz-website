@@ -75,15 +75,15 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What kinds of technology companies do you work with?",
-        a: "Software firms, managed service providers, SaaS products, and internal IT functions, typically where the team is stretched across support, infrastructure, and delivery at the same time and something is being neglected.",
+        q: "What managed IT and staffing services do you provide for technology companies?",
+        a: "We provide managed IT, cloud, cybersecurity and software team augmentation for technology companies, software firms, managed service providers, SaaS products, and internal IT functions, typically where the team is stretched across support, infrastructure, and delivery at the same time and something is being neglected.",
       },
       {
-        q: "Can you extend our existing engineering team rather than replace it?",
+        q: "Can you augment our software engineering team rather than replace it?",
         a: "That is the usual arrangement. Our people join your standups, tools, and workflow under your direction, which keeps context and ownership inside your team.",
       },
       {
-        q: "Can you cover our working hours?",
+        q: "Can you provide IT support in our US or UK time zone?",
         a: "Yes. Coverage is aligned to your time zone, including overlap with UK and US teams, and round the clock cover is available where operations require it.",
       },
       {
@@ -152,11 +152,15 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Can you support us through peak trading periods?",
+        q: "What ecommerce support and operations do you outsource for retail brands?",
+        a: "We outsource ecommerce operations for US retail brands, product listing and catalog management, customer support, order and returns handling, and back-office tasks, so your storefront keeps running 24/7 without you growing an in-house ops team.",
+      },
+      {
+        q: "Can you support our online store through peak trading periods?",
         a: "That is when the support matters most. Coverage runs continuously, so traffic spikes, checkout failures, and stock issues during a sale or holiday period are picked up as they happen rather than the next morning.",
       },
       {
-        q: "Which platforms do you work with?",
+        q: "Which ecommerce platforms do you work with?",
         a: "The common commerce stacks, Shopify, WooCommerce, Magento, and custom storefronts, along with the hosting and infrastructure underneath them.",
       },
       {
@@ -164,7 +168,7 @@ export const industryPages: ServicePageContent[] = [
         a: "We support the technical controls involved, segmentation, access control, monitoring, patching, and evidence collection, and work alongside your assessor. We support your compliance programme rather than certify it for you.",
       },
       {
-        q: "Can you connect our store to our other systems?",
+        q: "Can you connect our store to our ERP and fulfilment systems?",
         a: "Yes. Integrations between storefront, ERP, inventory, and fulfilment or 3PL systems are common work, and are usually where manual effort and stock errors get eliminated.",
       },
       {
@@ -229,12 +233,12 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "We have no internal IT team. Can you be it?",
-        a: "Yes. For smaller teams we act as the whole IT function, devices, accounts, support, security, and infrastructure, so nobody on your team has to absorb it alongside their real job.",
+        q: "Can you be the outsourced IT provider for our small business or startup?",
+        a: "Yes. For startups and small businesses we act as the whole outsourced IT function, devices, accounts, support, security, and infrastructure, so nobody on your team has to absorb it alongside their real job.",
       },
       {
-        q: "Is this affordable at our size?",
-        a: "Pricing is per user on a fixed monthly cost, so it stays proportionate to your headcount and predictable month to month. It is designed to cost less than carrying the equivalent in house.",
+        q: "How much does outsourced IT and staffing cost for a startup or SMB?",
+        a: "Pricing is per user on a fixed monthly cost, so it stays proportionate to your headcount and predictable month to month. It is designed to cost less than carrying the equivalent in house, and you pay for what you use as you scale.",
       },
       {
         q: "Can the service grow as we grow?",
@@ -306,11 +310,11 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What do you actually provide for construction firms?",
-        a: "Two things that usually sit apart: preconstruction support such as estimation and quantity takeoffs, and the IT side, site connectivity, devices, and support for teams split between office and field.",
+        q: "What IT and estimating services do you provide for construction companies?",
+        a: "We provide two things for construction companies that usually sit apart: preconstruction support such as estimation and quantity takeoffs, and managed IT, site connectivity, devices, and support for teams split between office and field.",
       },
       {
-        q: "Which software do you work in?",
+        q: "Which construction estimating software do you work in?",
         a: "The industry standards, including Bluebeam, PlanSwift, AutoCAD, and Revit, along with the estimating and project tools your team already uses.",
       },
       {
@@ -383,11 +387,11 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Do you support plant and operational systems as well as office IT?",
-        a: "We support the IT estate and the systems that connect to it, and work alongside your operational technology and engineering teams at the boundary. Control systems remain under the specialists who own them.",
+        q: "What IT and back-office support do you provide for manufacturers?",
+        a: "We provide managed IT and back-office support for manufacturers: the IT estate and the systems that connect to it, plus engineering and admin support, working alongside your operational technology teams at the boundary. Control systems remain under the specialists who own them.",
       },
       {
-        q: "How do you avoid interrupting production?",
+        q: "How do you avoid interrupting production when supporting a plant?",
         a: "Changes are scheduled around production windows and shift patterns, staged, and made reversible. Where a change carries real risk to output, it is planned with your operations team rather than pushed on an IT calendar.",
       },
       {
@@ -460,11 +464,15 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "How is sensitive financial data protected?",
+        q: "What accounting and finance work do you outsource for accounting and CPA firms?",
+        a: "We provide outsourced accounting and finance teams for US accounting and CPA firms: bookkeeping, accounts payable and receivable, reconciliations, reporting and month-end close, delivered white-label under your firm's process and brand.",
+      },
+      {
+        q: "How is our clients' sensitive financial data protected?",
         a: "Access is restricted to what each role requires, data is encrypted, endpoints are protected and monitored, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices.",
       },
       {
-        q: "Can you support us through busy season and year end?",
+        q: "Can you support accounting firms through busy season and year end?",
         a: "Yes, and capacity is planned for it. Coverage can scale for close periods and filing deadlines, when downtime is least affordable and support volume is highest.",
       },
       {
@@ -537,11 +545,11 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What kinds of firms do you work with?",
-        a: "Consultancies, legal and advisory practices, agencies, and similar firms, businesses where billable time is the product and technology failures translate directly into lost hours.",
+        q: "What back-office and IT support do you provide for professional services firms?",
+        a: "We provide back-office, operations and IT support for professional services firms, consultancies, legal and advisory practices, and agencies, where billable time is the product and technology failures or admin translate directly into lost hours.",
       },
       {
-        q: "Can you support a team that travels or works from client sites?",
+        q: "Can you support a professional team that travels or works from client sites?",
         a: "Yes. Remote support and device management are built for distributed work, so someone at a client office or in transit gets the same support as someone at a desk.",
       },
       {
@@ -614,11 +622,15 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Can you support round the clock operations?",
+        q: "What IT and back-office support do you provide for logistics and supply chain firms?",
+        a: "We provide managed IT, tracking and back-office support for US logistics and supply chain firms: warehouse connectivity, TMS/WMS/ERP integration, shipment tracking and coordination, with continuous coverage that suits operations that do not stop.",
+      },
+      {
+        q: "Can you support round-the-clock logistics operations?",
         a: "Yes. Coverage runs continuously, which suits operations that do not stop, night shifts, weekend movements, and depots running outside standard office hours.",
       },
       {
-        q: "What about warehouse connectivity, scanners, and mobile devices?",
+        q: "Do you support warehouse connectivity, scanners, and mobile devices?",
         a: "Site networks, handheld and scanning devices, and the connectivity between depots are all supported, since these are usually what actually halts throughput when they fail.",
       },
       {
@@ -691,16 +703,16 @@ export const industryPages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "How is patient data handled?",
-        a: "Under strict access control, encryption, logging, and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. We work within your regulatory obligations, including HIPAA where it applies, and support your compliance programme rather than certify it on your behalf.",
+        q: "Do you provide HIPAA-compliant managed IT for healthcare companies?",
+        a: "Yes. We provide HIPAA-aware managed IT and outsourced teams for US healthcare and healthtech: patient data handled under strict access control, encryption, logging and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. We work within your obligations, including HIPAA, and support your compliance programme rather than certify it on your behalf.",
       },
       {
         q: "Can clinical systems be supported outside normal hours?",
         a: "Yes. Care does not run on office hours, so coverage is continuous and clinical impacting issues are prioritized accordingly.",
       },
       {
-        q: "Do you work with EHR and EMR platforms?",
-        a: "We support the infrastructure, access, integration, and endpoints around the major clinical platforms, and coordinate with the vendor where an issue sits inside the application itself.",
+        q: "Do you support EHR and EMR platforms?",
+        a: "We support the infrastructure, access, integration, and endpoints around the major EHR and EMR clinical platforms, and coordinate with the vendor where an issue sits inside the application itself.",
       },
       {
         q: "What happens if there is a security incident?",

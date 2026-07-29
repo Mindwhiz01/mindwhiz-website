@@ -515,12 +515,12 @@ function CoverageMasonry() {
 
 const faqs: Faq[] = [
   {
-    q: "Which finance and accounting tasks can you take over?",
-    a: "Day to day bookkeeping and reconciliations, accounts payable and receivable, payroll support, and management reporting. Most clients start with the recurring work that consumes the most internal time and expand from there.",
+    q: "What does finance and accounting outsourcing include (AP, AR, bookkeeping)?",
+    a: "Finance and accounting outsourcing covers day to day bookkeeping and reconciliations, accounts payable and receivable, payroll support, and management reporting. Most clients start with the recurring work that consumes the most internal time and expand from there.",
   },
   {
-    q: "Do you replace our accountant?",
-    a: "No. We handle the ongoing transactional and reporting work so your accountant or CFO is reviewing clean books and advising, rather than spending their time on data entry and chasing reconciliations.",
+    q: "Does outsourced accounting replace our accountant or CFO?",
+    a: "No. We handle the ongoing transactional and reporting work so your accountant or CFO is reviewing clean books and advising, rather than spending their time on data entry and chasing reconciliations. Virtual CFO support is available where you need it.",
   },
   {
     q: "Which accounting software do you work in?",
@@ -531,8 +531,8 @@ const faqs: Faq[] = [
     a: "Access is scoped to the specific roles and systems required, data is encrypted, and activity is logged. Delivery is aligned to SOC 2 and ISO 27001 practices, under signed confidentiality terms.",
   },
   {
-    q: "Can you scale up for month end, year end, and audit periods?",
-    a: "Yes. Capacity is planned around your reporting calendar, so close periods and audit requests are covered without your internal team absorbing the spike.",
+    q: "Can you scale up for month-end close, year-end and audit periods?",
+    a: "Yes. Capacity is planned around your reporting calendar, so month-end close, year-end and audit requests are covered without your internal team absorbing the spike.",
   },
 ];
 

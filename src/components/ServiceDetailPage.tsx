@@ -5,8 +5,11 @@ import { motion, type Variants } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import CardCornerArrow from "@/components/CardCornerArrow";
+import { servicePages } from "@/lib/servicePages";
+import { industryPages } from "@/lib/industryPages";
 import Footer from "@/components/Footer";
 import FaqSection from "@/components/FaqSection";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
@@ -695,7 +698,9 @@ function CredentialsSection() {
   );
 }
 
-const SITE_URL = "https://mindwhiz.com";
+// Must match siteUrl in seo.config.ts so the Service `provider` @id resolves
+// to the same #organization node the root layout emits.
+const SITE_URL = "https://www.mindwhiz.com";
 
 export default function ServiceDetailPage({
   page,
@@ -707,6 +712,12 @@ export default function ServiceDetailPage({
   sectionLabel?: string;
 }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  // Contextual internal links: surface sibling service/industry pages with
+  // keyword-rich anchor text so link equity and crawl paths spread across the
+  // catalogue instead of every CTA pointing only at /contact.
+  const catalog = basePath === "/industries" ? industryPages : servicePages;
+  const related = catalog.filter((p) => p.slug !== page.slug).slice(0, 6);
 
   const canonicalUrl = `${SITE_URL}${basePath}/${page.slug}`;
   // Service schema on both /services/* and /industries/* (the keyword map lists
@@ -894,6 +905,35 @@ export default function ServiceDetailPage({
       {showCredentials && <CredentialsSection />}
 
       {page.faqs?.length ? <FaqSection faqs={page.faqs} /> : null}
+
+      {/* Contextual internal links to related services/industries with
+          descriptive, keyword-rich anchor text (internal-linking / SEO). */}
+      {related.length > 0 && (
+        <section className="bg-white py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <Kicker>Explore more</Kicker>
+            <h2
+              className="mt-4 text-3xl font-extrabold uppercase tracking-tight text-black sm:text-4xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Related {sectionLabel.toLowerCase()}
+            </h2>
+            <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`${basePath}/${r.slug}`}
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-[#ed1164]"
+                  >
+                    <span className="text-base font-semibold text-black">{r.name}</span>
+                    <ArrowUpRight className="h-5 w-5 shrink-0 text-[#ed1164] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Final CTA rendered as the shared "How it works" style banner, with
           this page's own finalCta content. */}

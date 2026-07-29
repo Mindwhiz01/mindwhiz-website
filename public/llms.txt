@@ -1,47 +1,47 @@
 # MindWhiz
 
-> MindWhiz is a hybrid staffing and business process outsourcing (BPO) company. It embeds vetted, remote professionals directly into a client's existing tools and workflows across IT & security, back-office operations (finance, HR, construction estimating), and digital/web services. Headquartered in Houston, Texas, with delivery hubs in London, UK and Lahore, Pakistan.
+> MindWhiz is a hybrid staffing and business process outsourcing (BPO) company. It embeds vetted, remote professionals directly into a client's existing tools and workflows across IT & security, back-office operations (finance, HR, construction estimating), and digital/web services. Its head office and main delivery hub is in Lahore, Pakistan, serving clients across the United States and United Kingdom.
 
 Key facts for citation:
 - Company name: MindWhiz
-- Founded / headquartered: Houston, Texas, USA (2313 W Sam Houston Pkwy N #147, Houston, TX 77043)
-- Additional hubs: London, United Kingdom; Lahore, Pakistan
-- Contact: info@mindwhiz.com, +1 (832) 900-4608
+- Head office / delivery hub: Block E2, WAPDA Town Phase 1, Lahore, Punjab, Pakistan
+- Markets served: United States, United Kingdom, Pakistan (US-hours account management and round-the-clock delivery)
+- US sales & support contact: +1 (832) 900-4608 (a contact channel for US clients, not a staffed office)
+- General contact: info@mindwhiz.com, +92 321 1116451
 - Model: staff augmentation and managed BPO teams that integrate into the client's own workflow, not a fixed-scope project handoff
-- Markets served: United States, United Kingdom, Pakistan
 
 ## Services
 
-- [24/7 IT Helpdesk (Tier 1-3)](https://mindwhiz.com/services/it-helpdesk-24-7): Round-the-clock tiered IT support desk.
-- [NOC Monitoring (24/7)](https://mindwhiz.com/services/noc-monitoring): Network operations center monitoring and incident response.
-- [Remote Desktop & IT Asset Management](https://mindwhiz.com/services/remote-desktop-assets): Endpoint and IT asset lifecycle management.
-- [Cloud Infrastructure Management](https://mindwhiz.com/services/cloud-infrastructure): Cloud environment setup, monitoring, and cost control.
-- [Server & Network Administration](https://mindwhiz.com/services/server-network-administration): Ongoing server and network operations.
-- [Endpoint Security](https://mindwhiz.com/services/endpoint-security): Managed endpoint detection and protection.
-- [DevOps & Automation](https://mindwhiz.com/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
-- [Cybersecurity Monitoring](https://mindwhiz.com/services/cybersecurity-monitoring): Managed detection and response.
-- [Staff Augmentation](https://mindwhiz.com/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
-- [Finance & Accounting](https://mindwhiz.com/services/finance-accounting): Bookkeeping, AP/AR, reconciliations, and reporting.
-- [HR Services](https://mindwhiz.com/services/hr-services): Recruiting, onboarding, payroll support, and HR operations.
-- [Construction Estimating](https://mindwhiz.com/services/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
-- [Web Development](https://mindwhiz.com/web-services): Websites, web apps, and dashboards.
-- [Digital Marketing](https://mindwhiz.com/services/digital-marketing): Brand, growth, and web execution.
+- [24/7 IT Helpdesk (Tier 1-3)](https://www.mindwhiz.com/services/it-helpdesk-24-7): Round-the-clock tiered IT support desk.
+- [NOC Monitoring (24/7)](https://www.mindwhiz.com/services/noc-monitoring): Network operations center monitoring and incident response.
+- [Remote Desktop & IT Asset Management](https://www.mindwhiz.com/services/remote-desktop-assets): Endpoint and IT asset lifecycle management.
+- [Cloud Infrastructure Management](https://www.mindwhiz.com/services/cloud-infrastructure): Cloud environment setup, monitoring, and cost control.
+- [Server & Network Administration](https://www.mindwhiz.com/services/server-network-administration): Ongoing server and network operations.
+- [Endpoint Security](https://www.mindwhiz.com/services/endpoint-security): Managed endpoint detection and protection.
+- [DevOps & Automation](https://www.mindwhiz.com/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
+- [Cybersecurity Monitoring](https://www.mindwhiz.com/services/cybersecurity-monitoring): Managed detection and response.
+- [Staff Augmentation](https://www.mindwhiz.com/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
+- [Finance & Accounting](https://www.mindwhiz.com/services/finance-accounting): Bookkeeping, AP/AR, reconciliations, and reporting.
+- [HR Services](https://www.mindwhiz.com/services/hr-services): Recruiting, onboarding, payroll support, and HR operations.
+- [Construction Estimating](https://www.mindwhiz.com/services/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
+- [Web Development](https://www.mindwhiz.com/web-services): Websites, web apps, and dashboards.
+- [Digital Marketing](https://www.mindwhiz.com/services/digital-marketing): Brand, growth, and web execution.
 
 ## Industries served
 
 Information Technology, E-commerce & Retail, Startups & SMBs, Construction & Engineering, Industrial Manufacturing, Accounting & Finance, Professional Services, Logistics & Supply Chain, Healthcare & HealthTech.
-Full list: https://mindwhiz.com/#industries
+Full list: https://www.mindwhiz.com/#industries
 
 ## Locations
 
-- [United States (Houston, TX - HQ)](https://mindwhiz.com/locations/us)
-- [United Kingdom (London)](https://mindwhiz.com/locations/uk)
-- [Pakistan (Lahore)](https://mindwhiz.com/locations/pk)
+- [United States (nationwide, US-hours coverage)](https://www.mindwhiz.com/locations/us)
+- [United Kingdom (London)](https://www.mindwhiz.com/locations/uk)
+- [Pakistan (Lahore - head office & delivery hub)](https://www.mindwhiz.com/locations/pk)
 
 ## Proof of work
 
-- [Case Studies](https://mindwhiz.com/case-studies): Alpha Bravo Construction, Villa Tech, and Inovatiqa engagements with named outcomes.
-- [Why MindWhiz](https://mindwhiz.com/why-mindwhiz)
+- [Case Studies](https://www.mindwhiz.com/case-studies): Alpha Bravo Construction, Villa Tech, and Inovatiqa engagements with named outcomes.
+- [Why MindWhiz](https://www.mindwhiz.com/why-mindwhiz)
 
 ## Frequently asked
 
@@ -52,9 +52,9 @@ Full list: https://mindwhiz.com/#industries
 
 ## Other pages
 
-- [Blog](https://mindwhiz.com/blog): Field notes on security operations, delivery playbooks, and staffing at scale.
-- [About](https://mindwhiz.com/about)
-- [Careers](https://mindwhiz.com/careers)
-- [Contact](https://mindwhiz.com/contact)
+- [Blog](https://www.mindwhiz.com/blog): Field notes on security operations, delivery playbooks, and staffing at scale.
+- [About](https://www.mindwhiz.com/about)
+- [Careers](https://www.mindwhiz.com/careers)
+- [Contact](https://www.mindwhiz.com/contact)
 
-Full sitemap: https://mindwhiz.com/sitemap.xml
+Full sitemap: https://www.mindwhiz.com/sitemap.xml

@@ -82,17 +82,30 @@ const benefits = [
 // ---------------------------------------------------------------------------
 function SubscribeForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "error" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "error" | "sending" | "done">("idle");
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
     if (!valid) {
       setStatus("error");
       return;
     }
-    // TODO: POST to your email provider here.
-    setStatus("done");
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      if (!res.ok) {
+        setStatus("error");
+        return;
+      }
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "done") {
@@ -129,9 +142,10 @@ function SubscribeForm() {
         </div>
         <button
           type="submit"
-          className="group inline-flex items-center justify-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+          disabled={status === "sending"}
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 disabled:opacity-60"
         >
-          Subscribe
+          {status === "sending" ? "Subscribing…" : "Subscribe"}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
       </div>

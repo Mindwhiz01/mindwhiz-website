@@ -1238,12 +1238,12 @@ const faqs: Faq[] = [
     a: "Pricing depends on scope, a focused landing page starts lower, while multipage sites, ecommerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
   },
   {
-    q: "Will my site be fast, mobile friendly, and SEO ready?",
+    q: "Will my website be fast, mobile-friendly, and SEO-ready?",
     a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in, so it loads fast, feels smooth, and is set up to rank from day one.",
   },
   {
-    q: "Do you offer ongoing maintenance and support?",
-    a: "Yes. We offer monthly care and retainer plans covering hosting, security patches, performance tuning, content updates, and new features, so your site keeps running smoothly and evolving long after launch.",
+    q: "Do you offer website maintenance and management services?",
+    a: "Yes. We offer monthly website management and care plans covering hosting, security patches, performance tuning, content updates, and new features, so your site keeps running smoothly and evolving long after launch.",
   },
   {
     q: "Can you redesign or migrate my existing website?",

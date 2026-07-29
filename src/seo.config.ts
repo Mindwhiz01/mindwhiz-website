@@ -10,6 +10,8 @@ import type { Metadata } from "next";
 // canonical plus matching OpenGraph + Twitter tags so shared links no longer
 // fall back to the homepage pitch.
 //
+// Keywords are chosen for winnable, high-intent long-tail demand (real
+// volume/KD data), not broad head terms owned by the large staffing brands.
 // To retitle a page, edit it here once - layouts and generateMetadata read
 // from this map. Keep titles 50-60 chars and descriptions 150-160 chars.
 // ---------------------------------------------------------------------------
@@ -21,184 +23,184 @@ export type SeoEntry = { title: string; description: string };
 export const SEO_MAP: Record<string, SeoEntry> = {
   // --- Core ---
   "/": {
-    title: "Hybrid Staffing & Staff Augmentation Company | MindWhiz",
+    title: "IT Outsourcing & Staff Augmentation Company USA | MindWhiz",
     description:
-      "MindWhiz delivers hybrid staffing, staff augmentation and BPO across IT, security and business operations. Scale teams with vetted global talent. Get in touch.",
+      "MindWhiz is a US IT outsourcing and staff augmentation company: offshore engineers and BPO teams for IT, security, finance and ops. Cut costs 60%. Free quote.",
   },
 
   // --- Services ---
   "/services/it-helpdesk-24-7": {
-    title: "24/7 IT Helpdesk Services (Tier 1 to 3) | MindWhiz",
+    title: "White-Label 24/7 IT Helpdesk Services USA | MindWhiz",
     description:
-      "Outsourced 24/7 IT helpdesk with Tier 1 to 3 support, 15 minute response and fixed per user pricing. Cut downtime without hiring in house. Book a free review.",
+      "Outsourced 24/7 IT helpdesk for US MSPs and businesses: Tier 1-3 support, 15-minute response, white-label ready and fixed per-user pricing. Book a free review.",
   },
   "/services/noc-monitoring": {
-    title: "NOC Monitoring Services | 24/7 Network Operations | MindWhiz",
+    title: "Outsourced 24/7 NOC Monitoring Services USA | MindWhiz",
     description:
-      "24/7 NOC monitoring that catches network issues before your users do. Outsourced network operations, proactive alerting and uptime reporting. Talk to our team.",
+      "Outsourced NOC monitoring for US companies and MSPs: 24/7 network operations, proactive alerting and uptime reporting, white-label available. Get NOC pricing.",
   },
   "/services/cybersecurity-monitoring": {
-    title: "Cybersecurity Monitoring & Managed SOC Services | MindWhiz",
+    title: "Managed SOC & MDR Monitoring Services USA | MindWhiz",
     description:
-      "24/7 cybersecurity monitoring with certified SOC analysts, threat detection and rapid incident response. SOC 2 and ISO 27001 aligned. Get a free review.",
+      "Managed SOC and MDR monitoring for US businesses and MSPs: certified analysts, 24/7 threat detection and incident response, SOC 2-aligned. Ask for SOC pricing.",
   },
   "/services/cloud-infrastructure": {
-    title: "Managed Cloud Infrastructure & Migration Services | MindWhiz",
+    title: "Cloud Infrastructure Management USA, AWS & Azure | MindWhiz",
     description:
-      "Cloud infrastructure design, migration and managed operations across AWS and Azure. Stable, secure, cost controlled environments. Book a free consultation.",
+      "Cloud infrastructure management for US companies across AWS, Azure and Google Cloud: secure, stable environments, migrations and cost control. Free consult.",
   },
   "/services/devops-automation": {
-    title: "DevOps & Automation Services | CI/CD Pipelines | MindWhiz",
+    title: "Outsourced DevOps & CI/CD Automation Services | MindWhiz",
     description:
-      "DevOps engineers who build CI/CD pipelines, automate releases and stabilise delivery. Ship faster without growing headcount. Book a free DevOps consultation.",
+      "Outsourced DevOps for US teams: CI/CD pipelines, infrastructure as code, containers and release automation. Ship faster without new headcount. Free consult.",
   },
   "/services/endpoint-security": {
-    title: "Endpoint Security Services | Managed EDR | MindWhiz",
+    title: "Endpoint Security & Patch Management Services USA | MindWhiz",
     description:
-      "Managed endpoint security with EDR monitoring, patching and centralised device control across remote teams. Close the gaps attackers use. Talk to a specialist.",
+      "Managed endpoint security for US businesses: EDR, patch management outsourcing and device control across remote teams. Close the gaps attackers use. Talk to us.",
   },
   "/services/server-network-administration": {
-    title: "Server & Network Administration Services | MindWhiz",
+    title: "Server & Network Administration Outsourcing USA | MindWhiz",
     description:
-      "Certified admins who keep servers and networks secure, patched and stable around the clock. Outsource sysadmin and network operations. Get a free assessment.",
+      "Outsourced server and network administration for US companies: certified admins keep systems patched, secure and stable across cloud and hybrid. Free audit.",
   },
   "/services/remote-desktop-assets": {
-    title: "Remote Desktop & IT Asset Management Services | MindWhiz",
+    title: "IT Asset Management & Remote Desktop Support USA | MindWhiz",
     description:
-      "Secure remote access plus full IT asset tracking and lifecycle management for distributed teams. Know what you own and who is using it. Speak to our team today.",
+      "IT asset management and remote desktop support for US teams: full hardware and software tracking, lifecycle management and secure remote access. Speak to us.",
   },
   "/services/staff-augmentation": {
-    title: "IT Staff Augmentation Services | Hire Engineers | MindWhiz",
+    title: "IT Staff Augmentation & Offshore Teams USA | MindWhiz",
     description:
-      "Staff augmentation that extends your team with vetted engineers and specialists, deployed in around 10 days. Scale without long hiring cycles. Get in touch.",
+      "IT staff augmentation and offshore staffing for US companies: hire vetted remote engineers in about 10 days, at lower cost. Scale anytime. Get in touch.",
   },
 
   // --- Services (standalone pages under /services) ---
   "/services/hr-services": {
-    title: "HR Outsourcing Services | RPO, Payroll & HRIS | MindWhiz",
+    title: "HR Outsourcing Services USA, RPO & Payroll | MindWhiz",
     description:
-      "Outsourced HR covering RPO, payroll, HRIS administration and compliance. Hire faster and stay compliant without an in house HR team. Book a free consultation.",
+      "Outsourced HR for US small businesses: RPO, payroll, HRIS and multi-state compliance. Hire faster and stay compliant without an in-house HR team. Free consult.",
   },
   "/services/finance-accounting": {
-    title: "Finance & Accounting Outsourcing | Bookkeeping | MindWhiz",
+    title: "Finance & Accounting Outsourcing USA, AP & AR | MindWhiz",
     description:
-      "Outsourced finance covering AP, AR, bookkeeping, reporting and CFO support. Close the month in days, not weeks, with vetted accountants. Talk to a specialist.",
+      "Outsourced accounting for US businesses: accounts payable, accounts receivable, bookkeeping, month-end close and virtual CFO support. Close in days, not weeks.",
   },
   "/services/digital-marketing": {
-    title: "Digital Marketing Services | SEO, PPC & CRM | MindWhiz",
+    title: "Digital Marketing Outsourcing USA, SEO & PPC | MindWhiz",
     description:
-      "Digital marketing delivered by a dedicated team: SEO, paid campaigns, CRM and content operations. Grow pipeline without hiring in house. Get in touch today.",
+      "Outsourced digital marketing for US businesses: SEO, Google Ads, CRO, CRM and content from one dedicated team. Grow pipeline without new hires. Free quote.",
   },
   "/services/construction-estimation": {
-    title: "Construction Estimation Services | Takeoffs | MindWhiz",
+    title: "Outsourced Construction Estimating & Takeoffs USA | MindWhiz",
     description:
-      "Outsourced construction estimating: quantity takeoffs, bid prep and cost planning by experienced estimators. Bid more, win more. Request a free sample takeoff.",
+      "Outsourced construction estimating for US contractors: quantity takeoffs, bid prep and cost planning by expert estimators. Bid more, win more. Free takeoff.",
   },
   "/web-services": {
-    title: "Web Development Services | Custom Sites & Apps | MindWhiz",
+    title: "Web Development & Website Management Services USA | MindWhiz",
     description:
-      "Custom websites, web applications and ecommerce builds delivered by dedicated developers, plus ongoing maintenance and support. Request a free project quote.",
+      "Custom web development and website management for US businesses: sites, web apps, ecommerce and ongoing maintenance from dedicated devs. Request a free quote.",
   },
 
   // --- Industries ---
   "/industries/information-technology": {
-    title: "IT Industry Staffing & Managed Services | MindWhiz",
+    title: "Managed IT & Staffing Services for Tech Companies | MindWhiz",
     description:
-      "Software, cloud and cybersecurity teams for technology companies that need to ship faster and run secure infrastructure at scale. Explore IT industry solutions.",
+      "Managed IT, cloud and cybersecurity staffing for US technology companies: extend your team and run secure infrastructure at scale. Explore IT solutions.",
   },
   "/industries/ecommerce-retail": {
-    title: "Ecommerce & Retail Outsourcing Services | MindWhiz",
+    title: "Ecommerce Support & Operations Outsourcing USA | MindWhiz",
     description:
-      "Catalog, customer support and back office operations that keep storefronts running around the clock. Outsourced teams for ecommerce and retail brands.",
+      "Outsourced ecommerce support for US retail brands: product listing, customer support and back-office operations that keep storefronts running 24/7. Contact us.",
   },
   "/industries/startups-smbs": {
-    title: "Staffing & Outsourcing for Startups and SMBs | MindWhiz",
+    title: "Outsourced IT & Staffing for Startups & SMBs | MindWhiz",
     description:
-      "Flexible, cost effective teams that scale as fast as you grow. Staffing, IT and back office support built for startups and SMBs. Book a free consultation.",
+      "Flexible outsourced IT and staffing for US startups and SMBs: support, security and back-office teams that scale as you grow. Pay per use. Free consult.",
   },
   "/industries/construction-engineering": {
-    title: "Construction & Engineering Support Services | MindWhiz",
+    title: "IT & Estimating Support for Construction Firms | MindWhiz",
     description:
-      "Estimation, takeoffs and engineering support that speed up bids and keep projects moving. Outsourced teams for construction and engineering firms. Get in touch.",
+      "Managed IT, estimating and back-office support for US construction and engineering firms: takeoffs, site connectivity and drafting support. Build faster.",
   },
   "/industries/industrial-manufacturing": {
-    title: "Manufacturing Support & Outsourcing Services | MindWhiz",
+    title: "IT & Back-Office Outsourcing for Manufacturers | MindWhiz",
     description:
-      "Engineering, back office and IT support that keeps manufacturing operations efficient and connected. Outsourced industrial support teams. Talk to a specialist.",
+      "Managed IT, engineering and back-office support for US manufacturers: keep multi-site operations efficient, connected and secure around the clock. Talk to us.",
   },
   "/industries/accounting-finance": {
-    title: "Accounting & Finance Outsourcing Support | MindWhiz",
+    title: "Outsourced Accounting & Finance Teams for Firms | MindWhiz",
     description:
-      "Bookkeeping, reporting and finance operations handled by vetted professionals. Outsourced support for accounting firms and finance teams. Get in touch today.",
+      "Outsourced bookkeeping, reporting and finance operations for US accounting and CPA firms: white-label, dedicated remote teams under your process. Get in touch.",
   },
   "/industries/professional-services": {
-    title: "Professional Services Back Office Support | MindWhiz",
+    title: "Back-Office & IT Support for Professional Firms | MindWhiz",
     description:
-      "Research, operations and back office support for consulting and professional firms. Free your billable team from admin. Book a free consultation with MindWhiz.",
+      "Research, operations, IT and back-office support for US consulting, legal and advisory firms. Free your billable team from admin work. Book a free consultation.",
   },
   "/industries/logistics-supply-chain": {
-    title: "Logistics & Supply Chain Support Services | MindWhiz",
+    title: "IT & Back-Office Support for Logistics Firms USA | MindWhiz",
     description:
-      "Coordination, tracking and back office support that keeps goods moving. Outsourced logistics and supply chain teams available around the clock. Get in touch.",
+      "Managed IT, tracking and back-office support for US logistics and supply chain firms: warehouse connectivity, TMS/WMS integration and coverage. Get in touch.",
   },
   "/industries/healthcare-healthtech": {
-    title: "Healthcare & HealthTech Outsourcing Services | MindWhiz",
+    title: "Managed IT & HIPAA-Aware Support for Healthcare | MindWhiz",
     description:
-      "Compliant talent and support for care operations and health technology platforms. HIPAA aware outsourced teams for healthcare and healthtech. Talk to our team.",
+      "HIPAA-aware managed IT and outsourced teams for US healthcare and healthtech: EHR/EMR support, patient data security and 24/7 clinical coverage. Talk to us.",
   },
 
   // --- Company ---
   "/about": {
-    title: "About MindWhiz | Global Staffing & Outsourcing Company",
+    title: "About MindWhiz | Offshore Staffing & Delivery Team",
     description:
-      "Meet MindWhiz: 65 engineers in Lahore with client offices in the UK and USA, delivering staffing and managed operations since 2020. Learn our story.",
+      "Meet MindWhiz: an offshore staffing and outsourcing partner for US and UK companies, with 65+ specialists and a dedicated contact, delivering since 2020.",
   },
   "/why-mindwhiz": {
-    title: "Why MindWhiz | Staff Augmentation Done Right",
+    title: "Why MindWhiz | 10-Day Deploy, 99.8% Retention",
     description:
-      "Why teams pick MindWhiz: vetted talent, 10 day deployment, 99.8% retention and 24/7 coverage across three regions. See how we compare. Book a free consultation.",
+      "Why US teams pick MindWhiz: vetted talent, ~10-day deployment, 99.8% retention and 24/7 coverage in your time zone. See how we compare. Book a free consult.",
   },
   "/case-studies": {
-    title: "Case Studies | Staffing & Outsourcing Results | MindWhiz",
+    title: "Client Results & Case Studies | MindWhiz",
     description:
       "Real engagements, real numbers: how MindWhiz clients cut costs, sped up delivery and scaled teams without new hires. Read the full case studies on record.",
   },
   "/careers": {
-    title: "Careers at MindWhiz | IT, Security & Operations Jobs",
+    title: "Careers at MindWhiz | IT, Security & Ops Jobs",
     description:
-      "Join MindWhiz. Explore open roles in IT, cybersecurity, engineering and business operations working with clients across the US and UK. Apply online today.",
+      "Join MindWhiz in Lahore. Explore open roles in IT, cybersecurity, engineering and business operations serving clients across the US and UK. Apply online today.",
   },
   "/blog": {
-    title: "Blog | IT, Security & Outsourcing Insights | MindWhiz",
+    title: "MindWhiz Blog | IT, Security & Outsourcing Tips",
     description:
       "Field notes from live engagements: security operations, delivery playbooks and what actually works at scale. Read the latest insights from the MindWhiz team.",
   },
   "/newsletter": {
-    title: "Newsletter & White Papers | IT and Security | MindWhiz",
+    title: "Free IT & Security White Papers & Newsletter | MindWhiz",
     description:
-      "Get white papers and practical insights on security operations, compliance and scaling delivery teams, straight to your inbox. Subscribe to MindWhiz.",
+      "Get free white papers and practical insights on security operations, compliance and scaling delivery teams, straight to your inbox. Subscribe to MindWhiz today.",
   },
   "/contact": {
-    title: "Contact MindWhiz | Book a Free Consultation",
+    title: "Contact MindWhiz | Free Quote in 1 Business Day",
     description:
-      "Tell us what you are trying to achieve and a MindWhiz specialist will reply within one business day with a scoped plan and clear pricing. Contact us today.",
+      "Tell us what you are trying to achieve and a MindWhiz specialist replies within one US business day with a scoped plan and clear pricing. Contact us today.",
   },
 
   // --- Locations ---
   "/locations/us": {
-    title: "Staff Augmentation & IT Services in the USA | MindWhiz",
+    title: "IT Outsourcing & Staff Augmentation in the USA | MindWhiz",
     description:
-      "MindWhiz supports US businesses with vetted offshore teams aligned to your time zone, covering IT, security, finance and operations. Book a free consultation.",
+      "MindWhiz supports US businesses with vetted offshore teams in your time zone across IT, security, finance and operations. Cut costs up to 60%. Free consult.",
   },
   "/locations/uk": {
-    title: "Staff Augmentation & IT Services in the UK | MindWhiz",
+    title: "IT Outsourcing & Staff Augmentation in the UK | MindWhiz",
     description:
-      "MindWhiz supports UK businesses with vetted offshore teams working in your hours across IT, security, finance and operations. Talk to a specialist today.",
+      "MindWhiz supports UK businesses with vetted offshore teams working in your hours across IT, security, finance and operations. GDPR-aware. Talk to us today.",
   },
   "/locations/pk": {
-    title: "IT Outsourcing Company in Lahore, Pakistan | MindWhiz",
+    title: "IT Outsourcing & Software Company in Lahore | MindWhiz",
     description:
-      "MindWhiz runs its delivery hub in Lahore with 65 engineers serving US and UK clients across IT, security and business operations. Learn about our Pakistan team.",
+      "MindWhiz runs its head office and delivery hub in Lahore, with 65+ engineers serving US and UK clients across IT, security and operations. Meet the team.",
   },
 
   // --- Legal ---

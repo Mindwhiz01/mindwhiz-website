@@ -327,23 +327,23 @@ function CapabilitiesCarousel() {
 
 const faqs: Faq[] = [
   {
-    q: "Which HR functions can you handle?",
-    a: "Recruitment and screening, payroll and benefits administration, onboarding and offboarding, HR systems and data, and the day to day employee support that otherwise lands on a founder or office manager.",
+    q: "What does outsourced HR include (RPO, payroll, HRIS)?",
+    a: "Outsourced HR covers recruitment and screening (RPO), payroll and benefits administration, onboarding and offboarding, HRIS systems and data, and the day to day employee support that otherwise lands on a founder or office manager.",
   },
   {
-    q: "Can you support hiring across multiple regions?",
-    a: "Yes. Sourcing and screening run across regions, and payroll and benefits administration are handled with regional requirements in mind rather than a single country assumption.",
+    q: "Can you handle recruiting and payroll across multiple states or regions?",
+    a: "Yes. Sourcing and screening run across regions, and payroll and benefits administration are handled with multi-state and regional compliance requirements in mind rather than a single country assumption.",
   },
   {
-    q: "Do you replace our HR team or work alongside it?",
-    a: "Either. Smaller businesses often use us as the whole HR function, while established teams hand over the administrative load so their people can focus on culture, performance, and retention.",
+    q: "Do you offer an outsourced HR department for small businesses?",
+    a: "Yes. Smaller businesses often use us as the whole outsourced HR department, while established teams hand over the administrative load so their people can focus on culture, performance, and retention.",
   },
   {
-    q: "How is employee data protected?",
+    q: "How is employee data protected in HR outsourcing?",
     a: "Through restricted access, encryption, and logged activity, with delivery aligned to SOC 2 and ISO 27001 practices. Employee records are treated as sensitive data throughout, under signed confidentiality terms.",
   },
   {
-    q: "How quickly can you fill an open role?",
+    q: "How fast can recruitment process outsourcing (RPO) fill an open role?",
     a: "It depends on seniority and market, but screening and shortlisting are handled up front so you review vetted candidates rather than raw applications. We give you a realistic timeline once the role is scoped.",
   },
 ];

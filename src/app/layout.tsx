@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollToTop from "@/components/ScrollToTop";
 import { SEO_MAP } from "@/seo.config";
 import { jsonLdScript } from "@/lib/jsonLd";
 
@@ -89,28 +90,35 @@ const organizationJsonLd = {
   description: siteDescription,
   slogan: "Flexible Talent, Scalable Teams, Global Impact",
   email: "info@mindwhiz.com",
-  telephone: "+1 (832) 900-4608",
+  // Primary phone matches the verified Google Business Profile (Lahore) so the
+  // site NAP and the GBP stay consistent - the strongest local-ranking signal.
+  telephone: "+92 321 1116451",
   priceRange: "$$",
+  // The one real, staffed location: our Lahore head office and delivery hub.
+  // We serve US/UK clients (see areaServed) but do NOT claim a physical office
+  // we cannot staff, which would risk a Google Business Profile suspension.
   address: {
     "@type": "PostalAddress",
-    streetAddress: "2313 W Sam Houston Pkwy N #147",
-    addressLocality: "Houston",
-    addressRegion: "TX",
-    postalCode: "77043",
-    addressCountry: "US",
+    streetAddress: "Block E2, WAPDA Town Phase 1",
+    addressLocality: "Lahore",
+    addressRegion: "Punjab",
+    addressCountry: "PK",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 29.8016,
-    longitude: -95.5788,
+    latitude: 31.4697,
+    longitude: 74.2728,
   },
-  hasMap: "https://www.google.com/maps/search/?api=1&query=2313+W+Sam+Houston+Pkwy+N+%23147+Houston+TX+77043",
+  hasMap: "https://www.google.com/maps/search/?api=1&query=MindWhiz+Block+E2+WAPDA+Town+Phase+1+Lahore",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "08:00",
-    closes: "18:00",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
   },
+  // Where we deliver services - this is what ties us to US buyer intent without
+  // claiming a US storefront. US organic/paid ranking comes from these plus the
+  // US-targeted page content, not from a local-pack listing.
   areaServed: [
     { "@type": "Country", name: "United States" },
     { "@type": "Country", name: "United Kingdom" },
@@ -123,11 +131,20 @@ const organizationJsonLd = {
   ],
   contactPoint: [
     {
+      // US sales line for American clients - a contact channel, not a location.
       "@type": "ContactPoint",
       telephone: "+1 (832) 900-4608",
       contactType: "sales",
       email: "info@mindwhiz.com",
-      areaServed: ["US", "GB", "PK"],
+      areaServed: ["US", "GB"],
+      availableLanguage: ["English"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+92 321 1116451",
+      contactType: "customer support",
+      email: "info@mindwhiz.com",
+      areaServed: ["PK", "US", "GB"],
       availableLanguage: ["English"],
     },
   ],
@@ -154,7 +171,7 @@ export default function RootLayout({
         {/* Google tag (gtag.js) */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -176,6 +193,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd) }}
         />
         <SmoothScroll>{children}</SmoothScroll>
+        <ScrollToTop />
       </body>
     </html>
   );

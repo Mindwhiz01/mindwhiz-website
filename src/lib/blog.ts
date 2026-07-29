@@ -192,6 +192,87 @@ export function getPost(slug: string): BlogPost | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
+// ---------------------------------------------------------------------------
+// Dynamic content. The static `posts` above are the seed/fallback set; the
+// admin dashboard adds more via Supabase. These async helpers merge the two so
+// public pages show both. Server-only (they touch the Supabase service role).
+// ---------------------------------------------------------------------------
+
+// Shape of a row in the Supabase `blog_posts` table.
+type BlogRow = {
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  category: string | null;
+  date: string;
+  read_time: string | null;
+  author_name: string | null;
+  author_role: string | null;
+  author_avatar: string | null;
+  image: string | null;
+  featured: boolean | null;
+  published: boolean | null;
+  body: BlogPost["body"] | null;
+};
+
+function rowToPost(r: BlogRow): BlogPost {
+  return {
+    slug: r.slug,
+    title: r.title,
+    excerpt: r.excerpt ?? "",
+    category: r.category ?? "Operations",
+    date: r.date,
+    readTime: r.read_time ?? "5 min read",
+    author: {
+      name: r.author_name ?? "MindWhiz Team",
+      role: r.author_role ?? "Editorial",
+      avatar: r.author_avatar ?? authors.team.avatar,
+    },
+    image: r.image ?? "",
+    featured: r.featured ?? false,
+    body: Array.isArray(r.body) ? r.body : [],
+  };
+}
+
+/** All posts: admin (Supabase, published) first, then static seeds, newest first. */
+export async function getAllPosts(): Promise<BlogPost[]> {
+  // Lazy server-only import so this module stays safe to import from anywhere.
+  const { getSupabase } = await import("@/lib/supabase");
+  const supabase = getSupabase();
+  if (!supabase) return [...posts].sort(byDateDesc);
+
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("published", true);
+
+  if (error || !data) return [...posts].sort(byDateDesc);
+
+  const dynamic = (data as BlogRow[]).map(rowToPost);
+  const dynamicSlugs = new Set(dynamic.map((p) => p.slug));
+  const merged = [...dynamic, ...posts.filter((p) => !dynamicSlugs.has(p.slug))];
+  return merged.sort(byDateDesc);
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  const { getSupabase } = await import("@/lib/supabase");
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("slug", slug)
+      .eq("published", true)
+      .maybeSingle();
+    if (data) return rowToPost(data as BlogRow);
+  }
+  return getPost(slug);
+}
+
+function byDateDesc(a: BlogPost, b: BlogPost): number {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+}
+
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
     year: "numeric",

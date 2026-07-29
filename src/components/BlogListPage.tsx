@@ -179,7 +179,11 @@ function NewsletterCta() {
   );
 }
 
-export default function BlogListPage() {
+export default function BlogListPage({
+  allPosts = posts,
+}: {
+  allPosts?: typeof posts;
+} = {}) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [category, setCategory] = useState<string>("All");
 
@@ -191,8 +195,11 @@ export default function BlogListPage() {
     localStorage.setItem("mw-theme", theme);
   }, [theme]);
 
-  const featured = useMemo(() => posts.find((p) => p.featured) ?? posts[0], []);
-  const rest = useMemo(() => posts.filter((p) => p.slug !== featured.slug), [featured]);
+  const featured = useMemo(() => allPosts.find((p) => p.featured) ?? allPosts[0], [allPosts]);
+  const rest = useMemo(
+    () => allPosts.filter((p) => p.slug !== featured.slug),
+    [allPosts, featured]
+  );
   const filtered = useMemo(
     () => (category === "All" ? rest : rest.filter((p) => p.category === category)),
     [category, rest]

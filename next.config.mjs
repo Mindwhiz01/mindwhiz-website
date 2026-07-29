@@ -28,7 +28,9 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self' https://*.leadconnectorhq.com https://*.msgsndr.com",
   "frame-ancestors 'none'",
-  "upgrade-insecure-requests",
+  // NB: `upgrade-insecure-requests` is intentionally omitted while the policy
+  // ships as Report-Only (the browser ignores it there and logs a console
+  // warning). Re-add it in the same commit that flips CSP_ENFORCE to true.
 ].join("; ");
 
 const securityHeaders = [

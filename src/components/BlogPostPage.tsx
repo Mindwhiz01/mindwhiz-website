@@ -64,7 +64,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         >
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.image} alt="" className="h-full w-full object-cover" />
+            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
           </div>
           <motion.div

@@ -13,22 +13,24 @@ import { useEffect, useRef } from "react";
 // `bg` can override the default light card for a logo that needs it.
 type ClientItem = { name: string; src?: string; bg?: string };
 
+// Logos are small WebP (~440px, a few KB each) resized to their display size;
+// the two that were already tiny stay as PNG (WebP made them larger).
 const clientsRow1: ClientItem[] = [
-  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo-light.png" },
-  { name: "Highland Redstone", src: "/clients/highland.png" },
+  { name: "Alpha Bravo Construction", src: "/clients/alpha-bravo-light.webp" },
+  { name: "Highland Redstone", src: "/clients/highland.webp" },
   { name: "Inovatiqa", src: "/clients/inovatiqa-light.png" },
-  { name: "Jerdoni", src: "/clients/jerdoni.png" },
-  { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
-  { name: "Villa Tech", src: "/clients/villa-tech-light.png" },
-  { name: "Advanced Clinical Research", src: "/clients/advanced-clinical-research.png" },
-  { name: "Mondok", src: "/clients/mondok.png" },
+  { name: "Jerdoni", src: "/clients/jerdoni.webp" },
+  { name: "Texas Diagnostic Labs", src: "/clients/texas.webp" },
+  { name: "Villa Tech", src: "/clients/villa-tech-light.webp" },
+  { name: "Advanced Clinical Research", src: "/clients/advanced-clinical-research.webp" },
+  { name: "Mondok", src: "/clients/mondok.webp" },
   { name: "Basil Pizza", src: "/clients/basil-pizza.png" },
-  { name: "Met Pakistan", src: "/clients/met-pakistan.png", bg: "#0d0d0d" },
-  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.png" },
-  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.png" },
-  { name: "Dr. Owais", src: "/clients/dr-owais.png" },
-  { name: "Ideal Smile", src: "/clients/ideal-smile.png" },
-  { name: "Maria Basit Malik", src: "/clients/maria-basit-malik.png" },
+  { name: "Met Pakistan", src: "/clients/met-pakistan.webp", bg: "#0d0d0d" },
+  { name: "Greenhouse Family Practice", src: "/clients/greenhouse.webp" },
+  { name: "Buddha's Herbs", src: "/clients/buddhas-herbs.webp" },
+  { name: "Dr. Owais", src: "/clients/dr-owais.webp" },
+  { name: "Ideal Smile", src: "/clients/ideal-smile.webp" },
+  { name: "Maria Basit Malik", src: "/clients/maria-basit-malik.webp" },
 ];
 const clientsRow2: ClientItem[] = [...clientsRow1].reverse();
 
@@ -54,6 +56,10 @@ function LogoChip({
         src={item.src}
         alt={item.name}
         draggable={false}
+        loading="lazy"
+        decoding="async"
+        width={210}
+        height={96}
         className="h-full w-full select-none object-contain"
       />
     </span>

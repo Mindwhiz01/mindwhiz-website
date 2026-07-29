@@ -1,7 +1,44 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import Script from "next/script";
+
+// Below-the-fold decorative video: only attach the source (and start loading
+// the ~3.8 MB file) once it scrolls near the viewport, so it never touches the
+// initial page load.
+function LazyVideo({ src, poster, className, title }: {
+  src: string;
+  poster: string;
+  className?: string;
+  title?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  useEffect(() => {
+    if (load) ref.current?.load();
+  }, [load]);
+  return (
+    <video ref={ref} title={title} className={className} autoPlay muted loop playsInline preload="none" poster={poster}>
+      {load && <source src={src} type="video/mp4" />}
+    </video>
+  );
+}
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -97,18 +134,12 @@ export default function ContactFormSection() {
           delay={0.1}
           className="relative hidden aspect-video min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white sm:flex lg:aspect-auto lg:h-full lg:min-h-0"
         >
-          <video
+          <LazyVideo
             title="Klickpin Video"
             className="h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-          >
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+            poster="/video-poster.jpg"
+            src="/video.mp4"
+          />
           {/* white wash overlay */}
           <div className="pointer-events-none absolute inset-0 bg-white/30" />
         </Reveal>

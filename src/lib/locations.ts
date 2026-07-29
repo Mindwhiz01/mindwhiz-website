@@ -18,24 +18,23 @@ export const locations: LocationContent[] = [
     slug: "us",
     code: "US",
     country: "United States",
-    city: "Houston, Texas",
+    city: "Nationwide",
     flag: "https://flagcdn.com/w80/us.png",
     heroImage:
       "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80",
-    tagline: "Our headquarters and North American delivery hub.",
+    tagline: "Dedicated teams for US businesses, in your time zone.",
     intro:
-      "MindWhiz is headquartered in Houston, Texas, serving clients across the United States and Canada with onshore account management and round the clock delivery.",
-    address: "2313 W Sam Houston Pkwy N #147, Houston, TX 77043, United States",
+      "MindWhiz serves clients across the United States and Canada with US-hours account management and round the clock delivery from our engineering hub in Lahore. You get a US point of contact and vetted talent without US salary and overhead.",
     timezone: "America/Chicago",
     highlights: [
       {
-        title: "Headquarters",
-        desc: "Executive leadership and client success teams based in Houston.",
+        title: "US-hours coverage",
+        desc: "Live overlap across Eastern, Central, and Pacific time, with 24/7 cover where you need it.",
         image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2000&q=80",
       },
       {
-        title: "Onshore accountability",
-        desc: "US based account managers who own delivery end to end.",
+        title: "US point of contact",
+        desc: "A dedicated account manager who owns delivery end to end for your team.",
         image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80",
       },
       {
@@ -85,9 +84,10 @@ export const locations: LocationContent[] = [
     flag: "https://flagcdn.com/w80/pk.png",
     heroImage:
       "https://images.unsplash.com/photo-1595426496987-37c7113b24a6?auto=format&fit=crop&w=1800&q=80",
-    tagline: "Our largest engineering and delivery hub.",
+    tagline: "Our head office and largest engineering hub.",
     intro:
-      "Lahore is home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
+      "Lahore is our head office and home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
+    address: "Block E2, WAPDA Town Phase 1, Lahore, Punjab, Pakistan",
     timezone: "Asia/Karachi",
     highlights: [
       {
@@ -114,7 +114,9 @@ export function getLocation(slug: string) {
   return locations.find((l) => l.slug === slug);
 }
 
-const SITE_URL = "https://mindwhiz.com";
+// Must match siteUrl in seo.config.ts / layout.tsx so the LocalBusiness
+// parentOrganization @id resolves to the same org node graph-wide.
+const SITE_URL = "https://www.mindwhiz.com";
 
 // Shared metadata + LocalBusiness builder so the three region pages
 // (/locations/us|uk|pk) don't hand-roll the same local-SEO boilerplate.

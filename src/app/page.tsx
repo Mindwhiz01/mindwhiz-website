@@ -1690,24 +1690,24 @@ function BlogSection() {
 
 const faqs: Faq[] = [
   {
-    q: "What services does MindWhiz provide?",
+    q: "What services does MindWhiz provide to US companies?",
     a: "Managed IT and cybersecurity, cloud and infrastructure, web development and digital marketing, and back office support across finance, HR, and construction estimation, plus staff augmentation when you need people rather than a project.",
   },
   {
-    q: "Do you work with businesses of our size?",
-    a: "We work with startups and small businesses through to established multisite companies. Pricing is per user and scales with headcount, so the service stays proportionate whether you are ten people or several hundred.",
+    q: "How much can US businesses save by outsourcing to MindWhiz?",
+    a: "Most US clients cut operating costs by 40 to 60 percent versus hiring in house, because pricing is per user and scales with headcount. You get vetted talent without US salary, benefits, and overhead, whether you are a ten person startup or a multisite company.",
   },
   {
-    q: "Can you extend our existing team instead of replacing it?",
-    a: "Yes, and that is the more common arrangement. Our people work inside your tools and processes under your direction, covering the hours, volume, or specialisms your team cannot sustain alone.",
+    q: "Do your teams work in US time zones (EST, CST, PST)?",
+    a: "Yes. Coverage is aligned to your working hours with live overlap for US teams across Eastern, Central, and Pacific time, and continuous 24/7 cover available where operations require it. Your team gets a US point of contact.",
   },
   {
-    q: "Which time zones and regions do you cover?",
-    a: "Coverage is aligned to your working hours, with live overlap for UK and US teams and continuous cover available where operations require it.",
+    q: "Is my data secure and are you SOC 2 and HIPAA aware?",
+    a: "Yes. We operate to SOC 2 and ISO 27001 aligned controls, with HIPAA aware handling for healthcare clients. Access, monitoring, and data protection are built into every engagement and reviewed during onboarding.",
   },
   {
-    q: "How do we get started?",
-    a: "Book a free consultation. We review your current situation, identify the gaps, and come back with a scoped plan, clear pricing, and a practical next step, with no obligation to proceed.",
+    q: "How fast can we get started and how does pricing work?",
+    a: "Book a free consultation and we come back with a scoped plan and clear per user pricing, usually within one US business day. Most staff augmentation roles are deployed in about 10 days, with no long hiring cycles and no obligation to proceed.",
   },
 ];
 
@@ -1716,14 +1716,27 @@ export default function SystemLimitedHome() {
   const heroTextY = useTransform(scrollY, [0, 600], [0, 120]);
   const heroFade = useTransform(scrollY, [0, 480], [1, 0]);
 
-  const container: Variants = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-  };
-  const item: Variants = {
-    hidden: { opacity: 0, y: 26 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-  };
+  // The hero background video is ~8.5 MB. On phones we never load it (the
+  // poster + gradient look identical), and on desktop we mount it only after
+  // the page is idle, so it never competes with LCP or critical resources.
+  const heroBelowSm = useBelowSm();
+  const [mountHeroVideo, setMountHeroVideo] = useState(false);
+  useEffect(() => {
+    if (heroBelowSm) {
+      setMountHeroVideo(false);
+      return;
+    }
+    const w = window as unknown as {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const start = () => setMountHeroVideo(true);
+    const id = w.requestIdleCallback ? w.requestIdleCallback(start, { timeout: 2500 }) : window.setTimeout(start, 1500);
+    return () => {
+      if (w.requestIdleCallback && w.cancelIdleCallback) w.cancelIdleCallback(id);
+      else clearTimeout(id);
+    };
+  }, [heroBelowSm]);
 
   const [theme, setTheme] = useState<"light" | "dark">("light");
   useEffect(() => {
@@ -1744,28 +1757,37 @@ export default function SystemLimitedHome() {
       {/* ===================== 1 · HERO (single video banner) ===================== */}
       <section data-header-dark className="relative mb-10 flex h-[calc(var(--svh)*100)] min-h-[640px] items-center justify-start overflow-hidden bg-white">
         <div className="absolute inset-[10px] overflow-hidden rounded-3xl">
-          <video autoPlay muted loop playsInline preload="metadata" className="h-full w-full object-cover">
-            <source src="/alphabravo-company-profile.webm" type="video/webm" />
-            <source src="/alphabravo-company-profile-compressed.mp4" type="video/mp4" />
-          </video>
+          {/* The poster is a real <img> with fetchPriority=high, so it is the
+              LCP element (discoverable in HTML + prioritized) instead of the
+              video. The muted autoplay video lazy-loads on top and covers the
+              poster once it starts playing. webm source dropped: it was larger
+              (~14 MB) than the compressed mp4 (~8.5 MB). */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hero-poster.jpg" alt="" aria-hidden fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          {mountHeroVideo && (
+            <video autoPlay muted loop playsInline preload="none" className="absolute inset-0 h-full w-full object-cover">
+              <source src="/alphabravo-company-profile-compressed.mp4" type="video/mp4" />
+            </video>
+          )}
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#383838]" />
         </div>
 
+        {/* Above-the-fold hero content is plain HTML (not framer-motion
+            variants) so it is fully visible in the server-rendered markup and
+            paints immediately for FCP/LCP, instead of waiting opacity:0 for JS
+            to hydrate on a slow phone. The outer wrapper keeps the scroll
+            parallax only (heroFade starts at 1 = visible). */}
         <motion.div
           style={{ y: heroTextY, opacity: heroFade }}
-          variants={container}
-          initial="hidden"
-          animate="show"
           className="relative max-w-5xl px-6 pt-16 text-left sm:px-10 lg:px-16"
         >
-          <motion.div variants={item}>
+          <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur">
               {hero.eyebrow}
             </span>
-          </motion.div>
-          <motion.h1
-            variants={item}
+          </div>
+          <h1
             className="mt-6 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-white"
             style={{ fontFamily: "var(--font-display)" }}
           >
@@ -1778,11 +1800,11 @@ export default function SystemLimitedHome() {
               interval={2200}
               className="text-[#9CCC3C]"
             />
-          </motion.h1>
-          <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-start gap-4">
+          </h1>
+          <div className="mt-9 flex flex-wrap items-center justify-start gap-4">
             <ArrowCta href={hero.primaryCta.href} label={hero.primaryCta.label} />
             <Cta href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="outline" />
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 

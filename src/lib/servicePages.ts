@@ -151,24 +151,24 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Is the helpdesk really staffed 24/7, including weekends and holidays?",
+        q: "How much do outsourced IT helpdesk services cost in the USA?",
+        a: "Outsourced IT helpdesk pricing is a fixed monthly cost per user, so budgeting stays predictable as your team changes. The service scales with headcount and business growth, with no hidden fees or surprise charges for busy months. We scope exact pricing once we know your user count and SLA targets.",
+      },
+      {
+        q: "Do you offer white-label IT helpdesk services for MSPs?",
+        a: "Yes. Our 24/7 IT helpdesk can run fully white-labelled under your brand, so MSPs and IT providers can offer round-the-clock Tier 1 to Tier 3 support to their own clients without staffing an overnight desk. We operate inside your ticketing and processes as an extension of your team.",
+      },
+      {
+        q: "Is the outsourced helpdesk really staffed 24/7, including weekends and holidays?",
         a: "Yes. Coverage runs continuously rather than on limited business hours, so a request raised overnight or on a holiday reaches a real engineer the same way it would midweek. Target first response is within 15 minutes.",
       },
       {
-        q: "What is the difference between Tier 1, Tier 2, and Tier 3 support?",
+        q: "What is the difference between Tier 1, Tier 2, and Tier 3 IT support?",
         a: "Tier 1 handles the everyday volume, access and password issues, device setup, and common application faults. Tier 2 takes deeper operating system, configuration, and connectivity troubleshooting. Tier 3 covers complex escalations, root cause analysis, and vendor coordination, so tickets do not stall at the first person who picks them up.",
       },
       {
-        q: "How does pricing work?",
-        a: "A fixed monthly cost per user, so budgeting stays predictable as your team changes. The service scales with headcount and business growth, with no hidden fees or surprise charges for busy months.",
-      },
-      {
-        q: "Can you work with the ticketing and IT tools we already use?",
-        a: "In most cases yes, we plug into your existing service desk, asset, and monitoring tools rather than forcing a migration. Where you do not have a platform in place, we can bring ours and hand over full access.",
-      },
-      {
-        q: "What does onboarding involve before support goes live?",
-        a: "It starts with a consultation and needs assessment covering your current environment, pain points, and SLA targets. From there we build a customized support plan with defined escalation paths, documentation, and reporting cadence before the first ticket is ever routed to us.",
+        q: "Can outsourced IT support work with the ticketing tools we already use?",
+        a: "In most cases yes, we plug into your existing service desk, asset, and monitoring tools rather than forcing a migration. Where you do not have a platform in place, we can bring ours and hand over full access. Onboarding starts with a needs assessment covering your environment, pain points, and SLA targets.",
       },
     ],
     finalCta: {
@@ -270,24 +270,24 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What does the NOC actually monitor?",
-        a: "Servers, network devices, connectivity, core services, and the availability and performance signals that tell you something is degrading. Thresholds and alert rules are tuned to your environment during onboarding rather than left at vendor defaults.",
+        q: "What does an outsourced NOC monitor?",
+        a: "An outsourced NOC monitors servers, network devices, connectivity, core services, and the availability and performance signals that tell you something is degrading. Thresholds and alert rules are tuned to your environment during onboarding rather than left at vendor defaults.",
       },
       {
-        q: "Do you only send alerts, or do you resolve issues too?",
-        a: "Both. Routine and well understood conditions are actioned against agreed playbooks so they are fixed rather than forwarded. Anything outside that scope is escalated to your team with the diagnostic context already gathered.",
+        q: "How much do outsourced NOC monitoring services cost?",
+        a: "NOC monitoring is priced on the size and complexity of your environment, the number of devices and services under watch, and the response targets you need, then billed as a predictable monthly fee. It costs far less than staffing a 24/7 network operations center in house. Ask for a scoped quote.",
       },
       {
-        q: "How quickly is an alert picked up?",
-        a: "The NOC is staffed continuously, so alerts are triaged as they arrive rather than queued until the next working day. Priority and response targets for each alert class are agreed with you up front.",
+        q: "Do you provide white-label NOC support for MSPs?",
+        a: "Yes. Our 24/7 NOC can run white-labelled for MSPs and IT providers, so you can offer outsourced network operations to your own clients under your brand. Routine conditions are actioned against agreed playbooks; anything outside scope is escalated with diagnostic context already gathered.",
       },
       {
-        q: "Will this replace the monitoring tools we already run?",
-        a: "Not necessarily. We can operate the stack you already own, extend it where there are blind spots, or stand up monitoring from scratch if you have none. The goal is coverage, not a tooling change for its own sake.",
+        q: "How quickly is a NOC alert picked up?",
+        a: "The NOC is staffed continuously, so alerts are triaged as they arrive rather than queued until the next working day. Priority and response targets for each alert class are agreed with you up front, and you get regular reporting on incidents, response times and recurring faults.",
       },
       {
-        q: "How do we see what the NOC has been doing?",
-        a: "You get regular reporting on incidents, response times, recurring faults, and trends, so the value is visible and repeat problems get engineered out instead of quietly absorbed.",
+        q: "Will outsourced NOC monitoring replace the tools we already run?",
+        a: "Not necessarily. We can operate the monitoring stack you already own, extend it where there are blind spots, or stand up monitoring from scratch if you have none. The goal is coverage, not a tooling change for its own sake.",
       },
     ],
     finalCta: {
@@ -349,23 +349,23 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What is included in IT asset management?",
-        a: "A maintained inventory of hardware and software across the business, what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
+        q: "What is included in IT asset management services?",
+        a: "IT asset management services maintain a live inventory of hardware and software across the business, what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
       },
       {
-        q: "Can you support remote and hybrid staff?",
+        q: "Do you provide remote desktop support for remote and hybrid staff?",
         a: "Yes. Remote desktop support is built for distributed teams, so a laptop at home or on the road is supported the same way as a machine in the office, without waiting for someone to be on site.",
       },
       {
-        q: "How is remote access to our machines secured?",
-        a: "Access is controlled, authenticated, and logged, with sessions run under agreed permissions rather than standing administrative access. Delivery is aligned to SOC 2 and ISO 27001 practices.",
+        q: "How is remote desktop access to our machines secured?",
+        a: "Remote access is controlled, authenticated, and logged, with sessions run under agreed permissions rather than standing administrative access. Delivery is aligned to SOC 2 and ISO 27001 practices.",
       },
       {
-        q: "Do you handle software licensing and renewals?",
+        q: "Do IT asset management services handle software licensing and renewals?",
         a: "Yes. Licences are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal, which usually surfaces spend that can be reclaimed.",
       },
       {
-        q: "Can you manage employee onboarding and offboarding?",
+        q: "Can you manage employee onboarding and device offboarding?",
         a: "Yes. New starters can be issued a configured device with the right access from day one, and leavers can have accounts, licences, and equipment recovered on a defined checklist so nothing stays open after they go.",
       },
     ],
@@ -429,20 +429,20 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Which cloud platforms do you support?",
-        a: "The major providers, AWS, Azure, and Google Cloud, along with hybrid setups where part of the estate stays on premises. We work in whichever platform you have already committed to.",
+        q: "Which cloud platforms do you manage (AWS, Azure, Google Cloud)?",
+        a: "Cloud infrastructure management covers the major providers, AWS, Azure, and Google Cloud, along with hybrid setups where part of the estate stays on premises. We work in whichever platform you have already committed to.",
       },
       {
-        q: "Can you help reduce what we spend on cloud?",
-        a: "Usually, yes. Cost review is part of ongoing management: right sizing overprovisioned resources, removing orphaned storage and idle instances, and matching commitment models to actual usage. Savings depend on how the estate is currently configured.",
+        q: "Can outsourced cloud management reduce our AWS or Azure bill?",
+        a: "Usually, yes. Cost control is part of ongoing cloud management: right sizing overprovisioned resources, removing orphaned storage and idle instances, and matching commitment models to actual usage. How much you save depends on how the estate is currently configured.",
       },
       {
-        q: "Do you handle migration from on premises infrastructure?",
-        a: "Yes. Migrations are planned in stages with defined rollback points rather than moved in a single cutover, so workloads transition without taking the business offline.",
+        q: "Do you handle cloud migration from on-premises infrastructure?",
+        a: "Yes. Cloud migrations are planned in stages with defined rollback points rather than moved in a single cutover, so workloads transition without taking the business offline.",
       },
       {
-        q: "How are backups and disaster recovery handled?",
-        a: "Backup schedules, retention, and recovery targets are agreed with you and then tested rather than assumed. The point of a recovery plan is that it has been exercised before you need it.",
+        q: "How are cloud backups and disaster recovery handled?",
+        a: "Backup schedules, retention, and recovery targets are agreed with you and then tested rather than assumed. The point of a disaster recovery plan is that it has been exercised before you need it.",
       },
       {
         q: "Who owns our cloud accounts and data?",
@@ -510,19 +510,19 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "Do you support on premises, cloud, and hybrid environments?",
-        a: "Yes. Most environments are a mix, and administration covers physical servers, virtualized workloads, and cloud instances under one arrangement rather than splitting responsibility across providers.",
+        q: "What does server and network administration outsourcing include?",
+        a: "Server and network administration outsourcing covers physical servers, virtualized workloads, and cloud instances under one arrangement, plus firewall, VPN, segmentation and network monitoring, so responsibility is not split across providers. Most environments are a mix of on-premises, cloud, and hybrid, and all are supported.",
       },
       {
-        q: "How do you handle patching without disrupting the business?",
+        q: "How do you patch servers without disrupting the business?",
         a: "Patching runs on an agreed schedule inside maintenance windows that suit your operating hours, with critical security updates handled on a faster track. Changes are staged and reversible.",
       },
       {
-        q: "What network security is covered?",
+        q: "What network security is covered by outsourced network administration?",
         a: "Firewall configuration and review, VPN and remote access, segmentation, and monitoring of the network layer for faults and suspicious activity, maintained continuously rather than set once at install.",
       },
       {
-        q: "Can you take over from our current provider?",
+        q: "Can you take over server and network management from our current provider?",
         a: "Yes. Transitions start with an audit of the existing estate and documentation of what is actually running, so nothing is lost in handover before we assume day to day responsibility.",
       },
       {
@@ -588,20 +588,20 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What counts as an endpoint?",
-        a: "Any device that connects to your environment and can be used to reach your data, laptops, desktops, servers, and mobile devices, whether they sit in an office or with a remote employee.",
+        q: "What do managed endpoint security services include?",
+        a: "Managed endpoint security services protect every device that can reach your data, laptops, desktops, servers, and mobile devices, in the office or with remote staff, with EDR monitoring, patch management, encryption and device control across the whole fleet.",
       },
       {
-        q: "Does this replace the antivirus we already have?",
-        a: "Often it extends it. Traditional antivirus matches known threats; endpoint protection adds behavioural detection, response, and visibility across the fleet. Where your existing tool is capable, we manage it rather than rip it out.",
+        q: "Do you offer patch management outsourcing?",
+        a: "Yes. Patch management outsourcing keeps operating systems and applications current on an agreed schedule, with critical security updates fast-tracked, so the known vulnerabilities attackers rely on are closed without your team chasing updates device by device.",
+      },
+      {
+        q: "Does managed EDR replace the antivirus we already have?",
+        a: "Often it extends it. Traditional antivirus matches known threats; managed EDR adds behavioural detection, response, and visibility across the fleet. Where your existing tool is capable, we manage it rather than rip it out.",
       },
       {
         q: "What happens when a threat is detected on a device?",
         a: "The device can be isolated to stop lateral movement, the threat is investigated and removed, and the device is restored to a known good state, with a record of what happened and what changed.",
-      },
-      {
-        q: "Can you support employee owned or BYOD devices?",
-        a: "Yes, within policies agreed with you. Controls can be scoped to business data and applications so personal devices are protected where it matters without taking blanket control of the whole device.",
       },
       {
         q: "Does endpoint security help with our compliance requirements?",
@@ -668,15 +668,15 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What does a DevOps engagement typically include?",
-        a: "Build and release pipelines, infrastructure as code, containerization and orchestration, environment consistency, and the monitoring that tells you whether a release actually behaved. Scope is set against where your delivery is currently slowest.",
+        q: "What does an outsourced DevOps engagement typically include?",
+        a: "An outsourced DevOps engagement covers build and release pipelines, infrastructure as code, containerization and orchestration, environment consistency, and the monitoring that tells you whether a release actually behaved. Scope is set against where your delivery is currently slowest.",
       },
       {
-        q: "Which tools do you work with?",
+        q: "Which DevOps and CI/CD tools do you work with?",
         a: "The mainstream ecosystem, Git based CI/CD, Docker and Kubernetes, Terraform, and the native tooling in AWS, Azure, and Google Cloud. We work with what your team already knows unless there is a clear reason to change.",
       },
       {
-        q: "Can you improve our existing pipeline instead of rebuilding it?",
+        q: "Can you improve our existing CI/CD pipeline instead of rebuilding it?",
         a: "Usually that is the better path. We audit what you have, fix the parts that cause failed or slow releases, and rebuild only where the existing setup cannot be made reliable.",
       },
       {
@@ -750,24 +750,24 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "What is being monitored, and how?",
-        a: "Logs and security signals from endpoints, servers, network devices, and cloud services are collected centrally and correlated, so activity that looks harmless in isolation is caught when it forms a pattern. Monitoring runs continuously.",
+        q: "What is the difference between SOC monitoring and MDR (managed detection and response)?",
+        a: "Managed SOC monitoring collects and correlates logs and security signals from endpoints, servers, network devices, and cloud services around the clock, so activity that looks harmless in isolation is caught when it forms a pattern. MDR adds the response side, containing and remediating confirmed threats, not just alerting you to them. We deliver both as one continuous service.",
       },
       {
-        q: "What happens when an incident is detected?",
+        q: "How much does managed SOC monitoring cost in the USA?",
+        a: "Managed SOC and MDR pricing scales with the number of endpoints, servers and log sources monitored and the response level you need, billed monthly. It is a fraction of the cost of building a 24/7 in-house security operations center. Ask for a scoped quote against your environment.",
+      },
+      {
+        q: "Do you offer SOC as a service for MSPs?",
+        a: "Yes. Our SOC as a service can run behind an MSP's brand, giving your clients 24/7 threat detection, incident triage and response without you standing up your own analyst team. We extend your internal security capacity by covering the hours and alert volume it cannot sustain.",
+      },
+      {
+        q: "What happens when a security incident is detected?",
         a: "It is triaged and validated first to avoid acting on noise, then contained according to an agreed response plan, investigated for scope and root cause, and reported to you with what was affected and what was done.",
       },
       {
-        q: "Do you help with compliance frameworks?",
+        q: "Does managed SOC monitoring help with SOC 2 and compliance?",
         a: "Yes. Delivery is aligned to SOC 2 and ISO 27001 practices, and the monitoring, logging, and incident records the service produces are the evidence auditors typically ask for. We support your compliance programme rather than certify it on your behalf.",
-      },
-      {
-        q: "Do you replace our internal security team?",
-        a: "Only if you want us to. More often we extend an internal team by covering the hours and the alert volume they cannot sustain, and by handling the first line of triage so their time goes to the incidents that matter.",
-      },
-      {
-        q: "How is this reported back to us?",
-        a: "Regular reporting covers incidents raised, how they were resolved, response times, and the trends worth acting on, written to be read by both technical staff and management.",
       },
     ],
     finalCta: {
@@ -847,23 +847,23 @@ export const servicePages: ServicePageContent[] = [
     ],
     faqs: [
       {
-        q: "How is this different from outsourcing a project?",
-        a: "You are adding people to your team, not handing over a deliverable. Augmented staff work inside your processes, tools, and standups, and you direct their priorities day to day.",
+        q: "How is IT staff augmentation different from outsourcing a project?",
+        a: "With IT staff augmentation you are adding people to your team, not handing over a deliverable. Augmented staff work inside your processes, tools, and standups, and you direct their priorities day to day, while we handle employment, payroll, and retention.",
       },
       {
-        q: "How quickly can someone start?",
-        a: "It depends on the role and seniority, but the model exists to move faster than a direct hire, candidates are matched from an existing bench rather than recruited from scratch. We give you a realistic timeline once the role is scoped.",
+        q: "How much does IT staff augmentation cost in the USA?",
+        a: "Staff augmentation is billed as a predictable monthly rate per person, set by role and seniority, with no recruitment fees or long-term hiring overhead. Offshore engineers deliver US-hours coverage at a fraction of a local salary. We quote exact rates once the role is scoped.",
       },
       {
-        q: "Who manages the person day to day?",
-        a: "You do. We handle employment, payroll, and retention; you handle direction and priorities, the same as with any member of your team.",
+        q: "How quickly can an augmented engineer start?",
+        a: "The model exists to move faster than a direct hire, candidates are matched from an existing bench rather than recruited from scratch, so many roles start in about 10 days. We give you a realistic timeline once the role is scoped.",
       },
       {
-        q: "What time zones can you cover?",
-        a: "Coverage can be aligned to your working hours, including overlap with UK and US teams, so collaboration happens live rather than through overnight handoffs.",
+        q: "Do you offer offshore staff augmentation for US companies and startups?",
+        a: "Yes. Offshore staffing solutions for US companies and startups are the core of what we do: vetted remote engineers and specialists aligned to your working hours, including overlap with US and UK teams, so collaboration happens live rather than through overnight handoffs.",
       },
       {
-        q: "What if someone is not the right fit?",
+        q: "What if an augmented team member is not the right fit?",
         a: "Tell us early. Replacement is part of the arrangement, and the terms for it are agreed before an engagement starts so there is no dispute about it later.",
       },
     ],

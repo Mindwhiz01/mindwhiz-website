@@ -739,15 +739,15 @@ function ScrollManifestoSection() {
 
 const faqs: Faq[] = [
   {
-    q: "Which digital marketing services do you run?",
-    a: "Paid search, paid social, and retargeting; technical SEO and content systems; landing pages and conversion work; and email, nurturing, and marketing automation, run against acquisition goals rather than vanity metrics.",
+    q: "What does digital marketing outsourcing include (SEO, PPC, CRO)?",
+    a: "Digital marketing outsourcing covers paid search and Google Ads, paid social and retargeting, technical SEO and content, conversion rate optimization and landing pages, and email, nurturing and marketing automation, run against acquisition goals rather than vanity metrics.",
   },
   {
-    q: "How soon will we see results?",
-    a: "Paid channels can produce measurable data within weeks, while SEO and content compound over months. We set the expected curve per channel up front so performance is judged against a realistic timeline.",
+    q: "How soon do outsourced SEO and PPC show results?",
+    a: "Paid channels like Google Ads can produce measurable data within weeks, while SEO and content compound over months. We set the expected curve per channel up front so performance is judged against a realistic timeline.",
   },
   {
-    q: "How is performance measured and reported?",
+    q: "How is marketing performance measured and reported?",
     a: "Against clean acquisition goals agreed at the start, cost per acquisition, pipeline, and revenue rather than impressions. Tracking and analytics are configured properly before spend scales, so the numbers can be trusted.",
   },
   {
@@ -755,7 +755,7 @@ const faqs: Faq[] = [
     a: "Yes. We work with what you have and flag where the site or messaging is limiting results. Where landing pages are the bottleneck, we can build them.",
   },
   {
-    q: "Do you require a long term contract?",
+    q: "Do outsourced marketing services require a long-term contract?",
     a: "Terms are agreed up front and kept clear, including notice and how to exit. Performance work should be retained on results, not on contract length.",
   },
 ];
@@ -788,7 +788,7 @@ export default function ServicePageClient() {
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               aria-hidden
               style={{ width: "calc(var(--vh) * 100)", height: "calc(var(--vw) * 100)" }}
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[270deg] object-cover mix-blend-luminosity"
