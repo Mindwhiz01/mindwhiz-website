@@ -139,40 +139,19 @@ export default function ContactFormSection() {
           <ContactForm />
         </Reveal>
 
-        {/* CTA section - right (hidden on mobile) */}
+        {/* klickpin video - right (hidden on mobile) */}
         <Reveal
           delay={0.1}
-          className="relative hidden flex-col items-start justify-center rounded-2xl border border-slate-200 bg-gradient-to-br from-[#9CCC3C]/10 to-[#ed1164]/10 p-8 sm:flex lg:h-full"
+          className="relative hidden aspect-video min-h-[240px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-white sm:flex lg:aspect-auto lg:h-full lg:min-h-0"
         >
-          <div>
-            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#9CCC3C]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
-              Ready to scale?
-            </div>
-            <h3
-              className="mt-6 text-2xl font-extrabold leading-tight text-black lg:text-3xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Get in touch
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-black/70">
-              Build your hybrid team now. Fill out the form and a MindWhiz specialist will get back to you within one business day.
-            </p>
-            <div className="mt-8 space-y-3">
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-5 w-5 shrink-0 text-[#9CCC3C]">✓</span>
-                <span className="text-sm font-medium text-black">No long-term contracts</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-5 w-5 shrink-0 text-[#9CCC3C]">✓</span>
-                <span className="text-sm font-medium text-black">24-hour response time</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="mt-1 h-5 w-5 shrink-0 text-[#9CCC3C]">✓</span>
-                <span className="text-sm font-medium text-black">Free consultation</span>
-              </div>
-            </div>
-          </div>
+          <LazyVideo
+            title="Klickpin Video"
+            className="h-full w-full object-cover"
+            poster="/video-poster.jpg"
+            src="/video.mp4"
+          />
+          {/* white wash overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-white/30" />
         </Reveal>
       </div>
     </section>
