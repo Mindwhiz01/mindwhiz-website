@@ -25,14 +25,14 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/": {
     title: "IT Outsourcing & Staff Augmentation Company USA | MindWhiz",
     description:
-      "MindWhiz is a US IT outsourcing and staff augmentation company: offshore engineers and BPO teams for IT, security, finance and ops. Cut costs 60%. Free quote.",
+      "Offshore IT staffing for US companies: save 60% on IT, security & operations. 10-day deployment, 99.8% retention. 65+ vetted engineers. Get a free consultation today.",
   },
 
   // --- Services ---
   "/services/it-helpdesk-24-7": {
     title: "White-Label 24/7 IT Helpdesk Services USA | MindWhiz",
     description:
-      "Outsourced 24/7 IT helpdesk for US MSPs and businesses: Tier 1-3 support, 15-minute response, white-label ready and fixed per-user pricing. Book a free review.",
+      "White-label 24/7 IT helpdesk for US MSPs: $6-12/user/month, Tier 1-3 support, 15-min response. Cut support costs 50%. Free helpdesk cost analysis—no commitment.",
   },
   "/services/noc-monitoring": {
     title: "Outsourced 24/7 NOC Monitoring Services USA | MindWhiz",
@@ -42,7 +42,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/services/cybersecurity-monitoring": {
     title: "Managed SOC & MDR Monitoring Services USA | MindWhiz",
     description:
-      "Managed SOC and MDR monitoring for US businesses and MSPs: certified analysts, 24/7 threat detection and incident response, SOC 2-aligned. Ask for SOC pricing.",
+      "Managed SOC & MDR for US companies: GIAC-certified analysts, 24/7 threat detection, incident response. $1500-3000/month. Free security risk assessment.",
   },
   "/services/cloud-infrastructure": {
     title: "Cloud Infrastructure Management USA, AWS & Azure | MindWhiz",
@@ -72,7 +72,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/services/staff-augmentation": {
     title: "IT Staff Augmentation & Offshore Teams USA | MindWhiz",
     description:
-      "IT staff augmentation and offshore staffing for US companies: hire vetted remote engineers in about 10 days, at lower cost. Scale anytime. Get in touch.",
+      "Hire vetted offshore engineers in 10 days: 50-60% cheaper than US hiring, no benefits/payroll overhead. Hire Python, DevOps, QA engineers. Free team assessment.",
   },
 
   // --- Services (standalone pages under /services) ---
@@ -97,9 +97,26 @@ export const SEO_MAP: Record<string, SeoEntry> = {
       "Outsourced construction estimating for US contractors: quantity takeoffs, bid prep and cost planning by expert estimators. Bid more, win more. Free takeoff.",
   },
   "/web-services": {
-    title: "Web Development & Website Management Services USA | MindWhiz",
+    title: "Custom Web Development, Web Apps & Ecommerce | MindWhiz",
     description:
-      "Custom web development and website management for US businesses: sites, web apps, ecommerce and ongoing maintenance from dedicated devs. Request a free quote.",
+      "Custom web development for growing businesses — high-performance websites, web apps, dashboards and ecommerce built to convert. Request a free quote today.",
+  },
+
+  // --- Comparison & Pricing ---
+  "/pricing": {
+    title: "IT Outsourcing Pricing 2026 | MindWhiz",
+    description:
+      "See exact IT staffing costs: helpdesk ($6-15/user), SOC ($1500-3000), engineers ($3500-6500). USA pricing with no hidden fees. Get free quote.",
+  },
+  "/comparison": {
+    title: "Staff Augmentation vs Outsourcing vs Managed Services | MindWhiz",
+    description:
+      "Compare staffing models: staff augmentation (you direct), outsourcing (vendor owns outcome), managed services (24/7 ops). Which is right for USA companies?",
+  },
+  "/usa-it-helpdesk": {
+    title: "Outsourced 24/7 IT Helpdesk for US Companies | MindWhiz",
+    description:
+      "White-label IT helpdesk for USA MSPs & businesses: $6-12/user/month, 15-min response, Tier 1-3 support. Cut IT costs 50%. Free helpdesk assessment.",
   },
 
   // --- Industries ---
@@ -183,7 +200,7 @@ export const SEO_MAP: Record<string, SeoEntry> = {
   "/contact": {
     title: "Contact MindWhiz | Free Quote in 1 Business Day",
     description:
-      "Tell us what you are trying to achieve and a MindWhiz specialist replies within one US business day with a scoped plan and clear pricing. Contact us today.",
+      "Get a free IT staffing or outsourcing quote in 24 hours. No pressure consultation with MindWhiz experts. See exact pricing for your needs. Book your free call.",
   },
 
   // --- Locations ---

@@ -33,10 +33,10 @@ export const nav = [
 
 export const hero = {
   eyebrow: "Hybrid Staffing · Staff Augmentation · BPO",
-  title: "Empowering businesses with hybrid staffing, staff augmentation & BPO",
+  title: "Save 60% on IT staffing. Deploy in 10 days.",
   subtitle:
-    "Flexible talent, scalable teams, global impact. Get vetted engineers, 24/7 operations coverage, and delivery focused support across IT, security, and business operations, built for speed, reliability, and enterprise trust.",
-  primaryCta: { label: "Get in touch", href: "#contact" },
+    "Hire vetted offshore engineers, get 24/7 operations coverage, and offshore BPO support across IT, security, and business operations. 99.8% retention. No hiring fees or benefits overhead. Scale anytime.",
+  primaryCta: { label: "Get free consultation", href: "#contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
 
