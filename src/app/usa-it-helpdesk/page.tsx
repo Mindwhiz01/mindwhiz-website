@@ -63,7 +63,7 @@ export default function USAHelpdesk() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader theme="dark" />
       <div className="bg-white">
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-r from-[#1c1d21] via-[#383838] to-[#2a2b2f] px-6 py-24 text-white sm:px-8">

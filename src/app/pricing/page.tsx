@@ -76,7 +76,7 @@ export default function PricingPage() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader theme="light" />
       <div className="bg-white">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-[#EEEEEE] to-white px-6 py-20 sm:px-8">
