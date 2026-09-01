@@ -102,23 +102,6 @@ export const SEO_MAP: Record<string, SeoEntry> = {
       "Custom web development for growing businesses — high-performance websites, web apps, dashboards and ecommerce built to convert. Request a free quote today.",
   },
 
-  // --- Comparison & Pricing ---
-  "/pricing": {
-    title: "IT Outsourcing Pricing 2026 | MindWhiz",
-    description:
-      "See exact IT staffing costs: helpdesk ($6-15/user), SOC ($1500-3000), engineers ($3500-6500). USA pricing with no hidden fees. Get free quote.",
-  },
-  "/comparison": {
-    title: "Staff Augmentation vs Outsourcing vs Managed Services | MindWhiz",
-    description:
-      "Compare staffing models: staff augmentation (you direct), outsourcing (vendor owns outcome), managed services (24/7 ops). Which is right for USA companies?",
-  },
-  "/usa-it-helpdesk": {
-    title: "Outsourced 24/7 IT Helpdesk for US Companies | MindWhiz",
-    description:
-      "White-label IT helpdesk for USA MSPs & businesses: $6-12/user/month, 15-min response, Tier 1-3 support. Cut IT costs 50%. Free helpdesk assessment.",
-  },
-
   // --- Industries ---
   "/industries/information-technology": {
     title: "Managed IT & Staffing Services for Tech Companies | MindWhiz",
