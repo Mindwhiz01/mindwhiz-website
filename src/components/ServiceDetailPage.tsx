@@ -736,6 +736,17 @@ export default function ServiceDetailPage({
     ],
     serviceType: page.name,
     url: canonicalUrl,
+    // The capability deck is the page's real description of what is on offer.
+    // Publishing it as an offer catalog gives search and AI answer engines an
+    // itemised, quotable view of the service instead of one hero sentence.
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${page.name} capabilities`,
+      itemListElement: page.capabilities.map((c) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: c.title, description: c.desc },
+      })),
+    },
   };
 
   const breadcrumbJsonLd = {
@@ -905,6 +916,39 @@ export default function ServiceDetailPage({
       {showCredentials && <CredentialsSection />}
 
       {page.faqs?.length ? <FaqSection faqs={page.faqs} /> : null}
+
+      {/* Pillar -> cluster links. Guides that support this page's target
+          keyword, linked with descriptive anchors so the topical cluster is
+          explicit to crawlers and to AI answer engines. */}
+      {page.relatedReading?.length ? (
+        <section className="bg-slate-50 py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <Kicker>Further reading</Kicker>
+            <h2
+              className="mt-4 text-3xl font-extrabold uppercase tracking-tight text-black sm:text-4xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Guides on {page.name.toLowerCase()}
+            </h2>
+            <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+              {page.relatedReading.map((r) => (
+                <li key={r.href}>
+                  <Link
+                    href={r.href}
+                    className="group flex h-full flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-[#ed1164]"
+                  >
+                    <span className="flex items-start justify-between gap-4">
+                      <span className="text-base font-semibold text-black">{r.title}</span>
+                      <ArrowUpRight className="h-5 w-5 shrink-0 text-[#ed1164] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </span>
+                    <span className="text-sm text-slate-600">{r.desc}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
 
       {/* Contextual internal links to related services/industries with
           descriptive, keyword-rich anchor text (internal-linking / SEO). */}

@@ -62,6 +62,7 @@ import {
   certifications,
   footerGroups,
 } from "@/lib/content";
+import { posts } from "@/lib/blog";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import TrustedByClients from "@/components/TrustedByClients";
@@ -71,6 +72,7 @@ import GrowSection from "@/components/GrowSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import ContactFormSection from "@/components/ContactFormSection";
 import ClientsSection from "@/components/ClientsSection";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import ParticleBackground from "@/components/ParticleBackground";
 import { useBelowSm } from "@/lib/useBelowSm";
 
@@ -104,51 +106,19 @@ const iconMap: Record<string, LucideIcon> = {
   Lock,
 };
 
-// Local template content (insights cards, technology platforms, socials)
-const insights = [
-  {
-    category: "Case Study",
-    title: "Scaling a 24/7 IT helpdesk without the hiring lag",
-    desc: "How a hybrid Tier 1 to 3 model cut response times and cost.",
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&h=1400&q=80",
-    href: "/case-studies",
-  },
-  {
-    category: "White Paper",
-    title: "Building a compliant SOC: SOC 2 & ISO 27001 in practice",
-    desc: "A practical blueprint for security operations at scale.",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&h=700&q=80",
-    href: "/newsletter",
-  },
-  {
-    category: "Blog",
-    title: "NOC vs SOC: where monitoring ends and security begins",
-    desc: "Clarifying roles, tooling, and escalation paths.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&h=700&q=80",
-    href: "/blog",
-  },
-  {
-    category: "Case Study",
-    title: "Construction estimation, delivered offshore",
-    desc: "Faster takeoffs and bid prep with vetted estimators.",
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&h=1400&q=80",
-    href: "/case-studies",
-  },
-  {
-    category: "Blog",
-    title: "Staff augmentation that actually integrates",
-    desc: "Onboarding playbooks that get specialists productive fast.",
-    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&h=700&q=80",
-    href: "/blog",
-  },
-  {
-    category: "White Paper",
-    title: "The economics of hybrid delivery",
-    desc: "How onshore/offshore blends drive up to 30% cost savings.",
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&h=700&q=80",
-    href: "/newsletter",
-  },
-];
+// Latest insights cards, derived from the real blog so the newest post always
+// leads and every card is a genuine internal link to /blog/<slug> rather than a
+// hardcoded teaser pointing at the listing page.
+const insights = [...posts]
+  .sort((a, b) => (a.date < b.date ? 1 : -1))
+  .slice(0, 6)
+  .map((post) => ({
+    category: post.category,
+    title: post.title,
+    desc: post.excerpt,
+    img: post.image,
+    href: `/blog/${post.slug}`,
+  }));
 
 const certBadges = [
   { src: "/certs/gsoc.webp", alt: "GIAC Security Operations Certified (GSOC)" },
@@ -1610,12 +1580,14 @@ function BlogSection() {
                       {featured.category}
                     </span>
                     <h3
-                      className="mt-5 max-w-lg text-2xl font-bold leading-tight text-white sm:text-3xl"
+                      className="mt-5 line-clamp-2 max-w-lg text-2xl font-bold leading-tight text-white sm:text-3xl"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {featured.title}
                     </h3>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
+                    {/* Excerpts run longer than the old hardcoded teasers, so
+                        clamp rather than let the overlay grow past the card. */}
+                    <p className="mt-3 line-clamp-3 max-w-md text-sm leading-relaxed text-white/70">
                       {featured.desc}
                     </p>
                     <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-white">
@@ -1666,7 +1638,7 @@ function BlogSection() {
                           {post.category}
                         </span>
                         <h3
-                          className="mt-2 text-base font-bold leading-snug text-black"
+                          className="mt-2 line-clamp-3 text-base font-bold leading-snug text-black"
                           style={{ fontFamily: "var(--font-display)" }}
                         >
                           {post.title}
@@ -1930,6 +1902,9 @@ export default function SystemLimitedHome() {
 
       {/* ===================== 8.5 · STUDIO CLOCK (timezones) ===================== */}
       <StudioClockSection />
+
+      {/* ===================== 8.75 · GOOGLE REVIEWS ===================== */}
+      <GoogleReviewsSection />
 
       <FaqSection faqs={faqs} />
 

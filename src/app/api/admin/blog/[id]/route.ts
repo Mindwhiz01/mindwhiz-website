@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { readJson, requireSupabase, slugify } from "@/lib/adminApi";
+import { EDITORIAL_AUTHOR } from "@/lib/blog";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,9 +22,10 @@ export async function PUT(req: Request, { params }: Params) {
     category: String(b.category ?? "Operations"),
     date: String(b.date ?? new Date().toISOString().slice(0, 10)),
     read_time: String(b.readTime ?? "5 min read"),
-    author_name: String(b.authorName ?? "MindWhiz Team"),
-    author_role: String(b.authorRole ?? "Editorial"),
-    author_avatar: String(b.authorAvatar ?? ""),
+    // Fixed editorial byline: posts are never attributed to an individual.
+    author_name: EDITORIAL_AUTHOR.name,
+    author_role: EDITORIAL_AUTHOR.role,
+    author_avatar: EDITORIAL_AUTHOR.avatar,
     image: String(b.image ?? ""),
     featured: Boolean(b.featured ?? false),
     published: Boolean(b.published ?? true),

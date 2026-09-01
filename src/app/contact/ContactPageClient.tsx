@@ -146,14 +146,18 @@ export default function ContactPageClient() {
                 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Build your hybrid team now
+                Let&apos;s discuss your project
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-black/70">
-                Fill out the form and a MindWhiz specialist will get back to you
-                within one business day.
+                Tell us what you&apos;re building and a MindWhiz specialist will get
+                back to you within one business day with next steps.
               </p>
 
-              <ContactForm />
+              <ContactForm
+                formId="uiS0x0ABnKFGD1n8uScA"
+                formName="Web services form website"
+                height={709}
+              />
             </Reveal>
 
             {/* contact info */}

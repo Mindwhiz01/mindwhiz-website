@@ -53,8 +53,9 @@ function Reveal({
 function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: number }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <div
-        className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white"
+      <a
+        href={`/blog/${post.slug}`}
+        className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white transition-colors hover:border-black/30"
       >
         <div className="relative overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -82,7 +83,7 @@ function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: n
           </h3>
           <p className="mt-3 flex-1 text-[15px] leading-relaxed text-black/65">{post.excerpt}</p>
         </div>
-      </div>
+      </a>
     </Reveal>
   );
 }
@@ -90,8 +91,9 @@ function PostCard({ post, delay = 0 }: { post: (typeof posts)[number]; delay?: n
 function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
   return (
     <Reveal>
-      <div
-        className="group grid overflow-hidden rounded-[2rem] border border-black/10 bg-white lg:grid-cols-2"
+      <a
+        href={`/blog/${post.slug}`}
+        className="group grid overflow-hidden rounded-[2rem] border border-black/10 bg-white transition-colors hover:border-black/30 lg:grid-cols-2"
       >
         <div className="relative min-h-[300px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -132,7 +134,7 @@ function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </Reveal>
   );
 }

@@ -77,13 +77,6 @@ function Kicker({ children }: { children: React.ReactNode }) {
 // ---------------------------------------------------------------------------
 // Hero, full-bleed image, headline + 2 CTAs, and a 2x2 stats grid.
 // ---------------------------------------------------------------------------
-const heroStats = [
-  { value: "6+", label: "Years delivering globally" },
-  { value: "96%", label: "Client retention" },
-  { value: "300+", label: "Specialists across 3 hubs" },
-  { value: "24/7", label: "Coverage, every day" },
-];
-
 function Hero() {
   return (
     <section
@@ -113,7 +106,7 @@ function Hero() {
       >
         <Kicker>Our culture</Kicker>
         <h1
-          className="mt-4 max-w-4xl text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.04em]"
+          className="mt-4 max-w-3xl text-[clamp(2.6rem,7vw,6.5rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.03em]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Our people, <span className="text-[#9CCC3C]">our strength</span>
@@ -136,20 +129,6 @@ function Hero() {
           >
             About our team
           </a>
-        </div>
-
-        <div className="mt-14 grid max-w-2xl grid-cols-2 gap-x-10 gap-y-8 border-t border-white/15 pt-10 sm:grid-cols-4">
-          {heroStats.map((s) => (
-            <div key={s.label}>
-              <p
-                className="text-[clamp(2.4rem,4vw,3.4rem)] font-extrabold leading-none tracking-tight text-[#9CCC3C]"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {s.value}
-              </p>
-              <p className="mt-2 text-xs leading-snug text-white/60">{s.label}</p>
-            </div>
-          ))}
         </div>
       </motion.div>
     </section>

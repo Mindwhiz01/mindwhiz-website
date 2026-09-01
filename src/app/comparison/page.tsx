@@ -6,7 +6,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import ContactFormSection from "@/components/ContactFormSection";
-import { buildMetadata } from "@/seo.config";
 
 const comparisonData = [
   {
@@ -60,14 +59,6 @@ const comparisonData = [
     managedServices: "Understaffed teams needing 24/7 coverage (helpdesk, security, ops).",
   },
 ];
-
-export async function generateMetadata() {
-  return buildMetadata("/comparison", {
-    title: "Staff Augmentation vs Outsourcing vs Managed Services | MindWhiz",
-    description:
-      "Compare staffing models: staff augmentation (you direct), outsourcing (vendor owns outcome), managed services (24/7 ops). Which is right for USA companies?",
-  });
-}
 
 export default function ComparisonPage() {
   return (

@@ -7,7 +7,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import ContactFormSection from "@/components/ContactFormSection";
-import { buildMetadata } from "@/seo.config";
 
 const pricingData = [
   {
@@ -71,14 +70,6 @@ const pricingData = [
     ],
   },
 ];
-
-export async function generateMetadata() {
-  return buildMetadata("/pricing", {
-    title: "IT Outsourcing Pricing 2026 | MindWhiz",
-    description:
-      "See exact IT staffing costs: helpdesk ($6-15/user), SOC ($1500-3000), engineers ($3500-6500). USA pricing with no hidden fees. Get free quote.",
-  });
-}
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState(0);

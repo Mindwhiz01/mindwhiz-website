@@ -45,6 +45,10 @@ export type ServicePageContent = {
     button: string;
   };
   faqs?: { q: string; a: string }[];
+  // Pillar -> cluster internal links. Supporting guides (usually /blog/*) that
+  // target long-tail variants of this page's head keyword. Rendered as a
+  // "Further reading" block so the topical cluster is explicit to crawlers.
+  relatedReading?: { title: string; desc: string; href: string }[];
 };
 
 const sharedImages = {
@@ -812,6 +816,40 @@ export const servicePages: ServicePageContent[] = [
       { value: "30%", label: "Lower cost than local full time hiring" },
       { value: "Flexible", label: "Scale up or down as projects change" },
     ],
+    problems: {
+      title: "Where staff augmentation earns its place",
+      groups: [
+        {
+          title: "The problems it solves",
+          items: [
+            "Roadmaps stalled behind an eight to fourteen week hiring cycle.",
+            "A niche skill you need for six months, not forever.",
+            "Seasonal peaks, launches, migrations, and audits that demand extra hands.",
+            "Headcount freezes that block permanent hires but not contracted capacity.",
+            "Recruitment fees, benefits load, and severance risk on every direct hire.",
+          ],
+        },
+        {
+          title: "What we handle so you do not",
+          items: [
+            "Sourcing, vetting, and shortlisting against your stack and standards.",
+            "Employment, payroll, benefits, and local compliance in the delivery country.",
+            "Onboarding prep so specialists contribute in the first sprint.",
+            "Engagement, reviews, and retention so knowledge stays on your account.",
+            "Replacement cover on terms agreed in writing before anyone starts.",
+          ],
+        },
+        {
+          title: "When to choose something else",
+          items: [
+            "A fully scoped, self contained build: project outsourcing fits better.",
+            "An ongoing service you want owned against an SLA: buy managed services.",
+            "No internal lead with capacity to direct the work: fix that first.",
+            "A core, permanent, strategic role: hire, and use augmentation as the bridge.",
+          ],
+        },
+      ],
+    },
     capabilities: [
       {
         title: "Vetted Specialists",
@@ -865,6 +903,47 @@ export const servicePages: ServicePageContent[] = [
       {
         q: "What if an augmented team member is not the right fit?",
         a: "Tell us early. Replacement is part of the arrangement, and the terms for it are agreed before an engagement starts so there is no dispute about it later.",
+      },
+      {
+        q: "What is staff augmentation?",
+        a: "Staff augmentation is a staffing model where you add vetted external specialists to your existing team on a contract basis. They work inside your processes, tools, and standups, and you direct their day to day priorities, while the provider handles sourcing, employment, payroll, benefits, and replacement. You are buying people and capacity, not a finished deliverable.",
+      },
+      {
+        q: "What are the pros and cons of staff augmentation?",
+        a: "The pros are speed to hire in about 10 days instead of 8 to 14 weeks, access to specialised skills for exactly as long as you need them, full control of direction and code, elastic scaling without severance, and 30 to 60 percent lower cost than local full time hiring. The cons are the management overhead you keep, ramp up time, knowledge loss at contract end, weaker cultural attachment, and security and IP exposure. Each con is procedural and is designed out with clear briefs, prepared onboarding, documentation as a deliverable, and least privilege access.",
+      },
+      {
+        q: "Is staff augmentation better than managed services?",
+        a: "Neither is better; they answer different questions. Choose staff augmentation when you want to own the outcome and direct the work yourself. Choose managed services when you want a provider accountable for an ongoing service level such as 24/7 monitoring or helpdesk. Many clients run both: augmented engineers building the product, and a managed service keeping support and monitoring off their plate.",
+      },
+      {
+        q: "When should you not use staff augmentation?",
+        a: "Avoid it when the work is a fully scoped, self contained project with a fixed deliverable, when you want someone else accountable for an SLA, when there is no internal lead with capacity to direct the work, or when the role is core and permanent enough that the knowledge must stay in house forever. In that last case use augmentation as a deliberate bridge while you hire.",
+      },
+      {
+        q: "How do you protect our data and IP with augmented staff?",
+        a: "Augmented staff are onboarded with the same rigour as employees: least privilege access, MFA, hardened devices, signed NDAs and IP assignment, and access revoked on the last day of the engagement rather than weeks later. Documentation is treated as part of the definition of done, so context stays with you when a contract ends.",
+      },
+      {
+        q: "Which roles can you provide through staff augmentation?",
+        a: "Software and DevOps engineers, cloud and infrastructure administrators, SOC and cybersecurity analysts, IT helpdesk and NOC technicians, finance and accounting specialists, HR and recruitment support, construction estimators, and digital marketing specialists, across US, UK, and Pakistan delivery.",
+      },
+    ],
+    relatedReading: [
+      {
+        title: "Staff Augmentation Pros and Cons: A 2026 Buyer's Guide",
+        desc: "The real advantages and disadvantages, what it costs, and how it compares with outsourcing and managed services.",
+        href: "/blog/staff-augmentation-pros-and-cons",
+      },
+      {
+        title: "The hybrid staffing playbook",
+        desc: "How onshore leadership and offshore delivery fit together without losing control or quality.",
+        href: "/blog/hybrid-staffing-playbook",
+      },
+      {
+        title: "Onboarding a remote specialist in under two weeks",
+        desc: "The repeatable process that turns a new augmented team member into a productive one fast.",
+        href: "/blog/faster-onboarding-remote-specialists",
       },
     ],
     finalCta: {

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import Script from "next/script";
+import FormSubmitRedirect from "@/components/FormSubmitRedirect";
 
 // Below-the-fold decorative video: only attach the source (and start loading
 // the ~3.8 MB file) once it scrolls near the viewport, so it never touches the
@@ -78,17 +79,26 @@ function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({
+  formId = "OyGF6Yyhw5QmxIveuuln",
+  formName = "Get Your Free Consultation - Inbound Lead Form",
+  height = 666,
+}: {
+  formId?: string;
+  formName?: string;
+  height?: number;
+} = {}) {
   return (
     <div className="mt-10 w-full overflow-hidden rounded-[2rem]">
       {/* next/script loads the LeadConnector embed once and de-dupes it across
           navigations — no manual createElement/appendChild (which stacked a new
           <script> on every mount). Matches the careers page. */}
       <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
+      <FormSubmitRedirect />
       <iframe
-        src="https://api.leadconnectorhq.com/widget/form/OyGF6Yyhw5QmxIveuuln"
-        style={{ width: "100%", height: "666px", border: "none", borderRadius: "8px" }}
-        id="inline-OyGF6Yyhw5QmxIveuuln"
+        src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
+        style={{ width: "100%", height: `${height}px`, border: "none", borderRadius: "8px" }}
+        id={`inline-${formId}`}
         data-layout={'{"id":"INLINE"}'}
         data-trigger-type="alwaysShow"
         data-trigger-value=""
@@ -96,11 +106,11 @@ export function ContactForm() {
         data-activation-value=""
         data-deactivation-type="neverDeactivate"
         data-deactivation-value=""
-        data-form-name="Get Your Free Consultation - Inbound Lead Form"
-        data-height="666"
-        data-layout-iframe-id="inline-OyGF6Yyhw5QmxIveuuln"
-        data-form-id="OyGF6Yyhw5QmxIveuuln"
-        title="Get Your Free Consultation - Inbound Lead Form"
+        data-form-name={formName}
+        data-height={height}
+        data-layout-iframe-id={`inline-${formId}`}
+        data-form-id={formId}
+        title={formName}
       />
     </div>
   );

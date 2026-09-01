@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import ClientsSection from "@/components/ClientsSection";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import FaqSection, { type Faq } from "@/components/FaqSection";
@@ -295,10 +296,10 @@ function BrowserFrame({
 // ---------------------------------------------------------------------------
 // data
 // ---------------------------------------------------------------------------
-const services: { title: string; desc: string; Icon: LucideIcon; image: string; audience?: string; hook?: string }[] = [
+const services: { title: string; desc: string; Icon: LucideIcon; image: string; audience?: string; hook?: string; shot?: boolean }[] = [
   { title: "Custom Websites", audience: "For B2B & B2C brands", hook: "Is your website winning customers, or quietly losing them?", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Web Applications", audience: "For B2B & SaaS teams", hook: "Still running your business on spreadsheets and manual work?", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "/portfolio/primeaxis-admin-dashboard.png" },
   { title: "Ecommerce", audience: "For B2C & retail brands", hook: "Are shoppers leaving before they reach your checkout?", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
   { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" },
   { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
@@ -332,6 +333,7 @@ const stackGroups: { label: string; items: { name: string; slug: string; color: 
       { name: "Shopify", slug: "shopify", color: "#5E8E3E" },
       { name: "Webflow", slug: "webflow", color: "#146EF5" },
       { name: "Wix", slug: "wix", color: "#0C6EFC" },
+      { name: "Drupal", slug: "drupal", color: "#0678BE" },
     ],
   },
   {
@@ -547,7 +549,7 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Cta href="/contact" label="Start a project" />
+              <Cta href="/contact" label="Get in touch" />
               <Cta href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3" target="_blank" rel="noreferrer" label="Book free consultation" className="!border-[#ed1164] !bg-[#ed1164] !text-white shadow-xl shadow-[#ed1164]/50 hover:!bg-[#c50e53]" />
             </div>
           </Reveal>
@@ -560,9 +562,22 @@ function Hero() {
             className="group relative"
           >
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-to-tr from-[#ed1164]/30 to-[#9CCC3C]/25 opacity-50 blur-2xl" />
-            <BrowserFrame url="https://alphabravous.com/" image="/portfolio/alpha-bravo.jpg" className="relative z-10 rotate-[-2deg]" />
-            <div className="absolute -bottom-10 -right-2 z-20 hidden w-3/5 rotate-[4deg] sm:block">
-              <BrowserFrame url="https://primeaxisinsurance.com/" image="/portfolio/prime-axis-insurance.jpg" />
+            {/* laptop is the main device; phone floats over its right edge.
+                both are tilted to match the earlier angled mockup, and on
+                hover they drift apart a little (laptop left, phone right). */}
+            <div className="relative z-10 pr-[16%] [perspective:1200px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/portfolio/hero-laptop.png"
+                alt="Alpha Bravo Construction website shown on a laptop"
+                className="w-full rotate-[-3deg] transition-transform duration-500 ease-out group-hover:-translate-x-3 group-hover:rotate-[-4deg]"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/portfolio/hero-phone.png"
+                alt="Alpha Bravo Construction website shown on a phone"
+                className="absolute bottom-0 right-0 z-20 w-[27%] rotate-[4deg] drop-shadow-2xl transition-transform duration-500 ease-out group-hover:translate-x-5 group-hover:translate-y-2 group-hover:rotate-[7deg]"
+              />
             </div>
           </motion.div>
         </Reveal>
@@ -608,10 +623,22 @@ function ServicePanel({
         initial={false}
         animate={{ scale: isActive ? 1 : 1.15 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 h-full w-full object-cover"
+        className={
+          s.shot
+            ? "absolute inset-0 h-full w-full object-contain p-6 [filter:drop-shadow(0_8px_18px_rgba(0,0,0,0.85))_drop-shadow(0_30px_60px_rgba(0,0,0,0.95))_drop-shadow(0_60px_120px_rgba(0,0,0,0.9))] sm:p-16"
+            : "absolute inset-0 h-full w-full object-cover"
+        }
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
-      <div className="absolute inset-0 bg-black/25" />
+      {/* screenshot panels keep a lighter wash so the dashboard stays prominent;
+          photo panels get the full dark gradient for readable overlaid text */}
+      {s.shot ? (
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/80" />
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+          <div className="absolute inset-0 bg-black/25" />
+        </>
+      )}
 
       {/* giant ghost index number, top-right */}
       <motion.span
@@ -770,14 +797,15 @@ function PortfolioSection() {
 }
 
 const spotlightSites: { name: string; url: string; image: string; category: string; blurb: string }[] = [
-  { name: "Alpha Bravo", url: "https://alphabravous.com/", image: "/portfolio/alpha-bravo.jpg", category: "Corporate · Services", blurb: "A polished corporate presence with a clear services story and strong calls to action." },
-  { name: "Prime Axis Insurance", url: "https://primeaxisinsurance.com/", image: "/portfolio/prime-axis-insurance.jpg", category: "Insurance", blurb: "A trust first insurance site with clean quote flows and clear product pages." },
-  { name: "Basil Pizza", url: "https://basilpizzanj.com/", image: "/portfolio/basil-pizza.jpg", category: "Restaurant · Catering", blurb: "An appetizing Italian eatery site with full menus, catering enquiries, and online ordering." },
+  { name: "PrimeAxis Reporting", url: "", image: "/portfolio/primeaxis-reporting-dashboard.png", category: "Insurance · Analytics", blurb: "A reporting suite with premium and conversion metrics, leads over time, and breakdowns by line, source, and agent." },
+  { name: "Charity Finance", url: "", image: "/portfolio/charity-finance-dashboard.png", category: "Fintech · Nonprofit", blurb: "A charity finance management system with beneficiary tracking, payment trends, and Zakat-eligible reporting." },
+  { name: "Inovatiqa Admin", url: "", image: "/portfolio/inovatiqa-dashboard.png", category: "Ecommerce · Admin Panel", blurb: "A full e-commerce admin dashboard with revenue analytics, orders, inventory sync, and role-based access." },
+  { name: "PrimeAxis Admin", url: "", image: "/portfolio/primeaxis-admin-dashboard.png", category: "Insurance · CRM", blurb: "An insurance lead and policy CRM with pipeline tracking, ACORD forms, quoting, and agent performance." },
 ];
 
-// Website spotlight carousel - one centered browser mockup with a floating
-// pill button above it, on a soft light-gray band. Left/right arrows cycle
-// through each featured live site.
+// Software / dashboard spotlight carousel - one centered browser mockup with a
+// floating pill button above it, on a soft light-gray band. Left/right arrows
+// cycle through each featured dashboard we've built.
 function AlphaBravoShowcase() {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -800,7 +828,21 @@ function AlphaBravoShowcase() {
       className="relative overflow-hidden border-t border-slate-100 bg-[#EEEEEE] py-24"
     >
       <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 sm:px-8">
-        {/* single centered browser mockup, one featured site at a time.
+        <Reveal className="mb-14 max-w-3xl text-center">
+          <div className="flex justify-center">
+            <Kicker>Software Development</Kicker>
+          </div>
+          <h2 className="mt-5 text-[clamp(2.4rem,5.5vw,4.6rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
+            Dashboards built to <span style={{ color: PINK }}>Scale</span> with you
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-black/60">
+            Custom admin dashboards, internal tools, and data-rich web applications, built on modern
+            frameworks with secure APIs, real-time reporting, and role-based access your team will
+            actually use.
+          </p>
+        </Reveal>
+
+        {/* single centered browser mockup, one featured dashboard at a time.
             No key remount here so the frame persists across slides and the
             hover peek-then-advance cycle keeps running while the pointer stays. */}
         <div className="w-full max-w-4xl">
@@ -831,7 +873,7 @@ function AlphaBravoShowcase() {
           <div className="flex items-center gap-2">
             {spotlightSites.map((p, idx) => (
               <button
-                key={p.url}
+                key={p.image}
                 type="button"
                 onClick={() => setI(idx)}
                 aria-label={`Show ${p.name}`}
@@ -859,6 +901,19 @@ function AlphaBravoShowcase() {
 
 // brand logo tinted to its own color via CSS mask (source SVGs live in /public/stack)
 function StackIcon({ slug, color }: { slug: string; color: string }) {
+  const isPng = slug === "drupal";
+
+  if (isPng) {
+    return (
+      <img
+        aria-hidden
+        src={`/stack/${slug}.png`}
+        alt=""
+        className="h-6 w-6 shrink-0 object-contain"
+      />
+    );
+  }
+
   return (
     <span
       aria-hidden
@@ -951,6 +1006,13 @@ function SeoSection() {
                 Every site we ship is engineered to be found, fast, technically sound,
                 and structured for search from the first commit.
               </p>
+              <a
+                href="/blog/web-development-trends-2026"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#ed1164] transition-colors hover:text-[#c50e53]"
+              >
+                Read: Web Development Trends 2026 for US &amp; UK businesses
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </Reveal>
           </div>
 
@@ -1230,24 +1292,40 @@ function ProcessSection() {
 
 const faqs: Faq[] = [
   {
-    q: "How long does it take to build a website?",
-    a: "Most marketing sites and landing pages ship in 3 to 6 weeks, while larger web apps and dashboards run 8 to 12 weeks or more. After a short discovery call we scope the work and give you a clear timeline with milestones so you always know what's next.",
+    q: "What does a custom web development company do?",
+    a: "A custom web development company designs and builds websites, web apps, and ecommerce stores tailored to your business instead of using an off-the-shelf template. At MindWhiz we handle the full process — UX design, front-end and back-end development, integrations, SEO, and ongoing support — so US businesses get a fast, secure, scalable product built to convert.",
   },
   {
-    q: "How much does a custom website cost?",
-    a: "Pricing depends on scope, a focused landing page starts lower, while multipage sites, ecommerce, and full web apps scale with complexity. We give you a fixed, itemized quote up front so there are no surprises, and can phase the build to fit your budget.",
+    q: "How much does custom web development cost?",
+    a: "Custom web development typically ranges from a few thousand dollars for a focused landing page to tens of thousands for multipage sites, ecommerce stores, and full web apps, depending on scope and complexity. We give every client a fixed, itemized quote up front so there are no surprises, and we can phase the build to fit your budget.",
+  },
+  {
+    q: "How long does it take to build a custom website or web app?",
+    a: "Most marketing sites and landing pages ship in 3 to 6 weeks, while larger web apps, dashboards, and ecommerce platforms run 8 to 12 weeks or more. After a short discovery call we scope the work and give you a clear timeline with milestones, so you always know what's next.",
+  },
+  {
+    q: "Can I hire dedicated web developers for my US business?",
+    a: "Yes. We provide dedicated web developers and full-stack teams that work as an extension of your business across the US, in your time zone and workflow. You get senior developers, designers, and QA on demand — without the cost and delay of hiring in-house.",
+  },
+  {
+    q: "What's the difference between a website and a web application?",
+    a: "A website mainly presents information — think marketing sites, landing pages, and blogs — while a web application lets users log in and do things, like dashboards, portals, booking tools, and SaaS platforms. We build both, and often combine them, so your site can market your brand and run your operations in one place.",
+  },
+  {
+    q: "Do you build ecommerce websites and online stores?",
+    a: "Yes. We build custom ecommerce websites and online stores with fast storefronts, secure checkout, and payment integrations like Stripe, PayPal, and Shopify. Every store is optimized for speed, trust, and higher order value so more visitors turn into paying customers.",
   },
   {
     q: "Will my website be fast, mobile-friendly, and SEO-ready?",
-    a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, sitemaps, and analytics wired in, so it loads fast, feels smooth, and is set up to rank from day one.",
+    a: "Always. Every build is responsive across devices, tuned for Core Web Vitals, and shipped with clean semantic markup, structured data, sitemaps, and analytics wired in — so it loads fast, feels smooth, and is set up to rank on Google from day one.",
   },
   {
-    q: "Do you offer website maintenance and management services?",
-    a: "Yes. We offer monthly website management and care plans covering hosting, security patches, performance tuning, content updates, and new features, so your site keeps running smoothly and evolving long after launch.",
+    q: "Do you offer website maintenance and support after launch?",
+    a: "Yes. We offer monthly website maintenance and care plans covering hosting, security patches, performance tuning, content updates, and new features, so your site keeps running smoothly and evolving long after launch.",
   },
   {
     q: "Can you redesign or migrate my existing website?",
-    a: "Absolutely. We regularly redesign dated sites and migrate them to modern, faster stacks without losing your content or SEO. We audit what you have, preserve your rankings, and rebuild it into something you're proud to share.",
+    a: "Absolutely. We regularly redesign dated websites and migrate them to modern, faster stacks without losing your content or SEO rankings. We audit what you have, preserve your search traffic, and rebuild it into something you're proud to share.",
   },
 ];
 
@@ -1262,7 +1340,7 @@ function ContactSection() {
           <Reveal>
             <Kicker>Get in touch</Kicker>
             <h2 className="mt-5 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-              Let&apos;s start your <span style={{ color: PINK }}>project</span>
+              Let&apos;s discuss your <span style={{ color: PINK }}>project</span>
             </h2>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-black/60">
               Tell us what you&apos;re building and a MindWhiz specialist will get
@@ -1273,7 +1351,11 @@ function ContactSection() {
 
         {/* right: embedded lead form */}
         <Reveal delay={0.1}>
-          <ContactForm />
+          <ContactForm
+            formId="uiS0x0ABnKFGD1n8uScA"
+            formName="Web services form website"
+            height={709}
+          />
         </Reveal>
       </div>
     </section>
@@ -1285,7 +1367,7 @@ function CtaBand() {
     <ProcessIntroBanner
       title="Let's build your next website"
       description="Tell us what you're trying to build. We'll scope it, design it, and ship it."
-      ctaLabel="Start a project"
+      ctaLabel="Get in touch"
       ctaHref="/contact"
     />
   );
@@ -1309,13 +1391,14 @@ export default function WebServicesPage() {
       <SiteHeader theme={theme} />
       <Hero />
       <MarqueeStrip />
-      <AlphaBravoShowcase />
       <ServicesSection />
+      <AlphaBravoShowcase />
       <PortfolioSection />
       <ProcessSection />
       <StackSection />
       <SeoSection />
       <ClientsSection />
+      <GoogleReviewsSection />
       <FaqSection faqs={faqs} />
       <ContactSection />
       <CtaBand />

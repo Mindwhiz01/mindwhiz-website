@@ -31,7 +31,8 @@
       "Read(//Users/noumanassadullah/Library/Caches/**)",
       "Bash(npm ls *)",
       "Bash(git merge-base *)",
-      "Bash(git merge *)"
+      "Bash(git merge *)",
+      "Bash(curl -I https://www.mindwhiz.com)"
     ]
   }
 }

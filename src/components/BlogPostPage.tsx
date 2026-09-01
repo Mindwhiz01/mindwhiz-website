@@ -11,8 +11,18 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
+import FaqSection from "@/components/FaqSection";
 import { posts, formatDate, type BlogPost } from "@/lib/blog";
 import { jsonLdScript } from "@/lib/jsonLd";
+
+// Stable anchor id for a heading, used by the right-side index links.
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -34,7 +44,15 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
 
   const more = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
-  const siteUrl = "https://mindwhiz.com";
+  // Headings drive the right-side index (table of contents).
+  const headings = post.body
+    .filter((b): b is { type: "h2"; text: string } => b.type === "h2")
+    .map((b) => ({ text: b.text, id: slugify(b.text) }));
+
+  // Must match the canonical host and the Organization @id emitted in the root
+  // layout, otherwise `publisher` is a dangling reference and mainEntityOfPage
+  // points at a non-canonical URL.
+  const siteUrl = "https://www.mindwhiz.com";
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -43,9 +61,15 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
     image: post.image,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Person", name: post.author.name },
+    // Posts carry a collective editorial byline, so the author is the
+    // organisation itself, not a Person. Pointing at the Organization @id also
+    // consolidates E-E-A-T signals onto the one brand entity.
+    author: { "@type": "Organization", name: post.author.name, "@id": `${siteUrl}/#organization` },
     publisher: { "@id": `${siteUrl}/#organization` },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+    articleSection: post.category,
+    inLanguage: "en",
+    isPartOf: { "@type": "Blog", "@id": `${siteUrl}/blog`, name: "MindWhiz Blog" },
   };
 
   return (
@@ -109,8 +133,9 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
           </motion.div>
         </section>
 
-        {/* body */}
-        <article className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
+        {/* body + right-side index */}
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[minmax(0,1fr)_240px]">
+          <article className="min-w-0 max-w-3xl">
           <p className="text-lg leading-relaxed text-black/70">{post.excerpt}</p>
           <div className="mt-8 space-y-6">
             {post.body.map((block, i) => {
@@ -118,7 +143,8 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 return (
                   <h2
                     key={i}
-                    className="pt-4 text-2xl font-bold text-black"
+                    id={slugify(block.text)}
+                    className="scroll-mt-28 pt-4 text-2xl font-bold text-black"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {block.text}
@@ -134,6 +160,63 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                   >
                     “{block.text}”
                   </blockquote>
+                );
+              }
+              if (block.type === "rp") {
+                return (
+                  <p key={i} className="text-[16px] leading-relaxed text-black/75">
+                    {block.runs.map((run, j) =>
+                      run.href ? (
+                        <a
+                          key={j}
+                          href={run.href}
+                          className="font-semibold text-[#ed1164] underline decoration-[#ed1164]/40 underline-offset-2 transition-colors hover:decoration-[#ed1164]"
+                        >
+                          {run.text}
+                        </a>
+                      ) : (
+                        <span key={j}>{run.text}</span>
+                      )
+                    )}
+                  </p>
+                );
+              }
+              if (block.type === "img") {
+                return (
+                  <figure key={i} className="my-8">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={block.src}
+                      alt={block.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full rounded-[1.5rem] border border-black/10 object-cover"
+                    />
+                    {block.caption && (
+                      <figcaption className="mt-3 text-center text-sm italic text-black/50">
+                        {block.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              }
+              if (block.type === "cta") {
+                return (
+                  <div
+                    key={i}
+                    className="my-4 flex flex-col gap-4 rounded-[1.5rem] border border-[#ed1164]/20 bg-[#FAF9F5] p-7 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <p className="flex-1 text-[16px] font-semibold leading-relaxed text-black">
+                      {block.text}
+                    </p>
+                    <a
+                      href={block.href}
+                      className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#ed1164] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c50e53]"
+                    >
+                      {block.label}
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
                 );
               }
               if (block.type === "list") {
@@ -175,7 +258,39 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
-        </article>
+          </article>
+
+          {/* right-side index / table of contents — sticky on desktop, jumps
+              to each section heading. Hidden on small screens. */}
+          {headings.length > 0 && (
+            <aside className="hidden lg:block">
+              <nav
+                aria-label="On this page"
+                className="sticky top-28 rounded-[1.5rem] border border-black/10 bg-[#FAF9F5] p-6"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ed1164]">
+                  On this page
+                </p>
+                <ul className="mt-4 space-y-3 border-l border-black/10">
+                  {headings.map((h) => (
+                    <li key={h.id}>
+                      <a
+                        href={`#${h.id}`}
+                        className="-ml-px block border-l-2 border-transparent pl-4 text-sm leading-snug text-black/60 transition-colors hover:border-[#ed1164] hover:text-[#ed1164]"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </aside>
+          )}
+        </div>
+
+        {/* FAQ — shared, brand-consistent accordion used across the site.
+            Emits its own FAQPage structured data for AEO/GEO. */}
+        {post.faqs && post.faqs.length > 0 && <FaqSection faqs={post.faqs} />}
 
         {/* more articles */}
         <section className="bg-[#FAF9F5] py-20">

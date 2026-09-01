@@ -6,15 +6,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
 import ContactFormSection from "@/components/ContactFormSection";
-import { buildMetadata } from "@/seo.config";
-
-export async function generateMetadata() {
-  return buildMetadata("/usa-it-helpdesk", {
-    title: "Outsourced 24/7 IT Helpdesk for US Companies | MindWhiz",
-    description:
-      "White-label IT helpdesk for USA MSPs & businesses: $6-12/user/month, 15-min response, Tier 1-3 support. Cut IT costs 50%. Free helpdesk assessment.",
-  });
-}
 
 export default function USAHelpdesk() {
   const stats = [
