@@ -8,6 +8,7 @@
 import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Linkedin } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
@@ -225,18 +226,21 @@ const teamMembers = [
     title: "Chief Marketing Officer",
     department: "Digital Department",
     image: "/leadership/ahmad.png",
+    linkedin: "https://www.linkedin.com/in/ahmedkhan-strategist/",
   },
   {
     name: "Ammar",
     title: "Business Development Manager",
     department: "BD",
     image: "/leadership/ammar.png",
+    linkedin: "https://www.linkedin.com/in/me-ali-ammar/",
   },
   {
     name: "Subhan Malik",
     title: "HR Manager",
     department: "HR",
     image: "/leadership/subhan-malik.png",
+    linkedin: "https://www.linkedin.com/in/hr-subhan/",
   },
 ];
 
@@ -265,9 +269,22 @@ function TeamSection() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <p className="mt-4 text-lg font-bold text-black">{member.name}</p>
-                <p className="text-sm font-semibold text-[#9CCC3C]">{member.title}</p>
-                <p className="text-sm text-black/60">{member.department}</p>
+                <div className="mt-4 flex items-start justify-between">
+                  <div>
+                    <p className="text-lg font-bold text-black">{member.name}</p>
+                    <p className="text-sm font-semibold text-[#9CCC3C]">{member.title}</p>
+                    <p className="text-sm text-black/60">{member.department}</p>
+                  </div>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black/40 transition-colors hover:text-[#0A66C2]"
+                    aria-label={`${member.name} LinkedIn profile`}
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
             </Reveal>
           ))}
