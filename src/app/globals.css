@@ -275,7 +275,7 @@ body {
   }
 }
 
-/* ---- video controls always visible on hover ---- */
+/* ---- video controls always visible ---- */
 video {
   outline: none;
 }
@@ -284,7 +284,6 @@ video::-webkit-media-controls {
   opacity: 1 !important;
 }
 video::-webkit-media-controls-panel {
-  background-color: rgba(0, 0, 0, 0.8) !important;
   opacity: 1 !important;
 }
 video::-webkit-media-controls-play-button,
@@ -296,16 +295,12 @@ video::-webkit-media-controls-time-remaining-display,
 video::-webkit-media-controls-fullscreen-button {
   opacity: 1 !important;
   display: block !important;
+  pointer-events: auto !important;
 }
 /* Firefox video controls */
 video::-moz-media-controls {
   opacity: 1 !important;
 }
 video::-moz-media-controls-panel {
-  background-color: rgba(0, 0, 0, 0.8) !important;
   opacity: 1 !important;
-}
-/* Show controls on hover */
-video:hover {
-  --webkit-media-controls-opacity: 1;
 }
