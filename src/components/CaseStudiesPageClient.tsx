@@ -93,25 +93,9 @@ function CaseCard({
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-black/40">
               {cs.category} · Engagement
             </p>
-            <div className="mt-3 flex items-center gap-3">
-              <h3 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
-                {cs.client}
-              </h3>
-              {cs.slug === "connecteffect" && (
-                <a
-                  href="https://connecteffect.us/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-blue-900 p-2.5 transition-all hover:bg-blue-800"
-                >
-                  <img
-                    src="/clients/ce-logo.png"
-                    alt={`${cs.client} logo`}
-                    className="h-10 w-40"
-                  />
-                </a>
-              )}
-            </div>
+            <h3 className="mt-3 text-3xl font-semibold tracking-tight text-black sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+              {cs.client}
+            </h3>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-black/60">{cs.result}</p>
             <div className="mt-6 flex flex-wrap items-center gap-5">
               <a
