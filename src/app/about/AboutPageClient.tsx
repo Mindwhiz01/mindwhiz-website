@@ -279,10 +279,10 @@ function TeamSection() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-black/40 transition-colors hover:text-[#0A66C2]"
+                    className="transition-all hover:scale-110"
                     aria-label={`${member.name} LinkedIn profile`}
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <Linkedin className="h-5 w-5 text-[#0A66C2]" />
                   </a>
                 </div>
               </div>
