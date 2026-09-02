@@ -275,16 +275,26 @@ body {
   }
 }
 
-/* ---- video controls always visible ---- */
+/* ---- video controls always visible - never hide on mouse movement ---- */
 video {
   outline: none;
 }
+/* Webkit browsers (Chrome, Safari, Edge) */
 video::-webkit-media-controls {
   display: flex !important;
   opacity: 1 !important;
+  visibility: visible !important;
 }
 video::-webkit-media-controls-panel {
   opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  background-color: transparent !important;
+}
+video::-webkit-media-controls-panel.hidden {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 video::-webkit-media-controls-play-button,
 video::-webkit-media-controls-volume-slider,
@@ -296,11 +306,24 @@ video::-webkit-media-controls-fullscreen-button {
   opacity: 1 !important;
   display: block !important;
   pointer-events: auto !important;
+  visibility: visible !important;
 }
 /* Firefox video controls */
 video::-moz-media-controls {
   opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
 }
 video::-moz-media-controls-panel {
   opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+}
+/* Ensure controls stay visible on all states */
+video:hover::-webkit-media-controls,
+video:focus::-webkit-media-controls,
+video:active::-webkit-media-controls {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
