@@ -115,13 +115,24 @@ function CaseCard({
           {/* exhibit */}
           <div>
             <div className="relative min-h-[26rem] overflow-hidden rounded-lg border border-black/10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={cs.img}
-                alt={`${cs.client} engagement`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+              {cs.video ? (
+                <video
+                  src={cs.video}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={cs.img}
+                  alt={`${cs.client} engagement`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
             </div>
           </div>
         </div>

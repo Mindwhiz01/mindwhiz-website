@@ -20,6 +20,7 @@ export type CaseStudy = {
   outcomes: string[];
   metrics: { value: string; label: string }[];
   quote: { text: string; author: string };
+  video?: string;
 };
 
 // Shape of a row in the Supabase `case_studies` table.
@@ -38,6 +39,7 @@ type CaseStudyRow = {
   metrics: { value: string; label: string }[] | null;
   quote_text: string | null;
   quote_author: string | null;
+  video?: string | null;
 };
 
 function rowToCaseStudy(r: CaseStudyRow): CaseStudy {
@@ -55,6 +57,7 @@ function rowToCaseStudy(r: CaseStudyRow): CaseStudy {
     outcomes: r.outcomes ?? [],
     metrics: r.metrics ?? [],
     quote: { text: r.quote_text ?? "", author: r.quote_author ?? "" },
+    ...(r.video && { video: r.video }),
   };
 }
 
