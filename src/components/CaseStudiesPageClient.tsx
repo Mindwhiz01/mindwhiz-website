@@ -120,7 +120,6 @@ function CaseCard({
                   src={cs.video}
                   controls
                   autoPlay
-                  muted
                   loop
                   className="absolute inset-0 h-full w-full object-cover"
                 />
