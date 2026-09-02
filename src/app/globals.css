@@ -274,3 +274,38 @@ body {
     animation: none;
   }
 }
+
+/* ---- video controls always visible on hover ---- */
+video {
+  outline: none;
+}
+video::-webkit-media-controls {
+  display: flex !important;
+  opacity: 1 !important;
+}
+video::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  opacity: 1 !important;
+}
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display,
+video::-webkit-media-controls-fullscreen-button {
+  opacity: 1 !important;
+  display: block !important;
+}
+/* Firefox video controls */
+video::-moz-media-controls {
+  opacity: 1 !important;
+}
+video::-moz-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  opacity: 1 !important;
+}
+/* Show controls on hover */
+video:hover {
+  --webkit-media-controls-opacity: 1;
+}
