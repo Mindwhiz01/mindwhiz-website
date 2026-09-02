@@ -275,7 +275,22 @@ body {
   }
 }
 
-/* ---- video - use native controls as-is ---- */
+/* ---- video - ensure volume slider stays visible ---- */
 video {
   outline: none;
+}
+/* Keep volume slider visible on WebKit browsers */
+video::-webkit-media-controls-volume-slider {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+video::-webkit-media-controls-mute-button {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* Prevent volume panel from hiding */
+video::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.3) !important;
 }
