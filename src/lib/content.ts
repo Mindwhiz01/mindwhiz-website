@@ -102,6 +102,38 @@ export const industries = [
 
 export const caseStudies = [
   {
+    slug: "connecteffect",
+    client: "Connect Effect",
+    category: "Social & Development",
+    result: "Accelerated social growth and business expansion through comprehensive social media services. Deployed strategic content, community management, and engagement initiatives that scaled their online presence and converted followers into customers. Leadership sees real-time growth metrics and consistent ROI on social investment.",
+    highlights: ["Social growth acceleration", "Community engagement", "Brand expansion"],
+    img: "/clients/connecteffect-site.png",
+    logo: "/clients/connecteffect-site.png",
+    services: ["Social Media Management", "Content Strategy", "Digital Growth", "Community Engagement"],
+    video: "/clients/connecteffect-video.mp4",
+    challenge:
+      "Connect Effect faced stagnant social media presence and limited digital reach. Manual posting and inconsistent engagement meant they were missing opportunities to build community and convert prospects. Social channels weren't integrated into their broader business growth strategy.",
+    approach: [
+      "We developed a comprehensive social media strategy aligned with business goals and target audience needs.",
+      "Strategic content calendars, daily community management, and proactive engagement built real momentum.",
+      "Real-time performance tracking and continuous optimization ensured consistent growth and measurable ROI.",
+    ],
+    outcomes: [
+      "Significant acceleration in follower growth and engagement rates.",
+      "Established consistent brand voice and community presence across platforms.",
+      "Social channels now directly contribute to customer acquisition and business growth.",
+    ],
+    metrics: [
+      { value: "+300%", label: "Growth in engagement" },
+      { value: "Real-time", label: "Performance tracking" },
+      { value: "Qualified", label: "Leads from social" },
+    ],
+    quote: {
+      text: "MindWhiz transformed our social presence from an afterthought into a real business growth engine. The results speak for themselves.",
+      author: "CEO, Connect Effect",
+    },
+  },
+  {
     slug: "alpha-bravo",
     client: "Alpha Bravo",
     category: "Construction",
@@ -110,7 +142,6 @@ export const caseStudies = [
     img: "/clients/alpha-bravo.png",
     logo: "/clients/alpha-bravo.png",
     services: ["Construction Estimation", "Staff Augmentation", "Bid Support"],
-    video: "/clients/connecteffect-video.mp4",
     challenge:
       "Alpha Bravo's in house estimating team was the bottleneck on every bid. Takeoffs and pricing took days, forcing them to pass on opportunities or submit rushed numbers. Hiring locally was slow and expensive, and each new estimator took months to become productive.",
     approach: [
@@ -193,37 +224,6 @@ export const caseStudies = [
     quote: {
       text: "We finally trust our numbers and see them the same day. The workflows just run.",
       author: "Head of Operations, Inovatiqa",
-    },
-  },
-  {
-    slug: "connecteffect",
-    client: "Connect Effect",
-    category: "Social & Development",
-    result: "Accelerated social growth and business expansion through comprehensive social media services. Deployed strategic content, community management, and engagement initiatives that scaled their online presence and converted followers into customers. Leadership sees real-time growth metrics and consistent ROI on social investment.",
-    highlights: ["Social growth acceleration", "Community engagement", "Brand expansion"],
-    img: "/clients/connecteffect-site.png",
-    logo: "/clients/connecteffect-site.png",
-    services: ["Social Media Management", "Content Strategy", "Digital Growth", "Community Engagement"],
-    challenge:
-      "Connect Effect faced stagnant social media presence and limited digital reach. Manual posting and inconsistent engagement meant they were missing opportunities to build community and convert prospects. Social channels weren't integrated into their broader business growth strategy.",
-    approach: [
-      "We developed a comprehensive social media strategy aligned with business goals and target audience needs.",
-      "Strategic content calendars, daily community management, and proactive engagement built real momentum.",
-      "Real-time performance tracking and continuous optimization ensured consistent growth and measurable ROI.",
-    ],
-    outcomes: [
-      "Significant acceleration in follower growth and engagement rates.",
-      "Established consistent brand voice and community presence across platforms.",
-      "Social channels now directly contribute to customer acquisition and business growth.",
-    ],
-    metrics: [
-      { value: "+300%", label: "Growth in engagement" },
-      { value: "Real-time", label: "Performance tracking" },
-      { value: "Qualified", label: "Leads from social" },
-    ],
-    quote: {
-      text: "MindWhiz transformed our social presence from an afterthought into a real business growth engine. The results speak for themselves.",
-      author: "CEO, Connect Effect",
     },
   },
 ];
