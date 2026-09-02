@@ -217,6 +217,67 @@ function CooSection() {
 }
 
 // ---------------------------------------------------------------------------
+// Team Members section
+// ---------------------------------------------------------------------------
+const teamMembers = [
+  {
+    name: "Ahmad",
+    title: "Chief Marketing Officer",
+    department: "Digital Department",
+    image: "/leadership/ahmad.png",
+  },
+  {
+    name: "Ammar",
+    title: "Business Development Manager",
+    department: "BD",
+    image: "/leadership/ammar.png",
+  },
+  {
+    name: "Subhan Malik",
+    title: "HR Manager",
+    department: "HR",
+    image: "/leadership/subhan-malik.png",
+  },
+];
+
+function TeamSection() {
+  return (
+    <section className="bg-[#FAF9F5] py-24">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <Reveal>
+          <Kicker>Our Team</Kicker>
+          <h2
+            className="mt-4 text-[clamp(2.6rem,5.5vw,5rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Meet The <span style={{ color: "#ed1164" }}>Team</span>
+          </h2>
+        </Reveal>
+
+        <div className="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          {teamMembers.map((member, i) => (
+            <Reveal key={member.name} delay={i * 0.1}>
+              <div>
+                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-gray-200">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <p className="mt-4 text-lg font-bold text-black">{member.name}</p>
+                <p className="text-sm font-semibold text-[#9CCC3C]">{member.title}</p>
+                <p className="text-sm text-black/60">{member.department}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Page shell
 // ---------------------------------------------------------------------------
 export default function AboutPageClient() {
@@ -249,6 +310,8 @@ export default function AboutPageClient() {
         </div>
 
         <CooSection />
+
+        <TeamSection />
 
         <Footer />
       </div>
