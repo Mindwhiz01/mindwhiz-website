@@ -102,12 +102,12 @@ function CaseCard({
                   href="https://connecteffect.us/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-gray-100 p-2 transition-all hover:bg-gray-200"
+                  className="inline-flex items-center justify-center rounded-lg bg-blue-900 p-2.5 transition-all hover:bg-blue-800"
                 >
                   <img
                     src="/clients/ce-logo.png"
                     alt={`${cs.client} logo`}
-                    className="h-8 w-8"
+                    className="h-10 w-10"
                   />
                 </a>
               )}
