@@ -1391,7 +1391,6 @@ function CaseCard({
                 <video
                   src={cs.video}
                   controls
-                  autoPlay
                   loop
                   className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]"
                 />
