@@ -1386,14 +1386,22 @@ function CaseCard({
             </div>
             <div className="relative mt-3 flex min-h-[26rem] flex-col overflow-hidden rounded-lg border border-white/20 bg-white/[0.03] p-6">
               <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-[#9CCC3C]/10 blur-3xl" />
-              {/* client logo, big and centred in the box at full opacity so it
-                  reads clearly against the dark exhibit card */}
-              {cs.logo && (
+              {/* video or logo exhibit */}
+              {cs.video ? (
+                <video
+                  src={cs.video}
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]"
+                />
+              ) : cs.logo ? (
                 <div className="pointer-events-none absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
                 </div>
-              )}
+              ) : null}
               <div className="relative flex-1" />
               <p className="relative text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">{cs.client} · 2025</p>
             </div>
