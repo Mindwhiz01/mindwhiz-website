@@ -225,7 +225,7 @@ const teamMembers = [
     name: "Ahmad",
     title: "Chief Marketing Officer",
     department: "Digital Department",
-    image: "/leadership/ahmad.png",
+    image: "/leadership/ahmad.jpeg",
     linkedin: "https://www.linkedin.com/in/ahmedkhan-strategist/",
   },
   {
@@ -239,7 +239,7 @@ const teamMembers = [
     name: "Subhan Malik",
     title: "HR Manager",
     department: "HR",
-    image: "/leadership/subhan-malik.png",
+    image: "/leadership/subhan-malik.jpeg",
     linkedin: "https://www.linkedin.com/in/hr-subhan/",
   },
 ];
