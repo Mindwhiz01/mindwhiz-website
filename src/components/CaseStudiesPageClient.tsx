@@ -120,7 +120,15 @@ function CaseCard({
                   src={cs.video}
                   controls
                   loop
-                  className="absolute inset-0 h-full w-full object-cover"
+                  onClick={(e) => {
+                    const video = e.currentTarget;
+                    if (video.paused) {
+                      video.play();
+                    } else {
+                      video.pause();
+                    }
+                  }}
+                  className="absolute inset-0 h-full w-full object-cover cursor-pointer"
                 />
               ) : (
                 /* eslint-disable-next-line @next/next/no-img-element */

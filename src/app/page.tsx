@@ -1392,7 +1392,15 @@ function CaseCard({
                   src={cs.video}
                   controls
                   loop
-                  className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]"
+                  onClick={(e) => {
+                    const video = e.currentTarget;
+                    if (video.paused) {
+                      video.play();
+                    } else {
+                      video.pause();
+                    }
+                  }}
+                  className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)] cursor-pointer"
                 />
               ) : cs.logo ? (
                 <div className="pointer-events-none absolute inset-0">
