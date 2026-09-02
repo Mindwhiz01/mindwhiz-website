@@ -107,7 +107,7 @@ function CaseCard({
                   <img
                     src="/clients/ce-logo.png"
                     alt={`${cs.client} logo`}
-                    className="h-10 w-24"
+                    className="h-10 w-40"
                   />
                 </a>
               )}
