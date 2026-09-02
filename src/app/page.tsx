@@ -1394,11 +1394,7 @@ function CaseCard({
                   autoPlay
                   muted
                   loop
-                  controlsList="nodownload"
                   className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]"
-                  style={{
-                    "--webkit-media-controls-panel-background-color": "rgba(0, 0, 0, 0.8)",
-                  } as React.CSSProperties}
                 />
               ) : cs.logo ? (
                 <div className="pointer-events-none absolute inset-0">
