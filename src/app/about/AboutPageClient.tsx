@@ -273,7 +273,6 @@ function TeamSection() {
                   <div>
                     <p className="text-lg font-bold text-black">{member.name}</p>
                     <p className="text-sm font-semibold text-[#9CCC3C]">{member.title}</p>
-                    <p className="text-sm text-black/60">{member.department}</p>
                   </div>
                   <a
                     href={member.linkedin}
