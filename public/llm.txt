@@ -1,0 +1,606 @@
+# MindWhiz Website - Complete Documentation
+
+## Company Overview
+
+MindWhiz is a hybrid staffing and business process outsourcing (BPO) company that embeds vetted, remote professionals directly into client workflows across IT & security, back-office operations, and digital/web services.
+
+**Company Name:** MindWhiz
+**Website:** https://www.mindwhiz.com
+**Head Office & Delivery Hub:** Block E2, WAPDA Town Phase 1, Lahore, Punjab, Pakistan
+**Markets Served:** United States, United Kingdom, Pakistan
+**Key Contact:** info@mindwhiz.com | +1 (832) 900-4608 (US) | +92 321 1116451 (Pakistan)
+**Tagline:** Flexible Talent, Scalable Teams, Global Impact
+**Model:** Staff augmentation and managed BPO teams that integrate into client's own workflow
+
+### Key Differentiators
+
+1. **Hybrid** - Onshore and offshore delivery that stays aligned
+2. **Vetted** - Role-ready professionals matched to your needs
+3. **Fast** - Short time to shortlist and faster onboarding
+4. **Secure** - Process-driven approach built for compliance
+
+### Key Metrics
+
+- 500+ skilled professionals deployed
+- $2.4M average annual cost savings per client
+- 99.8% client retention rate
+- 10 days average deployment time
+- 24/7 availability across time zones
+
+---
+
+## Services
+
+### IT & Security Services
+
+1. **24/7 IT Helpdesk (Tier 1-3)**
+   - URL: /services/it-helpdesk-24-7
+   - Round-the-clock tiered IT support desk with continuous availability
+
+2. **NOC Monitoring (24/7)**
+   - URL: /services/noc-monitoring
+   - Network operations center monitoring and incident response
+
+3. **Cybersecurity Monitoring**
+   - URL: /services/cybersecurity-monitoring
+   - 24/7 threat detection, prevention, and response (Managed Detection and Response)
+
+4. **Endpoint Security**
+   - URL: /services/endpoint-security
+   - Device protection and centralized endpoint management
+
+5. **Server & Network Administration**
+   - URL: /services/server-network-administration
+   - Secure, stable server and network operations
+
+6. **Remote Desktop & IT Asset Management**
+   - URL: /services/remote-desktop-assets
+   - Secure remote access and IT asset tracking
+
+### Infrastructure & Cloud Services
+
+7. **Cloud Infrastructure Management**
+   - URL: /services/cloud-infrastructure
+   - Design, migration, and managed cloud operations
+
+8. **DevOps & Automation**
+   - URL: /services/devops-automation
+   - CI/CD pipelines and automated delivery
+
+### Back-Office & Operations
+
+9. **Finance & Accounting**
+   - URL: /services/finance-accounting
+   - AP, AR, bookkeeping, reporting, CFO support
+
+10. **HR Services**
+    - URL: /services/hr-services
+    - RPO, payroll, HRIS, and compliance
+
+11. **Construction Estimating**
+    - URL: /services/construction-estimation
+    - Remote takeoffs, bid prep, and planning
+
+### Digital & Web Services
+
+12. **Digital Marketing**
+    - URL: /services/digital-marketing
+    - SEO, campaigns, CRM, and content operations
+
+13. **Web Development**
+    - URL: /web-services
+    - Websites, web apps, and dashboards
+
+### Flexible Resources
+
+14. **Staff Augmentation**
+    - URL: /services/staff-augmentation
+    - On-demand specialists to scale fast
+
+---
+
+## Industries Served
+
+MindWhiz serves the following industries:
+
+1. Information Technology
+2. E-commerce & Retail
+3. Startups & SMBs
+4. Construction & Engineering
+5. Industrial Manufacturing
+6. Accounting & Finance
+7. Professional Services
+8. Logistics & Supply Chain
+9. Healthcare & HealthTech
+
+**Industry Pages:** https://www.mindwhiz.com/industries/[slug]
+
+Example industry pages:
+- /industries/information-technology
+- /industries/construction-engineering
+- /industries/healthcare
+- /industries/accounting-finance
+- (9 total industry pages)
+
+---
+
+## Geographic Locations
+
+### United States
+- **URL:** /locations/us
+- **Coverage:** Nationwide US-hours coverage
+- **Focus:** Sales, support, and account management
+
+### United Kingdom
+- **URL:** /locations/uk
+- **Location:** London
+- **Focus:** Regional operations and delivery
+
+### Pakistan
+- **URL:** /locations/pk
+- **Location:** Lahore, Block E2, WAPDA Town Phase 1
+- **Focus:** Head office and main delivery hub
+
+---
+
+## Website Structure & Routes
+
+### Core Pages
+
+- **Home:** / (landing page with hero, services overview, testimonials, case studies)
+- **About:** /about (company story, team, culture)
+- **Careers:** /careers (job opportunities, career growth)
+- **Contact:** /contact (contact form, sales inquiry)
+- **Why MindWhiz:** /why-mindwhiz (value proposition, differentiation)
+- **Newsletter:** /newsletter (blog updates and industry insights)
+- **Thank You:** /thank-you (post-conversion page)
+
+### Service Pages
+
+- **Service Listing:** /services (all 9 core services + staff augmentation)
+- **Individual Services:** /services/[slug] (9 dedicated service detail pages)
+- **Construction Estimation:** /services/construction-estimation (standalone page)
+
+### Industry Pages
+
+- **Industries Listing:** /#industries (from home page)
+- **Individual Industries:** /industries/[slug] (9 industry-specific pages)
+
+### Location Pages
+
+- **US Location:** /locations/us
+- **UK Location:** /locations/uk
+- **Pakistan Location:** /locations/pk
+
+### Content Pages
+
+- **Blog Listing:** /blog (articles on security operations, delivery playbooks, staffing)
+- **Blog Post:** /blog/[slug] (individual articles)
+- **Case Studies:** /case-studies (proof of work)
+- **Case Study Detail:** /case-studies/[slug] (individual case study detail)
+- **Web Services:** /web-services (digital & web service offerings)
+
+### Legal Pages
+
+- **Privacy Policy:** /privacy
+- **Terms of Service:** /terms
+
+### Admin & Other
+
+- **404 Page:** /not-found (catch-all for missing routes)
+- **Admin Panel:** /admin (password-protected analytics and content management)
+
+---
+
+## Content Model
+
+All content is authored as typed data in `src/lib/`:
+
+### Files
+
+1. **content.ts** - Home page, navigation, footer, stats, testimonials, case studies
+2. **servicePages.ts** - 9 service detail pages
+3. **industryPages.ts** - 9 industry pages
+4. **locations.ts** - 3 location pages (US, UK, Pakistan)
+5. **blog.ts** - Blog articles and metadata
+6. **caseStudies.ts** - Case study data
+7. **seo.config.ts** - SEO metadata map for all pages
+
+### Content Approach
+
+- No CMS or database - all content is hardcoded in TypeScript
+- Shared content renderers pick up data from typed modules
+- Changes require code updates and deployment
+- Content is version-controlled via git
+
+---
+
+## Technology Stack
+
+### Framework & Runtime
+
+- **Framework:** Next.js 14 (App Router)
+- **Runtime:** Node.js
+- **Language:** TypeScript (strict mode)
+- **React Version:** React 18.3
+
+### Styling
+
+- **CSS Framework:** Tailwind CSS 3.4
+- **Utility-first approach** with custom component classes
+
+### Animation & Interaction
+
+- **framer-motion:** Component animation and transitions
+- **GSAP + ScrollTrigger:** Advanced scroll-driven animations
+- **Lenis:** Smooth scrolling implementation
+- **Custom hooks:** useCapabilitiesRide, useSlideSnap, usePinnedActive
+
+### UI Components & Icons
+
+- **Icons:** lucide-react (454.0)
+- **Custom Components:** 22+ shared UI components
+  - ServiceDetailPage, Footer, FaqSection, ProcessScroll
+  - PageBanner, CaseStudyDetail, LocationPage
+  - ContactFormSection, ClientsSection, TrustedByClients
+  - etc.
+
+### Forms & Leads
+
+- **Form Solution:** GoHighLevel / LeadConnector embeds
+- **Contact Forms:** Contact and careers embedded iframe forms
+- **Booking:** LeadConnector booking widget for consultations
+- **Newsletter:** Client-side validation (not yet wired to ESP)
+
+### Database & Backend
+
+- **Database:** Supabase (for analytics, blog, case studies, newsletter)
+- **Package:** @supabase/supabase-js (2.110.9)
+- **Authentication:** Custom auth system for admin panel
+
+### Analytics & Tracking
+
+- **Google Analytics:** Google Tag Manager integration
+- **Meta Pixel:** Facebook conversion tracking
+- **Custom Analytics:** Tracked keyword performance and page views
+- **Admin Dashboard:** /admin panel with analytics, blog, case studies, newsletter management
+
+### Additional Libraries
+
+- @gsap/react (2.1.2) - GSAP React integration
+- lucide-react (0.454.0) - Icon library
+
+### Hosting & Deployment
+
+- **Platform:** Vercel
+- **Deployment:** Automated on git push
+- **Edge Functions:** Not used (content is pre-rendered)
+- **Caching:** Vercel's global CDN
+
+---
+
+## SEO & AI Optimization
+
+### SEO Implementation
+
+- **Metadata:** Per-page title, description, OG tags via seo.config.ts
+- **Canonical URLs:** Stable canonical links on all pages
+- **Structured Data:** JSON-LD markup for Organization, WebSite, Service, LocalBusiness
+- **Sitemap:** Dynamic sitemap at /sitemap.xml
+- **Robots.txt:** Search engine crawler configuration at /robots.txt
+
+### Answer Engine Optimization (AEO)
+
+- **FAQ Schema:** FAQ sections on key pages for featured snippets
+- **Question-first Content:** Content structured around common questions
+- **Topic Coverage:** Deep coverage of each service and industry
+- **Entity Graph:** Stable JSON-LD entity relationships
+
+### Generative Engine Optimization (GEO)
+
+- **llms.txt File:** AI crawler allowlist at /llms.txt
+- **llm.txt File:** This comprehensive documentation for LLMs
+- **Entity Graph:** Structured data for AI model training
+- **Content Freshness:** Regular blog updates with field insights
+
+### Base URL & Canonicals
+
+- **Production URL:** https://www.mindwhiz.com
+- **All canonicals point to:** https://www.mindwhiz.com/[path]
+- **Blog & Case Studies:** Canonical URLs include publication type in schema
+
+### Open Graph & Social Sharing
+
+- **OG:image:** Default and custom per-page
+- **OG:type:** website, article (for blog/case studies)
+- **OG:url:** Canonical URL from production domain
+
+---
+
+## Security Implementation
+
+### Content Security Policy (CSP)
+
+- **Status:** Report-Only mode (CSP-Report-Only header)
+- **Plan:** Upgrade to enforcement after LeadConnector verification
+- **Allowed Sources:**
+  - Self (same-origin)
+  - LeadConnector (link.msgsndr.com, leadconnectorhq.com)
+  - Google Tag Manager (www.googletagmanager.com)
+  - Meta Pixel (connect.facebook.net, facebook.com)
+  - Unsplash (images.unsplash.com) for marketing imagery
+  - Inline scripts for React hydration and framer-motion
+
+### Security Headers
+
+- **X-Content-Type-Options:** nosniff
+- **X-Frame-Options:** DENY (prevent clickjacking)
+- **Referrer-Policy:** strict-origin-when-cross-origin
+- **Strict-Transport-Security:** max-age=63072000 (2 years)
+- **Permissions-Policy:** Blocks camera, microphone, geolocation, browsing-topics
+
+### Third-Party Integrations
+
+- **LeadConnector:** Embedded forms for contact, careers, booking
+- **Google Analytics:** Via Google Tag Manager
+- **Meta Pixel:** Facebook conversion tracking
+- **Unsplash:** High-quality imagery for marketing
+
+---
+
+## Performance Features
+
+### Animation Optimization
+
+- **GSAP ScrollTrigger:** Hardware-accelerated scroll animations
+- **Lenis:** Smooth scroll for better UX
+- **framer-motion:** GPU-accelerated transitions
+- **Custom Hooks:** Optimized scroll and intersection tracking
+
+### Loading Optimization
+
+- **Next.js Image Optimization:** Automatic image compression and serving
+- **Video Optimization:** MP4 and WebM formats with compression
+- **Code Splitting:** Automatic route-based code splitting
+- **CSS Purging:** Tailwind removes unused styles in production
+
+### Caching Strategy
+
+- **Static Generation:** Most pages use ISR (Incremental Static Regeneration)
+- **CDN Caching:** Vercel's global CDN for static assets
+- **Browser Caching:** Long cache headers for versioned assets
+
+---
+
+## Admin Panel Features
+
+**Location:** /admin
+**Authentication:** Password-protected (Supabase auth)
+
+### Analytics Dashboard
+
+- **Page Views:** Track visitor metrics and trends
+- **Keywords:** Monitor search keywords and performance
+- **Real-time Stats:** Live visitor and engagement data
+
+### Content Management
+
+- **Blog Management:** Create, edit, publish blog posts
+- **Case Studies:** Manage case study content and outcomes
+- **Newsletter:** Manage newsletter subscriptions and campaigns
+
+### Lead Management
+
+- **Form Submissions:** Track contact form and career applications
+- **Lead Scoring:** Identify high-value opportunities
+- **Export Data:** Download leads for follow-up
+
+---
+
+## Mobile & PWA Support
+
+### Progressive Web App
+
+- **Service Worker:** Offline support via /sw.js
+- **Web Manifest:** Installable app experience via /manifest.json
+- **App Shortcuts:** Quick access to Contact and Services
+- **Categories:** Business and productivity classifications
+
+### Responsive Design
+
+- **Breakpoints:** Mobile-first Tailwind CSS responsive utilities
+- **Touch Optimization:** Large tap targets for mobile users
+- **Performance:** Optimized animations for lower-end devices
+
+---
+
+## Case Studies & Proof of Work
+
+### Featured Case Studies
+
+1. **Alpha Bravo Construction**
+   - Industry: Construction & Engineering
+   - Outcome: Streamlined operations and project estimation
+
+2. **Villa Tech**
+   - Industry: Technology/E-commerce
+   - Outcome: Scaled infrastructure and security operations
+
+3. **Inovatiqa**
+   - Industry: Startups & Technology
+   - Outcome: Cost-effective team augmentation and growth
+
+**Case Studies URL:** /case-studies
+**View All:** https://www.mindwhiz.com/case-studies
+
+---
+
+## Blog & Industry Insights
+
+### Blog Topics
+
+- Security operations and best practices
+- Delivery playbooks and operational scaling
+- Staffing strategies for remote teams
+- Industry-specific insights
+- Client success stories
+
+**Blog URL:** /blog
+
+---
+
+## Lead Capture & Conversion
+
+### Primary CTAs
+
+1. **"Get Free Consultation"** - Hero section, links to #contact
+2. **"Book a Consultation"** - LeadConnector widget on service pages
+3. **"Start Your Journey"** - Throughout site with booking link
+
+### Lead Destinations
+
+- **Contact Form:** /contact
+- **Careers Form:** /careers
+- **Booking Widget:** Embedded LeadConnector calendar on multiple pages
+- **Email:** info@mindwhiz.com
+- **Phone:** +1 (832) 900-4608 (US) | +92 321 1116451 (General)
+
+### Conversion Tracking
+
+- **Meta Pixel:** Tracks contact form submissions, service inquiries
+- **Google Analytics:** Tracks page views, user journey, conversion funnels
+- **Admin Dashboard:** Real-time lead tracking and analytics
+
+---
+
+## Sitemap & Navigation
+
+### Main Navigation
+
+- Services
+- Web Services
+- Industries
+- About Us
+- Case Studies
+- Contact
+
+### Sitemap Locations
+
+- **XML Sitemap:** /sitemap.xml (machine-readable)
+- **HTML Sitemap:** Available via footer links
+- **Breadcrumb Navigation:** On all detail pages
+
+---
+
+## External Resources & Media
+
+### Video Assets
+
+- Hero animations: .webm and .mp4 formats
+- Service showcases: Compressed video for faster loading
+- Company culture videos: Team and office environment
+
+### Image Sources
+
+- **Unsplash:** Marketing and blog imagery
+- **Custom:** Company logos, service icons, team photos
+- **Generated:** Dynamic OG images for social sharing
+
+### Optimization
+
+- **Video Compression:** MP4 and WebM for browser compatibility
+- **Image Optimization:** Automatic via Next.js Image component
+- **Lazy Loading:** Off-screen content loads on-demand
+
+---
+
+## Accessibility
+
+### WCAG Compliance
+
+- **Color Contrast:** Meets AA standards (4.5:1 for text)
+- **Focus Management:** Keyboard navigation support
+- **ARIA Labels:** Semantic HTML and accessibility attributes
+- **Alt Text:** All images have descriptive alt text
+
+### Motion & Animations
+
+- **Prefers-Reduced-Motion:** Respects user OS preferences
+- **Performance:** Animations disable on low-end devices
+- **Focus Indicators:** Clear visual feedback on interactive elements
+
+---
+
+## Content Updates & Maintenance
+
+### Deployment Workflow
+
+1. Edit content in TypeScript files (src/lib/)
+2. Commit changes to git repository
+3. Push to GitHub
+4. Vercel automatically deploys on push
+5. Changes live within minutes
+
+### Version Control
+
+- **Repository:** GitHub (private)
+- **Branch:** Main branch for production
+- **History:** Full commit history for all changes
+
+---
+
+## Future Enhancements
+
+### Planned Features
+
+- Newsletter ESP integration (currently client-side only)
+- Blog comment system
+- Interactive case study timeline
+- Video testimonials section
+- Client success metrics dashboard
+
+### Potential Optimizations
+
+- A/B testing framework for CTAs
+- Advanced analytics segmentation
+- Predictive lead scoring
+- Marketing automation workflows
+
+---
+
+## Support & Inquiries
+
+### Contact Methods
+
+- **Email:** info@mindwhiz.com
+- **Phone (US):** +1 (832) 900-4608
+- **Phone (General):** +92 321 1116451
+- **Website Form:** /contact
+- **Booking:** LeadConnector scheduling system
+
+### Business Hours
+
+- **US Hours:** Account management and sales
+- **24/7 Operations:** Delivery teams across time zones
+
+---
+
+## Document Metadata
+
+**Last Updated:** September 8, 2026
+**Framework Version:** Next.js 14
+**Node Version:** 20 LTS (Node.js 24 LTS recommended)
+**Target Audience:** AI models, developers, content platforms, search engines
+
+---
+
+## Key Links Summary
+
+- **Homepage:** https://www.mindwhiz.com/
+- **Services:** https://www.mindwhiz.com/services/
+- **Case Studies:** https://www.mindwhiz.com/case-studies/
+- **Blog:** https://www.mindwhiz.com/blog/
+- **About:** https://www.mindwhiz.com/about/
+- **Contact:** https://www.mindwhiz.com/contact/
+- **Sitemap:** https://www.mindwhiz.com/sitemap.xml
+- **This Documentation:** https://www.mindwhiz.com/llm.txt
