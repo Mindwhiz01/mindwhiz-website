@@ -77,14 +77,28 @@ const nextConfig = {
 
     return [{ source: "/:path*", headers }];
   },
-  // Legacy root-level service URLs were consolidated under /services/*.
-  // 301 the old paths so existing links and search rankings carry over.
-  //
-  // Any old URL not listed here falls through to the [...notfound] catch-all,
-  // which 307s to the home page. The 301s below preserve SEO equity by
-  // pointing each still-indexed legacy page at its most relevant new page.
+  // Domain canonicalization and legacy route redirects.
+  // All traffic flows to https://www.mindwhiz.com/ (www + HTTPS only).
+  // Old WordPress URLs are 301'd to their closest new equivalents to preserve SEO equity.
+  // Any old URL not listed here falls through to [...notfound] catch-all (307 to home).
   async redirects() {
     return [
+      // --- CRITICAL: Domain canonicalization (non-www → www, HTTP → HTTPS) ---
+      // Non-www domain still indexed in GSC with split traffic. Consolidate all to www.
+      {
+        source: "/:path*",
+        destination: "https://www.mindwhiz.com/:path*",
+        permanent: true,
+        has: [{ type: "host", value: "mindwhiz.com" }],
+      },
+      // HTTP to HTTPS (Vercel adds x-forwarded-proto header for HTTP)
+      {
+        source: "/:path*",
+        destination: "https://www.mindwhiz.com/:path*",
+        permanent: true,
+        has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+      },
+
       // --- short legacy aliases ---
       { source: "/hr", destination: "/services/hr-services", permanent: true },
       { source: "/finance", destination: "/services/finance-accounting", permanent: true },
@@ -94,6 +108,7 @@ const nextConfig = {
         destination: "/services/construction-estimation",
         permanent: true,
       },
+      { source: "/it", destination: "/services/it-helpdesk-24-7", permanent: true },
 
       // --- old cybersecurity-staffing site: construction pages ---
       { source: "/construction", destination: "/services/construction-estimation", permanent: true },
@@ -102,6 +117,7 @@ const nextConfig = {
       // --- old site: finance / accounting pages ---
       { source: "/financial-services", destination: "/services/finance-accounting", permanent: true },
       { source: "/accounting-staff-augmentation-services", destination: "/services/finance-accounting", permanent: true },
+      { source: "/accounting-staff-augmentation", destination: "/industries/accounting-finance", permanent: true },
 
       // --- old site: HR pages ---
       { source: "/employee-lifecycle-management", destination: "/services/hr-services", permanent: true },
@@ -112,10 +128,10 @@ const nextConfig = {
       { source: "/cyber-security-staff-augmentation-services", destination: "/services/cybersecurity-monitoring", permanent: true },
       { source: "/security-analyst", destination: "/services/cybersecurity-monitoring", permanent: true },
       { source: "/cybersecurity-consultant", destination: "/services/cybersecurity-monitoring", permanent: true },
+      { source: "/cyber-security-staff-augmentation-mindwhiz", destination: "/services/cybersecurity-monitoring", permanent: true },
+      { source: "/cybersecurity-talent-for-msps", destination: "/services/staff-augmentation", permanent: true },
 
       // --- old site: cloud pages ---
-      // Still picking up ~267 impressions/28d at avg position 71.7 as a soft 404
-      // (it was falling through to [...notfound] and 307ing to the home page).
       { source: "/top-cloud-security-consulting", destination: "/services/cloud-infrastructure", permanent: true },
 
       // --- old site: more HR pages ---
@@ -123,15 +139,29 @@ const nextConfig = {
 
       // --- old site: client / case-study pages ---
       { source: "/vella-tech", destination: "/samples/clients", permanent: true },
+      { source: "/inovatiqa-corporation", destination: "/case-studies/inovatiqa", permanent: true },
 
       // --- old site: company / about pages ---
       { source: "/who-we-are", destination: "/about", permanent: true },
       { source: "/bpo-solutions-by-mindwhiz", destination: "/web-services", permanent: true },
 
+      // --- old site: contact / navigation ---
+      { source: "/contact-us", destination: "/contact", permanent: true },
+      { source: "/careers-at-mindwhiz", destination: "/careers", permanent: true },
+
+      // --- old site: service pages (construction, IT consulting, etc.) ---
+      { source: "/construction-estimation-services-in-the-usa", destination: "/services/construction-estimation", permanent: true },
+      { source: "/it-consulting-firms", destination: "/services/it-helpdesk-24-7", permanent: true },
+
+      // --- old site: articles and content pages ---
+      { source: "/the-roi-of-staff-augmentation", destination: "/services/staff-augmentation", permanent: true },
+      { source: "/it-infrastructure-and-digital-marketing-growth", destination: "/web-services", permanent: true },
+      { source: "/top-penetration-testing-providers-for-cybersecurity", destination: "/blog", permanent: true },
+      { source: "/privacy-policy", destination: "/privacy", permanent: true },
+
       // --- old site: blog articles (slugs differ; point at the blog index) ---
       { source: "/best-cybersecurity-expert-company-mindwhiz", destination: "/blog", permanent: true },
       { source: "/cyber-security-staff-augmentation-2025", destination: "/blog", permanent: true },
-      { source: "/cyber-security-staff-augmentation-mindwhiz", destination: "/blog", permanent: true },
       { source: "/how-cyber-security-staff-augmentation", destination: "/blog", permanent: true },
       { source: "/mindwhiz-makes-accounting-staff-augmentation", destination: "/blog", permanent: true },
       { source: "/global-delivery-models-help-businesses", destination: "/blog", permanent: true },

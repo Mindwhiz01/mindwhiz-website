@@ -8,6 +8,7 @@ export type LocationContent = {
   tagline: string;
   intro: string;
   address?: string;
+  phone?: string;
   timezone: string;
   highlights: { title: string; desc: string; image: string }[];
   services: string[]; // subset of service names from content.ts, emphasized locally
@@ -18,13 +19,15 @@ export const locations: LocationContent[] = [
     slug: "us",
     code: "US",
     country: "United States",
-    city: "Nationwide",
+    city: "Houston, TX",
     flag: "https://flagcdn.com/w80/us.png",
     heroImage:
       "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80",
     tagline: "Dedicated teams for US businesses, in your time zone.",
     intro:
-      "MindWhiz serves clients across the United States and Canada with US-hours account management and round the clock delivery from our engineering hub in Lahore. You get a US point of contact and vetted talent without US salary and overhead.",
+      "MindWhiz serves clients across the United States and Canada with US-hours account management and round the clock delivery from our engineering hub in Lahore. Our Houston office provides local presence, US-hours coverage, and dedicated account management.",
+    address: "2313 W Sam Houston Pkwy N #147, Houston, TX 77043, United States",
+    phone: "+1 (832) 900-4608",
     timezone: "America/Chicago",
     highlights: [
       {
@@ -136,30 +139,37 @@ export function locationMetadata(loc: LocationContent) {
 }
 
 export function locationJsonLd(loc: LocationContent) {
-  return {
+  const baseSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: `MindWhiz, ${loc.city}`,
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
     url: `${SITE_URL}/locations/${loc.slug}`,
     description: loc.intro,
-    ...(loc.address
-      ? {
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: loc.address,
-            addressLocality: loc.city,
-            addressCountry: loc.code,
-          },
-        }
-      : {
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: loc.city,
-            addressCountry: loc.code,
-          },
-        }),
     areaServed: { "@type": "Country", name: loc.country },
     knowsAbout: loc.services,
   };
+
+  // Add address if present
+  if (loc.address) {
+    baseSchema.address = {
+      "@type": "PostalAddress",
+      streetAddress: loc.address,
+      addressLocality: loc.city.split(",")[0], // Extract city name before comma
+      addressCountry: loc.code,
+    };
+  } else {
+    baseSchema.address = {
+      "@type": "PostalAddress",
+      addressLocality: loc.city,
+      addressCountry: loc.code,
+    };
+  }
+
+  // Add phone if present
+  if (loc.phone) {
+    baseSchema.telephone = loc.phone;
+  }
+
+  return baseSchema;
 }
