@@ -950,34 +950,6 @@ export default function ServiceDetailPage({
         </section>
       ) : null}
 
-      {/* Contextual internal links to related services/industries with
-          descriptive, keyword-rich anchor text (internal-linking / SEO). */}
-      {related.length > 0 && (
-        <section className="bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <Kicker>Explore more</Kicker>
-            <h2
-              className="mt-4 text-3xl font-extrabold uppercase tracking-tight text-black sm:text-4xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Related {sectionLabel.toLowerCase()}
-            </h2>
-            <ul className="mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((r) => (
-                <li key={r.slug}>
-                  <Link
-                    href={`${basePath}/${r.slug}`}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-[#ed1164]"
-                  >
-                    <span className="text-base font-semibold text-black">{r.name}</span>
-                    <ArrowUpRight className="h-5 w-5 shrink-0 text-[#ed1164] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       {/* Final CTA rendered as the shared "How it works" style banner, with
           this page's own finalCta content. */}
