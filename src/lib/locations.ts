@@ -126,14 +126,27 @@ const SITE_URL = "https://www.mindwhiz.com";
 export function locationMetadata(loc: LocationContent) {
   const title = `${loc.city}, ${loc.country} Team`;
   const description = `${loc.tagline} ${loc.intro}`;
+
+  // Build hreflang map: each location points to itself + other locations
+  const hreflangs = {
+    "en-US": `${SITE_URL}/locations/us`,
+    "en-GB": `${SITE_URL}/locations/uk`,
+    "en-PK": `${SITE_URL}/locations/pk`,
+    "x-default": `${SITE_URL}/locations/us`, // Default to US for international visitors
+  };
+
   return {
     title,
     description,
-    alternates: { canonical: `/locations/${loc.slug}` },
+    alternates: {
+      canonical: `/locations/${loc.slug}`,
+      languages: hreflangs,
+    },
     openGraph: {
       title: `${title} | MindWhiz`,
       description,
       images: [{ url: loc.heroImage }],
+      url: `/locations/${loc.slug}`,
     },
   };
 }
