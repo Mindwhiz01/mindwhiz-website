@@ -36,6 +36,7 @@ export function ProcessIntroBanner({
         <div aria-hidden className="pointer-events-none absolute -bottom-28 right-16 h-72 w-72 rounded-full bg-white/[0.08]" />
         <div aria-hidden className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#9CCC3C]/25 blur-2xl" />
 
+
         <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
             <h2

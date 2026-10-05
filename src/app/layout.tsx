@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
+import { PwaInstall } from "@/components/PwaInstall";
 import { SEO_MAP } from "@/seo.config";
 import { jsonLdScript } from "@/lib/jsonLd";
 
@@ -71,6 +72,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/mindwhiz-mark.png",
     apple: "/mindwhiz-mark.png",
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: siteName,
   },
 };
 
@@ -227,6 +234,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd) }}
         />
+        <PwaInstall />
         <SmoothScroll>{children}</SmoothScroll>
         <ScrollToTop />
       </body>

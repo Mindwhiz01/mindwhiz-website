@@ -588,7 +588,15 @@ function Hero() {
 
 function MarqueeStrip() {
   return (
-    <div className="border-y border-slate-200 bg-[#faf9f7] py-6">
+    <div className="relative border-y border-slate-200 bg-[#faf9f7] py-6">
+      {/* Hostinger badge in top right corner */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/badges/Badge_brand_dark_640x240.webp"
+        alt="Hostinger Partner Badge"
+        className="absolute z-30 h-16 w-48 drop-shadow-lg"
+        style={{ top: '-90px', right: '20px' }}
+      />
       <Marquee items={["Web Design", "Web Apps", "Dashboards", "Ecommerce", "SEO", "Performance", "Support"]} />
     </div>
   );

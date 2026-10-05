@@ -197,7 +197,7 @@ export default function ClientsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           transition={revealTransition}
-          className="mx-auto max-w-3xl text-center"
+          className="relative mx-auto max-w-3xl text-center"
         >
           <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#9CCC3C]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#9CCC3C]" />
