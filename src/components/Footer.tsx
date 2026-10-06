@@ -85,6 +85,16 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+
+            {/* Hostinger badge */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/Badge_brand_dark_640x240.svg"
+              alt="Hostinger Partner Badge"
+              width="160"
+              height="60"
+              className="mt-6"
+            />
           </div>
 
           {/* link columns (single source of truth: content.ts) */}
