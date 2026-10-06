@@ -89,7 +89,7 @@ export default function Footer() {
             {/* Hostinger badge */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/Badge_brand_light.svg"
+              src="/Badge_brand_dark.svg"
               alt="Hostinger Partner Badge"
               width="160"
               height="60"
