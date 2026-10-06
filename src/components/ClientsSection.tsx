@@ -31,7 +31,7 @@ const clientsRow1: ClientItem[] = [
   { name: "Dr. Owais", src: "/clients/dr-owais.webp" },
   { name: "Ideal Smile", src: "/clients/ideal-smile.webp" },
   { name: "Maria Basit Malik", src: "/clients/maria-basit-malik.webp" },
-  { name: "Hostinger", src: "/Badge_brand_dark_640x240.svg" },
+  { name: "Hostinger", src: "/Badge_brand_light.svg" },
 ];
 const clientsRow2: ClientItem[] = [...clientsRow1].reverse();
 
