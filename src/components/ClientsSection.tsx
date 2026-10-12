@@ -92,7 +92,15 @@ function ClientMarquee({
     const el = trackRef.current;
     if (!el) return;
 
-    const half = () => el.scrollWidth / 2; // width of one copy of the set
+    // Width of one copy of the set, cached: reading scrollWidth inside the
+    // frame loop (right after writing transform) forced a synchronous layout
+    // on every frame. A ResizeObserver keeps the cached value current.
+    let halfWidth = el.scrollWidth / 2;
+    const ro = new ResizeObserver(() => {
+      halfWidth = el.scrollWidth / 2;
+    });
+    ro.observe(el);
+    const half = () => halfWidth;
     const apply = () => {
       el.style.transform = `translate3d(${-pos.current}px,0,0)`;
     };
@@ -118,8 +126,29 @@ function ClientMarquee({
       }
       raf = requestAnimationFrame(step);
     };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    // Only animate while the row is on screen and the tab is visible.
+    let inView = false;
+    const start = () => {
+      if (!raf && inView && !document.hidden) raf = requestAnimationFrame(step);
+    };
+    const stop = () => {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView) start();
+      else stop();
+    });
+    io.observe(el);
+    const onVisibility = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      io.disconnect();
+      ro.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      stop();
+    };
   }, [direction]);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {

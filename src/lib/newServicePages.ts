@@ -27,7 +27,7 @@ export const newServicePages: ServicePageContent[] = [
     group: "Talent & Workforce",
     hero: {
       h1: "Offshore Staff Augmentation Services for US Companies",
-      image: "/banners/staff-augmentation.png",
+      image: "/banners/staff-augmentation.webp",
       title: ["Offshore", "Talent,"],
       highlight: "Your Hours",
       heroRotate: ["Your Team", "Your Stack"],
@@ -43,7 +43,7 @@ export const newServicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Hiring Delays", "US Salary Costs"],
-        image: "/banners/information-technology.png",
+        image: "/banners/information-technology.webp",
         title: "Roadmap Waiting On Hiring",
         desc: `A US technical hire commonly takes ${claims.usHireTime}. Offshore augmentation typically starts in ${claims.deployTime}.`,
         cta: "Talk to expert",
@@ -87,12 +87,12 @@ export const newServicePages: ServicePageContent[] = [
       ],
     },
     capabilities: [
-      { title: "Software Engineers", desc: "Full-stack, front-end and back-end developers in React, Node.js, Python, .NET, PHP and mobile.", image: "/banners/web-services.png" },
-      { title: "DevOps and Cloud Engineers", desc: "AWS, Azure and GCP engineers for CI/CD, Kubernetes, Terraform and cloud operations.", image: "/banners/devops-automation.png" },
-      { title: "QA and Test Engineers", desc: "Manual and automation testers using Playwright, Cypress and Selenium.", image: "/banners/information-technology.png" },
-      { title: "IT Support and NOC", desc: "Helpdesk, systems and network engineers for US-hours and 24/7 coverage.", image: "/banners/it-helpdesk.png" },
-      { title: "Security Analysts", desc: "SOC analysts and security engineers for monitoring, vulnerability management and compliance.", image: "/banners/cybersecurity-monitoring.png" },
-      { title: "Finance and Back Office", desc: "Accountants, bookkeepers and operations specialists for US-standard processes.", image: "/banners/finance.png" },
+      { title: "Software Engineers", desc: "Full-stack, front-end and back-end developers in React, Node.js, Python, .NET, PHP and mobile.", image: "/banners/web-services.webp" },
+      { title: "DevOps and Cloud Engineers", desc: "AWS, Azure and GCP engineers for CI/CD, Kubernetes, Terraform and cloud operations.", image: "/banners/devops-automation.webp" },
+      { title: "QA and Test Engineers", desc: "Manual and automation testers using Playwright, Cypress and Selenium.", image: "/banners/information-technology.webp" },
+      { title: "IT Support and NOC", desc: "Helpdesk, systems and network engineers for US-hours and 24/7 coverage.", image: "/banners/it-helpdesk.webp" },
+      { title: "Security Analysts", desc: "SOC analysts and security engineers for monitoring, vulnerability management and compliance.", image: "/banners/cybersecurity-monitoring.webp" },
+      { title: "Finance and Back Office", desc: "Accountants, bookkeepers and operations specialists for US-standard processes.", image: "/banners/finance.webp" },
     ],
     benefits: [
       { title: "Full Control", desc: "Specialists join your standups, tools and repos. You set priorities; we handle employment." },
@@ -153,7 +153,7 @@ export const newServicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       h1: "Cybersecurity Staff Augmentation for US Companies and MSPs",
-      image: "/banners/cybersecurity-monitoring.png",
+      image: "/banners/cybersecurity-monitoring.webp",
       title: ["Security", "Talent,"],
       highlight: "On Demand",
       heroRotate: ["Analysts", "Engineers", "Experts"],
@@ -169,7 +169,7 @@ export const newServicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Talent Shortage", "Alert Backlog"],
-        image: "/service-coverage/cybersecurity/threat-hunting.png",
+        image: "/service-coverage/cybersecurity/threat-hunting.webp",
         title: "Not Enough Analysts",
         desc: "Security roles are among the hardest to fill, and every unstaffed shift is an unwatched one.",
         cta: "Talk to expert",
@@ -182,11 +182,11 @@ export const newServicePages: ServicePageContent[] = [
       { value: claims.savingsRange, label: "Typical saving vs a US in-house hire" },
     ],
     capabilities: [
-      { title: "SOC Analysts (Tier 1-3)", desc: "Alert triage, investigation and incident handling in your SIEM and EDR.", image: "/service-coverage/cybersecurity/managed-detection.png" },
-      { title: "Security Engineers", desc: "SIEM content, EDR tuning, firewall and identity hardening, automation.", image: "/service-coverage/cybersecurity/security-control.png" },
-      { title: "Vulnerability Management", desc: "Scanning, prioritization, patch coordination and reporting.", image: "/service-coverage/cybersecurity/attack-surface.png" },
-      { title: "Penetration Testers", desc: "Web, API and network testing by OSCP- and GWAPT-certified testers.", image: "/service-coverage/cybersecurity/threat-hunting.png" },
-      { title: "GRC and Compliance", desc: "SOC 2, ISO 27001, HIPAA and PCI DSS evidence, policies and audit support.", image: "/banners/endpoint-security.png" },
+      { title: "SOC Analysts (Tier 1-3)", desc: "Alert triage, investigation and incident handling in your SIEM and EDR.", image: "/service-coverage/cybersecurity/managed-detection.webp" },
+      { title: "Security Engineers", desc: "SIEM content, EDR tuning, firewall and identity hardening, automation.", image: "/service-coverage/cybersecurity/security-control.webp" },
+      { title: "Vulnerability Management", desc: "Scanning, prioritization, patch coordination and reporting.", image: "/service-coverage/cybersecurity/attack-surface.webp" },
+      { title: "Penetration Testers", desc: "Web, API and network testing by OSCP- and GWAPT-certified testers.", image: "/service-coverage/cybersecurity/threat-hunting.webp" },
+      { title: "GRC and Compliance", desc: "SOC 2, ISO 27001, HIPAA and PCI DSS evidence, policies and audit support.", image: "/banners/endpoint-security.webp" },
     ],
     benefits: [
       { title: "Your Program, More Hands", desc: "Analysts follow your playbooks and escalation paths, under your security lead." },
@@ -243,7 +243,7 @@ export const newServicePages: ServicePageContent[] = [
     group: "Cloud & DevOps",
     hero: {
       h1: "Cloud Security Consulting Services for AWS, Azure and GCP",
-      image: "/banners/cloud-infrastructure.png",
+      image: "/banners/cloud-infrastructure.webp",
       title: ["Secure", "Your"],
       highlight: "Cloud",
       heroRotate: ["AWS", "Azure", "GCP"],
@@ -259,7 +259,7 @@ export const newServicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Misconfiguration", "Excess Permissions"],
-        image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png",
+        image: "/service-coverage/cloud-infrastructure/secure-backups-storage.webp",
         title: "Invisible Exposure",
         desc: "One public bucket or leaked access key can undo every other control you have.",
         cta: "Talk to expert",
@@ -272,11 +272,11 @@ export const newServicePages: ServicePageContent[] = [
       { value: "Fix-first", label: "Prioritized remediation plan" },
     ],
     capabilities: [
-      { title: "Cloud Security Assessment", desc: "Configuration review against CIS Benchmarks and provider best practices.", image: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png" },
-      { title: "Identity and Access Review", desc: "Least-privilege IAM, MFA, role design and key rotation.", image: "/service-coverage/cybersecurity/security-control.png" },
-      { title: "Architecture Review", desc: "Network segmentation, encryption, secrets management and landing zones.", image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.png" },
-      { title: "Posture Monitoring", desc: "Ongoing CSPM with Security Hub, Defender for Cloud or Security Command Center.", image: "/service-coverage/cybersecurity/attack-surface.png" },
-      { title: "Compliance Readiness", desc: "Cloud evidence for SOC 2, HIPAA, PCI DSS and ISO 27001.", image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png" },
+      { title: "Cloud Security Assessment", desc: "Configuration review against CIS Benchmarks and provider best practices.", image: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.webp" },
+      { title: "Identity and Access Review", desc: "Least-privilege IAM, MFA, role design and key rotation.", image: "/service-coverage/cybersecurity/security-control.webp" },
+      { title: "Architecture Review", desc: "Network segmentation, encryption, secrets management and landing zones.", image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.webp" },
+      { title: "Posture Monitoring", desc: "Ongoing CSPM with Security Hub, Defender for Cloud or Security Command Center.", image: "/service-coverage/cybersecurity/attack-surface.webp" },
+      { title: "Compliance Readiness", desc: "Cloud evidence for SOC 2, HIPAA, PCI DSS and ISO 27001.", image: "/service-coverage/cloud-infrastructure/secure-backups-storage.webp" },
     ],
     benefits: [
       { title: "Prioritized Findings", desc: "Every finding ranked by real risk, with the fix and effort spelled out." },
@@ -336,7 +336,7 @@ export const newServicePages: ServicePageContent[] = [
     group: "Talent & Workforce",
     hero: {
       h1: "Accounting and Finance Staff Augmentation for US Firms",
-      image: "/banners/accounting-finance.png",
+      image: "/banners/accounting-finance.webp",
       title: ["More", "Hands,"],
       highlight: "Same Books",
       heroRotate: ["Faster Close", "Busy Season"],
@@ -352,7 +352,7 @@ export const newServicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Staff Shortage", "Busy Season"],
-        image: "/service-coverage/finance/bookkeeping.png",
+        image: "/service-coverage/finance/bookkeeping.webp",
         title: "Too Few Accountants",
         desc: "The accounting talent shortage means open seats, overtime and work turned away.",
         cta: "Talk to expert",
@@ -365,12 +365,12 @@ export const newServicePages: ServicePageContent[] = [
       { value: claims.savingsRange, label: "Typical saving vs a US in-house hire" },
     ],
     capabilities: [
-      { title: "Bookkeeping", desc: "Transaction coding, bank and card reconciliations, and clean ledgers.", image: "/service-coverage/finance/bookkeeping.png" },
-      { title: "Accounts Payable", desc: "Invoice processing, approvals, vendor management and payment runs.", image: "/service-coverage/finance/accounts-payable.png" },
-      { title: "Accounts Receivable", desc: "Invoicing, cash application and collections follow-up.", image: "/service-coverage/finance/accounts-receivable.png" },
-      { title: "Month-End Close", desc: "Accruals, reconciliations, schedules and financial statements.", image: "/service-coverage/finance/financial-reporting.png" },
-      { title: "Tax Preparation Support", desc: "1040, 1065 and 1120 workpapers prepared for your reviewers.", image: "/service-coverage/finance/fpa-cfo-support.png" },
-      { title: "Payroll Support", desc: "Payroll processing support and reconciliation.", image: "/service-coverage/finance/payroll.png" },
+      { title: "Bookkeeping", desc: "Transaction coding, bank and card reconciliations, and clean ledgers.", image: "/service-coverage/finance/bookkeeping.webp" },
+      { title: "Accounts Payable", desc: "Invoice processing, approvals, vendor management and payment runs.", image: "/service-coverage/finance/accounts-payable.webp" },
+      { title: "Accounts Receivable", desc: "Invoicing, cash application and collections follow-up.", image: "/service-coverage/finance/accounts-receivable.webp" },
+      { title: "Month-End Close", desc: "Accruals, reconciliations, schedules and financial statements.", image: "/service-coverage/finance/financial-reporting.webp" },
+      { title: "Tax Preparation Support", desc: "1040, 1065 and 1120 workpapers prepared for your reviewers.", image: "/service-coverage/finance/fpa-cfo-support.webp" },
+      { title: "Payroll Support", desc: "Payroll processing support and reconciliation.", image: "/service-coverage/finance/payroll.webp" },
     ],
     benefits: [
       { title: "Your Reviewers Stay in Control", desc: "Work is prepared by our team and reviewed and signed off by yours." },

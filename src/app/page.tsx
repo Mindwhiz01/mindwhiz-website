@@ -77,12 +77,13 @@ import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import ParticleBackground from "@/components/ParticleBackground";
 import { useBelowSm } from "@/lib/useBelowSm";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const ACCENT = "#9CCC3C";
@@ -696,19 +697,19 @@ const industryCategories = [
         name: "Information Technology",
         slug: "information-technology",
         desc: "Software, cloud, and cybersecurity teams that ship faster and run secure infrastructure at scale.",
-        img: "/industries/information-technology.png",
+        img: "/industries/information-technology.webp",
       },
       {
         name: "Ecommerce & Retail",
         slug: "ecommerce-retail",
         desc: "Catalog, support, and operations that keep storefronts running around the clock.",
-        img: "/industries/ecommerce-retail.png",
+        img: "/industries/ecommerce-retail.webp",
       },
       {
         name: "Startups & SMBs",
         slug: "startups-smbs",
         desc: "Flexible, cost effective teams that scale exactly as fast as you grow.",
-        img: "/industries/startups-smbs.png",
+        img: "/industries/startups-smbs.webp",
       },
     ],
   },
@@ -719,13 +720,13 @@ const industryCategories = [
         name: "Construction & Engineering",
         slug: "construction-engineering",
         desc: "Estimation, takeoffs, and engineering support that speed up bids and keep projects moving.",
-        img: "/industries/construction-engineering.png",
+        img: "/industries/construction-engineering.webp",
       },
       {
         name: "Industrial Manufacturing",
         slug: "industrial-manufacturing",
         desc: "Engineering, back office, and IT support that keep operations efficient and connected.",
-        img: "/industries/industrial-manufacturing.png",
+        img: "/industries/industrial-manufacturing.webp",
       },
     ],
   },
@@ -736,19 +737,19 @@ const industryCategories = [
         name: "Accounting & Finance",
         slug: "accounting-finance",
         desc: "Bookkeeping, reporting, and finance operations handled by vetted professionals.",
-        img: "/industries/accounting-finance.png",
+        img: "/industries/accounting-finance.webp",
       },
       {
         name: "Professional Services",
         slug: "professional-services",
         desc: "Research, operations, and back office support for consulting and professional firms.",
-        img: "/industries/professional-services.png",
+        img: "/industries/professional-services.webp",
       },
       {
         name: "Logistics & Supply Chain",
         slug: "logistics-supply-chain",
         desc: "Coordination, tracking, and back office support that keep goods moving.",
-        img: "/industries/logistics-supply-chain.png",
+        img: "/industries/logistics-supply-chain.webp",
       },
     ],
   },
@@ -759,7 +760,7 @@ const industryCategories = [
         name: "Healthcare & HealthTech",
         slug: "healthcare-healthtech",
         desc: "Compliant talent and support for care operations and health technology platforms.",
-        img: "/industries/healthcare-healthtech.png",
+        img: "/industries/healthcare-healthtech.webp",
       },
     ],
   },
@@ -1390,8 +1391,15 @@ function CaseCard({
               <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-[#9CCC3C]/10 blur-3xl" />
               {/* video or logo exhibit */}
               {cs.video ? (
+                <>
+                {/* Cover shown until play. A lazy <img> instead of the video
+                    poster attribute, which browsers fetch eagerly. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img loading="lazy" src={cs.img} alt={`${cs.client} project preview`} className="absolute inset-0 h-full w-full object-cover" />
                 <video
                   src={cs.video}
+                  // Load nothing until the visitor presses play (was ~1.1 MB on page load).
+                  preload="none"
                   controls
                   loop
                   onClick={(e) => {
@@ -1404,10 +1412,11 @@ function CaseCard({
                   }}
                   className="absolute inset-0 h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)] cursor-pointer"
                 />
+                </>
               ) : cs.logo ? (
                 <div className="pointer-events-none absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cs.logo} alt={`${cs.client} project screenshot`} className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
+                  <img loading="lazy" src={cs.logo} alt={`${cs.client} project screenshot`} className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
                 </div>
               ) : null}
               <div className="relative flex-1" />
@@ -1745,7 +1754,7 @@ export default function SystemLimitedHome() {
       {/* ===================== 1 · HERO (single video banner) ===================== */}
       <section data-header-dark className="relative mb-10 flex h-[calc(var(--svh)*100)] min-h-[640px] items-center justify-start overflow-hidden bg-white">
         <div className="absolute inset-[10px] overflow-hidden rounded-3xl">
-          {/* The poster is a real <img> with fetchPriority=high, so it is the
+          {/* The poster is a real <img loading="lazy"> with fetchPriority=high, so it is the
               LCP element (discoverable in HTML + prioritized) instead of the
               video. The muted autoplay video lazy-loads on top and covers the
               poster once it starts playing. webm source dropped: it was larger
@@ -1881,7 +1890,7 @@ export default function SystemLimitedHome() {
               {certBadges.map((b) => (
                 <div key={b.alt} className="flex items-center justify-center px-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <img loading="lazy"
                     src={b.src}
                     alt={b.alt}
                     title={b.alt}
@@ -1899,7 +1908,7 @@ export default function SystemLimitedHome() {
                   className="flex aspect-square items-center justify-center rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <img loading="lazy"
                     src={b.src}
                     alt={b.alt}
                     className="max-h-full max-w-full object-contain"

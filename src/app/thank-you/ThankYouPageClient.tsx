@@ -23,12 +23,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, PINK_CTA_CLASS } from "@/components/PageBanner";
 import { consumeLeadEventId } from "@/lib/leadEvent";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {

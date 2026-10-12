@@ -30,12 +30,13 @@ import {
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -85,7 +86,7 @@ function Hero() {
     >
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <img loading="lazy"
           src="/images/stock/mindwhiz-team.webp"
           alt="The MindWhiz team"
           className="h-full w-full object-cover"
@@ -151,7 +152,7 @@ function PhilosophySection() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal className="order-2 lg:order-1">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy"
             src="/images/stock/mindwhiz-team-collaborating.webp"
             alt="MindWhiz team collaborating"
             className="aspect-[4/3] w-full rounded-[2rem] object-cover"

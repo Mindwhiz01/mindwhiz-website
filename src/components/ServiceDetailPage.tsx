@@ -22,12 +22,13 @@ import { useBelowSm } from "@/lib/useBelowSm";
 import { jsonLdScript } from "@/lib/jsonLd";
 import { serviceSchemaGraph } from "@/lib/serviceSchema";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const ACCENT = "#ed1164";
@@ -528,7 +529,7 @@ function ProcessPanel({
       className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <motion.img
+      <motion.img loading="lazy"
         src={processImages[i % processImages.length]}
         alt={`${step.title} - MindWhiz delivery process step ${i + 1}`}
         {...imgMotion}
@@ -667,7 +668,7 @@ function CredentialsSection() {
             {certBadges.map((b) => (
               <div key={b.alt} className="flex items-center justify-center px-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <img loading="lazy"
                   src={b.src}
                   alt={b.alt}
                   title={b.alt}
@@ -685,7 +686,7 @@ function CredentialsSection() {
                 className="flex aspect-square items-center justify-center rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <img loading="lazy"
                   src={b.src}
                   alt={b.alt}
                   className="max-h-full max-w-full object-contain"

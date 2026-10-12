@@ -70,6 +70,38 @@ body {
 .crystal-label {
   display: inline-block;
 }
+/* ---- footer "Hiring" badge glow ----
+   The glow lives on a pseudo-element and only its opacity animates, so the
+   animation runs on the compositor. (Animating box-shadow / text-shadow
+   repainted the badge every frame - flagged by Lighthouse.) */
+.glow-pulse {
+  position: relative;
+}
+.glow-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 12px 1px rgba(156, 204, 60, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  animation: glowPulseOpacity 1.8s ease-in-out infinite;
+}
+@keyframes glowPulseOpacity {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-pulse::after {
+    animation: none;
+  }
+}
+
 /* ---- periodic attention pulse (e.g. the "Book a consultation" CTA) ----
    Idle most of the cycle, then a quick double glow+scale to catch the eye. */
 @keyframes attentionPulse {

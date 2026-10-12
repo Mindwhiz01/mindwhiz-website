@@ -58,6 +58,9 @@ export function SlidingHighlight({
   );
 }
 
+// Images that have a generated 828px "-828.webp" phone variant next to them.
+const MOBILE_VARIANT = /^\/(banners|images\/stock)\/.+\.webp$/;
+
 type CtaLink = { label: string; href: string; external?: boolean; className?: string };
 
 /**
@@ -112,7 +115,17 @@ export function PageBanner({
     <section data-header-dark className="relative min-h-screen overflow-hidden bg-white p-[10px] text-white">
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={imageAlt ?? (h1 ? `${h1} - MindWhiz` : "")} fetchPriority="high" decoding="async" className="h-full w-full object-cover" />
+        {/* LCP image. Every banner and stock photo ships with an
+            828px "-828" variant, so phones download ~60 KB instead of the
+            desktop file. */}
+        <img
+          src={image}
+          srcSet={MOBILE_VARIANT.test(image) ? `${image.replace(/\.webp$/, "-828.webp")} 828w, ${image} 1920w` : undefined}
+          sizes="100vw"
+          alt={imageAlt ?? (h1 ? `${h1} - MindWhiz` : "")}
+          fetchPriority="high"
+          className="h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-[#383838]/55" />
         {/* bottom-weighted dark shadow so the heading and copy stay prominent */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />

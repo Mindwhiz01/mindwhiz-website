@@ -45,7 +45,7 @@ const clientTestimonials = [
     quote: "MindWhiz is a must have for scaling support as a growing business today.",
     author: "Alpha Bravo Construction",
     video: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4",
-    image: "/clients/alpha-bravo-site.png",
+    image: "/clients/alpha-bravo-site.webp",
     stats: [
       { value: "+38%", label: "Bid win rate" },
       { value: "120+", label: "Projects estimated" },
@@ -55,7 +55,7 @@ const clientTestimonials = [
     quote: "Their engineers plugged in fast and our uptime has never been better.",
     author: "Villa Tech",
     video: "https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4",
-    image: "/clients/villa-tech-site.png",
+    image: "/clients/villa-tech-site.webp",
     stats: [
       { value: "2wks", label: "To onboard" },
       { value: "99.9%", label: "Uptime monitored" },
@@ -65,7 +65,7 @@ const clientTestimonials = [
     quote: "MindWhiz let us ship an AI powered site without growing the team.",
     author: "AISureTech",
     video: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4",
-    image: "/clients/aisuretech-site.png",
+    image: "/clients/aisuretech-site.webp",
     stats: [
       { value: "4x", label: "Faster launch" },
       { value: "24/7", label: "AI support" },
@@ -75,7 +75,7 @@ const clientTestimonials = [
     quote: "Our orders climbed the moment the new storefront went live.",
     author: "Tempura Food Management",
     video: "https://videos.pexels.com/video-files/3205624/3205624-hd_1920_1080_25fps.mp4",
-    image: "/clients/tempura-site.png",
+    image: "/clients/tempura-site.webp",
     stats: [
       { value: "+52%", label: "Online orders" },
       { value: "3wks", label: "To launch" },
@@ -85,7 +85,7 @@ const clientTestimonials = [
     quote: "I would recommend MindWhiz to anyone. Don't take my word for it, see the results.",
     author: "Inovatiqa",
     video: "https://videos.pexels.com/video-files/7989708/7989708-hd_1920_1080_25fps.mp4",
-    image: "/portfolio/inovatiqa-dashboard.png",
+    image: "/portfolio/inovatiqa-dashboard.webp",
     stats: [
       { value: "60%", label: "Faster turnaround" },
       { value: "99%+", label: "Accuracy rate" },
@@ -95,7 +95,7 @@ const clientTestimonials = [
     quote: "Their NOC team catches issues before our customers ever notice them.",
     author: "Highland Redstone",
     video: "https://videos.pexels.com/video-files/3196344/3196344-hd_1920_1080_25fps.mp4",
-    image: "/clients/connecteffect-site.png",
+    image: "/clients/connecteffect-site.webp",
     stats: [
       { value: "-45%", label: "IT costs" },
       { value: "15min", label: "Avg response" },
@@ -127,7 +127,7 @@ function TestimonialVideo({ src }: { src: string }) {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <button

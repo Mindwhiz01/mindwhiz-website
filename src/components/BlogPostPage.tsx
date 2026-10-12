@@ -24,12 +24,13 @@ function slugify(text: string): string {
     .replace(/\s+/g, "-");
 }
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 export default function BlogPostPage({ post }: { post: BlogPost }) {
@@ -95,7 +96,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
         >
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
+            <img fetchPriority="high" src={post.image} alt={post.title} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
           </div>
           <motion.div
@@ -135,7 +136,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
             </h1>
             <div className="mt-7 flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy"
                 src={post.author.avatar}
                 alt={post.author.name}
                 className="h-11 w-11 rounded-full object-cover ring-2 ring-white/20"

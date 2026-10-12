@@ -16,12 +16,13 @@ import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -235,7 +236,7 @@ function LocationsSection() {
             </div>
             <div className="relative min-h-[340px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy"
                 src="/images/stock/mindwhiz-workspace.webp"
                 alt="MindWhiz workspace"
                 className="h-full w-full object-cover"
@@ -266,7 +267,7 @@ function FindYourTeam() {
           <div className="grid items-stretch overflow-hidden rounded-[2rem] border border-black/10 lg:grid-cols-2">
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy"
                 src="/images/stock/staff-augmentation-pros-cons-buyers-guide.webp"
                 alt="MindWhiz team collaborating"
                 className="h-full w-full object-cover"
@@ -350,7 +351,7 @@ function BenefitsSection() {
             </div>
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy"
                 src="/images/stock/mindwhiz-culture.webp"
                 alt="MindWhiz culture"
                 className="h-full w-full object-cover"
@@ -527,6 +528,7 @@ function ApplicationForm() {
           <div className="mt-12 overflow-hidden rounded-[2rem] border border-black/10 bg-white p-2 sm:p-4">
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/CCAqC31eYUNM2RuEgODF"
+              loading="lazy"
               style={{ width: "100%", height: "762px", border: "none", borderRadius: "8px" }}
               id="inline-CCAqC31eYUNM2RuEgODF"
               data-layout="{'id':'INLINE'}"

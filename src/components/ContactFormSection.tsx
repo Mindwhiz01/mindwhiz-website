@@ -88,6 +88,40 @@ export function ContactForm({
   formName?: string;
   height?: number;
 } = {}) {
+  // Performance: the LeadConnector iframe pulls in its own app bundle,
+  // Cloudflare Turnstile and ~850 KB of form data. Mount it (and the embed
+  // script) only when the form is within ~400px of the viewport. A same-height
+  // placeholder holds the space so nothing shifts when it appears.
+  const holderRef = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = holderRef.current;
+    if (!el || show) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [show]);
+
+  if (!show) {
+    return (
+      <div ref={holderRef} className="mt-10 w-full overflow-hidden rounded-[2rem]">
+        <div
+          aria-hidden
+          className="w-full animate-pulse rounded-lg bg-slate-100"
+          style={{ height: `${height}px` }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="mt-10 w-full overflow-hidden rounded-[2rem]">
       {/* next/script loads the LeadConnector embed once and de-dupes it across

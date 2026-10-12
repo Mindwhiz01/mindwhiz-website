@@ -63,7 +63,7 @@ const regions = [
 function FlagIcon({ src, label }: { src: string; label: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <img loading="lazy"
       src={src}
       alt={`${label} flag`}
       className="h-3.5 w-5 shrink-0 rounded-[3px] object-cover ring-1 ring-black/10"
@@ -375,7 +375,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           <div className="flex items-center overflow-hidden rounded-full bg-neutral-900 ring-1 ring-white/10 transition-all duration-700 ease-out">
             <span className="grid h-11 w-11 shrink-0 place-items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-7 w-7" />
+              <img loading="lazy" src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-7 w-7" />
             </span>
             {/* below the `nav` breakpoint (hamburger layout) the wordmark is
                 always shown - there's no hover on touch, so the brand would

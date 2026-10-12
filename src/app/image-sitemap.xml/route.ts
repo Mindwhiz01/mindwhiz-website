@@ -12,14 +12,14 @@ import { siteUrl } from "@/seo.config";
 export const revalidate = 3600;
 
 const STATIC_PAGE_IMAGES: Record<string, string[]> = {
-  "/about": ["/banners/about-us.png", "/leadership/muhammad-ali.png", "/leadership/muhammad-aftab-zafar.png"],
-  "/why-mindwhiz": ["/banners/why-mindwhiz.png"],
-  "/case-studies": ["/banners/case-studies.png"],
-  "/services/hr-services": ["/banners/hr.png"],
-  "/services/finance-accounting": ["/banners/finance.png"],
-  "/services/construction-estimation": ["/banners/construction-estimation.png"],
-  "/services/digital-marketing": ["/banners/digital-marketing.png"],
-  "/web-services": ["/banners/web-services.png"],
+  "/about": ["/banners/about-us.webp", "/leadership/muhammad-ali.webp", "/leadership/muhammad-aftab-zafar.webp"],
+  "/why-mindwhiz": ["/banners/why-mindwhiz.webp"],
+  "/case-studies": ["/banners/case-studies.webp"],
+  "/services/hr-services": ["/banners/hr.webp"],
+  "/services/finance-accounting": ["/banners/finance.webp"],
+  "/services/construction-estimation": ["/banners/construction-estimation.webp"],
+  "/services/digital-marketing": ["/banners/digital-marketing.webp"],
+  "/web-services": ["/banners/web-services.webp"],
 };
 
 const abs = (src: string) => (src.startsWith("http") ? src : `${siteUrl}${src}`);

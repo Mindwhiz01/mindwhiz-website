@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, useMotionValue } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 interface Particle {
   x: number;
@@ -38,8 +37,6 @@ export default function ParticleBackground({
   const animationRef = useRef<number>();
   // Cursor position in canvas space; active=false when the pointer is away.
   const mouseRef = useRef({ x: 0, y: 0, active: false });
-  const { scrollY } = useScroll();
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -52,6 +49,14 @@ export default function ParticleBackground({
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
+
+    // Performance: the loop only runs while the canvas is on screen, the tab is
+    // visible and the canvas has a real size. Before this, it ran every frame
+    // for the life of the page - including on phones, where the section is
+    // display:none and all 95 particles sat at (0,0) drawing ~4,500 lines a
+    // frame. That was the single biggest Total Blocking Time cost on mobile.
+    let inView = false;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
@@ -238,16 +243,34 @@ export default function ParticleBackground({
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    const running = () => animationRef.current !== undefined;
+    const start = () => {
+      if (running() || reduceMotion || !inView || document.hidden) return;
+      if (canvas.offsetWidth === 0 || canvas.offsetHeight === 0) return;
+      if (canvas.width !== canvas.offsetWidth) resizeCanvas();
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    const stop = () => {
+      if (animationRef.current !== undefined) cancelAnimationFrame(animationRef.current);
+      animationRef.current = undefined;
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView) start();
+      else stop();
+    });
+    io.observe(canvas);
+    const onVisibility = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      stop();
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerleave", handlePointerLeave);
       window.removeEventListener("blur", handlePointerLeave);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
     };
   }, [particleColor, particleCount]);
 

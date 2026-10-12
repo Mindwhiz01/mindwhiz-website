@@ -16,12 +16,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { useBelowSm } from "@/lib/useBelowSm";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -116,8 +117,15 @@ function CaseCard({
           <div>
             <div className="relative min-h-[26rem] overflow-hidden rounded-lg border border-black/10">
               {cs.video ? (
+                <>
+                {/* Cover shown until play. A lazy <img> instead of the video
+                    poster attribute, which browsers fetch eagerly. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img loading="lazy" src={cs.img} alt={`${cs.client} project preview`} className="absolute inset-0 h-full w-full object-cover" />
                 <video
                   src={cs.video}
+                  // Load nothing until the visitor presses play (was ~1.1 MB on page load).
+                  preload="none"
                   controls
                   loop
                   onClick={(e) => {
@@ -130,6 +138,7 @@ function CaseCard({
                   }}
                   className="absolute inset-0 h-full w-full object-cover cursor-pointer"
                 />
+                </>
               ) : (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
@@ -210,7 +219,7 @@ export default function CaseStudiesPageClient({ items }: { items: CaseStudy[] })
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="/banners/case-studies.png"
+          image="/banners/case-studies.webp"
           h1="MindWhiz Case Studies and Client Results"
           titleLines={["On", "The"]}
           rotateWords={["Record", "Results", "Proof", "Wins"]}

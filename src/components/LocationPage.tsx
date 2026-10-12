@@ -21,12 +21,13 @@ import { locations } from "@/lib/locations";
 import { services as allServices, company, footerGroups } from "@/lib/content";
 import FaqSection from "@/components/FaqSection";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 // Canonical service name -> its dedicated /services/* page, reused from the
@@ -116,7 +117,7 @@ export default function LocationPage({ location }: { location: LocationContent }
             <div className="rounded-3xl border border-slate-200 bg-[#EEEEEE] p-8">
               <div className="flex items-center gap-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={location.flag} alt={`${location.country} flag`} className="h-8 w-11 rounded object-cover ring-1 ring-black/10" />
+                <img loading="lazy" src={location.flag} alt={`${location.country} flag`} className="h-8 w-11 rounded object-cover ring-1 ring-black/10" />
                 <div>
                   <p className="text-lg font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>
                     {location.city}
@@ -259,7 +260,7 @@ export default function LocationPage({ location }: { location: LocationContent }
                 >
                   <div className="flex items-center gap-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={l.flag} alt={`${l.country} flag`} className="h-8 w-11 rounded object-cover ring-1 ring-black/10" />
+                    <img loading="lazy" src={l.flag} alt={`${l.country} flag`} className="h-8 w-11 rounded object-cover ring-1 ring-black/10" />
                     <div>
                       <p className="font-bold text-black" style={{ fontFamily: "var(--font-display)" }}>{l.country}</p>
                       <p className="text-sm text-black/55">{l.city}</p>

@@ -29,7 +29,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Technology & Digital",
     hero: {
       h1: "Managed IT and Staff Augmentation for US Technology Companies",
-      image: "/banners/information-technology.png",
+      image: "/banners/information-technology.webp",
       title: ["Powering"],
       highlight: "Technology",
       heroRotate: ["Innovation", "Systems", "Growth"],
@@ -46,7 +46,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Scaling Pains", "Delivery Risk"],
-        image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png",
+        image: "/service-coverage/cloud-infrastructure/secure-backups-storage.webp",
         title: "Stretched IT Teams",
         desc: "Growing roadmaps outpace in house capacity, slowing delivery and stretching engineers thin.",
         cta: "Talk to expert",
@@ -107,7 +107,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Technology & Digital",
     hero: {
       h1: "Ecommerce Support and Operations Outsourcing for US Retailers",
-      image: "/banners/ecommerce-retail.png",
+      image: "/banners/ecommerce-retail.webp",
       title: ["Retail That"],
       highlight: "Scales",
       heroRotate: ["Sells", "Grows", "Converts"],
@@ -189,7 +189,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Technology & Digital",
     hero: {
       h1: "Outsourced IT and Staffing for US Startups and SMBs",
-      image: "/banners/startups-smbs.png",
+      image: "/banners/startups-smbs.webp",
       title: ["Teams That"],
       highlight: "Scale",
       heroRotate: ["Ship", "Grow", "Deliver"],
@@ -206,7 +206,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Tight Runway", "Hiring Overhead"],
-        image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.png",
+        image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.webp",
         title: "Scaling Too Slow",
         desc: "Long hiring cycles and fixed overhead hold back startups that need to move fast on a lean budget.",
         cta: "Talk to expert",
@@ -267,7 +267,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Built & Physical",
     hero: {
       h1: "Estimating, Drafting and IT Support for US Construction Firms",
-      image: "/banners/construction-engineering.png",
+      image: "/banners/construction-engineering.webp",
       title: ["Win More"],
       highlight: "Bids",
       heroRotate: ["Projects", "Contracts", "Deals"],
@@ -297,10 +297,10 @@ export const industryPages: ServicePageContent[] = [
       { value: "Accurate", label: "Bid ready cost estimates" },
     ],
     capabilities: [
-      { title: "Quantity Takeoffs", desc: "Fast, accurate material and labor takeoffs across trades.", image: "/industries/construction/quantity-takeoffs.png" },
-      { title: "Cost Estimation", desc: "Bid ready estimates built around current pricing and scope.", image: "/industries/construction/cost-estimation.png" },
-      { title: "Engineering Support", desc: "Drafting, BIM, and documentation that keep projects moving.", image: "/industries/construction/engineering-support.png" },
-      { title: "Back Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: "/industries/construction/back-office-operations.png" },
+      { title: "Quantity Takeoffs", desc: "Fast, accurate material and labor takeoffs across trades.", image: "/industries/construction/quantity-takeoffs.webp" },
+      { title: "Cost Estimation", desc: "Bid ready estimates built around current pricing and scope.", image: "/industries/construction/cost-estimation.webp" },
+      { title: "Engineering Support", desc: "Drafting, BIM, and documentation that keep projects moving.", image: "/industries/construction/engineering-support.webp" },
+      { title: "Back Office Operations", desc: "Bid coordination, procurement, and reporting handled for your team.", image: "/industries/construction/back-office-operations.webp" },
     ],
     benefits: [
       { title: "Win More Work", desc: "Quote more bids, faster, without adding headcount." },
@@ -345,7 +345,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Built & Physical",
     hero: {
       h1: "IT and Back-Office Outsourcing for US Manufacturers",
-      image: "/banners/industrial-manufacturing.png",
+      image: "/banners/industrial-manufacturing.webp",
       title: ["Built To"],
       highlight: "Run",
       heroRotate: ["Last", "Scale", "Perform"],
@@ -423,7 +423,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Finance & Services",
     hero: {
       h1: "Outsourced Accounting Teams for US CPA Firms and Finance Departments",
-      image: "/banners/accounting-finance.png",
+      image: "/banners/accounting-finance.webp",
       title: ["Close The"],
       highlight: "Books",
       heroRotate: ["Gap", "Quarter", "Year"],
@@ -440,7 +440,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Slow Closes", "Compliance Risk"],
-        image: "/service-coverage/finance/bookkeeping.png",
+        image: "/service-coverage/finance/bookkeeping.webp",
         title: "Bottlenecked Finance",
         desc: "Manual processes stretch month end closes and raise the risk of costly errors.",
         cta: "Talk to expert",
@@ -505,7 +505,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Finance & Services",
     hero: {
       h1: "Back-Office and IT Support for US Professional Services Firms",
-      image: "/banners/professional-services.png",
+      image: "/banners/professional-services.webp",
       title: ["Deliver"],
       highlight: "More",
       heroRotate: ["Results", "Value", "Growth"],
@@ -583,7 +583,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Finance & Services",
     hero: {
       h1: "Logistics Back-Office Support and IT Services for US Logistics Companies",
-      image: "/banners/logistics-supply-chain.png",
+      image: "/banners/logistics-supply-chain.webp",
       title: ["Keep Goods"],
       highlight: "Moving",
       heroRotate: ["Flowing", "Tracked", "On Track"],
@@ -665,7 +665,7 @@ export const industryPages: ServicePageContent[] = [
     group: "Healthcare",
     hero: {
       h1: "HIPAA-Aware IT and Back-Office Support for US Healthcare and HealthTech",
-      image: "/banners/healthcare-healthtech.png",
+      image: "/banners/healthcare-healthtech.webp",
       title: ["Compliant"],
       highlight: "Care",
       heroRotate: ["Health", "Systems", "Data"],

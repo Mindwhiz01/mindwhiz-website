@@ -41,12 +41,13 @@ import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -302,7 +303,7 @@ function BrowserFrame({
 const services: { title: string; desc: string; Icon: LucideIcon; image: string; audience?: string; hook?: string; shot?: boolean }[] = [
   { title: "Custom Websites", audience: "For B2B & B2C brands", hook: "Is your website winning customers, or quietly losing them?", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "/images/stock/custom-websites.webp" },
   { title: "Web Applications", audience: "For B2B & SaaS teams", hook: "Still running your business on spreadsheets and manual work?", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "/images/stock/web-applications.webp" },
-  { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "/portfolio/primeaxis-admin-dashboard.png" },
+  { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "/portfolio/primeaxis-admin-dashboard.webp" },
   { title: "Ecommerce", audience: "For B2C & retail brands", hook: "Are shoppers leaving before they reach your checkout?", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "/images/stock/ecommerce-development.webp" },
   { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "/images/stock/website-performance-and-care.webp" },
   { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "/images/stock/web-support-retainers.webp" },
@@ -399,13 +400,13 @@ const stackGroups: { label: string; items: { name: string; slug: string; color: 
 ];
 
 const portfolio: { name: string; url: string; image: string; category: string; blurb: string }[] = [
-  { name: "Marquee Ranch", url: "https://marqueeranch.com/", image: "/portfolio/marquee-ranch.jpg", category: "Hospitality · Real Estate", blurb: "An elegant venue and ranch experience with rich galleries and event enquiries." },
-  { name: "Tempura Halal", url: "https://tempurahalal.com/", image: "/portfolio/tempura-halal-updated.jpg", category: "Food & Restaurant", blurb: "An appetizing restaurant site with menus, online ordering, and event catering." },
-  { name: "Tempura Food USA", url: "https://tempurafoodusa.com/", image: "/portfolio/tempura-food-usa.jpg", category: "Food & Beverage", blurb: "A bold food brand site showcasing products, story, and distribution." },
-  { name: "My Safe Drives", url: "https://mysafedrives.com/", image: "/portfolio/my-safe-drives.jpg", category: "Automotive · Safety", blurb: "A clean, reassuring platform focused on safe driving services and signups." },
-  { name: "Crownline Construction", url: "https://crownlineconstruct.com/", image: "/portfolio/crownline-construction.jpg", category: "Construction", blurb: "A sturdy construction brand with project showcases and lead capture." },
-  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.jpg", category: "Fashion · Luxury", blurb: "A luxury couture store with rich lookbooks, featured collections, and shoppable edits." },
-  { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.jpg", category: "Ecommerce · Apparel", blurb: "An activewear storefront with collection browsing, product pages, and a smooth checkout." },
+  { name: "Marquee Ranch", url: "https://marqueeranch.com/", image: "/portfolio/marquee-ranch.webp", category: "Hospitality · Real Estate", blurb: "An elegant venue and ranch experience with rich galleries and event enquiries." },
+  { name: "Tempura Halal", url: "https://tempurahalal.com/", image: "/portfolio/tempura-halal-updated.webp", category: "Food & Restaurant", blurb: "An appetizing restaurant site with menus, online ordering, and event catering." },
+  { name: "Tempura Food USA", url: "https://tempurafoodusa.com/", image: "/portfolio/tempura-food-usa.webp", category: "Food & Beverage", blurb: "A bold food brand site showcasing products, story, and distribution." },
+  { name: "My Safe Drives", url: "https://mysafedrives.com/", image: "/portfolio/my-safe-drives.webp", category: "Automotive · Safety", blurb: "A clean, reassuring platform focused on safe driving services and signups." },
+  { name: "Crownline Construction", url: "https://crownlineconstruct.com/", image: "/portfolio/crownline-construction.webp", category: "Construction", blurb: "A sturdy construction brand with project showcases and lead capture." },
+  { name: "Maria Basit Malik", url: "https://mariabasitmalik.com/", image: "/portfolio/maria-basit-malik.webp", category: "Fashion · Luxury", blurb: "A luxury couture store with rich lookbooks, featured collections, and shoppable edits." },
+  { name: "Iron Box", url: "https://ironbox963.com/", image: "/portfolio/iron-box.webp", category: "Ecommerce · Apparel", blurb: "An activewear storefront with collection browsing, product pages, and a smooth checkout." },
 ];
 
 const seoCaps: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
@@ -530,35 +531,40 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-white pt-36 pb-12">
       <div className="pointer-events-none absolute -right-40 -top-20 h-[38rem] w-[38rem] rounded-full bg-[#ed1164]/12 blur-[160px]" />
-      <div className="pointer-events-none absolute -left-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
+      {/* top in vh, not %, so the glow does not move (a layout shift) when the
+          web font loads and the section height changes by a few pixels */}
+      <div className="pointer-events-none absolute -left-40 top-[50vh] h-[30rem] w-[30rem] rounded-full bg-[#9CCC3C]/15 blur-[160px]" />
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 sm:px-8 lg:gap-6 lg:grid-cols-2">
+        {/* Above the fold: plain elements, not <Reveal>, so the heading and
+            intro are in the server HTML at full opacity instead of waiting
+            for JavaScript (the intro paragraph was the mobile LCP). */}
         <div className="order-2 lg:order-1">
-          <Reveal delay={0.05}>
+          <div>
             <h1 className="mt-7 text-[clamp(2.6rem,7vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-tight text-black" style={displayFont}>
-              Websites
+              Websites{" "}
               {/* three lines on every size: Websites / built for / growth */}
               <br />
               {/* keep "built for" on one line so "for" never drops on narrow screens */}
-              <span className="whitespace-nowrap">built for</span>
+              <span className="whitespace-nowrap">built for</span>{" "}
               <br />
               <span style={{ color: PINK }}>growth</span>
             </h1>
-          </Reveal>
-          <Reveal delay={0.1}>
+          </div>
+          <div>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-black/60">
               High performance websites, web apps, and dashboards, designed, built, and
               optimized to look sharp, load fast, and rank well.
             </p>
-          </Reveal>
-          <Reveal delay={0.15}>
+          </div>
+          <div>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Cta href="/contact" label="Get in touch" />
               <Cta href="https://api.leadconnectorhq.com/widget/booking/I1hzuNe9sXdClDrIUCe3" target="_blank" rel="noreferrer" label="Book free consultation" className="!border-[#ed1164] !bg-[#ed1164] !text-white shadow-xl shadow-[#ed1164]/50 hover:!bg-[#c50e53]" />
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={0.1} className="relative order-1 lg:order-2">
+        <div className="relative order-1 lg:order-2">
           <motion.div
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -570,20 +576,24 @@ function Hero() {
                 hover they drift apart a little (laptop left, phone right). */}
             <div className="relative z-10 pr-[16%] [perspective:1200px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/portfolio/hero-laptop.png"
+              <img fetchPriority="high"
+                width={1087}
+                height={766}
+                src="/portfolio/hero-laptop.webp"
                 alt="Alpha Bravo Construction website shown on a laptop"
                 className="w-full rotate-[-3deg] transition-transform duration-500 ease-out group-hover:-translate-x-3 group-hover:rotate-[-4deg]"
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/portfolio/hero-phone.png"
+              <img fetchPriority="high"
+                width={386}
+                height={789}
+                src="/portfolio/hero-phone.webp"
                 alt="Alpha Bravo Construction website shown on a phone"
                 className="absolute bottom-0 right-0 z-20 w-[27%] rotate-[4deg] drop-shadow-2xl transition-transform duration-500 ease-out group-hover:translate-x-5 group-hover:translate-y-2 group-hover:rotate-[7deg]"
               />
             </div>
           </motion.div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -594,7 +604,7 @@ function MarqueeStrip() {
     <div className="relative border-y border-slate-200 bg-[#faf9f7] py-6">
       {/* Hostinger badge in top right corner */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <img loading="lazy"
         src="/badges/Badge_brand_dark_640x240.webp"
         alt="Hostinger Partner Badge"
         className="absolute z-30 h-16 w-48 drop-shadow-lg"
@@ -628,7 +638,7 @@ function ServicePanel({
       className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <motion.img
+      <motion.img loading="lazy"
         src={s.image}
         alt={`${s.title} - web development services`}
         initial={false}
@@ -808,10 +818,10 @@ function PortfolioSection() {
 }
 
 const spotlightSites: { name: string; url: string; image: string; category: string; blurb: string }[] = [
-  { name: "PrimeAxis Reporting", url: "", image: "/portfolio/prime-axis-dashboard.jpg", category: "Insurance · Analytics", blurb: "A reporting suite with premium and conversion metrics, leads over time, and breakdowns by line, source, and agent." },
-  { name: "Charity Finance", url: "", image: "/portfolio/charity-finance-dashboard.png", category: "Fintech · Nonprofit", blurb: "A charity finance management system with beneficiary tracking, payment trends, and Zakat-eligible reporting." },
-  { name: "Inovatiqa Admin", url: "", image: "/portfolio/inovatiqa-dashboard.png", category: "Ecommerce · Admin Panel", blurb: "A full e-commerce admin dashboard with revenue analytics, orders, inventory sync, and role-based access." },
-  { name: "PrimeAxis Admin", url: "", image: "/portfolio/primeaxis-admin-dashboard.png", category: "Insurance · CRM", blurb: "An insurance lead and policy CRM with pipeline tracking, ACORD forms, quoting, and agent performance." },
+  { name: "PrimeAxis Reporting", url: "", image: "/portfolio/prime-axis-dashboard.webp", category: "Insurance · Analytics", blurb: "A reporting suite with premium and conversion metrics, leads over time, and breakdowns by line, source, and agent." },
+  { name: "Charity Finance", url: "", image: "/portfolio/charity-finance-dashboard.webp", category: "Fintech · Nonprofit", blurb: "A charity finance management system with beneficiary tracking, payment trends, and Zakat-eligible reporting." },
+  { name: "Inovatiqa Admin", url: "", image: "/portfolio/inovatiqa-dashboard.webp", category: "Ecommerce · Admin Panel", blurb: "A full e-commerce admin dashboard with revenue analytics, orders, inventory sync, and role-based access." },
+  { name: "PrimeAxis Admin", url: "", image: "/portfolio/primeaxis-admin-dashboard.webp", category: "Insurance · CRM", blurb: "An insurance lead and policy CRM with pipeline tracking, ACORD forms, quoting, and agent performance." },
 ];
 
 // Software / dashboard spotlight carousel - one centered browser mockup with a
@@ -917,7 +927,7 @@ function StackIcon({ slug, color }: { slug: string; color: string }) {
 
   if (isPng) {
     return (
-      <img
+      <img loading="lazy"
         aria-hidden
         src={`/stack/${slug}.png`}
         alt="Drupal logo"

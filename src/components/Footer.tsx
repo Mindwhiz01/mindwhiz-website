@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <a href="/" aria-label={`${company.name} home`} className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-9 w-9" />
+              <img loading="lazy" src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-9 w-9" />
               <span
                 className="text-xl font-bold tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}
@@ -88,7 +88,7 @@ export default function Footer() {
 
             {/* Hostinger badge */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy"
               src="/Badge_brand_dark.svg"
               alt="Hostinger Partner Badge"
               width="160"
@@ -113,7 +113,7 @@ export default function Footer() {
                       {link.label}
                       {link.label === HIRING_LINK && (
                         <span
-                          className="animate-glow-pulse rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide"
+                          className="glow-pulse rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide"
                           style={{ color: "#9CCC3C", borderColor: "#9CCC3C" }}
                         >
                           Hiring

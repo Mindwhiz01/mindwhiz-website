@@ -2,12 +2,13 @@
 
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const GREEN = "#9CCC3C";
@@ -18,7 +19,7 @@ const LOGOS = [
   { name: "Highland Redstone", src: "/clients/highland.png" },
   { name: "Inovatiqa", src: "/clients/inovatiqa.png" },
   { name: "Jerdoni", src: "/clients/jerdoni.png" },
-  { name: "Texas Diagnostic Labs", src: "/clients/texas.png" },
+  { name: "Texas Diagnostic Labs", src: "/clients/texas.webp" },
   { name: "Villa Tech", src: "/clients/villa-tech.png" },
 ];
 
@@ -32,7 +33,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function LogoImg({ src, name, className = "" }: { src: string; name: string; className?: string }) {
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={src} alt={name} className={`w-auto object-contain ${className}`} />;
+  return <img loading="lazy" src={src} alt={name} className={`w-auto object-contain ${className}`} />;
 }
 
 // ── Variant A · two row marquee (current style) ─────────────────────────────

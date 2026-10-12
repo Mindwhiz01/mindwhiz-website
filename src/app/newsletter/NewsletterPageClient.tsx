@@ -22,12 +22,13 @@ import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { posts, formatDate } from "@/lib/blog";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {

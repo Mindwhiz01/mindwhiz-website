@@ -7,12 +7,13 @@ import { ArrowUpRight, Mail, MousePointer2, Phone } from "lucide-react";
 import { company } from "@/lib/content";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const ORANGE = "#ff4b00";
@@ -393,7 +394,7 @@ function AboutSection() {
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-10 right-10 hidden h-[18rem] w-[18rem] overflow-hidden rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] xl:block"
       >
-        <img
+        <img loading="lazy"
           src="/images/stock/remote-specialist-managing-client-systems.webp"
           alt="Remote IT specialist managing client systems"
           className="h-full w-full object-cover"
@@ -437,7 +438,7 @@ function NewsSection() {
           <Reveal key={item.title} delay={index * 0.08}>
             <a href="#contact" className="group block">
               <div className="aspect-[0.86] overflow-hidden rounded-[48%_52%_45%_55%/8%_8%_16%_16%] bg-[#ff4b00]">
-                <img src={item.img} alt={item.title} className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
+                <img loading="lazy" src={item.img} alt={item.title} className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
               </div>
               <p className="mt-5 text-2xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
                 {item.title}

@@ -41,12 +41,13 @@ import {
   panelWrapperMotion,
 } from "@/lib/panelMotion";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -251,7 +252,7 @@ function ValuePanel({
       className="pointer-events-none absolute inset-0"
     >
       {/* big image fit to the screen */}
-      <motion.img
+      <motion.img loading="lazy"
         src={v.image}
         alt={`${v.title} - why companies choose MindWhiz`}
         {...panelImageMotion(state)}
@@ -359,9 +360,9 @@ const testimonials = [
 ];
 
 const hubs = [
-  { country: "United States", city: "Houston, Texas", flag: "/hubs/us.jpg", fit: "cover" },
+  { country: "United States", city: "Houston, Texas", flag: "/hubs/us.webp", fit: "cover" },
   { country: "United Kingdom", city: "London", flag: "/images/stock/united-kingdom-london.webp", fit: "cover" },
-  { country: "Pakistan", city: "Lahore head office and delivery center", flag: "/hubs/pk.jpg", fit: "cover" },
+  { country: "Pakistan", city: "Lahore head office and delivery center", flag: "/hubs/pk.webp", fit: "cover" },
 ];
 
 const offerings = [
@@ -446,7 +447,7 @@ export default function WhyMindWhizPage() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
-          image="/banners/why-mindwhiz.png"
+          image="/banners/why-mindwhiz.webp"
           h1="Why US Companies Choose MindWhiz for Offshore Teams"
           titleLines={["Real"]}
           rotateWords={["Teams", "Talent", "People", "Experts"]}
@@ -712,7 +713,7 @@ export default function WhyMindWhizPage() {
         <section className="relative overflow-hidden bg-[#383838] py-24" data-header-dark>
           {/* stock background image with dark overlay so the text stays readable */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy"
             src="/images/stock/mindwhiz-team-collaborating-clients.webp"
             alt="MindWhiz team collaborating with clients"
             aria-hidden

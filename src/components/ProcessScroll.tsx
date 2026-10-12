@@ -52,7 +52,7 @@ function ProcessPanel({
       className="pointer-events-none absolute inset-0"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <motion.img
+      <motion.img loading="lazy"
         src={images[i % images.length]}
         alt={`${step.title} - MindWhiz`}
         initial={false}

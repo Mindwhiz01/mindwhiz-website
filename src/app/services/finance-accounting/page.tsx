@@ -40,12 +40,13 @@ import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 
@@ -93,37 +94,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Bookkeeping",
     desc: "Day to day transaction recording, reconciliations, and clean books your accountant will thank you for.",
     Icon: BookOpen,
-    img: "/service-coverage/finance/bookkeeping.png",
+    img: "/service-coverage/finance/bookkeeping.webp",
   },
   {
     title: "Accounts Payable",
     desc: "Invoice processing, approvals, and on time vendor payments with full audit trails.",
     Icon: Receipt,
-    img: "/service-coverage/finance/accounts-payable.png",
+    img: "/service-coverage/finance/accounts-payable.webp",
   },
   {
     title: "Accounts Receivable",
     desc: "Invoicing, collections, and cash application that keep working capital moving.",
     Icon: Wallet,
-    img: "/service-coverage/finance/accounts-receivable.png",
+    img: "/service-coverage/finance/accounts-receivable.webp",
   },
   {
     title: "Financial Reporting",
     desc: "Monthly close, P&L, balance sheet, and cash flow statements delivered on schedule.",
     Icon: FileText,
-    img: "/service-coverage/finance/financial-reporting.png",
+    img: "/service-coverage/finance/financial-reporting.webp",
   },
   {
     title: "Payroll & Compliance",
     desc: "Accurate payroll runs, filings, and compliance support across regions.",
     Icon: Landmark,
-    img: "/service-coverage/finance/payroll.png",
+    img: "/service-coverage/finance/payroll.webp",
   },
   {
     title: "FP&A & CFO Support",
     desc: "Budgets, forecasts, and dashboards that turn numbers into decisions.",
     Icon: LineChart,
-    img: "/service-coverage/finance/fpa-cfo-support.png",
+    img: "/service-coverage/finance/fpa-cfo-support.webp",
   },
 ];
 
@@ -446,7 +447,7 @@ function CoverageCard({
         </span>
 
         <div className="relative p-5">
-          <span className="mb-2 block h-0.5 w-0 bg-[#9CCC3C] transition-all duration-500 group-hover:w-10" />
+          <span className="mb-2 block h-0.5 w-10 origin-left scale-x-0 bg-[#9CCC3C] transition-transform duration-500 group-hover:scale-x-100" />
           <h3 className="text-lg font-semibold leading-tight drop-shadow sm:text-xl" style={{ fontFamily: "var(--font-display)" }}>
             {name}
           </h3>
@@ -553,7 +554,7 @@ export default function FinancePage() {
 
       {/* ===================== HERO ===================== */}
       <PageBanner
-        image="/banners/finance.png"
+        image="/banners/finance.webp"
         h1="Finance and Accounting Outsourcing for US Companies"
         titleLines={["Close", "The"]}
         rotateWords={["Books", "Gap", "Quarter", "Year"]}
@@ -578,7 +579,7 @@ export default function FinancePage() {
                   <p className="mt-8 text-4xl font-extrabold sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
                     {value}
                   </p>
-                  <span className={`mt-3 block h-0.5 w-8 rounded-full ${accent} transition-all duration-300 group-hover:w-16`} />
+                  <span className={`mt-3 block h-0.5 w-16 origin-left scale-x-50 rounded-full ${accent} transition-transform duration-300 group-hover:scale-x-100`} />
                   <p className="mt-3 text-xs font-semibold uppercase leading-relaxed tracking-[0.16em] opacity-80">{label}</p>
                 </div>
               </Reveal>

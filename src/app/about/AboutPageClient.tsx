@@ -15,12 +15,13 @@ import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanne
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import { claims } from "@/lib/claims";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -104,8 +105,8 @@ function BeliefsSection() {
 
           <Reveal delay={0.1}>
             <div className="max-w-xs">
-              <img
-                src="/leadership/muhammad-ali.png"
+              <img loading="lazy"
+                src="/leadership/muhammad-ali.webp"
                 alt="Muhammad Ali, Cofounder and CEO at MindWhiz"
                 className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
               />
@@ -205,8 +206,8 @@ function CooSection() {
         {/* right: COO portrait */}
         <Reveal delay={0.1} className="mx-auto w-full max-w-xs">
           <div>
-            <img
-              src="/leadership/muhammad-aftab-zafar.png"
+            <img loading="lazy"
+              src="/leadership/muhammad-aftab-zafar.webp"
               alt="Muhammad Aftab Zafar, Chief Operating Officer at MindWhiz"
               className="aspect-[3/4] w-full rounded-[2.5rem] object-cover"
             />
@@ -227,21 +228,21 @@ const teamMembers = [
     name: "Ahmad",
     title: "Chief Marketing Officer",
     department: "Digital Department",
-    image: "/leadership/ahmad.png",
+    image: "/leadership/ahmad.webp",
     linkedin: "https://www.linkedin.com/in/ahmedkhan-strategist/",
   },
   {
     name: "Ammar",
     title: "Business Development Manager",
     department: "BD",
-    image: "/leadership/ammar-new.png",
+    image: "/leadership/ammar-new.webp",
     linkedin: "https://www.linkedin.com/in/me-ali-ammar/",
   },
   {
     name: "Subhan Malik",
     title: "HR Manager",
     department: "HR",
-    image: "/leadership/subhan-malik.png",
+    image: "/leadership/subhan-malik.webp",
     linkedin: "https://www.linkedin.com/in/hr-subhan/",
   },
 ];
@@ -265,7 +266,7 @@ function TeamSection() {
             <Reveal key={member.name} delay={i * 0.1}>
               <div>
                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-gray-200">
-                  <img
+                  <img loading="lazy"
                     src={member.image}
                     alt={`${member.name}, ${member.title} at MindWhiz`}
                     className="h-full w-full object-cover"
@@ -336,7 +337,7 @@ export default function AboutPageClient() {
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="/banners/about-us.png"
+          image="/banners/about-us.webp"
           h1="About MindWhiz: Offshore IT and Operations Teams in Lahore"
           titleLines={["About"]}
           rotateWords={["Us", "MindWhiz", "Our Team", "Our Story"]}

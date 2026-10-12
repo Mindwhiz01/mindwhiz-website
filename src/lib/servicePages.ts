@@ -58,12 +58,12 @@ export type ServicePageContent = {
 
 const sharedImages = {
   helpdesk: "/images/stock/24-7-it-helpdesk-team.webp",
-  noc: "/service-coverage/noc-monitoring/network-monitoring.png",
+  noc: "/service-coverage/noc-monitoring/network-monitoring.webp",
   remote: "/images/stock/untracked-devices-problem-mindwhiz-solves.webp",
-  cloud: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png",
+  cloud: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.webp",
   server: "/images/stock/fragile-infrastructure-problem-mindwhiz-solves.webp",
   devops: "/images/stock/deployment-bottlenecks-problem-mindwhiz-solves.webp",
-  cyber: "/service-coverage/cybersecurity/managed-detection.png",
+  cyber: "/service-coverage/cybersecurity/managed-detection.webp",
 };
 
 export const servicePages: ServicePageContent[] = [
@@ -75,7 +75,7 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       h1: "24/7 Outsourced IT Helpdesk Services (Tier 1-3) for US Companies and MSPs",
-      image: "/banners/it-helpdesk.png",
+      image: "/banners/it-helpdesk.webp",
       title: ["Rapid", "IT"],
       highlight: "Response",
       heroRotate: ["Support", "Helpdesk", "Coverage"],
@@ -203,7 +203,7 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       h1: "Outsourced 24/7 NOC Monitoring Services for US Companies and MSPs",
-      image: "/banners/noc-monitoring.png",
+      image: "/banners/noc-monitoring.webp",
       title: ["Protect", "Your"],
       highlight: "Uptime",
       heroRotate: ["Network", "Systems", "Servers"],
@@ -269,12 +269,12 @@ export const servicePages: ServicePageContent[] = [
       ],
     },
     capabilities: [
-      { title: "Network Monitoring", desc: "Continuous monitoring of routers, switches, firewalls, and wireless networks to identify performance issues, outages, and abnormal activity.", image: "/service-coverage/noc-monitoring/network-monitoring.png" },
-      { title: "Server Monitoring", desc: "Real time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "/service-coverage/noc-monitoring/server-monitoring.png" },
-      { title: "Application Monitoring", desc: "Visibility into application performance and dependencies to detect slowdowns, failures, and service degradation early.", image: "/service-coverage/noc-monitoring/application-monitoring.png" },
-      { title: "Website Monitoring", desc: "Availability checks, certificate status, and user experience validation for websites and portals.", image: "/service-coverage/noc-monitoring/website-monitoring.png" },
-      { title: "Broadband Monitoring", desc: "Performance monitoring across broadband networks, including PON, DOCSIS, and customer equipment.", image: "/service-coverage/noc-monitoring/broadband-monitoring.png" },
-      { title: "Outage Remediation", desc: "Fast issue resolution using documented runbooks, automated recovery actions, and coordinated escalation.", image: "/service-coverage/noc-monitoring/outage-remediation.png" },
+      { title: "Network Monitoring", desc: "Continuous monitoring of routers, switches, firewalls, and wireless networks to identify performance issues, outages, and abnormal activity.", image: "/service-coverage/noc-monitoring/network-monitoring.webp" },
+      { title: "Server Monitoring", desc: "Real time monitoring of physical servers, virtual machines, and cloud infrastructure to maintain uptime, capacity health, and stability.", image: "/service-coverage/noc-monitoring/server-monitoring.webp" },
+      { title: "Application Monitoring", desc: "Visibility into application performance and dependencies to detect slowdowns, failures, and service degradation early.", image: "/service-coverage/noc-monitoring/application-monitoring.webp" },
+      { title: "Website Monitoring", desc: "Availability checks, certificate status, and user experience validation for websites and portals.", image: "/service-coverage/noc-monitoring/website-monitoring.webp" },
+      { title: "Broadband Monitoring", desc: "Performance monitoring across broadband networks, including PON, DOCSIS, and customer equipment.", image: "/service-coverage/noc-monitoring/broadband-monitoring.webp" },
+      { title: "Outage Remediation", desc: "Fast issue resolution using documented runbooks, automated recovery actions, and coordinated escalation.", image: "/service-coverage/noc-monitoring/outage-remediation.webp" },
     ],
     benefits: [
       { title: "Real time Incident Management", desc: "Immediate detection, triage, escalation, and resolution help minimize downtime." },
@@ -331,7 +331,7 @@ export const servicePages: ServicePageContent[] = [
     group: "Cloud & DevOps",
     hero: {
       h1: "Remote IT Asset Management and Remote Desktop Support",
-      image: "/banners/remote-desktop-assets.png",
+      image: "/banners/remote-desktop-assets.webp",
       title: ["Control", "From"],
       highlight: "Anywhere",
       heroRotate: ["Everywhere", "Any Device", "The Office"],
@@ -411,7 +411,7 @@ export const servicePages: ServicePageContent[] = [
     group: "Cloud & DevOps",
     hero: {
       h1: "Cloud Infrastructure Management for AWS, Azure and GCP",
-      image: "/banners/cloud-infrastructure.png",
+      image: "/banners/cloud-infrastructure.webp",
       title: ["Optimize", "Your"],
       highlight: "Cloud",
       heroRotate: ["Servers", "Workloads", "Spend"],
@@ -440,9 +440,9 @@ export const servicePages: ServicePageContent[] = [
       { value: "Scale", label: "Compute, storage, and network resources" },
     ],
     capabilities: [
-      { title: "Dependable Cloud Environments", desc: "Design and manage cloud environments built on trusted platforms that protect data and support uptime.", image: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png" },
-      { title: "Secure Backups and Storage", desc: "Implement backup and storage strategies to safeguard critical data and support recovery objectives.", image: "/service-coverage/cloud-infrastructure/secure-backups-storage.png" },
-      { title: "Scalable Infrastructure", desc: "Scale compute, storage, and network resources as demand grows without disruption or unnecessary overhead.", image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.png" },
+      { title: "Dependable Cloud Environments", desc: "Design and manage cloud environments built on trusted platforms that protect data and support uptime.", image: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.webp" },
+      { title: "Secure Backups and Storage", desc: "Implement backup and storage strategies to safeguard critical data and support recovery objectives.", image: "/service-coverage/cloud-infrastructure/secure-backups-storage.webp" },
+      { title: "Scalable Infrastructure", desc: "Scale compute, storage, and network resources as demand grows without disruption or unnecessary overhead.", image: "/service-coverage/cloud-infrastructure/scalable-infrastructure.webp" },
     ],
     benefits: [
       { title: "24/7 System Monitoring", desc: "Continuous monitoring detects performance issues, outages, and anomalies early." },
@@ -492,7 +492,7 @@ export const servicePages: ServicePageContent[] = [
     group: "Cloud & DevOps",
     hero: {
       h1: "Server and Network Administration Outsourcing",
-      image: "/banners/server-network-administration.png",
+      image: "/banners/server-network-administration.webp",
       title: ["Power", "Your"],
       highlight: "Backbone",
       heroRotate: ["Network", "Servers", "Systems"],
@@ -574,7 +574,7 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       h1: "Managed Endpoint Security and Patch Management",
-      image: "/banners/endpoint-security.png",
+      image: "/banners/endpoint-security.webp",
       title: ["Secure", "Every"],
       highlight: "Device",
       heroRotate: ["Endpoint", "Laptop", "Desktop"],
@@ -591,7 +591,7 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Endpoint Risk", "Compliance Gaps"],
-        image: "/banners/endpoint-security.png",
+        image: "/banners/endpoint-security.webp",
         title: "Unmanaged Devices",
         desc: "Unpatched laptops and unmonitored endpoints leave distributed teams exposed to preventable incidents.",
         cta: "Talk to expert",
@@ -603,9 +603,9 @@ export const servicePages: ServicePageContent[] = [
       { value: "Fleet", label: "Device visibility" },
     ],
     capabilities: [
-      { title: "Device Protection", desc: "EDR/AV posture monitoring, policy checks, and response coordination for risky devices.", image: "/services/endpoint-security/device-protection.png" },
-      { title: "Patch Tracking", desc: "Patch status, exception followup, and reporting for laptops, workstations, and servers.", image: "/services/endpoint-security/patch-tracking.png" },
-      { title: "Access Controls", desc: "Device compliance, enrollment checks, and security hygiene across remote work environments.", image: "/services/endpoint-security/access-control.png" },
+      { title: "Device Protection", desc: "EDR/AV posture monitoring, policy checks, and response coordination for risky devices.", image: "/services/endpoint-security/device-protection.webp" },
+      { title: "Patch Tracking", desc: "Patch status, exception followup, and reporting for laptops, workstations, and servers.", image: "/services/endpoint-security/patch-tracking.webp" },
+      { title: "Access Controls", desc: "Device compliance, enrollment checks, and security hygiene across remote work environments.", image: "/services/endpoint-security/access-control.webp" },
     ],
     benefits: [
       { title: "Centralized Visibility", desc: "Track device posture, protection status, and compliance from a clearer operational view." },
@@ -653,7 +653,7 @@ export const servicePages: ServicePageContent[] = [
     group: "Cloud & DevOps",
     hero: {
       h1: "Outsourced DevOps and CI/CD Automation Services",
-      image: "/banners/devops-automation.png",
+      image: "/banners/devops-automation.webp",
       title: ["Ship", "With"],
       highlight: "Automation",
       heroRotate: ["Confidence", "Speed", "Precision"],
@@ -685,7 +685,7 @@ export const servicePages: ServicePageContent[] = [
     capabilities: [
       { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "/images/stock/cloud-infrastructure-optimization-devops-automation.webp" },
       { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "/images/stock/automated-testing-devops-automation.webp" },
-      { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "/service-coverage/cybersecurity/security-control.png" },
+      { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "/service-coverage/cybersecurity/security-control.webp" },
     ],
     benefits: [
       { title: "Faster Deployments", desc: "CI/CD and deployment automation reduce manual effort and speed release cycles." },
@@ -734,7 +734,7 @@ export const servicePages: ServicePageContent[] = [
     group: "IT & Security",
     hero: {
       h1: "Managed SOC and MDR Services for US Companies",
-      image: "/banners/cybersecurity-monitoring.png",
+      image: "/banners/cybersecurity-monitoring.webp",
       title: ["Defeat", "Cyber"],
       highlight: "Threats",
       heroRotate: ["Attacks", "Breaches", "Risk"],
@@ -764,10 +764,10 @@ export const servicePages: ServicePageContent[] = [
       { value: "Unified", label: "Security visibility" },
     ],
     capabilities: [
-      { title: "Managed Detection and Response", desc: "Monitor activity, identify threats, and respond to security risks in real time.", image: "/service-coverage/cybersecurity/managed-detection.png" },
-      { title: "Threat Hunting", desc: "Structured threat hunting identifies suspicious activity and hidden risks before impact occurs.", image: "/service-coverage/cybersecurity/threat-hunting.png" },
-      { title: "Attack Surface Visibility", desc: "Monitoring across endpoints, networks, email, and cloud environments maintains comprehensive coverage.", image: "/service-coverage/cybersecurity/attack-surface.png" },
-      { title: "Security Control Management", desc: "Best practice security controls improve visibility while reducing operational complexity.", image: "/service-coverage/cybersecurity/security-control.png" },
+      { title: "Managed Detection and Response", desc: "Monitor activity, identify threats, and respond to security risks in real time.", image: "/service-coverage/cybersecurity/managed-detection.webp" },
+      { title: "Threat Hunting", desc: "Structured threat hunting identifies suspicious activity and hidden risks before impact occurs.", image: "/service-coverage/cybersecurity/threat-hunting.webp" },
+      { title: "Attack Surface Visibility", desc: "Monitoring across endpoints, networks, email, and cloud environments maintains comprehensive coverage.", image: "/service-coverage/cybersecurity/attack-surface.webp" },
+      { title: "Security Control Management", desc: "Best practice security controls improve visibility while reducing operational complexity.", image: "/service-coverage/cybersecurity/security-control.webp" },
     ],
     benefits: [
       { title: "Modern MDR Capabilities", desc: "Integrated threat detection and response supported by SOC workflows." },
@@ -817,7 +817,7 @@ export const servicePages: ServicePageContent[] = [
     group: "Talent & Workforce",
     hero: {
       h1: "IT Staff Augmentation and Offshore Teams for US Companies",
-      image: "/banners/staff-augmentation.png",
+      image: "/banners/staff-augmentation.webp",
       title: ["On Demand"],
       highlight: "Teams",
       heroRotate: ["Talent", "Engineers", "Experts"],
@@ -834,7 +834,7 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Hiring Delays", "Skill Gaps"],
-        image: "/banners/information-technology.png",
+        image: "/banners/information-technology.webp",
         title: "Talent Gaps",
         desc: "Long hiring cycles and missing skills stall roadmaps while the work piles up.",
         cta: "Talk to expert",

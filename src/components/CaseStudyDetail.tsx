@@ -15,12 +15,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { jsonLdScript } from "@/lib/jsonLd";
 import { caseStudies } from "@/lib/content";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -108,7 +109,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
         >
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cs.img} alt={`${cs.client} — MindWhiz case study`} className="h-full w-full object-cover" />
+            <img fetchPriority="high" src={cs.img} alt={`${cs.client} — MindWhiz case study`} className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/45" />
           </div>
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full bg-[#9CCC3C]/25 blur-[130px]" />

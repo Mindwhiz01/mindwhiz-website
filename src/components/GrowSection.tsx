@@ -91,7 +91,7 @@ function PhoneMockup() {
           {/* hero food image */}
           <div className="relative h-44">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy"
               src="/images/stock/restaurant-dish-food-photography.webp"
               alt="Restaurant dish photographed for a MindWhiz food client"
               className="h-full w-full object-cover"
@@ -148,7 +148,7 @@ function PhoneMockup() {
                   "/images/stock/restaurant-dish-thumbnail.webp",
                 ].map((src) => (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <img loading="lazy"
                     key={src}
                     src={src}
                     alt="Dish photographed for a restaurant client"

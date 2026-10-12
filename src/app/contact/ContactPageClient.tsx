@@ -10,12 +10,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import { ContactForm } from "@/components/ContactFormSection";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -66,7 +67,7 @@ const offices = [
   {
     country: "United States",
     city: "Houston, Texas",
-    img: "/hubs/us.jpg",
+    img: "/hubs/us.webp",
     href: `https://www.google.com/maps?q=${encodeURIComponent(company.address)}`,
   },
   {
@@ -78,7 +79,7 @@ const offices = [
   {
     country: "Pakistan",
     city: "Head office and delivery center, Lahore",
-    img: "/hubs/pk.jpg",
+    img: "/hubs/pk.webp",
     href: `https://www.google.com/maps?q=${encodeURIComponent(company.headOffice)}`,
   },
 ];

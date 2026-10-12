@@ -36,12 +36,13 @@ import CardCornerArrow from "@/components/CardCornerArrow";
 import ProcessScroll from "@/components/ProcessScroll";
 import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 
@@ -365,7 +366,7 @@ export default function HrPage() {
 
       {/* ===================== HERO ===================== */}
       <PageBanner
-        image="/banners/hr.png"
+        image="/banners/hr.webp"
         h1="Outsourced HR, Recruiting and Payroll Services for US Companies"
         titleLines={["Build", "Great"]}
         rotateWords={["Teams", "Talent", "Culture", "Careers"]}
@@ -390,7 +391,7 @@ export default function HrPage() {
                   <p className="mt-8 text-4xl font-extrabold sm:text-5xl" style={{ fontFamily: "var(--font-display)" }}>
                     {value}
                   </p>
-                  <span className={`mt-3 block h-0.5 w-8 rounded-full ${accent} transition-all duration-300 group-hover:w-16`} />
+                  <span className={`mt-3 block h-0.5 w-16 origin-left scale-x-50 rounded-full ${accent} transition-transform duration-300 group-hover:scale-x-100`} />
                   <p className="mt-3 text-xs font-semibold uppercase leading-relaxed tracking-[0.16em] opacity-80">{label}</p>
                 </div>
               </Reveal>
@@ -476,7 +477,7 @@ export default function HrPage() {
                   </span>
 
                   <div className="relative p-5">
-                    <span className="mb-2 block h-0.5 w-0 bg-[#9CCC3C] transition-all duration-500 group-hover:w-10" />
+                    <span className="mb-2 block h-0.5 w-10 origin-left scale-x-0 bg-[#9CCC3C] transition-transform duration-500 group-hover:scale-x-100" />
                     <h3 className="text-lg font-semibold leading-tight drop-shadow sm:text-xl" style={{ fontFamily: "var(--font-display)" }}>
                       {name}
                     </h3>

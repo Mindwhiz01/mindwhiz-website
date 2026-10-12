@@ -113,8 +113,8 @@ export const caseStudies = [
     category: "Social & Development",
     result: "Accelerated social growth and business expansion through comprehensive social media services. Deployed strategic content, community management, and engagement initiatives that scaled their online presence and converted followers into customers. Leadership sees real-time growth metrics and consistent ROI on social investment.",
     highlights: ["Social growth acceleration", "Community engagement", "Brand expansion"],
-    img: "/clients/connecteffect-site.png",
-    logo: "/clients/connecteffect-site.png",
+    img: "/clients/connecteffect-site.webp",
+    logo: "/clients/connecteffect-site.webp",
     services: ["Social Media Management", "Content Strategy", "Digital Growth", "Community Engagement"],
     video: "/clients/connecteffect-video.mp4",
     challenge:

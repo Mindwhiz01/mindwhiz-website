@@ -14,12 +14,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
 import { posts, blogCategories, formatDate } from "@/lib/blog";
 
-const sans = Inter({ subsets: ["latin"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
+  preload: false,
 });
 
 const reveal: Variants = {
@@ -97,7 +98,7 @@ function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
       >
         <div className="relative min-h-[300px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img loading="lazy"
             src={post.image}
             alt={post.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -123,7 +124,7 @@ function FeaturedPost({ post }: { post: (typeof posts)[number] }) {
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-black/65">{post.excerpt}</p>
           <div className="mt-7 flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy"
               src={post.author.avatar}
               alt={post.author.name}
               className="h-10 w-10 rounded-full object-cover"
