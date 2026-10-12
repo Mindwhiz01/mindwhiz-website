@@ -20,6 +20,7 @@ import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 import { useBelowSm } from "@/lib/useBelowSm";
 import { jsonLdScript } from "@/lib/jsonLd";
+import { serviceSchemaGraph } from "@/lib/serviceSchema";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -698,9 +699,23 @@ function CredentialsSection() {
   );
 }
 
-// Must match siteUrl in seo.config.ts so the Service `provider` @id resolves
-// to the same #organization node the root layout emits.
-const SITE_URL = "https://www.mindwhiz.com";
+// schema.org serviceType per service slug: what the service is, in the words
+// buyers search with.
+const SERVICE_TYPES: Record<string, string> = {
+  "it-helpdesk-24-7": "IT helpdesk outsourcing",
+  "noc-monitoring": "Network operations center (NOC) monitoring",
+  "remote-desktop-assets": "IT asset management and remote desktop support",
+  "cloud-infrastructure": "Cloud infrastructure management",
+  "server-network-administration": "Server and network administration",
+  "endpoint-security": "Managed endpoint security",
+  "devops-automation": "DevOps and CI/CD outsourcing",
+  "cybersecurity-monitoring": "Managed detection and response (MDR)",
+  "staff-augmentation": "IT staff augmentation",
+  "offshore-staff-augmentation": "Offshore staff augmentation",
+  "cybersecurity-staff-augmentation": "Cybersecurity staff augmentation",
+  "cloud-security-consulting": "Cloud security consulting",
+  "accounting-staff-augmentation": "Accounting staff augmentation",
+};
 
 export default function ServiceDetailPage({
   page,
@@ -719,45 +734,20 @@ export default function ServiceDetailPage({
   const catalog = basePath === "/industries" ? industryPages : servicePages;
   const related = catalog.filter((p) => p.slug !== page.slug).slice(0, 6);
 
-  const canonicalUrl = `${SITE_URL}${basePath}/${page.slug}`;
-  // Service schema on both /services/* and /industries/* (the keyword map lists
-  // Service for industry pages too), plus a matching breadcrumb trail so search
-  // results show the page hierarchy.
-  const serviceJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: page.name,
-    description: page.hero.subtitle,
-    provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: [
-      { "@type": "Country", name: "United States" },
-      { "@type": "Country", name: "United Kingdom" },
-      { "@type": "Country", name: "Pakistan" },
-    ],
-    serviceType: page.name,
-    url: canonicalUrl,
-    // The capability deck is the page's real description of what is on offer.
-    // Publishing it as an offer catalog gives search and AI answer engines an
-    // itemised, quotable view of the service instead of one hero sentence.
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: `${page.name} capabilities`,
-      itemListElement: page.capabilities.map((c) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: c.title, description: c.desc },
-      })),
-    },
-  };
-
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: sectionLabel, item: `${SITE_URL}${basePath}` },
-      { "@type": "ListItem", position: 3, name: page.name, item: canonicalUrl },
-    ],
-  };
+  // WebPage + Service + BreadcrumbList graph (see lib/serviceSchema.ts).
+  const isIndustry = basePath === "/industries";
+  const schema = serviceSchemaGraph({
+    path: `${basePath}/${page.slug}`,
+    name: page.hero.h1 ?? page.name,
+    shortName: page.name,
+    kind: isIndustry ? "industry" : "service",
+    serviceType: isIndustry
+      ? "IT, staffing and back-office outsourcing"
+      : SERVICE_TYPES[page.slug] ?? page.name,
+    category: isIndustry ? page.name : page.group,
+    image: page.hero.image,
+    offers: page.capabilities.map((c) => ({ name: c.title, description: c.desc })),
+  });
 
   // NB: FAQPage schema is emitted by <FaqSection> itself (co-located with the
   // rendered accordion), so it is intentionally not duplicated here.
@@ -779,11 +769,7 @@ export default function ServiceDetailPage({
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdScript(serviceJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
       <SiteHeader theme={theme} />
 
