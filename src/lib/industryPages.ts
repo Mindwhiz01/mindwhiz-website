@@ -1,16 +1,17 @@
 import type { ServicePageContent } from "@/lib/servicePages";
+import { claims } from "@/lib/claims";
 
 // Industry detail pages reuse the ServicePageContent shape so they can render
 // through the shared ServiceDetailPage component. `group` holds the mega-menu
 // category (Technology & Digital, Built & Physical, etc.).
 
 const cap = {
-  a: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
-  b: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
-  c: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
-  d: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80",
-  e: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
-  f: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+  a: "/images/stock/1460925895917-afdab827c52f-w900.webp",
+  b: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
+  c: "/images/stock/1551434678-e076c223a692-w900.webp",
+  d: "/images/stock/1553877522-43269d4ea984-w900.webp",
+  e: "/images/stock/1531482615713-2afd69097998-w900.webp",
+  f: "/images/stock/1552664730-d307ca884978-w900.webp",
 };
 
 const finalCta = {
@@ -27,6 +28,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
+      h1: "Managed IT and Staff Augmentation for US Technology Companies",
       image: "/banners/information-technology.png",
       title: ["Powering"],
       highlight: "Technology",
@@ -52,12 +54,12 @@ export const industryPages: ServicePageContent[] = [
     },
     proof: [
       { value: "24/7", label: "Monitoring and support coverage" },
-      { value: "500+", label: "Vetted technology specialists" },
-      { value: "30%", label: "Lower blended engineering cost" },
+      { value: claims.teamSize, label: "Vetted technology specialists" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "SOC 2", label: "Security aligned delivery" },
     ],
     capabilities: [
-      { title: "Cloud & Infrastructure", desc: "Design, migration, and managed operations across AWS, Azure, and GCP.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80" },
+      { title: "Cloud & Infrastructure", desc: "Design, migration, and managed operations across AWS, Azure, and GCP.", image: "/images/stock/1451187580459-43490279c0fa-w900.webp" },
       { title: "Software Engineering", desc: "Full stack developers and QA who plug into your sprints and standards.", image: cap.a },
       { title: "Cybersecurity", desc: "Threat monitoring, endpoint protection, and compliance aligned controls.", image: cap.b },
       { title: "DevOps & Automation", desc: "CI/CD pipelines and automated delivery that reduce release risk.", image: cap.c },
@@ -104,6 +106,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
+      h1: "Ecommerce Support and Operations Outsourcing for US Retailers",
       image: "/banners/ecommerce-retail.png",
       title: ["Retail That"],
       highlight: "Scales",
@@ -121,7 +124,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Order Backlogs", "Support Load"],
-        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
+        image: "/images/stock/1515879218367-8466d910aaa4-w1800.webp",
         title: "Operations Overload",
         desc: "Order spikes, returns, and support volume overwhelm lean teams and hurt the customer experience.",
         cta: "Talk to expert",
@@ -129,8 +132,8 @@ export const industryPages: ServicePageContent[] = [
     },
     proof: [
       { value: "24/7", label: "Customer support coverage" },
-      { value: "30%", label: "Lower operations cost" },
-      { value: "99%", label: "Order and catalog accuracy" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
+      { value: "QA", label: "Double-checked catalog and order work" },
       { value: "Peak", label: "Ready for seasonal surges" },
     ],
     capabilities: [
@@ -165,7 +168,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you help with payment security and PCI concerns?",
-        a: "We support the technical controls involved, segmentation, access control, monitoring, patching, and evidence collection, and work alongside your assessor. We support your compliance programme rather than certify it for you.",
+        a: "We support the technical controls involved, segmentation, access control, monitoring, patching, and evidence collection, and work alongside your assessor. We support your compliance program rather than certify it for you.",
       },
       {
         q: "Can you connect our store to our ERP and fulfilment systems?",
@@ -185,6 +188,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Technology & Digital",
     hero: {
+      h1: "Outsourced IT and Staffing for US Startups and SMBs",
       image: "/banners/startups-smbs.png",
       title: ["Teams That"],
       highlight: "Scale",
@@ -209,8 +213,8 @@ export const industryPages: ServicePageContent[] = [
       },
     },
     proof: [
-      { value: "2 wks", label: "From brief to onboarded talent" },
-      { value: "30%", label: "Lower cost than local hiring" },
+      { value: claims.deployTimeShort, label: "From brief to onboarded talent" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Flexible", label: "Scale up or down anytime" },
       { value: "Senior", label: "Dedicated, vetted specialists" },
     ],
@@ -262,6 +266,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
+      h1: "Estimating, Drafting and IT Support for US Construction Firms",
       image: "/banners/construction-engineering.png",
       title: ["Win More"],
       highlight: "Bids",
@@ -279,16 +284,16 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Slow Bids", "Estimating Load"],
-        image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=80",
+        image: "/images/stock/1581092921461-eab62e97a780-w1800.webp",
         title: "Missed Bids",
         desc: "Slow, costly estimating limits how many bids you can quote and win each week.",
         cta: "Talk to expert",
       },
     },
     proof: [
-      { value: "2x", label: "More bids quoted per week" },
+      { value: "Bid-ready", label: "Takeoffs formatted for your bid process" },
       { value: "48h", label: "Typical takeoff turnaround" },
-      { value: "30%", label: "Lower estimating cost" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Accurate", label: "Bid ready cost estimates" },
     ],
     capabilities: [
@@ -339,6 +344,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Built & Physical",
     hero: {
+      h1: "IT and Back-Office Outsourcing for US Manufacturers",
       image: "/banners/industrial-manufacturing.png",
       title: ["Built To"],
       highlight: "Run",
@@ -356,7 +362,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Line Downtime", "Support Gaps"],
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=80",
+        image: "/images/stock/1558494949-ef010cbdcc31-w1800.webp",
         title: "Production Stalls",
         desc: "Support and engineering gaps let small issues stop the line and eat into output.",
         cta: "Talk to expert",
@@ -364,7 +370,7 @@ export const industryPages: ServicePageContent[] = [
     },
     proof: [
       { value: "24/7", label: "IT and operations coverage" },
-      { value: "30%", label: "Lower support cost" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Uptime", label: "Reliable systems and processes" },
       { value: "Scalable", label: "Capacity that flexes with output" },
     ],
@@ -416,6 +422,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
+      h1: "Outsourced Accounting Teams for US CPA Firms and Finance Departments",
       image: "/banners/accounting-finance.png",
       title: ["Close The"],
       highlight: "Books",
@@ -440,9 +447,9 @@ export const industryPages: ServicePageContent[] = [
       },
     },
     proof: [
-      { value: "40%", label: "Lower back office cost" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Faster", label: "Month end closes" },
-      { value: "99%", label: "Reconciliation accuracy" },
+      { value: "Reviewed", label: "Every reconciliation checked before sign-off" },
       { value: "SOC 2", label: "Controls aligned delivery" },
     ],
     capabilities: [
@@ -497,6 +504,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
+      h1: "Back-Office and IT Support for US Professional Services Firms",
       image: "/banners/professional-services.png",
       title: ["Deliver"],
       highlight: "More",
@@ -514,15 +522,15 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Capacity Limits", "Quality Risk"],
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80",
+        image: "/images/stock/1552664730-d307ca884978-w1800.webp",
         title: "Delivery Strain",
         desc: "Rising demand strains delivery teams and threatens the quality clients expect.",
         cta: "Talk to expert",
       },
     },
     proof: [
-      { value: "2 wks", label: "To onboarded support" },
-      { value: "30%", label: "Lower delivery cost" },
+      { value: claims.deployTimeShort, label: "To onboarded support" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Flexible", label: "Scale with engagements" },
       { value: "Vetted", label: "Analysts and specialists" },
     ],
@@ -558,7 +566,7 @@ export const industryPages: ServicePageContent[] = [
       },
       {
         q: "Can you handle onboarding and offboarding as headcount changes?",
-        a: "Yes. Starters can be issued configured devices and correct access on day one, and leavers can have access, licences, and equipment recovered against a defined checklist.",
+        a: "Yes. Starters can be issued configured devices and correct access on day one, and leavers can have access, licenses, and equipment recovered against a defined checklist.",
       },
       {
         q: "Is support available around client deadlines?",
@@ -574,6 +582,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Finance & Services",
     hero: {
+      h1: "Logistics Back-Office Support and IT Services for US Logistics Companies",
       image: "/banners/logistics-supply-chain.png",
       title: ["Keep Goods"],
       highlight: "Moving",
@@ -591,7 +600,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Visibility Gaps", "Delays"],
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80",
+        image: "/images/stock/1454165804606-c3d57bc86b40-w1800.webp",
         title: "Supply Bottlenecks",
         desc: "Fragmented operations and blind spots cause delays that ripple across the supply chain.",
         cta: "Talk to expert",
@@ -599,7 +608,7 @@ export const industryPages: ServicePageContent[] = [
     },
     proof: [
       { value: "24/7", label: "Coordination coverage" },
-      { value: "30%", label: "Lower operations cost" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Visibility", label: "Tracking across the chain" },
       { value: "Reliable", label: "On time coordination" },
     ],
@@ -655,6 +664,7 @@ export const industryPages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/industries/",
     group: "Healthcare",
     hero: {
+      h1: "HIPAA-Aware IT and Back-Office Support for US Healthcare and HealthTech",
       image: "/banners/healthcare-healthtech.png",
       title: ["Compliant"],
       highlight: "Care",
@@ -672,7 +682,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Compliance Risk", "Admin Load"],
-        image: "https://images.unsplash.com/photo-1576091160550-112173f31f5f?auto=format&fit=crop&w=1800&q=80",
+        image: "/industries/healthcare-healthtech.webp",
         title: "Care Operations Strain",
         desc: "Administrative load and compliance demands pull focus away from patients and outcomes.",
         cta: "Talk to expert",
@@ -681,7 +691,7 @@ export const industryPages: ServicePageContent[] = [
     proof: [
       { value: "24/7", label: "Support and operations coverage" },
       { value: "HIPAA", label: "Compliance aligned delivery" },
-      { value: "30%", label: "Lower back office cost" },
+      { value: claims.savingsRange, label: "Typical saving vs in-house US cost" },
       { value: "Accurate", label: "Records and documentation" },
     ],
     capabilities: [
@@ -704,7 +714,7 @@ export const industryPages: ServicePageContent[] = [
     faqs: [
       {
         q: "Do you provide HIPAA-compliant managed IT for healthcare companies?",
-        a: "Yes. We provide HIPAA-aware managed IT and outsourced teams for US healthcare and healthtech: patient data handled under strict access control, encryption, logging and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. We work within your obligations, including HIPAA, and support your compliance programme rather than certify it on your behalf.",
+        a: "Yes. We provide HIPAA-aware managed IT and outsourced teams for US healthcare and healthtech: patient data handled under strict access control, encryption, logging and monitoring, with delivery aligned to SOC 2 and ISO 27001 practices. We work within your obligations, including HIPAA, and support your compliance program rather than certify it on your behalf.",
       },
       {
         q: "Can clinical systems be supported outside normal hours?",

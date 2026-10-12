@@ -54,15 +54,15 @@ const clients = [
 const news = [
   {
     title: "Organic social vs paid social: stop choosing sides",
-    img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80",
+    img: "/images/stock/1551836022-d5d88e9218df-w900.webp",
   },
   {
     title: "A century of change: what growth marketing needs next",
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+    img: "/images/stock/1552664730-d307ca884978-w900.webp",
   },
   {
     title: "Introducing MindWhiz Studio: the bond behind growth",
-    img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=900&q=80",
+    img: "/images/stock/1559136555-9303baea8ebd-w900.webp",
   },
 ];
 
@@ -394,7 +394,7 @@ function AboutSection() {
         className="absolute bottom-10 right-10 hidden h-[18rem] w-[18rem] overflow-hidden rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] xl:block"
       >
         <img
-          src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=800&q=80"
+          src="/images/stock/1580894732444-8ecded7900cd-w800.webp"
           alt=""
           className="h-full w-full object-cover"
         />

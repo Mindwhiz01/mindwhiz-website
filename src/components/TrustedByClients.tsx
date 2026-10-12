@@ -85,7 +85,7 @@ const clientTestimonials = [
     quote: "I would recommend MindWhiz to anyone. Don't take my word for it, see the results.",
     author: "Inovatiqa",
     video: "https://videos.pexels.com/video-files/7989708/7989708-hd_1920_1080_25fps.mp4",
-    image: "/clients/basil-pizza-site.png",
+    image: "/portfolio/inovatiqa-dashboard.png",
     stats: [
       { value: "60%", label: "Faster turnaround" },
       { value: "99%+", label: "Accuracy rate" },

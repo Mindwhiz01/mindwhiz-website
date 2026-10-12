@@ -12,6 +12,8 @@ import { Linkedin } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
+import FaqSection, { type Faq } from "@/components/FaqSection";
+import { claims } from "@/lib/claims";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -65,7 +67,7 @@ const beliefs = [
     title: "We believe that performance beats endless customization",
     paragraphs: [
       "Everyone else promises you everything. We won't. Partnering with MindWhiz means giving up some control over how your operations are staffed and run.",
-      "In return, you get a proven system built to grow your business. Our numbers prove it. It's why our clients outperform their competition.",
+      "In return, you get a proven system built to grow your business, with the reporting to show whether it is working.",
     ],
   },
   {
@@ -177,9 +179,9 @@ function CooSection() {
               Built To <span style={{ color: "#ed1164" }}>Deliver</span>
             </h2>
             <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-black/65">
-              As Chief Operating Officer, Muhammad Aftab Zafar leads delivery across our
-              US, UK, and Pakistan hubs, turning flexible talent, scalable teams, and
-              global impact into daily operational excellence for every client we serve.
+              As Chief Operating Officer, Muhammad Aftab Zafar leads delivery from our
+              Lahore head office for clients across the US and UK, turning flexible talent,
+              scalable teams, and global impact into daily operational excellence.
             </p>
           </Reveal>
 
@@ -294,6 +296,28 @@ function TeamSection() {
 }
 
 // ---------------------------------------------------------------------------
+// Company FAQs. Numbers come from lib/claims.
+// ---------------------------------------------------------------------------
+const aboutFaqs: Faq[] = [
+  {
+    q: "Is it MindWhiz, Mind Whiz or Mindwiz?",
+    a: "The company name is MindWhiz, written as one word. You may also see it written Mind Whiz or misspelled Mindwiz; they all refer to us, at www.mindwhiz.com.",
+  },
+  {
+    q: "When was MindWhiz founded?",
+    a: `MindWhiz started delivering for clients in ${claims.foundedYear}.`,
+  },
+  {
+    q: "Does MindWhiz have a US office?",
+    a: "Yes. Our US office is at 2313 W Sam Houston Pkwy N #147, Houston, TX 77043, phone +1 (832) 900-4608. Most delivery staff work from our Lahore delivery center on US-hours shifts.",
+  },
+  {
+    q: "How many people work at MindWhiz?",
+    a: `${claims.teamSizeWords.charAt(0).toUpperCase()}${claims.teamSizeWords.slice(1)} engineers, analysts and specialists across our Houston, London and Lahore offices, with most delivery staff in Lahore.`,
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Page shell
 // ---------------------------------------------------------------------------
 export default function AboutPageClient() {
@@ -313,6 +337,7 @@ export default function AboutPageClient() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="/banners/about-us.png"
+          h1="About MindWhiz: Offshore IT and Operations Teams in Lahore"
           titleLines={["About"]}
           rotateWords={["Us", "MindWhiz", "Our Team", "Our Story"]}
           highlightClassName="text-[#9CCC3C]"
@@ -328,6 +353,8 @@ export default function AboutPageClient() {
         <CooSection />
 
         <TeamSection />
+
+        <FaqSection faqs={aboutFaqs} />
 
         <Footer />
       </div>

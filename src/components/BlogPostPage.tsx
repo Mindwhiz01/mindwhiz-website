@@ -12,7 +12,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import FaqSection from "@/components/FaqSection";
-import { posts, formatDate, type BlogPost } from "@/lib/blog";
+import { posts, formatDate, EDITORIAL_AUTHOR, type BlogPost } from "@/lib/blog";
 import { jsonLdScript } from "@/lib/jsonLd";
 
 // Stable anchor id for a heading, used by the right-side index links.
@@ -58,13 +58,20 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: post.image,
+    image: post.image.startsWith("/") ? `${siteUrl}${post.image}` : post.image,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     // Posts carry a collective editorial byline, so the author is the
-    // organisation itself, not a Person. Pointing at the Organization @id also
+    // organization itself, not a Person. Pointing at the Organization @id also
     // consolidates E-E-A-T signals onto the one brand entity.
-    author: { "@type": "Organization", name: post.author.name, "@id": `${siteUrl}/#organization` },
+    author: {
+      "@type": "Organization",
+      name: post.author.name,
+      url: `${siteUrl}${EDITORIAL_AUTHOR.url}`,
+      "@id": `${siteUrl}/#organization`,
+    },
+    ...(post.reviewedBy ? { reviewedBy: { "@type": "Organization", name: post.reviewedBy } } : {}),
+    ...(post.sources?.length ? { citation: post.sources.map((src) => src.href) } : {}),
     publisher: { "@id": `${siteUrl}/#organization` },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
     articleSection: post.category,
@@ -109,6 +116,14 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 {post.category}
               </span>
               <span>{formatDate(post.date)}</span>
+              {post.updated && post.updated !== post.date && (
+                <>
+                  <span>·</span>
+                  <span>
+                    Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+                  </span>
+                </>
+              )}
               <span>·</span>
               <span>{post.readTime}</span>
             </div>
@@ -126,7 +141,9 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 className="h-11 w-11 rounded-full object-cover ring-2 ring-white/20"
               />
               <div>
-                <p className="text-sm font-semibold">{post.author.name}</p>
+                <a href={EDITORIAL_AUTHOR.url} className="text-sm font-semibold hover:underline">
+                  {post.author.name}
+                </a>
                 <p className="text-xs text-white/60">{post.author.role}</p>
               </div>
             </div>
@@ -179,6 +196,39 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                       )
                     )}
                   </p>
+                );
+              }
+              if (block.type === "table") {
+                return (
+                  <div key={i} className="my-8 overflow-x-auto rounded-2xl border border-black/10">
+                    <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+                      {block.caption && (
+                        <caption className="px-4 pt-4 text-left text-xs font-semibold uppercase tracking-[0.14em] text-black/55">
+                          {block.caption}
+                        </caption>
+                      )}
+                      <thead>
+                        <tr className="border-b border-black/10 bg-[#FAF9F5]">
+                          {block.head.map((h) => (
+                            <th key={h} scope="col" className="px-4 py-3 font-semibold text-black">{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {block.rows.map((row) => (
+                          <tr key={row.join("|")} className="border-b border-black/5 last:border-0">
+                            {row.map((cell, j) =>
+                              j === 0 ? (
+                                <th key={j} scope="row" className="px-4 py-3 font-semibold text-black">{cell}</th>
+                              ) : (
+                                <td key={j} className="px-4 py-3 text-black/70">{cell}</td>
+                              )
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 );
               }
               if (block.type === "img") {
@@ -237,6 +287,34 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 </p>
               );
             })}
+          </div>
+
+          {/* E-E-A-T: who wrote it, who checked it, and where the numbers come from */}
+          <div className="mt-12 rounded-[1.5rem] border border-black/10 p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/50">About the author</p>
+            <p className="mt-2 font-bold text-black">
+              <a href={EDITORIAL_AUTHOR.url} className="hover:underline">{EDITORIAL_AUTHOR.name}</a>
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-black/65">{EDITORIAL_AUTHOR.bio}</p>
+            {post.reviewedBy && (
+              <p className="mt-3 text-sm text-black/65">
+                <span className="font-semibold text-black">Reviewed by:</span> {post.reviewedBy}
+              </p>
+            )}
+            {post.sources?.length ? (
+              <div className="mt-5 border-t border-black/10 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/50">Sources</p>
+                <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-black/65">
+                  {post.sources.map((src) => (
+                    <li key={src.href}>
+                      <a href={src.href} target="_blank" rel="noopener noreferrer" className="underline decoration-black/20 underline-offset-2 hover:text-black">
+                        {src.label}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
           </div>
 
           {/* article CTA */}

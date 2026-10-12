@@ -40,7 +40,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     // cross-page anchor landings (e.g. /web-services -> /#services): the
     // browser's native hash jump fires before images and pinned scroll
     // sections settle the layout, so re-anchor to the hash target once early
-    // and again after the layout has stabilised.
+    // and again after the layout has stabilized.
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     if (window.location.hash) {
       const jumpToHash = () => {

@@ -71,7 +71,7 @@ function FlagIcon({ src, label }: { src: string; label: string }) {
   );
 }
 
-// Mega-menu groupings - services & industries organised into labelled columns.
+// Mega-menu groupings - services & industries organized into labelled columns.
 const serviceMenu = [
   { heading: "IT & Security", items: [services[0], services[1], services[2], services[5]] },
   { heading: "Cloud & DevOps", items: [services[3], services[4], services[6], services[12]] },

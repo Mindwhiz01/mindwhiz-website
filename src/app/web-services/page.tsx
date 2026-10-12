@@ -129,7 +129,7 @@ function BrowserFrame({
   const [scrollDur, setScrollDur] = useState(MIN_SCROLL_DUR);
 
   // rAF-driven preview: used for the touch play/pause button and, when
-  // hoverAutoScroll is on, for the desktop hover "peek then advance" behaviour.
+  // hoverAutoScroll is on, for the desktop hover "peek then advance" behavior.
   const imgRef = useRef<HTMLImageElement>(null);
   const posRef = useRef(0); // current translateY in px (0 → negative)
   const rafRef = useRef<number | null>(null);
@@ -297,12 +297,12 @@ function BrowserFrame({
 // data
 // ---------------------------------------------------------------------------
 const services: { title: string; desc: string; Icon: LucideIcon; image: string; audience?: string; hook?: string; shot?: boolean }[] = [
-  { title: "Custom Websites", audience: "For B2B & B2C brands", hook: "Is your website winning customers, or quietly losing them?", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Web Applications", audience: "For B2B & SaaS teams", hook: "Still running your business on spreadsheets and manual work?", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Custom Websites", audience: "For B2B & B2C brands", hook: "Is your website winning customers, or quietly losing them?", desc: "Marketing sites and landing pages designed to convert, fast, responsive, and pixel perfect on every device. We craft clear messaging, intuitive navigation, and conversion focused layouts that turn visitors into customers and grow your brand online.", Icon: Globe2, image: "/images/stock/1467232004584-a241de8bcf5d-w1200.webp" },
+  { title: "Web Applications", audience: "For B2B & SaaS teams", hook: "Still running your business on spreadsheets and manual work?", desc: "Full stack apps and internal tools built on modern frameworks with secure APIs and clean architecture. From MVPs to complex platforms, we build software that scales with your business, stays easy to maintain, and keeps your users productive.", Icon: Code2, image: "/images/stock/1461749280684-dccba630e2f6-w1200.webp" },
   { title: "Dashboards & Portals", audience: "For B2B & B2C teams", hook: "What if your data was clear enough to act on in seconds?", desc: "Data rich admin panels, analytics dashboards, and customer portals with real time reporting. We turn complex data into clear, actionable interfaces your team and clients will actually use, with role based access and clean visualizations.", Icon: LayoutDashboard, image: "/portfolio/primeaxis-admin-dashboard.png" },
-  { title: "Ecommerce", audience: "For B2C & retail brands", hook: "Are shoppers leaving before they reach your checkout?", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" },
-  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" },
+  { title: "Ecommerce", audience: "For B2C & retail brands", hook: "Are shoppers leaving before they reach your checkout?", desc: "Storefronts, checkout flows, and payment integrations tuned for speed, trust, and higher order value. We build shopping experiences that load fast, feel secure, and drive repeat purchases across web and mobile.", Icon: ShoppingCart, image: "/images/stock/1556742049-0cfed4f6a45d-w1200.webp" },
+  { title: "Performance & Care", desc: "Core Web Vitals tuning, hosting, security patches, and ongoing maintenance so your site never stalls. We monitor, optimize, and keep everything running smoothly long after launch, so you can focus on your business.", Icon: Gauge, image: "/images/stock/1460925895917-afdab827c52f-w1200.webp" },
+  { title: "Support & Retainers", desc: "Dedicated web engineers on call for updates, new features, and fixes on a predictable monthly cadence. Think of us as your on demand web team, ready whenever you need to ship changes, test ideas, or move fast.", Icon: Wrench, image: "/images/stock/1522071820081-009f0129c71c-w1200.webp" },
 ];
 
 const stackGroups: { label: string; items: { name: string; slug: string; color: string }[] }[] = [
@@ -406,12 +406,12 @@ const portfolio: { name: string; url: string; image: string; category: string; b
 ];
 
 const seoCaps: { title: string; desc: string; Icon: LucideIcon; image: string }[] = [
-  { title: "Technical SEO", desc: "Clean markup, crawlability, sitemaps, and canonical tags from day one.", Icon: Search, image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" },
-  { title: "Core Web Vitals", desc: "Fast loads and stable layouts that Google rewards and users feel.", Icon: Gauge, image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" },
-  { title: "Structured Data", desc: "Schema.org markup for rich results, products, reviews, and FAQs.", Icon: Code2, image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" },
-  { title: "Analytics", desc: "GA4, Search Console, and conversion tracking wired up and measured.", Icon: LineChart, image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" },
-  { title: "On page & Local", desc: "Optimized metadata, content structure, and local listings that rank.", Icon: Globe2, image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" },
-  { title: "Secure & Accessible", desc: "HTTPS, best practice security, and accessible semantic HTML.", Icon: ShieldCheck, image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80" },
+  { title: "Technical SEO", desc: "Clean markup, crawlability, sitemaps, and canonical tags from day one.", Icon: Search, image: "/images/stock/1516321318423-f06f85e504b3-w900.webp" },
+  { title: "Core Web Vitals", desc: "Fast loads and stable layouts that Google rewards and users feel.", Icon: Gauge, image: "/images/stock/1460925895917-afdab827c52f-w900.webp" },
+  { title: "Structured Data", desc: "Schema.org markup for rich results, products, reviews, and FAQs.", Icon: Code2, image: "/images/stock/1461749280684-dccba630e2f6-w900.webp" },
+  { title: "Analytics", desc: "GA4, Search Console, and conversion tracking wired up and measured.", Icon: LineChart, image: "/images/stock/1551288049-bebda4e38f71-w900.webp" },
+  { title: "On page & Local", desc: "Optimized metadata, content structure, and local listings that rank.", Icon: Globe2, image: "/images/stock/1542744173-8e7e53415bb0-w900.webp" },
+  { title: "Secure & Accessible", desc: "HTTPS, best practice security, and accessible semantic HTML.", Icon: ShieldCheck, image: "/images/stock/1563986768494-4dee2763ff3f-w900.webp" },
 ];
 
 const steps = [

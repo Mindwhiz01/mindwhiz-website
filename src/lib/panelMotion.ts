@@ -4,7 +4,7 @@
 // "Web that works"). Every deck is the same panel: a full-bleed image behind a
 // dark gradient, a giant ghost index top-right, and text blocks.
 //
-// One behaviour at every width - the deck pins and cross-fades on phones
+// One behavior at every width - the deck pins and cross-fades on phones
 // exactly as it does on desktop, so only the active panel is ever visible.
 // Everything is driven imperatively off `isActive`; `initial={false}` keeps
 // the deck from animating on mount, so it animates on step changes only.

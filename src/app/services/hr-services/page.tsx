@@ -89,37 +89,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Recruiting & RPO",
     desc: "Sourcing, screening, and shortlists that fill roles fast with vetted candidates.",
     Icon: UserPlus,
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1521737604893-d14cc237f11d-w800x1000.webp",
   },
   {
     title: "Payroll & Benefits",
     desc: "Accurate, on time payroll plus benefits administration across regions.",
     Icon: Banknote,
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp",
   },
   {
     title: "HRIS & Systems",
     desc: "Setup and management of your HR systems, data, and self service workflows.",
     Icon: Building2,
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1552664730-d307ca884978-w800x1000.webp",
   },
   {
     title: "Onboarding",
     desc: "Structured onboarding that gets new hires productive from day one.",
     Icon: UserCheck,
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1600880292203-757bb62b4baf-w800x1000.webp",
   },
   {
     title: "Compliance & Policy",
     desc: "Handbooks, policy, and labor law compliance kept current and audit ready.",
     Icon: ShieldCheck,
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1450101499163-c8848c66ca85-w800x1000.webp",
   },
   {
     title: "Performance & L&D",
     desc: "Reviews, training, and development programs that grow and retain talent.",
     Icon: GraduationCap,
-    img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1524178232363-1fb2b075b655-w800x1000.webp",
   },
 ];
 
@@ -135,63 +135,63 @@ const coverage: {
     name: "Talent Acquisition",
     tag: "TA",
     Icon: UserPlus,
-    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1521737604893-d14cc237f11d-w800.webp",
     h: "h-80",
   },
   {
     name: "Payroll",
     tag: "PAY",
     Icon: Banknote,
-    img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1521791136064-7986c2920216-w800.webp",
     h: "h-64",
   },
   {
     name: "Benefits Admin",
     tag: "BEN",
     Icon: HeartHandshake,
-    img: "https://images.unsplash.com/photo-1573497491765-dccce02b29df?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1573497491765-dccce02b29df-w800.webp",
     h: "h-72",
   },
   {
     name: "Onboarding",
     tag: "ONB",
     Icon: UserCheck,
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1600880292203-757bb62b4baf-w800.webp",
     h: "h-80",
   },
   {
     name: "HRIS & Systems",
     tag: "HRIS",
     Icon: Building2,
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1552664730-d307ca884978-w800.webp",
     h: "h-64",
   },
   {
     name: "Compliance",
     tag: "COMP",
     Icon: ShieldCheck,
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1450101499163-c8848c66ca85-w800.webp",
     h: "h-72",
   },
   {
     name: "Performance",
     tag: "PERF",
     Icon: Award,
-    img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1542744173-8e7e53415bb0-w800.webp",
     h: "h-80",
   },
   {
     name: "Learning & Dev",
     tag: "L&D",
     Icon: GraduationCap,
-    img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1524178232363-1fb2b075b655-w800.webp",
     h: "h-64",
   },
   {
     name: "Employee Relations",
     tag: "ER",
     Icon: Users,
-    img: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1600880292089-90a7e086ee0c-w800.webp",
     h: "h-72",
   },
 ];
@@ -366,6 +366,7 @@ export default function HrPage() {
       {/* ===================== HERO ===================== */}
       <PageBanner
         image="/banners/hr.png"
+        h1="Outsourced HR, Recruiting and Payroll Services for US Companies"
         titleLines={["Build", "Great"]}
         rotateWords={["Teams", "Talent", "Culture", "Careers"]}
         subtitle="End to end HR, recruiting, payroll, HRIS, and compliance handled by vetted specialists, so you can grow the team without the overhead."

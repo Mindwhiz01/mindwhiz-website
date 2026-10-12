@@ -94,37 +94,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Quantity Takeoffs",
     desc: "Accurate material and labor takeoffs from drawings and specs, delivered in your preferred format.",
     Icon: Ruler,
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1503387762-592deb58ef4e-w800x1000.webp",
   },
   {
     title: "Cost Estimating",
     desc: "Detailed cost breakdowns with current regional pricing, markups, and contingencies.",
     Icon: Calculator,
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp",
   },
   {
     title: "Bid Preparation",
     desc: "Complete, competitive bid packages assembled and reviewed against the scope of work.",
     Icon: ClipboardList,
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1497366216548-37526070297c-w800x1000.webp",
   },
   {
     title: "Value Engineering",
     desc: "Alternative materials and methods that protect margin without compromising the build.",
     Icon: PencilRuler,
-    img: "https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1503389152951-9f343605f61e-w800x1000.webp",
   },
   {
     title: "Project Planning",
     desc: "Phasing, scheduling support, and resource planning that keep bids grounded in reality.",
     Icon: Layers,
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1541888946425-d81bb19240f5-w800x1000.webp",
   },
   {
     title: "Material Management",
     desc: "Vendor pricing, procurement lists, and quantity reconciliation from bid to build.",
     Icon: Boxes,
-    img: "https://images.unsplash.com/photo-1517089152318-42ec560349c0?auto=format&fit=crop&w=800&h=1000&q=80",
+    img: "/images/stock/1517089152318-42ec560349c0-w800x1000.webp",
   },
 ];
 
@@ -141,63 +141,63 @@ const trades: {
     name: "Concrete & Masonry",
     csi: "03 / 04",
     Icon: Building2,
-    img: "https://images.unsplash.com/photo-1621922688758-359fc864071e?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1621922688758-359fc864071e-w800.webp",
     h: "h-80",
   },
   {
     name: "Structural Steel",
     csi: "05",
     Icon: Factory,
-    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1504307651254-35680f356dfd-w800.webp",
     h: "h-64",
   },
   {
     name: "Electrical",
     csi: "26",
     Icon: Zap,
-    img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1621905251189-08b45d6a269e-w800.webp",
     h: "h-72",
   },
   {
     name: "Mechanical / HVAC",
     csi: "23",
     Icon: Wind,
-    img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1581092160562-40aa08e78837-w800.webp",
     h: "h-80",
   },
   {
     name: "Plumbing",
     csi: "22",
     Icon: Droplets,
-    img: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1607472586893-edb57bdc0e39-w800.webp",
     h: "h-64",
   },
   {
     name: "Drywall & Finishes",
     csi: "09",
     Icon: Paintbrush,
-    img: "https://images.unsplash.com/photo-1595844730289-b0cb92b9d17f?auto=format&fit=crop&w=800&q=80",
+    img: "/industries/construction-engineering.webp",
     h: "h-72",
   },
   {
     name: "Sitework & Earthwork",
     csi: "31",
     Icon: Truck,
-    img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1581094794329-c8112a89af12-w800.webp",
     h: "h-80",
   },
   {
     name: "Roofing",
     csi: "07",
     Icon: Home,
-    img: "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1632759145351-1d592919f522-w800.webp",
     h: "h-64",
   },
   {
     name: "Millwork & Carpentry",
     csi: "06",
     Icon: Hammer,
-    img: "https://images.unsplash.com/photo-1601564921647-b446839a013f?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1601564921647-b446839a013f-w800.webp",
     h: "h-72",
   },
 ];
@@ -390,6 +390,7 @@ export default function ConstructionEstimationPage() {
       {/* ===================== HERO ===================== */}
       <PageBanner
         image="/banners/construction-estimation.png"
+        h1="Outsourced Construction Estimating and Takeoff Services for US Contractors"
         titleLines={["Win", "More"]}
         rotateWords={["Bids", "Projects", "Contracts", "Deals"]}
         subtitle="Vetted offshore estimators deliver fast, accurate quantity takeoffs and bid ready cost estimates, so your team quotes more work, faster, without carrying the overhead."

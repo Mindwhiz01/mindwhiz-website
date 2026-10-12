@@ -1,7 +1,10 @@
 // ---------------------------------------------------------------------------
 // MindWhiz home-page content, cleaned & reconciled from the existing site.
 // Single source of truth shared by every design concept so they stay in sync.
+// Numeric claims come from ./claims so every page quotes the same figures.
 // ---------------------------------------------------------------------------
+
+import { claims } from "./claims";
 
 export const brandColors = {
   green: "#9CCC3C",
@@ -17,8 +20,11 @@ export const company = {
   email: "info@mindwhiz.com",
   phone: "+1 (832) 900-4608",
   phoneHref: "tel:+18329004608",
+  // US office (client-facing). Head office / delivery center is Lahore.
   address: "2313 W Sam Houston Pkwy N #147, Houston, TX 77043, United States",
   city: "Houston, Texas, USA",
+  headOffice: "Block E2, WAPDA Town Phase 1, Lahore, Punjab, Pakistan",
+  ukOffice: "London, United Kingdom",
   locations: ["United States", "United Kingdom", "Pakistan"],
 };
 
@@ -33,18 +39,18 @@ export const nav = [
 
 export const hero = {
   eyebrow: "Hybrid Staffing · Staff Augmentation · BPO",
-  title: "Save 60% on IT staffing. Deploy in 10 days.",
+  title: `Typically ${claims.savingsRange} lower cost. Start in ${claims.deployTime}.`,
   subtitle:
-    "Hire vetted offshore engineers, get 24/7 operations coverage, and offshore BPO support across IT, security, and business operations. 99.8% retention. No hiring fees or benefits overhead. Scale anytime.",
+    "Hire vetted offshore engineers, get 24/7 operations coverage, and offshore BPO support across IT, security, and business operations. No hiring fees or benefits overhead. Scale up or down as you need.",
   primaryCta: { label: "Get free consultation", href: "#contact" },
   secondaryCta: { label: "Explore services", href: "#services" },
 };
 
 export const stats = [
-  { value: "500+", label: "Skilled professionals deployed" },
-  { value: "$2.4M", label: "Average annual cost savings" },
-  { value: "99.8%", label: "Client retention rate" },
-  { value: "10 days", label: "Average deployment time" },
+  { value: claims.teamSize, label: "Vetted engineers and specialists" },
+  { value: claims.savingsRange, label: "Typical saving vs a US in-house hire" },
+  { value: "24/7", label: "Coverage on rotating shifts" },
+  { value: "10 days", label: "Typical start, in business days" },
 ];
 
 // `icon` values are valid lucide-react icon names.
@@ -74,7 +80,7 @@ export const differentiators = [
 export const comparison = [
   { feature: "Availability", mindwhiz: "Continuous, 24/7 support", others: "Limited support hours" },
   { feature: "Expertise", mindwhiz: "Certified pros, diverse skills", others: "Basic technical support" },
-  { feature: "Cost efficiency", mindwhiz: "Up to 30% cost savings", others: "Higher in house costs" },
+  { feature: "Cost efficiency", mindwhiz: "Typically 30-60% below in-house cost", others: "Higher in house costs" },
   { feature: "Response time", mindwhiz: "Within 15 minutes", others: "Slower response times" },
   { feature: "Tailored support", mindwhiz: "Customized plans", others: "One size fits all" },
   { feature: "Compliance", mindwhiz: "SOC 2 & ISO 27001", others: "Basic security only" },

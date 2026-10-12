@@ -67,19 +67,19 @@ const offices = [
     country: "United States",
     city: "Houston, Texas",
     img: "/hubs/us.jpg",
-    mapQuery: "Houston, Texas, United States",
+    href: `https://www.google.com/maps?q=${encodeURIComponent(company.address)}`,
   },
   {
     country: "United Kingdom",
     city: "London",
-    img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=640&h=860&q=80",
-    mapQuery: "London, United Kingdom",
+    img: "/images/stock/1513635269975-59663e0ac1ad-w640x860.webp",
+    href: "/locations/uk",
   },
   {
     country: "Pakistan",
-    city: "Lahore",
+    city: "Head office and delivery center, Lahore",
     img: "/hubs/pk.jpg",
-    mapQuery: "Lahore, Pakistan",
+    href: `https://www.google.com/maps?q=${encodeURIComponent(company.headOffice)}`,
   },
 ];
 
@@ -125,7 +125,8 @@ export default function ContactPageClient() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
-          image="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
+          image="/images/stock/1521737604893-d14cc237f11d-w1800.webp"
+          h1="Contact MindWhiz for IT Staffing and Outsourcing"
           titleLines={["Let's"]}
           rotateWords={["Talk", "Connect", "Chat", "Meet"]}
           highlightClassName="text-[#9CCC3C]"
@@ -210,9 +211,8 @@ export default function ContactPageClient() {
               {offices.map((o, i) => (
                 <Reveal key={o.country} delay={i * 0.08}>
                   <a
-                    href={`https://www.google.com/maps?q=${encodeURIComponent(o.mapQuery)}`}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={o.href}
+                    {...(o.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
                     className="group relative flex h-96 items-end overflow-hidden rounded-2xl"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}

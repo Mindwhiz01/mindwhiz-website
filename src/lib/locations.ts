@@ -1,5 +1,12 @@
+import type { Faq } from "@/components/FaqSection";
+import { claims } from "@/lib/claims";
+
 export type LocationContent = {
   slug: "us" | "uk" | "pk";
+  /** Keyword statement rendered as the page's <h1>. */
+  h1: string;
+  /** True only where we have a real, staffed office. */
+  hasOffice: boolean;
   code: string;
   country: string;
   city: string;
@@ -8,85 +15,133 @@ export type LocationContent = {
   tagline: string;
   intro: string;
   address?: string;
+  /** Structured address for LocalBusiness schema (preferred over `address`). */
+  postal?: { streetAddress: string; addressLocality: string; addressRegion?: string; postalCode?: string };
   phone?: string;
   timezone: string;
   highlights: { title: string; desc: string; image: string }[];
   services: string[]; // subset of service names from content.ts, emphasized locally
+  faqs?: Faq[];
 };
 
 export const locations: LocationContent[] = [
   {
     slug: "us",
+    h1: "IT Staff Augmentation and Outsourcing for US Companies",
+    hasOffice: true,
     code: "US",
     country: "United States",
     city: "Houston, TX",
     flag: "https://flagcdn.com/w80/us.png",
     heroImage:
-      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80",
-    tagline: "Dedicated teams for US businesses, in your time zone.",
+      "/images/stock/1477959858617-67f85cf4f1df-w1800.webp",
+    tagline: "Our US office in Houston, with delivery teams working your hours.",
     intro:
-      "MindWhiz serves clients across the United States and Canada with US-hours account management and round the clock delivery from our engineering hub in Lahore. Our Houston office provides local presence, US-hours coverage, and dedicated account management.",
+      "MindWhiz serves companies across the United States from our Houston, Texas office, backed by our delivery center in Lahore, Pakistan. Engineers, analysts and specialists work dedicated US-hours shifts, and every client gets a named account manager on a US phone line and email.",
     address: "2313 W Sam Houston Pkwy N #147, Houston, TX 77043, United States",
+    postal: { streetAddress: "2313 W Sam Houston Pkwy N #147", addressLocality: "Houston", addressRegion: "TX", postalCode: "77043" },
     phone: "+1 (832) 900-4608",
     timezone: "America/Chicago",
     highlights: [
       {
         title: "US-hours coverage",
-        desc: "Live overlap across Eastern, Central, and Pacific time, with 24/7 cover where you need it.",
-        image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2000&q=80",
+        desc: "Dedicated evening and night shifts in Lahore line up with Eastern, Central, Mountain and Pacific business hours, with 24/7 rotating cover where you need it.",
+        image: "/images/stock/1477959858617-67f85cf4f1df-w2000.webp",
       },
       {
-        title: "US point of contact",
-        desc: "A dedicated account manager who owns delivery end to end for your team.",
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80",
+        title: "Named account manager",
+        desc: "One person who owns delivery for your team, reachable on a US phone number during your business day.",
+        image: "/images/stock/1522071820081-009f0129c71c-w2000.webp",
       },
       {
         title: "Compliance ready",
         desc: "SOC 2-aligned practices built for US regulatory expectations.",
-        image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1563986768494-4dee2763ff3f-w2000.webp",
       },
     ],
     services: ["IT Helpdesk 24/7", "Cybersecurity Monitoring", "Staff Augmentation", "Digital Marketing"],
+    faqs: [
+      {
+        q: "Does MindWhiz have an office in the United States?",
+        a: "Yes. Our US office is at 2313 W Sam Houston Pkwy N #147, Houston, TX 77043, phone +1 (832) 900-4608. Most delivery staff work from our Lahore delivery center on dedicated US-hours shifts.",
+      },
+      {
+        q: "Where does the delivery team work?",
+        a: "Client relationships for US accounts are managed from Houston. Most engineers, analysts and specialists work from our Lahore delivery center on dedicated US-hours shifts, so they are online during your business day.",
+      },
+      {
+        q: "What time do your teams work for US clients?",
+        a: "US-facing staff work an evening or night shift in Lahore. For example, 8 am to 5 pm Eastern is 5 pm to 2 am in Lahore, and 8 am to 5 pm Pacific is 8 pm to 5 am. 24/7 services run on rotating shifts.",
+      },
+      {
+        q: "How much can a US company save?",
+        a: `Typically ${claims.savingsRangeWords} compared with hiring the same role in house in the US, once salary, benefits and overhead are counted. We quote a fixed monthly rate per role before you commit.`,
+      },
+      {
+        q: "How quickly can a team start?",
+        a: `A shortlist typically arrives in ${claims.shortlistTime} and a selected specialist starts in ${claims.deployTime}. Managed services such as NOC or helpdesk typically go live in two to four weeks.`,
+      },
+      {
+        q: "Do you sign US contracts and invoice in US dollars?",
+        a: "Yes. We use a master services agreement and statements of work, invoice monthly in US dollars, and can work with your procurement and vendor onboarding process.",
+      },
+      {
+        q: "Can you sign a HIPAA business associate agreement?",
+        a: "Yes, for healthcare engagements where our team handles protected health information, we sign a BAA and apply HIPAA-aware access and handling controls.",
+      },
+      {
+        q: "Are your staff employees or freelancers?",
+        a: "They are full-time MindWhiz staff, background checked, working on company-managed devices from our Lahore delivery center. They are dedicated to your account, not shared across clients.",
+      },
+      {
+        q: "Which US states do you serve?",
+        a: "We serve clients in any US state. Because delivery is remote, the only practical difference between states is which time zone your team's shift is aligned to.",
+      },
+    ],
   },
   {
     slug: "uk",
+    h1: "IT Staff Augmentation and Outsourcing for UK Businesses",
+    hasOffice: true,
     code: "UK",
     country: "United Kingdom",
     city: "London",
     flag: "https://flagcdn.com/w80/gb.png",
     heroImage:
-      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1800&q=80",
-    tagline: "Our European delivery hub and client success base.",
+      "/images/stock/1513635269975-59663e0ac1ad-w1800.webp",
+    tagline: "Our UK office, with delivery teams working UK hours.",
     intro:
-      "From London, MindWhiz supports clients across the United Kingdom and Europe with GDPR aware delivery, local account management, and overlapping hours with our global teams.",
+      "From our London office, MindWhiz supports clients across the United Kingdom and Europe with GDPR-aware delivery and a named account manager, backed by our delivery center in Lahore, which is only 4 to 5 hours ahead of the UK.",
     timezone: "Europe/London",
     highlights: [
       {
-        title: "European coverage",
-        desc: "Local account management for UK and EU based clients.",
-        image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=2000&q=80",
+        title: "UK-hours overlap",
+        desc: "Lahore is 4 to 5 hours ahead of the UK, so teams cover your full working day on a late shift.",
+        image: "/images/stock/1513635269975-59663e0ac1ad-w2000.webp",
       },
       {
         title: "GDPR aware delivery",
         desc: "Data handling practices built around UK and EU requirements.",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1451187580459-43490279c0fa-w2000.webp",
       },
       {
         title: "Overlapping hours",
         desc: "Business hours coverage that bridges US and APAC teams.",
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1521737604893-d14cc237f11d-w2000.webp",
       },
     ],
     services: ["Finance & Accounting", "HR Services", "Cloud Infrastructure", "Construction Estimation"],
   },
   {
     slug: "pk",
+    h1: "MindWhiz Lahore: IT Outsourcing and Delivery Center in Pakistan",
+    hasOffice: true,
     code: "PK",
     country: "Pakistan",
     city: "Lahore",
     flag: "https://flagcdn.com/w80/pk.png",
     heroImage:
-      "https://images.unsplash.com/photo-1595426496987-37c7113b24a6?auto=format&fit=crop&w=1800&q=80",
+      "/images/stock/1595426496987-37c7113b24a6-w1800.webp",
     tagline: "Our head office and largest engineering hub.",
     intro:
       "Lahore is our head office and home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
@@ -96,17 +151,17 @@ export const locations: LocationContent[] = [
       {
         title: "Engineering depth",
         desc: "The largest concentration of vetted technical talent in our network.",
-        image: "https://images.unsplash.com/photo-1595426496987-37c7113b24a6?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1595426496987-37c7113b24a6-w2000.webp",
       },
       {
         title: "24/7 operations",
         desc: "NOC, SOC, and helpdesk coverage that never sleeps.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1551288049-bebda4e38f71-w2000.webp",
       },
       {
         title: "Rapid scaling",
         desc: "Fast, vetted hiring pipelines to grow your team in days, not months.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
+        image: "/images/stock/1460925895917-afdab827c52f-w2000.webp",
       },
     ],
     services: ["NOC Monitoring", "DevOps & Automation", "Server & Network Administration", "Endpoint Security"],
@@ -152,6 +207,19 @@ export function locationMetadata(loc: LocationContent) {
 }
 
 export function locationJsonLd(loc: LocationContent) {
+  // Markets without a staffed office get a Service node, not a LocalBusiness.
+  if (!loc.hasOffice) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: `IT staff augmentation and outsourcing for ${loc.country}`,
+      provider: { "@id": `${SITE_URL}/#organization` },
+      url: `${SITE_URL}/locations/${loc.slug}`,
+      description: loc.intro,
+      areaServed: { "@type": "Country", name: loc.country },
+      serviceType: loc.services,
+    };
+  }
   const baseSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -164,7 +232,9 @@ export function locationJsonLd(loc: LocationContent) {
   };
 
   // Add address if present
-  if (loc.address) {
+  if (loc.postal) {
+    baseSchema.address = { "@type": "PostalAddress", ...loc.postal, addressCountry: loc.code === "UK" ? "GB" : loc.code };
+  } else if (loc.address) {
     baseSchema.address = {
       "@type": "PostalAddress",
       streetAddress: loc.address,

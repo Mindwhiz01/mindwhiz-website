@@ -10,7 +10,7 @@
 //      anything. What a dedicated URL buys us is a reliable, observable signal
 //      for ad platforms: the forms are cross-origin iframes, so the parent page
 //      cannot see a submit event. A pageview on /thank-you is the only thing we
-//      can actually measure, and it's what Meta/GA optimise against.
+//      can actually measure, and it's what Meta/GA optimize against.
 // ---------------------------------------------------------------------------
 
 import { useEffect, useState } from "react";

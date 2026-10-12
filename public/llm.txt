@@ -21,10 +21,10 @@ MindWhiz is a hybrid staffing and business process outsourcing (BPO) company tha
 
 ### Key Metrics
 
-- 500+ skilled professionals deployed
-- $2.4M average annual cost savings per client
-- 99.8% client retention rate
-- 10 days average deployment time
+- 65+ engineers, analysts and specialists; most delivery staff in Lahore
+- Typically 30-60% lower cost than an equivalent US in-house hire (fully loaded; benchmarked against BLS wage data)
+- About 10 business days typical time to start a staff augmentation role
+- Founded 2020; offices in Houston (US), London (UK) and Lahore (head office and delivery center)
 - 24/7 availability across time zones
 
 ---
@@ -128,13 +128,14 @@ Example industry pages:
 
 ### United States
 - **URL:** /locations/us
-- **Coverage:** Nationwide US-hours coverage
-- **Focus:** Sales, support, and account management
+- **Office:** 2313 W Sam Houston Pkwy N #147, Houston, TX 77043
+- **Coverage:** Nationwide, with delivery teams on US-hours shifts
+- **Focus:** Sales, support, and account management; shift table and FAQs on the page
 
 ### United Kingdom
 - **URL:** /locations/uk
 - **Location:** London
-- **Focus:** Regional operations and delivery
+- **Focus:** Client delivery for UK businesses
 
 ### Pakistan
 - **URL:** /locations/pk
@@ -344,7 +345,7 @@ All content is authored as typed data in `src/lib/`:
 - **LeadConnector:** Embedded forms for contact, careers, booking
 - **Google Analytics:** Via Google Tag Manager
 - **Meta Pixel:** Facebook conversion tracking
-- **Unsplash:** High-quality imagery for marketing
+- **Stock imagery:** Self-hosted (no third-party image hotlinks)
 
 ---
 
@@ -502,7 +503,7 @@ All content is authored as typed data in `src/lib/`:
 
 ### Image Sources
 
-- **Unsplash:** Marketing and blog imagery
+- **Stock imagery:** Self-hosted WebP under /images/stock (originally from Unsplash)
 - **Custom:** Company logos, service icons, team photos
 - **Generated:** Dynamic OG images for social sharing
 
@@ -538,7 +539,7 @@ All content is authored as typed data in `src/lib/`:
 1. Edit content in TypeScript files (src/lib/)
 2. Commit changes to git repository
 3. Push to GitHub
-4. Vercel automatically deploys on push
+4. Deploy with the Vercel CLI (`npx vercel --prod`); pushing to GitHub does not deploy
 5. Changes live within minutes
 
 ### Version Control

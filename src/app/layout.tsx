@@ -5,7 +5,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollToTop from "@/components/ScrollToTop";
 import { PwaInstall } from "@/components/PwaInstall";
-import { SEO_MAP } from "@/seo.config";
+import { DEFAULT_SHARE_IMAGE, SEO_MAP } from "@/seo.config";
 import { jsonLdScript } from "@/lib/jsonLd";
 
 const GTM_ID = "GTM-WNJXTS4Z";
@@ -43,20 +43,13 @@ export const metadata: Metadata = {
     siteName,
     title: homeSeo.title,
     description: siteDescription,
-    images: [
-      {
-        url: "/mindwhiz-mark.png",
-        width: 512,
-        height: 512,
-        alt: "MindWhiz logo",
-      },
-    ],
+    images: [DEFAULT_SHARE_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: homeSeo.title,
     description: siteDescription,
-    images: ["/mindwhiz-mark.png"],
+    images: [DEFAULT_SHARE_IMAGE.url],
   },
   robots: {
     index: true,
@@ -90,7 +83,10 @@ const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
-  alternateName: "MindWhiz Solutions",
+  // Brand spelling variants people search for ("mindwiz", "mind whiz").
+  alternateName: ["Mind Whiz", "MindWhiz Solutions", "Mindwiz"],
+  foundingDate: "2020",
+  numberOfEmployees: { "@type": "QuantitativeValue", minValue: 65 },
   url: siteUrl,
   logo: `${siteUrl}/mindwhiz-mark.png`,
   image: `${siteUrl}/mindwhiz-mark.png`,
@@ -101,9 +97,8 @@ const organizationJsonLd = {
   // site NAP and the GBP stay consistent - the strongest local-ranking signal.
   telephone: "+92 321 1116451",
   priceRange: "$$",
-  // The one real, staffed location: our Lahore head office and delivery hub.
-  // We serve US/UK clients (see areaServed) but do NOT claim a physical office
-  // we cannot staff, which would risk a Google Business Profile suspension.
+  // Head office and delivery hub (matches the Lahore Google Business Profile).
+  // The US and UK offices are listed under `location` below.
   address: {
     "@type": "PostalAddress",
     streetAddress: "Block E2, WAPDA Town Phase 1",
@@ -116,6 +111,26 @@ const organizationJsonLd = {
     latitude: 31.4697,
     longitude: 74.2728,
   },
+  location: [
+    {
+      "@type": "Place",
+      name: "MindWhiz US office",
+      telephone: "+1 (832) 900-4608",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "2313 W Sam Houston Pkwy N #147",
+        addressLocality: "Houston",
+        addressRegion: "TX",
+        postalCode: "77043",
+        addressCountry: "US",
+      },
+    },
+    {
+      "@type": "Place",
+      name: "MindWhiz UK office",
+      address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+    },
+  ],
   hasMap: "https://www.google.com/maps/search/?api=1&query=MindWhiz+Block+E2+WAPDA+Town+Phase+1+Lahore",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
@@ -131,6 +146,19 @@ const organizationJsonLd = {
     { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "Pakistan" },
   ],
+  knowsAbout: [
+    "IT staff augmentation",
+    "Offshore staff augmentation",
+    "Managed SOC and MDR",
+    "NOC monitoring",
+    "IT helpdesk outsourcing",
+    "Cloud security consulting",
+    "Accounting staff augmentation",
+    "Construction estimating",
+  ],
+  // Every real third-party profile belongs here (audit A2/U4). Add Clutch,
+  // GoodFirms, G2, Crunchbase and the Google Business Profile URL as each
+  // profile goes live - only URLs that actually resolve.
   sameAs: [
     "https://www.linkedin.com/company/mindwhiz",
     "https://www.instagram.com/mindwhiz2.0/",

@@ -83,7 +83,7 @@ function ServiceHeroTitle({ page }: { page: ServicePageContent }) {
     <>
       {page.hero.title.map((word) => (
         <span key={word} className="block whitespace-nowrap">
-          {word}
+          {word}{" "}
         </span>
       ))}
       <SlidingHighlight words={rotating} className="text-[#ed1164]" />
@@ -471,12 +471,12 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
 // ---------------------------------------------------------------------------
 const PROCESS_EASE = [0.22, 1, 0.36, 1] as const;
 const processImages = [
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80",
+  "/images/stock/1552664730-d307ca884978-w2000.webp",
+  "/images/stock/1454165804606-c3d57bc86b40-w2000.webp",
+  "/images/stock/1519389950473-47ba0277781c-w2000.webp",
+  "/images/stock/1551288049-bebda4e38f71-w2000.webp",
+  "/images/stock/1460925895917-afdab827c52f-w2000.webp",
+  "/images/stock/1517245386807-bb43f82c33c4-w2000.webp",
 ];
 
 function ProcessPanel({
@@ -715,7 +715,7 @@ export default function ServiceDetailPage({
 
   // Contextual internal links: surface sibling service/industry pages with
   // keyword-rich anchor text so link equity and crawl paths spread across the
-  // catalogue instead of every CTA pointing only at /contact.
+  // catalog instead of every CTA pointing only at /contact.
   const catalog = basePath === "/industries" ? industryPages : servicePages;
   const related = catalog.filter((p) => p.slug !== page.slug).slice(0, 6);
 
@@ -791,6 +791,7 @@ export default function ServiceDetailPage({
         image={page.hero.image}
         accent={ACCENT}
         headingClassName="text-[clamp(3.25rem,8.6vw,10.5rem)]"
+        h1={page.hero.h1 ?? page.name}
         title={<ServiceHeroTitle page={page} />}
         subtitle={page.hero.subtitle}
         // Primary hero CTA goes straight to the contact page on every service

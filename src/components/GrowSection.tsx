@@ -92,7 +92,7 @@ function PhoneMockup() {
           <div className="relative h-44">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+              src="/images/stock/1568901346375-23c9450c58cd-w900.webp"
               alt="Restaurant dish"
               className="h-full w-full object-cover"
             />
@@ -144,14 +144,14 @@ function PhoneMockup() {
             <div className="mt-3 flex items-center gap-3">
               <div className="flex -space-x-2">
                 {[
-                  "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=120&q=60",
-                  "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=120&q=60",
+                  "/images/stock/1565299624946-b28f40a0ae38-w120.webp",
+                  "/images/stock/1546069901-ba9599a7e63c-w120.webp",
                 ].map((src) => (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     key={src}
                     src={src}
-                    alt=""
+                    alt="Dish photographed for a restaurant client"
                     className="h-9 w-9 rounded-full border-2 border-white object-cover"
                   />
                 ))}

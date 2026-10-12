@@ -82,56 +82,56 @@ const channels: { title: string; desc: string; Icon: LucideIcon }[] = [
 
 const bentoImages = [
   {
-    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1460925895917-afdab827c52f-w900.webp",
     title: "Campaign planning",
     meta: "Paid media",
     metric: "Search, social, retargeting, and budget pacing managed from one weekly plan.",
     className: "col-span-2 row-span-2 lg:col-span-5 lg:row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1551288049-bebda4e38f71-w900.webp",
     title: "Performance reporting",
     meta: "Attribution",
     metric: "Channel dashboards that separate spend, lead quality, pipeline, and conversion.",
     className: "col-span-2 lg:col-span-4",
   },
   {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1552664730-d307ca884978-w900.webp",
     title: "Growth workshops",
     meta: "Planning",
     metric: "Focused planning sessions for positioning, offers, audiences, and campaign priorities.",
     className: "col-span-1 lg:col-span-3 lg:row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
     title: "Search Visibility",
     meta: "SEO",
     metric: "Technical SEO and content systems built around buyer intent.",
     className: "col-span-1 lg:col-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1557838923-2985c318be48-w900.webp",
     title: "Social operations",
     meta: "Creative",
     metric: "Publishing, creative refreshes, and audience feedback loops.",
     className: "hidden lg:col-span-2 lg:block",
   },
   {
-    src: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1556745757-8d76bdb6984b-w900.webp",
     title: "CRM Workflows",
     meta: "Lifecycle",
     metric: "Email sequences and automation that keep leads moving after first contact.",
     className: "hidden lg:col-span-4 lg:row-span-2 lg:block",
   },
   {
-    src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1542744173-8e7e53415bb0-w900.webp",
     title: "Growth Planning",
     meta: "Roadmap",
     metric: "A prioritized backlog for campaigns, pages, content, and experiments.",
     className: "hidden lg:col-span-4 lg:block",
   },
   {
-    src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=900&q=80",
+    src: "/images/stock/1559136555-9303baea8ebd-w900.webp",
     title: "Creative Testing",
     meta: "CRO",
     metric: "Structured creative tests for ads, email, and landing page variants.",
@@ -572,9 +572,9 @@ const brandShowcase = [
     desc: "A fashion retailer stuck at flat monthly revenue. We rebuilt their paid social funnel, refreshed creative weekly, and scaled spend only where ROAS held, revenue grew 2.4x in six months.",
     tags: ["Meta & TikTok Ads", "Creative testing", "Conversion tracking"],
     images: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1441986300917-64674bd600d8-w1400.webp",
+      "/images/stock/1483985988355-763728e1935b-w1400.webp",
+      "/images/stock/1445205170230-053b83016050-w1400.webp",
     ],
   },
   {
@@ -583,9 +583,9 @@ const brandShowcase = [
     desc: "A B2B software company with great product and zero pipeline. We paired an SEO content engine with LinkedIn ABM campaigns, qualified demos tripled and cost per lead dropped 48%.",
     tags: ["SEO content engine", "LinkedIn ABM", "Marketing automation"],
     images: [
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1551434678-e076c223a692-w1400.webp",
+      "/images/stock/1460925895917-afdab827c52f-w1400.webp",
+      "/images/stock/1519389950473-47ba0277781c-w1400.webp",
     ],
   },
   {
@@ -594,9 +594,9 @@ const brandShowcase = [
     desc: "A restaurant group opening two new locations. We ran local awareness campaigns, influencer collabs, and a launch week social blitz, both openings sold out their first weekend.",
     tags: ["Local campaigns", "Influencer collabs", "Launch strategy"],
     images: [
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1517248135467-4c7edcad34c4-w1400.webp",
+      "/images/stock/1504674900247-0877df9cc836-w1400.webp",
+      "/images/stock/1414235077428-338989a2e8c0-w1400.webp",
     ],
   },
 ];

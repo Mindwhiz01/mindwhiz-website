@@ -213,7 +213,8 @@ export default function BlogListPage({
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1800&q=80"
+          image="/images/stock/1499750310107-5fef28a66643-w1800.webp"
+          h1="MindWhiz Blog: Staff Augmentation, IT Operations and Security Guides"
           titleLines={["The"]}
           rotateWords={["Blog", "Insights", "Guides", "Stories"]}
           highlightClassName="text-[#9CCC3C]"

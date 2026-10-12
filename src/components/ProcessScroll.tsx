@@ -14,12 +14,12 @@ import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 
 const defaultImages = [
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2000&q=80",
+  "/images/stock/1552664730-d307ca884978-w2000.webp",
+  "/images/stock/1454165804606-c3d57bc86b40-w2000.webp",
+  "/images/stock/1519389950473-47ba0277781c-w2000.webp",
+  "/images/stock/1551288049-bebda4e38f71-w2000.webp",
+  "/images/stock/1460925895917-afdab827c52f-w2000.webp",
+  "/images/stock/1517245386807-bb43f82c33c4-w2000.webp",
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;

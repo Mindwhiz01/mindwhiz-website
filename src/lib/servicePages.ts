@@ -1,9 +1,14 @@
+import { claims } from "@/lib/claims";
+import { newServicePages } from "@/lib/newServicePages";
+
 export type ServicePageContent = {
   slug: string;
   name: string;
   sourceUrl: string;
   group: string;
   hero: {
+    /** Keyword statement rendered as the page's <h1> (the slogan is styled text). */
+    h1?: string;
     image: string;
     title: string[];
     highlight: string;
@@ -52,12 +57,12 @@ export type ServicePageContent = {
 };
 
 const sharedImages = {
-  helpdesk: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80",
+  helpdesk: "/images/stock/1551434678-e076c223a692-w1800.webp",
   noc: "/service-coverage/noc-monitoring/network-monitoring.png",
-  remote: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=80",
+  remote: "/images/stock/1581092921461-eab62e97a780-w1800.webp",
   cloud: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png",
-  server: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=80",
-  devops: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
+  server: "/images/stock/1558494949-ef010cbdcc31-w1800.webp",
+  devops: "/images/stock/1515879218367-8466d910aaa4-w1800.webp",
   cyber: "/service-coverage/cybersecurity/managed-detection.png",
 };
 
@@ -69,6 +74,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/27-7/",
     group: "IT & Security",
     hero: {
+      h1: "24/7 Outsourced IT Helpdesk Services (Tier 1-3) for US Companies and MSPs",
       image: "/banners/it-helpdesk.png",
       title: ["Rapid", "IT"],
       highlight: "Response",
@@ -89,54 +95,54 @@ export const servicePages: ServicePageContent[] = [
       {
         value: "24/7",
         label: "Continuous, round the clock support",
-        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1531482615713-2afd69097998-w900.webp",
       },
       {
         value: "15 min",
         label: "Fast response within 15 minutes",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
       },
       {
-        value: "30%",
-        label: "Up to 30% cost savings",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+        value: claims.savingsRange,
+        label: "Typical saving vs an in-house US hire",
+        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
       },
       {
         value: "Tier 1 to 3",
         label: "Rapid resolution across all support tiers",
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1551434678-e076c223a692-w900.webp",
       },
     ],
     capabilities: [
       {
         title: "24/7 Availability",
         desc: "Mindwhiz provides continuous, round the clock support while many providers operate with limited support hours.",
-        image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1531482615713-2afd69097998-w900.webp",
       },
       {
         title: "Expert IT Support",
         desc: "Certified IT professionals with diverse expertise handle requests beyond basic technical support.",
-        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1553877522-43269d4ea984-w900.webp",
       },
       {
         title: "Cost Efficiency",
         desc: "A cost efficient helpdesk model can deliver up to 30% cost savings compared with higher in house costs.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
       },
       {
         title: "Response Time",
         desc: "Fast response within 15 minutes helps reduce downtime and keeps work moving.",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
       },
       {
         title: "Tailored IT Support",
         desc: "Customized support plans replace one size fits all packages and align with your tools, team, and priorities.",
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1551434678-e076c223a692-w900.webp",
       },
       {
         title: "Compliance and Security",
         desc: "SOC 2 and ISO 27001 aligned delivery provides stronger controls than basic security only support.",
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
       },
     ],
     benefits: [
@@ -154,6 +160,14 @@ export const servicePages: ServicePageContent[] = [
       { title: "Ongoing Monitoring and Issue Resolution", desc: "Resolve tickets quickly, escalate when needed, and keep systems stable with proactive monitoring and playbooks." },
     ],
     faqs: [
+      {
+        q: "What does 24/7 outsourced IT support include?",
+        a: "Round-the-clock phone, chat, email and ticket support for your users: password and access requests, device and software issues, Microsoft 365 and Google Workspace administration, and escalation to Tier 2 and Tier 3 engineers for servers, network and cloud problems.",
+      },
+      {
+        q: "How is a 24/7 outsourced helpdesk priced?",
+        a: "Usually per user per month or per dedicated agent, depending on hours covered, ticket volume and tiers included. A dedicated offshore agent typically costs 30 to 60 percent less than an equivalent US hire once benefits and overhead are counted.",
+      },
       {
         q: "How much do outsourced IT helpdesk services cost in the USA?",
         a: "Outsourced IT helpdesk pricing is a fixed monthly cost per user, so budgeting stays predictable as your team changes. The service scales with headcount and business growth, with no hidden fees or surprise charges for busy months. We scope exact pricing once we know your user count and SLA targets.",
@@ -188,6 +202,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/noc-dummy/",
     group: "IT & Security",
     hero: {
+      h1: "Outsourced 24/7 NOC Monitoring Services for US Companies and MSPs",
       image: "/banners/noc-monitoring.png",
       title: ["Protect", "Your"],
       highlight: "Uptime",
@@ -214,8 +229,8 @@ export const servicePages: ServicePageContent[] = [
     },
     proof: [
       { value: "5+", label: "Years of combined experience" },
-      { value: "180+", label: "Supported customers and partners" },
-      { value: "90+", label: "NOC support professionals" },
+      { value: "15 min", label: "Typical P1 acknowledgement target" },
+      { value: "Runbooks", label: "Documented response for every alert" },
       { value: "24/7", label: "Network operations coverage" },
     ],
     problems: {
@@ -290,6 +305,14 @@ export const servicePages: ServicePageContent[] = [
         a: "The NOC is staffed continuously, so alerts are triaged as they arrive rather than queued until the next working day. Priority and response targets for each alert class are agreed with you up front, and you get regular reporting on incidents, response times and recurring faults.",
       },
       {
+        q: "What is the difference between a NOC and a SOC?",
+        a: "A NOC (network operations center) keeps systems available and performing: outages, latency, capacity and failed backups. A SOC (security operations center) looks for attackers and threats. They watch overlapping data for different reasons, and many companies outsource both.",
+      },
+      {
+        q: "How long does it take to onboard an outsourced NOC?",
+        a: "Typically two to four weeks: discovery and access, monitoring setup and threshold tuning, runbooks and escalation contacts, then a parallel run before the NOC takes over the pager.",
+      },
+      {
         q: "Will outsourced NOC monitoring replace the tools we already run?",
         a: "Not necessarily. We can operate the monitoring stack you already own, extend it where there are blind spots, or stand up monitoring from scratch if you have none. The goal is coverage, not a tooling change for its own sake.",
       },
@@ -307,6 +330,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/remote-desktop/",
     group: "Cloud & DevOps",
     hero: {
+      h1: "Remote IT Asset Management and Remote Desktop Support",
       image: "/banners/remote-desktop-assets.png",
       title: ["Control", "From"],
       highlight: "Anywhere",
@@ -331,14 +355,14 @@ export const servicePages: ServicePageContent[] = [
       },
     },
     proof: [
-      { value: "5+", label: "Years supporting global businesses" },
-      { value: "97%", label: "Client satisfaction rate" },
-      { value: "1,200+", label: "Assets managed across client environments" },
+      { value: "Since " + claims.foundedYear, label: "Supporting US and UK businesses" },
+      { value: "MDM", label: "Intune, Jamf and Kandji managed fleets" },
+      { value: "NIST 800-88", label: "Secure data wiping at retirement" },
     ],
     capabilities: [
-      { title: "Secure Remote Access", desc: "Manage devices and users through controlled remote access designed for distributed teams.", image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=900&q=80" },
-      { title: "IT Asset Management", desc: "Maintain clear visibility into hardware, software, licenses, and cloud assets across the lifecycle.", image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" },
-      { title: "User Lifecycle Support", desc: "Streamline onboarding, offboarding, access changes, and asset assignment workflows.", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80" },
+      { title: "Secure Remote Access", desc: "Manage devices and users through controlled remote access designed for distributed teams.", image: "/images/stock/1580894732444-8ecded7900cd-w900.webp" },
+      { title: "IT Asset Management", desc: "Maintain clear visibility into hardware, software, licenses, and cloud assets across the lifecycle.", image: "/images/stock/1516321318423-f06f85e504b3-w900.webp" },
+      { title: "User Lifecycle Support", desc: "Streamline onboarding, offboarding, access changes, and asset assignment workflows.", image: "/images/stock/1553877522-43269d4ea984-w900.webp" },
     ],
     benefits: [
       { title: "Complete Visibility", desc: "Know where hardware and software assets are, who owns them, and how they are being used." },
@@ -354,7 +378,7 @@ export const servicePages: ServicePageContent[] = [
     faqs: [
       {
         q: "What is included in IT asset management services?",
-        a: "IT asset management services maintain a live inventory of hardware and software across the business, what exists, who holds it, how it is configured, warranty and licence status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
+        a: "IT asset management services maintain a live inventory of hardware and software across the business, what exists, who holds it, how it is configured, warranty and license status, and where it sits in its lifecycle. That record is what makes procurement, audits, and renewals straightforward instead of a scramble.",
       },
       {
         q: "Do you provide remote desktop support for remote and hybrid staff?",
@@ -366,11 +390,11 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Do IT asset management services handle software licensing and renewals?",
-        a: "Yes. Licences are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal, which usually surfaces spend that can be reclaimed.",
+        a: "Yes. Licenses are tracked alongside hardware, so you can see what is in use, what is idle, and what is approaching renewal, which usually surfaces spend that can be reclaimed.",
       },
       {
         q: "Can you manage employee onboarding and device offboarding?",
-        a: "Yes. New starters can be issued a configured device with the right access from day one, and leavers can have accounts, licences, and equipment recovered on a defined checklist so nothing stays open after they go.",
+        a: "Yes. New starters can be issued a configured device with the right access from day one, and leavers can have accounts, licenses, and equipment recovered on a defined checklist so nothing stays open after they go.",
       },
     ],
     finalCta: {
@@ -386,6 +410,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/elementor-18765/",
     group: "Cloud & DevOps",
     hero: {
+      h1: "Cloud Infrastructure Management for AWS, Azure and GCP",
       image: "/banners/cloud-infrastructure.png",
       title: ["Optimize", "Your"],
       highlight: "Cloud",
@@ -466,6 +491,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/server-dummy/",
     group: "Cloud & DevOps",
     hero: {
+      h1: "Server and Network Administration Outsourcing",
       image: "/banners/server-network-administration.png",
       title: ["Power", "Your"],
       highlight: "Backbone",
@@ -495,10 +521,10 @@ export const servicePages: ServicePageContent[] = [
       { value: "Optimized", label: "Uptime and capacity" },
     ],
     capabilities: [
-      { title: "Proactive Monitoring", desc: "Health checks, performance baselines, and alert tuning reduce downtime and improve visibility.", image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80" },
-      { title: "Patch and Harden", desc: "Routine updates and security controls keep server environments stable and aligned with risk posture.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80" },
-      { title: "Incident Response", desc: "Clear escalation paths and fast remediation help resolve issues before disruption spreads.", image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" },
-      { title: "Capacity Planning", desc: "Right size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" },
+      { title: "Proactive Monitoring", desc: "Health checks, performance baselines, and alert tuning reduce downtime and improve visibility.", image: "/images/stock/1516321497487-e288fb19713f-w900.webp" },
+      { title: "Patch and Harden", desc: "Routine updates and security controls keep server environments stable and aligned with risk posture.", image: "/images/stock/1558494949-ef010cbdcc31-w900.webp" },
+      { title: "Incident Response", desc: "Clear escalation paths and fast remediation help resolve issues before disruption spreads.", image: "/images/stock/1551434678-e076c223a692-w900.webp" },
+      { title: "Capacity Planning", desc: "Right size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "/images/stock/1498050108023-c5249f4df085-w900.webp" },
     ],
     benefits: [
       { title: "Troubleshooting", desc: "Identify, isolate, and resolve server problems through proactive monitoring and efficient support." },
@@ -547,6 +573,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
     hero: {
+      h1: "Managed Endpoint Security and Patch Management",
       image: "/banners/endpoint-security.png",
       title: ["Secure", "Every"],
       highlight: "Device",
@@ -601,7 +628,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Does managed EDR replace the antivirus we already have?",
-        a: "Often it extends it. Traditional antivirus matches known threats; managed EDR adds behavioural detection, response, and visibility across the fleet. Where your existing tool is capable, we manage it rather than rip it out.",
+        a: "Often it extends it. Traditional antivirus matches known threats; managed EDR adds behavioral detection, response, and visibility across the fleet. Where your existing tool is capable, we manage it rather than rip it out.",
       },
       {
         q: "What happens when a threat is detected on a device?",
@@ -625,6 +652,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/elementor-18794/",
     group: "Cloud & DevOps",
     hero: {
+      h1: "Outsourced DevOps and CI/CD Automation Services",
       image: "/banners/devops-automation.png",
       title: ["Ship", "With"],
       highlight: "Automation",
@@ -650,13 +678,13 @@ export const servicePages: ServicePageContent[] = [
     },
     proof: [
       { value: "5+", label: "Years of driving growth" },
-      { value: "350+", label: "Digital initiatives delivered" },
+      { value: "IaC", label: "Terraform and infrastructure as code" },
       { value: "96%", label: "Customer satisfaction" },
       { value: "24/7", label: "Support coverage" },
     ],
     capabilities: [
-      { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80" },
-      { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=900&q=80" },
+      { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "/images/stock/1555066931-4365d14bab8c-w900.webp" },
+      { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "/images/stock/1517180102446-f3ece451e9d8-w900.webp" },
       { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "/service-coverage/cybersecurity/security-control.png" },
     ],
     benefits: [
@@ -705,6 +733,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/cybersecurity-dummy/",
     group: "IT & Security",
     hero: {
+      h1: "Managed SOC and MDR Services for US Companies",
       image: "/banners/cybersecurity-monitoring.png",
       title: ["Defeat", "Cyber"],
       highlight: "Threats",
@@ -771,7 +800,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "Does managed SOC monitoring help with SOC 2 and compliance?",
-        a: "Yes. Delivery is aligned to SOC 2 and ISO 27001 practices, and the monitoring, logging, and incident records the service produces are the evidence auditors typically ask for. We support your compliance programme rather than certify it on your behalf.",
+        a: "Yes. Delivery is aligned to SOC 2 and ISO 27001 practices, and the monitoring, logging, and incident records the service produces are the evidence auditors typically ask for. We support your compliance program rather than certify it on your behalf.",
       },
     ],
     finalCta: {
@@ -787,6 +816,7 @@ export const servicePages: ServicePageContent[] = [
     sourceUrl: "https://mindwhiz.com/staff-augmentation/",
     group: "Talent & Workforce",
     hero: {
+      h1: "IT Staff Augmentation and Offshore Teams for US Companies",
       image: "/banners/staff-augmentation.png",
       title: ["On Demand"],
       highlight: "Teams",
@@ -804,16 +834,16 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Hiring Delays", "Skill Gaps"],
-        image: "/service-coverage/staff-augmentation/skilled-talent.png",
+        image: "/banners/information-technology.png",
         title: "Talent Gaps",
         desc: "Long hiring cycles and missing skills stall roadmaps while the work piles up.",
         cta: "Talk to expert",
       },
     },
     proof: [
-      { value: "2 wks", label: "Typical time from brief to onboarded talent" },
-      { value: "500+", label: "Specialists across IT, finance, and operations" },
-      { value: "30%", label: "Lower cost than local full time hiring" },
+      { value: claims.deployTimeShort, label: "Typical time from brief to onboarded talent" },
+      { value: claims.teamSize, label: "Specialists across IT, finance, and operations" },
+      { value: claims.savingsRange, label: "Typical saving vs a US in-house hire" },
       { value: "Flexible", label: "Scale up or down as projects change" },
     ],
     problems: {
@@ -854,22 +884,22 @@ export const servicePages: ServicePageContent[] = [
       {
         title: "Vetted Specialists",
         desc: "Role ready professionals screened for skills, communication, and reliability before they ever reach your shortlist.",
-        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1553877522-43269d4ea984-w900.webp",
       },
       {
         title: "Fast Onboarding",
         desc: "Candidates matched to your stack and standards so they contribute in the first sprint, not the first month.",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1552664730-d307ca884978-w900.webp",
       },
       {
         title: "Flexible Scaling",
         desc: "Ramp teams up for a launch or down after delivery without severance overhead or idle capacity.",
-        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1522071820081-009f0129c71c-w900.webp",
       },
       {
         title: "Managed Retention",
         desc: "We handle engagement, reviews, and continuity so knowledge stays on your account for the long run.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
       },
     ],
     benefits: [
@@ -910,7 +940,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "What are the pros and cons of staff augmentation?",
-        a: "The pros are speed to hire in about 10 days instead of 8 to 14 weeks, access to specialised skills for exactly as long as you need them, full control of direction and code, elastic scaling without severance, and 30 to 60 percent lower cost than local full time hiring. The cons are the management overhead you keep, ramp up time, knowledge loss at contract end, weaker cultural attachment, and security and IP exposure. Each con is procedural and is designed out with clear briefs, prepared onboarding, documentation as a deliverable, and least privilege access.",
+        a: "The pros are speed to hire in about 10 days instead of 8 to 14 weeks, access to specialized skills for exactly as long as you need them, full control of direction and code, elastic scaling without severance, and 30 to 60 percent lower cost than local full time hiring. The cons are the management overhead you keep, ramp up time, knowledge loss at contract end, weaker cultural attachment, and security and IP exposure. Each con is procedural and is designed out with clear briefs, prepared onboarding, documentation as a deliverable, and least privilege access.",
       },
       {
         q: "Is staff augmentation better than managed services?",
@@ -922,7 +952,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         q: "How do you protect our data and IP with augmented staff?",
-        a: "Augmented staff are onboarded with the same rigour as employees: least privilege access, MFA, hardened devices, signed NDAs and IP assignment, and access revoked on the last day of the engagement rather than weeks later. Documentation is treated as part of the definition of done, so context stays with you when a contract ends.",
+        a: "Augmented staff are onboarded with the same rigor as employees: least privilege access, MFA, hardened devices, signed NDAs and IP assignment, and access revoked on the last day of the engagement rather than weeks later. Documentation is treated as part of the definition of done, so context stays with you when a contract ends.",
       },
       {
         q: "Which roles can you provide through staff augmentation?",
@@ -953,6 +983,9 @@ export const servicePages: ServicePageContent[] = [
     },
   },
 ];
+
+// Append the keyword landing pages.
+servicePages.push(...newServicePages);
 
 export function getServicePage(slug: string) {
   return servicePages.find((page) => page.slug === slug);

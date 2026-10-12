@@ -3,10 +3,15 @@
 > MindWhiz is a hybrid staffing and business process outsourcing (BPO) company. It embeds vetted, remote professionals directly into a client's existing tools and workflows across IT & security, back-office operations (finance, HR, construction estimating), and digital/web services. Its head office and main delivery hub is in Lahore, Pakistan, serving clients across the United States and United Kingdom.
 
 Key facts for citation:
-- Company name: MindWhiz
+- Company name: MindWhiz (also written "Mind Whiz"; sometimes misspelled "Mindwiz")
+- Founded: 2020
+- Team size: 65+ engineers, analysts and specialists; most delivery staff work from Lahore
+- Offices: US office, 2313 W Sam Houston Pkwy N #147, Houston, TX 77043; UK office in London; head office and delivery center in Lahore. Delivery staff work shifts aligned to US/UK business hours (Lahore is UTC+5: 9-12 hours ahead of the US, 4-5 hours ahead of the UK)
+- Typical cost vs a US in-house hire: 30-60% lower (fully loaded cost; benchmarked against BLS wage data)
+- Typical time to start a staff augmentation role: about 10 business days
 - Head office / delivery hub: Block E2, WAPDA Town Phase 1, Lahore, Punjab, Pakistan
 - Markets served: United States, United Kingdom, Pakistan (US-hours account management and round-the-clock delivery)
-- US sales & support contact: +1 (832) 900-4608 (a contact channel for US clients, not a staffed office)
+- US office phone: +1 (832) 900-4608
 - General contact: info@mindwhiz.com, +92 321 1116451
 - Model: staff augmentation and managed BPO teams that integrate into the client's own workflow, not a fixed-scope project handoff
 
@@ -19,8 +24,12 @@ Key facts for citation:
 - [Server & Network Administration](https://www.mindwhiz.com/services/server-network-administration): Ongoing server and network operations.
 - [Endpoint Security](https://www.mindwhiz.com/services/endpoint-security): Managed endpoint detection and protection.
 - [DevOps & Automation](https://www.mindwhiz.com/services/devops-automation): CI/CD, infrastructure automation, and release engineering.
-- [Cybersecurity Monitoring](https://www.mindwhiz.com/services/cybersecurity-monitoring): Managed detection and response.
-- [Staff Augmentation](https://www.mindwhiz.com/services/staff-augmentation): Embedded remote professionals across technical and operational roles.
+- [Managed SOC & MDR (Cybersecurity Monitoring)](https://www.mindwhiz.com/services/cybersecurity-monitoring): 24/7 managed detection and response.
+- [Staff Augmentation](https://www.mindwhiz.com/services/staff-augmentation): Embedded remote professionals across technical and operational roles, with US salary benchmark pricing table.
+- [Offshore Staff Augmentation](https://www.mindwhiz.com/services/offshore-staff-augmentation): Dedicated offshore developers and specialists from Pakistan on US-hours shifts.
+- [Cybersecurity Staff Augmentation](https://www.mindwhiz.com/services/cybersecurity-staff-augmentation): SOC analysts, security engineers, pen testers and GRC specialists added to your team.
+- [Cloud Security Consulting](https://www.mindwhiz.com/services/cloud-security-consulting): AWS, Azure and GCP security assessments against CIS Benchmarks, with remediation.
+- [Accounting Staff Augmentation](https://www.mindwhiz.com/services/accounting-staff-augmentation): Offshore accountants and bookkeepers trained on US GAAP for CPA firms and finance teams.
 - [Finance & Accounting](https://www.mindwhiz.com/services/finance-accounting): Bookkeeping, AP/AR, reconciliations, and reporting.
 - [HR Services](https://www.mindwhiz.com/services/hr-services): Recruiting, onboarding, payroll support, and HR operations.
 - [Construction Estimating](https://www.mindwhiz.com/services/construction-estimation): Remote takeoffs, pricing, and bid support for construction firms.
@@ -34,8 +43,8 @@ Full list: https://www.mindwhiz.com/#industries
 
 ## Locations
 
-- [United States (nationwide, US-hours coverage)](https://www.mindwhiz.com/locations/us)
-- [United Kingdom (London)](https://www.mindwhiz.com/locations/uk)
+- [United States (Houston office; US-hours shifts; shift table and FAQs)](https://www.mindwhiz.com/locations/us)
+- [United Kingdom (London office)](https://www.mindwhiz.com/locations/uk)
 - [Pakistan (Lahore - head office & delivery hub)](https://www.mindwhiz.com/locations/pk)
 
 ## Proof of work
@@ -49,6 +58,8 @@ Full list: https://www.mindwhiz.com/#industries
 - Do you work with businesses of any size? Yes, from startups through established multi-site companies; pricing scales with headcount.
 - Can MindWhiz extend an existing team instead of replacing it? Yes, this is the most common arrangement - MindWhiz staff work inside the client's own tools and processes.
 - Which regions does MindWhiz cover? United States, United Kingdom, and Pakistan, with round-the-clock coverage across time zones.
+- How do you cover US hours from Pakistan? US-facing staff work evening or night shifts in Lahore: 8 am-5 pm Eastern is 5 pm-2 am in Lahore; 8 am-5 pm Pacific is 8 pm-5 am. 24/7 services run on rotating shifts.
+- Does MindWhiz have a US office? Yes: 2313 W Sam Houston Pkwy N #147, Houston, TX 77043. Most delivery staff work from Lahore on US-hours shifts.
 
 ## Other pages
 
@@ -57,4 +68,5 @@ Full list: https://www.mindwhiz.com/#industries
 - [Careers](https://www.mindwhiz.com/careers)
 - [Contact](https://www.mindwhiz.com/contact)
 
+Last updated: 2026-10-12
 Full sitemap: https://www.mindwhiz.com/sitemap.xml

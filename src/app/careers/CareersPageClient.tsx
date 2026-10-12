@@ -70,7 +70,7 @@ const roles = [
     tint: "#E7F2D8",
     pill: "#4E7A22",
     image:
-      "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=900&q=80",
+      "/images/stock/1600880292089-90a7e086ee0c-w900.webp",
     href: "#apply",
   },
   {
@@ -78,7 +78,7 @@ const roles = [
     tint: "#FBECC6",
     pill: "#8A5A16",
     image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+      "/images/stock/1521737604893-d14cc237f11d-w900.webp",
     href: "#apply",
   },
   {
@@ -86,7 +86,7 @@ const roles = [
     tint: "#F6D9DE",
     pill: "#B33241",
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80",
+      "/images/stock/1550751827-4bd374c3f58b-w900.webp",
     href: "#apply",
   },
   {
@@ -94,7 +94,7 @@ const roles = [
     tint: "#D8E4FB",
     pill: "#2F5BD1",
     image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80",
+      "/images/stock/1554224155-6726b3ff858f-w900.webp",
     href: "#apply",
   },
   {
@@ -102,7 +102,7 @@ const roles = [
     tint: "#E7F2D8",
     pill: "#4E7A22",
     image:
-      "https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=900&q=80",
+      "/images/stock/1573497491208-6b1acb260507-w900.webp",
     href: "#apply",
   },
 ];
@@ -217,8 +217,8 @@ function LocationsSection() {
                 <span style={{ color: "#9CCC3C" }}>locations</span>
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-black/65">
-                Large or small, every MindWhiz hub is built to inspire focused
-                work, fast delivery, and a real sense of community across three
+                Our Lahore studio is built to inspire focused work, fast delivery,
+                and a real sense of community, working with clients across three
                 time zones.
               </p>
               <div className="mt-10 grid max-w-md grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3">
@@ -236,7 +236,7 @@ function LocationsSection() {
             <div className="relative min-h-[340px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80"
+                src="/images/stock/1497366216548-37526070297c-w1400.webp"
                 alt="MindWhiz workspace"
                 className="h-full w-full object-cover"
               />
@@ -267,7 +267,7 @@ function FindYourTeam() {
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80"
+                src="/images/stock/1522071820081-009f0129c71c-w1400.webp"
                 alt="MindWhiz team collaborating"
                 className="h-full w-full object-cover"
               />
@@ -351,7 +351,7 @@ function BenefitsSection() {
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80"
+                src="/images/stock/1521737711867-e3b97375f902-w1400.webp"
                 alt="MindWhiz culture"
                 className="h-full w-full object-cover"
               />
@@ -450,7 +450,7 @@ function WorkingAtSection() {
           <Reveal>
             <WorkingAtCard
               title="Take a look inside our hiring process"
-              image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80"
+              image="/images/stock/1517245386807-bb43f82c33c4-w1000.webp"
               tint="#F6D9DE"
               pill="#B33241"
               cta="See how we hire"
@@ -461,7 +461,7 @@ function WorkingAtSection() {
           <Reveal delay={0.06}>
             <WorkingAtCard
               title="Life across our US, UK & Pakistan hubs"
-              image="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80"
+              image="/images/stock/1531482615713-2afd69097998-w1000.webp"
               tint="#FBECC6"
               pill="#8A5A16"
               cta="Learn more"
@@ -473,7 +473,7 @@ function WorkingAtSection() {
           <Reveal delay={0.06}>
             <WorkingAtCard
               title="How our teams grow careers, not just headcount"
-              image="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80"
+              image="/images/stock/1552664730-d307ca884978-w1000.webp"
               tint="#E7F2D8"
               pill="#4E7A22"
               cta="Learn more"
@@ -485,7 +485,7 @@ function WorkingAtSection() {
           <Reveal delay={0.12}>
             <WorkingAtCard
               title="Create your MindWhiz talent profile"
-              image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
+              image="/images/stock/1600880292203-757bb62b4baf-w1000.webp"
               tint="#D8E4FB"
               pill="#2F5BD1"
               cta="Learn more"
@@ -569,7 +569,8 @@ export default function CareersPageClient() {
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80"
+          image="/images/stock/1521737711867-e3b97375f902-w1800.webp"
+          h1="Careers at MindWhiz in Lahore"
           titleLines={["Build", "Your"]}
           rotateWords={["Career", "Future", "Skills", "Path"]}
           highlightClassName="text-[#9CCC3C]"

@@ -19,6 +19,7 @@ import { ProcessIntroBanner } from "@/components/ProcessIntroBanner";
 import type { LocationContent } from "@/lib/locations";
 import { locations } from "@/lib/locations";
 import { services as allServices, company, footerGroups } from "@/lib/content";
+import FaqSection from "@/components/FaqSection";
 
 const sans = Inter({ subsets: ["latin"], display: "swap" });
 const display = Plus_Jakarta_Sans({
@@ -84,6 +85,7 @@ export default function LocationPage({ location }: { location: LocationContent }
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image={location.heroImage}
+          h1={location.h1}
           titleLines={["MindWhiz"]}
           rotateWords={[location.country, "Talent", "Teams", "Support"]}
           highlightClassName="text-[#9CCC3C]"
@@ -124,6 +126,19 @@ export default function LocationPage({ location }: { location: LocationContent }
               </div>
 
               <div className="mt-6 space-y-4 border-t border-slate-200 pt-6 text-sm">
+                {!location.hasOffice && (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#9CCC3C]" />
+                    <span className="text-black/75">
+                      Delivered from our office in {location.city}
+                    </span>
+                  </div>
+                )}
+                {location.phone && (
+                  <a href={`tel:${location.phone.replace(/[^+\d]/g, "")}`} className="flex items-center gap-3 text-black/75 hover:text-black">
+                    {location.phone}
+                  </a>
+                )}
                 {location.address && (
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#9CCC3C]" />
@@ -133,7 +148,8 @@ export default function LocationPage({ location }: { location: LocationContent }
                 <div className="flex items-center gap-3">
                   <Clock className="h-4 w-4 shrink-0 text-[#9CCC3C]" />
                   <span className="text-black/75">
-                    Local time: <LiveClock timezone={location.timezone} />
+                    {location.hasOffice ? "Local time" : `Time in ${location.timezone.split("/")[1].replace("_", " ")}`}:{" "}
+                    <LiveClock timezone={location.timezone} />
                   </span>
                 </div>
                 <a href={`mailto:${company.email}`} className="flex items-center gap-3 text-black/75 hover:text-black">
@@ -147,12 +163,12 @@ export default function LocationPage({ location }: { location: LocationContent }
         {/* ===================== HIGHLIGHTS ===================== */}
         <section className="relative overflow-hidden bg-[#EEEEEE] py-24">
           <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
-            <Kicker>Why this hub</Kicker>
+            <Kicker>{location.hasOffice ? "Why this hub" : "How we work"}</Kicker>
             <h2
               className="mt-4 max-w-xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              What {location.country} gives our clients
+              {location.hasOffice ? `What ${location.country} gives our clients` : `How we serve ${location.country} clients`}
             </h2>
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               {location.highlights.map((h) => (
@@ -170,10 +186,12 @@ export default function LocationPage({ location }: { location: LocationContent }
         {/* ===================== HIGHLIGHTS, PINNED FULL-SCREEN ===================== */}
         <ProcessScroll
           steps={location.highlights}
-          kicker="Why this hub"
+          kicker={location.hasOffice ? "Why this hub" : "How we work"}
           title={
             <>
-              What {location.country} <span style={{ color: "#9CCC3C" }}>gives</span> our clients.
+              {location.hasOffice ? <>What {location.country} </> : <>How we serve {location.country} </>}
+              <span style={{ color: "#9CCC3C" }}>{location.hasOffice ? "gives" : "clients"}</span>
+              {location.hasOffice ? " our clients." : "."}
             </>
           }
           ctaLabel="Get in touch"
@@ -218,6 +236,8 @@ export default function LocationPage({ location }: { location: LocationContent }
           </div>
         </section>
 
+        {location.faqs?.length ? <FaqSection faqs={location.faqs} /> : null}
+
         <TrustedByClients />
 
         {/* ===================== OTHER LOCATIONS ===================== */}
@@ -228,7 +248,7 @@ export default function LocationPage({ location }: { location: LocationContent }
               className="mt-4 max-w-xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-black"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Also delivering from
+              Other markets we serve
             </h2>
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
               {others.map((l) => (

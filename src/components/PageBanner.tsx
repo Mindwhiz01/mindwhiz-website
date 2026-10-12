@@ -65,6 +65,12 @@ type CtaLink = { label: string; href: string; external?: boolean; className?: st
  * media panel with a dark gradient wash, a large display heading, and CTAs.
  * Uses a service-relevant background image (no eyebrow pill).
  *
+ * SEO: pass `h1` with the page's keyword statement (e.g. "Managed SOC and
+ * MDR Services for US Companies"). It renders as the page's single <h1> in a
+ * small pill above the display slogan, and the slogan drops to a styled <p>,
+ * so the heading search engines read is the keyword, not "DEFEAT CYBER
+ * THREATS". Without `h1` the slogan stays the <h1> (legacy behavior).
+ *
  * Two ways to supply the heading:
  *  - `title`: a ready-made React node (legacy / fully custom heading).
  *  - `titleLines` + `rotateWords`: the "Build Great Teams" treatment - each
@@ -72,6 +78,8 @@ type CtaLink = { label: string; href: string; external?: boolean; className?: st
  *    from the right and rotates through `rotateWords`.
  */
 export function PageBanner({
+  h1,
+  imageAlt,
   title,
   titleLines,
   rotateWords,
@@ -83,6 +91,8 @@ export function PageBanner({
   headingClassName = "",
   highlightClassName = "text-[#ed1164]",
 }: {
+  h1?: string;
+  imageAlt?: string;
   title?: ReactNode;
   titleLines?: string[];
   rotateWords?: string[];
@@ -97,11 +107,12 @@ export function PageBanner({
   highlightClassName?: string;
 }) {
   const useStacked = Boolean(titleLines && rotateWords);
+  const Slogan = h1 ? motion.p : motion.h1;
   return (
     <section data-header-dark className="relative min-h-screen overflow-hidden bg-white p-[10px] text-white">
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" className="h-full w-full object-cover" />
+        <img src={image} alt={imageAlt ?? (h1 ? `${h1} - MindWhiz` : "")} fetchPriority="high" decoding="async" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[#383838]/55" />
         {/* bottom-weighted dark shadow so the heading and copy stay prominent */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
@@ -118,16 +129,26 @@ export function PageBanner({
         className="relative flex min-h-[calc(var(--vh)*100-20px)] items-center px-5 pb-10 pt-32 text-left sm:px-8"
       >
         <div className="w-full">
-          <motion.h1
+          {h1 && (
+            <motion.h1
+              variants={item}
+              className="mb-6 inline-flex max-w-2xl items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-white/85 backdrop-blur sm:text-sm"
+            >
+              {h1}
+            </motion.h1>
+          )}
+          <Slogan
             variants={item}
             className={`max-w-[48rem] text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.88] tracking-[-0.055em] text-white ${headingClassName}`}
             style={{ fontFamily: "var(--font-display)" }}
           >
             {useStacked ? (
               <>
+                {/* trailing spaces keep words separate in the text content
+                    (crawlers otherwise read "MindWhizUnited States") */}
                 {titleLines!.map((word) => (
                   <span key={word} className="block whitespace-nowrap">
-                    {word}
+                    {word}{" "}
                   </span>
                 ))}
                 <SlidingHighlight words={rotateWords!} className={highlightClassName} />
@@ -135,7 +156,7 @@ export function PageBanner({
             ) : (
               title
             )}
-          </motion.h1>
+          </Slogan>
 
           {subtitle && (
             <motion.p

@@ -5,6 +5,7 @@
 // with the same chrome, motion language, and green theme as the home page.
 // ---------------------------------------------------------------------------
 
+import { claims } from "@/lib/claims";
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
@@ -132,9 +133,9 @@ function StudioSection() {
             Staff augmentation, always on
           </h2>
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-black">
-            Sixty five engineers headquartered in Lahore, with client facing
-            offices in the UK and the USA. Building since 2020, somewhere, the
-            studio is always at work.
+            More than 65 engineers in our Lahore studio, serving clients in
+            the USA and the UK on shifts that match their working day. Building
+            since 2020, somewhere, the studio is always at work.
           </p>
         </Reveal>
 
@@ -204,25 +205,25 @@ const values: { title: string; desc: string; Icon: LucideIcon; image: string }[]
     title: "Compliant Workforce",
     desc: "Skilled talent aligned with regulations.",
     Icon: ShieldCheck,
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80",
+    image: "/images/stock/1521737604893-d14cc237f11d-w2000.webp",
   },
   {
     title: "Seamless Scalability",
     desc: "Effortless workforce expansion and flexibility.",
     Icon: Zap,
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80",
+    image: "/images/stock/1522071820081-009f0129c71c-w2000.webp",
   },
   {
     title: "Rapid Deployment",
     desc: "Accelerated project execution and delivery.",
     Icon: Rocket,
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2000&q=80",
+    image: "/images/stock/1531482615713-2afd69097998-w2000.webp",
   },
   {
     title: "Global Delivery",
     desc: "Worldwide solutions tailored for success.",
     Icon: Globe2,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80",
+    image: "/images/stock/1451187580459-43490279c0fa-w2000.webp",
   },
 ];
 
@@ -359,29 +360,29 @@ const testimonials = [
 
 const hubs = [
   { country: "United States", city: "Houston, Texas", flag: "/hubs/us.jpg", fit: "cover" },
-  { country: "United Kingdom", city: "London", flag: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=640&h=860&q=80", fit: "cover" },
-  { country: "Pakistan", city: "Lahore", flag: "/hubs/pk.jpg", fit: "cover" },
+  { country: "United Kingdom", city: "London", flag: "/images/stock/1513635269975-59663e0ac1ad-w640x860.webp", fit: "cover" },
+  { country: "Pakistan", city: "Lahore head office and delivery center", flag: "/hubs/pk.jpg", fit: "cover" },
 ];
 
 const offerings = [
-  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&h=860&q=80" },
-  { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=640&h=860&q=80" },
-  { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=640&h=860&q=80" },
-  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO level support from experienced finance professionals.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&h=860&q=80" },
-  { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations that scale your pipeline around the clock.", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=640&h=860&q=80" },
+  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "/images/stock/1558494949-ef010cbdcc31-w640x860.webp" },
+  { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "/images/stock/1521737604893-d14cc237f11d-w640x860.webp" },
+  { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "/images/stock/1541888946425-d81bb19240f5-w640x860.webp" },
+  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO level support from experienced finance professionals.", img: "/images/stock/1460925895917-afdab827c52f-w640x860.webp" },
+  { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations that scale your pipeline around the clock.", img: "/images/stock/1533750349088-cd871a92f312-w640x860.webp" },
 ];
 
 const bannerStats = [
   { value: "2020", label: "Year founded" },
-  { value: "500+", label: "Specialists deployed" },
-  { value: "$2.4M", label: "Avg. annual savings" },
-  { value: "99.8%", label: "Client retention" },
+  { value: claims.teamSize, label: "Vetted specialists" },
+  { value: claims.savingsRange, label: "Typical saving vs a US hire" },
+  { value: "24/7", label: "Rotating shift coverage" },
 ];
 
 const storyHighlights = [
   {
     title: "Founder led, values driven",
-    desc: "MindWhiz is a founder led, values driven staffing firm on a mission to bridge the talent gap for modern businesses, headquartered in Houston, Texas, with an offshore talent hub in South Asia.",
+    desc: "MindWhiz is a founder led, values driven staffing firm on a mission to bridge the talent gap for modern businesses, headquartered in Lahore, Pakistan, and serving clients across the United States and United Kingdom.",
   },
   {
     title: "Decades of hiring expertise",
@@ -389,7 +390,7 @@ const storyHighlights = [
   },
   {
     title: "Built for speed",
-    desc: "Clients get experts working on their projects within 48 to 72 hours, with an average full deployment time of 10 days from first call to productive team.",
+    desc: `Clients typically see a vetted shortlist in ${claims.shortlistTime} and a specialist working on their project in ${claims.deployTime}.`,
   },
 ];
 
@@ -407,7 +408,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Which time zones can you cover?",
-    a: "Coverage can be aligned to your working hours, including live overlap with UK and US teams, and round the clock cover where operations require it.",
+    a: "Any, by shift. Our team is in Lahore (UTC+5): 4 to 5 hours ahead of the UK and 9 to 12 hours ahead of the US. US-facing staff work evening or night shifts so their day matches yours, and 24/7 services run on rotating shifts.",
   },
   {
     q: "How do you handle security, confidentiality, and IP?",
@@ -446,10 +447,11 @@ export default function WhyMindWhizPage() {
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
           image="/banners/why-mindwhiz.png"
+          h1="Why US Companies Choose MindWhiz for Offshore Teams"
           titleLines={["Real"]}
           rotateWords={["Teams", "Talent", "People", "Experts"]}
           highlightClassName="text-[#9CCC3C]"
-          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people, not armies of average ones. Since then, that conviction has grown into a 500+ specialist network deploying talent worldwide."
+          subtitle="MindWhiz started in 2020 with a conviction: great work comes from small teams of exceptional, vetted people, not armies of average ones. Since then, that conviction has grown into a team of more than 65 vetted specialists serving clients in the US and UK."
           primary={{ label: "Contact us", href: "/contact" }}
           secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: GREEN_CTA_CLASS }}
         />
@@ -585,9 +587,9 @@ export default function WhyMindWhizPage() {
 <span style={{ color: "#9CCC3C" }}>Global</span> delivery, built in
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-black">
-                With delivery hubs across the United States, the United Kingdom, and
-                Pakistan, we serve clients across North America, the Middle East,
-                Canada, and Australia, operations covered around the clock.
+                With offices in Houston and London and our delivery center in Lahore,
+                we serve clients across the United States, the United Kingdom, Canada,
+                the Middle East and Australia, on shifts that match their hours.
               </p>
             </Reveal>
 
@@ -711,7 +713,7 @@ export default function WhyMindWhizPage() {
           {/* stock background image with dark overlay so the text stays readable */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80"
+            src="/images/stock/1522071820081-009f0129c71c-w1800.webp"
             alt=""
             aria-hidden
             className="absolute inset-0 h-full w-full object-cover"

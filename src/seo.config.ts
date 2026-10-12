@@ -6,204 +6,220 @@ import type { Metadata } from "next";
 // Titles here are FINAL (they already include "| MindWhiz"), so they are
 // emitted with `title.absolute` to bypass the root `%s | MindWhiz` template
 // and avoid double-branding. Descriptions are the hand-tuned 150-160 char
-// copy from the keyword map. Every route also gets a self-referencing
+// copy (140-155 chars, no unverifiable numbers - see src/lib/claims.ts). Every route also gets a self-referencing
 // canonical plus matching OpenGraph + Twitter tags so shared links no longer
 // fall back to the homepage pitch.
 //
 // Keywords are chosen for winnable, high-intent long-tail demand (real
 // volume/KD data), not broad head terms owned by the large staffing brands.
 // To retitle a page, edit it here once - layouts and generateMetadata read
-// from this map. Keep titles 50-60 chars and descriptions 150-160 chars.
+// from this map. Keep titles 50-60 chars and descriptions 140-155 chars.
 // ---------------------------------------------------------------------------
 
 export const siteUrl = "https://www.mindwhiz.com";
 
+// Self-hosted, query-string-free share image (no Unsplash hotlinks, no
+// encoded ampersands in og:image).
+export const DEFAULT_SHARE_IMAGE = {
+  url: "/og-default.jpg",
+  width: 1200,
+  height: 630,
+  alt: "MindWhiz - offshore IT and operations teams for US companies",
+};
+
 export type SeoEntry = { title: string; description: string };
 
 export const SEO_MAP: Record<string, SeoEntry> = {
-  // --- Core ---
   "/": {
-    title: "IT Outsourcing & Staff Augmentation Company USA | MindWhiz",
+    title: "IT Staff Augmentation & Offshore Teams for US Firms | MindWhiz",
     description:
-      "Offshore IT staffing for US companies: save 60% on IT, security & operations. 10-day deployment, 99.8% retention. 65+ vetted engineers. Get a free consultation today.",
+      "Vetted offshore engineers, 24/7 IT support and back-office teams for US companies, working your hours at typically 30-60% below in-house cost. Free consult",
   },
-
-  // --- Services ---
   "/services/it-helpdesk-24-7": {
-    title: "White-Label 24/7 IT Helpdesk Services USA | MindWhiz",
+    title: "24/7 Outsourced IT Helpdesk for US Companies & MSPs | MindWhiz",
     description:
-      "White-label 24/7 IT helpdesk for US MSPs: $6-12/user/month, Tier 1-3 support, 15-min response. Cut support costs 50%. Free helpdesk cost analysis—no commitment.",
+      "24/7 outsourced IT helpdesk, Tier 1 to 3, for US companies and MSPs. White-label options, US-hours coverage and clear per-user pricing. Get a free quote.",
   },
   "/services/noc-monitoring": {
-    title: "Outsourced 24/7 NOC Monitoring Services USA | MindWhiz",
+    title: "Outsourced 24/7 NOC Monitoring Services for US Teams | MindWhiz",
     description:
-      "24/7 NOC monitoring for US companies & MSPs: 99.9% uptime guarantee, proactive alerting, incident response. 30% cost reduction. Get free uptime assessment.",
+      "Outsourced 24/7 NOC monitoring for US companies and MSPs: network, server and cloud alerts handled to runbooks, with clear SLAs and reporting. Get a quote.",
   },
   "/services/cybersecurity-monitoring": {
-    title: "Managed SOC & MDR Monitoring Services USA | MindWhiz",
+    title: "Managed SOC & MDR Services for US Companies | MindWhiz",
     description:
-      "Managed SOC & MDR for US companies: GIAC-certified analysts, 24/7 threat detection, incident response. $1500-3000/month. Free security risk assessment.",
+      "Managed SOC and MDR for US companies: 24/7 threat monitoring, investigation and incident response by certified analysts in your SIEM and EDR. Book now.",
   },
   "/services/cloud-infrastructure": {
-    title: "Cloud Infrastructure Management USA, AWS & Azure | MindWhiz",
+    title: "Cloud Infrastructure Management: AWS, Azure, GCP | MindWhiz",
     description:
-      "Cloud infrastructure for US companies: AWS, Azure, GCP management with 30% cost reduction, zero-downtime migrations, 99.9% uptime. Get free cloud audit.",
+      "Managed cloud infrastructure for US companies on AWS, Azure and GCP: migrations, cost control, monitoring and infrastructure as code. Free cloud audit.",
   },
   "/services/devops-automation": {
     title: "Outsourced DevOps & CI/CD Automation Services | MindWhiz",
     description:
-      "DevOps & CI/CD automation for US teams: 2x faster deployments, infrastructure-as-code, Kubernetes, containers. 40% cost savings. Get free deployment audit.",
+      "Outsourced DevOps engineers for US teams: CI/CD pipelines, Kubernetes, containers and infrastructure as code that ship releases faster. Book a free audit.",
   },
   "/services/endpoint-security": {
-    title: "Endpoint Security & Patch Management Services USA | MindWhiz",
+    title: "Managed Endpoint Security & Patch Management | MindWhiz",
     description:
-      "Managed endpoint security (EDR) for US teams: SOC 2 compliant, 99.9% patch compliance, ransomware prevention, remote device control. Get free security assessment.",
+      "Managed endpoint security for US teams: EDR, patch management, device hardening and ransomware protection across every laptop and server. Free assessment.",
   },
   "/services/server-network-administration": {
-    title: "Server & Network Administration Outsourcing USA | MindWhiz",
+    title: "Server & Network Administration Outsourcing | MindWhiz",
     description:
-      "Server & network administration for US companies: 99.8% uptime SLA, certified admins, proactive patching, 30% cost reduction. Get free network audit.",
+      "Outsourced server and network administration for US companies: certified admins, proactive patching, monitoring and documented changes. Free review.",
   },
   "/services/remote-desktop-assets": {
-    title: "IT Asset Management & Remote Desktop Support USA | MindWhiz",
+    title: "Remote IT Asset Management & Desktop Support | MindWhiz",
     description:
-      "IT asset management & remote desktop support: full hardware/software tracking, compliance-ready, 40% cost savings, secure remote access. Get free asset audit.",
+      "Remote IT asset management and remote desktop support: track devices and licenses, onboard and offboard users and secure remote staff. Free asset audit.",
   },
   "/services/staff-augmentation": {
-    title: "IT Staff Augmentation & Offshore Teams USA | MindWhiz",
+    title: "IT Staff Augmentation Services for US Companies | MindWhiz",
     description:
-      "Hire vetted offshore engineers in 10 days: 50-60% cheaper than US hiring, no benefits/payroll overhead. Hire Python, DevOps, QA engineers. Free team assessment.",
+      "IT staff augmentation for US companies: vetted engineers who join your team in about 10 business days, at typically 30-60% below a US hire. See pricing.",
   },
-
-  // --- Services (standalone pages under /services) ---
-  "/services/hr-services": {
-    title: "HR Outsourcing Services USA, RPO & Payroll | MindWhiz",
+  "/services/offshore-staff-augmentation": {
+    title: "Offshore Staff Augmentation Services for US Firms | MindWhiz",
     description:
-      "Outsourced HR for US SMBs: RPO hiring 50% faster, payroll, HRIS, multi-state compliance, 70% cost savings. No in-house HR needed. Get free HR assessment.",
+      "Offshore staff augmentation from Pakistan for US companies: dedicated developers and specialists on US-hours shifts, typically 30-60% below a US hire.",
+  },
+  "/services/cybersecurity-staff-augmentation": {
+    title: "Cybersecurity Staff Augmentation for US Teams | MindWhiz",
+    description:
+      "Cybersecurity staff augmentation: add vetted SOC analysts, security engineers and pen testers to your team in about 10 business days, on US-hours shifts.",
+  },
+  "/services/cloud-security-consulting": {
+    title: "Cloud Security Consulting for AWS, Azure & GCP | MindWhiz",
+    description:
+      "Cloud security consulting for US companies: AWS, Azure and GCP assessments against CIS Benchmarks, a prioritized fix plan and hands-on remediation.",
+  },
+  "/services/accounting-staff-augmentation": {
+    title: "Accounting Staff Augmentation for US CPA Firms | MindWhiz",
+    description:
+      "Accounting staff augmentation for US CPA firms and finance teams: offshore accountants and bookkeepers trained on US GAAP, working in your software.",
+  },
+  "/services/hr-services": {
+    title: "HR Outsourcing, RPO & Payroll for US Companies | MindWhiz",
+    description:
+      "Outsourced HR for US small and mid-sized businesses: recruiting (RPO), payroll support, HRIS administration and onboarding, without an in-house HR team.",
   },
   "/services/finance-accounting": {
-    title: "Finance & Accounting Outsourcing USA, AP & AR | MindWhiz",
+    title: "Finance & Accounting Outsourcing for US Firms | MindWhiz",
     description:
-      "Outsourced accounting: 3-5 day close (vs weeks), AP/AR, bookkeeping, virtual CFO. 40% cost reduction, 24/7 US time zone. Get free process audit.",
+      "Finance and accounting outsourcing for US companies: bookkeeping, AP and AR, payroll and month-end close by vetted accountants. Book a free process review.",
   },
   "/services/digital-marketing": {
-    title: "Digital Marketing Outsourcing USA, SEO & PPC | MindWhiz",
+    title: "Digital Marketing Outsourcing: SEO, PPC & CRO | MindWhiz",
     description:
-      "Digital marketing outsourcing: SEO, Google Ads, CRO, content, 30-50% higher conversions, dedicated team, $3-8K/month. Get free marketing audit.",
+      "Outsourced digital marketing for US businesses: SEO, Google Ads, conversion optimization and content from a dedicated team. Get a free marketing audit.",
   },
   "/services/construction-estimation": {
-    title: "Outsourced Construction Estimating & Takeoffs USA | MindWhiz",
+    title: "Outsourced Construction Estimating & Takeoffs | MindWhiz",
     description:
-      "Outsourced construction estimating for US contractors: quantity takeoffs, bid prep and cost planning by expert estimators. Bid more, win more. Free takeoff.",
+      "Outsourced construction estimating for US contractors: quantity takeoffs, bid-ready cost estimates and planning from expert estimators. Free takeoff.",
   },
   "/web-services": {
     title: "Custom Web Development, Web Apps & Ecommerce | MindWhiz",
     description:
-      "Custom web development: 50% faster load times, high-conversion sites, apps, dashboards, ecommerce. Deployed in 10 days. Get free web development quote.",
+      "Custom web development for growing businesses: fast marketing sites, web apps, dashboards and ecommerce stores, built and run by one team. Free quote.",
   },
-
-  // --- Industries ---
   "/industries/information-technology": {
-    title: "Managed IT & Staffing Services for Tech Companies | MindWhiz",
+    title: "Managed IT & Staffing for US Tech Companies | MindWhiz",
     description:
-      "Managed IT & staffing for US tech companies: 60% cost savings, deploy in 10 days, 99.8% retention, 24/7 coverage. Schedule free tech audit.",
+      "Managed IT and staff augmentation for US technology companies and MSPs: engineers, support and security analysts on US-hours shifts. Book a tech review.",
   },
   "/industries/ecommerce-retail": {
-    title: "Ecommerce Support & Operations Outsourcing USA | MindWhiz",
+    title: "Ecommerce Support & Operations Outsourcing | MindWhiz",
     description:
-      "Ecommerce support for US retail: 99.9% uptime, 24/7 storefront ops, product listing, customer support, 30% cost savings. Get free store audit.",
+      "Ecommerce operations outsourcing for US retailers: customer support, product listings, order processing and storefront management. Get a free store audit.",
   },
   "/industries/startups-smbs": {
-    title: "Outsourced IT & Staffing for Startups & SMBs | MindWhiz",
+    title: "Outsourced IT & Staffing for Startups and SMBs | MindWhiz",
     description:
-      "Flexible IT & staffing for US startups/SMBs: scale teams in days, no contracts, pay-as-you-grow, risk-free trial, 60% cost savings. Get free assessment.",
+      "Flexible IT support and staff augmentation for US startups and SMBs: scale a team up or down monthly without hiring overhead. Book a free assessment today.",
   },
   "/industries/construction-engineering": {
-    title: "IT & Estimating Support for Construction Firms | MindWhiz",
+    title: "Estimating & IT Support for Construction Firms | MindWhiz",
     description:
-      "Construction & engineering support: 2x faster bid prep, 50% fewer takeoff errors, site connectivity, estimating, drafting. Get free takeoff sample.",
+      "Support for US construction and engineering firms: quantity takeoffs, bid estimates, drafting and site IT from an offshore team. Get a free takeoff sample.",
   },
   "/industries/industrial-manufacturing": {
     title: "IT & Back-Office Outsourcing for Manufacturers | MindWhiz",
     description:
-      "Manufacturing IT & back-office: 99.8% uptime, multi-site ops, 24/7 coverage, 40% cost savings, equipment monitoring. Schedule free ops review.",
+      "IT and back-office outsourcing for US manufacturers: multi-site IT support, monitoring, purchasing and finance operations around the clock. Free review.",
   },
   "/industries/accounting-finance": {
-    title: "Outsourced Accounting & Finance Teams for Firms | MindWhiz",
+    title: "Outsourced Accounting Teams for CPA Firms | MindWhiz",
     description:
-      "Accounting & finance support: 50% faster close, white-label teams, bookkeeping, reporting, no training needed. Get free process audit.",
+      "Outsourced accounting teams for US CPA firms and finance departments: white-label bookkeeping, reconciliations and reporting. Book a free process review.",
   },
   "/industries/professional-services": {
     title: "Back-Office & IT Support for Professional Firms | MindWhiz",
     description:
-      "Professional services support: free 1 billable person per 5-person team, 30-40% back-office savings, research, ops, IT. Book free consultation.",
+      "Back-office, research and IT support for US professional services firms, so billable staff spend more time on clients. Book a free consultation with us.",
   },
   "/industries/logistics-supply-chain": {
-    title: "IT & Back-Office Support for Logistics Firms USA | MindWhiz",
+    title: "Logistics Back Office Support & IT Services USA | MindWhiz",
     description:
-      "Logistics & supply chain support: 60% fewer errors, 24/7 warehouse ops, TMS/WMS integration, tracking. Get free logistics audit.",
+      "Logistics back office support for US brokers, 3PLs and carriers: track and trace, carrier onboarding, POD and freight billing, plus IT. Get a free review.",
   },
   "/industries/healthcare-healthtech": {
-    title: "Managed IT & HIPAA-Aware Support for Healthcare | MindWhiz",
+    title: "HIPAA-Aware IT & Support for Healthcare Firms | MindWhiz",
     description:
-      "Healthcare IT: 100% HIPAA compliant, zero breaches, EHR/EMR support, 24/7 clinical coverage, patient data security. Schedule free compliance review.",
+      "HIPAA-aware managed IT and back-office support for US healthcare and healthtech: EHR support, secure devices and 24/7 coverage. Book a compliance review.",
   },
-
-  // --- Company ---
   "/about": {
-    title: "About MindWhiz | Offshore Staffing & Delivery Team",
+    title: "About MindWhiz (Mind Whiz) | Offshore IT & Ops Teams",
     description:
-      "About MindWhiz: 65+ vetted engineers, 99.8% retention, ISO 27001 certified, serving 50+ US & UK companies since 2020. Meet the team.",
+      "About MindWhiz (also written Mind Whiz): a Lahore-based team of 65+ vetted engineers and specialists serving US and UK companies since 2020. Meet us.",
   },
   "/why-mindwhiz": {
-    title: "Why MindWhiz | 10-Day Deploy, 99.8% Retention",
+    title: "Why MindWhiz | Vetted Offshore Teams in Your Hours",
     description:
-      "Why US teams pick MindWhiz: vetted talent, ~10-day deployment, 99.8% retention and 24/7 coverage in your time zone. See how we compare. Book a free consult.",
+      "Why US companies choose MindWhiz: vetted specialists, a start in about 10 business days, US-hours shifts and 24/7 coverage. See how we compare.",
   },
   "/case-studies": {
     title: "Client Results & Case Studies | MindWhiz",
     description:
-      "MindWhiz case studies: $2.4M+ client savings, 2x faster delivery, scaled teams. Real engagements, real results. View all 50+ success stories.",
+      "MindWhiz case studies: how we helped construction, technology and ecommerce clients scale teams, launch faster and cut costs. Read the full engagements.",
   },
   "/careers": {
-    title: "Careers at MindWhiz | IT, Security & Ops Jobs",
+    title: "Careers at MindWhiz | IT, Security & Ops Jobs in Lahore",
     description:
-      "Join MindWhiz in Lahore. Explore open roles in IT, cybersecurity, engineering and business operations serving clients across the US and UK. Apply online today.",
+      "Join MindWhiz in Lahore. Explore open roles in IT, cybersecurity, engineering and business operations serving clients across the US and UK. Apply online.",
   },
   "/blog": {
-    title: "MindWhiz Blog | IT, Security & Outsourcing Tips",
+    title: "MindWhiz Blog | Staff Augmentation, IT & Security Guides",
     description:
-      "MindWhiz blog: 20+ guides on security, DevOps, staffing, playbooks from live engagements. Subscribe for insights on what works at scale.",
+      "Practical guides on staff augmentation, offshore teams, IT operations and cybersecurity for US companies, written from real client engagements. Read more.",
   },
   "/newsletter": {
-    title: "Free IT & Security White Papers & Newsletter | MindWhiz",
+    title: "IT & Security White Papers and Newsletter | MindWhiz",
     description:
-      "Free IT & security resources: 4 white papers, monthly briefings, compliance guides, operations playbooks. Subscribe for insider insights.",
+      "Free IT and security resources from MindWhiz: white papers, monthly briefings, compliance guides and operations playbooks. Subscribe for practical insight.",
   },
   "/contact": {
     title: "Contact MindWhiz | Free Quote in 1 Business Day",
     description:
-      "Get a free IT staffing or outsourcing quote in 24 hours. No pressure consultation with MindWhiz experts. See exact pricing for your needs. Book your free call.",
+      "Get a free IT staffing or outsourcing quote, usually within one US business day. Tell MindWhiz the roles or services you need. Book your free call.",
   },
-
-  // --- Locations ---
   "/locations/us": {
-    title: "IT Outsourcing & Staff Augmentation in the USA | MindWhiz",
+    title: "IT Staff Augmentation & Outsourcing for US Companies | MindWhiz",
     description:
-      "MindWhiz supports US businesses with vetted offshore teams in your time zone across IT, security, finance and operations. Cut costs up to 60%. Free consult.",
+      "How MindWhiz serves US companies from Lahore: US-hours shift table, pricing, contracts, data security and FAQs for IT staffing and managed services.",
   },
   "/locations/uk": {
-    title: "IT Outsourcing & Staff Augmentation in the UK | MindWhiz",
+    title: "IT Outsourcing & Staff Augmentation for UK Firms | MindWhiz",
     description:
-      "MindWhiz supports UK businesses with vetted offshore teams working in your hours across IT, security, finance and operations. GDPR-aware. Talk to us today.",
+      "MindWhiz supports UK businesses with vetted offshore teams working UK hours across IT, security, finance and operations. GDPR-aware delivery. Talk to us.",
   },
   "/locations/pk": {
     title: "IT Outsourcing & Software Company in Lahore | MindWhiz",
     description:
-      "MindWhiz Lahore: 65+ engineers, growing 3x/year, ISO 27001 certified, serving US/UK. Join our team. Careers in IT, security, DevOps.",
+      "MindWhiz Lahore: our head office and delivery center, with 65+ engineers in IT, security, DevOps and operations serving US and UK clients. See careers.",
   },
-
-  // --- Legal ---
   "/privacy": {
     title: "Privacy Policy | MindWhiz",
     description:
@@ -241,17 +257,23 @@ export function buildMetadata(path: string, fallback?: SeoEntry): Metadata {
     title: { absolute: title },
     description,
     alternates: { canonical },
+    // Child metadata replaces (not merges) the root openGraph/twitter
+    // objects, so the share image must be repeated here or pages ship
+    // without one.
     openGraph: {
       title,
       description,
       url: canonical,
       type: "website",
       siteName: "MindWhiz",
+      locale: "en_US",
+      images: [DEFAULT_SHARE_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [DEFAULT_SHARE_IMAGE.url],
     },
   };
 }

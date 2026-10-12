@@ -211,6 +211,7 @@ export default function CaseStudiesPageClient({ items }: { items: CaseStudy[] })
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
           image="/banners/case-studies.png"
+          h1="MindWhiz Case Studies and Client Results"
           titleLines={["On", "The"]}
           rotateWords={["Record", "Results", "Proof", "Wins"]}
           highlightClassName="text-[#9CCC3C]"

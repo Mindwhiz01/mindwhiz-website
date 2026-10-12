@@ -139,63 +139,63 @@ const coverage: {
     name: "General Ledger",
     tag: "GL",
     Icon: BookOpen,
-    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1554224155-6726b3ff858f-w800.webp",
     h: "h-80",
   },
   {
     name: "Accounts Payable",
     tag: "AP",
     Icon: Receipt,
-    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1450101499163-c8848c66ca85-w800.webp",
     h: "h-64",
   },
   {
     name: "Accounts Receivable",
     tag: "AR",
     Icon: Wallet,
-    img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1563986768609-322da13575f3-w800.webp",
     h: "h-72",
   },
   {
     name: "Payroll",
     tag: "PAY",
     Icon: Landmark,
-    img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1521791136064-7986c2920216-w800.webp",
     h: "h-80",
   },
   {
     name: "Bank Reconciliation",
     tag: "REC",
     Icon: Scale,
-    img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1526304640581-d334cdbbf45e-w800.webp",
     h: "h-64",
   },
   {
     name: "Financial Reporting",
     tag: "RPT",
     Icon: FileText,
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1551288049-bebda4e38f71-w800.webp",
     h: "h-72",
   },
   {
     name: "Budgeting & FP&A",
     tag: "FP&A",
     Icon: LineChart,
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1460925895917-afdab827c52f-w800.webp",
     h: "h-80",
   },
   {
     name: "Tax Prep Support",
     tag: "TAX",
     Icon: Percent,
-    img: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1586486855514-8c633cc6fd38-w800.webp",
     h: "h-64",
   },
   {
     name: "Cash Flow Management",
     tag: "CASH",
     Icon: Coins,
-    img: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=800&q=80",
+    img: "/images/stock/1579621970795-87facc2f976d-w800.webp",
     h: "h-72",
   },
 ];
@@ -225,13 +225,13 @@ const process = [
 // Staff augmentation - core services, rendered as image cards matching the
 // home-page industries design.
 const coreServices: { title: string; desc: string; img: string }[] = [
-  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision making.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=800&h=1000&q=80" },
-  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&h=1000&q=80" },
+  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "/images/stock/1450101499163-c8848c66ca85-w800x1000.webp" },
+  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "/images/stock/1454165804606-c3d57bc86b40-w800x1000.webp" },
+  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision making.", img: "/images/stock/1551288049-bebda4e38f71-w800x1000.webp" },
+  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp" },
+  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "/images/stock/1521791136064-7986c2920216-w800x1000.webp" },
+  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "/images/stock/1586486855514-8c633cc6fd38-w800x1000.webp" },
+  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", img: "/images/stock/1526304640581-d334cdbbf45e-w800x1000.webp" },
 ];
 
 const whyPoints = ["Process improvement", "Cost efficiency", "Remote accountants"];
@@ -554,9 +554,10 @@ export default function FinancePage() {
       {/* ===================== HERO ===================== */}
       <PageBanner
         image="/banners/finance.png"
+        h1="Finance and Accounting Outsourcing for US Companies"
         titleLines={["Close", "The"]}
         rotateWords={["Books", "Gap", "Quarter", "Year"]}
-        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and up to 40% lower back office cost."
+        subtitle="Vetted accountants handle your bookkeeping, AP/AR, payroll, and reporting, accurate numbers, faster closes, and a lower back office cost than hiring in house."
         primary={{ label: "Talk to finance", href: "/contact" }}
         secondary={{ label: "Book free consultation", href: BOOKING_URL, external: true, className: PINK_CTA_CLASS }}
       />
@@ -636,7 +637,7 @@ export default function FinancePage() {
               <div className="relative h-full min-h-[380px] overflow-hidden rounded-2xl ring-1 ring-black/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80"
+                  src="/images/stock/1600880292203-757bb62b4baf-w1000.webp"
                   alt="Finance and accounting team collaborating"
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover"

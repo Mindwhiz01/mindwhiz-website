@@ -62,6 +62,7 @@ import {
   certifications,
   footerGroups,
 } from "@/lib/content";
+import { claims } from "@/lib/claims";
 import { posts } from "@/lib/blog";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
@@ -383,10 +384,11 @@ function StatCard({
   );
 }
 
-// Growth bar chart - bars rise on scroll, with a CAGR pill, like the reference.
+// Growth bar chart - bars rise on scroll. Decorative only (aria-hidden): the
+// pill states a fact we can stand behind (founding year) rather than an
+// unverifiable growth rate.
 function GrowthChart() {
   const bars = [
-    { y: "2019", h: 26 },
     { y: "2020", h: 33 },
     { y: "2021", h: 42 },
     { y: "2022", h: 52 },
@@ -408,11 +410,11 @@ function GrowthChart() {
       <CardCornerArrow bg="#ffffff" accent="#9CCC3C" corner="top-left" />
 
       <span className="absolute right-6 top-6 rounded-full bg-white px-4 py-1.5 text-[11px] font-semibold text-black sm:right-8 sm:top-8">
-        34% CAGR
+        Growing since {claims.foundedYear}
       </span>
 
       <div className="relative p-6 pb-8 pt-28 sm:p-8 sm:pb-10 sm:pt-28">
-        <div className="flex h-56 items-end gap-1.5 sm:gap-2.5">
+        <div aria-hidden="true" className="flex h-56 items-end gap-1.5 sm:gap-2.5">
           {bars.map((b, i) => (
             <motion.div
               key={b.y}
@@ -510,10 +512,10 @@ function cityClock(tz: string, now: Date | null) {
 }
 
 const studioStats = [
-  { value: "65", label: "Engineers in Lahore" },
+  { value: claims.teamSize, label: "Engineers in Lahore" },
   { value: "3", label: "Countries, one team" },
   { value: "24/7", label: "Always-on coverage" },
-  { value: "2020", label: "Building since" },
+  { value: claims.foundedYear, label: "Building since" },
 ];
 
 function StudioClockSection() {
@@ -544,9 +546,9 @@ function StudioClockSection() {
                 Hybrid staffing, always on
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-black">
-                Sixty five engineers headquartered in Lahore, with client facing
-                offices in the UK and the USA. Building since 2020. Somewhere,
-                the studio is always at work.
+                More than 65 engineers in our Lahore studio, serving clients
+                in the USA and the UK on shifts that match their working day.
+                Building since {claims.foundedYear}. Somewhere, the studio is always at work.
               </p>
             </div>
 
@@ -1405,7 +1407,7 @@ function CaseCard({
               ) : cs.logo ? (
                 <div className="pointer-events-none absolute inset-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cs.logo} alt="" aria-hidden className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
+                  <img src={cs.logo} alt={`${cs.client} project screenshot`} className="h-full w-full object-cover drop-shadow-[0_4px_18px_rgba(0,0,0,0.55)]" />
                 </div>
               ) : null}
               <div className="relative flex-1" />
@@ -1443,13 +1445,13 @@ function CaseRecordSection() {
                   The case <span style={{ color: "#ed1164" }}>record</span>
                 </h2>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55">
-                  Three engagements delivered since 2025. Every entry below is on
-                  file, with the thesis exactly as presented.
+                  {caseStudies.length} published engagements since 2025. Every entry
+                  below is on file, with the thesis exactly as presented.
                 </p>
               </div>
               <div className="space-y-1.5 text-left text-[11px] uppercase tracking-[0.18em] text-white/40 lg:text-right">
                 <p>Record of client engagements</p>
-                <p>00{caseStudies.length} entries</p>
+                <p>{String(caseStudies.length).padStart(3, "0")} entries</p>
                 <p>2025 to 2026</p>
               </div>
             </div>
@@ -1681,11 +1683,11 @@ const faqs: Faq[] = [
   },
   {
     q: "How much can US businesses save by outsourcing to MindWhiz?",
-    a: "Most US clients cut operating costs by 40 to 60 percent versus hiring in house, because pricing is per user and scales with headcount. You get vetted talent without US salary, benefits, and overhead, whether you are a ten person startup or a multisite company.",
+    a: `Savings are typically ${claims.savingsRangeWords} compared with hiring the same role in house in the US, once salary, benefits, recruiting and overhead are counted. The exact figure depends on the role and seniority, so we quote per role before you commit.`,
   },
   {
     q: "Do your teams work in US time zones (EST, CST, PST)?",
-    a: "Yes. Coverage is aligned to your working hours with live overlap for US teams across Eastern, Central, and Pacific time, and continuous 24/7 cover available where operations require it. Your team gets a US point of contact.",
+    a: "Yes, by shift rather than by location. Lahore is 9 hours ahead of US Eastern and 12 ahead of Pacific, so US-facing staff work an evening or night shift in Pakistan: 8 am to 5 pm Eastern is 5 pm to 2 am in Lahore. 24/7 services run on rotating shifts. The full shift table is on our US page.",
   },
   {
     q: "Is my data secure and are you SOC 2 and HIPAA aware?",
@@ -1693,7 +1695,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How fast can we get started and how does pricing work?",
-    a: "Book a free consultation and we come back with a scoped plan and clear per user pricing, usually within one US business day. Most staff augmentation roles are deployed in about 10 days, with no long hiring cycles and no obligation to proceed.",
+    a: `Book a free consultation and we come back with a scoped plan and clear per role pricing, usually within one US business day. Most staff augmentation roles start in ${claims.deployTime}, with no long hiring cycles and no obligation to proceed.`,
   },
 ];
 
@@ -1768,25 +1770,26 @@ export default function SystemLimitedHome() {
           style={{ y: heroTextY, opacity: heroFade }}
           className="relative max-w-5xl px-6 pt-16 text-left sm:px-10 lg:px-16"
         >
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/75 backdrop-blur">
-              {hero.eyebrow}
-            </span>
-          </div>
-          <h1
+          {/* The H1 carries the page's keyword statement; the big slogan
+              below is a styled paragraph so the heading is not just
+              "Scale Your Teams". */}
+          <h1 className="inline-flex max-w-xl items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur sm:text-sm">
+            IT Staff Augmentation and Offshore Teams for US Companies
+          </h1>
+          <p
             className="mt-6 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-white"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Scale
+            Scale{" "}
             <br />
-            Your
+            Your{" "}
             <br />
             <RotatingWord
               words={["Teams", "Ops", "Reach", "Impact"]}
               interval={2200}
               className="text-[#9CCC3C]"
             />
-          </h1>
+          </p>
           <div className="mt-9 flex flex-wrap items-center justify-start gap-4">
             <ArrowCta href={hero.primaryCta.href} label={hero.primaryCta.label} />
             <Cta href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="outline" />

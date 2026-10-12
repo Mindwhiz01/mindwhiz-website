@@ -8,7 +8,15 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   category: string;
-  date: string; // ISO
+  date: string; // ISO, first published
+  /** ISO date of the last substantive edit; shown as "Updated" and used for dateModified + sitemap lastmod. */
+  updated?: string;
+  /** 140-155 char meta description when the excerpt is too long for a SERP snippet. */
+  metaDescription?: string;
+  /** Who fact-checked the post (role-level, e.g. "MindWhiz security delivery lead"). */
+  reviewedBy?: string;
+  /** References for the statistics used in the post. */
+  sources?: { label: string; href: string }[];
   readTime: string;
   author: { name: string; role: string; avatar: string };
   image: string;
@@ -28,6 +36,8 @@ export type BlogPost = {
     | { type: "list"; items: string[] }
     // Inline image with keyword-rich alt text (helps readers + image SEO).
     | { type: "img"; src: string; alt: string; caption?: string }
+    // Comparison table (first column is the row header).
+    | { type: "table"; caption?: string; head: string[]; rows: string[][] }
     // In-article link/CTA, used for internal links (SEO) and jump-to-contact.
     | { type: "cta"; text: string; href: string; label: string }
   >;
@@ -37,11 +47,16 @@ export type BlogPost = {
 // named authors. This is the one place the byline is defined; static posts and
 // admin/Supabase posts both resolve to it, so a stray author_name in the
 // database cannot put someone's name on an article.
+//
+// E-E-A-T (audit C5): the byline links to a visible editorial bio, posts show
+// "Updated" dates, a reviewer and cited sources. Switching to named personal
+// bylines is a business decision; add a `people` map here if that changes.
 export const EDITORIAL_AUTHOR = {
-  name: "MindWhiz Team",
-  role: "Editorial",
-  avatar:
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=200&q=80",
+  name: "MindWhiz Editorial Team",
+  role: "IT, security and staffing practitioners",
+  avatar: "/mindwhiz-mark.png",
+  bio: "Written by the engineers, analysts and delivery leads at MindWhiz, who have run offshore IT, security and back-office teams for US and UK clients since 2020. Posts are fact-checked by the delivery lead for the topic and updated when the facts change.",
+  url: "/about",
 } as const;
 
 const authors = { team: EDITORIAL_AUTHOR };
@@ -60,17 +75,26 @@ export const posts: BlogPost[] = [
     slug: "staff-augmentation-pros-and-cons",
     title: "Staff Augmentation Pros and Cons: A 2026 Buyer's Guide",
     excerpt:
-      "The real pros and cons of staff augmentation in 2026: what it costs, where it beats outsourcing and managed services, the risks nobody warns you about, and how to neutralise them.",
+      "The real pros and cons of staff augmentation in 2026: what it costs, where it beats outsourcing and managed services, the risks nobody warns you about, and how to neutralize them.",
+    metaDescription:
+      "Staff augmentation pros and cons for 2026: real costs vs a US hire (BLS data), risks, and how it compares with outsourcing and managed services.",
     category: "Staffing",
     date: "2026-08-06",
+    updated: "2026-10-12",
+    reviewedBy: "MindWhiz staff augmentation delivery lead",
+    sources: [
+      { label: "BLS Occupational Outlook Handbook: Software Developers (median wage, May 2025)", href: "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm" },
+      { label: "BLS Occupational Outlook Handbook: Information Security Analysts (median wage, May 2025)", href: "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" },
+      { label: "BLS Employer Costs for Employee Compensation (benefits = 30.0% of compensation, June 2026)", href: "https://www.bls.gov/news.release/ecec.nr0.htm" },
+    ],
     readTime: "12 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1522071820081-009f0129c71c-w1400.webp",
     faqs: [
       {
         q: "What are the main pros and cons of staff augmentation?",
-        a: "The main pros of staff augmentation are speed to hire (weeks instead of months), access to specialised skills, full control over direction and code, flexible scaling without severance, and 30-60% lower cost than local full-time hiring. The main cons are management overhead you keep, onboarding and ramp-up time, knowledge walking out when a contract ends, weaker cultural attachment, security and IP exposure, and cost inefficiency if you keep augmented staff for years on work that should be a permanent hire.",
+        a: "The main pros of staff augmentation are speed to hire (weeks instead of months), access to specialized skills, full control over direction and code, flexible scaling without severance, and 30-60% lower cost than local full-time hiring. The main cons are management overhead you keep, onboarding and ramp-up time, knowledge walking out when a contract ends, weaker cultural attachment, security and IP exposure, and cost inefficiency if you keep augmented staff for years on work that should be a permanent hire.",
       },
       {
         q: "What is staff augmentation in simple terms?",
@@ -102,7 +126,7 @@ export const posts: BlogPost[] = [
       },
     ],
     body: [
-      { type: "p", text: "The pros and cons of staff augmentation come down to a single trade: you get speed, specialised skills, and flexible cost, and in exchange you keep the management burden. Understand that trade and the model is one of the most efficient ways to scale a team in 2026. Misunderstand it, and you end up paying contractor rates for people nobody is actually directing." },
+      { type: "p", text: "The pros and cons of staff augmentation come down to a single trade: you get speed, specialized skills, and flexible cost, and in exchange you keep the management burden. Understand that trade and the model is one of the most efficient ways to scale a team in 2026. Misunderstand it, and you end up paying contractor rates for people nobody is actually directing." },
 
       { type: "p", text: "Quick answer: the pros of staff augmentation are faster hiring, access to niche skills, full control of the work, elastic scaling, and 30-60% lower cost than local full-time hiring. The cons are the management overhead you retain, ramp-up time, knowledge loss at contract end, weaker cultural attachment, security and IP exposure, and poor economics if you use it for permanent roles." },
 
@@ -110,7 +134,7 @@ export const posts: BlogPost[] = [
         "Pro: roles start in about 10 days instead of the 8-14 weeks a direct technical hire takes.",
         "Pro: you rent a specific skill for exactly as long as the roadmap needs it.",
         "Pro: you keep architectural control, code ownership, and day-to-day direction.",
-        "Con: you still have to manage, review, and prioritise the extra people.",
+        "Con: you still have to manage, review, and prioritize the extra people.",
         "Con: knowledge leaves with the contract unless documentation is a contractual requirement.",
         "Con: external system access widens your security and IP surface.",
         "Verdict: ideal for variable workloads and skill gaps; wrong for fully scoped projects or permanent core roles.",
@@ -125,14 +149,14 @@ export const posts: BlogPost[] = [
         { text: " are built around exactly that pattern, with role-ready specialists who plug into existing workflows rather than needing a project built around them." },
       ] },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80", alt: "An augmented specialist working alongside an in-house team in a planning session, illustrating how staff augmentation integrates with existing processes", caption: "Staff augmentation adds people to your team; the direction of the work stays with you." },
+      { type: "img", src: "/images/stock/1552664730-d307ca884978-w1400.webp", alt: "An augmented specialist working alongside an in-house team in a planning session, illustrating how staff augmentation integrates with existing processes", caption: "Staff augmentation adds people to your team; the direction of the work stays with you." },
 
       { type: "h2", text: "The pros of staff augmentation" },
       { type: "p", text: "The advantages are real, and they are mostly about time and optionality rather than headline rates." },
 
       { type: "list", items: [
         "Speed: a shortlist in days and a start in roughly 10 days, because candidates come from an existing bench instead of a fresh recruitment cycle.",
-        "Specialised skills on demand: hire a Kubernetes specialist, a SOC analyst, or a construction estimator for the six months you actually need them.",
+        "Specialized skills on demand: hire a Kubernetes specialist, a SOC analyst, or a construction estimator for the six months you actually need them.",
         "Full control: you set priorities, run reviews, and own the architecture, the repositories, and the output.",
         "Elastic scaling: ramp up for a launch and down after delivery without severance, restructuring, or idle capacity on the payroll.",
         "Lower total cost: no recruitment fees, benefits load, equipment, or payroll tax, and offshore rates 30-60% below equivalent US and UK salaries.",
@@ -146,13 +170,13 @@ export const posts: BlogPost[] = [
 
       { type: "quote", text: "You are not buying cheaper people. You are buying the right to change your mind every quarter without a redundancy process." },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1400&q=80", alt: "A manager reviewing delivery priorities with a contracted engineer, showing the management overhead that remains a key disadvantage of staff augmentation", caption: "The main disadvantage of staff augmentation: the management burden never transfers to the provider." },
+      { type: "img", src: "/images/stock/1600880292089-90a7e086ee0c-w1400.webp", alt: "A manager reviewing delivery priorities with a contracted engineer, showing the management overhead that remains a key disadvantage of staff augmentation", caption: "The main disadvantage of staff augmentation: the management burden never transfers to the provider." },
 
       { type: "h2", text: "The cons of staff augmentation" },
       { type: "p", text: "Every one of these is real, and every one of them is manageable. The mistake is pretending they do not exist until month three." },
 
       { type: "list", items: [
-        "Management overhead stays with you: augmented staff need direction, review, and prioritisation from your leads.",
+        "Management overhead stays with you: augmented staff need direction, review, and prioritization from your leads.",
         "Ramp-up time is not zero: even a strong specialist needs context on your domain, codebase, and conventions.",
         "Knowledge walks out at contract end unless documentation is a contractual deliverable, not a good intention.",
         "Weaker cultural attachment: contract staff are less likely to volunteer for the unglamorous work that holds a team together.",
@@ -169,9 +193,9 @@ export const posts: BlogPost[] = [
         { text: "onboarding a remote specialist", href: "/blog/faster-onboarding-remote-specialists" },
         { text: " as a repeatable product rather than an ad-hoc scramble." },
       ] },
-      { type: "p", text: "Security exposure deserves more attention than it usually gets. Augmented staff should be onboarded with the same rigour as employees: least-privilege access, MFA everywhere, managed or hardened devices, signed NDAs and IP assignment, and access revocation on the last day rather than the last quarter. A provider that cannot describe its offboarding process in detail is telling you something important." },
+      { type: "p", text: "Security exposure deserves more attention than it usually gets. Augmented staff should be onboarded with the same rigor as employees: least-privilege access, MFA everywhere, managed or hardened devices, signed NDAs and IP assignment, and access revocation on the last day rather than the last quarter. A provider that cannot describe its offboarding process in detail is telling you something important." },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80", alt: "A team comparing staff augmentation, project outsourcing and managed services engagement models on a whiteboard", caption: "Staff augmentation vs outsourcing vs managed services: the deciding question is who owns the outcome." },
+      { type: "img", src: "/images/stock/1454165804606-c3d57bc86b40-w1400.webp", alt: "A team comparing staff augmentation, project outsourcing and managed services engagement models on a whiteboard", caption: "Staff augmentation vs outsourcing vs managed services: the deciding question is who owns the outcome." },
 
       { type: "h2", text: "Staff augmentation vs outsourcing vs managed services" },
       { type: "p", text: "These three models get used interchangeably in sales conversations and they are not interchangeable at all. The clean way to choose is to ask who owns the outcome." },
@@ -182,9 +206,17 @@ export const posts: BlogPost[] = [
         "Managed services: the vendor owns an ongoing service level, such as 24/7 monitoring or helpdesk. You get an SLA and a bill, not a headcount. Best for continuous operational functions you do not want to run.",
       ] },
 
+      { type: "table", caption: "Staff augmentation vs project outsourcing vs managed services vs direct hire", head: ["Factor", "Staff augmentation", "Project outsourcing", "Managed services", "Direct hire"], rows: [
+        ["Who owns the outcome", "You", "Vendor (per SOW)", "Vendor (per SLA)", "You"],
+        ["What you buy", "People and capacity", "A deliverable", "A service level", "An employee"],
+        ["Pricing", "Monthly per person", "Fixed bid or T&M", "Per user, device or tier", "Salary + benefits + fees"],
+        ["Time to start", "About 10 business days", "After scoping", "2-6 weeks onboarding", "Often 2-3 months"],
+        ["Flexibility", "High: scale monthly", "Low: change orders", "Medium: scope tiers", "Low: severance"],
+        ["Best for", "Evolving roadmaps, skill gaps", "Self-contained builds", "24/7 operations", "Core permanent roles"],
+      ] },
       { type: "p", text: "Cost comparison follows the same logic. Staff augmentation is billed per person per month, so cost is predictable and scales linearly with headcount. Outsourcing is billed per project, which caps your exposure but also caps your flexibility, since every change is a change order. Managed services are billed per user, per device, or per service tier, which is the most predictable of the three and the least flexible about scope." },
       { type: "rp", runs: [
-        { text: "Plenty of organisations run two or three models at once, and that is usually the right answer: augmented engineers building the product, and a " },
+        { text: "Plenty of organizations run two or three models at once, and that is usually the right answer: augmented engineers building the product, and a " },
         { text: "managed 24/7 IT helpdesk", href: "/services/it-helpdesk-24-7" },
         { text: " handling support so those engineers never get pulled into ticket triage. The models complement each other far better than they compete." },
       ] },
@@ -196,7 +228,7 @@ export const posts: BlogPost[] = [
         "You have technical leadership with the capacity to direct and review additional people.",
         "You need a specific skill for a defined period rather than forever.",
         "Demand is variable: launches, seasonal peaks, bid cycles, audits, migrations.",
-        "You want the knowledge and the code to stay inside your organisation.",
+        "You want the knowledge and the code to stay inside your organization.",
         "Hiring is the bottleneck, and the cost of waiting exceeds the cost of the contract.",
       ] },
       { type: "p", text: "Say no when the work is fully scoped and self-contained, when you want someone else accountable for an SLA, when there is nobody internally to direct the work, or when the role is genuinely permanent and strategic. In that last case, use augmentation to bridge the gap while you hire properly, and be explicit that the bridge has an end date." },
@@ -208,13 +240,20 @@ export const posts: BlogPost[] = [
       ] },
 
       { type: "h2", text: "What staff augmentation actually costs" },
-      { type: "p", text: "Pricing is a monthly rate per person, set by role and seniority, and it should include employment, payroll, benefits, equipment, management of the individual, and replacement cover. Compare it against fully loaded cost of employment rather than base salary: recruitment fees of 15-25% of first-year salary, benefits and payroll tax typically adding 20-30%, equipment, software seats, and the several weeks of manager time a hiring process consumes." },
+      { type: "p", text: "Pricing is a monthly rate per person, set by role and seniority, and it should include employment, payroll, benefits, equipment, management of the individual, and replacement cover. Compare it against the fully loaded cost of employment rather than base salary: agency recruitment fees (usually a percentage of first-year salary), benefits, which the US Bureau of Labor Statistics puts at 30% of total private-industry compensation (about 43% on top of wages), equipment, software seats, and the weeks of manager time a hiring process consumes." },
+      { type: "table", caption: "US median wages (BLS, May 2025) and fully loaded cost including benefits", head: ["Role", "US median wage", "Approx. cost incl. benefits"], rows: [
+        ["Software developer", "$135,980", "~$194,000"],
+        ["Information security analyst", "$129,180", "~$185,000"],
+        ["Network / systems administrator", "$99,130", "~$142,000"],
+        ["Accountant / auditor", "$83,680", "~$120,000"],
+        ["IT user support specialist", "$61,860", "~$88,000"],
+      ] },
       { type: "p", text: "Offshore delivery is where the difference becomes structural rather than marginal, with vetted specialists working your hours at a fraction of a comparable local salary. But the number to watch is not the rate, it is the time-to-productivity. A cheaper specialist who takes two months to contribute costs more than a better one who ships in week two." },
       { type: "p", text: "Watch for four things when comparing quotes: whether replacement terms are written down before the engagement starts, whether the time-zone overlap is contracted or merely promised, whether documentation is a deliverable, and whether there is a named delivery lead who is accountable when something slips. Providers who resist putting any of those in writing tend to resist a lot of other things later." },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80", alt: "A distributed team on a video standup with overlapping working hours, the practice that removes most time zone risk from offshore staff augmentation", caption: "Contract the time-zone overlap in hours. Most offshore staff augmentation problems are scheduling problems." },
+      { type: "img", src: "/images/stock/1521737711867-e3b97375f902-w1400.webp", alt: "A distributed team on a video standup with overlapping working hours, the practice that removes most time zone risk from offshore staff augmentation", caption: "Contract the time-zone overlap in hours. Most offshore staff augmentation problems are scheduling problems." },
 
-      { type: "h2", text: "How to neutralise the cons: a practical checklist" },
+      { type: "h2", text: "How to neutralize the cons: a practical checklist" },
       { type: "p", text: "Almost every failure mode in staff augmentation is designed out in the first two weeks. Run this list before the engagement starts, not after the first retro." },
       { type: "list", items: [
         "Write the role brief as outcomes, not a skills list: what should be measurably different in 90 days?",
@@ -248,6 +287,8 @@ export const posts: BlogPost[] = [
   {
     slug: "web-development-trends-2026",
     title: "Web Development Trends & Services for 2026",
+    metaDescription:
+      "Web development trends for 2026 that US businesses should act on: AI-built sites, AEO and GEO, Core Web Vitals and conversion-first design.",
     excerpt:
       "Web development trends 2026 every US and UK business should act on now: AI-built sites, AEO and GEO, Core Web Vitals and conversion-first design that ranks.",
     category: "Web & Design",
@@ -255,7 +296,7 @@ export const posts: BlogPost[] = [
     readTime: "9 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1547658719-da2b51169166-w1400.webp",
     featured: true,
     faqs: [
       {
@@ -304,7 +345,7 @@ export const posts: BlogPost[] = [
         { text: " we deliver at MindWhiz, with clean, maintainable code and AI-driven features like smart search, chat assistants, and dynamic recommendations built in from day one." },
       ] },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80", alt: "Developer using AI-assisted web development to build a custom website for a US and UK business", caption: "AI accelerates delivery, but skilled engineers still own architecture, security, and quality." },
+      { type: "img", src: "/images/stock/1498050108023-c5249f4df085-w1400.webp", alt: "Developer using AI-assisted web development to build a custom website for a US and UK business", caption: "AI accelerates delivery, but skilled engineers still own architecture, security, and quality." },
 
       { type: "h2", text: "2. AEO and GEO: optimizing for answer and AI engines" },
       { type: "p", text: "Classic SEO gets you into Google's ten blue links. Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) get you into the answer itself: featured snippets, voice results, and the responses that ChatGPT, Gemini, and Perplexity read aloud or cite. This is one of the biggest web development trends 2026 has to offer, because it reaches buyers before they ever reach a search results page." },
@@ -316,7 +357,7 @@ export const posts: BlogPost[] = [
       ] },
       { type: "quote", text: "In 2026, the goal isn't just to rank on Google. It's to be the answer the AI gives." },
 
-      { type: "img", src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80", alt: "Core Web Vitals and website performance analytics dashboard for a fast-loading website", caption: "Core Web Vitals map directly to rankings, bounce rate, and conversions." },
+      { type: "img", src: "/images/stock/1551288049-bebda4e38f71-w1400.webp", alt: "Core Web Vitals and website performance analytics dashboard for a fast-loading website", caption: "Core Web Vitals map directly to rankings, bounce rate, and conversions." },
 
       { type: "h2", text: "3. Core Web Vitals and performance still rule" },
       { type: "p", text: "Speed is not a vanity metric. Core Web Vitals, which measure loading, interactivity, and visual stability, are a confirmed Google ranking signal, and they map directly to bounce rate and conversions. In the US and UK, where mobile traffic and paid ads are expensive, every second of load time you save protects both rankings and ad spend." },
@@ -369,7 +410,7 @@ export const posts: BlogPost[] = [
     readTime: "7 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1552664730-d307ca884978-w1400.webp",
     body: [
       { type: "p", text: "For years, the choice was binary: hire expensive in house teams, or hand everything to an offshore vendor and hope for the best. Hybrid staffing rejects that tradeoff." },
       { type: "h2", text: "What hybrid staffing actually means" },
@@ -394,7 +435,7 @@ export const posts: BlogPost[] = [
     readTime: "6 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1558494949-ef010cbdcc31-w1400.webp",
     body: [
       { type: "p", text: "Uptime isn't luck. Behind every reliable system is a network operations center quietly catching problems before your users ever notice them." },
       { type: "h2", text: "The three layers of coverage" },
@@ -417,7 +458,7 @@ export const posts: BlogPost[] = [
     readTime: "5 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1451187580459-43490279c0fa-w1400.webp",
     body: [
       { type: "p", text: "Most cloud waste isn't dramatic, it's a thousand small inefficiencies. Fixing them is safer and more rewarding than a risky rearchitecture." },
       { type: "list", items: [
@@ -440,7 +481,7 @@ export const posts: BlogPost[] = [
     readTime: "4 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1543269865-cbf427effbad-w1400.webp",
     body: [
       { type: "p", text: "Culture doesn't happen by accident when your team spans continents. It's built deliberately, in the small daily rituals." },
       { type: "h2", text: "Async by default, human always" },
@@ -458,7 +499,7 @@ export const posts: BlogPost[] = [
     readTime: "6 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1550751827-4bd374c3f58b-w1400.webp",
     body: [
       { type: "p", text: "The headlines are about sophisticated attacks. The reality is that most breaches start with a missed patch or a reused password." },
       { type: "list", items: [
@@ -480,7 +521,7 @@ export const posts: BlogPost[] = [
     readTime: "5 min read",
     author: authors.team,
     image:
-      "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1400&q=80",
+      "/images/stock/1600880292089-90a7e086ee0c-w1400.webp",
     body: [
       { type: "p", text: "A specialist who takes two months to get productive isn't augmenting your team, they're a tax on it. We designed our onboarding to avoid exactly that." },
       { type: "h2", text: "The two week runway" },

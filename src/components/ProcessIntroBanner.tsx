@@ -1,21 +1,13 @@
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Shared "How it works" style intro banner used above every pinned process
 // deck (ServiceDetailPage, ProcessScroll, and the web-services page): a
 // brand-pink gradient card with the heading + optional line on the left and
 // the CTA + customer social proof on the right.
 //
-// PLACEHOLDER social proof - swap these avatar photos and the rating/count
-// for real customer data before relying on them as factual claims.
-const CUSTOMER_AVATARS = [
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=3&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=3&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=facearea&facepad=3&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?auto=format&fit=facearea&facepad=3&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=3&w=96&h=96&q=80",
-];
-const CUSTOMER_RATING = "5/5";
-const CUSTOMER_COUNT = "1,200 customers";
+// The old "5/5 (1,200 customers)" rating with stock-photo avatars was
+// placeholder social proof and has been removed (SEO audit C2). Re-add a
+// rating only when it links to a verifiable source such as Clutch or Google.
 
 export function ProcessIntroBanner({
   title,
@@ -61,27 +53,6 @@ export function ProcessIntroBanner({
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
-            {/* customer social proof - avatar cluster + rating */}
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-3">
-                {CUSTOMER_AVATARS.map((src, i) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={i}
-                    src={src}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                  />
-                ))}
-              </div>
-              <div className="flex items-center gap-1.5 text-xs text-white/90">
-                <Star className="h-3.5 w-3.5 fill-[#9CCC3C] text-[#9CCC3C]" />
-                <span className="font-bold">{CUSTOMER_RATING}</span>
-                <span className="text-white/70">({CUSTOMER_COUNT})</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

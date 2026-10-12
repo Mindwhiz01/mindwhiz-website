@@ -86,7 +86,7 @@ function Hero() {
       <div className="absolute inset-[10px] overflow-hidden rounded-3xl bg-[#383838]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1900&q=80"
+          src="/images/stock/1522071820081-009f0129c71c-w1900.webp"
           alt="The MindWhiz team"
           className="h-full w-full object-cover"
         />
@@ -152,7 +152,7 @@ function PhilosophySection() {
         <Reveal className="order-2 lg:order-1">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
+            src="/images/stock/1600880292203-757bb62b4baf-w1200.webp"
             alt="MindWhiz team collaborating"
             className="aspect-[4/3] w-full rounded-[2rem] object-cover"
           />
@@ -197,22 +197,22 @@ function PhilosophySection() {
 // ---------------------------------------------------------------------------
 const galleryTiles = [
   {
-    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    src: "/images/stock/1511578314322-379afb476865-w1200.webp",
     caption: "Year end team celebration",
     span: "sm:col-span-2 sm:row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80",
+    src: "/images/stock/1543269865-cbf427effbad-w800.webp",
     caption: "Teamwork & collaboration",
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80",
+    src: "/images/stock/1531058020387-3be344556be6-w800.webp",
     caption: "Festive celebrations",
     span: "",
   },
   {
-    src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80",
+    src: "/images/stock/1528605248644-14dd04022da1-w1200.webp",
     caption: "One big office family",
     span: "sm:col-span-2",
   },
@@ -423,21 +423,21 @@ const spotlights = [
       "MindWhiz gave me the chance to grow from a helpdesk agent into a shift lead in under two years. The support is real.",
     name: "Ayesha K.",
     role: "Team Lead, IT Support · Lahore",
-    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80",
+    img: "/images/stock/1573497019940-1c28c88b4f3e-w400.webp",
   },
   {
     quote:
       "Working across time zones just works here. I feel as connected to the London team as the people sitting next to me.",
     name: "Daniel M.",
     role: "Cloud Engineer · Houston",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+    img: "/images/stock/1500648767791-00dcc994a43e-w400.webp",
   },
   {
     quote:
       "The year end party in Islamabad was unforgettable. It's the little things, being seen, celebrated, and part of the crew.",
     name: "Sara T.",
     role: "Finance Analyst · London",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+    img: "/images/stock/1580489944761-15a19d654956-w400.webp",
   },
 ];
 
