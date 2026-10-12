@@ -14,12 +14,12 @@ import { SLIDE_MS, useSlideSnap } from "@/lib/useSlideSnap";
 import { usePinnedActive } from "@/lib/usePinnedActive";
 
 const defaultImages = [
-  "/images/stock/1552664730-d307ca884978-w2000.webp",
-  "/images/stock/1454165804606-c3d57bc86b40-w2000.webp",
-  "/images/stock/1519389950473-47ba0277781c-w2000.webp",
-  "/images/stock/1551288049-bebda4e38f71-w2000.webp",
-  "/images/stock/1460925895917-afdab827c52f-w2000.webp",
-  "/images/stock/1517245386807-bb43f82c33c4-w2000.webp",
+  "/images/stock/operations-review.webp",
+  "/images/stock/team-setup.webp",
+  "/images/stock/integration.webp",
+  "/images/stock/scale-sustain.webp",
+  "/images/stock/rapid-scaling.webp",
+  "/images/stock/delivery-process-team-planning.webp",
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -54,7 +54,7 @@ function ProcessPanel({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
         src={images[i % images.length]}
-        alt={step.title}
+        alt={`${step.title} - MindWhiz`}
         initial={false}
         animate={{ scale: isActive ? 1 : 1.15 }}
         transition={{ duration: 1.1, ease: EASE }}

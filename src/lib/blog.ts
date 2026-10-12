@@ -90,7 +90,7 @@ export const posts: BlogPost[] = [
     readTime: "12 min read",
     author: authors.team,
     image:
-      "/images/stock/1522071820081-009f0129c71c-w1400.webp",
+      "/images/stock/staff-augmentation-pros-cons-buyers-guide.webp",
     faqs: [
       {
         q: "What are the main pros and cons of staff augmentation?",
@@ -149,7 +149,7 @@ export const posts: BlogPost[] = [
         { text: " are built around exactly that pattern, with role-ready specialists who plug into existing workflows rather than needing a project built around them." },
       ] },
 
-      { type: "img", src: "/images/stock/1552664730-d307ca884978-w1400.webp", alt: "An augmented specialist working alongside an in-house team in a planning session, illustrating how staff augmentation integrates with existing processes", caption: "Staff augmentation adds people to your team; the direction of the work stays with you." },
+      { type: "img", src: "/images/stock/hybrid-staffing-playbook-scaling-teams-without-overhead.webp", alt: "An augmented specialist working alongside an in-house team in a planning session, illustrating how staff augmentation integrates with existing processes", caption: "Staff augmentation adds people to your team; the direction of the work stays with you." },
 
       { type: "h2", text: "The pros of staff augmentation" },
       { type: "p", text: "The advantages are real, and they are mostly about time and optionality rather than headline rates." },
@@ -170,7 +170,7 @@ export const posts: BlogPost[] = [
 
       { type: "quote", text: "You are not buying cheaper people. You are buying the right to change your mind every quarter without a redundancy process." },
 
-      { type: "img", src: "/images/stock/1600880292089-90a7e086ee0c-w1400.webp", alt: "A manager reviewing delivery priorities with a contracted engineer, showing the management overhead that remains a key disadvantage of staff augmentation", caption: "The main disadvantage of staff augmentation: the management burden never transfers to the provider." },
+      { type: "img", src: "/images/stock/how-onboard-remote-specialist-under-two-weeks.webp", alt: "A manager reviewing delivery priorities with a contracted engineer, showing the management overhead that remains a key disadvantage of staff augmentation", caption: "The main disadvantage of staff augmentation: the management burden never transfers to the provider." },
 
       { type: "h2", text: "The cons of staff augmentation" },
       { type: "p", text: "Every one of these is real, and every one of them is manageable. The mistake is pretending they do not exist until month three." },
@@ -195,7 +195,7 @@ export const posts: BlogPost[] = [
       ] },
       { type: "p", text: "Security exposure deserves more attention than it usually gets. Augmented staff should be onboarded with the same rigor as employees: least-privilege access, MFA everywhere, managed or hardened devices, signed NDAs and IP assignment, and access revocation on the last day rather than the last quarter. A provider that cannot describe its offboarding process in detail is telling you something important." },
 
-      { type: "img", src: "/images/stock/1454165804606-c3d57bc86b40-w1400.webp", alt: "A team comparing staff augmentation, project outsourcing and managed services engagement models on a whiteboard", caption: "Staff augmentation vs outsourcing vs managed services: the deciding question is who owns the outcome." },
+      { type: "img", src: "/images/stock/team-comparing-staff-augmentation-project-outsourcing-managed.webp", alt: "A team comparing staff augmentation, project outsourcing and managed services engagement models on a whiteboard", caption: "Staff augmentation vs outsourcing vs managed services: the deciding question is who owns the outcome." },
 
       { type: "h2", text: "Staff augmentation vs outsourcing vs managed services" },
       { type: "p", text: "These three models get used interchangeably in sales conversations and they are not interchangeable at all. The clean way to choose is to ask who owns the outcome." },
@@ -251,7 +251,7 @@ export const posts: BlogPost[] = [
       { type: "p", text: "Offshore delivery is where the difference becomes structural rather than marginal, with vetted specialists working your hours at a fraction of a comparable local salary. But the number to watch is not the rate, it is the time-to-productivity. A cheaper specialist who takes two months to contribute costs more than a better one who ships in week two." },
       { type: "p", text: "Watch for four things when comparing quotes: whether replacement terms are written down before the engagement starts, whether the time-zone overlap is contracted or merely promised, whether documentation is a deliverable, and whether there is a named delivery lead who is accountable when something slips. Providers who resist putting any of those in writing tend to resist a lot of other things later." },
 
-      { type: "img", src: "/images/stock/1521737711867-e3b97375f902-w1400.webp", alt: "A distributed team on a video standup with overlapping working hours, the practice that removes most time zone risk from offshore staff augmentation", caption: "Contract the time-zone overlap in hours. Most offshore staff augmentation problems are scheduling problems." },
+      { type: "img", src: "/images/stock/mindwhiz-culture.webp", alt: "A distributed team on a video standup with overlapping working hours, the practice that removes most time zone risk from offshore staff augmentation", caption: "Contract the time-zone overlap in hours. Most offshore staff augmentation problems are scheduling problems." },
 
       { type: "h2", text: "How to neutralize the cons: a practical checklist" },
       { type: "p", text: "Almost every failure mode in staff augmentation is designed out in the first two weeks. Run this list before the engagement starts, not after the first retro." },
@@ -296,7 +296,7 @@ export const posts: BlogPost[] = [
     readTime: "9 min read",
     author: authors.team,
     image:
-      "/images/stock/1547658719-da2b51169166-w1400.webp",
+      "/images/stock/web-development-trends-services.webp",
     featured: true,
     faqs: [
       {
@@ -345,7 +345,7 @@ export const posts: BlogPost[] = [
         { text: " we deliver at MindWhiz, with clean, maintainable code and AI-driven features like smart search, chat assistants, and dynamic recommendations built in from day one." },
       ] },
 
-      { type: "img", src: "/images/stock/1498050108023-c5249f4df085-w1400.webp", alt: "Developer using AI-assisted web development to build a custom website for a US and UK business", caption: "AI accelerates delivery, but skilled engineers still own architecture, security, and quality." },
+      { type: "img", src: "/images/stock/developer-using-ai-assisted-web-development-build.webp", alt: "Developer using AI-assisted web development to build a custom website for a US and UK business", caption: "AI accelerates delivery, but skilled engineers still own architecture, security, and quality." },
 
       { type: "h2", text: "2. AEO and GEO: optimizing for answer and AI engines" },
       { type: "p", text: "Classic SEO gets you into Google's ten blue links. Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) get you into the answer itself: featured snippets, voice results, and the responses that ChatGPT, Gemini, and Perplexity read aloud or cite. This is one of the biggest web development trends 2026 has to offer, because it reaches buyers before they ever reach a search results page." },
@@ -357,7 +357,7 @@ export const posts: BlogPost[] = [
       ] },
       { type: "quote", text: "In 2026, the goal isn't just to rank on Google. It's to be the answer the AI gives." },
 
-      { type: "img", src: "/images/stock/1551288049-bebda4e38f71-w1400.webp", alt: "Core Web Vitals and website performance analytics dashboard for a fast-loading website", caption: "Core Web Vitals map directly to rankings, bounce rate, and conversions." },
+      { type: "img", src: "/images/stock/core-web-vitals-website-performance-analytics-dashboard.webp", alt: "Core Web Vitals and website performance analytics dashboard for a fast-loading website", caption: "Core Web Vitals map directly to rankings, bounce rate, and conversions." },
 
       { type: "h2", text: "3. Core Web Vitals and performance still rule" },
       { type: "p", text: "Speed is not a vanity metric. Core Web Vitals, which measure loading, interactivity, and visual stability, are a confirmed Google ranking signal, and they map directly to bounce rate and conversions. In the US and UK, where mobile traffic and paid ads are expensive, every second of load time you save protects both rankings and ad spend." },
@@ -410,7 +410,7 @@ export const posts: BlogPost[] = [
     readTime: "7 min read",
     author: authors.team,
     image:
-      "/images/stock/1552664730-d307ca884978-w1400.webp",
+      "/images/stock/hybrid-staffing-playbook-scaling-teams-without-overhead.webp",
     body: [
       { type: "p", text: "For years, the choice was binary: hire expensive in house teams, or hand everything to an offshore vendor and hope for the best. Hybrid staffing rejects that tradeoff." },
       { type: "h2", text: "What hybrid staffing actually means" },
@@ -435,7 +435,7 @@ export const posts: BlogPost[] = [
     readTime: "6 min read",
     author: authors.team,
     image:
-      "/images/stock/1558494949-ef010cbdcc31-w1400.webp",
+      "/images/stock/inside-24-7-noc-what-always-monitoring.webp",
     body: [
       { type: "p", text: "Uptime isn't luck. Behind every reliable system is a network operations center quietly catching problems before your users ever notice them." },
       { type: "h2", text: "The three layers of coverage" },
@@ -458,7 +458,7 @@ export const posts: BlogPost[] = [
     readTime: "5 min read",
     author: authors.team,
     image:
-      "/images/stock/1451187580459-43490279c0fa-w1400.webp",
+      "/images/stock/five-ways-cut-cloud-spend-30-without.webp",
     body: [
       { type: "p", text: "Most cloud waste isn't dramatic, it's a thousand small inefficiencies. Fixing them is safer and more rewarding than a risky rearchitecture." },
       { type: "list", items: [
@@ -481,7 +481,7 @@ export const posts: BlogPost[] = [
     readTime: "4 min read",
     author: authors.team,
     image:
-      "/images/stock/1543269865-cbf427effbad-w1400.webp",
+      "/images/stock/building-one-culture-across-three-time-zones.webp",
     body: [
       { type: "p", text: "Culture doesn't happen by accident when your team spans continents. It's built deliberately, in the small daily rituals." },
       { type: "h2", text: "Async by default, human always" },
@@ -494,12 +494,14 @@ export const posts: BlogPost[] = [
     title: "Endpoint security basics every small business gets wrong",
     excerpt:
       "The unglamorous fundamentals that stop most attacks, and why so many growing companies skip them until it's too late.",
+    metaDescription:
+      "Endpoint security basics for small businesses: patching, MFA, EDR, backups and device management, the fundamentals that stop most attacks.",
     category: "IT & Security",
     date: "2026-04-29",
     readTime: "6 min read",
     author: authors.team,
     image:
-      "/images/stock/1550751827-4bd374c3f58b-w1400.webp",
+      "/images/stock/endpoint-security-basics-every-small-business-gets.webp",
     body: [
       { type: "p", text: "The headlines are about sophisticated attacks. The reality is that most breaches start with a missed patch or a reused password." },
       { type: "list", items: [
@@ -521,7 +523,7 @@ export const posts: BlogPost[] = [
     readTime: "5 min read",
     author: authors.team,
     image:
-      "/images/stock/1600880292089-90a7e086ee0c-w1400.webp",
+      "/images/stock/how-onboard-remote-specialist-under-two-weeks.webp",
     body: [
       { type: "p", text: "A specialist who takes two months to get productive isn't augmenting your team, they're a tax on it. We designed our onboarding to avoid exactly that." },
       { type: "h2", text: "The two week runway" },

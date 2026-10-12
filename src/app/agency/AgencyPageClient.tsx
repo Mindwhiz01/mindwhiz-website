@@ -54,15 +54,15 @@ const clients = [
 const news = [
   {
     title: "Organic social vs paid social: stop choosing sides",
-    img: "/images/stock/1551836022-d5d88e9218df-w900.webp",
+    img: "/images/stock/organic-social-paid-social-stop-choosing-sides.webp",
   },
   {
     title: "A century of change: what growth marketing needs next",
-    img: "/images/stock/1552664730-d307ca884978-w900.webp",
+    img: "/images/stock/growth-workshops.webp",
   },
   {
     title: "Introducing MindWhiz Studio: the bond behind growth",
-    img: "/images/stock/1559136555-9303baea8ebd-w900.webp",
+    img: "/images/stock/creative-testing.webp",
   },
 ];
 
@@ -394,8 +394,8 @@ function AboutSection() {
         className="absolute bottom-10 right-10 hidden h-[18rem] w-[18rem] overflow-hidden rounded-[44%_56%_48%_52%/56%_44%_56%_44%] bg-[#1000d8] xl:block"
       >
         <img
-          src="/images/stock/1580894732444-8ecded7900cd-w800.webp"
-          alt=""
+          src="/images/stock/remote-specialist-managing-client-systems.webp"
+          alt="Remote IT specialist managing client systems"
           className="h-full w-full object-cover"
         />
       </motion.div>
@@ -437,7 +437,7 @@ function NewsSection() {
           <Reveal key={item.title} delay={index * 0.08}>
             <a href="#contact" className="group block">
               <div className="aspect-[0.86] overflow-hidden rounded-[48%_52%_45%_55%/8%_8%_16%_16%] bg-[#ff4b00]">
-                <img src={item.img} alt="" className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
+                <img src={item.img} alt={item.title} className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
               </div>
               <p className="mt-5 text-2xl font-extrabold uppercase leading-tight" style={{ fontFamily: "var(--font-display)" }}>
                 {item.title}

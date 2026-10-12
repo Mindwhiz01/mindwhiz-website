@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <a href="/" aria-label={`${company.name} home`} className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-9 w-9" />
+              <img src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-9 w-9" />
               <span
                 className="text-xl font-bold tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}

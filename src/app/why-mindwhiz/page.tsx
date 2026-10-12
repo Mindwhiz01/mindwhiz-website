@@ -205,25 +205,25 @@ const values: { title: string; desc: string; Icon: LucideIcon; image: string }[]
     title: "Compliant Workforce",
     desc: "Skilled talent aligned with regulations.",
     Icon: ShieldCheck,
-    image: "/images/stock/1521737604893-d14cc237f11d-w2000.webp",
+    image: "/images/stock/compliant-workforce.webp",
   },
   {
     title: "Seamless Scalability",
     desc: "Effortless workforce expansion and flexibility.",
     Icon: Zap,
-    image: "/images/stock/1522071820081-009f0129c71c-w2000.webp",
+    image: "/images/stock/seamless-scalability.webp",
   },
   {
     title: "Rapid Deployment",
     desc: "Accelerated project execution and delivery.",
     Icon: Rocket,
-    image: "/images/stock/1531482615713-2afd69097998-w2000.webp",
+    image: "/images/stock/rapid-deployment.webp",
   },
   {
     title: "Global Delivery",
     desc: "Worldwide solutions tailored for success.",
     Icon: Globe2,
-    image: "/images/stock/1451187580459-43490279c0fa-w2000.webp",
+    image: "/images/stock/global-delivery.webp",
   },
 ];
 
@@ -253,7 +253,7 @@ function ValuePanel({
       {/* big image fit to the screen */}
       <motion.img
         src={v.image}
-        alt={v.title}
+        alt={`${v.title} - why companies choose MindWhiz`}
         {...panelImageMotion(state)}
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -360,16 +360,16 @@ const testimonials = [
 
 const hubs = [
   { country: "United States", city: "Houston, Texas", flag: "/hubs/us.jpg", fit: "cover" },
-  { country: "United Kingdom", city: "London", flag: "/images/stock/1513635269975-59663e0ac1ad-w640x860.webp", fit: "cover" },
+  { country: "United Kingdom", city: "London", flag: "/images/stock/united-kingdom-london.webp", fit: "cover" },
   { country: "Pakistan", city: "Lahore head office and delivery center", flag: "/hubs/pk.jpg", fit: "cover" },
 ];
 
 const offerings = [
-  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "/images/stock/1558494949-ef010cbdcc31-w640x860.webp" },
-  { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "/images/stock/1521737604893-d14cc237f11d-w640x860.webp" },
-  { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "/images/stock/1541888946425-d81bb19240f5-w640x860.webp" },
-  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO level support from experienced finance professionals.", img: "/images/stock/1460925895917-afdab827c52f-w640x860.webp" },
-  { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations that scale your pipeline around the clock.", img: "/images/stock/1533750349088-cd871a92f312-w640x860.webp" },
+  { name: "IT Services", desc: "Helpdesk, cloud, security, and DevOps delivered by vetted engineers, built for uptime and scale.", img: "/images/stock/services-mindwhiz.webp" },
+  { name: "HR Services", desc: "RPO, payroll, HRIS, and compliance handled end to end so your people operations never stall.", img: "/images/stock/hr-services-mindwhiz.webp" },
+  { name: "Construction Estimation", desc: "Quantity takeoffs, bid prep, and planning that speed up every project and tighten margins.", img: "/images/stock/construction-estimation-mindwhiz.webp" },
+  { name: "Finance & Accounting", desc: "Bookkeeping, AP/AR, reporting, and CFO level support from experienced finance professionals.", img: "/images/stock/finance-accounting-mindwhiz.webp" },
+  { name: "Digital Marketing", desc: "SEO, campaigns, CRM, and content operations that scale your pipeline around the clock.", img: "/images/stock/digital-marketing-mindwhiz.webp" },
 ];
 
 const bannerStats = [
@@ -669,7 +669,7 @@ export default function WhyMindWhizPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={o.img}
-                    alt={o.name}
+                    alt={`${o.name} by MindWhiz`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -713,8 +713,8 @@ export default function WhyMindWhizPage() {
           {/* stock background image with dark overlay so the text stays readable */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/stock/1522071820081-009f0129c71c-w1800.webp"
-            alt=""
+            src="/images/stock/mindwhiz-team-collaborating-clients.webp"
+            alt="MindWhiz team collaborating with clients"
             aria-hidden
             className="absolute inset-0 h-full w-full object-cover"
           />

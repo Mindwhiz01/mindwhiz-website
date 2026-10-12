@@ -34,7 +34,7 @@ export const locations: LocationContent[] = [
     city: "Houston, TX",
     flag: "https://flagcdn.com/w80/us.png",
     heroImage:
-      "/images/stock/1477959858617-67f85cf4f1df-w1800.webp",
+      "/images/stock/staff-augmentation-outsourcing-us-companies.webp",
     tagline: "Our US office in Houston, with delivery teams working your hours.",
     intro:
       "MindWhiz serves companies across the United States from our Houston, Texas office, backed by our delivery center in Lahore, Pakistan. Engineers, analysts and specialists work dedicated US-hours shifts, and every client gets a named account manager on a US phone line and email.",
@@ -46,17 +46,17 @@ export const locations: LocationContent[] = [
       {
         title: "US-hours coverage",
         desc: "Dedicated evening and night shifts in Lahore line up with Eastern, Central, Mountain and Pacific business hours, with 24/7 rotating cover where you need it.",
-        image: "/images/stock/1477959858617-67f85cf4f1df-w2000.webp",
+        image: "/images/stock/us-hours-coverage.webp",
       },
       {
         title: "Named account manager",
         desc: "One person who owns delivery for your team, reachable on a US phone number during your business day.",
-        image: "/images/stock/1522071820081-009f0129c71c-w2000.webp",
+        image: "/images/stock/seamless-scalability.webp",
       },
       {
         title: "Compliance ready",
         desc: "SOC 2-aligned practices built for US regulatory expectations.",
-        image: "/images/stock/1563986768494-4dee2763ff3f-w2000.webp",
+        image: "/images/stock/compliance-ready.webp",
       },
     ],
     services: ["IT Helpdesk 24/7", "Cybersecurity Monitoring", "Staff Augmentation", "Digital Marketing"],
@@ -108,7 +108,7 @@ export const locations: LocationContent[] = [
     city: "London",
     flag: "https://flagcdn.com/w80/gb.png",
     heroImage:
-      "/images/stock/1513635269975-59663e0ac1ad-w1800.webp",
+      "/images/stock/staff-augmentation-outsourcing-uk-businesses.webp",
     tagline: "Our UK office, with delivery teams working UK hours.",
     intro:
       "From our London office, MindWhiz supports clients across the United Kingdom and Europe with GDPR-aware delivery and a named account manager, backed by our delivery center in Lahore, which is only 4 to 5 hours ahead of the UK.",
@@ -117,17 +117,17 @@ export const locations: LocationContent[] = [
       {
         title: "UK-hours overlap",
         desc: "Lahore is 4 to 5 hours ahead of the UK, so teams cover your full working day on a late shift.",
-        image: "/images/stock/1513635269975-59663e0ac1ad-w2000.webp",
+        image: "/images/stock/uk-hours-overlap.webp",
       },
       {
         title: "GDPR aware delivery",
         desc: "Data handling practices built around UK and EU requirements.",
-        image: "/images/stock/1451187580459-43490279c0fa-w2000.webp",
+        image: "/images/stock/global-delivery.webp",
       },
       {
         title: "Overlapping hours",
         desc: "Business hours coverage that bridges US and APAC teams.",
-        image: "/images/stock/1521737604893-d14cc237f11d-w2000.webp",
+        image: "/images/stock/compliant-workforce.webp",
       },
     ],
     services: ["Finance & Accounting", "HR Services", "Cloud Infrastructure", "Construction Estimation"],
@@ -141,7 +141,7 @@ export const locations: LocationContent[] = [
     city: "Lahore",
     flag: "https://flagcdn.com/w80/pk.png",
     heroImage:
-      "/images/stock/1595426496987-37c7113b24a6-w1800.webp",
+      "/images/stock/mindwhiz-lahore-outsourcing-delivery-center-pakistan.webp",
     tagline: "Our head office and largest engineering hub.",
     intro:
       "Lahore is our head office and home to the majority of our technical talent, engineers, analysts, and specialists delivering IT, security, and business operations support around the clock.",
@@ -151,17 +151,17 @@ export const locations: LocationContent[] = [
       {
         title: "Engineering depth",
         desc: "The largest concentration of vetted technical talent in our network.",
-        image: "/images/stock/1595426496987-37c7113b24a6-w2000.webp",
+        image: "/images/stock/engineering-depth.webp",
       },
       {
         title: "24/7 operations",
         desc: "NOC, SOC, and helpdesk coverage that never sleeps.",
-        image: "/images/stock/1551288049-bebda4e38f71-w2000.webp",
+        image: "/images/stock/scale-sustain.webp",
       },
       {
         title: "Rapid scaling",
         desc: "Fast, vetted hiring pipelines to grow your team in days, not months.",
-        image: "/images/stock/1460925895917-afdab827c52f-w2000.webp",
+        image: "/images/stock/rapid-scaling.webp",
       },
     ],
     services: ["NOC Monitoring", "DevOps & Automation", "Server & Network Administration", "Endpoint Security"],

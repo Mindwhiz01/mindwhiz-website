@@ -94,37 +94,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Quantity Takeoffs",
     desc: "Accurate material and labor takeoffs from drawings and specs, delivered in your preferred format.",
     Icon: Ruler,
-    img: "/images/stock/1503387762-592deb58ef4e-w800x1000.webp",
+    img: "/images/stock/quantity-takeoffs-construction-estimating-services.webp",
   },
   {
     title: "Cost Estimating",
     desc: "Detailed cost breakdowns with current regional pricing, markups, and contingencies.",
     Icon: Calculator,
-    img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp",
+    img: "/images/stock/payroll-benefits-outsourced-hr-services.webp",
   },
   {
     title: "Bid Preparation",
     desc: "Complete, competitive bid packages assembled and reviewed against the scope of work.",
     Icon: ClipboardList,
-    img: "/images/stock/1497366216548-37526070297c-w800x1000.webp",
+    img: "/images/stock/bid-preparation-construction-estimating-services.webp",
   },
   {
     title: "Value Engineering",
     desc: "Alternative materials and methods that protect margin without compromising the build.",
     Icon: PencilRuler,
-    img: "/images/stock/1503389152951-9f343605f61e-w800x1000.webp",
+    img: "/images/stock/value-engineering-construction-estimating-services.webp",
   },
   {
     title: "Project Planning",
     desc: "Phasing, scheduling support, and resource planning that keep bids grounded in reality.",
     Icon: Layers,
-    img: "/images/stock/1541888946425-d81bb19240f5-w800x1000.webp",
+    img: "/images/stock/project-planning-construction-estimating-services.webp",
   },
   {
     title: "Material Management",
     desc: "Vendor pricing, procurement lists, and quantity reconciliation from bid to build.",
     Icon: Boxes,
-    img: "/images/stock/1517089152318-42ec560349c0-w800x1000.webp",
+    img: "/images/stock/material-management-construction-estimating-services.webp",
   },
 ];
 
@@ -141,35 +141,35 @@ const trades: {
     name: "Concrete & Masonry",
     csi: "03 / 04",
     Icon: Building2,
-    img: "/images/stock/1621922688758-359fc864071e-w800.webp",
+    img: "/images/stock/concrete-masonry-takeoffs-cost-estimating.webp",
     h: "h-80",
   },
   {
     name: "Structural Steel",
     csi: "05",
     Icon: Factory,
-    img: "/images/stock/1504307651254-35680f356dfd-w800.webp",
+    img: "/images/stock/structural-steel-takeoffs-cost-estimating.webp",
     h: "h-64",
   },
   {
     name: "Electrical",
     csi: "26",
     Icon: Zap,
-    img: "/images/stock/1621905251189-08b45d6a269e-w800.webp",
+    img: "/images/stock/electrical-takeoffs-cost-estimating.webp",
     h: "h-72",
   },
   {
     name: "Mechanical / HVAC",
     csi: "23",
     Icon: Wind,
-    img: "/images/stock/1581092160562-40aa08e78837-w800.webp",
+    img: "/images/stock/mechanical-hvac-takeoffs-cost-estimating.webp",
     h: "h-80",
   },
   {
     name: "Plumbing",
     csi: "22",
     Icon: Droplets,
-    img: "/images/stock/1607472586893-edb57bdc0e39-w800.webp",
+    img: "/images/stock/plumbing-takeoffs-cost-estimating.webp",
     h: "h-64",
   },
   {
@@ -183,21 +183,21 @@ const trades: {
     name: "Sitework & Earthwork",
     csi: "31",
     Icon: Truck,
-    img: "/images/stock/1581094794329-c8112a89af12-w800.webp",
+    img: "/images/stock/sitework-earthwork-takeoffs-cost-estimating.webp",
     h: "h-80",
   },
   {
     name: "Roofing",
     csi: "07",
     Icon: Home,
-    img: "/images/stock/1632759145351-1d592919f522-w800.webp",
+    img: "/images/stock/roofing-takeoffs-cost-estimating.webp",
     h: "h-64",
   },
   {
     name: "Millwork & Carpentry",
     csi: "06",
     Icon: Hammer,
-    img: "/images/stock/1601564921647-b446839a013f-w800.webp",
+    img: "/images/stock/millwork-carpentry-takeoffs-cost-estimating.webp",
     h: "h-72",
   },
 ];
@@ -278,7 +278,7 @@ function CapabilitiesCarousel() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
-                    alt={title}
+                    alt={`${title} - construction estimating services`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -499,7 +499,7 @@ export default function ConstructionEstimationPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
-                    alt={name}
+                    alt={`${name} takeoffs and cost estimating`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

@@ -1037,7 +1037,7 @@ function IndustriesWorlds() {
               <source srcSet={w.img.replace('.png', '.webp')} type="image/webp" />
               <img
                 src={w.img}
-                alt={w.name}
+                alt={`${w.name} - IT and staffing support by MindWhiz`}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -1751,7 +1751,7 @@ export default function SystemLimitedHome() {
               poster once it starts playing. webm source dropped: it was larger
               (~14 MB) than the compressed mp4 (~8.5 MB). */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/hero-poster.jpg" alt="" aria-hidden fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          <img src="/hero-poster.jpg" alt="MindWhiz offshore IT and operations team at work" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
           {mountHeroVideo && (
             <video autoPlay muted loop playsInline preload="none" className="absolute inset-0 h-full w-full object-cover">
               <source src="/alphabravo-company-profile-compressed.mp4" type="video/mp4" />

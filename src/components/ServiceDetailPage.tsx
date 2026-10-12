@@ -140,7 +140,7 @@ function IntroProblemCard({ card }: { card: NonNullable<ServicePageContent["intr
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={card.image}
-        alt={card.title}
+        alt={`${card.title} - problem MindWhiz solves`}
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
@@ -329,7 +329,7 @@ function CapabilitiesCarousel({ page }: { page: ServicePageContent }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={`${item.title} - ${page.name}`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -472,12 +472,12 @@ function BenefitsStackSection({ page }: { page: ServicePageContent }) {
 // ---------------------------------------------------------------------------
 const PROCESS_EASE = [0.22, 1, 0.36, 1] as const;
 const processImages = [
-  "/images/stock/1552664730-d307ca884978-w2000.webp",
-  "/images/stock/1454165804606-c3d57bc86b40-w2000.webp",
-  "/images/stock/1519389950473-47ba0277781c-w2000.webp",
-  "/images/stock/1551288049-bebda4e38f71-w2000.webp",
-  "/images/stock/1460925895917-afdab827c52f-w2000.webp",
-  "/images/stock/1517245386807-bb43f82c33c4-w2000.webp",
+  "/images/stock/operations-review.webp",
+  "/images/stock/team-setup.webp",
+  "/images/stock/integration.webp",
+  "/images/stock/scale-sustain.webp",
+  "/images/stock/rapid-scaling.webp",
+  "/images/stock/delivery-process-team-planning.webp",
 ];
 
 function ProcessPanel({
@@ -530,7 +530,7 @@ function ProcessPanel({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
         src={processImages[i % processImages.length]}
-        alt={step.title}
+        alt={`${step.title} - MindWhiz delivery process step ${i + 1}`}
         {...imgMotion}
         className="absolute inset-0 h-full w-full object-cover"
       />

@@ -57,12 +57,12 @@ export type ServicePageContent = {
 };
 
 const sharedImages = {
-  helpdesk: "/images/stock/1551434678-e076c223a692-w1800.webp",
+  helpdesk: "/images/stock/24-7-it-helpdesk-team.webp",
   noc: "/service-coverage/noc-monitoring/network-monitoring.png",
-  remote: "/images/stock/1581092921461-eab62e97a780-w1800.webp",
+  remote: "/images/stock/untracked-devices-problem-mindwhiz-solves.webp",
   cloud: "/service-coverage/cloud-infrastructure/dependable-cloud-environments.png",
-  server: "/images/stock/1558494949-ef010cbdcc31-w1800.webp",
-  devops: "/images/stock/1515879218367-8466d910aaa4-w1800.webp",
+  server: "/images/stock/fragile-infrastructure-problem-mindwhiz-solves.webp",
+  devops: "/images/stock/deployment-bottlenecks-problem-mindwhiz-solves.webp",
   cyber: "/service-coverage/cybersecurity/managed-detection.png",
 };
 
@@ -95,54 +95,54 @@ export const servicePages: ServicePageContent[] = [
       {
         value: "24/7",
         label: "Continuous, round the clock support",
-        image: "/images/stock/1531482615713-2afd69097998-w900.webp",
+        image: "/images/stock/continuous-round-clock-support.webp",
       },
       {
         value: "15 min",
         label: "Fast response within 15 minutes",
-        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
+        image: "/images/stock/search-visibility.webp",
       },
       {
         value: claims.savingsRange,
         label: "Typical saving vs an in-house US hire",
-        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
+        image: "/images/stock/campaign-planning.webp",
       },
       {
         value: "Tier 1 to 3",
         label: "Rapid resolution across all support tiers",
-        image: "/images/stock/1551434678-e076c223a692-w900.webp",
+        image: "/images/stock/rapid-resolution-across-all-support-tiers.webp",
       },
     ],
     capabilities: [
       {
         title: "24/7 Availability",
         desc: "Mindwhiz provides continuous, round the clock support while many providers operate with limited support hours.",
-        image: "/images/stock/1531482615713-2afd69097998-w900.webp",
+        image: "/images/stock/continuous-round-clock-support.webp",
       },
       {
         title: "Expert IT Support",
         desc: "Certified IT professionals with diverse expertise handle requests beyond basic technical support.",
-        image: "/images/stock/1553877522-43269d4ea984-w900.webp",
+        image: "/images/stock/expert-support-24-7-helpdesk-tier-1.webp",
       },
       {
         title: "Cost Efficiency",
         desc: "A cost efficient helpdesk model can deliver up to 30% cost savings compared with higher in house costs.",
-        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
+        image: "/images/stock/campaign-planning.webp",
       },
       {
         title: "Response Time",
         desc: "Fast response within 15 minutes helps reduce downtime and keeps work moving.",
-        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
+        image: "/images/stock/search-visibility.webp",
       },
       {
         title: "Tailored IT Support",
         desc: "Customized support plans replace one size fits all packages and align with your tools, team, and priorities.",
-        image: "/images/stock/1551434678-e076c223a692-w900.webp",
+        image: "/images/stock/rapid-resolution-across-all-support-tiers.webp",
       },
       {
         title: "Compliance and Security",
         desc: "SOC 2 and ISO 27001 aligned delivery provides stronger controls than basic security only support.",
-        image: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
+        image: "/images/stock/search-visibility.webp",
       },
     ],
     benefits: [
@@ -360,9 +360,9 @@ export const servicePages: ServicePageContent[] = [
       { value: "NIST 800-88", label: "Secure data wiping at retirement" },
     ],
     capabilities: [
-      { title: "Secure Remote Access", desc: "Manage devices and users through controlled remote access designed for distributed teams.", image: "/images/stock/1580894732444-8ecded7900cd-w900.webp" },
-      { title: "IT Asset Management", desc: "Maintain clear visibility into hardware, software, licenses, and cloud assets across the lifecycle.", image: "/images/stock/1516321318423-f06f85e504b3-w900.webp" },
-      { title: "User Lifecycle Support", desc: "Streamline onboarding, offboarding, access changes, and asset assignment workflows.", image: "/images/stock/1553877522-43269d4ea984-w900.webp" },
+      { title: "Secure Remote Access", desc: "Manage devices and users through controlled remote access designed for distributed teams.", image: "/images/stock/secure-remote-access-remote-desktop-asset-management.webp" },
+      { title: "IT Asset Management", desc: "Maintain clear visibility into hardware, software, licenses, and cloud assets across the lifecycle.", image: "/images/stock/search-visibility.webp" },
+      { title: "User Lifecycle Support", desc: "Streamline onboarding, offboarding, access changes, and asset assignment workflows.", image: "/images/stock/expert-support-24-7-helpdesk-tier-1.webp" },
     ],
     benefits: [
       { title: "Complete Visibility", desc: "Know where hardware and software assets are, who owns them, and how they are being used." },
@@ -521,10 +521,10 @@ export const servicePages: ServicePageContent[] = [
       { value: "Optimized", label: "Uptime and capacity" },
     ],
     capabilities: [
-      { title: "Proactive Monitoring", desc: "Health checks, performance baselines, and alert tuning reduce downtime and improve visibility.", image: "/images/stock/1516321497487-e288fb19713f-w900.webp" },
-      { title: "Patch and Harden", desc: "Routine updates and security controls keep server environments stable and aligned with risk posture.", image: "/images/stock/1558494949-ef010cbdcc31-w900.webp" },
-      { title: "Incident Response", desc: "Clear escalation paths and fast remediation help resolve issues before disruption spreads.", image: "/images/stock/1551434678-e076c223a692-w900.webp" },
-      { title: "Capacity Planning", desc: "Right size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "/images/stock/1498050108023-c5249f4df085-w900.webp" },
+      { title: "Proactive Monitoring", desc: "Health checks, performance baselines, and alert tuning reduce downtime and improve visibility.", image: "/images/stock/proactive-monitoring-server-network-administration.webp" },
+      { title: "Patch and Harden", desc: "Routine updates and security controls keep server environments stable and aligned with risk posture.", image: "/images/stock/patch-harden-server-network-administration.webp" },
+      { title: "Incident Response", desc: "Clear escalation paths and fast remediation help resolve issues before disruption spreads.", image: "/images/stock/rapid-resolution-across-all-support-tiers.webp" },
+      { title: "Capacity Planning", desc: "Right size compute, storage, and resources so infrastructure remains stable as the business grows.", image: "/images/stock/capacity-planning-server-network-administration.webp" },
     ],
     benefits: [
       { title: "Troubleshooting", desc: "Identify, isolate, and resolve server problems through proactive monitoring and efficient support." },
@@ -591,7 +591,7 @@ export const servicePages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Endpoint Risk", "Compliance Gaps"],
-        image: "/service-coverage/endpoint-security/endpoint-protection.png",
+        image: "/banners/endpoint-security.png",
         title: "Unmanaged Devices",
         desc: "Unpatched laptops and unmonitored endpoints leave distributed teams exposed to preventable incidents.",
         cta: "Talk to expert",
@@ -683,8 +683,8 @@ export const servicePages: ServicePageContent[] = [
       { value: "24/7", label: "Support coverage" },
     ],
     capabilities: [
-      { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "/images/stock/1555066931-4365d14bab8c-w900.webp" },
-      { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "/images/stock/1517180102446-f3ece451e9d8-w900.webp" },
+      { title: "Cloud Infrastructure Optimization", desc: "Improve software delivery and cloud operations with structured automation practices.", image: "/images/stock/cloud-infrastructure-optimization-devops-automation.webp" },
+      { title: "Automated Testing", desc: "Improve software quality through automated unit, integration, security, performance, and release readiness checks.", image: "/images/stock/automated-testing-devops-automation.webp" },
       { title: "Security and Compliance", desc: "Embed security scans, compliance checks, and DevSecOps practices into delivery workflows.", image: "/service-coverage/cybersecurity/security-control.png" },
     ],
     benefits: [
@@ -884,22 +884,22 @@ export const servicePages: ServicePageContent[] = [
       {
         title: "Vetted Specialists",
         desc: "Role ready professionals screened for skills, communication, and reliability before they ever reach your shortlist.",
-        image: "/images/stock/1553877522-43269d4ea984-w900.webp",
+        image: "/images/stock/expert-support-24-7-helpdesk-tier-1.webp",
       },
       {
         title: "Fast Onboarding",
         desc: "Candidates matched to your stack and standards so they contribute in the first sprint, not the first month.",
-        image: "/images/stock/1552664730-d307ca884978-w900.webp",
+        image: "/images/stock/growth-workshops.webp",
       },
       {
         title: "Flexible Scaling",
         desc: "Ramp teams up for a launch or down after delivery without severance overhead or idle capacity.",
-        image: "/images/stock/1522071820081-009f0129c71c-w900.webp",
+        image: "/images/stock/flexible-scaling-staff-augmentation.webp",
       },
       {
         title: "Managed Retention",
         desc: "We handle engagement, reviews, and continuity so knowledge stays on your account for the long run.",
-        image: "/images/stock/1460925895917-afdab827c52f-w900.webp",
+        image: "/images/stock/campaign-planning.webp",
       },
     ],
     benefits: [

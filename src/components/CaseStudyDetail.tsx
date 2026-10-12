@@ -312,7 +312,7 @@ export default function CaseStudyDetail({ cs }: { cs: CaseStudy }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={o.img}
-                    alt={o.client}
+                    alt={`${o.client} case study`}
                     loading="lazy"
                     className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

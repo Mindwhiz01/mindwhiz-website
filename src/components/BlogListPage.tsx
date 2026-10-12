@@ -213,7 +213,7 @@ export default function BlogListPage({
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="/images/stock/1499750310107-5fef28a66643-w1800.webp"
+          image="/images/stock/mindwhiz-blog-staff-augmentation-operations-security-guides.webp"
           h1="MindWhiz Blog: Staff Augmentation, IT Operations and Security Guides"
           titleLines={["The"]}
           rotateWords={["Blog", "Insights", "Guides", "Stories"]}

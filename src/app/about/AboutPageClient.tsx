@@ -267,7 +267,7 @@ function TeamSection() {
                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-gray-200">
                   <img
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name}, ${member.title} at MindWhiz`}
                     className="h-full w-full object-cover"
                   />
                 </div>

@@ -139,63 +139,63 @@ const coverage: {
     name: "General Ledger",
     tag: "GL",
     Icon: BookOpen,
-    img: "/images/stock/1554224155-6726b3ff858f-w800.webp",
+    img: "/images/stock/general-ledger-outsourced-accounting-service.webp",
     h: "h-80",
   },
   {
     name: "Accounts Payable",
     tag: "AP",
     Icon: Receipt,
-    img: "/images/stock/1450101499163-c8848c66ca85-w800.webp",
+    img: "/images/stock/compliance-outsourced-hr-service.webp",
     h: "h-64",
   },
   {
     name: "Accounts Receivable",
     tag: "AR",
     Icon: Wallet,
-    img: "/images/stock/1563986768609-322da13575f3-w800.webp",
+    img: "/images/stock/accounts-receivable-outsourced-accounting-service.webp",
     h: "h-72",
   },
   {
     name: "Payroll",
     tag: "PAY",
     Icon: Landmark,
-    img: "/images/stock/1521791136064-7986c2920216-w800.webp",
+    img: "/images/stock/payroll-outsourced-hr-service.webp",
     h: "h-80",
   },
   {
     name: "Bank Reconciliation",
     tag: "REC",
     Icon: Scale,
-    img: "/images/stock/1526304640581-d334cdbbf45e-w800.webp",
+    img: "/images/stock/bank-reconciliation-outsourced-accounting-service.webp",
     h: "h-64",
   },
   {
     name: "Financial Reporting",
     tag: "RPT",
     Icon: FileText,
-    img: "/images/stock/1551288049-bebda4e38f71-w800.webp",
+    img: "/images/stock/financial-reporting-outsourced-accounting-service.webp",
     h: "h-72",
   },
   {
     name: "Budgeting & FP&A",
     tag: "FP&A",
     Icon: LineChart,
-    img: "/images/stock/1460925895917-afdab827c52f-w800.webp",
+    img: "/images/stock/budgeting-fp-outsourced-accounting-service.webp",
     h: "h-80",
   },
   {
     name: "Tax Prep Support",
     tag: "TAX",
     Icon: Percent,
-    img: "/images/stock/1586486855514-8c633cc6fd38-w800.webp",
+    img: "/images/stock/tax-prep-support-outsourced-accounting-service.webp",
     h: "h-64",
   },
   {
     name: "Cash Flow Management",
     tag: "CASH",
     Icon: Coins,
-    img: "/images/stock/1579621970795-87facc2f976d-w800.webp",
+    img: "/images/stock/cash-flow-management-outsourced-accounting-service.webp",
     h: "h-72",
   },
 ];
@@ -225,13 +225,13 @@ const process = [
 // Staff augmentation - core services, rendered as image cards matching the
 // home-page industries design.
 const coreServices: { title: string; desc: string; img: string }[] = [
-  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "/images/stock/1450101499163-c8848c66ca85-w800x1000.webp" },
-  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "/images/stock/1454165804606-c3d57bc86b40-w800x1000.webp" },
-  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision making.", img: "/images/stock/1551288049-bebda4e38f71-w800x1000.webp" },
-  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp" },
-  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "/images/stock/1521791136064-7986c2920216-w800x1000.webp" },
-  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "/images/stock/1586486855514-8c633cc6fd38-w800x1000.webp" },
-  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", img: "/images/stock/1526304640581-d334cdbbf45e-w800x1000.webp" },
+  { title: "Accounts Payable & Receivable", desc: "Managing vendor payments and client collections efficiently.", img: "/images/stock/compliance-policy-outsourced-hr-services.webp" },
+  { title: "Bookkeeping", desc: "Accurate recording of financial transactions across all periods.", img: "/images/stock/bookkeeping-outsourced-finance-accounting.webp" },
+  { title: "Financial & Management Reporting", desc: "Detailed financial and performance reporting for decision making.", img: "/images/stock/financial-management-reporting-outsourced-finance-accounting.webp" },
+  { title: "General Ledger Management", desc: "Maintaining and reconciling core accounting records.", img: "/images/stock/payroll-benefits-outsourced-hr-services.webp" },
+  { title: "Payroll Processing & Compliance", desc: "Accurate payroll execution with regulatory adherence.", img: "/images/stock/payroll-processing-compliance-outsourced-finance-accounting.webp" },
+  { title: "Tax Preparation Support", desc: "Assistance with tax calculations and filing processes.", img: "/images/stock/tax-preparation-support-outsourced-finance-accounting.webp" },
+  { title: "Bank & Account Reconciliations", desc: "Matching financial records with bank statements for accuracy.", img: "/images/stock/bank-account-reconciliations-outsourced-finance-accounting.webp" },
 ];
 
 const whyPoints = ["Process improvement", "Cost efficiency", "Remote accountants"];
@@ -259,7 +259,7 @@ function FinanceServiceCard({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={s.img}
-        alt={s.title}
+        alt={`${s.title} - outsourced finance and accounting`}
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
@@ -325,7 +325,7 @@ function CapabilitiesCarousel() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
-                    alt={title}
+                    alt={`${title} - outsourced finance and accounting`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -426,7 +426,7 @@ function CoverageCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={img}
-          alt={name}
+          alt={`${name} - outsourced accounting service`}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -637,7 +637,7 @@ export default function FinancePage() {
               <div className="relative h-full min-h-[380px] overflow-hidden rounded-2xl ring-1 ring-black/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/stock/1600880292203-757bb62b4baf-w1000.webp"
+                  src="/images/stock/finance-accounting-team-collaborating.webp"
                   alt="Finance and accounting team collaborating"
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover"

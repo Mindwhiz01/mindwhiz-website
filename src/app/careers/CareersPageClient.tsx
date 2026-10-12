@@ -70,7 +70,7 @@ const roles = [
     tint: "#E7F2D8",
     pill: "#4E7A22",
     image:
-      "/images/stock/1600880292089-90a7e086ee0c-w900.webp",
+      "/images/stock/support-helpdesk-roles-mindwhiz.webp",
     href: "#apply",
   },
   {
@@ -78,7 +78,7 @@ const roles = [
     tint: "#FBECC6",
     pill: "#8A5A16",
     image:
-      "/images/stock/1521737604893-d14cc237f11d-w900.webp",
+      "/images/stock/cloud-devops-roles-mindwhiz.webp",
     href: "#apply",
   },
   {
@@ -86,7 +86,7 @@ const roles = [
     tint: "#F6D9DE",
     pill: "#B33241",
     image:
-      "/images/stock/1550751827-4bd374c3f58b-w900.webp",
+      "/images/stock/cybersecurity-roles-mindwhiz.webp",
     href: "#apply",
   },
   {
@@ -94,7 +94,7 @@ const roles = [
     tint: "#D8E4FB",
     pill: "#2F5BD1",
     image:
-      "/images/stock/1554224155-6726b3ff858f-w900.webp",
+      "/images/stock/finance-bpo-roles-mindwhiz.webp",
     href: "#apply",
   },
   {
@@ -102,7 +102,7 @@ const roles = [
     tint: "#E7F2D8",
     pill: "#4E7A22",
     image:
-      "/images/stock/1573497491208-6b1acb260507-w900.webp",
+      "/images/stock/hr-recruiting-roles-mindwhiz.webp",
     href: "#apply",
   },
 ];
@@ -164,7 +164,7 @@ function RolesRail() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={r.image}
-                  alt={r.title}
+                  alt={`${r.title} at MindWhiz`}
                   loading="lazy"
                   className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
@@ -236,7 +236,7 @@ function LocationsSection() {
             <div className="relative min-h-[340px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/stock/1497366216548-37526070297c-w1400.webp"
+                src="/images/stock/mindwhiz-workspace.webp"
                 alt="MindWhiz workspace"
                 className="h-full w-full object-cover"
               />
@@ -267,7 +267,7 @@ function FindYourTeam() {
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/stock/1522071820081-009f0129c71c-w1400.webp"
+                src="/images/stock/staff-augmentation-pros-cons-buyers-guide.webp"
                 alt="MindWhiz team collaborating"
                 className="h-full w-full object-cover"
               />
@@ -351,7 +351,7 @@ function BenefitsSection() {
             <div className="relative min-h-[360px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/stock/1521737711867-e3b97375f902-w1400.webp"
+                src="/images/stock/mindwhiz-culture.webp"
                 alt="MindWhiz culture"
                 className="h-full w-full object-cover"
               />
@@ -389,7 +389,7 @@ function WorkingAtCard({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={image}
-      alt={title}
+      alt={`${title} at MindWhiz`}
       loading="lazy"
       className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
     />
@@ -450,7 +450,7 @@ function WorkingAtSection() {
           <Reveal>
             <WorkingAtCard
               title="Take a look inside our hiring process"
-              image="/images/stock/1517245386807-bb43f82c33c4-w1000.webp"
+              image="/images/stock/take-look-inside-hiring-process-mindwhiz.webp"
               tint="#F6D9DE"
               pill="#B33241"
               cta="See how we hire"
@@ -461,7 +461,7 @@ function WorkingAtSection() {
           <Reveal delay={0.06}>
             <WorkingAtCard
               title="Life across our US, UK & Pakistan hubs"
-              image="/images/stock/1531482615713-2afd69097998-w1000.webp"
+              image="/images/stock/life-across-us-uk-pakistan-hubs-mindwhiz.webp"
               tint="#FBECC6"
               pill="#8A5A16"
               cta="Learn more"
@@ -473,7 +473,7 @@ function WorkingAtSection() {
           <Reveal delay={0.06}>
             <WorkingAtCard
               title="How our teams grow careers, not just headcount"
-              image="/images/stock/1552664730-d307ca884978-w1000.webp"
+              image="/images/stock/how-teams-grow-careers-not-just-headcount.webp"
               tint="#E7F2D8"
               pill="#4E7A22"
               cta="Learn more"
@@ -485,7 +485,7 @@ function WorkingAtSection() {
           <Reveal delay={0.12}>
             <WorkingAtCard
               title="Create your MindWhiz talent profile"
-              image="/images/stock/1600880292203-757bb62b4baf-w1000.webp"
+              image="/images/stock/finance-accounting-team-collaborating.webp"
               tint="#D8E4FB"
               pill="#2F5BD1"
               cta="Learn more"
@@ -569,7 +569,7 @@ export default function CareersPageClient() {
 
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         <PageBanner
-          image="/images/stock/1521737711867-e3b97375f902-w1800.webp"
+          image="/images/stock/careers-mindwhiz-lahore.webp"
           h1="Careers at MindWhiz in Lahore"
           titleLines={["Build", "Your"]}
           rotateWords={["Career", "Future", "Skills", "Path"]}

@@ -6,12 +6,12 @@ import { claims } from "@/lib/claims";
 // category (Technology & Digital, Built & Physical, etc.).
 
 const cap = {
-  a: "/images/stock/1460925895917-afdab827c52f-w900.webp",
-  b: "/images/stock/1516321318423-f06f85e504b3-w900.webp",
-  c: "/images/stock/1551434678-e076c223a692-w900.webp",
-  d: "/images/stock/1553877522-43269d4ea984-w900.webp",
-  e: "/images/stock/1531482615713-2afd69097998-w900.webp",
-  f: "/images/stock/1552664730-d307ca884978-w900.webp",
+  a: "/images/stock/campaign-planning.webp",
+  b: "/images/stock/search-visibility.webp",
+  c: "/images/stock/rapid-resolution-across-all-support-tiers.webp",
+  d: "/images/stock/expert-support-24-7-helpdesk-tier-1.webp",
+  e: "/images/stock/continuous-round-clock-support.webp",
+  f: "/images/stock/growth-workshops.webp",
 };
 
 const finalCta = {
@@ -59,7 +59,7 @@ export const industryPages: ServicePageContent[] = [
       { value: "SOC 2", label: "Security aligned delivery" },
     ],
     capabilities: [
-      { title: "Cloud & Infrastructure", desc: "Design, migration, and managed operations across AWS, Azure, and GCP.", image: "/images/stock/1451187580459-43490279c0fa-w900.webp" },
+      { title: "Cloud & Infrastructure", desc: "Design, migration, and managed operations across AWS, Azure, and GCP.", image: "/images/stock/cloud-infrastructure-information-technology.webp" },
       { title: "Software Engineering", desc: "Full stack developers and QA who plug into your sprints and standards.", image: cap.a },
       { title: "Cybersecurity", desc: "Threat monitoring, endpoint protection, and compliance aligned controls.", image: cap.b },
       { title: "DevOps & Automation", desc: "CI/CD pipelines and automated delivery that reduce release risk.", image: cap.c },
@@ -124,7 +124,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Order Backlogs", "Support Load"],
-        image: "/images/stock/1515879218367-8466d910aaa4-w1800.webp",
+        image: "/images/stock/deployment-bottlenecks-problem-mindwhiz-solves.webp",
         title: "Operations Overload",
         desc: "Order spikes, returns, and support volume overwhelm lean teams and hurt the customer experience.",
         cta: "Talk to expert",
@@ -284,7 +284,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Slow Bids", "Estimating Load"],
-        image: "/images/stock/1581092921461-eab62e97a780-w1800.webp",
+        image: "/images/stock/untracked-devices-problem-mindwhiz-solves.webp",
         title: "Missed Bids",
         desc: "Slow, costly estimating limits how many bids you can quote and win each week.",
         cta: "Talk to expert",
@@ -362,7 +362,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Line Downtime", "Support Gaps"],
-        image: "/images/stock/1558494949-ef010cbdcc31-w1800.webp",
+        image: "/images/stock/fragile-infrastructure-problem-mindwhiz-solves.webp",
         title: "Production Stalls",
         desc: "Support and engineering gaps let small issues stop the line and eat into output.",
         cta: "Talk to expert",
@@ -522,7 +522,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Capacity Limits", "Quality Risk"],
-        image: "/images/stock/1552664730-d307ca884978-w1800.webp",
+        image: "/images/stock/delivery-strain-problem-mindwhiz-solves.webp",
         title: "Delivery Strain",
         desc: "Rising demand strains delivery teams and threatens the quality clients expect.",
         cta: "Talk to expert",
@@ -600,7 +600,7 @@ export const industryPages: ServicePageContent[] = [
       ],
       card: {
         tags: ["Visibility Gaps", "Delays"],
-        image: "/images/stock/1454165804606-c3d57bc86b40-w1800.webp",
+        image: "/images/stock/supply-bottlenecks-problem-mindwhiz-solves.webp",
         title: "Supply Bottlenecks",
         desc: "Fragmented operations and blind spots cause delays that ripple across the supply chain.",
         cta: "Talk to expert",

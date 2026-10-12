@@ -89,37 +89,37 @@ const capabilities: { title: string; desc: string; Icon: LucideIcon; img: string
     title: "Recruiting & RPO",
     desc: "Sourcing, screening, and shortlists that fill roles fast with vetted candidates.",
     Icon: UserPlus,
-    img: "/images/stock/1521737604893-d14cc237f11d-w800x1000.webp",
+    img: "/images/stock/recruiting-rpo-outsourced-hr-services.webp",
   },
   {
     title: "Payroll & Benefits",
     desc: "Accurate, on time payroll plus benefits administration across regions.",
     Icon: Banknote,
-    img: "/images/stock/1554224155-6726b3ff858f-w800x1000.webp",
+    img: "/images/stock/payroll-benefits-outsourced-hr-services.webp",
   },
   {
     title: "HRIS & Systems",
     desc: "Setup and management of your HR systems, data, and self service workflows.",
     Icon: Building2,
-    img: "/images/stock/1552664730-d307ca884978-w800x1000.webp",
+    img: "/images/stock/hris-systems-outsourced-hr-services.webp",
   },
   {
     title: "Onboarding",
     desc: "Structured onboarding that gets new hires productive from day one.",
     Icon: UserCheck,
-    img: "/images/stock/1600880292203-757bb62b4baf-w800x1000.webp",
+    img: "/images/stock/onboarding-outsourced-hr-services.webp",
   },
   {
     title: "Compliance & Policy",
     desc: "Handbooks, policy, and labor law compliance kept current and audit ready.",
     Icon: ShieldCheck,
-    img: "/images/stock/1450101499163-c8848c66ca85-w800x1000.webp",
+    img: "/images/stock/compliance-policy-outsourced-hr-services.webp",
   },
   {
     title: "Performance & L&D",
     desc: "Reviews, training, and development programs that grow and retain talent.",
     Icon: GraduationCap,
-    img: "/images/stock/1524178232363-1fb2b075b655-w800x1000.webp",
+    img: "/images/stock/performance-l-d-outsourced-hr-services.webp",
   },
 ];
 
@@ -135,63 +135,63 @@ const coverage: {
     name: "Talent Acquisition",
     tag: "TA",
     Icon: UserPlus,
-    img: "/images/stock/1521737604893-d14cc237f11d-w800.webp",
+    img: "/images/stock/talent-acquisition-outsourced-hr-service.webp",
     h: "h-80",
   },
   {
     name: "Payroll",
     tag: "PAY",
     Icon: Banknote,
-    img: "/images/stock/1521791136064-7986c2920216-w800.webp",
+    img: "/images/stock/payroll-outsourced-hr-service.webp",
     h: "h-64",
   },
   {
     name: "Benefits Admin",
     tag: "BEN",
     Icon: HeartHandshake,
-    img: "/images/stock/1573497491765-dccce02b29df-w800.webp",
+    img: "/images/stock/benefits-admin-outsourced-hr-service.webp",
     h: "h-72",
   },
   {
     name: "Onboarding",
     tag: "ONB",
     Icon: UserCheck,
-    img: "/images/stock/1600880292203-757bb62b4baf-w800.webp",
+    img: "/images/stock/onboarding-outsourced-hr-service.webp",
     h: "h-80",
   },
   {
     name: "HRIS & Systems",
     tag: "HRIS",
     Icon: Building2,
-    img: "/images/stock/1552664730-d307ca884978-w800.webp",
+    img: "/images/stock/hris-systems-outsourced-hr-service.webp",
     h: "h-64",
   },
   {
     name: "Compliance",
     tag: "COMP",
     Icon: ShieldCheck,
-    img: "/images/stock/1450101499163-c8848c66ca85-w800.webp",
+    img: "/images/stock/compliance-outsourced-hr-service.webp",
     h: "h-72",
   },
   {
     name: "Performance",
     tag: "PERF",
     Icon: Award,
-    img: "/images/stock/1542744173-8e7e53415bb0-w800.webp",
+    img: "/images/stock/performance-outsourced-hr-service.webp",
     h: "h-80",
   },
   {
     name: "Learning & Dev",
     tag: "L&D",
     Icon: GraduationCap,
-    img: "/images/stock/1524178232363-1fb2b075b655-w800.webp",
+    img: "/images/stock/learning-dev-outsourced-hr-service.webp",
     h: "h-64",
   },
   {
     name: "Employee Relations",
     tag: "ER",
     Icon: Users,
-    img: "/images/stock/1600880292089-90a7e086ee0c-w800.webp",
+    img: "/images/stock/employee-relations-outsourced-hr-service.webp",
     h: "h-72",
   },
 ];
@@ -264,7 +264,7 @@ function CapabilitiesCarousel() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
-                    alt={title}
+                    alt={`${title} - outsourced HR services`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -456,7 +456,7 @@ export default function HrPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
-                    alt={name}
+                    alt={`${name} - outsourced HR service`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

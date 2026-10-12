@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import CaseStudyDetail from "@/components/CaseStudyDetail";
 import { getCaseStudyBySlug } from "@/lib/caseStudies";
 import { caseStudies } from "@/lib/content";
+import { DEFAULT_SHARE_IMAGE } from "@/seo.config";
 
 // Pre-render the static seed studies; admin-created slugs render on demand.
 export const dynamicParams = true;
@@ -23,17 +24,30 @@ function metaDescription(text: string, max = 155) {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const cs = await getCaseStudyBySlug(params.slug);
   if (!cs) return {};
-  const description = metaDescription(cs.result);
+  // Titles name the client and the work ("Alpha Bravo Case Study:
+  // Construction Estimation | MindWhiz") instead of a bare "Alpha Bravo,
+  // Case Study"; descriptions add the services so they reach 140-155 chars.
+  const title = `${cs.client} Case Study: ${cs.services?.[0] ?? cs.category} | MindWhiz`;
+  let description = metaDescription(cs.result);
+  // Append as many services as fit within 155 characters.
+  for (let n = Math.min(3, cs.services?.length ?? 0); n > 0 && description.length < 130; n--) {
+    const candidate = `${description} Services: ${cs.services.slice(0, n).join(", ")}.`;
+    if (candidate.length <= 155) description = candidate;
+  }
+  const images = cs.img ? [cs.img] : [DEFAULT_SHARE_IMAGE.url];
   return {
-    title: `${cs.client}, Case Study`,
+    title: { absolute: title },
     description,
     alternates: { canonical: `/case-studies/${cs.slug}` },
     openGraph: {
-      title: `${cs.client}, Case Study | MindWhiz`,
+      title,
       description,
-      images: cs.img ? [cs.img] : undefined,
+      url: `/case-studies/${cs.slug}`,
+      images,
       type: "article",
+      siteName: "MindWhiz",
     },
+    twitter: { card: "summary_large_image", title, description, images },
   };
 }
 

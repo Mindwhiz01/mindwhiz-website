@@ -238,7 +238,7 @@ export default function TrustedByClients() {
                 <div className="relative h-64 overflow-hidden lg:h-full">
                   <Image
                     src={t.image}
-                    alt={`${t.author} website`}
+                    alt={`${t.author} website, a MindWhiz client project`}
                     fill
                     className="object-cover object-center"
                     sizes="(min-width: 1024px) 43vw, 86vw"

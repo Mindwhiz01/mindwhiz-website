@@ -282,7 +282,7 @@ export default function NewsletterPageClient() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={p.image}
-                      alt={p.title}
+                      alt={`${p.title} - MindWhiz white paper`}
                       loading="lazy"
                       className="hidden h-20 w-28 shrink-0 rounded-xl object-cover sm:block"
                     />

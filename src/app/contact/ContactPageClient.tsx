@@ -72,7 +72,7 @@ const offices = [
   {
     country: "United Kingdom",
     city: "London",
-    img: "/images/stock/1513635269975-59663e0ac1ad-w640x860.webp",
+    img: "/images/stock/united-kingdom-london.webp",
     href: "/locations/uk",
   },
   {
@@ -125,7 +125,7 @@ export default function ContactPageClient() {
       <div className={theme === "dark" ? "theme-dark" : undefined}>
         {/* ===================== HERO BANNER ===================== */}
         <PageBanner
-          image="/images/stock/1521737604893-d14cc237f11d-w1800.webp"
+          image="/images/stock/contact-mindwhiz-staffing-outsourcing.webp"
           h1="Contact MindWhiz for IT Staffing and Outsourcing"
           titleLines={["Let's"]}
           rotateWords={["Talk", "Connect", "Chat", "Meet"]}
@@ -218,7 +218,7 @@ export default function ContactPageClient() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={o.img}
-                      alt={o.country}
+                      alt={`MindWhiz ${o.country} office`}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />

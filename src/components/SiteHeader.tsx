@@ -190,7 +190,7 @@ function MegaPanel({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cs.img}
-              alt={cs.client}
+              alt={`${cs.client} case study`}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
             />
@@ -375,7 +375,7 @@ export function SiteHeader({ theme }: { theme: string }) {
           <div className="flex items-center overflow-hidden rounded-full bg-neutral-900 ring-1 ring-white/10 transition-all duration-700 ease-out">
             <span className="grid h-11 w-11 shrink-0 place-items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mindwhiz-mark.png" alt="MindWhiz" className="h-7 w-7" />
+              <img src="/mindwhiz-mark.png" alt="MindWhiz logo" className="h-7 w-7" />
             </span>
             {/* below the `nav` breakpoint (hamburger layout) the wordmark is
                 always shown - there's no hover on touch, so the brand would
