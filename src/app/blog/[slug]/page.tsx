@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogPostPage from "@/components/BlogPostPage";
-import { getPostBySlug, posts } from "@/lib/blog";
+import { getPostBySlug, posts, isPublished } from "@/lib/blog";
 import { DEFAULT_SHARE_IMAGE } from "@/seo.config";
 
 // Pre-render the static seed posts; admin-created slugs render on demand.
@@ -9,7 +9,7 @@ export const dynamicParams = true;
 export const revalidate = 60;
 
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return posts.filter((p) => isPublished(p)).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {

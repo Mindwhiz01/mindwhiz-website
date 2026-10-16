@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { posts, formatDate } from "@/lib/blog";
+import { livePosts, formatDate } from "@/lib/blog";
 
 const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
@@ -170,7 +170,7 @@ export default function NewsletterPageClient() {
     localStorage.setItem("mw-theme", theme);
   }, [theme]);
 
-  const editions = posts.slice(0, 4);
+  const editions = livePosts.slice(0, 4);
 
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
@@ -194,14 +194,14 @@ export default function NewsletterPageClient() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto max-w-2xl text-center"
+            className="relative mx-auto max-w-5xl text-center"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80">
               <Newspaper className="h-3.5 w-3.5 text-[#9CCC3C]" />
               The MindWhiz Dispatch
             </span>
             <h1
-              className="mt-6 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
+              className="mt-6 text-[clamp(2.5rem,8vw,7rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Smarter operations, <span className="text-[#9CCC3C]">once a month</span>

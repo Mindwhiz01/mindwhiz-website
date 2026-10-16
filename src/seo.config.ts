@@ -31,7 +31,7 @@ export type SeoEntry = { title: string; description: string };
 
 export const SEO_MAP: Record<string, SeoEntry> = {
   "/": {
-    title: "IT Staff Augmentation & Offshore Teams for US Firms | MindWhiz",
+    title: "AI-Ready IT & Cybersecurity Staff Augmentation | MindWhiz",
     description:
       "Vetted offshore engineers, 24/7 IT support and back-office teams for US companies, working your hours at typically 30-60% below in-house cost. Free consult",
   },
@@ -76,17 +76,17 @@ export const SEO_MAP: Record<string, SeoEntry> = {
       "Remote IT asset management and remote desktop support: track devices and licenses, onboard and offboard users and secure remote staff. Free asset audit.",
   },
   "/services/staff-augmentation": {
-    title: "IT Staff Augmentation Services for US Companies | MindWhiz",
+    title: "AI & IT Staff Augmentation Services for US Firms | MindWhiz",
     description:
       "IT staff augmentation for US companies: vetted engineers who join your team in about 10 business days, at typically 30-60% below a US hire. See pricing.",
   },
   "/services/offshore-staff-augmentation": {
-    title: "Offshore Staff Augmentation Services for US Firms | MindWhiz",
+    title: "Offshore AI & IT Staff Augmentation from Pakistan | MindWhiz",
     description:
       "Offshore staff augmentation from Pakistan for US companies: dedicated developers and specialists on US-hours shifts, typically 30-60% below a US hire.",
   },
   "/services/cybersecurity-staff-augmentation": {
-    title: "Cybersecurity Staff Augmentation for US Teams | MindWhiz",
+    title: "AI-Ready Cybersecurity Staff Augmentation for US | MindWhiz",
     description:
       "Cybersecurity staff augmentation: add vetted SOC analysts, security engineers and pen testers to your team in about 10 business days, on US-hours shifts.",
   },
@@ -171,9 +171,9 @@ export const SEO_MAP: Record<string, SeoEntry> = {
       "HIPAA-aware managed IT and back-office support for US healthcare and healthtech: EHR support, secure devices and 24/7 coverage. Book a compliance review.",
   },
   "/about": {
-    title: "About MindWhiz (Mind Whiz) | Offshore IT & Ops Teams",
+    title: "About MindWhiz | Offshore IT & Ops Teams",
     description:
-      "About MindWhiz (also written Mind Whiz): a Lahore-based team of 65+ vetted engineers and specialists serving US and UK companies since 2020. Meet us.",
+      "About MindWhiz: a Lahore-based team of 65+ vetted engineers and specialists serving US and UK companies since 2020. Meet us.",
   },
   "/why-mindwhiz": {
     title: "Why MindWhiz | Vetted Offshore Teams in Your Hours",

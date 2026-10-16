@@ -63,7 +63,7 @@ import {
   footerGroups,
 } from "@/lib/content";
 import { claims } from "@/lib/claims";
-import { posts } from "@/lib/blog";
+import { livePosts } from "@/lib/blog";
 import Footer from "@/components/Footer";
 import FaqSection, { type Faq } from "@/components/FaqSection";
 import TrustedByClients from "@/components/TrustedByClients";
@@ -111,7 +111,7 @@ const iconMap: Record<string, LucideIcon> = {
 // Latest insights cards, derived from the real blog so the newest post always
 // leads and every card is a genuine internal link to /blog/<slug> rather than a
 // hardcoded teaser pointing at the listing page.
-const insights = [...posts]
+const insights = [...livePosts]
   .sort((a, b) => (a.date < b.date ? 1 : -1))
   .slice(0, 6)
   .map((post) => ({
@@ -1783,7 +1783,7 @@ export default function SystemLimitedHome() {
               below is a styled paragraph so the heading is not just
               "Scale Your Teams". */}
           <h1 className="inline-flex max-w-xl items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur sm:text-sm">
-            IT Staff Augmentation and Offshore Teams for US Companies
+            Offshore IT Outsourcing and Staffing for US Companies
           </h1>
           <p
             className="mt-6 text-[clamp(3.6rem,11vw,11rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.05em] text-white"

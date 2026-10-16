@@ -12,7 +12,7 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import Footer from "@/components/Footer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { BOOKING_URL, GREEN_CTA_CLASS, PageBanner } from "@/components/PageBanner";
-import { posts, blogCategories, formatDate } from "@/lib/blog";
+import { livePosts as posts, blogCategories, formatDate } from "@/lib/blog";
 
 const sans = Inter({ subsets: ["latin"], display: "swap", preload: false });
 const display = Plus_Jakarta_Sans({
@@ -22,6 +22,9 @@ const display = Plus_Jakarta_Sans({
   display: "swap",
   preload: false,
 });
+
+// Cards per page in the blog grid (the featured post sits above it).
+const PAGE_SIZE = 6;
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -208,6 +211,15 @@ export default function BlogListPage({
     [category, rest]
   );
 
+  const [page, setPage] = useState(1);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  useEffect(() => setPage(1), [category]);
+
+  const goToPage = (n: number) => {
+    setPage(n);
+    document.getElementById("blog-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <main className={`${sans.className} ${display.variable} bg-white text-black`}>
       <SiteHeader theme={theme} />
@@ -230,7 +242,7 @@ export default function BlogListPage({
 
             {/* category filter */}
             <Reveal>
-              <div className="mt-16 flex flex-wrap gap-2">
+              <div id="blog-grid" className="mt-16 flex scroll-mt-28 flex-wrap gap-2">
                 {blogCategories.map((c) => (
                   <button
                     key={c}
@@ -248,13 +260,53 @@ export default function BlogListPage({
             </Reveal>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((post, i) => (
-                <PostCard key={post.slug} post={post} delay={(i % 3) * 0.06} />
-              ))}
+              {/* Off-page cards stay in the HTML (just hidden) so crawlers still
+                  reach older posts from /blog. */}
+              {filtered.map((post, i) => {
+                const onPage = Math.floor(i / PAGE_SIZE) + 1 === page;
+                return (
+                  <div key={post.slug} className={onPage ? "h-full" : "hidden"}>
+                    <PostCard post={post} delay={(i % 3) * 0.06} />
+                  </div>
+                );
+              })}
             </div>
 
             {filtered.length === 0 && (
               <p className="mt-10 text-center text-black/50">No posts in this category yet.</p>
+            )}
+
+            {pageCount > 1 && (
+              <nav aria-label="Blog pagination" className="mt-14 flex flex-wrap items-center justify-center gap-2">
+                <button
+                  onClick={() => goToPage(page - 1)}
+                  disabled={page === 1}
+                  className="rounded-full border border-black/15 px-4 py-2 text-sm font-semibold text-black/70 transition-colors hover:border-black/40 disabled:pointer-events-none disabled:opacity-40"
+                >
+                  Prev
+                </button>
+                {Array.from({ length: pageCount }, (_, i) => i + 1).map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => goToPage(n)}
+                    aria-current={n === page ? "page" : undefined}
+                    className={`h-10 w-10 rounded-full border text-sm font-semibold transition-colors ${
+                      n === page
+                        ? "border-black bg-black text-white"
+                        : "border-black/15 text-black/70 hover:border-black/40"
+                    }`}
+                  >
+                    {n}
+                  </button>
+                ))}
+                <button
+                  onClick={() => goToPage(page + 1)}
+                  disabled={page === pageCount}
+                  className="rounded-full border border-black/15 px-4 py-2 text-sm font-semibold text-black/70 transition-colors hover:border-black/40 disabled:pointer-events-none disabled:opacity-40"
+                >
+                  Next
+                </button>
+              </nav>
             )}
           </div>
         </section>

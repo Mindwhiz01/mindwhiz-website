@@ -162,6 +162,7 @@ const organizationJsonLd = {
   sameAs: [
     "https://www.linkedin.com/company/mindwhiz",
     "https://www.instagram.com/mindwhiz2.0/",
+    "https://www.instagram.com/mindwhizpakistan/",
     "https://www.facebook.com/mindwhizofficial/",
   ],
   contactPoint: [

@@ -405,11 +405,11 @@ export function SiteHeader({ theme }: { theme: string }) {
               n.label === "Services" || n.label === "Industries" || n.label === "About Us";
             // Mega tabs still navigate on click (hover opens the dropdown).
             // Services/Industries jump to their home-page sections; About Us
-            // lands on the CEO section of the about page.
+            // opens the top of the about page.
             const megaHref: Record<string, string> = {
               Services: "/#services",
               Industries: "/#industries",
-              "About Us": "/about#story",
+              "About Us": "/about",
             };
             const tabHref = hasMega ? megaHref[n.label] ?? n.href : n.href;
             return (

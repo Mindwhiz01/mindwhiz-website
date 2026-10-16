@@ -3,20 +3,18 @@
 // /blog/[slug] detail pages. Add a post by appending to `posts`.
 // ---------------------------------------------------------------------------
 
+import { serviceArticles } from "@/lib/blogArticles";
+
 export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
   category: string;
   date: string; // ISO, first published
-  /** ISO date of the last substantive edit; shown as "Updated" and used for dateModified + sitemap lastmod. */
+  /** ISO date of the last substantive edit; used for dateModified and sitemap lastmod (not displayed). */
   updated?: string;
   /** 140-155 char meta description when the excerpt is too long for a SERP snippet. */
   metaDescription?: string;
-  /** Who fact-checked the post (role-level, e.g. "MindWhiz security delivery lead"). */
-  reviewedBy?: string;
-  /** References for the statistics used in the post. */
-  sources?: { label: string; href: string }[];
   readTime: string;
   author: { name: string; role: string; avatar: string };
   image: string;
@@ -36,8 +34,6 @@ export type BlogPost = {
     | { type: "list"; items: string[] }
     // Inline image with keyword-rich alt text (helps readers + image SEO).
     | { type: "img"; src: string; alt: string; caption?: string }
-    // Comparison table (first column is the row header).
-    | { type: "table"; caption?: string; head: string[]; rows: string[][] }
     // In-article link/CTA, used for internal links (SEO) and jump-to-contact.
     | { type: "cta"; text: string; href: string; label: string }
   >;
@@ -48,9 +44,8 @@ export type BlogPost = {
 // admin/Supabase posts both resolve to it, so a stray author_name in the
 // database cannot put someone's name on an article.
 //
-// E-E-A-T (audit C5): the byline links to a visible editorial bio, posts show
-// "Updated" dates, a reviewer and cited sources. Switching to named personal
-// bylines is a business decision; add a `people` map here if that changes.
+// The byline links to the About page. Switching to named personal bylines is
+// a business decision; add a `people` map here if that changes.
 export const EDITORIAL_AUTHOR = {
   name: "MindWhiz Editorial Team",
   role: "IT, security and staffing practitioners",
@@ -80,13 +75,6 @@ export const posts: BlogPost[] = [
       "Staff augmentation pros and cons for 2026: real costs vs a US hire (BLS data), risks, and how it compares with outsourcing and managed services.",
     category: "Staffing",
     date: "2026-08-06",
-    updated: "2026-10-12",
-    reviewedBy: "MindWhiz staff augmentation delivery lead",
-    sources: [
-      { label: "BLS Occupational Outlook Handbook: Software Developers (median wage, May 2025)", href: "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm" },
-      { label: "BLS Occupational Outlook Handbook: Information Security Analysts (median wage, May 2025)", href: "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm" },
-      { label: "BLS Employer Costs for Employee Compensation (benefits = 30.0% of compensation, June 2026)", href: "https://www.bls.gov/news.release/ecec.nr0.htm" },
-    ],
     readTime: "12 min read",
     author: authors.team,
     image:
@@ -206,14 +194,6 @@ export const posts: BlogPost[] = [
         "Managed services: the vendor owns an ongoing service level, such as 24/7 monitoring or helpdesk. You get an SLA and a bill, not a headcount. Best for continuous operational functions you do not want to run.",
       ] },
 
-      { type: "table", caption: "Staff augmentation vs project outsourcing vs managed services vs direct hire", head: ["Factor", "Staff augmentation", "Project outsourcing", "Managed services", "Direct hire"], rows: [
-        ["Who owns the outcome", "You", "Vendor (per SOW)", "Vendor (per SLA)", "You"],
-        ["What you buy", "People and capacity", "A deliverable", "A service level", "An employee"],
-        ["Pricing", "Monthly per person", "Fixed bid or T&M", "Per user, device or tier", "Salary + benefits + fees"],
-        ["Time to start", "About 10 business days", "After scoping", "2-6 weeks onboarding", "Often 2-3 months"],
-        ["Flexibility", "High: scale monthly", "Low: change orders", "Medium: scope tiers", "Low: severance"],
-        ["Best for", "Evolving roadmaps, skill gaps", "Self-contained builds", "24/7 operations", "Core permanent roles"],
-      ] },
       { type: "p", text: "Cost comparison follows the same logic. Staff augmentation is billed per person per month, so cost is predictable and scales linearly with headcount. Outsourcing is billed per project, which caps your exposure but also caps your flexibility, since every change is a change order. Managed services are billed per user, per device, or per service tier, which is the most predictable of the three and the least flexible about scope." },
       { type: "rp", runs: [
         { text: "Plenty of organizations run two or three models at once, and that is usually the right answer: augmented engineers building the product, and a " },
@@ -241,13 +221,6 @@ export const posts: BlogPost[] = [
 
       { type: "h2", text: "What staff augmentation actually costs" },
       { type: "p", text: "Pricing is a monthly rate per person, set by role and seniority, and it should include employment, payroll, benefits, equipment, management of the individual, and replacement cover. Compare it against the fully loaded cost of employment rather than base salary: agency recruitment fees (usually a percentage of first-year salary), benefits, which the US Bureau of Labor Statistics puts at 30% of total private-industry compensation (about 43% on top of wages), equipment, software seats, and the weeks of manager time a hiring process consumes." },
-      { type: "table", caption: "US median wages (BLS, May 2025) and fully loaded cost including benefits", head: ["Role", "US median wage", "Approx. cost incl. benefits"], rows: [
-        ["Software developer", "$135,980", "~$194,000"],
-        ["Information security analyst", "$129,180", "~$185,000"],
-        ["Network / systems administrator", "$99,130", "~$142,000"],
-        ["Accountant / auditor", "$83,680", "~$120,000"],
-        ["IT user support specialist", "$61,860", "~$88,000"],
-      ] },
       { type: "p", text: "Offshore delivery is where the difference becomes structural rather than marginal, with vetted specialists working your hours at a fraction of a comparable local salary. But the number to watch is not the rate, it is the time-to-productivity. A cheaper specialist who takes two months to contribute costs more than a better one who ships in week two." },
       { type: "p", text: "Watch for four things when comparing quotes: whether replacement terms are written down before the engagement starts, whether the time-zone overlap is contracted or merely promised, whether documentation is a deliverable, and whether there is a named delivery lead who is accountable when something slips. Providers who resist putting any of those in writing tend to resist a lot of other things later." },
 
@@ -297,7 +270,6 @@ export const posts: BlogPost[] = [
     author: authors.team,
     image:
       "/images/stock/web-development-trends-services.webp",
-    featured: true,
     faqs: [
       {
         q: "What are the most important web development trends in 2026?",
@@ -535,10 +507,51 @@ export const posts: BlogPost[] = [
       { type: "quote", text: "Onboarding is a product. We iterate on it like one." },
     ],
   },
+  // Service-support topic clusters (see blogArticles.ts).
+  ...serviceArticles,
 ];
 
+// ---------------------------------------------------------------------------
+// Scheduling. A post whose `date` is in the future is hidden everywhere until
+// that day. Server routes (/blog, /blog/[slug], sitemaps) check the live clock
+// and revalidate, so posts appear on schedule without a redeploy. Client
+// components can't (server and browser clocks would disagree on hydration),
+// so they use `livePosts`, frozen at build time; they catch up on the next
+// deploy.
+// ---------------------------------------------------------------------------
+
+export function isPublished(post: BlogPost, now = Date.now()): boolean {
+  return new Date(post.date).getTime() <= now;
+}
+
+const BUILT_AT = Number(process.env.NEXT_PUBLIC_BUILD_TIME) || Date.now();
+
+/** Static posts already published when the site was built (for client components). */
+export const livePosts: BlogPost[] = posts.filter((p) => isPublished(p, BUILT_AT));
+
+// Scheduled posts link to each other, so an early post can point at one that is
+// not out yet. Render those links as plain text (and drop such CTAs) until the
+// target publishes, rather than sending readers to a 404.
+function withLiveLinks(post: BlogPost, now: number): BlogPost {
+  const unpublished = new Set(
+    posts.filter((p) => !isPublished(p, now)).map((p) => `/blog/${p.slug}`),
+  );
+  if (unpublished.size === 0) return post;
+  const isDead = (href?: string) => !!href && unpublished.has(href.split("#")[0]);
+  const body = post.body
+    .filter((b) => !(b.type === "cta" && isDead(b.href)))
+    .map((b) =>
+      b.type === "rp"
+        ? { ...b, runs: b.runs.map((r) => (isDead(r.href) ? { text: r.text } : r)) }
+        : b,
+    );
+  return { ...post, body };
+}
+
 export function getPost(slug: string): BlogPost | undefined {
-  return posts.find((p) => p.slug === slug);
+  const now = Date.now();
+  const post = posts.find((p) => p.slug === slug);
+  return post && isPublished(post, now) ? withLiveLinks(post, now) : undefined;
 }
 
 // ---------------------------------------------------------------------------
@@ -587,18 +600,20 @@ export async function getAllPosts(): Promise<BlogPost[]> {
   // Lazy server-only import so this module stays safe to import from anywhere.
   const { getSupabase } = await import("@/lib/supabase");
   const supabase = getSupabase();
-  if (!supabase) return [...posts].sort(byDateDesc);
+  const now = Date.now();
+  const live = posts.filter((p) => isPublished(p, now));
+  if (!supabase) return live.sort(byDateDesc);
 
   const { data, error } = await supabase
     .from("blog_posts")
     .select("*")
     .eq("published", true);
 
-  if (error || !data) return [...posts].sort(byDateDesc);
+  if (error || !data) return live.sort(byDateDesc);
 
   const dynamic = (data as BlogRow[]).map(rowToPost);
   const dynamicSlugs = new Set(dynamic.map((p) => p.slug));
-  const merged = [...dynamic, ...posts.filter((p) => !dynamicSlugs.has(p.slug))];
+  const merged = [...dynamic, ...live.filter((p) => !dynamicSlugs.has(p.slug))];
   return merged.sort(byDateDesc);
 }
 
@@ -626,5 +641,8 @@ export function formatDate(iso: string): string {
     year: "numeric",
     month: "long",
     day: "numeric",
+    // Dates are stored as plain ISO days (UTC midnight); format in UTC so US
+    // visitors don't see the previous day.
+    timeZone: "UTC",
   });
 }
